@@ -1,0 +1,1 @@
+{"_token":"6GQk4VnbcKMsET3gcPq2a3j5O34r3fvq61hCC7Ct","_old_input":{"name":null,"email":"bad","message":null},"_flash":{"new":[],"old":["_old_input","errors"]},"errors":{"default":{"format":":message","messages":{"name":["The name field is required."],"email":["The email field must be a valid email address."],"message":["The message field is required."]}}}}
