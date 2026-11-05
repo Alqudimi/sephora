@@ -50,7 +50,23 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $remember)) {
             RateLimiter::clear($throttleKey);
-            Cart::claimGuestCart($oldSessionId, (int) auth()->id());
+            $user = Auth::user();
+
+            if ($user->hasTwoFactorEnabled()) {
+                // Do not keep the user signed in until the second factor is
+                // proven; only the pending identity stays in the session.
+                Auth::logout();
+                $request->session()->put([
+                    'login.id' => $user->id,
+                    'login.remember' => $remember,
+                    'login.cart_session_id' => $oldSessionId,
+                ]);
+                $request->session()->regenerate();
+
+                return redirect()->route('two-factor.challenge');
+            }
+
+            Cart::claimGuestCart($oldSessionId, (int) $user->id);
             $request->session()->regenerate();
 
             return redirect()->intended(route('account.dashboard'));

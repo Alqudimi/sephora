@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Services\Commerce\OrderTotals;
+use App\Services\Commerce\ShippingCalculator;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -21,23 +24,38 @@ class Cart extends Model
     }
 
     /**
-     * Get or create the current cart (session based, linked to user when logged in).
+     * Resolve the cart that belongs to the current session, creating it on
+     * first use. The unique index on session_id is the source of truth, so a
+     * concurrent request that loses the insert race simply re-reads the row
+     * instead of throwing.
      */
     public static function current(): self
     {
         $sessionId = Session::getId();
 
-        $cart = static::where('session_id', $sessionId)->first();
+        $cart = static::query()->where('session_id', $sessionId)->first();
 
         if (! $cart) {
-            $cart = static::create(['session_id' => $sessionId, 'user_id' => Auth::id()]);
-        } elseif (Auth::check() && $cart->user_id !== Auth::id()) {
-            // merge guest cart into user's cart
-            $userCart = static::where('user_id', Auth::id())->where('id', '!=', $cart->id)->first();
-            if ($userCart) {
-                static::mergeCarts($cart, $userCart);
-                $cart = $userCart;
-            } else {
+            try {
+                $cart = static::create(['session_id' => $sessionId, 'user_id' => Auth::id()]);
+            } catch (QueryException $e) {
+                $cart = static::query()->where('session_id', $sessionId)->firstOrFail();
+            }
+        }
+
+        if (Auth::check()) {
+            // Fold every other cart this user owns (e.g. an old browser
+            // session) into the current one so quantities cannot diverge.
+            $others = static::query()
+                ->where('user_id', Auth::id())
+                ->whereKeyNot($cart->getKey())
+                ->get();
+
+            foreach ($others as $other) {
+                static::mergeCarts($other, $cart);
+            }
+
+            if ($cart->user_id !== Auth::id()) {
                 $cart->update(['user_id' => Auth::id()]);
             }
         }
@@ -62,7 +80,7 @@ class Cart extends Model
 
         $userCart = static::query()
             ->where('user_id', $userId)
-            ->where('id', '!=', $guestCart->id)
+            ->whereKeyNot($guestCart->getKey())
             ->first();
 
         if ($userCart) {
@@ -73,21 +91,36 @@ class Cart extends Model
     }
 
     /**
-     * Move all items from $from into $to (merging quantities, capped at 20),
-     * then delete $from.
+     * Move all items from $from into $to, merging quantities and clamping to
+     * live stock. Then delete the now-empty cart.
      */
     private static function mergeCarts(self $from, self $to): void
     {
-        foreach ($from->items as $item) {
+        $max = (int) config('commerce.max_quantity_per_item', 20);
+
+        foreach ($from->items()->with('product')->get() as $item) {
+            $available = (int) ($item->product?->stock ?? 0);
+            if ($available <= 0 || ! $item->product?->is_active) {
+                $item->delete();
+
+                continue;
+            }
+
             $existing = $to->items()
                 ->where('product_id', $item->product_id)
                 ->where('shade_name', $item->shade_name)
                 ->first();
 
             if ($existing) {
-                $existing->update(['quantity' => min(20, $existing->quantity + $item->quantity)]);
+                $existing->update([
+                    'quantity' => min($max, $available, $existing->quantity + $item->quantity),
+                ]);
+                $item->delete();
             } else {
-                $item->update(['cart_id' => $to->id]);
+                $item->update([
+                    'cart_id' => $to->id,
+                    'quantity' => min($item->quantity, $max, $available),
+                ]);
             }
         }
 
@@ -96,21 +129,37 @@ class Cart extends Model
 
     public function subtotal(): float
     {
-        return $this->items->sum(fn ($i) => ($i->product?->price ?? 0) * $i->quantity);
+        return round($this->items->sum(fn ($i) => ($i->product?->price ?? 0) * $i->quantity), 2);
     }
 
     public function count(): int
     {
-        return $this->items->sum('quantity');
+        return (int) $this->items->sum('quantity');
     }
 
     public function freeShippingThreshold(): float
     {
-        return (float) Setting::get('free_shipping_threshold', 250);
+        return (float) config('commerce.free_shipping_threshold', 250);
     }
 
-    public function shippingFee(): float
+    /**
+     * Delivery fee for a given method/payment combination. Kept on the model
+     * so every surface (bag, checkout, confirmation) uses the same rules.
+     */
+    public function shippingFee(string $deliveryMethod = 'standard', ?string $paymentMethod = null): float
     {
-        return $this->subtotal() >= $this->freeShippingThreshold() ? 0 : (float) Setting::get('shipping_fee', 25);
+        return app(ShippingCalculator::class)->fee($deliveryMethod, $this->subtotal(), $paymentMethod);
+    }
+
+    /**
+     * Full money breakdown (VAT inclusive) for a delivery/payment choice.
+     */
+    public function totals(string $deliveryMethod = 'standard', ?string $paymentMethod = null, float $discount = 0.0): OrderTotals
+    {
+        return OrderTotals::calculate(
+            $this->subtotal(),
+            $discount,
+            $this->shippingFee($deliveryMethod, $paymentMethod),
+        );
     }
 }

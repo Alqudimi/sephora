@@ -7,6 +7,31 @@
     <title>@yield('title', 'SEPHORA | Makeup, Skincare, Fragrance & More')</title>
     <meta name="description" content="@yield('meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.')">
 
+    {{-- SEO: pages override via @section('head'), everything else gets sane defaults --}}
+    @hasSection('head')
+        @yield('head')
+    @else
+        <link rel="canonical" href="{{ url()->current() }}">
+        <meta property="og:site_name" content="SEPHORA UAE">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="@yield('title', 'SEPHORA | Makeup, Skincare, Fragrance & More')">
+        <meta property="og:description" content="@yield('meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.')">
+        <meta property="og:image" content="{{ asset('images/placeholder.webp') }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="@yield('title', 'SEPHORA | Makeup, Skincare, Fragrance & More')">
+        <meta name="twitter:description" content="@yield('meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.')">
+        <meta name="twitter:image" content="{{ asset('images/placeholder.webp') }}">
+        <script type="application/ld+json">{!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'WebSite',
+            'name' => 'SEPHORA UAE',
+            'url' => url('/'),
+            'description' => 'Shop makeup, skincare, fragrance & more at Sephora UAE.',
+        ], JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+    @endif
+
     {{-- Vite build: Tailwind v3 (combined design config) + app JS --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -24,6 +49,7 @@
     @include('partials.header')
     @yield('content')
     @include('partials.footer')
+    @include('partials.cookie-banner')
     @yield('scripts')
     @stack('scripts')
 </body>

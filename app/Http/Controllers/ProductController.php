@@ -3,37 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function show(string $slug)
     {
         $product = Product::active()
-            ->with(['brand', 'images', 'shades', 'reviews', 'categories'])
+            ->with([
+                'brand',
+                'images',
+                'shades',
+                'categories',
+                'reviews' => fn ($query) => $query->latest()->limit(12),
+            ])
             ->where('slug', $slug)
-            ->first();
+            ->firstOrFail();
 
-        if (!$product) {
-            // Allow the designed PDP to render with its canonical demo product
-            $product = Product::with(['brand', 'images', 'shades', 'reviews'])
-                ->where('name', 'like', '%Good Girl Blush%')
-                ->first();
-            if (!$product) {
-                abort(404);
-            }
-        }
+        $categoryIds = $product->categories->pluck('id');
 
         $related = Product::active()
-            ->where('id', '!=', $product->id)
-            ->where(function ($q) use ($product) {
-                $q->where('brand_id', $product->brand_id)
-                    ->orWhereIn('id', $product->categories->flatMap->products->pluck('id')->unique()->take(8));
+            ->whereKeyNot($product->getKey())
+            ->where(function ($query) use ($product, $categoryIds) {
+                $query->where('brand_id', $product->brand_id);
+
+                if ($categoryIds->isNotEmpty()) {
+                    $query->orWhereHas('categories', fn ($category) => $category->whereIn('categories.id', $categoryIds));
+                }
             })
             ->with(['brand', 'images'])
+            ->inStock()
+            ->sorted('rating')
             ->limit(4)
             ->get();
 
-        return view('shop.product', ['product' => $product, 'related' => $related]);
+        return view('shop.product', [
+            'product' => $product,
+            'related' => $related,
+        ]);
     }
 }

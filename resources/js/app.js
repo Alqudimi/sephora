@@ -368,7 +368,7 @@ window.toggleAccordion = function (el) {
     }
 };
 
-// Promo code apply/remove (checkout)
+// Promo code apply (checkout)
 document.addEventListener('click', function (e) {
     const btn = e.target.closest('#promo-apply-btn');
     if (!btn) return;
@@ -376,6 +376,10 @@ document.addEventListener('click', function (e) {
     const input = document.getElementById('promo-code-input');
     const feedback = document.getElementById('promo-feedback');
     if (!input || !input.value.trim()) return;
+
+    const form = document.getElementById('checkout-form');
+    const delivery = form ? form.querySelector('input[name="delivery_method"]:checked') : null;
+    const payment = form ? form.querySelector('input[name="payment_method"]:checked') : null;
 
     btn.disabled = true;
     fetch('/checkout/coupon', {
@@ -386,39 +390,53 @@ document.addEventListener('click', function (e) {
             'X-Requested-With': 'XMLHttpRequest',
             'Accept': 'application/json',
         },
-        body: JSON.stringify({ code: input.value.trim() }),
+        body: JSON.stringify({
+            code: input.value.trim(),
+            delivery_method: delivery ? delivery.value : 'standard',
+            payment_method: payment ? payment.value : null,
+        }),
     })
     .then(r => r.json())
     .then(res => {
+        if (!feedback) return;
         feedback.classList.remove('hidden');
         feedback.textContent = res.message || '';
         feedback.classList.toggle('text-secondary', !!res.success);
         feedback.classList.toggle('text-outline', !res.success);
-        if (res.success) updateTotals(res);
+        if (res.success) window.applyCheckoutTotals(res);
     })
     .catch(() => window.sephoraToast('Network error', 'error'))
     .finally(() => { btn.disabled = false; });
 });
 
-function updateTotals(res) {
-    const total = document.getElementById('checkout-total');
-    if (total && typeof res.total !== 'undefined') {
-        total.textContent = 'AED ' + Number(res.total).toFixed(2);
-    }
-    let row = document.getElementById('discount-row');
-    if (res.discount > 0) {
-        if (!row) {
-            const subtotalRow = total ? total.closest('div').parentElement.querySelector('.flex.justify-between') : null;
-            row = document.createElement('div');
-            row.id = 'discount-row';
-            row.className = 'flex justify-between font-body-md text-body-md';
-            row.innerHTML = '<span class="text-on-surface-variant">Promo (' + res.code + ')</span>'
-                + '<span class="font-bold text-secondary">-AED ' + Number(res.discount).toFixed(2) + '</span>';
-            if (subtotalRow && subtotalRow.parentElement) subtotalRow.parentElement.insertBefore(row, subtotalRow.nextSibling);
+// Single source of truth for checkout money rows. The checkout view listens
+// for the "checkout:totals" event to keep labels/points in sync.
+window.applyCheckoutTotals = function (res) {
+    const formatted = res.formatted || {};
+    const set = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && typeof value !== 'undefined' && value !== null) el.textContent = value;
+    };
+
+    set('summary-subtotal', formatted.subtotal);
+    set('summary-shipping', formatted.shipping);
+    set('summary-tax', formatted.tax);
+    set('checkout-total', formatted.total);
+
+    const row = document.getElementById('discount-row');
+    if (row) {
+        if (Number(res.discount) > 0) {
+            row.classList.remove('hidden');
+            set('summary-discount', '-' + (formatted.discount || ''));
         } else {
-            row.querySelector('span:last-child').textContent = '-AED ' + Number(res.discount).toFixed(2);
+            row.classList.add('hidden');
         }
-    } else if (row) {
-        row.remove();
     }
-}
+
+    const points = document.getElementById('summary-points');
+    if (points && typeof res.total !== 'undefined') {
+        points.textContent = '+' + Math.floor(Number(res.total)) + ' Beauty Pass points';
+    }
+
+    document.dispatchEvent(new CustomEvent('checkout:totals', { detail: res }));
+};

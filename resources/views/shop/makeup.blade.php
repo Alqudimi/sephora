@@ -43,43 +43,43 @@
 </h2>
 <ul class="space-y-2.5 font-body-md text-body-md text-on-surface">
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Face</span>
 <span class="text-on-surface-variant text-body-sm">(412)</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Lips</span>
 <span class="text-on-surface-variant text-body-sm">(280)</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Eyes</span>
 <span class="text-on-surface-variant text-body-sm">(245)</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Brows</span>
 <span class="text-on-surface-variant text-body-sm">(95)</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Brushes &amp; Sponges</span>
 <span class="text-on-surface-variant text-body-sm">(118)</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Makeup Palettes</span>
 <span class="text-on-surface-variant text-body-sm">(54)</span>
 </a>
 </li>
 <li>
-<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="#">
+<a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
 <span class="group-hover:translate-x-1 transition-transform">Nails</span>
 <span class="text-on-surface-variant text-body-sm">(36)</span>
 </a>
@@ -290,7 +290,7 @@
 <button aria-label="Save to Wishlist" class="absolute top-2 right-2 z-10 p-1 text-primary hover:text-secondary transition-colors">
 <span class="material-symbols-outlined text-[20px]">favorite</span>
 </button>
-<img alt="{{ $products->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
 </div>
 <div class="flex-1 flex flex-col">
 <span class="font-label-caps text-label-caps uppercase font-bold tracking-widest text-primary mb-1">{{ $products->brand->name }}

@@ -2,156 +2,178 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function makeup(Request $r)
-    {
-        [$c, $p] = $this->categoryProducts('makeup', $this->parseFilters($r));
+    private const PER_PAGE = 12;
 
-        return view('shop.makeup', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+    private const SORT_OPTIONS = [
+        'featured' => 'Recommended',
+        'newest' => 'Newest Arrivals',
+        'price_asc' => 'Price: Low to High',
+        'price_desc' => 'Price: High to Low',
+        'rating' => 'Top Rated',
+    ];
+
+    public function makeup(Request $request)
+    {
+        return $this->render($request, 'makeup');
     }
 
-    public function skincare(Request $r)
+    public function skincare(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('skincare', $this->parseFilters($r));
-
-        return view('shop.skincare', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'skincare');
     }
 
-    public function fragrance(Request $r)
+    public function fragrance(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('fragrance', $this->parseFilters($r));
-
-        return view('shop.fragrance', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'fragrance');
     }
 
-    public function bathBody(Request $r)
+    public function bathBody(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('bath-body', $this->parseFilters($r));
-
-        return view('shop.bath-body', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'bath-body');
     }
 
-    public function hair(Request $r)
+    public function hair(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('hair', $this->parseFilters($r));
-
-        return view('shop.hair', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'hair');
     }
 
-    public function lips(Request $r)
+    public function lips(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('lips', $this->parseFilters($r));
-
-        return view('shop.lips', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'lips');
     }
 
-    public function face(Request $r)
+    public function face(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('face', $this->parseFilters($r));
-
-        return view('shop.face', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'face');
     }
 
-    public function palettes(Request $r)
+    public function palettes(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('makeup-palettes', $this->parseFilters($r));
-
-        return view('shop.palettes', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'makeup-palettes');
     }
 
-    public function bestsellers(Request $r)
+    public function bestsellers(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('bestsellers', $this->parseFilters($r));
-
-        return view('shop.category', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'bestsellers');
     }
 
-    public function newness(Request $r)
+    public function newness(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('new', $this->parseFilters($r));
-
-        return view('shop.new', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'new');
     }
 
-    public function gifts(Request $r)
+    public function gifts(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('gifts', $this->parseFilters($r));
-
-        return view('shop.gifts', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
+        return $this->render($request, 'gifts');
     }
 
-    public function minis(Request $r)
+    public function minis(Request $request)
     {
-        [$c, $p] = $this->categoryProducts('minis-more', $this->parseFilters($r));
-
-        return view('shop.minis', ['category' => $c, 'products' => $p, 'filters' => $this->parseFilters($r)]);
-    }
-
-    public function show(Request $request, string $slug)
-    {
-        [$category, $products] = $this->categoryProducts($slug, $this->parseFilters($request));
-        $view = 'shop.'.str_replace('-', '', $slug);
-        if (view()->exists($view)) {
-            return view($view, ['category' => $category, 'products' => $products, 'filters' => $this->parseFilters($request)]);
-        }
-
-        return view('shop.category', ['category' => $category, 'products' => $products, 'filters' => $this->parseFilters($request)]);
+        return $this->render($request, 'minis-more');
     }
 
     /**
-     * Products for a category page in design order (with optional filters).
-     *
-     * @return array{0: Category, 1: Collection}
+     * Generic category page: /shop/{slug}.
      */
-    private function categoryProducts(string $slug, array $filters = []): array
+    public function show(Request $request, string $slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
-
-        $query = Product::active()
-            ->with(['brand', 'images'])
-            ->whereHas('categories', fn ($q) => $q->where('categories.id', $category->id));
-
-        if (! empty($filters['brand'])) {
-            $query->whereHas('brand', fn ($q) => $q->where('slug', $filters['brand']));
-        }
-        if (! empty($filters['min_price'])) {
-            $query->where('price', '>=', $filters['min_price']);
-        }
-        if (! empty($filters['max_price'])) {
-            $query->where('price', '<=', $filters['max_price']);
-        }
-        if (! empty($filters['clean'])) {
-            $query->where('is_clean', true);
-        }
-        if (! empty($filters['new'])) {
-            $query->where('is_new', true);
-        }
-        if (! empty($filters['q'])) {
-            $term = '%'.$filters['q'].'%';
-            $query->where(fn ($w) => $w->where('name', 'like', $term)->orWhereHas('brand', fn ($b) => $b->where('name', 'like', $term)));
-        }
-
-        $query->sorted($filters['sort'] ?? 'featured');
-
-        return [$category, $query->get()];
+        return $this->render($request, $slug);
     }
 
+    /**
+     * Build the listing page for a category with filters, sorting and
+     * pagination. All filtering happens server-side; every link keeps the
+     * current query string.
+     */
+    private function render(Request $request, string $slug)
+    {
+        $category = Category::query()
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        $filters = $this->parseFilters($request);
+
+        $base = Product::active()
+            ->whereHas('categories', fn ($query) => $query->where('categories.id', $category->id));
+
+        $products = (clone $base)
+            ->with(['brand', 'images'])
+            ->when($filters['brand'], fn ($query, $brand) => $query->whereHas('brand', fn ($b) => $b->where('slug', $brand)))
+            ->when($filters['min_price'] !== null, fn ($query) => $query->where('price', '>=', $filters['min_price']))
+            ->when($filters['max_price'] !== null, fn ($query) => $query->where('price', '<=', $filters['max_price']))
+            ->when($filters['clean'], fn ($query) => $query->where('is_clean', true))
+            ->when($filters['new'], fn ($query) => $query->where('is_new', true))
+            ->when($filters['in_stock'], fn ($query) => $query->where('stock', '>', 0))
+            ->when($filters['q'], function ($query, $term) {
+                $like = '%' . $term . '%';
+                $query->where(fn ($inner) => $inner
+                    ->where('name', 'like', $like)
+                    ->orWhereHas('brand', fn ($brand) => $brand->where('name', 'like', $like)));
+            })
+            ->sorted($filters['sort'])
+            ->paginate(self::PER_PAGE)
+            ->withQueryString();
+
+        $brands = Brand::query()
+            ->whereHas('products', function ($query) use ($category) {
+                $query->where('is_active', true)
+                    ->whereHas('categories', fn ($c) => $c->where('categories.id', $category->id));
+            })
+            ->withCount(['products' => function ($query) use ($category) {
+                $query->where('is_active', true)
+                    ->whereHas('categories', fn ($c) => $c->where('categories.id', $category->id));
+            }])
+            ->orderBy('name')
+            ->get();
+
+        $priceBounds = (clone $base)
+            ->selectRaw('MIN(price) as min_price, MAX(price) as max_price')
+            ->first();
+
+        return view('shop.category', [
+            'category' => $category,
+            'products' => $products,
+            'filters' => $filters,
+            'brands' => $brands,
+            'priceBounds' => $priceBounds,
+            'sortOptions' => self::SORT_OPTIONS,
+        ]);
+    }
+
+    /**
+     * @return array{brand: ?string, min_price: ?float, max_price: ?float, clean: bool, new: bool, in_stock: bool, q: ?string, sort: string}
+     */
     private function parseFilters(Request $request): array
     {
+        $sort = (string) $request->input('sort', 'featured');
+        if (! array_key_exists($sort, self::SORT_OPTIONS)) {
+            $sort = 'featured';
+        }
+
+        $min = $request->filled('min_price') ? max(0, (float) $request->input('min_price')) : null;
+        $max = $request->filled('max_price') ? max(0, (float) $request->input('max_price')) : null;
+
+        if ($min !== null && $max !== null && $min > $max) {
+            [$min, $max] = [$max, $min];
+        }
+
         return [
-            'brand' => $request->input('brand'),
-            'min_price' => $request->filled('min_price') ? (float) $request->input('min_price') : null,
-            'max_price' => $request->filled('max_price') ? (float) $request->input('max_price') : null,
+            'brand' => $request->filled('brand') ? (string) $request->input('brand') : null,
+            'min_price' => $min,
+            'max_price' => $max,
             'clean' => $request->boolean('clean'),
             'new' => $request->boolean('new'),
-            'q' => $request->input('q'),
-            'sort' => $request->input('sort', 'featured'),
+            'in_stock' => $request->boolean('in_stock'),
+            'q' => $request->filled('q') ? (string) $request->input('q') : null,
+            'sort' => $sort,
         ];
     }
 }

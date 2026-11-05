@@ -213,7 +213,7 @@
 </div>
 <!-- Product Packshot -->
 <div class="relative w-full aspect-square overflow-hidden mb-3 bg-surface-container-lowest flex items-center justify-center">
-<img class="product-image w-full h-full object-contain transition-transform duration-300" data-alt="{{ $products->name }}" src="{{ asset($products->first_image) }}"/>
+<img class="product-image w-full h-full object-contain transition-transform duration-300" data-alt="{{ $products->name }}" src="{{ media_url($products->first_image) }}"/>
 </div>
 <div class="space-y-1">
 <p class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">{{ $products->brand->name }}

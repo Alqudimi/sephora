@@ -8,7 +8,8 @@ class Store extends Model
 {
     protected $fillable = [
         'name', 'city', 'emirate', 'address', 'phone', 'opening_hours',
-        'latitude', 'longitude', 'services', 'has_brow_bar', 'has_beauty_bar', 'sort_order',
+        'latitude', 'longitude', 'services', 'has_brow_bar', 'has_beauty_bar',
+        'is_active', 'sort_order',
     ];
 
     protected $casts = [
@@ -16,5 +17,11 @@ class Store extends Model
         'services' => 'array',
         'has_brow_bar' => 'boolean',
         'has_beauty_bar' => 'boolean',
+        'is_active' => 'boolean',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
 }

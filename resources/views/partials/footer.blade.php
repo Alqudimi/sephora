@@ -26,7 +26,7 @@
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">About Sephora</h4>
                 <ul class="space-y-2">
-                    <li><a class="hover:text-white transition" href="#">About Us</a></li>
+                    <li><a class="hover:text-white transition" href="{{ route('home') }}">About Us</a></li>
                     <li><a class="hover:text-white transition" href="/stores">Careers</a></li>
                     <li><a class="hover:text-white transition" href="/stores">Store Locator</a></li>
                     <li><a class="hover:text-white transition" href="/my-account">Beauty Pass Program</a></li>

@@ -1,530 +1,479 @@
 @extends('layouts.app')
 
-@section('title', 'Good Girl Blush Eau de Parfum Gift Set - Carolina Herrera | SEPHORA Middle East')
-@section('body_class', 'bg-background text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col font-body-md text-body-md')
+@php
+    $images = $product->images;
+    $primaryCategory = $product->categories->first();
+    $stock = (int) $product->stock;
+    $maxQty = max(1, min($stock, (int) config('commerce.max_quantity_per_item', 20)));
+    $rating = (float) ($product->rating > 0 ? $product->rating : ($product->reviews->avg('rating') ?? 0));
+    $reviewCount = max((int) $product->reviews_count, $product->reviews->count());
+    $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
+    $currency = config('commerce.currency', 'AED');
+    $mainImage = $images->first()?->path ?? 'images/placeholder.webp';
+    $productUrl = route('product.show', ['slug' => $product->slug]);
+
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product->name,
+        'image' => $images->pluck('path')->map(fn ($path) => media_url($path))->values()->all(),
+        'description' => Str::limit(strip_tags((string) $product->description), 500),
+        'sku' => $product->sku,
+        'brand' => ['@type' => 'Brand', 'name' => $product->brand?->name],
+        'offers' => [
+            '@type' => 'Offer',
+            'url' => $productUrl,
+            'priceCurrency' => $currency,
+            'price' => number_format((float) $product->price, 2, '.', ''),
+            'availability' => $stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            'itemCondition' => 'https://schema.org/NewCondition',
+        ],
+    ];
+
+    if ($reviewCount > 0 && $rating > 0) {
+        $schema['aggregateRating'] = [
+            '@type' => 'AggregateRating',
+            'ratingValue' => round($rating, 1),
+            'reviewCount' => $reviewCount,
+        ];
+    }
+@endphp
+
+@section('title', ($product->meta_title ?: $product->name . ' | ' . ($product->brand?->name ?? 'SEPHORA')) . ' | SEPHORA UAE')
+@section('meta_description', Str::limit(strip_tags($product->meta_description ?: ($product->description ?: 'Shop ' . $product->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.')), 155))
+@section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
+
+@section('head')
+    <link rel="canonical" href="{{ $productUrl }}">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="SEPHORA UAE">
+    <meta property="og:title" content="{{ $product->meta_title ?: $product->name }}">
+    <meta property="og:description" content="{{ Str::limit(strip_tags((string) $product->description), 200) }}">
+    <meta property="og:image" content="{{ media_url($mainImage) }}">
+    <meta property="og:url" content="{{ $productUrl }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endsection
 
 @section('content')
-<main class="flex-grow max-w-[1440px] mx-auto w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-4 pb-16">
-<!-- 3. Breadcrumb Navigation -->
-<nav aria-label="Breadcrumb" class="py-3 text-on-surface-variant font-body-sm text-body-sm flex items-center flex-wrap gap-2 mb-2">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
-<span class="text-outline-variant">/</span>
-<a class="hover:text-primary transition-colors" href="/shop/fragrance">Fragrance</a>
-<span class="text-outline-variant">/</span>
-<a class="hover:text-primary transition-colors" href="#">Gift Sets</a>
-<span class="text-outline-variant">/</span>
-<a class="hover:text-primary transition-colors" href="#">For Her</a>
-<span class="text-outline-variant">/</span>
-<span class="text-primary font-semibold truncate max-w-xs md:max-w-none">Good Girl Blush Eau de Parfum Gift Set</span>
-</nav>
-<!-- 4. GWP Promo Banner -->
-<div class="mb-8 border border-tertiary-fixed-dim bg-primary text-on-primary p-4 md:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-tertiary-fixed text-[28px] flex-shrink-0">featured_seasonal_and_gifts</span>
-<div>
-<span class="font-label-caps text-label-caps text-tertiary-fixed uppercase tracking-wider block mb-0.5">Unlock your gifts</span>
-<p class="font-body-md text-body-md text-surface-bright">
-<span class="font-bold">Explore. Stack. Repeat.</span> Enjoy a complimentary Fragrance Discovery Collection when you spend 650 AED or more on fragrance purchases online.
-          </p>
-</div>
-</div>
-<a class="inline-block border border-tertiary-fixed text-tertiary-fixed hover:bg-tertiary-fixed hover:text-primary font-label-caps text-label-caps uppercase px-4 py-2 text-center whitespace-nowrap transition-colors duration-200" href="#">
-        Discover Gift
-      </a>
-</div>
-<!-- 5. Main PDP Section (2-Column Architectural Layout) -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pb-16 border-b border-outline-variant">
-<!-- Left Column: Product Gallery & Visuals (7 Cols) -->
-<div class="lg:col-span-7 flex flex-col gap-6">
-<div class="flex flex-col-reverse md:flex-row gap-4">
-<!-- Thumbnail Vertical Stack -->
-<div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible no-scrollbar flex-shrink-0">
-<button class="thumb-btn thumb-active w-18 h-18 md:w-20 md:h-20 border border-outline-variant bg-surface-container-lowest p-1 cursor-pointer transition-all duration-150" onclick="changeImage('{{ asset('images/content/img_d5515c46c027760d.jpg') }}', this)">
-<img alt="Good Girl Blush Gift Set Packshot" class="w-full h-full object-cover" src="{{ asset('images/content/img_d5515c46c027760d.jpg') }}"/>
-</button>
-<button class="thumb-btn w-18 h-18 md:w-20 md:h-20 border border-outline-variant bg-surface-container-lowest p-1 cursor-pointer hover:border-primary transition-all duration-150" onclick="changeImage('{{ asset('images/content/img_04e46c9360601e2d.jpg') }}', this)">
-<img alt="Editorial Karlie Kloss Campaign" class="w-full h-full object-cover" src="{{ asset('images/content/img_04e46c9360601e2d.jpg') }}"/>
-</button>
-<button class="thumb-btn w-18 h-18 md:w-20 md:h-20 border border-outline-variant bg-surface-container-lowest p-1 cursor-pointer hover:border-primary transition-all duration-150" onclick="changeImage('{{ asset('images/content/img_b19222a911ea8693.jpg') }}', this)">
-<img alt="Product unpackaged view" class="w-full h-full object-cover" src="{{ asset('images/content/img_b19222a911ea8693.jpg') }}"/>
-</button>
-<button class="thumb-btn w-18 h-18 md:w-20 md:h-20 border border-outline-variant bg-surface-container-lowest p-1 cursor-pointer hover:border-primary transition-all duration-150" onclick="changeImage('{{ asset('images/content/img_e12faed332fa8e3b.jpg') }}', this)">
-<img alt="Good Girl Blush Bottle Single" class="w-full h-full object-cover" src="{{ asset('images/content/img_e12faed332fa8e3b.jpg') }}"/>
-</button>
-</div>
-<!-- Main Image Display Vitrine -->
-<div class="relative flex-1 bg-surface-container-lowest border border-outline-variant overflow-hidden group">
-<!-- Badges Cluster -->
-<div class="absolute top-4 left-4 z-10 flex flex-col gap-1.5 items-start">
-<span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-2.5 py-1 tracking-wider uppercase">LIMITED EDITION</span>
-<span class="bg-primary text-on-primary font-label-caps text-label-caps px-2.5 py-1 tracking-wider uppercase">EXCLUSIVE</span>
-<span class="bg-surface text-on-surface border border-primary font-label-caps text-label-caps px-2 py-0.5 tracking-wider uppercase">NEW</span>
-</div>
-<!-- Main Packshot Image with Smooth Micro-Lift Zoom -->
-<div class="aspect-square w-full flex items-center justify-center p-6 bg-surface-bright">
-<img alt="Good Girl Blush Eau de Parfum Gift Set main showcase" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" id="main-product-image" src="{{ asset('images/content/img_d5515c46c027760d.jpg') }}"/>
-</div>
-<!-- Quick zoom hint -->
-<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 px-2.5 py-1.5 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps flex items-center gap-1.5 pointer-events-none">
-<span class="material-symbols-outlined text-[16px]">zoom_in</span>
-<span>ROLL TO ZOOM</span>
-</div>
-</div>
-</div>
-<!-- Editorial Campaign Highlight Banner -->
-<div class="border border-outline-variant bg-surface-container-low p-4 flex items-center gap-4">
-<div class="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 border border-outline-variant overflow-hidden">
-<img alt="Karlie Kloss Good Girl Blush Campaign" class="w-full h-full object-cover" src="{{ asset('images/content/img_04e46c9360601e2d.jpg') }}"/>
-</div>
-<div>
-<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-1">Couture Campaign</span>
-<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Empowering &amp; Romantic</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              Karlie Kloss embodies the duality of modern womanhood with Good Girl Blush—soft yet fiercely confident.
-            </p>
-</div>
-</div>
-</div>
-<!-- Right Column: Purchasing Details & Actions (5 Cols) -->
-<div class="lg:col-span-5 flex flex-col">
-<!-- Brand Link -->
-<a class="font-label-caps text-label-caps tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-4 mb-2" href="/">
-          CAROLINA HERRERA
-        </a>
-<!-- Product Title -->
-<h1 class="font-headline-md text-headline-md text-primary mb-3">
-          Good Girl Blush Eau de Parfum Gift Set
-        </h1>
-<!-- Reviews & Rating Cluster -->
-<div class="flex items-center gap-3 pb-4 mb-5 border-b border-outline-variant">
-<div class="flex items-center text-primary">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-[18px]">star_half</span>
-<span class="font-bold text-sm ml-1.5">4.6</span>
-</div>
-<span class="text-outline-variant">|</span>
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline" href="#reviews">168 reviews</a>
-<span class="text-outline-variant">|</span>
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline" href="#write-review">Write a review</a>
-</div>
-<!-- Pricing Cluster -->
-<div class="mb-5">
-<div class="flex items-baseline gap-3">
-<span class="font-price-aed-lg text-price-aed-lg text-primary">AED 700.00</span>
-<span class="font-body-md text-body-md line-through text-outline">Real value AED 1,000.00</span>
-<span class="bg-secondary-fixed text-on-secondary-fixed-variant font-label-tag text-label-tag px-2 py-0.5 tracking-wider uppercase font-bold">
-              SAVE 300 AED
-            </span>
-</div>
-<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">All taxes &amp; VAT included</span>
-</div>
-<!-- Buy Now Pay Later (Tabby & Tamara) Installments -->
-<div class="bg-surface-container-low border border-outline-variant p-3.5 mb-6 space-y-2">
-<div class="flex items-center justify-between text-body-sm font-body-sm">
-<div class="flex items-center gap-2">
-<span class="bg-emerald-600 text-white font-bold text-[9px] px-1.5 py-0.5 tracking-tight uppercase">tabby</span>
-<span>or 4 interest-free payments of <strong>AED 175.00</strong></span>
-</div>
-<a class="text-outline hover:text-primary underline text-[11px]" href="#">Learn more</a>
-</div>
-<div class="h-[1px] bg-outline-variant/60"></div>
-<div class="flex items-center justify-between text-body-sm font-body-sm">
-<div class="flex items-center gap-2">
-<span class="bg-orange-500 text-white font-bold text-[9px] px-1.5 py-0.5 tracking-tight uppercase">tamara</span>
-<span>or split in 4 payments of <strong>AED 175.00</strong></span>
-</div>
-<a class="text-outline hover:text-primary underline text-[11px]" href="#">Learn more</a>
-</div>
-</div>
-<!-- Variant / Size Selector -->
-<div class="mb-6">
-<div class="flex justify-between items-center mb-2">
-<span class="font-label-caps text-label-caps text-primary uppercase">Size / Configuration</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">In Stock Online</span>
-</div>
-<button class="w-full text-left p-3 border-2 border-primary bg-surface-container-lowest font-body-md text-body-md flex items-center justify-between">
-<span class="font-semibold text-primary">1 Size: 80ml EDP + 100ml Body Lotion + 10ml Travel Spray</span>
-<span class="material-symbols-outlined text-primary text-[20px]">check</span>
-</button>
-</div>
-<!-- Quantity & Add to Bag Actions -->
-<div class="flex flex-col sm:flex-row gap-3 mb-4">
-<!-- Quantity Counter -->
-<div class="flex items-center border border-primary h-12 bg-surface-container-lowest justify-between px-3 w-full sm:w-32 flex-shrink-0">
-<button aria-label="Decrease quantity" class="text-primary hover:text-secondary p-1" onclick="decrementQty()">
-<span class="material-symbols-outlined text-[18px]">remove</span>
-</button>
-<span class="font-title-md text-title-md font-bold" id="qty-val">1</span>
-<input id="qty-hidden" name="qty" type="hidden" value="1"/>
-<button aria-label="Increase quantity" class="text-primary hover:text-secondary p-1" onclick="incrementQty()">
-<span class="material-symbols-outlined text-[18px]">add</span>
-</button>
-</div>
-<!-- Primary Add to Bag Button -->
-<button class="flex-1 bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary font-label-caps text-label-caps uppercase h-12 flex items-center justify-center gap-2 tracking-widest transition-colors duration-200" data-add-to-bag="{{ $product->id }}" type="button">
-<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
-<span>ADD TO BAG - AED {{ number_format($product->price, 2) }}</span>
-</button>
-<!-- Wishlist Button -->
-<button class="h-12 w-12 border border-primary bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary flex items-center justify-center flex-shrink-0 transition-colors duration-200" data-wishlist-toggle="{{ $product->id }}" title="Save to Wishlist" type="button">
-<span class="material-symbols-outlined text-[22px]">favorite</span>
-</button>
-</div>
-<!-- Beauty Pass Points Perk -->
-<div class="border border-tertiary-fixed-dim bg-surface-container-low px-3.5 py-2.5 mb-6 flex items-center gap-2.5">
-<span class="material-symbols-outlined text-tertiary-container text-[20px]">stars</span>
-<span class="font-body-sm text-body-sm text-on-surface">
-<strong>+70 Beauty Pass Points</strong> will be credited to your tier balance upon purchase.
-          </span>
-</div>
-<!-- Fulfillment Perks List -->
-<div class="border-t border-outline-variant pt-5 space-y-3 font-body-sm text-body-sm text-on-surface">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
-<span><strong>Free Standard Delivery</strong> (2-3 business days across UAE)</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
-<span><strong>Same-Day Express</strong> available in Dubai &amp; Abu Dhabi for orders before 2 PM</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">storefront</span>
-<span><strong>Complimentary Click &amp; Collect</strong> ready in 2 Hours at The Dubai Mall &amp; 30+ stores</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary text-[20px]">redeem</span>
-<span><strong>2 Free Deluxe Mini Samples</strong> carefully chosen with every order</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-[20px]">featured_seasonal_and_gifts</span>
-<span><strong>Complimentary Iconic Sephora</strong> black &amp; white striped gift packaging</span>
-</div>
-</div>
-</div>
-</div>
-<!-- 6. Product Information Tabs / Accordions -->
-<section class="py-12 border-b border-outline-variant">
-<div class="max-w-4xl mx-auto">
-<h2 class="font-headline-sm text-headline-sm uppercase tracking-widest text-primary text-center mb-8">Product Specifications &amp; Artistry</h2>
-<div class="space-y-4">
-<!-- Accordion 1: Description -->
-<div class="border border-outline-variant bg-surface-container-lowest">
-<button class="w-full p-5 text-left flex justify-between items-center font-title-lg text-title-lg uppercase tracking-wider" onclick="toggleAccordion('acc-desc')">
-<span>Description</span>
-<span class="material-symbols-outlined" id="acc-desc-icon">expand_more</span>
-</button>
-<div class="px-5 pb-5 pt-0 font-body-md text-body-md text-on-surface-variant space-y-3" id="acc-desc">
-<p>
-                A blooming reinvention of Carolina Herrera’s iconic fragrance, <strong>Good Girl Blush Eau de Parfum</strong> celebrates the multifaceted facets of modern femininity with its romantic floral bouquet and sensual double-dose vanilla base.
-              </p>
-<p>
-                Encased in the signature stiletto bottle redesigned in a radiant, powdered blush pink with a sky-high gold stiletto heel, this opulent holiday gift set includes an 80ml Eau de Parfum, a rich perfumed body lotion, and a portable 10ml travel spray for effortless fragrance reapplication wherever glamour takes you.
-              </p>
-</div>
-</div>
-<!-- Accordion 2: Set Includes -->
-<div class="border border-outline-variant bg-surface-container-lowest">
-<button class="w-full p-5 text-left flex justify-between items-center font-title-lg text-title-lg uppercase tracking-wider" onclick="toggleAccordion('acc-set')">
-<span>Set Includes</span>
-<span class="material-symbols-outlined" id="acc-set-icon">expand_more</span>
-</button>
-<div class="hidden px-5 pb-5 pt-0 font-body-md text-body-md text-on-surface-variant" id="acc-set">
-<ul class="list-disc list-inside space-y-2">
-<li><strong>Good Girl Blush Eau de Parfum 80ml:</strong> The full-size statement stiletto flacon.</li>
-<li><strong>Good Girl Blush Body Lotion 100ml:</strong> Ultra-hydrating, delicately perfumed body emulsion that softens and layers fragrance longevity.</li>
-<li><strong>Good Girl Blush Travel Spray 10ml:</strong> Sleek handbag-ready stiletto travel flacon.</li>
-</ul>
-</div>
-</div>
-<!-- Accordion 3: Fragrance Family & Olfactory Notes -->
-<div class="border border-outline-variant bg-surface-container-lowest">
-<button class="w-full p-5 text-left flex justify-between items-center font-title-lg text-title-lg uppercase tracking-wider" onclick="toggleAccordion('acc-notes')">
-<span>Fragrance Family &amp; Olfactory Pyramid</span>
-<span class="material-symbols-outlined" id="acc-notes-icon">expand_more</span>
-</button>
-<div class="hidden px-5 pb-5 pt-0 font-body-md text-body-md text-on-surface-variant space-y-3" id="acc-notes">
-<div>
-<span class="font-bold text-primary">Fragrance Family:</span> Floral Amber
-              </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-<div class="p-3 bg-surface-bright border border-outline-variant">
-<span class="font-label-caps text-label-caps text-primary uppercase block mb-1">Top Notes</span>
-<p class="font-body-sm text-body-sm">Italian Bergamot, Bitter Almond &amp; Sparkling Mandarin</p>
-</div>
-<div class="p-3 bg-surface-bright border border-outline-variant">
-<span class="font-label-caps text-label-caps text-primary uppercase block mb-1">Heart Notes</span>
-<p class="font-body-sm text-body-sm">Exotic Ylang-Ylang, Romantic Peony &amp; Upcycled Rose Water</p>
-</div>
-<div class="p-3 bg-surface-bright border border-outline-variant">
-<span class="font-label-caps text-label-caps text-primary uppercase block mb-1">Base Notes</span>
-<p class="font-body-sm text-body-sm">Madagascar Bourbon Vanilla &amp; Roasted Tonka Bean</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Accordion 4: How To Use -->
-<div class="border border-outline-variant bg-surface-container-lowest">
-<button class="w-full p-5 text-left flex justify-between items-center font-title-lg text-title-lg uppercase tracking-wider" onclick="toggleAccordion('acc-use')">
-<span>How To Use &amp; Layer</span>
-<span class="material-symbols-outlined" id="acc-use-icon">expand_more</span>
-</button>
-<div class="hidden px-5 pb-5 pt-0 font-body-md text-body-md text-on-surface-variant space-y-2" id="acc-use">
-<p>1. <strong>Prep &amp; Hydrate:</strong> Smooth Good Girl Blush Body Lotion over cleansed skin, paying special attention to collarbones, wrists, and shoulders to lock in moisture.</p>
-<p>2. <strong>Mist Pulse Points:</strong> Spray the Good Girl Blush Eau de Parfum onto pulse points (neck, décolletage, behind ears, and inside elbows) from a distance of 15cm.</p>
-<p>3. <strong>Touch Up On The Go:</strong> Slip the 10ml travel spray into your clutch to refresh the floral aura throughout the evening without rubbing wrists together.</p>
-</div>
-</div>
-<!-- Accordion 5: Ingredients -->
-<div class="border border-outline-variant bg-surface-container-lowest">
-<button class="w-full p-5 text-left flex justify-between items-center font-title-lg text-title-lg uppercase tracking-wider" onclick="toggleAccordion('acc-ingredients')">
-<span>Ingredients</span>
-<span class="material-symbols-outlined" id="acc-ingredients-icon">expand_more</span>
-</button>
-<div class="hidden px-5 pb-5 pt-0 font-body-sm text-body-sm text-on-surface-variant leading-relaxed" id="acc-ingredients">
-<p>
-                ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), HYDROXYCITRONELLAL, LINALOOL, BENZYL SALICYLATE, BUTYL METHOXYDIBENZOYLMETHANE, LIMONENE, GERANIOL, COUMARIN, CITRONELLOL, BENZYL BENZOATE, TRIS(TETRAMETHYLHYDROXYPIPERIDINOL) CITRATE, CITRAL, BENZYL ALCOHOL, CI 14700 (RED 4), CI 19140 (YELLOW 5), CI 60730 (EXT. VIOLET 2).
-              </p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 7. Frequently Bought Together / Complete The Routine -->
-<section class="py-12 border-b border-outline-variant">
-<div class="flex items-center justify-between mb-8">
-<div>
-<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-1">Stack Your Scent</span>
-<h3 class="font-headline-sm text-headline-sm text-primary">Complete The Routine</h3>
-</div>
-<a class="font-label-caps text-label-caps uppercase text-primary hover:text-secondary underline" href="#">View Fragrance Routine</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Item 1: Hair Mist -->
-<div class="border border-outline-variant bg-surface-container-lowest p-4 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-4 mb-4 relative overflow-hidden">
-<img alt="Good Girl Blush Hair Mist" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_ea1368a5898c8aa5.jpg') }}"/>
-<span class="absolute top-2 left-2 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5">HAIR RITUAL</span>
-</div>
-<div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Carolina Herrera</span>
-<h4 class="font-title-md text-title-md text-primary truncate mb-1">Good Girl Blush Hair Mist 30ml</h4>
-<div class="font-price-aed-md text-price-aed-md text-primary mb-3">AED 245.00</div>
-<button class="w-full border border-primary bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary py-2.5 font-label-caps text-label-caps uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-<!-- Item 2: Eau de Parfum 50ml -->
-<div class="border border-outline-variant bg-surface-container-lowest p-4 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-4 mb-4 relative overflow-hidden">
-<img alt="Good Girl Blush EDP 50ml" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_e12faed332fa8e3b.jpg') }}"/>
-<span class="absolute top-2 left-2 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5">BESTSELLER</span>
-</div>
-<div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Carolina Herrera</span>
-<h4 class="font-title-md text-title-md text-primary truncate mb-1">Good Girl Blush Eau de Parfum 50ml</h4>
-<div class="font-price-aed-md text-price-aed-md text-primary mb-3">AED 540.00</div>
-<button class="w-full border border-primary bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary py-2.5 font-label-caps text-label-caps uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-<!-- Item 3: Good Girl Classic Gift Set -->
-<div class="border border-outline-variant bg-surface-container-lowest p-4 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-4 mb-4 relative overflow-hidden">
-<img alt="Good Girl Classic Gift Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_4370ee2033cc2dbe.jpg') }}"/>
-<span class="absolute top-2 left-2 bg-secondary text-on-secondary font-label-tag text-label-tag px-2 py-0.5">LIMITED EDITION</span>
-</div>
-<div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase block">Carolina Herrera</span>
-<h4 class="font-title-md text-title-md text-primary truncate mb-1">Good Girl Classic Gift Set</h4>
-<div class="font-price-aed-md text-price-aed-md text-primary mb-3">AED 680.00</div>
-<button class="w-full border border-primary bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary py-2.5 font-label-caps text-label-caps uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-</div>
-</section>
-<!-- 8. Recommended For You / Customers Also Viewed -->
-<section class="py-12 border-b border-outline-variant">
-<div class="flex items-center justify-between mb-8">
-<div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-1">Curated Selection</span>
-<h3 class="font-headline-sm text-headline-sm text-primary">Customers Also Viewed</h3>
-</div>
-<div class="flex gap-2">
-<button class="w-10 h-10 border border-outline-variant hover:border-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-[20px]">chevron_left</span>
-</button>
-<button class="w-10 h-10 border border-outline-variant hover:border-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</button>
-</div>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-<!-- Item 1: Dior J'adore -->
-<div class="border border-outline-variant bg-surface-container-lowest p-3 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-2 mb-3 relative overflow-hidden">
-<img alt="Dior J’adore Eau De Parfum Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_588a27163ab88e65.jpg') }}"/>
-<span class="absolute top-1 left-1 bg-primary text-on-primary font-label-tag text-[9px] px-1.5 py-0.5">EXCLUSIVE</span>
-</div>
-<div>
-<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block">DIOR</span>
-<h5 class="font-title-md text-[13px] text-primary truncate mb-1">J’adore Eau De Parfum Set</h5>
-<div class="font-price-aed-md text-[14px] text-primary mb-2">AED 620.00</div>
-<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary py-1.5 font-label-caps text-[10px] uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-<!-- Item 2: Givenchy L'Interdit -->
-<div class="border border-outline-variant bg-surface-container-lowest p-3 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-2 mb-3 relative overflow-hidden">
-<img alt="Givenchy L'Interdit Festive Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_3c09c1251af35f37.jpg') }}"/>
-<span class="absolute top-1 left-1 bg-secondary text-on-secondary font-label-tag text-[9px] px-1.5 py-0.5">HOT OFFER</span>
-</div>
-<div>
-<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block">GIVENCHY</span>
-<h5 class="font-title-md text-[13px] text-primary truncate mb-1">L'Interdit Festive Set</h5>
-<div class="font-price-aed-md text-[14px] text-primary mb-2">AED 575.00</div>
-<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary py-1.5 font-label-caps text-[10px] uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-<!-- Item 3: Guerlain Aqua Allegoria -->
-<div class="border border-outline-variant bg-surface-container-lowest p-3 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-2 mb-3 relative overflow-hidden">
-<img alt="Guerlain Aqua Allegoria Florabloom Gift Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_3946389e4113b552.jpg') }}"/>
-</div>
-<div>
-<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block">GUERLAIN</span>
-<h5 class="font-title-md text-[13px] text-primary truncate mb-1">Florabloom Gift Set</h5>
-<div class="font-price-aed-md text-[14px] text-primary mb-2">AED 590.00</div>
-<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary py-1.5 font-label-caps text-[10px] uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-<!-- Item 4: Valentino Born in Roma -->
-<div class="border border-outline-variant bg-surface-container-lowest p-3 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-2 mb-3 relative overflow-hidden">
-<img alt="Valentino Born in Roma Donna Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_30130f7adff18a2f.jpg') }}"/>
-<span class="absolute top-1 left-1 bg-primary text-on-primary font-label-tag text-[9px] px-1.5 py-0.5">NEW</span>
-</div>
-<div>
-<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block">VALENTINO</span>
-<h5 class="font-title-md text-[13px] text-primary truncate mb-1">Born in Roma Donna Set</h5>
-<div class="font-price-aed-md text-[14px] text-primary mb-2">AED 555.00</div>
-<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary py-1.5 font-label-caps text-[10px] uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-<!-- Item 5: YSL MYSLF -->
-<div class="border border-outline-variant bg-surface-container-lowest p-3 flex flex-col justify-between group hover:border-primary transition-colors">
-<div class="aspect-square bg-surface-bright p-2 mb-3 relative overflow-hidden">
-<img alt="YSL MYSLF Eau de Parfum Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_41f402aad3099449.jpg') }}"/>
-</div>
-<div>
-<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block">YVES SAINT LAURENT</span>
-<h5 class="font-title-md text-[13px] text-primary truncate mb-1">MYSLF EDP Gift Set</h5>
-<div class="font-price-aed-md text-[14px] text-primary mb-2">AED 520.00</div>
-<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary py-1.5 font-label-caps text-[10px] uppercase transition-colors">
-              Add to Bag
-            </button>
-</div>
-</div>
-</div>
-</section>
-<!-- 9. Sephora Trust Badges Strip -->
-<section class="py-12 border-b border-outline-variant">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-<div class="flex flex-col items-center">
-<span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
-<h4 class="font-title-md text-title-md uppercase text-primary">Free Delivery</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Over 250 AED across UAE</p>
-</div>
-<div class="flex flex-col items-center">
-<span class="material-symbols-outlined text-[32px] text-primary mb-2">verified</span>
-<h4 class="font-title-md text-title-md uppercase text-primary">100% Authentic</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Direct from official luxury houses</p>
-</div>
-<div class="flex flex-col items-center">
-<span class="material-symbols-outlined text-[32px] text-primary mb-2">assignment_return</span>
-<h4 class="font-title-md text-title-md uppercase text-primary">Easy Returns</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">In any UAE store or online pickup</p>
-</div>
-<div class="flex flex-col items-center">
-<span class="material-symbols-outlined text-[32px] text-primary mb-2">support_agent</span>
-<h4 class="font-title-md text-title-md uppercase text-primary">Customer Service</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Call Toll-Free: 800-7374672</p>
-</div>
-</div>
-</section>
-<!-- 10. Sephora Newsletter Subscription -->
-<section class="py-12 text-center max-w-xl mx-auto">
-<h3 class="font-headline-md text-headline-md text-primary mb-2">Subscribe to the Sephora newsletter!</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-        Get VIP access to exclusive private sales, luxury fragrance launches, and complimentary samples.
-      </p>
-<form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault(); alert('Subscribed to Sephora Middle East!');" data-newsletter-form>
-<input class="flex-1 bg-surface-container-lowest border border-outline focus:border-primary focus:ring-0 rounded-none px-4 py-3 font-body-md text-body-md" placeholder="Enter your email address" required="" type="email"/>
-<button class="bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary font-label-caps text-label-caps uppercase px-6 py-3 tracking-widest transition-colors duration-200" type="submit">
-          Subscribe
-        </button>
-</form>
-</section>
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
+
+    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-on-surface-variant flex items-center flex-wrap gap-2 mb-6">
+        <a class="hover:text-primary transition-colors" href="/">Home</a>
+        <span class="text-outline-variant">/</span>
+        @if ($primaryCategory)
+            <a class="hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => $primaryCategory->slug]) }}">{{ $primaryCategory->name }}</a>
+            <span class="text-outline-variant">/</span>
+        @endif
+        @if ($product->brand)
+            <a class="hover:text-primary transition-colors" href="{{ route('brands.show', ['slug' => $product->brand->slug]) }}">{{ $product->brand->name }}</a>
+            <span class="text-outline-variant">/</span>
+        @endif
+        <span class="text-primary font-semibold truncate max-w-xs md:max-w-none">{{ $product->name }}</span>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-outline-variant">
+
+        {{-- Gallery --}}
+        <div class="lg:col-span-7 flex flex-col gap-4">
+            <div class="flex flex-col-reverse md:flex-row gap-3">
+                <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible pb-1 md:pb-0 shrink-0" role="list" aria-label="Product images">
+                    @forelse ($images->take(6) as $image)
+                        <button type="button"
+                                data-pdp-thumb
+                                data-image="{{ media_url($image->path) }}"
+                                data-alt="{{ $image->alt ?: $product->name }}"
+                                class="w-20 h-20 shrink-0 border {{ $loop->first ? 'border-2 border-primary' : 'border-outline-variant' }} bg-surface-container-lowest p-1 hover:border-primary transition-all"
+                                aria-label="View image {{ $loop->iteration }}">
+                            <img src="{{ media_url($image->path) }}" alt="{{ $image->alt ?: $product->name }}" class="w-full h-full object-cover" loading="lazy">
+                        </button>
+                    @empty
+                        <span class="w-20 h-20 shrink-0 border border-outline-variant bg-surface-container-lowest p-1">
+                            <img src="{{ media_url($mainImage) }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
+                        </span>
+                    @endforelse
+                </div>
+
+                <div class="relative flex-1 border border-outline-variant bg-surface-container-lowest overflow-hidden group">
+                    <div class="absolute top-4 left-4 z-10 flex flex-col gap-1.5 items-start">
+                        @if ($product->is_exclusive)
+                            <span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-2.5 py-1 tracking-wider uppercase">Exclusive</span>
+                        @endif
+                        @if ($product->is_new)
+                            <span class="bg-surface text-on-surface border border-primary font-label-caps text-label-caps px-2 py-0.5 tracking-wider uppercase">New</span>
+                        @endif
+                        @if ($product->is_bestseller)
+                            <span class="bg-primary text-on-primary font-label-caps text-label-caps px-2.5 py-1 tracking-wider uppercase">Best Seller</span>
+                        @endif
+                        @if ($product->badge)
+                            <span class="bg-surface-container-low text-primary border border-outline-variant font-label-caps text-label-caps px-2 py-0.5 tracking-wider uppercase">{{ $product->badge }}</span>
+                        @endif
+                        @if ($hasDiscount)
+                            <span class="bg-secondary-fixed text-on-secondary-fixed-variant font-label-tag text-label-tag px-2 py-0.5 tracking-wider uppercase font-bold">
+                                Save {{ $currency }} {{ number_format($product->compare_at_price - $product->price, 0) }}
+                            </span>
+                        @endif
+                    </div>
+
+                    <div class="aspect-square w-full flex items-center justify-center p-6 bg-surface-bright">
+                        <img id="pdp-main-image"
+                             src="{{ media_url($mainImage) }}"
+                             alt="{{ $product->name }}"
+                             class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105">
+                    </div>
+
+                    <div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 px-2.5 py-1.5 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps flex items-center gap-1.5 pointer-events-none">
+                        <span class="material-symbols-outlined text-[16px]">zoom_in</span>
+                        <span>Hover to zoom</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Purchase column --}}
+        <div class="lg:col-span-5 flex flex-col">
+            @if ($product->brand)
+                <a class="font-label-caps text-label-caps tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline decoration-1 underline-offset-4 mb-2"
+                   href="{{ route('brands.show', ['slug' => $product->brand->slug]) }}">
+                    {{ $product->brand->name }}
+                </a>
+            @endif
+
+            <h1 class="font-headline-md text-headline-md text-primary mb-3">{{ $product->name }}</h1>
+
+            <div class="flex flex-wrap items-center gap-3 pb-4 mb-5 border-b border-outline-variant">
+                <div class="flex items-center text-primary">
+                    @include('components.stars', ['rating' => $rating])
+                    <span class="font-bold text-sm ml-1.5">{{ number_format($rating, 1) }}</span>
+                </div>
+                <span class="text-outline-variant">|</span>
+                <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline" href="#reviews">
+                    {{ number_format($reviewCount) }} review{{ $reviewCount === 1 ? '' : 's' }}
+                </a>
+                <span class="text-outline-variant">|</span>
+                <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary underline" href="#write-review">Write a review</a>
+            </div>
+
+            <div class="mb-5">
+                <div class="flex flex-wrap items-baseline gap-3">
+                    <span class="font-price-aed-lg text-price-aed-lg text-primary">{{ $currency }} {{ number_format($product->price, 2) }}</span>
+                    @if ($hasDiscount)
+                        <span class="font-body-md text-body-md line-through text-outline">{{ $currency }} {{ number_format($product->compare_at_price, 2) }}</span>
+                    @endif
+                </div>
+                @if ($product->size || $product->sku)
+                    <p class="font-body-sm text-body-sm text-outline mt-1">
+                        {{ $product->size }}
+                        @if ($product->size && $product->sku) · @endif
+                        @if ($product->sku) SKU: {{ $product->sku }} @endif
+                    </p>
+                @endif
+            </div>
+
+            @if ($product->description)
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6">{{ Str::limit(strip_tags($product->description), 220) }}</p>
+            @endif
+
+            @if ($product->shades->isNotEmpty())
+                <div class="mb-5">
+                    <span class="block font-label-caps text-label-caps uppercase text-on-surface mb-2">Shade</span>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach ($product->shades as $shade)
+                            <label class="cursor-pointer">
+                                <input type="radio" name="shade" value="{{ $shade->name }}" class="peer sr-only" @checked($loop->first)>
+                                <span class="flex items-center gap-2 border border-outline-variant px-3 py-2 font-body-sm text-body-sm text-primary hover:border-primary peer-checked:border-2 peer-checked:border-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40">
+                                    @if ($shade->hex_color)
+                                        <span class="w-4 h-4 rounded-full border border-outline-variant" style="background-color: {{ $shade->hex_color }}"></span>
+                                    @endif
+                                    {{ $shade->name }}
+                                    @if ($shade->stock !== null && (int) $shade->stock <= 0)
+                                        <span class="text-secondary text-[11px] uppercase">Sold out</span>
+                                    @endif
+                                </span>
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            <div class="flex flex-col sm:flex-row gap-3 mb-4">
+                <div class="flex items-center border border-outline-variant h-14 shrink-0{{ $stock <= 0 ? ' opacity-50 pointer-events-none' : '' }}">
+                    <button type="button" data-qty-minus class="w-11 h-full hover:bg-surface-container disabled:opacity-40" aria-label="Decrease quantity">−</button>
+                    <input data-qty-input type="number" min="1" max="{{ $maxQty }}" value="1"
+                           class="w-14 h-full text-center font-body-md text-body-md text-primary bg-transparent border-0 focus:ring-0"
+                           aria-label="Quantity">
+                    <button type="button" data-qty-plus class="w-11 h-full hover:bg-surface-container disabled:opacity-40" aria-label="Increase quantity">+</button>
+                </div>
+
+                <button type="button"
+                        data-add-to-bag="{{ $product->id }}"
+                        @disabled($stock <= 0)
+                        class="flex-1 h-14 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-[0.18em] font-bold border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                    {{ $stock > 0 ? 'Add to bag' : 'Out of stock' }}
+                </button>
+
+                <button type="button"
+                        data-wishlist-toggle="{{ $product->id }}"
+                        class="h-14 w-14 border border-outline-variant text-primary hover:border-primary hover:bg-surface-container-low transition-colors flex items-center justify-center"
+                        aria-label="Add {{ $product->name }} to wishlist">
+                    <span class="material-symbols-outlined">favorite</span>
+                </button>
+            </div>
+
+            <div class="space-y-2 mb-6" aria-live="polite">
+                @if ($stock <= 0)
+                    <p class="font-body-sm text-body-sm text-secondary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">error</span>
+                        This product is currently out of stock.
+                    </p>
+                @elseif ($stock <= 5)
+                    <p class="font-body-sm text-body-sm text-secondary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+                        Only {{ $stock }} left — order soon.
+                    </p>
+                @else
+                    <p class="font-body-sm text-body-sm text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                        In stock and ready to ship.
+                    </p>
+                @endif
+
+                <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                    Free standard delivery over {{ $currency }} {{ number_format((float) config('commerce.free_shipping_threshold', 250), 0) }}
+                </p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">assignment_return</span>
+                    Complimentary 14-day returns
+                </p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[18px]">verified</span>
+                    100% authentic — sourced from the brand
+                </p>
+            </div>
+
+            <div class="border-t border-outline-variant divide-y divide-outline-variant">
+                @if ($product->description)
+                    <details class="group py-4" open>
+                        <summary class="flex items-center justify-between cursor-pointer list-none font-title-md text-body-md font-bold uppercase tracking-wider text-primary">
+                            Description
+                            <span class="material-symbols-outlined text-[20px] group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mt-3">
+                            {!! nl2br(e($product->description)) !!}
+                        </div>
+                    </details>
+                @endif
+
+                @if ($product->how_to_use)
+                    <details class="group py-4">
+                        <summary class="flex items-center justify-between cursor-pointer list-none font-title-md text-body-md font-bold uppercase tracking-wider text-primary">
+                            How to use
+                            <span class="material-symbols-outlined text-[20px] group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mt-3">
+                            {!! nl2br(e($product->how_to_use)) !!}
+                        </div>
+                    </details>
+                @endif
+
+                @if ($product->ingredients)
+                    <details class="group py-4">
+                        <summary class="flex items-center justify-between cursor-pointer list-none font-title-md text-body-md font-bold uppercase tracking-wider text-primary">
+                            Ingredients
+                            <span class="material-symbols-outlined text-[20px] group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mt-3">
+                            {!! nl2br(e($product->ingredients)) !!}
+                        </div>
+                    </details>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    {{-- Reviews --}}
+    <section id="reviews" class="py-12 border-b border-outline-variant">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4">
+                <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary mb-4">Customer reviews</h2>
+                <div class="flex items-end gap-3 mb-2">
+                    <span class="font-price-aed-lg text-price-aed-lg text-primary font-bold">{{ number_format($rating, 1) }}</span>
+                    <div class="pb-1">
+                        <div class="text-primary text-lg">@include('components.stars', ['rating' => $rating])</div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Based on {{ number_format($reviewCount) }} review{{ $reviewCount === 1 ? '' : 's' }}</p>
+                    </div>
+                </div>
+                <p class="font-body-sm text-body-sm text-outline">Reviews are submitted by verified shoppers and moderated before publishing.</p>
+            </div>
+
+            <div class="lg:col-span-8 space-y-4">
+                @if (session('review_status'))
+                    <div class="border border-primary bg-surface-container-low p-4 font-body-sm text-body-sm text-primary" role="status">
+                        {{ session('review_status') }}
+                    </div>
+                @endif
+
+                @forelse ($product->reviews as $review)
+                    <article class="border border-outline-variant bg-surface-container-lowest p-5">
+                        <header class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-title-md text-body-md font-bold text-primary">{{ $review->author_name ?: 'Verified Client' }}</span>
+                                <span class="text-primary text-sm">@include('components.stars', ['rating' => (float) $review->rating])</span>
+                            </div>
+                            <time class="font-body-sm text-body-sm text-outline" datetime="{{ $review->created_at?->toDateString() }}">
+                                {{ $review->created_at?->format('d M Y') }}
+                            </time>
+                        </header>
+                        @if ($review->title)
+                            <h3 class="font-title-md text-body-md font-bold text-primary mb-1">{{ $review->title }}</h3>
+                        @endif
+                        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">{{ $review->body }}</p>
+                    </article>
+                @empty
+                    <div class="border border-outline-variant bg-surface-container-lowest p-8 text-center">
+                        <span class="material-symbols-outlined text-[32px] text-outline-variant">rate_review</span>
+                        <p class="font-body-md text-body-md text-primary mt-2">No reviews yet.</p>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Be the first to share your experience.</p>
+                    </div>
+                @endforelse
+
+                @if ($product->reviews->count() < $reviewCount)
+                    <p class="font-body-sm text-body-sm text-outline">Showing the latest {{ $product->reviews->count() }} of {{ number_format($reviewCount) }} reviews.</p>
+                @endif
+            </div>
+        </div>
+
+        {{-- Write a review --}}
+        <div id="write-review" class="mt-10 max-w-3xl">
+            <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary mb-4">Write a review</h2>
+
+            @auth
+                @if ($errors->any())
+                    <div class="mb-4 border border-secondary bg-surface-container-low p-4" role="alert">
+                        <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('reviews.store', ['product' => $product->slug]) }}" class="space-y-4">
+                    @csrf
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="review-rating">Rating *</label>
+                            <select id="review-rating" name="rating" required class="w-full h-12 border border-outline px-3 bg-surface-container-lowest text-primary focus:outline-none focus:border-primary">
+                                @for ($i = 5; $i >= 1; $i--)
+                                    <option value="{{ $i }}" @selected(old('rating') === (string) $i)>{{ $i }} star{{ $i === 1 ? '' : 's' }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="review-title">Title</label>
+                            <input id="review-title" name="title" type="text" maxlength="120" value="{{ old('title') }}"
+                                   class="w-full h-12 border border-outline px-3 bg-surface-container-lowest text-primary focus:outline-none focus:border-primary"
+                                   placeholder="Sum it up in a few words">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="review-body">Your review *</label>
+                        <textarea id="review-body" name="body" rows="4" required minlength="10" maxlength="2000"
+                                  class="w-full border border-outline p-3 bg-surface-container-lowest text-primary font-body-sm focus:outline-none focus:border-primary"
+                                  placeholder="What did you like or dislike? How did you use the product?">{{ old('body') }}</textarea>
+                    </div>
+                    <button type="submit" class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 py-3 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all">
+                        Submit review
+                    </button>
+                </form>
+            @else
+                <div class="border border-outline-variant bg-surface-container-lowest p-6">
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        <a class="text-primary underline font-semibold" href="{{ route('login') }}">Sign in</a> to write a review for this product.
+                    </p>
+                </div>
+            @endauth
+        </div>
+    </section>
+
+    {{-- Related products --}}
+    @if ($related->isNotEmpty())
+        <section class="py-12">
+            <div class="flex items-end justify-between gap-3 mb-6">
+                <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">You may also like</h2>
+                @if ($primaryCategory)
+                    <a class="font-label-caps text-label-caps uppercase underline text-on-surface hover:text-secondary" href="{{ route('shop.category', ['slug' => $primaryCategory->slug]) }}">
+                        Shop {{ $primaryCategory->name }}
+                    </a>
+                @endif
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                @foreach ($related as $item)
+                    <article class="group border border-outline-variant bg-surface-container-lowest flex flex-col">
+                        <a class="block relative overflow-hidden" href="{{ route('product.show', ['slug' => $item->slug]) }}">
+                            <div class="absolute top-2 left-2 z-10 flex flex-col gap-1">
+                                @if ($item->is_new)
+                                    <span class="bg-surface text-on-surface border border-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">New</span>
+                                @endif
+                                @if ($item->is_bestseller)
+                                    <span class="bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">Best Seller</span>
+                                @endif
+                            </div>
+                            <div class="aspect-square flex items-center justify-center p-4 bg-surface-bright">
+                                <img alt="{{ $item->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                     src="{{ media_url($item->first_image) }}" loading="lazy">
+                            </div>
+                        </a>
+                        <div class="p-3 flex flex-col flex-1">
+                            <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ $item->brand?->name }}</span>
+                            <a class="font-title-md text-body-sm font-bold text-primary leading-tight line-clamp-2 mt-0.5 hover:underline" href="{{ route('product.show', ['slug' => $item->slug]) }}">
+                                {{ $item->name }}
+                            </a>
+                            <div class="flex items-center text-primary text-xs mt-1">
+                                @include('components.stars', ['rating' => (float) $item->rating])
+                                <span class="text-on-surface-variant ml-1">({{ number_format((int) $item->reviews_count) }})</span>
+                            </div>
+                            <div class="mt-auto pt-3 flex items-center justify-between gap-2">
+                                <span class="font-price-aed-md text-price-aed-md font-bold text-primary">{{ $currency }} {{ number_format($item->price, 2) }}</span>
+                                <button type="button" data-add-to-bag="{{ $item->id }}"
+                                        class="h-9 px-3 bg-primary text-on-primary font-label-tag text-label-tag uppercase tracking-wider border border-primary hover:bg-surface-container-lowest hover:text-primary transition-colors disabled:opacity-50"
+                                        @disabled($item->stock <= 0)>
+                                    {{ $item->stock > 0 ? 'Add' : 'Sold out' }}
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        </section>
+    @endif
 </main>
 @endsection
 
-@push('scripts')
+@section('scripts')
 <script>
-function changeImage(imgSrc, element) {
-      const mainImg = document.getElementById('main-product-image');
-      if (mainImg) {
-        mainImg.src = imgSrc;
-      }
-      document.querySelectorAll('.thumb-btn').forEach(btn => {
-        btn.classList.remove('thumb-active');
-        btn.classList.add('border-outline-variant');
-      });
-      if (element) {
-        element.classList.add('thumb-active');
-        element.classList.remove('border-outline-variant');
-      }
-    }
+(function () {
+    const main = document.getElementById('pdp-main-image');
+    const thumbs = document.querySelectorAll('[data-pdp-thumb]');
 
-    function toggleAccordion(id) {
-      const el = document.getElementById(id);
-      const icon = document.getElementById(id + '-icon');
-      if (el) {
-        const isHidden = el.classList.contains('hidden');
-        if (isHidden) {
-          el.classList.remove('hidden');
-          if (icon) icon.innerText = 'expand_less';
-        } else {
-          el.classList.add('hidden');
-          if (icon) icon.innerText = 'expand_more';
-        }
-      }
-    }
+    thumbs.forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+            if (main) {
+                main.src = thumb.dataset.image;
+                main.alt = thumb.dataset.alt || '';
+            }
 
-    let currentQty = 1;
-    function incrementQty() {
-      currentQty++;
-      document.getElementById('qty-val').innerText = currentQty;
-    }
+            thumbs.forEach(function (other) {
+                other.classList.remove('border-primary', 'border-2');
+                other.classList.add('border-outline-variant');
+            });
 
-    function decrementQty() {
-      if (currentQty > 1) {
-        currentQty--;
-        document.getElementById('qty-val').innerText = currentQty;
-      }
-    }
+            thumb.classList.remove('border-outline-variant');
+            thumb.classList.add('border-primary', 'border-2');
+        });
+    });
+})();
 </script>
-@endpush
+@endsection

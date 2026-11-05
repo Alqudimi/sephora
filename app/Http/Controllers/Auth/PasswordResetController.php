@@ -26,8 +26,24 @@ class PasswordResetController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        // We always show the same success message (no account enumeration).
         $status = Password::sendResetLink($request->only('email'));
+
+        // Keep the response identical for unknown accounts (no enumeration),
+        // but surface throttling so a real customer is not left waiting in
+        // silence for a link that was never sent.
+        if ($status === Password::RESET_THROTTLED) {
+            throw ValidationException::withMessages([
+                'email' => 'Please wait a moment before requesting another reset link.',
+            ]);
+        }
+
+        if (! in_array($status, [Password::RESET_LINK_SENT, Password::INVALID_USER], true)) {
+            report(new \RuntimeException('Password reset link failed with status: '.$status));
+
+            throw ValidationException::withMessages([
+                'email' => 'We could not send the reset link right now. Please try again shortly.',
+            ]);
+        }
 
         return back()->with('reset_link_sent', true);
     }

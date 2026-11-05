@@ -73,7 +73,7 @@ class PagesTest extends TestCase
         $response = $this->get('/sitemap.xml');
 
         $response->assertStatus(200);
-        $response->assertHeader('Content-Type', 'application/xml');
+        $response->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
     }
 
     public function test_security_headers_present(): void

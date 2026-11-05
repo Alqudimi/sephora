@@ -52,74 +52,74 @@
 <h2 class="text-xs font-bold uppercase tracking-wider text-black mb-3">Categories</h2>
 <ul class="space-y-2.5 font-medium text-neutral-700">
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>The Holiday Collection</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(19)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>New</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(40)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Makeup</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(234)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Fragrance</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(3)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Skincare</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(129)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Bath &amp; Body</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(28)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Hair</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(35)</span>
 </a>
 </li>
 <!-- Active Filter -->
 <li class="bg-neutral-100 -mx-2 px-2 py-1 rounded">
-<a class="flex justify-between items-center font-bold text-black" href="#">
+<a class="flex justify-between items-center font-bold text-black" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Sephora Collection</span>
 <span class="text-black">(376)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Best Sellers</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(28)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Gifts</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(40)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Beauty Finds</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(10)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center hover:text-black group" href="#">
+<a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
 <span>Great Hair Starts Here</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(1)</span>
 </a>
@@ -199,7 +199,7 @@
                   Sculpt, contour and add warmth with ultra-soft vegan bristles.
                 </p>
 </div>
-<a class="inline-block text-center w-full py-2.5 bg-white text-black text-xs font-bold tracking-wider uppercase hover:bg-neutral-200 transition-colors" href="#">
+<a class="inline-block text-center w-full py-2.5 bg-white text-black text-xs font-bold tracking-wider uppercase hover:bg-neutral-200 transition-colors" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
                 DISCOVER NOW
               </a>
 </div>
@@ -218,7 +218,7 @@
 <button class="absolute top-2 right-2 z-10 text-neutral-400 hover:text-black transition-colors" title="Save to Wishlist">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
-<img alt="{{ $products->name }}" class="product-img object-contain w-full h-full p-4 transition-transform duration-300" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="product-img object-contain w-full h-full p-4 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
 </div>
 <!-- Product Info -->
 <div class="space-y-1">

@@ -52,13 +52,13 @@
 <span class="material-symbols-outlined text-[18px]">remove</span>
 </div>
 <ul class="space-y-2 text-on-surface-variant font-body-sm">
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="#"><span>Shampoo &amp; Conditioner</span> <span class="text-outline text-[11px]">(240)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors font-medium text-primary" href="#"><span>Treatments</span> <span class="text-outline text-[11px]">(195)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="#"><span>Hair Type</span> <span class="text-outline text-[11px]">(160)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="#"><span>Tools &amp; Accessories</span> <span class="text-outline text-[11px]">(75)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="#"><span>Shop By Concern</span> <span class="text-outline text-[11px]">(130)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="#"><span>Sets</span> <span class="text-outline text-[11px]">(48)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="#"><span>Travel Size</span> <span class="text-outline text-[11px]">(52)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Shampoo &amp; Conditioner</span> <span class="text-outline text-[11px]">(240)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors font-medium text-primary" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Treatments</span> <span class="text-outline text-[11px]">(195)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Hair Type</span> <span class="text-outline text-[11px]">(160)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Tools &amp; Accessories</span> <span class="text-outline text-[11px]">(75)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Shop By Concern</span> <span class="text-outline text-[11px]">(130)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Sets</span> <span class="text-outline text-[11px]">(48)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Travel Size</span> <span class="text-outline text-[11px]">(52)</span></a></li>
 </ul>
 </div>
 <!-- REFINE SECTION & EXCLUSIVES TOGGLE -->
@@ -205,7 +205,7 @@
 </div>
 <!-- Product Image -->
 <div class="aspect-square w-full overflow-hidden bg-surface-container-lowest flex items-center justify-center p-2 mb-3">
-<img alt="{{ $products->name }}" class="product-card-img object-contain w-full h-full" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="product-card-img object-contain w-full h-full" src="{{ media_url($products->first_image) }}"/>
 </div>
 <!-- Metadata -->
 <h4 class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold">{{ $products->brand->name }}

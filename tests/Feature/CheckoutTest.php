@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Events\OrderPlaced;
+use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\User;
@@ -22,6 +23,7 @@ class CheckoutTest extends TestCase
         'emirate' => 'Dubai',
         'street_address' => 'Burj Crown Residences',
         'payment_method' => 'cod',
+        'terms' => '1',
     ];
 
     public function test_checkout_requires_cart(): void
@@ -83,10 +85,16 @@ class CheckoutTest extends TestCase
         Event::fake([OrderPlaced::class]);
         $product = $this->makeProduct(['stock' => 1]);
 
-        $resp = $this->postJson('/cart/add', ['product_id' => $product->id, 'quantity' => 2]);
+        $resp = $this->postJson('/cart/add', ['product_id' => $product->id, 'quantity' => 1]);
         $this->carrySession($resp);
 
-        $this->post('/checkout/place-order', $this->validPayload);
+        // Simulate stock changing after the bag was filled — e.g. another
+        // shopper bought the last unit before this checkout completed.
+        Cart::current()->items()->update(['quantity' => 2]);
+
+        $this->post('/checkout/place-order', $this->validPayload)
+            ->assertRedirect(route('cart'))
+            ->assertSessionHasErrors('stock');
 
         // Order refused, stock untouched, cart preserved.
         $this->assertDatabaseCount('orders', 0);
@@ -159,7 +167,7 @@ class CheckoutTest extends TestCase
         $this->carrySession($resp);
 
         $this->postJson('/checkout/coupon', ['code' => 'NOPE99'])
-            ->assertOk()
+            ->assertStatus(422)
             ->assertJsonPath('success', false);
     }
 
@@ -178,7 +186,7 @@ class CheckoutTest extends TestCase
         $this->carrySession($resp);
 
         $this->postJson('/checkout/coupon', ['code' => 'OLDSALE'])
-            ->assertOk()
+            ->assertStatus(422)
             ->assertJsonPath('success', false);
     }
 
@@ -199,7 +207,7 @@ class CheckoutTest extends TestCase
         $this->carrySession($resp);
 
         $this->postJson('/checkout/coupon', ['code' => 'ONCEONLY'])
-            ->assertOk()
+            ->assertStatus(422)
             ->assertJsonPath('success', false);
     }
 

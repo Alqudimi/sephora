@@ -45,19 +45,19 @@
 </div>
 <ul class="pt-3 space-y-2.5 text-xs">
 <li>
-<a class="font-bold text-black flex items-center justify-between" href="#">
+<a class="font-bold text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'gifts']) }}">
 <span>View All Gifts</span>
 <span class="text-gray-400 font-normal">(415)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-600 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-600 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'gifts']) }}">
 <span>Minis &amp; More</span>
 <span class="text-gray-400">(285)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-600 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-600 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'gifts']) }}">
 <span>Gifts by Price</span>
 <span class="text-gray-400">(72)</span>
 </a>

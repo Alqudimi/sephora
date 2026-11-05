@@ -10,9 +10,15 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user() || !$request->user()->isAdmin()) {
-            abort(403, 'Unauthorized. Admin access only.');
+        if (! $request->user() || ! $request->user()->isStaff()) {
+            abort(403, 'Unauthorized. Staff access only.');
         }
+
+        if (! $request->user()->hasTwoFactorEnabled()) {
+            return redirect()->route('account.security')
+                ->with('two_factor_required', true);
+        }
+
         return $next($request);
     }
 }

@@ -36,7 +36,7 @@
                 <span class="material-symbols-outlined text-[20px]" data-icon="favorite_border">favorite_border</span>
             </button>
             <div class="w-full aspect-square overflow-hidden mb-4 bg-surface-container-low flex items-center justify-center">
-                <img alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset($product->first_image) }}"/>
+                <img alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}"/>
             </div>
         </div>
         <div class="flex flex-col flex-1">

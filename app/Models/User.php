@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 #[Fillable([
     'name', 'email', 'password', 'phone', 'loyalty_tier', 'loyalty_points',
-    'is_admin', 'date_of_birth', 'gender', 'preferred_language', 'preferred_store',
+    'date_of_birth', 'gender', 'preferred_language', 'preferred_store',
     'marketing_preferences',
 ])]
-#[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+#[Hidden(['password', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -27,6 +28,12 @@ class User extends Authenticatable
             'password' => 'hashed',
             'date_of_birth' => 'date',
             'marketing_preferences' => 'array',
+            'is_admin' => 'boolean',
+            'loyalty_points' => 'integer',
+            'two_factor_secret' => 'encrypted',
+            'two_factor_recovery_codes' => 'encrypted:array',
+            'two_factor_confirmed_at' => 'datetime',
+            'last_login_at' => 'datetime',
         ];
     }
 
@@ -50,6 +57,26 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'wishlist_items')->withTimestamps();
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function consents()
+    {
+        return $this->hasMany(Consent::class);
+    }
+
+    public function auditLogs()
+    {
+        return $this->hasMany(AuditLog::class);
+    }
+
+    public function couponRedemptions()
+    {
+        return $this->hasMany(CouponRedemption::class);
+    }
+
     public function defaultAddress()
     {
         return $this->hasOne(Address::class)->where('is_default', true);
@@ -57,6 +84,21 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return (bool) $this->is_admin;
+        return $this->role === 'admin' || (bool) $this->is_admin;
+    }
+
+    public function isStaff(): bool
+    {
+        return in_array($this->role, ['admin', 'manager', 'support'], true) || (bool) $this->is_admin;
+    }
+
+    public function hasRole(string ...$roles): bool
+    {
+        return in_array($this->role, $roles, true);
+    }
+
+    public function hasTwoFactorEnabled(): bool
+    {
+        return $this->two_factor_confirmed_at !== null;
     }
 }

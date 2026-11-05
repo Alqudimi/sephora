@@ -1,183 +1,339 @@
 @extends('layouts.app')
 
-@section('title', 'Best Sellers | Sephora UAE')
-@section('body_class', 'font-sans text-sm selection:bg-black selection:text-white')
+@php
+    $currency = config('commerce.currency', 'AED');
+    $total = $products->total();
+    $heroTitle = $category->hero_title ?: $category->name;
+    $heroSubtitle = $category->hero_subtitle ?: $category->description;
+    $minBound = (int) floor((float) ($priceBounds->min_price ?? 0));
+    $maxBound = (int) ceil((float) ($priceBounds->max_price ?? 0));
+
+    $activeFilters = [];
+    if ($filters['brand']) {
+        $brandName = optional($brands->firstWhere('slug', $filters['brand']))->name ?: $filters['brand'];
+        $activeFilters[] = ['label' => $brandName, 'key' => 'brand'];
+    }
+    if ($filters['min_price'] !== null || $filters['max_price'] !== null) {
+        $activeFilters[] = [
+            'label' => 'Price ' . ($filters['min_price'] !== null ? $currency . ' ' . number_format($filters['min_price'], 0) : '0')
+                . ' – ' . ($filters['max_price'] !== null ? $currency . ' ' . number_format($filters['max_price'], 0) : 'any'),
+            'key' => 'price',
+        ];
+    }
+    if ($filters['clean']) {
+        $activeFilters[] = ['label' => 'Clean beauty', 'key' => 'clean'];
+    }
+    if ($filters['new']) {
+        $activeFilters[] = ['label' => 'New arrivals', 'key' => 'new'];
+    }
+    if ($filters['in_stock']) {
+        $activeFilters[] = ['label' => 'In stock', 'key' => 'in_stock'];
+    }
+    if ($filters['q']) {
+        $activeFilters[] = ['label' => 'Search: “' . $filters['q'] . '”', 'key' => 'q'];
+    }
+
+@endphp
+
+@section('title', $heroTitle . ' | SEPHORA UAE')
+@section('meta_description', Str::limit(strip_tags($heroSubtitle ?: 'Shop ' . $category->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.'), 155))
+@section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
+
+@section('head')
+    <link rel="canonical" href="{{ route('shop.category', ['slug' => $category->slug]) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SEPHORA UAE">
+    <meta property="og:title" content="{{ $heroTitle }} | SEPHORA UAE">
+    <meta property="og:description" content="{{ Str::limit(strip_tags($heroSubtitle ?: 'Shop ' . $category->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.'), 200) }}">
+    <meta property="og:url" content="{{ route('shop.category', ['slug' => $category->slug]) }}">
+    <meta property="og:image" content="{{ $category->hero_image ? media_url($category->hero_image) : asset('images/placeholder.webp') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $heroTitle }} | SEPHORA UAE">
+    <meta name="twitter:description" content="{{ Str::limit(strip_tags($heroSubtitle ?: 'Shop ' . $category->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.'), 200) }}">
+    <meta name="twitter:image" content="{{ $category->hero_image ? media_url($category->hero_image) : asset('images/placeholder.webp') }}">
+    @php
+        $breadcrumbJson = [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => url('/')],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => $category->name, 'item' => route('shop.category', ['slug' => $category->slug])],
+            ],
+        ];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($breadcrumbJson, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endsection
 
 @section('content')
-<main class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-5">
-<!-- Breadcrumb Navigation -->
-<nav class="text-xs text-gray-500 mb-6 flex items-center space-x-2" data-purpose="breadcrumbs"><a class="hover:underline" href="/">Home</a>
-<span>/</span>
-<span class="text-black font-bold underline cursor-default">Best Sellers</span></nav>
-<!-- Page Title & Top Filters Controls Bar -->
-<div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 mb-6 gap-4">
-<div><h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-black">Best Sellers</h1>
-<p class="text-xs sm:text-sm text-gray-500 mt-2 font-normal">582 items</p></div>
-<!-- Sort Dropdown -->
-<div class="flex items-center self-end sm:self-auto space-x-2">
-<label class="text-xs font-medium text-gray-700" for="sort">Sort by:</label>
-<div class="relative inline-block">
-<select class="appearance-none bg-white border border-gray-300 rounded px-3 py-1.5 pr-8 text-xs font-semibold focus:outline-none focus:border-black cursor-pointer" id="sort">
-<option>Recommended</option>
-<option>Newest Arrivals</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
-<option>Top Rated</option>
-</select>
-<span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-500">
-<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</span>
-</div>
-</div>
-</div>
-<!-- Catalog Two-Column Layout -->
-<div class="flex flex-col lg:flex-row items-start gap-8">
-<!-- BEGIN: FilterSidebar -->
-<aside class="w-full lg:w-64 shrink-0" data-purpose="catalog-filters"><!-- Best Sellers Category Filter Accordion -->
-<div class="border border-gray-200 rounded p-4 mb-5">
-<div class="flex items-center justify-between font-bold text-sm text-black pb-2 mb-2 border-b border-gray-100 cursor-pointer">
-<span>Best Sellers <span class="text-xs font-normal text-gray-500">(582)</span></span>
-<svg class="w-4 h-4 text-gray-600 transform rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</div>
-<ul class="space-y-2.5 text-xs pt-1 pl-1">
-<li>
-<a class="font-bold text-black flex items-center justify-between" href="#">
-<span>All Best Sellers</span>
-<span class="text-gray-400 font-normal">(582)</span>
-</a>
-</li>
-<li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
-<span>Bestseller Makeup</span>
-<span class="text-gray-400">(214)</span>
-</a>
-</li>
-<li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
-<span>Bestseller Fragrance</span>
-<span class="text-gray-400">(168)</span>
-</a>
-</li>
-<li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
-<span>Bestseller Skincare</span>
-<span class="text-gray-400">(112)</span>
-</a>
-</li>
-<li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
-<span>Bestseller Haircare</span>
-<span class="text-gray-400">(54)</span>
-</a>
-</li>
-<li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
-<span>Sephora Collection Bestsellers</span>
-<span class="text-gray-400">(34)</span>
-</a>
-</li>
-</ul>
-</div>
-<!-- Refine Heading -->
-<h2 class="font-bold text-sm tracking-wider uppercase text-black mb-3">Refine</h2>
-<!-- Facet Accordions -->
-<div class="border-t border-gray-200 divide-y divide-gray-200">
-<!-- Brands Accordion -->
-<button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Brands</span>
-<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<!-- Shades Accordion -->
-<button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Shades</span>
-<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<!-- Price Accordion -->
-<button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Price</span>
-<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<!-- Benefits Accordion -->
-<button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Benefits</span>
-<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<!-- Formulation Accordion -->
-<button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Formulation</span>
-<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<!-- Finish Accordion -->
-<button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Finish</span>
-<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-</div></aside>
-<!-- END: FilterSidebar -->
-<!-- BEGIN: ProductCatalogGrid -->
-<section class="flex-1 w-full" data-purpose="product-grid"><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-<!-- Product 1: The Ordinary Multi-Peptide Serum -->
-@foreach($products as $products)
-<article onclick="window.location='/p/{{ $products->slug }}'" class="product-card border border-gray-200 bg-white rounded-sm p-3.5 flex flex-col justify-between relative group">
-<div>
-<div class="flex items-start justify-between min-h-[24px] mb-2">
-<div class="flex flex-col gap-1 items-start">
-<span class="bg-black text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">Best Seller</span>
-<span class="bg-black text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">Award Winner</span>
-</div>
-<button aria-label="Add to wishlist" class="text-gray-400 hover:text-black transition-colors">
-<svg class="w-5 h-5 stroke-current" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
-</svg>
-</button>
-</div>
-<div class="w-full aspect-square flex items-center justify-center p-2 mb-3 overflow-hidden">
-<img alt="{{ $products->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset($products->first_image) }}"/>
-</div>
-<h3 class="font-bold text-xs uppercase tracking-wide text-black mb-1">THE ORDINARY</h3>
-<p class="text-xs text-gray-700 line-clamp-2 min-h-[32px] mb-1.5 leading-snug">Multi-Peptide Concentrated Serum for Hair Density</p>
-<div class="flex items-center text-xs text-amber-500 mb-2">
-<span>@include('components.stars', ['rating' => $products->rating])</span>
-<span class="text-gray-700 text-[11px] font-semibold ml-1">{{ $products->rating }}</span>
-<span class="text-gray-400 text-[11px] ml-0.5">({{ number_format($products->reviews_count) }})</span>
-</div>
-</div>
-<div>
-<p class="font-bold text-sm text-black mb-3">AED {{ number_format($products->price, 2) }}</p>
-<button class="add-to-bag-btn w-full bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded-none" data-add-to-bag="{{ $products->id }}">
-                ADD TO BAG
-              </button>
-</div>
-</article>
-@endforeach
-</div>
-<!-- Pagination / Load More Button -->
-<div class="mt-12 text-center pb-8">
-<p class="text-xs text-gray-500 mb-3">Showing 12 of 582 items</p>
-<div class="w-48 h-1 bg-gray-200 mx-auto rounded-full overflow-hidden mb-5">
-<div class="w-1/6 h-full bg-black"></div>
-</div>
-<button class="inline-block border border-black bg-white hover:bg-black hover:text-white px-8 py-3 text-xs uppercase tracking-widest font-bold transition-colors">
-            Load More Products
-          </button>
-</div></section>
-<!-- END: ProductCatalogGrid -->
-</div>
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
+
+    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-on-surface-variant flex items-center flex-wrap gap-2 mb-6">
+        <a class="hover:text-primary transition-colors" href="/">Home</a>
+        <span class="text-outline-variant">/</span>
+        <a class="hover:text-primary transition-colors" href="/shop/makeup">Shop</a>
+        <span class="text-outline-variant">/</span>
+        <span class="text-primary font-semibold">{{ $category->name }}</span>
+    </nav>
+
+    {{-- Category hero --}}
+    <section class="relative mb-8 overflow-hidden border border-outline-variant bg-primary text-on-primary">
+        @if ($category->hero_image)
+            <img src="{{ media_url($category->hero_image) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy">
+        @endif
+        <div class="relative px-6 py-10 md:px-10 md:py-14 max-w-3xl">
+            <span class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-on-primary/70 block mb-2">SEPHORA UAE</span>
+            <h1 class="font-headline-md text-headline-md md:text-[40px] leading-tight font-bold uppercase mb-3">{{ $heroTitle }}</h1>
+            @if ($heroSubtitle)
+                <p class="font-body-md text-body-md text-on-primary/80 max-w-xl">{{ Str::limit(strip_tags($heroSubtitle), 220) }}</p>
+            @endif
+            <p class="font-body-sm text-body-sm text-on-primary/60 mt-4">{{ number_format($total) }} product{{ $total === 1 ? '' : 's' }}</p>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        {{-- Filters --}}
+        <aside class="lg:col-span-3">
+            <details open class="lg:block border border-outline-variant bg-surface-container-lowest">
+                <summary class="lg:hidden cursor-pointer list-none flex items-center justify-between px-4 py-4 font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">
+                    Filters
+                    <span class="material-symbols-outlined text-[20px]">tune</span>
+                </summary>
+
+                <form method="GET" action="{{ route('shop.category', ['slug' => $category->slug]) }}" class="p-4 md:p-5 space-y-6">
+                    @if (request()->filled('sort'))
+                        <input type="hidden" name="sort" value="{{ $filters['sort'] }}">
+                    @endif
+
+                    <div>
+                        <label for="filter-brand" class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Brand</label>
+                        <select id="filter-brand" name="brand" class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
+                            <option value="">All brands</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand->slug }}" @selected($filters['brand'] === $brand->slug)>
+                                    {{ $brand->name }} ({{ $brand->products_count }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div>
+                        <span class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Price ({{ $currency }})</span>
+                        <div class="flex items-center gap-2">
+                            <label class="sr-only" for="filter-min-price">Minimum price</label>
+                            <input id="filter-min-price" name="min_price" type="number" inputmode="numeric" min="0" max="{{ $maxBound }}"
+                                   value="{{ $filters['min_price'] !== null ? (int) $filters['min_price'] : '' }}"
+                                   placeholder="{{ $minBound }}"
+                                   class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
+                            <span class="text-outline">–</span>
+                            <label class="sr-only" for="filter-max-price">Maximum price</label>
+                            <input id="filter-max-price" name="max_price" type="number" inputmode="numeric" min="0" max="{{ $maxBound }}"
+                                   value="{{ $filters['max_price'] !== null ? (int) $filters['max_price'] : '' }}"
+                                   placeholder="{{ $maxBound }}"
+                                   class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <legend class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Refine</legend>
+                        <div class="space-y-2.5">
+                            <label class="flex items-center gap-2.5 cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
+                                <input type="checkbox" name="clean" value="1" @checked($filters['clean']) class="h-4 w-4 border-outline text-primary focus:ring-primary">
+                                Clean beauty
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
+                                <input type="checkbox" name="new" value="1" @checked($filters['new']) class="h-4 w-4 border-outline text-primary focus:ring-primary">
+                                New arrivals
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
+                                <input type="checkbox" name="in_stock" value="1" @checked($filters['in_stock']) class="h-4 w-4 border-outline text-primary focus:ring-primary">
+                                In stock only
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div>
+                        <label for="filter-q" class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Search in {{ $category->name }}</label>
+                        <input id="filter-q" name="q" type="search" value="{{ $filters['q'] }}" placeholder="Product or brand"
+                               class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
+                    </div>
+
+                    <div class="flex flex-col gap-2 pt-2">
+                        <button type="submit" class="h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all">
+                            Apply filters
+                        </button>
+                        <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
+                           class="h-11 flex items-center justify-center border border-outline-variant text-primary font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-all">
+                            Clear all
+                        </a>
+                    </div>
+                </form>
+            </details>
+        </aside>
+
+        {{-- Results --}}
+        <div class="lg:col-span-9">
+
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Showing <strong class="text-primary">{{ $products->firstItem() ?? 0 }}–{{ $products->lastItem() ?? 0 }}</strong>
+                    of <strong class="text-primary">{{ number_format($total) }}</strong>
+                    {{ Str::plural('product', $total) }}
+                </p>
+
+                <form method="GET" action="{{ route('shop.category', ['slug' => $category->slug]) }}" class="flex items-center gap-2">
+                    @foreach (request()->except(['sort', 'page']) as $key => $value)
+                        @if (is_scalar($value) && $value !== '')
+                            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+                        @endif
+                    @endforeach
+                    <label for="sort" class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant whitespace-nowrap">Sort by</label>
+                    <select id="sort" name="sort" class="h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary" onchange="this.form.submit()">
+                        @foreach ($sortOptions as $value => $label)
+                            <option value="{{ $value }}" @selected($filters['sort'] === $value)>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    <noscript>
+                        <button type="submit" class="h-11 px-3 border border-primary text-primary font-label-caps text-label-caps uppercase">Go</button>
+                    </noscript>
+                </form>
+            </div>
+
+            @if ($activeFilters)
+                <div class="flex flex-wrap items-center gap-2 mb-5">
+                    @foreach ($activeFilters as $chip)
+                        @php
+                            $removeQuery = $chip['key'] === 'price'
+                                ? ['min_price' => null, 'max_price' => null, 'page' => null]
+                                : [$chip['key'] => null, 'page' => null];
+                        @endphp
+                        <a href="{{ request()->fullUrlWithQuery($removeQuery) }}"
+                           class="inline-flex items-center gap-1.5 border border-outline-variant bg-surface-container-low px-3 py-1.5 font-body-sm text-body-sm text-primary hover:border-primary transition-colors">
+                            {{ $chip['label'] }}
+                            <span class="material-symbols-outlined text-[16px]">close</span>
+                            <span class="sr-only">Remove filter</span>
+                        </a>
+                    @endforeach
+                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}" class="font-body-sm text-body-sm text-secondary underline ml-1">Clear all</a>
+                </div>
+            @endif
+
+            @if ($products->isEmpty())
+                <div class="border border-outline-variant bg-surface-container-lowest text-center py-20 px-6">
+                    <span class="material-symbols-outlined text-[40px] text-outline-variant">search_off</span>
+                    <h2 class="font-headline-sm text-headline-sm text-primary mt-3 mb-2">No products match these filters</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-5">Try removing a filter or browsing the full category.</p>
+                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
+                       class="inline-block bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-3 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all">
+                        Show all {{ $category->name }}
+                    </a>
+                </div>
+            @else
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                    @foreach ($products as $product)
+                        @php
+                            $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
+                            $inStock = (int) $product->stock > 0;
+                        @endphp
+                        <article class="group border border-outline-variant bg-surface-container-lowest flex flex-col">
+                            <div class="relative">
+                                <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="block" aria-label="View {{ $product->name }}">
+                                    <div class="aspect-square bg-surface-bright flex items-center justify-center p-4 overflow-hidden">
+                                        <img src="{{ media_url($product->first_image) }}" alt="{{ $product->name }}"
+                                             class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                                    </div>
+                                </a>
+
+                                <div class="absolute top-2 left-2 flex flex-col gap-1 items-start">
+                                    @if ($product->is_exclusive)
+                                        <span class="bg-secondary text-on-secondary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">Exclusive</span>
+                                    @endif
+                                    @if ($product->is_new)
+                                        <span class="bg-surface text-on-surface border border-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">New</span>
+                                    @endif
+                                    @if ($product->is_bestseller)
+                                        <span class="bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">Best Seller</span>
+                                    @endif
+                                    @if ($product->badge)
+                                        <span class="bg-surface-container-low text-primary border border-outline-variant font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">{{ $product->badge }}</span>
+                                    @endif
+                                    @if ($hasDiscount)
+                                        <span class="bg-secondary-fixed text-on-secondary-fixed-variant font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider font-bold">Sale</span>
+                                    @endif
+                                </div>
+
+                                <button type="button" data-wishlist-toggle="{{ $product->id }}"
+                                        class="absolute top-2 right-2 w-9 h-9 flex items-center justify-center bg-surface-container-lowest/90 border border-outline-variant text-primary hover:border-primary transition-colors"
+                                        aria-label="Add {{ $product->name }} to wishlist">
+                                    <span class="material-symbols-outlined text-[20px]">favorite_border</span>
+                                </button>
+                            </div>
+
+                            <div class="p-3 md:p-4 flex flex-col flex-1">
+                                <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ $product->brand?->name }}</span>
+                                <a href="{{ route('product.show', ['slug' => $product->slug]) }}"
+                                   class="font-title-md text-body-sm font-bold text-primary leading-snug line-clamp-2 mt-0.5 hover:underline">
+                                    {{ $product->name }}
+                                </a>
+
+                                <div class="flex items-center gap-1.5 mt-1.5">
+                                    @include('components.stars-m3', ['rating' => (float) $product->rating])
+                                    <span class="font-body-sm text-[12px] text-outline">({{ number_format((int) $product->reviews_count) }})</span>
+                                </div>
+
+                                <div class="mt-auto pt-3">
+                                    <div class="flex flex-wrap items-baseline gap-2 mb-2.5">
+                                        <span class="font-price-aed-md text-price-aed-md font-bold text-primary">{{ $currency }} {{ number_format($product->price, 2) }}</span>
+                                        @if ($hasDiscount)
+                                            <span class="font-body-sm text-[13px] line-through text-outline">{{ $currency }} {{ number_format($product->compare_at_price, 2) }}</span>
+                                        @endif
+                                    </div>
+
+                                    <button type="button" data-add-to-bag="{{ $product->id }}" @disabled(! $inStock)
+                                            class="w-full h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                        {{ $inStock ? 'Add to bag' : 'Sold out' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+
+                @if ($products->hasPages())
+                    <nav aria-label="Pagination" class="mt-10 flex flex-wrap items-center justify-center gap-1.5">
+                        @if ($products->onFirstPage())
+                            <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm cursor-not-allowed" aria-disabled="true">
+                                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> Previous
+                            </span>
+                        @else
+                            <a href="{{ $products->previousPageUrl() }}" rel="prev"
+                               class="h-10 px-3 flex items-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">
+                                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> Previous
+                            </a>
+                        @endif
+
+                        @foreach ($products->getUrlRange(max(1, $products->currentPage() - 2), min($products->lastPage(), $products->currentPage() + 2)) as $page => $url)
+                            @if ($page === $products->currentPage())
+                                <span aria-current="page" class="h-10 w-10 flex items-center justify-center bg-primary text-on-primary border border-primary font-body-sm text-body-sm font-bold">{{ $page }}</span>
+                            @else
+                                <a href="{{ $url }}" class="h-10 w-10 flex items-center justify-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">{{ $page }}</a>
+                            @endif
+                        @endforeach
+
+                        @if ($products->hasMorePages())
+                            <a href="{{ $products->nextPageUrl() }}" rel="next"
+                               class="h-10 px-3 flex items-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">
+                                Next <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
+                            </a>
+                        @else
+                            <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm cursor-not-allowed" aria-disabled="true">
+                                Next <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
+                            </span>
+                        @endif
+                    </nav>
+                @endif
+            @endif
+        </div>
+    </div>
 </main>
 @endsection

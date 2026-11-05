@@ -124,6 +124,15 @@
 <input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('password') border-secondary @enderror" id="reg-password-confirm" placeholder="Repeat your password" required="" type="password" name="password_confirmation"/>
 </div>
 
+<!-- Marketing opt-in -->
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 w-4 h-4 rounded-none border border-outline text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer checked:bg-primary checked:border-primary" name="marketing_email" type="checkbox" value="1" @checked(old('marketing_email'))/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Email me about new arrivals, offers, and Beauty Pass events. <span class="text-outline">(optional)</span></span>
+</label>
+@error('marketing_email')
+<p class="text-secondary font-body-sm mt-1">{{ $message }}</p>
+@enderror
+
 <button class="w-full h-12 bg-primary text-on-primary font-label-caps text-label-caps tracking-[0.16em] uppercase hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary border border-transparent transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer" type="submit">
 <span>Create My Account</span>
 <span class="transition-transform group-hover:translate-x-1">→</span>

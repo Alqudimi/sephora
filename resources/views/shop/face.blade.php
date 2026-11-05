@@ -16,55 +16,55 @@
 </div>
 <ul class="space-y-2.5 text-body-md font-body-md">
 <li>
-<a class="flex justify-between items-center text-primary font-bold hover:text-secondary transition-colors" href="#">
+<a class="flex justify-between items-center text-primary font-bold hover:text-secondary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Foundation</span>
 <span class="text-outline text-body-sm">(142)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Concealers &amp; Correctors</span>
 <span class="text-outline text-body-sm">(88)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Powder</span>
 <span class="text-outline text-body-sm">(54)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Blush</span>
 <span class="text-outline text-body-sm">(62)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Primer &amp; Setting Spray</span>
 <span class="text-outline text-body-sm">(45)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Highlighters</span>
 <span class="text-outline text-body-sm">(38)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Bronzer &amp; Contour</span>
 <span class="text-outline text-body-sm">(29)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Tinted Moisturizer &amp; BB Cream</span>
 <span class="text-outline text-body-sm">(18)</span>
 </a>
 </li>
 <li>
-<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
 <span>Face Palette</span>
 <span class="text-outline text-body-sm">(22)</span>
 </a>
@@ -194,7 +194,7 @@
 @foreach($products as $products)
 <article onclick="window.location='/p/{{ $products->slug }}'" class="group relative flex flex-col justify-between bg-surface-container-lowest border border-outline-variant/60 hover:border-primary transition-all p-3">
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low mb-3">
-<img alt="{{ $products->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
 <div class="absolute top-1 left-1 flex flex-col gap-1 z-10">
 @if($products->badge)
 <span class="bg-primary text-on-primary font-label-tag text-label-tag px-1.5 py-0.5 tracking-wider uppercase">{{ $products->badge }}</span>

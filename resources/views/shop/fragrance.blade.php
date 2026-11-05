@@ -303,7 +303,7 @@
 <button aria-label="Add to wishlist" class="absolute top-2 right-2 z-10 text-on-surface-variant hover:text-secondary p-1 transition-colors" type="button">
 <span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
 </button>
-<img alt="{{ $products->name }}" class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
 </div>
 <div class="p-3.5 flex flex-col flex-1">
 <p class="font-label-caps text-label-caps uppercase text-primary font-bold tracking-wider">{{ $products->brand->name }}

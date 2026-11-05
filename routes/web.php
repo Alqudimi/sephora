@@ -1,24 +1,30 @@
 <?php
 
 use App\Http\Controllers\Account\ContactController;
+use App\Http\Controllers\Account\PrivacyController;
+use App\Http\Controllers\Account\SecurityController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\TwoFactorChallengeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CookieConsentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\WishlistController;
-use App\Models\Product;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +51,7 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/faq/delivery', [PageController::class, 'faqDelivery'])->name('faq.delivery');
 Route::get('/faq/cancellation-and-refund', [PageController::class, 'faqCancellation'])->name('faq.cancellation');
 Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
+Route::post('/cookie-consent', [CookieConsentController::class, 'store'])->middleware('throttle:forms')->name('consent.cookies');
 
 // ── Shop: categories ──
 Route::get('/shop/makeup', [CategoryController::class, 'makeup'])->name('shop.makeup');
@@ -63,6 +70,7 @@ Route::get('/shop/{slug}', [CategoryController::class, 'show'])->name('shop.cate
 
 // ── Products ──
 Route::get('/p/{slug}', [ProductController::class, 'show'])->name('product.show');
+Route::post('/p/{product:slug}/reviews', [ReviewController::class, 'store'])->middleware(['auth', 'throttle:forms'])->name('reviews.store');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 // ── Cart ──
@@ -93,14 +101,31 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->middleware('throttle:forms')->name('password.email');
     Route::get('/reset-password/{token}', [PasswordResetController::class, 'resetForm'])->name('password.reset');
     Route::post('/reset-password', [PasswordResetController::class, 'reset'])->middleware('throttle:forms')->name('password.update');
+
+    // Two-factor challenge after a correct password.
+    Route::get('/two-factor-challenge', [TwoFactorChallengeController::class, 'show'])->name('two-factor.challenge');
+    Route::post('/two-factor-challenge', [TwoFactorChallengeController::class, 'store'])->middleware('throttle:forms')->name('two-factor.challenge.store');
 });
 Route::post('/sign-out', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+// ── Email verification ──
+Route::middleware(['auth', 'throttle:forms'])->group(function () {
+    Route::get('/verify-email', [EmailVerificationController::class, 'notice'])->name('verification.notice');
+    Route::get('/verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+        ->middleware('signed')
+        ->name('verification.verify');
+    Route::post('/email/verification-notification', [EmailVerificationController::class, 'send'])->name('verification.send');
+});
+
 // ── Checkout ──
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout/summary', [CheckoutController::class, 'summary'])->middleware('throttle:forms')->name('checkout.summary');
 Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])->middleware('throttle:checkout')->name('checkout.place');
 Route::post('/checkout/coupon', [CheckoutController::class, 'applyCoupon'])->middleware('throttle:forms')->name('checkout.coupon.apply');
 Route::post('/checkout/coupon/remove', [CheckoutController::class, 'removeCoupon'])->middleware('throttle:forms')->name('checkout.coupon.remove');
+Route::get('/checkout/payment/{order}', [CheckoutController::class, 'paymentReturn'])->name('checkout.payment.return');
+Route::post('/checkout/payment/{order}/retry', [CheckoutController::class, 'retryPayment'])->middleware('throttle:forms')->name('checkout.payment.retry');
+Route::post('/payments/webhook/{gateway}', [CheckoutController::class, 'webhook'])->name('payments.webhook');
 Route::get('/checkout/confirmation/{order}', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
 Route::get('/order/{order}', [CheckoutController::class, 'confirmationGuest'])->name('checkout.confirmation.guest');
 
@@ -114,36 +139,22 @@ Route::middleware('auth')->prefix('my-account')->name('account.')->group(functio
     Route::get('/settings/country-and-language', [AccountController::class, 'countryLanguage'])->name('country-language');
     Route::post('/settings/country-and-language', [AccountController::class, 'updateCountryLanguage'])->name('country-language.update');
     Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+    Route::post('/contact-us', [ContactController::class, 'store'])->middleware('throttle:forms')->name('contact.store');
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::get('/addresses', [AccountController::class, 'addresses'])->name('addresses');
     Route::post('/addresses', [AccountController::class, 'storeAddress'])->name('addresses.store');
+    Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
+    Route::get('/privacy/export', [PrivacyController::class, 'export'])->middleware('throttle:forms')->name('privacy.export');
+    Route::delete('/privacy', [PrivacyController::class, 'destroy'])->middleware('throttle:forms')->name('privacy.destroy');
+    Route::get('/security', [SecurityController::class, 'edit'])->name('security');
+    Route::post('/security/enable', [SecurityController::class, 'enable'])->middleware('throttle:forms')->name('security.enable');
+    Route::post('/security/confirm', [SecurityController::class, 'confirm'])->middleware('throttle:forms')->name('security.confirm');
+    Route::post('/security/disable', [SecurityController::class, 'disable'])->middleware('throttle:forms')->name('security.disable');
 });
 
-// ── Sitemap (cached 60 minutes) ──
-Route::get('/sitemap.xml', function () {
-    $xml = Cache::remember('sitemap.xml', now()->addMinutes(60), function () {
-        $routes = [
-            '/', '/shop/makeup', '/shop/skincare', '/shop/fragrance', '/shop/bath-body',
-            '/shop/hair', '/shop/lips', '/shop/face', '/shop/makeup-palettes',
-            '/shop/bestsellers', '/shop/new', '/shop/gifts', '/shop/gifts/minis-more',
-            '/brands', '/brands/sephora-collection', '/beauty-offers', '/stores',
-            '/gift-card-info', '/download-app', '/clean-at-sephora', '/faq',
-            '/faq/delivery', '/faq/cancellation-and-refund', '/terms-and-conditions',
-            '/contact-us', '/sign-in',
-        ];
-        foreach (Product::active()->select('slug')->get() as $p) {
-            $routes[] = '/p/'.$p->slug;
-        }
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
-        foreach ($routes as $r) {
-            $xml .= '  <url><loc>'.url($r)."</loc></url>\n";
-        }
-
-        return $xml.'</urlset>';
-    });
-
-    return response($xml, 200, ['Content-Type' => 'application/xml']);
-})->name('sitemap');
+// ── Sitemap & robots ──
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('sitemap.robots');
 
 // ── Admin panel ──
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -154,6 +165,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/products/{product}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
+
+    Route::get('/categories', [AdminCategoryController::class, 'index'])->name('categories');
+    Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories', [AdminCategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/{category}/edit', [AdminCategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{category}', [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
     Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
     Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
     Route::patch('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.status');

@@ -22,6 +22,7 @@ class OrderEmailPipelineTest extends TestCase
         'emirate' => 'Dubai',
         'street_address' => 'Test Tower',
         'payment_method' => 'cod',
+        'terms' => '1',
     ];
 
     public function test_order_placed_event_fires_on_checkout(): void

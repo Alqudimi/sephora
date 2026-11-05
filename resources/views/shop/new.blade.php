@@ -52,37 +52,37 @@
 </div>
 <ul class="space-y-2.5 text-xs pt-1 pl-1">
 <li>
-<a class="font-bold text-black flex items-center justify-between" href="#">
+<a class="font-bold text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
 <span>View All</span>
 <span class="text-gray-400 font-normal">(471)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
 <span>New In Makeup</span>
 <span class="text-gray-400">(102)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
 <span>New In Skincare</span>
 <span class="text-gray-400">(55)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
 <span>New In Fragrance</span>
 <span class="text-gray-400">(65)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
 <span>New In Hair</span>
 <span class="text-gray-400">(36)</span>
 </a>
 </li>
 <li>
-<a class="text-gray-700 hover:text-black flex items-center justify-between" href="#">
+<a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
 <span>New In Bath &amp; Body</span>
 <span class="text-gray-400">(32)</span>
 </a>
@@ -151,7 +151,7 @@
 </div>
 <!-- Product Image -->
 <div class="w-full aspect-square flex items-center justify-center p-2 mb-3 overflow-hidden">
-<img alt="{{ $products->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
 </div>
 <!-- Product Info -->
 <h3 class="font-bold text-xs uppercase tracking-wide text-black mb-1">PATRICK TA</h3>

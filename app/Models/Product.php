@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'brand_id', 'name', 'slug', 'description', 'how_to_use', 'ingredients',
-        'price', 'compare_at_price', 'size', 'sku', 'badge', 'type',
-        'rating', 'reviews_count', 'stock',
+        'brand_id', 'name', 'slug', 'description', 'meta_title', 'meta_description',
+        'how_to_use', 'ingredients', 'price', 'compare_at_price', 'size', 'sku',
+        'badge', 'type', 'rating', 'reviews_count', 'stock',
         'is_bestseller', 'is_new', 'is_clean', 'is_exclusive', 'is_active',
         'sort_order',
     ];
@@ -19,6 +19,8 @@ class Product extends Model
         'price' => 'float',
         'compare_at_price' => 'float',
         'rating' => 'float',
+        'reviews_count' => 'integer',
+        'stock' => 'integer',
         'is_bestseller' => 'boolean',
         'is_new' => 'boolean',
         'is_clean' => 'boolean',
@@ -51,9 +53,14 @@ class Product extends Model
         return $this->hasMany(Review::class)->where('is_approved', true);
     }
 
+    public function allReviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function inWishlist(): bool
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return session()->get('wishlist', collect())->contains($this->id);
         }
 
@@ -71,7 +78,8 @@ class Product extends Model
     {
         $full = (int) floor($this->rating);
         $half = ($this->rating - $full) >= 0.5;
-        return str_repeat('★', $full) . ($half ? '☆' : '');
+
+        return str_repeat('★', $full).($half ? '☆' : '');
     }
 
     public function scopeActive($query)
@@ -86,7 +94,12 @@ class Product extends Model
             'price_desc' => $query->orderByDesc('price'),
             'rating' => $query->orderByDesc('rating'),
             'newest' => $query->orderByDesc('created_at'),
-            default => $query->orderBy('sort_order'),
+            default => $query->orderBy('sort_order')->orderBy('name'),
         };
+    }
+
+    public function scopeInStock(Builder $query): Builder
+    {
+        return $query->where('stock', '>', 0);
     }
 }

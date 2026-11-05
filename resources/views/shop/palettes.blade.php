@@ -66,19 +66,19 @@
 <h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-3 font-bold">CATEGORIES</h3>
 <ul class="space-y-2 font-body-sm text-body-sm">
 <li class="flex items-center justify-between">
-<a class="text-primary font-semibold hover:underline" href="#">Eye Palettes</a>
+<a class="text-primary font-semibold hover:underline" href="{{ route('shop.category', ['slug' => 'makeup-palettes']) }}">Eye Palettes</a>
 <span class="text-on-surface-variant">(68)</span>
 </li>
 <li class="flex items-center justify-between">
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Face Palettes</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'makeup-palettes']) }}">Face Palettes</a>
 <span class="text-on-surface-variant">(44)</span>
 </li>
 <li class="flex items-center justify-between">
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Cheek &amp; Blush Palettes</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'makeup-palettes']) }}">Cheek &amp; Blush Palettes</a>
 <span class="text-on-surface-variant">(22)</span>
 </li>
 <li class="flex items-center justify-between">
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Multi-Use &amp; Vault Sets</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'makeup-palettes']) }}">Multi-Use &amp; Vault Sets</a>
 <span class="text-on-surface-variant">(14)</span>
 </li>
 </ul>
@@ -231,7 +231,7 @@
 <button aria-label="Add to Wishlist" class="absolute top-2 right-2 z-10 text-on-surface-variant hover:text-secondary p-1 bg-surface-container-lowest/80 backdrop-blur-sm transition-colors">
 <span class="material-symbols-outlined text-[18px]">favorite</span>
 </button>
-<img alt="{{ $products->name }}" class="w-full h-full object-contain" src="{{ asset($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-contain" src="{{ media_url($products->first_image) }}"/>
 </div>
 <div class="space-y-1">
 <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant block font-bold">{{ $products->brand->name }}
