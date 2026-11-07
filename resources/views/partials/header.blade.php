@@ -2,23 +2,24 @@
     Shared storefront header: announcement bar, main header, category navigation
     and the mobile off-canvas menu. Counts are shared by AppServiceProvider.
     Design inspired by Chrome devtools extraction with improved visual polish.
+    Hover dropdown menus added for primary navigation items.
 --}}
 @php
     $cartBadgeCount = (int) ($cartCount ?? $bagCount ?? 0);
     $wishlistBadgeCount = (int) ($wishlistCount ?? 0);
     $primaryNav = [
-        ['label' => 'Stack Your Scent', 'href' => '/shop/fragrance', 'class' => 'text-[#b87d60] font-semibold'],
-        ['label' => 'The Holiday Collection', 'href' => '/shop/gifts', 'class' => 'text-[#204070] font-semibold'],
-        ['label' => 'Beauty Offers', 'href' => '/beauty-offers', 'class' => ''],
-        ['label' => 'New', 'href' => '/shop/new', 'class' => 'font-semibold text-black'],
-        ['label' => 'Makeup', 'href' => '/shop/makeup', 'class' => ''],
-        ['label' => 'Fragrance', 'href' => '/shop/fragrance', 'class' => ''],
-        ['label' => 'Skincare', 'href' => '/shop/bath-body', 'class' => ''],
-        ['label' => 'Hair', 'href' => '/shop/hair', 'class' => ''],
-        ['label' => 'Sephora Collection', 'href' => '/brands/sephora-collection', 'class' => 'font-medium'],
-        ['label' => 'Brands', 'href' => '/brands', 'class' => ''],
-        ['label' => 'Best Sellers', 'href' => '/shop/bestsellers', 'class' => ''],
-        ['label' => 'Gifts', 'href' => '/shop/gifts', 'class' => ''],
+        ['label' => 'Stack Your Scent', 'href' => '/shop/fragrance', 'has_dropdown' => false],
+        ['label' => 'The Holiday Collection', 'href' => '/shop/gifts', 'has_dropdown' => false],
+        ['label' => 'Beauty Offers', 'href' => '/beauty-offers', 'has_dropdown' => false],
+        ['label' => 'New', 'href' => '/shop/new', 'has_dropdown' => false],
+        ['label' => 'Makeup', 'href' => '/shop/makeup', 'has_dropdown' => true],
+        ['label' => 'Fragrance', 'href' => '/shop/fragrance', 'has_dropdown' => true],
+        ['label' => 'Skincare', 'href' => '/shop/bath-body', 'has_dropdown' => true],
+        ['label' => 'Hair', 'href' => '/shop/hair', 'has_dropdown' => true],
+        ['label' => 'Sephora Collection', 'href' => '/brands/sephora-collection', 'has_dropdown' => false],
+        ['label' => 'Brands', 'href' => '/brands', 'has_dropdown' => true],
+        ['label' => 'Best Sellers', 'href' => '/shop/bestsellers', 'has_dropdown' => false],
+        ['label' => 'Gifts', 'href' => '/shop/gifts', 'has_dropdown' => false],
     ];
 @endphp
 
@@ -140,11 +141,30 @@
 </header>
 <!-- END: MainHeader -->
 
-<!-- BEGIN: NavigationBar -->
+<!-- BEGIN: NavigationBar with Dropdowns -->
 <nav aria-label="Primary" class="border-b border-gray-200 bg-white overflow-x-auto custom-scrollbar scrollbar-hidden">
     <div class="max-w-[1440px] mx-auto px-4 md:px-8 py-2.5 flex items-center gap-5 lg:gap-7 min-w-max text-gray-700">
         @foreach ($primaryNav as $link)
-            <a class="sephora-nav-item {{ $link['class'] }}" href="{{ $link['href'] }}">{{ $link['label'] }}</a>
+            @if ($link['has_dropdown'])
+            <!-- Dropdown Item -->
+            <div group-hover="block" class="relative sephora-nav-item-dropdown hover:text-black">
+                <a href="{{ $link['href'] }}" class="sephora-nav-item-dropdown-link flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                    <span>{{ $link['label'] }}</span>
+                    <svg class="w-4 h-4 shrink-0 rotate-180 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+                        <path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+                <!-- Dropdown Menu -->
+                <div class="absolute top-full left-0 mt-2 w-48 rounded-md bg-white shadow-lg py-1 pl-1 origin-top-right shadow-md opacity-0 visibility-hidden transition-all duration-200 group-hover:opacity-100 group-hover:visibility-hidden">
+                    <a href="#" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 transition-colors">Sub Category 1</a>
+                    <a href="#" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 transition-colors">Sub Category 2</a>
+                    <a href="#" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 transition-colors">Sub Category 3</a>
+                </div>
+            </div>
+            @else
+            <!-- Regular Nav Item -->
+            <a href="{{ $link['href'] }}" class="sephora-nav-item {{ $link['class'] }}" tabindex="true">{{ $link['label'] }}</a>
+            @endif
         @endforeach
     </div>
 </nav>
