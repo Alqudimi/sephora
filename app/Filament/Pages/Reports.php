@@ -259,7 +259,7 @@ class Reports extends Page implements HasForms
             $buckets = Order::query()
                 ->whereNotIn('status', ['cancelled', 'refunded'])
                 ->whereBetween('placed_at', [$from, $to])
-                ->selectRaw("strftime('%Y-%m', placed_at) AS bucket, SUM(total) AS revenue")
+                ->selectRaw("substr(placed_at, 1, 7) AS bucket, SUM(total) AS revenue")
                 ->groupBy('bucket')
                 ->orderBy('bucket')
                 ->pluck('revenue', 'bucket');
@@ -275,7 +275,7 @@ class Reports extends Page implements HasForms
         $byDay = Order::query()
             ->whereNotIn('status', ['cancelled', 'refunded'])
             ->whereBetween('placed_at', [$from, $to])
-            ->selectRaw('DATE(placed_at) AS day, SUM(total) AS revenue')
+            ->selectRaw('substr(placed_at, 1, 10) AS day, SUM(total) AS revenue')
             ->groupBy('day')
             ->pluck('revenue', 'day');
 

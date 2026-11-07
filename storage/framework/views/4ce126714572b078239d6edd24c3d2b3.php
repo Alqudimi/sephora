@@ -64,7 +64,7 @@
           </p>
 </div>
 
-<form class="space-y-6" method="POST" action="<?php echo e(route('register')); ?>">
+<form class="space-y-6" method="POST" action="<?php echo e(route('register.store')); ?>">
 <?php echo csrf_field(); ?>
 
 <!-- Name -->
@@ -80,7 +80,7 @@ $message = $__bag->first($__errorArgs[0]); ?> border-secondary <?php unset($mess
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="reg-name" placeholder="Your full name" required="" type="text" name="name" value="<?php echo e(old('name')); ?>"/>
-<?php $__errorArgs = ['name'];
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -89,7 +89,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 </div>
 
 <!-- Email -->
@@ -105,7 +105,7 @@ $message = $__bag->first($__errorArgs[0]); ?> border-secondary <?php unset($mess
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="reg-email" placeholder="name@domain.com" required="" type="email" name="email" value="<?php echo e(old('email')); ?>"/>
-<?php $__errorArgs = ['email'];
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -114,7 +114,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 </div>
 
 <!-- Phone -->
@@ -133,7 +133,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="reg-phone" placeholder="50 123 4567" type="tel" name="phone" value="<?php echo e(old('phone')); ?>"/>
 </div>
-<?php $__errorArgs = ['phone'];
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['phone'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -142,7 +142,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 </div>
 
 <!-- Password -->
@@ -158,7 +158,7 @@ $message = $__bag->first($__errorArgs[0]); ?> border-secondary <?php unset($mess
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="reg-password" placeholder="Minimum 8 characters" required="" type="password" name="password"/>
-<?php $__errorArgs = ['password'];
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -167,7 +167,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 </div>
 
 <!-- Password Confirmation -->
@@ -184,6 +184,22 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="reg-password-confirm" placeholder="Repeat your password" required="" type="password" name="password_confirmation"/>
 </div>
+
+<!-- Marketing opt-in -->
+<label class="flex items-start gap-3 cursor-pointer">
+<input class="mt-1 w-4 h-4 rounded-none border border-outline text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer checked:bg-primary checked:border-primary" name="marketing_email" type="checkbox" value="1" <?php if(old('marketing_email')): echo 'checked'; endif; ?>/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Email me about new arrivals, offers, and Beauty Pass events. <span class="text-outline">(optional)</span></span>
+</label>
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['marketing_email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+<p class="text-secondary font-body-sm mt-1"><?php echo e($message); ?></p>
+<?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
 <button class="w-full h-12 bg-primary text-on-primary font-label-caps text-label-caps tracking-[0.16em] uppercase hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary border border-transparent transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer" type="submit">
 <span>Create My Account</span>

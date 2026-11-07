@@ -128,7 +128,7 @@ Route::get('/checkout/confirmation/{order}', [CheckoutController::class, 'confir
 Route::get('/order/{order}', [CheckoutController::class, 'confirmationGuest'])->name('checkout.confirmation.guest');
 
 // ── My Account ──
-Route::middleware('auth')->prefix('my-account')->name('account.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('my-account')->name('account.')->group(function () {
     Route::get('/', [AccountController::class, 'dashboard'])->name('dashboard');
     Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
     Route::get('/orders/{order}', [AccountController::class, 'orderShow'])->name('orders.show');

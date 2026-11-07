@@ -134,7 +134,7 @@ class ShopStatsWidget extends StatsOverviewWidget
         return Order::query()
             ->whereNotIn('status', ['cancelled', 'refunded'])
             ->where('placed_at', '>=', now()->subDays(14))
-            ->selectRaw('DATE(placed_at) AS day, SUM(total) AS revenue')
+            ->selectRaw('substr(placed_at, 1, 10) AS day, SUM(total) AS revenue')
             ->groupBy('day')
             ->orderBy('day')
             ->pluck('revenue')

@@ -61,7 +61,7 @@ run php artisan queue:restart
 
 # ── 7. Health check ──
 sleep 2
-if curl -fsS "$(grep -m1 '^APP_URL=' .env | cut -d= -f2)/up" > /dev/null; then
+if curl -fsSL -L "$(grep -m1 '^APP_URL=' .env | cut -d= -f2)/up" > /dev/null; then
     echo "[deploy] health check OK — site is live ✅"
 else
     echo "[deploy] WARNING: /up health check failed — check storage/logs/laravel.log" >&2

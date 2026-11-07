@@ -19,14 +19,14 @@ class Order extends Model
     ];
 
     protected $casts = [
-        'subtotal' => 'float',
-        'subtotal_ex_tax' => 'float',
-        'tax_rate' => 'float',
-        'tax_amount' => 'float',
-        'discount' => 'float',
-        'shipping_fee' => 'float',
-        'total' => 'float',
-        'refund_amount' => 'float',
+        'subtotal' => 'integer',
+        'subtotal_ex_tax' => 'integer',
+        'tax_rate' => 'integer',
+        'tax_amount' => 'integer',
+        'discount' => 'integer',
+        'shipping_fee' => 'integer',
+        'total' => 'integer',
+        'refund_amount' => 'integer',
         'samples' => 'array',
         'payment_payload' => 'array',
         'gift_box' => 'boolean',

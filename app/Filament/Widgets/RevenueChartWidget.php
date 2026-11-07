@@ -57,12 +57,12 @@ class RevenueChartWidget extends ChartWidget
             ->where('placed_at', '>=', $range->first());
 
         $revenueByDay = (clone $query)
-            ->selectRaw('DATE(placed_at) AS day, SUM(total) AS revenue')
+            ->selectRaw('substr(placed_at, 1, 10) AS day, SUM(total) AS revenue')
             ->groupBy('day')
             ->pluck('revenue', 'day');
 
         $ordersByDay = (clone $query)
-            ->selectRaw('DATE(placed_at) AS day, COUNT(*) AS count')
+            ->selectRaw('substr(placed_at, 1, 10) AS day, COUNT(*) AS count')
             ->groupBy('day')
             ->pluck('count', 'day');
 

@@ -29,14 +29,17 @@ return [
             'enabled' => true,
             'gateway' => 'stripe',
         ],
+        // BNPL (Tabby / Tamara) is not backed by a real gateway integration
+        // yet — they currently point at the card-only Stripe checkout, which
+        // would silently charge the full amount. Disabled until integrated.
         'tabby' => [
             'label' => 'Tabby — 4 payments, no interest',
-            'enabled' => true,
+            'enabled' => false,
             'gateway' => 'stripe',
         ],
         'tamara' => [
             'label' => 'Tamara — pay in 3',
-            'enabled' => true,
+            'enabled' => false,
             'gateway' => 'stripe',
         ],
         'cod' => [
@@ -54,8 +57,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
         'base_url' => env('STRIPE_BASE_URL', 'https://api.stripe.com'),
-        'success_url' => env('STRIPE_SUCCESS_URL', '/checkout/success'),
-        'cancel_url' => env('STRIPE_CANCEL_URL', '/checkout'),
+        'success_url' => env('STRIPE_SUCCESS_URL'),
+        'cancel_url' => env('STRIPE_CANCEL_URL'),
         'webhook_tolerance' => 300,
     ],
 ];

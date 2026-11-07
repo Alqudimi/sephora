@@ -15,6 +15,7 @@ use App\Services\Commerce\ShippingCalculator;
 use App\Services\Orders\OrderStateMachine;
 use App\Services\Payments\PaymentManager;
 use App\Services\Payments\WebhookProcessor;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -147,7 +148,7 @@ class CheckoutController extends Controller
 
         try {
             $result = $payments->confirm($orderModel);
-        } catch (RuntimeException $e) {
+        } catch (RuntimeException | ConnectionException $e) {
             Log::error('Payment confirmation failed.', ['order' => $orderModel->order_number, 'error' => $e->getMessage()]);
 
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number])
@@ -341,7 +342,7 @@ class CheckoutController extends Controller
 
         try {
             $result = $payments->start($order);
-        } catch (RuntimeException $e) {
+        } catch (RuntimeException | ConnectionException $e) {
             Log::error('Payment start failed.', ['order' => $order->order_number, 'error' => $e->getMessage()]);
 
             $states->markFailed($order, 'Payment provider unavailable: '.$e->getMessage());

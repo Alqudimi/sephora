@@ -216,7 +216,8 @@ class CustomerResource extends Resource
                     ->schema([
                         Toggle::make('is_admin')
                             ->label('Administrator')
-                            ->helperText('Full access to everything.'),
+                            ->helperText('Full access to everything.')
+                            ->hidden(),
 
                         Select::make('role')
                             ->options([
@@ -224,7 +225,8 @@ class CustomerResource extends Resource
                                 'manager' => 'Manager',
                                 'support' => 'Support',
                             ])
-                            ->placeholder('Customer (no staff access)'),
+                            ->placeholder('Customer (no staff access)')
+                            ->hidden(),
 
                         Placeholder::make('two_factor_preview')
                             ->label('Two-factor auth')
