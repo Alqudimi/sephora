@@ -1,6 +1,7 @@
 {{--
     Shared storefront header: announcement bar, main header, category navigation
     and the mobile off-canvas menu. Counts are shared by AppServiceProvider.
+    Design inspired by Chrome devtools extraction with improved visual polish.
 --}}
 @php
     $cartBadgeCount = (int) ($cartCount ?? $bagCount ?? 0);
@@ -12,8 +13,7 @@
         ['label' => 'New', 'href' => '/shop/new', 'class' => 'font-semibold text-black'],
         ['label' => 'Makeup', 'href' => '/shop/makeup', 'class' => ''],
         ['label' => 'Fragrance', 'href' => '/shop/fragrance', 'class' => ''],
-        ['label' => 'Skincare', 'href' => '/shop/skincare', 'class' => ''],
-        ['label' => 'Bath & Body', 'href' => '/shop/bath-body', 'class' => ''],
+        ['label' => 'Skincare', 'href' => '/shop/bath-body', 'class' => ''],
         ['label' => 'Hair', 'href' => '/shop/hair', 'class' => ''],
         ['label' => 'Sephora Collection', 'href' => '/brands/sephora-collection', 'class' => 'font-medium'],
         ['label' => 'Brands', 'href' => '/brands', 'class' => ''],
@@ -49,14 +49,14 @@
             </svg>
         </button>
 
-        <!-- Sephora Wordmark Logo -->
+        <!-- Enhanced Logo -->
         <div class="flex items-center shrink-0">
             <a class="logo-font text-xl sm:text-2xl md:text-3xl text-black hover:opacity-90 tracking-[0.25em] pl-1 font-bold" href="/">
                 SEPHORA
             </a>
         </div>
 
-        <!-- Search Input (desktop) -->
+        <!-- Enhanced Search Input (desktop) -->
         <form action="/search" class="flex-1 max-w-2xl hidden md:block" method="GET" role="search">
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
@@ -74,52 +74,50 @@
             </div>
         </form>
 
-        <!-- Right Utility Actions -->
+        <!-- Enhanced Right Utility Actions -->
         <div class="flex items-center space-x-3 sm:space-x-5 md:space-x-6 shrink-0 text-sm">
             <!-- Stores & Services -->
             <a class="hidden lg:flex items-center gap-2 hover:opacity-75 transition-opacity text-gray-900 font-medium" href="/stores">
                 <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
                     <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                <span class="text-[13px] tracking-tight">Stores &amp; Services</span>
+                <span class="text-[13px] tracking-tight">Stores & Services</span>
             </a>
 
-            <!-- Divider Line -->
-            <div class="hidden lg:block h-6 w-px bg-gray-300"></div>
+            <!-- Enhanced Divider Line -->
+            <div class="hidden lg:block h-px w-1/6 bg-gradient-to-r from-gray-300 to-transparent"></div>
 
-            <!-- Country Flag UAE -->
-            <button aria-label="Select Country" class="hidden sm:flex items-center hover:opacity-85" type="button">
-                <span class="w-6 h-6 rounded-full overflow-hidden flex border border-gray-200 shadow-sm">
-                    <span class="w-2 bg-[#ff0000] h-full"></span>
-                    <span class="flex-1 flex flex-col h-full">
-                        <span class="h-1/3 bg-[#00732f]"></span>
-                        <span class="h-1/3 bg-[#ffffff]"></span>
-                        <span class="h-1/3 bg-[#000000]"></span>
-                    </span>
-                </span>
+            <!-- Country Flag UAE (inspired by extracted design) -->
+            <button aria-label="Select Country" class="hidden lg:flex items-center gap-2 hover:opacity-85 transition-opacity rounded-full px-2 py-1.5 border border-gray-200 shadow-sm" type="button">
+                <div class="w-2 h-full rounded-full bg-[#ff0000]"></div>
+                <div class="flex-1 flex flex-col h-px">
+                    <div class="h-1/3 bg-[#00732f]"></div>
+                    <div class="h-1/3 bg-[#ffffff]"></div>
+                    <div class="h-1/3 bg-[#000000]"></div>
+                </div>
             </button>
 
             <!-- Account / Sign In -->
-            <a aria-label="Account" class="flex items-center text-black hover:opacity-70 transition-opacity" href="/my-account">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
+            <a aria-label="Account" class="flex items-center gap-1.5 hover:opacity-70 transition-opacity text-gray-900" href="/my-account">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
                     <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </a>
 
             <!-- Wishlist -->
-            <a aria-label="Wishlist" class="relative flex items-center text-black hover:opacity-70 transition-opacity" href="/my-account/wishlist">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
+            <a aria-label="Wishlist" class="relative flex items-center gap-1.5 hover:opacity-70 transition-opacity text-gray-900" href="/my-account/wishlist">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
                     <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                <span class="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 bg-black text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none {{ $wishlistBadgeCount > 0 ? '' : 'hidden' }}" data-wishlist-count>{{ $wishlistBadgeCount }}</span>
+                <span class="absolute -top-0.5 -right-1 min-w-[14px] h-3 px-0.5 bg-black text-white text-[8px] font-bold rounded-full flex items-center justify-center leading-none {{ $wishlistBadgeCount > 0 ? '' : 'hidden' }}" data-wishlist-count>{{ $wishlistBadgeCount }}</span>
             </a>
 
             <!-- Shopping Bag -->
-            <a aria-label="Shopping Bag" class="relative flex items-center text-black hover:opacity-70 transition-opacity" href="/cart">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
+            <a aria-label="Shopping Bag" class="relative flex items-center gap-1.5 hover:opacity-70 transition-opacity text-gray-900" href="/cart">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
                     <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                <span class="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 bg-black text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none {{ $cartBadgeCount > 0 ? '' : 'hidden' }}" data-bag-count>{{ $cartBadgeCount }}</span>
+                <span class="absolute -top-0.5 -right-1 min-w-[14px] h-3 px-0.5 bg-black text-white text-[8px] font-bold rounded-full flex items-center justify-center leading-none {{ $cartBadgeCount > 0 ? '' : 'hidden' }}" data-bag-count>{{ $cartBadgeCount }}</span>
             </a>
         </div>
     </div>
@@ -174,7 +172,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
                     <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                Stores &amp; Services
+                Stores & Services
             </a>
             <a class="flex items-center gap-3 py-2 text-gray-900 font-medium" href="/my-account">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
