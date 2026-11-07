@@ -2,14 +2,33 @@
 
 namespace App\Services\Commerce;
 
+use App\Models\Setting;
+
 /**
  * Immutable order money breakdown.
  *
  * Storefront prices are VAT inclusive. The tax amount is extracted from the
  * taxable gross, so subtotal + shipping always equals total.
+ *
+ * The tax rate is a FRACTION (0.05 = 5%), matching config/commerce.php and
+ * the `orders.tax_rate` column. An admin override can be persisted in the
+ * settings table as `vat_rate_percent` (e.g. "5" = 5%).
  */
 final class OrderTotals
 {
+    public const DEFAULT_TAX_RATE = 0.05;
+
+    public static function taxRate(): float
+    {
+        $percent = Setting::get('vat_rate_percent');
+
+        if ($percent !== null && $percent !== '') {
+            return round(((float) $percent) / 100, 6);
+        }
+
+        return (float) config('commerce.tax_rate', self::DEFAULT_TAX_RATE);
+    }
+
     public function __construct(
         public readonly float $subtotal,
         public readonly float $discount,
@@ -29,11 +48,11 @@ final class OrderTotals
         $subtotal = round(max(0, $subtotal), 2);
         $discount = round(min(max(0, $discount), $subtotal), 2);
         $shipping = round(max(0, $shipping), 2);
-        $taxRate = $taxRate ?? (float) config('commerce.tax_rate', 5.00);
+        $taxRate = $taxRate ?? self::taxRate();
 
         $taxableGross = round(max(0, $subtotal - $discount + $shipping), 2);
         $taxAmount = $taxRate > 0
-            ? round($taxableGross * ($taxRate / (100 + $taxRate)), 2)
+            ? round($taxableGross * ($taxRate / (1 + $taxRate)), 2)
             : 0.0;
         $subtotalExTax = round($taxableGross - $taxAmount, 2);
 

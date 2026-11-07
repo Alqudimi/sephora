@@ -2,23 +2,22 @@
 
 namespace App\Services\Commerce;
 
+use App\Support\CommerceSettings;
+
 class ShippingCalculator
 {
     public function fee(string $deliveryMethod, float $merchandiseSubtotal, ?string $paymentMethod = null): float
     {
-        $shipping = config('commerce.shipping', []);
-        $threshold = (float) config('commerce.free_shipping_threshold', 250);
-
         $fee = match ($deliveryMethod) {
-            'click_collect' => (float) ($shipping['click_collect'] ?? 0),
-            'same_day' => (float) ($shipping['same_day'] ?? 40),
-            default => $merchandiseSubtotal >= $threshold
+            'click_collect' => 0.0,
+            'same_day' => CommerceSettings::sameDayFee(),
+            default => $merchandiseSubtotal >= CommerceSettings::freeShippingThreshold()
                 ? 0.0
-                : (float) ($shipping['standard'] ?? 25),
+                : CommerceSettings::standardShippingFee(),
         };
 
         if ($paymentMethod === 'cod' && $deliveryMethod !== 'click_collect') {
-            $fee += (float) ($shipping['cod_fee'] ?? 20);
+            $fee += CommerceSettings::codFee();
         }
 
         return round($fee, 2);
@@ -31,6 +30,6 @@ class ShippingCalculator
 
     public function freeShippingThreshold(): float
     {
-        return (float) config('commerce.free_shipping_threshold', 250);
+        return CommerceSettings::freeShippingThreshold();
     }
 }

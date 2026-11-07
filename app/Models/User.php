@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -14,12 +17,24 @@ use Illuminate\Notifications\Notifiable;
     'name', 'email', 'password', 'phone', 'loyalty_tier', 'loyalty_points',
     'date_of_birth', 'gender', 'preferred_language', 'preferred_store',
     'marketing_preferences',
+    'is_admin', 'role', 'two_factor_secret', 'two_factor_recovery_codes',
+    'two_factor_confirmed_at', 'last_login_at',
 ])]
 #[Hidden(['password', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
+    public const ROLE_ADMIN = 'admin';
+
+    public const ROLE_MANAGER = 'manager';
+
+    public const ROLE_SUPPORT = 'support';
+
+    public const ROLE_CUSTOMER = null;
+
+    public const LOYALTY_TIERS = ['member', 'silver', 'gold', 'platinum'];
 
     protected function casts(): array
     {
@@ -35,6 +50,16 @@ class User extends Authenticatable implements MustVerifyEmail
             'two_factor_confirmed_at' => 'datetime',
             'last_login_at' => 'datetime',
         ];
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return null;
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->isStaff();
     }
 
     public function addresses()

@@ -11,10 +11,10 @@ use App\Models\Product;
 use App\Models\Store;
 use App\Services\Checkout\InsufficientStockException;
 use App\Services\Checkout\PlaceOrderService;
-use App\Services\Commerce\OrderTotals;
 use App\Services\Commerce\ShippingCalculator;
 use App\Services\Orders\OrderStateMachine;
 use App\Services\Payments\PaymentManager;
+use App\Services\Payments\WebhookProcessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -209,33 +209,12 @@ class CheckoutController extends Controller
             ['type' => $event['type'] ?? null, 'payload' => $event],
         );
 
-        if ($record->processed_at !== null) {
-            return response()->json(['ok' => true, 'duplicate' => true]);
-        }
+        $result = app(WebhookProcessor::class)->process($record);
 
-        $type = (string) ($event['type'] ?? '');
-        $object = $event['data']['object'] ?? [];
-        $object = is_array($object) ? $object : [];
-        $orderNumber = $object['client_reference_id']
-            ?? ($object['metadata']['order_number'] ?? null);
-        $orderNumber = is_string($orderNumber) && $orderNumber !== '' ? $orderNumber : null;
-
-        if ($orderNumber && in_array($type, ['checkout.session.completed', 'payment_intent.succeeded'], true)) {
-            $order = Order::where('order_number', $orderNumber)->first();
-
-            if ($order && $order->payment_status !== 'paid') {
-                $states->markPaid(
-                    $order,
-                    $gateway,
-                    (string) ($object['id'] ?? $object['payment_intent'] ?? ''),
-                    $object,
-                );
-            }
-        }
-
-        $record->forceFill(['processed_at' => now()])->save();
-
-        return response()->json(['ok' => true]);
+        return response()->json([
+            'ok' => $result['ok'],
+            'duplicate' => $result['duplicate'],
+        ]);
     }
 
     public function confirmation(Request $request, string $orderNumber)

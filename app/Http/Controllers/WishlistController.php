@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\WishlistItem;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class WishlistController extends Controller
@@ -14,7 +13,7 @@ class WishlistController extends Controller
             'product_id' => 'required|integer|exists:products,id',
         ]);
 
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Please sign in to save items to your wishlist.',
@@ -47,6 +46,7 @@ class WishlistController extends Controller
     public function index()
     {
         $products = auth()->user()->wishlist()->with(['brand', 'images'])->get();
+
         return view('account.wishlist', ['products' => $products]);
     }
 }

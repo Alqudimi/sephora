@@ -1,0 +1,151 @@
+@extends('layouts.app')
+
+@section('title', 'My Account | SEPHORA UAE')
+@section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
+
+@php
+    $currency = config('commerce.currency', 'AED');
+    $initial = Str::upper(Str::substr($user->name, 0, 1));
+@endphp
+
+@section('content')
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
+
+    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
+        <a class="hover:text-secondary" href="/">Home</a> /
+        <span class="text-on-surface font-semibold">My Account</span>
+    </nav>
+
+    {{-- Account sub-navigation --}}
+    <div class="flex flex-wrap items-center gap-2 pb-6 border-b border-outline-variant mb-8">
+        <a class="h-11 px-5 flex items-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider border border-primary" href="{{ route('account.dashboard') }}" aria-current="page">My Account</a>
+        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.orders') }}">Orders</a>
+        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.addresses') }}">Addresses</a>
+        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.wishlist') }}">Wishlist</a>
+        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.settings') }}">Settings</a>
+        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.privacy') }}">Privacy</a>
+        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.contact') }}">Contact Us</a>
+    </div>
+
+    @if (session('verified'))
+        <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">Your email address has been verified. Thank you.</div>
+    @endif
+    @if (session('settings_saved'))
+        <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">Your settings have been saved.</div>
+    @endif
+    @if (session('address_saved'))
+        <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">Your address has been saved.</div>
+    @endif
+
+    @unless ($user->hasVerifiedEmail())
+        <div class="border border-outline bg-surface-container-low px-4 py-3 mb-6 font-body-sm text-body-sm flex flex-wrap items-center justify-between gap-2">
+            <span>Your email address is not verified yet. Verify it to secure your account.</span>
+            <a class="underline text-primary font-semibold" href="{{ route('verification.notice') }}">Verify email</a>
+        </div>
+    @endunless
+
+    {{-- Welcome --}}
+    <section class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 mb-8">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <span class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold" aria-hidden="true">{{ $initial }}</span>
+                <div>
+                    <p class="font-label-caps text-label-caps uppercase tracking-widest text-outline">Welcome back</p>
+                    <h1 class="font-headline-md text-headline-md font-bold text-primary">{{ $user->name }}</h1>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">{{ $user->email }}</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-outline">MY SEPHORA</p>
+                <p class="font-title-lg text-title-lg font-bold text-primary">{{ $user->loyalty_tier ? ucfirst($user->loyalty_tier) : 'Member' }}</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">{{ number_format((int) $user->loyalty_points) }} points</p>
+            </div>
+        </div>
+    </section>
+
+    {{-- Stats --}}
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.orders') }}">
+            <span class="material-symbols-outlined text-outline text-[22px]">receipt_long</span>
+            <p class="font-price-aed-lg text-price-aed-lg font-bold text-primary mt-2">{{ number_format($stats['orders']) }}</p>
+            <p class="font-label-caps text-label-caps uppercase text-outline mt-1">Orders</p>
+        </a>
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.wishlist') }}">
+            <span class="material-symbols-outlined text-outline text-[22px]">favorite</span>
+            <p class="font-price-aed-lg text-price-aed-lg font-bold text-primary mt-2">{{ number_format($stats['wishlist']) }}</p>
+            <p class="font-label-caps text-label-caps uppercase text-outline mt-1">Saved items</p>
+        </a>
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.addresses') }}">
+            <span class="material-symbols-outlined text-outline text-[22px]">home_pin</span>
+            <p class="font-price-aed-lg text-price-aed-lg font-bold text-primary mt-2">{{ number_format($stats['addresses']) }}</p>
+            <p class="font-label-caps text-label-caps uppercase text-outline mt-1">Addresses</p>
+        </a>
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.contact') }}">
+            <span class="material-symbols-outlined text-outline text-[22px]">support_agent</span>
+            <p class="font-price-aed-lg text-price-aed-lg font-bold text-primary mt-2">24h</p>
+            <p class="font-label-caps text-label-caps uppercase text-outline mt-1">Concierge reply</p>
+        </a>
+    </section>
+
+    {{-- Recent orders --}}
+    <section class="border border-outline-variant bg-surface-container-lowest mb-8">
+        <header class="flex flex-wrap items-center justify-between gap-2 px-5 py-4 border-b border-outline-variant">
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Recent orders</h2>
+            <a class="font-body-sm text-body-sm underline text-primary hover:text-secondary" href="{{ route('account.orders') }}">View all orders</a>
+        </header>
+
+        @if ($orders->isEmpty())
+            <div class="px-5 py-14 text-center">
+                <span class="material-symbols-outlined text-[40px] text-outline-variant">receipt_long</span>
+                <p class="font-body-md text-body-md text-primary mt-2">You have not placed an order yet.</p>
+                <a class="inline-block mt-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 py-3 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" href="/shop/bestsellers">Start shopping</a>
+            </div>
+        @else
+            <div class="overflow-x-auto">
+                <table class="w-full text-left font-body-sm text-body-sm min-w-[640px]">
+                    <thead class="bg-surface-container text-on-surface-variant font-label-caps text-label-caps uppercase">
+                        <tr>
+                            <th class="px-5 py-3">Order</th>
+                            <th class="px-5 py-3">Date</th>
+                            <th class="px-5 py-3">Status</th>
+                            <th class="px-5 py-3">Total</th>
+                            <th class="px-5 py-3 text-right">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)
+                            <tr class="border-t border-outline-variant">
+                                <td class="px-5 py-3 font-semibold text-primary whitespace-nowrap">{{ $order->order_number }}</td>
+                                <td class="px-5 py-3 whitespace-nowrap">{{ $order->placed_at?->format('d M Y') ?? $order->created_at?->format('d M Y') }}</td>
+                                <td class="px-5 py-3">
+                                    <span class="font-label-tag text-label-tag uppercase px-2 py-0.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
+                                </td>
+                                <td class="px-5 py-3 font-bold whitespace-nowrap">{{ $currency }} {{ number_format($order->total, 2) }}</td>
+                                <td class="px-5 py-3 text-right">
+                                    <a class="underline text-primary hover:text-secondary whitespace-nowrap" href="{{ route('account.orders.show', $order->order_number) }}">View</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
+    </section>
+
+    {{-- Account shortcuts --}}
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.settings') }}">
+            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">Settings</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Update your profile, password and preferences.</p>
+        </a>
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.country-language') }}">
+            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">Country &amp; language</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Choose the language used on your account.</p>
+        </a>
+        <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.contact') }}">
+            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">Client concierge</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Send a message and our team will reply within 24 hours.</p>
+        </a>
+    </section>
+</main>
+@endsection

@@ -56,6 +56,34 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Force HTTPS
+    |--------------------------------------------------------------------------
+    |
+    | When the site is served behind a TLS-terminating proxy (nginx, load
+    | balancer), this makes the app 301-redirect any insecure request and
+    | generate every URL (assets, redirects, signed links) with https://.
+    | Enable on any real production domain.
+    |
+    */
+
+    'force_https' => (bool) env('APP_FORCE_HTTPS', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Trusted Proxies
+    |--------------------------------------------------------------------------
+    |
+    | Comma-separated list of proxy IPs allowed to set X-Forwarded-* headers
+    | (e.g. "127.0.0.1,10.0.0.0/8"), or "*" to trust any hop (only when the
+    | proxy chain itself is trusted). Required for correct client IPs, HTTPS
+    | detection and rate limiting behind a reverse proxy.
+    |
+    */
+
+    'trusted_proxies' => env('TRUSTED_PROXIES'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |

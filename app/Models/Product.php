@@ -102,4 +102,21 @@ class Product extends Model
     {
         return $query->where('stock', '>', 0);
     }
+
+    /**
+     * Recalculate the denormalized `rating` and `reviews_count` columns
+     * from approved reviews. Called after review moderation changes.
+     */
+    public function recalculateRating(): void
+    {
+        $aggregate = $this->allReviews()
+            ->where('is_approved', true)
+            ->selectRaw('COUNT(*) AS count, COALESCE(AVG(rating), 0) AS average')
+            ->first();
+
+        $this->forceFill([
+            'reviews_count' => (int) ($aggregate->count ?? 0),
+            'rating' => round((float) ($aggregate->average ?? 0), 2),
+        ])->save();
+    }
 }

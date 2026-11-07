@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
     public function index()
     {
         $brands = Brand::orderBy('name')->get()->groupBy(fn ($b) => strtoupper(substr($b->name, 0, 1)));
+
         return view('pages.brands', ['groupedBrands' => $brands]);
     }
 

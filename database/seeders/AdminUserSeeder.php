@@ -16,7 +16,35 @@ class AdminUserSeeder extends Seeder
                 'name' => 'Store Administrator',
                 'password' => Hash::make('Sephora@Admin2024'),
                 'is_admin' => true,
+                'role' => 'admin',
                 'loyalty_tier' => 'gold',
+                'loyalty_points' => 0,
+            ]
+        );
+
+        // Demo manager: catalogue, marketing, orders, refunds, customers, content.
+        User::updateOrCreate(
+            ['email' => 'manager@sephora.test'],
+            [
+                'name' => 'Catalog Manager',
+                'password' => Hash::make('Sephora@Manager2024'),
+                'is_admin' => false,
+                'role' => 'manager',
+                'loyalty_tier' => 'member',
+                'loyalty_points' => 0,
+            ]
+        );
+
+        // Demo support agent: read-only operations + order fulfilment +
+        // review moderation — no money movement, no privacy areas.
+        User::updateOrCreate(
+            ['email' => 'support@sephora.test'],
+            [
+                'name' => 'Support Agent',
+                'password' => Hash::make('Sephora@Support2024'),
+                'is_admin' => false,
+                'role' => 'support',
+                'loyalty_tier' => 'member',
                 'loyalty_points' => 0,
             ]
         );

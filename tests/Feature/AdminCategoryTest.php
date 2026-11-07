@@ -2,9 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Filament\Resources\CategoryResource\Pages\CreateCategory;
+use App\Filament\Resources\CategoryResource\Pages\EditCategory;
+use App\Filament\Resources\CategoryResource\Pages\ListCategories;
 use App\Models\Category;
 use App\Models\User;
+use Filament\Actions\Testing\TestAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class AdminCategoryTest extends TestCase
@@ -19,6 +24,7 @@ class AdminCategoryTest extends TestCase
 
         $this->admin = User::factory()->create([
             'is_admin' => true,
+            'role' => 'admin',
             'email' => 'admin@sephora.test',
             'two_factor_confirmed_at' => now(),
         ]);
@@ -26,12 +32,12 @@ class AdminCategoryTest extends TestCase
 
     public function test_guest_cannot_access_admin_categories(): void
     {
-        $this->get('/admin/categories')->assertRedirect('/sign-in');
+        $this->get('/admin/categories')->assertRedirect('/admin/login');
     }
 
     public function test_regular_user_cannot_access_admin_categories(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['two_factor_confirmed_at' => now()]);
 
         $this->actingAs($user)->get('/admin/categories')->assertForbidden();
     }
@@ -44,19 +50,22 @@ class AdminCategoryTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($this->admin)->post('/admin/categories', [
-            'name' => 'Lipsticks',
-            'parent_id' => $parent->id,
-            'hero_title' => 'Bold lips',
-            'hero_subtitle' => 'For every mood',
-            'hero_image' => 'images/categories/lips.webp',
-            'description' => 'All lipstick shades.',
-            'is_active' => '1',
-            'show_in_nav' => '1',
-            'sort_order' => 12,
-        ]);
+        $this->actingAs($this->admin);
 
-        $response->assertRedirect(route('admin.categories'));
+        Livewire::test(CreateCategory::class)
+            ->fillForm([
+                'name' => 'Lipsticks',
+                'slug' => 'lipsticks',
+                'parent_id' => $parent->id,
+                'hero_title' => 'Bold lips',
+                'hero_subtitle' => 'For every mood',
+                'description' => 'All lipstick shades.',
+                'is_active' => true,
+                'show_in_nav' => true,
+                'sort_order' => 12,
+            ])
+            ->call('create')
+            ->assertHasNoFormErrors();
 
         $category = Category::where('name', 'Lipsticks')->firstOrFail();
 
@@ -64,8 +73,9 @@ class AdminCategoryTest extends TestCase
         $this->assertSame($parent->id, $category->parent_id);
         $this->assertTrue($category->is_active);
         $this->assertTrue($category->show_in_nav);
-        $this->assertSame(12, $category->sort_order);
-        $this->assertSame('images/categories/lips.webp', $category->hero_image);
+        $this->assertSame(12, (int) $category->sort_order);
+        $this->assertSame('Bold lips', $category->hero_title);
+        $this->assertSame('For every mood', $category->hero_subtitle);
     }
 
     public function test_admin_can_update_category(): void
@@ -76,21 +86,24 @@ class AdminCategoryTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($this->admin)->put("/admin/categories/{$category->id}", [
-            'name' => 'Skin Care',
-            'slug' => 'skin-care',
-            'is_active' => '1',
-            'show_in_nav' => '0',
-            'sort_order' => 5,
-        ]);
+        $this->actingAs($this->admin);
 
-        $response->assertRedirect(route('admin.categories'));
+        Livewire::test(EditCategory::class, ['record' => $category->id])
+            ->fillForm([
+                'name' => 'Skin Care',
+                'slug' => 'skin-care',
+                'is_active' => true,
+                'show_in_nav' => false,
+                'sort_order' => 5,
+            ])
+            ->call('save')
+            ->assertHasNoFormErrors();
 
         $category->refresh();
 
         $this->assertSame('Skin Care', $category->name);
         $this->assertSame('skin-care', $category->slug);
-        $this->assertSame(5, $category->sort_order);
+        $this->assertSame(5, (int) $category->sort_order);
         $this->assertFalse($category->show_in_nav);
     }
 
@@ -102,9 +115,11 @@ class AdminCategoryTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($this->admin)->delete("/admin/categories/{$category->id}");
+        $this->actingAs($this->admin);
 
-        $response->assertRedirect(route('admin.categories'));
+        Livewire::test(ListCategories::class)
+            ->callAction(TestAction::make('delete')->table($category));
+
         $this->assertDatabaseMissing('categories', ['id' => $category->id]);
     }
 
@@ -119,11 +134,17 @@ class AdminCategoryTest extends TestCase
         $product = $this->makeProduct();
         $product->categories()->sync([$category->id]);
 
-        $response = $this->actingAs($this->admin)->delete("/admin/categories/{$category->id}");
+        $this->actingAs($this->admin);
 
-        $response->assertRedirect(route('admin.categories'));
-        $response->assertSessionHasErrors('category');
+        Livewire::test(ListCategories::class)
+            ->callAction(TestAction::make('delete')->table($category))
+            ->assertNotified('Category cannot be deleted');
+
         $this->assertDatabaseHas('categories', ['id' => $category->id]);
+        $this->assertDatabaseHas('category_product', [
+            'product_id' => $product->id,
+            'category_id' => $category->id,
+        ]);
     }
 
     public function test_category_slug_must_be_unique(): void
@@ -134,12 +155,16 @@ class AdminCategoryTest extends TestCase
             'is_active' => true,
         ]);
 
-        $response = $this->actingAs($this->admin)->post('/admin/categories', [
-            'name' => 'Another Makeup',
-            'slug' => 'makeup',
-        ]);
+        $this->actingAs($this->admin);
 
-        $response->assertSessionHasErrors('slug');
+        Livewire::test(CreateCategory::class)
+            ->fillForm([
+                'name' => 'Another Makeup',
+                'slug' => 'makeup',
+            ])
+            ->call('create')
+            ->assertHasFormErrors(['slug']);
+
         $this->assertDatabaseCount('categories', 1);
     }
 
@@ -154,7 +179,8 @@ class AdminCategoryTest extends TestCase
         $this->actingAs($this->admin)
             ->get("/admin/categories/{$category->id}/edit")
             ->assertOk()
-            ->assertSee('Edit: Fragrance')
-            ->assertSee('Save changes');
+            ->assertSee('Fragrance')
+            ->assertSee('Parent category')
+            ->assertSee('Show in navigation');
     }
 }

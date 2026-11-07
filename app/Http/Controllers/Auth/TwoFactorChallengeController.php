@@ -66,6 +66,6 @@ class TwoFactorChallengeController extends Controller
         $request->session()->regenerate();
         $user->forceFill(['last_login_at' => now()])->save();
 
-        return redirect()->intended($user->isStaff() ? route('admin.dashboard') : route('account.dashboard'));
+        return redirect()->intended($user->isStaff() ? route('filament.admin.pages.dashboard') : route('account.dashboard'));
     }
 }

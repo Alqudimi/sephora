@@ -5,8 +5,11 @@ namespace App\Listeners;
 use App\Mail\AdminNewOrderAlert;
 use App\Mail\OrderConfirmationMail;
 use App\Models\Setting;
+use App\Models\User;
+use App\Notifications\NewOrderPlacedNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 
 class SendOrderConfirmation implements ShouldQueue
 {
@@ -16,7 +19,8 @@ class SendOrderConfirmation implements ShouldQueue
 
     /**
      * Send the customer confirmation email (and an optional admin alert
-     * when the "admin_notify_email" setting is configured).
+     * when the "admin_notify_email" setting is configured), plus the
+     * in-panel database notification for every staff account.
      */
     public function handle(object $event): void
     {
@@ -28,6 +32,16 @@ class SendOrderConfirmation implements ShouldQueue
 
         if ($adminEmail = Setting::get('admin_notify_email')) {
             Mail::to($adminEmail)->send(new AdminNewOrderAlert($order));
+        }
+
+        $staff = User::query()
+            ->where(fn ($query) => $query
+                ->whereIn('role', ['admin', 'manager', 'support'])
+                ->orWhere('is_admin', true))
+            ->get();
+
+        if ($staff->isNotEmpty()) {
+            Notification::send($staff, new NewOrderPlacedNotification($order));
         }
     }
 }

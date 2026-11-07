@@ -66,7 +66,7 @@
           </p>
 </div>
 
-<form class="space-y-6" method="POST" action="{{ route('register') }}">
+<form class="space-y-6" method="POST" action="{{ route('register.store') }}">
 @csrf
 
 <!-- Name -->

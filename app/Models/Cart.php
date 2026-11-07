@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Services\Commerce\OrderTotals;
 use App\Services\Commerce\ShippingCalculator;
+use App\Support\CommerceSettings;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
@@ -96,7 +97,7 @@ class Cart extends Model
      */
     private static function mergeCarts(self $from, self $to): void
     {
-        $max = (int) config('commerce.max_quantity_per_item', 20);
+        $max = CommerceSettings::maxQuantityPerItem();
 
         foreach ($from->items()->with('product')->get() as $item) {
             $available = (int) ($item->product?->stock ?? 0);
@@ -139,7 +140,7 @@ class Cart extends Model
 
     public function freeShippingThreshold(): float
     {
-        return (float) config('commerce.free_shipping_threshold', 250);
+        return CommerceSettings::freeShippingThreshold();
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Services\Commerce\OrderTotals;
 use App\Services\Commerce\ShippingCalculator;
+use App\Support\CommerceSettings;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -107,7 +108,9 @@ class PlaceOrderService
                     'total' => $totals->total,
                     // Points accrue on merchandise spend only — never on
                     // delivery or cash-on-delivery fees.
-                    'loyalty_points_earned' => (int) floor(max(0, $totals->subtotal - $totals->discount)),
+                    'loyalty_points_earned' => CommerceSettings::loyaltyEnabled()
+                        ? (int) floor(max(0, $totals->subtotal - $totals->discount))
+                        : 0,
                     'samples' => $this->sanitizeSamples($validated['samples'] ?? []),
                     'gift_message' => $validated['gift_message'] ?? null,
                     'gift_box' => (bool) ($validated['gift_box'] ?? false),

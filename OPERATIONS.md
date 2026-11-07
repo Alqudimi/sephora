@@ -47,6 +47,9 @@ List them any time: `php artisan schedule:list`.
 ## 3. Monitoring & health
 
 - **Liveness**: `GET /up` → 200 (used by load balancers / uptime checks).
+- **Launch/health audit**: `php artisan app:production-check` — environment,
+  HTTPS, DB, storage, queue, mail, payments, seeder accounts, runtime.
+  `--strict` fails on warnings too (CI-friendly exit codes).
 - **Logs**: `storage/logs/laravel.log` — watch `production.ERROR` entries.
   Never log passwords or tokens (verified: none are logged).
 - **Failed jobs**: `php artisan queue:failed` → retry with `queue:retry {uuid|all}`,
@@ -90,6 +93,11 @@ do it in a maintenance window: update `.env`, then `php artisan config:cache`.
 | `storage/logs` | optional | weekly |
 
 ### Backup & restore (MySQL)
+
+Daily backups are automated by `deploy/backup.sh` (cron it at 02:00):
+DB dump + `.env` + uploaded media, gzipped into `storage/backups/<timestamp>/`
+with N-day rotation (`BACKUP_RETENTION_DAYS=30 ./deploy/backup.sh`).
+
 ```bash
 # Backup
 mysqldump --single-transaction --routines sephora | gzip > backup-$(date +%F).sql.gz
@@ -106,8 +114,10 @@ restore quarterly.
 
 ## 6. Deployments
 
-See `DEPLOYMENT.md`. Short version: git pull → `composer install --no-dev` →
-`php artisan migrate --force` → `config:route:view:cache` → `queue:restart`.
+See `DEPLOYMENT.md`. One command: `./deploy/deploy.sh`
+(backup → composer --no-dev → migrate --force → storage:link → caches →
+queue:restart → `/up` health check). Add `--with-maintenance` for risky
+migrations, `--skip-backup` to skip the pre-deploy snapshot.
 
 Rollback: `git checkout <previous-tag>` + `composer install` + restore the
 database dump taken pre-deploy (migrations are additive-first; see DEPLOYMENT.md).

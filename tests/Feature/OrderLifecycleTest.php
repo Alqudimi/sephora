@@ -2,11 +2,15 @@
 
 namespace Tests\Feature;
 
+use App\Filament\Resources\OrderResource\Pages\ViewOrder;
 use App\Models\AuditLog;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use App\Services\Orders\OrderStateMachine;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Gate;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class OrderLifecycleTest extends TestCase
@@ -52,14 +56,12 @@ class OrderLifecycleTest extends TestCase
     {
         $product = $this->makeProduct(['stock' => 48]);
         $order = $this->makeOrder($product, 2);
+        $admin = $this->admin();
 
-        $this->actingAs($this->admin())
-            ->patch(route('admin.orders.status', $order), [
-                'status' => 'cancelled',
-                'cancel_reason' => 'Customer changed their mind',
-            ])
-            ->assertRedirect()
-            ->assertSessionHasNoErrors();
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('cancel', data: ['cancel_reason' => 'Customer changed their mind']);
 
         $order->refresh();
 
@@ -75,16 +77,16 @@ class OrderLifecycleTest extends TestCase
         $order = $this->makeOrder($product, 2);
         $admin = $this->admin();
 
-        $this->actingAs($admin)->patch(route('admin.orders.status', $order), [
-            'status' => 'cancelled',
-            'cancel_reason' => 'Out of stock',
-        ])->assertSessionHasNoErrors();
+        $this->actingAs($admin);
 
-        $this->actingAs($admin)->patch(route('admin.orders.status', $order), [
-            'status' => 'refunded',
-            'refund_amount' => 200,
-            'refund_reference' => 'REF-123',
-        ])->assertSessionHasNoErrors();
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('cancel', data: ['cancel_reason' => 'Out of stock']);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('refund', data: [
+                'refund_amount' => 200,
+                'refund_reference' => 'REF-123',
+            ]);
 
         $order->refresh();
 
@@ -95,40 +97,72 @@ class OrderLifecycleTest extends TestCase
         $this->assertSame(50, $product->fresh()->stock, 'Stock must only be restored once.');
     }
 
-    public function test_refund_defaults_to_order_total_and_restores_stock(): void
+    public function test_refund_of_the_full_total_restores_stock(): void
     {
         $product = $this->makeProduct(['stock' => 48]);
         $order = $this->makeOrder($product, 2, 'delivered');
+        $admin = $this->admin();
 
-        $this->actingAs($this->admin())
-            ->patch(route('admin.orders.status', $order), [
-                'status' => 'refunded',
-            ])
-            ->assertSessionHasNoErrors();
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('refund', data: [
+                'refund_amount' => (float) $order->total,
+            ]);
 
         $order->refresh();
 
         $this->assertSame('refunded', $order->status);
         $this->assertSame('refunded', $order->payment_status);
-        $this->assertEquals(200.0, $order->refund_amount);
+        $this->assertEquals((float) $order->total, (float) $order->refund_amount);
         $this->assertSame(50, $product->fresh()->stock);
+    }
+
+    public function test_refund_cannot_exceed_the_order_total(): void
+    {
+        $product = $this->makeProduct(['stock' => 48]);
+        $order = $this->makeOrder($product, 2, 'delivered');
+        $admin = $this->admin();
+
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('refund', data: [
+                'refund_amount' => (float) $order->total + 1,
+            ])
+            ->assertHasFormErrors(['refund_amount']);
+
+        $this->assertSame('delivered', $order->fresh()->status);
+        $this->assertSame(48, $product->fresh()->stock, 'A rejected refund must never touch stock.');
     }
 
     public function test_invalid_transition_is_rejected_without_side_effects(): void
     {
         $product = $this->makeProduct(['stock' => 48]);
         $order = $this->makeOrder($product, 2);
+
+        // The state machine itself refuses impossible jumps…
+        $this->assertFalse(app(OrderStateMachine::class)->canTransition($order, 'delivered'));
+        $this->expectException(\InvalidArgumentException::class);
+        app(OrderStateMachine::class)->transition($order, 'delivered');
+    }
+
+    public function test_invalid_transition_action_is_hidden_from_the_ui(): void
+    {
+        $product = $this->makeProduct(['stock' => 48]);
+        $order = $this->makeOrder($product, 2);
         $admin = $this->admin();
 
-        $this->actingAs($admin)
-            ->patch(route('admin.orders.status', $order), ['status' => 'delivered'])
-            ->assertRedirect()
-            ->assertSessionHasErrors('status');
+        $this->actingAs($admin);
 
-        $order->refresh();
+        // …and the Filament UI never offers it in the first place.
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->assertActionHidden('transition_delivered')
+            ->assertActionVisible('transition_processing')
+            ->assertActionVisible('cancel');
 
-        $this->assertSame('pending', $order->status);
-        $this->assertNull($order->stock_restored_at);
+        $this->assertSame('pending', $order->fresh()->status);
+        $this->assertNull($order->fresh()->stock_restored_at);
         $this->assertSame(48, $product->fresh()->stock);
         $this->assertDatabaseMissing('audit_logs', [
             'auditable_type' => $order->getMorphClass(),
@@ -140,10 +174,16 @@ class OrderLifecycleTest extends TestCase
     {
         $product = $this->makeProduct(['stock' => 48]);
         $order = $this->makeOrder($product, 2);
+        $customer = User::factory()->create(['two_factor_confirmed_at' => now()]);
 
-        $this->actingAs(User::factory()->create())
-            ->patch(route('admin.orders.status', $order), ['status' => 'processing'])
+        $this->actingAs($customer)
+            ->get("/admin/orders/{$order->id}")
             ->assertForbidden();
+
+        // Even a crafted Livewire request is rejected: customers hold no
+        // OrderPolicy abilities at all.
+        $this->assertFalse(Gate::forUser($customer)->allows('updateStatus', $order));
+        $this->assertFalse(Gate::forUser($customer)->allows('view', $order));
 
         $this->assertSame('pending', $order->fresh()->status);
         $this->assertSame(48, $product->fresh()->stock);
@@ -155,9 +195,10 @@ class OrderLifecycleTest extends TestCase
         $order = $this->makeOrder($product, 2);
         $admin = $this->admin();
 
-        $this->actingAs($admin)
-            ->patch(route('admin.orders.status', $order), ['status' => 'processing'])
-            ->assertSessionHasNoErrors();
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('transition_processing');
 
         $log = AuditLog::query()
             ->where('auditable_type', $order->getMorphClass())
@@ -171,5 +212,49 @@ class OrderLifecycleTest extends TestCase
         $this->assertSame('pending', $log->old_values['status']);
         $this->assertSame('processing', $log->new_values['status']);
         $this->assertSame(50, $product->fresh()->stock);
+    }
+
+    public function test_admin_can_mark_a_pending_payment_as_paid(): void
+    {
+        $product = $this->makeProduct(['stock' => 20]);
+        $order = $this->makeOrder($product, 1, 'pending', 'pending');
+        $admin = $this->admin();
+
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->assertActionVisible('markPaid')
+            ->callAction('markPaid');
+
+        $order->refresh();
+
+        $this->assertSame('paid', $order->payment_status);
+        $this->assertSame('processing', $order->status);
+        $this->assertSame('manual', $order->payment_gateway);
+        $this->assertSame('admin-'.$admin->id, $order->payment_reference);
+
+        $this->assertDatabaseHas('audit_logs', [
+            'action' => 'order.payment.marked_paid',
+            'auditable_type' => $order->getMorphClass(),
+            'auditable_id' => $order->id,
+        ]);
+    }
+
+    public function test_shipped_transition_records_the_tracking_number(): void
+    {
+        $product = $this->makeProduct(['stock' => 30]);
+        $order = $this->makeOrder($product, 1, 'processing');
+        $admin = $this->admin();
+
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('transition_shipped', data: ['tracking_number' => 'DHL-123456789']);
+
+        $order->refresh();
+
+        $this->assertSame('shipped', $order->status);
+        $this->assertSame('DHL-123456789', $order->tracking_number);
+        $this->assertNotNull($order->shipped_at);
     }
 }

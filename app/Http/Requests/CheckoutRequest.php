@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Services\Payments\PaymentManager;
+use App\Support\CommerceSettings;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -38,7 +39,7 @@ class CheckoutRequest extends FormRequest
             'payment_method' => ['required', Rule::in($paymentMethods)],
             'gift_message' => ['nullable', 'string', 'max:400'],
             'gift_box' => ['nullable', 'boolean'],
-            'samples' => ['nullable', 'array', 'max:'.config('commerce.max_samples', 3)],
+            'samples' => ['nullable', 'array', 'max:'.CommerceSettings::maxSamples()],
             'samples.*' => [
                 'nullable',
                 'integer',

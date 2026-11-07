@@ -9,6 +9,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View as ViewInstance;
@@ -28,6 +29,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Behind a TLS-terminating proxy every generated URL (assets, signed
+        // guest-order links, redirects) must be https when APP_FORCE_HTTPS.
+        if (config('app.force_https')) {
+            URL::forceScheme('https');
+        }
+
         $this->configureRateLimiting();
         $this->shareStorefrontCounts();
 

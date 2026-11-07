@@ -113,7 +113,7 @@ class CategoryController extends Controller
             ->when($filters['new'], fn ($query) => $query->where('is_new', true))
             ->when($filters['in_stock'], fn ($query) => $query->where('stock', '>', 0))
             ->when($filters['q'], function ($query, $term) {
-                $like = '%' . $term . '%';
+                $like = '%'.$term.'%';
                 $query->where(fn ($inner) => $inner
                     ->where('name', 'like', $like)
                     ->orWhereHas('brand', fn ($brand) => $brand->where('name', 'like', $like)));

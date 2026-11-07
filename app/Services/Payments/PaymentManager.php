@@ -3,6 +3,7 @@
 namespace App\Services\Payments;
 
 use App\Models\Order;
+use Illuminate\Http\Request;
 use RuntimeException;
 
 class PaymentManager
@@ -60,7 +61,7 @@ class PaymentManager
         return $this->gatewayFor($order->payment_method)->confirm($order);
     }
 
-    public function verifyWebhook(string $gateway, \Illuminate\Http\Request $request): ?array
+    public function verifyWebhook(string $gateway, Request $request): ?array
     {
         return match ($gateway) {
             'stripe' => $this->stripe->verifyWebhook($request),

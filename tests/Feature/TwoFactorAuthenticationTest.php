@@ -77,7 +77,7 @@ class TwoFactorAuthenticationTest extends TestCase
 
         $this->post(route('two-factor.challenge.store'), [
             'code' => $authenticator->code($secret),
-        ])->assertRedirect(route('admin.dashboard'));
+        ])->assertRedirect(route('filament.admin.pages.dashboard'));
 
         $this->assertAuthenticatedAs($user->fresh());
         $this->assertNotNull($user->fresh()->last_login_at);
@@ -113,7 +113,7 @@ class TwoFactorAuthenticationTest extends TestCase
 
         $this->withPendingLogin($user)
             ->post(route('two-factor.challenge.store'), ['recovery_code' => $codes[0]])
-            ->assertRedirect(route('admin.dashboard'));
+            ->assertRedirect(route('filament.admin.pages.dashboard'));
 
         $this->assertAuthenticatedAs($user->fresh());
         $this->assertCount(7, $user->fresh()->two_factor_recovery_codes);

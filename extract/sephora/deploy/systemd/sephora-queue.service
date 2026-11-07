@@ -1,0 +1,30 @@
+# ─────────────────────────────────────────────────────────────────
+# SEPHORA UAE — queue worker (systemd alternative to supervisor)
+# Install:
+#   sudo cp deploy/systemd/sephora-queue.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now sephora-queue
+# ─────────────────────────────────────────────────────────────────
+
+[Unit]
+Description=Sephora UAE queue worker (order emails, notifications)
+After=network.target mysql.service mariadb.service
+
+[Service]
+User=www-data
+Group=www-data
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/php /var/www/sephora/artisan queue:work --tries=3 --backoff=60 --timeout=60 --sleep=1 --max-time=3600
+
+# Graceful shutdown: let the current job finish
+TimeoutStopSec=30
+KillSignal=SIGTERM
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/www/sephora/storage /var/www/sephora/bootstrap/cache
+
+[Install]
+WantedBy=multi-user.target

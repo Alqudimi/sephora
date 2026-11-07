@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+use App\Models\ContactMessage;
 use App\Models\Faq;
 use App\Models\Offer;
 use App\Models\Product;
@@ -36,12 +36,14 @@ class PageController extends Controller
     public function beautyOffers()
     {
         $offers = Offer::where('is_active', true)->orderBy('sort_order')->get();
+
         return view('pages.beauty-offers', ['offers' => $offers]);
     }
 
     public function beautyOffersAlt()
     {
         $offers = Offer::where('is_active', true)->orderBy('sort_order')->get();
+
         return view('pages.beauty-offers-alt', ['offers' => $offers]);
     }
 
@@ -60,17 +62,19 @@ class PageController extends Controller
             'message' => 'required|string|max:4000',
         ]);
 
-        \App\Models\ContactMessage::create($validated);
+        ContactMessage::create($validated);
 
         if ($request->expectsJson()) {
             return response()->json(['success' => true, 'message' => 'Thank you! Our client concierge will reply within 24 hours.']);
         }
+
         return back()->with('contact_success', true);
     }
 
     public function stores()
     {
         $stores = Store::orderBy('sort_order')->get();
+
         return view('pages.stores', ['stores' => $stores]);
     }
 
@@ -103,24 +107,28 @@ class PageController extends Controller
     public function cleanPlanetAware()
     {
         $cleanProducts = Product::active()->where('is_clean', true)->with(['brand', 'images'])->orderBy('sort_order')->limit(8)->get();
+
         return view('pages.clean', ['cleanProducts' => $cleanProducts]);
     }
 
     public function faq()
     {
         $faqs = Faq::category('general')->get();
+
         return view('pages.faq', ['faqs' => $faqs]);
     }
 
     public function faqDelivery()
     {
         $faqs = Faq::category('delivery')->get();
+
         return view('pages.faq-delivery', ['faqs' => $faqs]);
     }
 
     public function faqCancellation()
     {
         $faqs = Faq::category('cancellation_refund')->get();
+
         return view('pages.faq-cancellation', ['faqs' => $faqs]);
     }
 

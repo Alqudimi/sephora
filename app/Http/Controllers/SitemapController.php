@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 
 class SitemapController extends Controller
@@ -50,7 +51,7 @@ class SitemapController extends Controller
             $catalogueUpdatedAt = collect([
                 Product::max('updated_at'),
                 Category::max('updated_at'),
-            ])->filter()->map(fn ($date) => \Illuminate\Support\Carbon::parse($date))->max();
+            ])->filter()->map(fn ($date) => Carbon::parse($date))->max();
 
             $urls = [];
 

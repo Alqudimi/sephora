@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\Models\Product;
 use App\Models\User;
 
-class ProductPolicy
+class ProductPolicy extends PanelPolicy
 {
     /**
      * Every staff role may browse the catalogue from the admin panel.
@@ -26,21 +26,35 @@ class ProductPolicy
      */
     public function create(User $user): bool
     {
-        return $this->managesCatalogue($user);
+        return $this->managesContent($user);
     }
 
     public function update(User $user, Product $product): bool
     {
-        return $this->managesCatalogue($user);
+        return $this->managesContent($user);
     }
 
     public function delete(User $user, Product $product): bool
     {
-        return $this->managesCatalogue($user);
+        return $this->managesContent($user);
     }
 
-    private function managesCatalogue(User $user): bool
+    public function deleteAny(User $user): bool
     {
-        return (bool) $user->is_admin || $user->hasRole('admin', 'manager');
+        return $this->managesContent($user);
+    }
+
+    public function replicate(User $user, Product $product): bool
+    {
+        return $this->managesContent($user);
+    }
+
+    /**
+     * CSV exports of the catalogue are read operations — any staff
+     * member who can browse products can export them.
+     */
+    public function export(User $user): bool
+    {
+        return $this->isStaff($user);
     }
 }

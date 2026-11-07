@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Support\CommerceSettings;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -43,7 +44,7 @@ class CartController extends Controller
             return $this->respond($request, false, 'This product is out of stock.', 422);
         }
 
-        $max = min($available, (int) config('commerce.max_quantity_per_item', 20));
+        $max = min($available, CommerceSettings::maxQuantityPerItem());
         $quantity = min((int) ($validated['quantity'] ?? 1), $max);
         $cart = Cart::current();
 
@@ -88,7 +89,7 @@ class CartController extends Controller
             return $this->respond($request, false, 'This bag item no longer exists.', 404);
         }
 
-        $max = min((int) ($item->product?->stock ?? 0), (int) config('commerce.max_quantity_per_item', 20));
+        $max = min((int) ($item->product?->stock ?? 0), CommerceSettings::maxQuantityPerItem());
 
         if ($max <= 0) {
             $item->delete();

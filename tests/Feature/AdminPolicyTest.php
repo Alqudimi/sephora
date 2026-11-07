@@ -2,9 +2,18 @@
 
 namespace Tests\Feature;
 
+use App\Filament\Resources\CustomerResource;
+use App\Filament\Resources\OrderResource\Pages\ViewOrder;
+use App\Filament\Resources\ProductResource\Pages\CreateProduct;
+use App\Filament\Resources\ProductResource\Pages\EditProduct;
+use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
+use Filament\Actions\Testing\TestAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Gate;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class AdminPolicyTest extends TestCase
@@ -20,13 +29,13 @@ class AdminPolicyTest extends TestCase
         ]);
     }
 
-    private function makeOrder(string $status = 'pending'): Order
+    private function makeOrder(string $status = 'pending', string $paymentStatus = 'pending'): Order
     {
         return Order::create([
             'order_number' => 'AE-POL-'.substr(uniqid(), -8),
             'status' => $status,
             'payment_method' => 'card',
-            'payment_status' => $status === 'delivered' ? 'paid' : 'pending',
+            'payment_status' => $status === 'delivered' ? 'paid' : $paymentStatus,
             'delivery_method' => 'standard',
             'customer_name' => 'Policy Customer',
             'customer_phone' => '+971500000000',
@@ -42,18 +51,20 @@ class AdminPolicyTest extends TestCase
         $product = $this->makeProduct();
 
         $this->actingAs($support)->get('/admin/products')->assertOk();
+
+        // Filament authorises every resource page on mount AND on each
+        // Livewire hydration, so these 403s hold for forged requests too.
         $this->actingAs($support)->get('/admin/products/create')->assertForbidden();
         $this->actingAs($support)->get("/admin/products/{$product->id}/edit")->assertForbidden();
 
-        $this->actingAs($support)->post('/admin/products', [
-            'name' => 'Support Created Serum',
-            'price' => 120,
-            'stock' => 5,
-        ])->assertForbidden();
+        $this->assertFalse(Gate::forUser($support)->allows('create', Product::class));
+        $this->assertFalse(Gate::forUser($support)->allows('update', $product));
+        $this->assertFalse(Gate::forUser($support)->allows('delete', $product));
 
-        $this->actingAs($support)->delete("/admin/products/{$product->id}")->assertForbidden();
+        Livewire::test(ListProducts::class)
+            ->assertActionHidden(TestAction::make('delete')->table($product))
+            ->assertActionHidden(TestAction::make('replicate')->table($product));
 
-        $this->assertDatabaseMissing('products', ['name' => 'Support Created Serum']);
         $this->assertDatabaseHas('products', ['id' => $product->id]);
     }
 
@@ -64,20 +75,31 @@ class AdminPolicyTest extends TestCase
 
         $this->actingAs($manager)->get('/admin/products/create')->assertOk();
 
-        $this->actingAs($manager)->post('/admin/products', [
-            'name' => 'Manager Created Serum',
-            'price' => 150,
-            'stock' => 8,
-            'is_active' => true,
-        ])->assertRedirect(route('admin.products'));
+        $this->actingAs($manager);
+
+        Livewire::test(CreateProduct::class)
+            ->fillForm([
+                'name' => 'Manager Created Serum',
+                'slug' => 'manager-created-serum',
+                'description' => 'Created by a manager.',
+                'price' => 150,
+                'stock' => 8,
+                'is_active' => true,
+            ])
+            ->call('create')
+            ->assertHasNoFormErrors();
 
         $this->assertDatabaseHas('products', ['name' => 'Manager Created Serum']);
 
-        $this->actingAs($manager)->put("/admin/products/{$product->id}", [
-            'name' => 'Manager Updated Serum',
-            'price' => 110,
-            'stock' => 12,
-        ])->assertRedirect(route('admin.products'));
+        Livewire::test(EditProduct::class, ['record' => $product->id])
+            ->fillForm([
+                'name' => 'Manager Updated Serum',
+                'description' => 'Updated by a manager.',
+                'price' => 110,
+                'stock' => 12,
+            ])
+            ->call('save')
+            ->assertHasNoFormErrors();
 
         $this->assertDatabaseHas('products', ['id' => $product->id, 'name' => 'Manager Updated Serum']);
     }
@@ -87,20 +109,20 @@ class AdminPolicyTest extends TestCase
         $support = $this->staff('support');
         $order = $this->makeOrder();
 
-        $this->actingAs($support)
-            ->patch(route('admin.orders.status', $order), ['status' => 'processing'])
-            ->assertSessionHasNoErrors();
+        $this->actingAs($support);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->assertActionVisible('transition_processing')
+            ->callAction('transition_processing');
 
         $this->assertSame('processing', $order->fresh()->status);
 
         $delivered = $this->makeOrder('delivered');
 
-        $this->actingAs($support)
-            ->patch(route('admin.orders.status', $delivered), [
-                'status' => 'refunded',
-                'refund_amount' => 100,
-            ])
-            ->assertForbidden();
+        $this->assertFalse(Gate::forUser($support)->allows('refund', $delivered));
+
+        Livewire::test(ViewOrder::class, ['record' => $delivered->id])
+            ->assertActionHidden('refund');
 
         $delivered->refresh();
 
@@ -113,13 +135,14 @@ class AdminPolicyTest extends TestCase
         $manager = $this->staff('manager');
         $order = $this->makeOrder('delivered');
 
-        $this->actingAs($manager)
-            ->patch(route('admin.orders.status', $order), [
-                'status' => 'refunded',
+        $this->actingAs($manager);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->assertActionVisible('refund')
+            ->callAction('refund', data: [
                 'refund_amount' => 100,
                 'refund_reference' => 'rf_policy_1',
-            ])
-            ->assertSessionHasNoErrors();
+            ]);
 
         $order->refresh();
 
@@ -134,9 +157,10 @@ class AdminPolicyTest extends TestCase
         $admin = $this->staff('admin');
         $order = $this->makeOrder('delivered');
 
-        $this->actingAs($admin)
-            ->patch(route('admin.orders.status', $order), ['status' => 'refunded'])
-            ->assertSessionHasNoErrors();
+        $this->actingAs($admin);
+
+        Livewire::test(ViewOrder::class, ['record' => $order->id])
+            ->callAction('refund', data: ['refund_amount' => 100]);
 
         $this->assertSame('refunded', $order->fresh()->status);
     }
@@ -151,19 +175,67 @@ class AdminPolicyTest extends TestCase
 
         $this->actingAs($legacyAdmin)->get('/admin/products/create')->assertOk();
 
-        $this->actingAs($legacyAdmin)->post('/admin/products', [
-            'name' => 'Legacy Admin Serum',
-            'price' => 99,
-            'stock' => 3,
-            'is_active' => true,
-        ])->assertRedirect(route('admin.products'));
+        $this->actingAs($legacyAdmin);
+
+        Livewire::test(CreateProduct::class)
+            ->fillForm([
+                'name' => 'Legacy Admin Serum',
+                'slug' => 'legacy-admin-serum',
+                'description' => 'Created by a legacy boolean admin.',
+                'price' => 99,
+                'stock' => 3,
+                'is_active' => true,
+            ])
+            ->call('create')
+            ->assertHasNoFormErrors();
 
         $this->assertDatabaseHas('products', ['name' => 'Legacy Admin Serum']);
     }
 
+    /**
+     * Customer records are policy-guarded end to end: support reads,
+     * managers edit, only admins delete. (Regression: the CustomerPolicy
+     * used to be dead code because the User model has no UserPolicy by
+     * name, which left the resource open to every staff account.)
+     */
+    public function test_customer_records_follow_the_role_matrix(): void
+    {
+        $support = $this->staff('support');
+        $manager = $this->staff('manager');
+        $customer = User::factory()->create(['role' => null, 'is_admin' => false]);
+
+        // Support can browse and open, but never edit or delete.
+        $this->actingAs($support);
+        $this->assertTrue(CustomerResource::canViewAny());
+        $this->assertTrue(CustomerResource::canEdit($customer) === false);
+        $this->assertFalse(CustomerResource::canDelete($customer));
+        $this->assertFalse(CustomerResource::canCreate());
+
+        // Managers can create and edit, but not delete.
+        $this->actingAs($manager);
+        $this->assertTrue(CustomerResource::canViewAny());
+        $this->assertTrue(CustomerResource::canCreate());
+        $this->assertTrue(CustomerResource::canEdit($customer));
+        $this->assertFalse(CustomerResource::canDelete($customer));
+
+        // Deleting accounts is reserved for hard admins.
+        $admin = User::factory()->create([
+            'role' => 'admin',
+            'is_admin' => true,
+            'two_factor_confirmed_at' => now(),
+        ]);
+
+        $this->actingAs($admin);
+        $this->assertTrue(CustomerResource::canDelete($customer));
+    }
+
     public function test_customer_cannot_enter_the_admin_panel(): void
     {
-        $customer = User::factory()->create(['role' => 'customer', 'is_admin' => false]);
+        $customer = User::factory()->create([
+            'role' => 'customer',
+            'is_admin' => false,
+            'two_factor_confirmed_at' => now(),
+        ]);
 
         $this->actingAs($customer)->get('/admin')->assertForbidden();
         $this->actingAs($customer)->get('/admin/orders')->assertForbidden();

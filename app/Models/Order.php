@@ -58,6 +58,11 @@ class Order extends Model
         return $this->belongsTo(Store::class, 'store_id');
     }
 
+    public function auditLogs()
+    {
+        return $this->morphMany(AuditLog::class, 'auditable');
+    }
+
     public function scopeForUser($query, $userId)
     {
         return $query->where('user_id', $userId);

@@ -41,22 +41,51 @@ sudo mkdir -p /var/www && cd /var/www
 # copy the project folder here (rsync/scp/git), then:
 cd sephora
 composer install --no-dev --optimize-autoloader
-npm ci && npm run build
+# npm not needed on the server: public/build/ is pre-compiled in this package.
+# Only run `npm ci && npm run build` if you modified resources/css|js.
 ```
 
-## 4. Environment
+## 4. Environment — fast path (recommended)
+
+`app:go-production` performs steps 4, 5, 8 and 10 below in **one guided
+command**: it rewrites `.env` for your live domain (HTTPS, secure cookies,
+proxy headers, daily logs), optionally rotates `APP_KEY`, collects the MySQL /
+SMTP / Stripe credentials interactively (never echoed, never in shell
+history), rotates the seeder staff passwords to strong random values, removes
+the demo customer, runs migrations + seeders on the fresh MySQL database,
+warms every optimisation cache in a fresh PHP process and finishes with the
+production-check audit:
+
+```bash
+php artisan app:go-production
+# fully non-interactive variant (credentials still prompted):
+php artisan app:go-production --domain=your-domain.com --db=mysql --mail=smtp --payments=stripe --rotate-passwords --prune-demo
+```
+
+A timestamped `.env.backup-*` is written first, so the previous state can
+always be restored. Every value is validated before it is saved, and each
+section can be skipped (e.g. keep `log` mail while testing).
+
+## 4b. Environment — manual path (equivalent)
 
 ```bash
 cp .env.production.example .env
 php artisan key:generate        # sets APP_KEY
-nano .env                        # set DB_*, APP_URL, MAIL_*
+nano .env                        # set DB_*, APP_URL, MAIL_*, STRIPE_*
 ```
 
-## 5. Migrate & seed
+The template already enables `APP_FORCE_HTTPS`, `TRUSTED_PROXIES`,
+`SESSION_SECURE_COOKIE` and daily logs — do not turn those off on a live domain.
+
+## 5. Migrate, seed & link
+
+Run automatically by `app:go-production` when it can connect to MySQL;
+manually:
 
 ```bash
 php artisan migrate --force
 php artisan db:seed --force      # 129 products, 164 brands, 30 offers, FAQs, stores
+php artisan storage:link         # REQUIRED: admin product-image uploads
 ```
 
 > **Admin credentials created by the seeder**
@@ -85,6 +114,8 @@ sudo certbot --nginx -d your-domain.com
 
 ## 8. Optimize (production caches)
 
+`app:go-production` and `deploy/deploy.sh` both do this for you; manually:
+
 ```bash
 php artisan config:cache
 php artisan route:cache
@@ -92,15 +123,61 @@ php artisan view:cache
 php artisan event:cache 2>/dev/null || true
 ```
 
-## 9. Scheduler & queue (optional)
+> Never commit or copy `bootstrap/cache/*.php` between servers — a stale
+> `config.php` silently overrides the live `.env` (the test suite guards
+> against this class of bug with `test_production_optimisation_caches_build_cleanly`).
+
+## 9. Scheduler & queue workers
+
+The scheduler and queue worker are **required services** (order emails,
+housekeeping, abandoned-cart cleanup). Ready-made unit files ship in `deploy/`:
 
 ```bash
-# crontab -e
+# Scheduler — either a cron entry:
 * * * * * cd /var/www/sephora && php artisan schedule:run >> /dev/null 2>&1
+# …or systemd (no cron needed):
+sudo cp deploy/systemd/sephora-scheduler.{service,timer} /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now sephora-scheduler.timer
 
-# queue worker (if you enable Redis queues)
-php artisan queue:work --tries=3
+# Queue worker — supervisor:
+sudo cp deploy/supervisor/sephora-queue.conf /etc/supervisor/conf.d/
+sudo supervisorctl reread && sudo supervisorctl update
+# …or systemd:
+sudo cp deploy/systemd/sephora-queue.service /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now sephora-queue
+
+# Log rotation for worker logs:
+sudo cp deploy/logrotate/sephora.conf /etc/logrotate.d/sephora
 ```
+
+## 10. Pre-launch audit (the gate)
+
+```bash
+php artisan app:production-check
+```
+
+Audits 30+ launch requirements — environment, HTTPS & proxy headers, database,
+storage permissions, queue health, mail, payment keys, seeder-account rotation,
+PHP runtime and optimisation caches. **Every FAIL must be resolved** before
+opening the site (`--strict` also treats warnings as blocking). Then walk
+`deploy/LAUNCH-CHECKLIST.md` on launch day.
+
+PHP runtime tuning (OPcache off is a WARN in the audit):
+
+```bash
+sudo cp deploy/php/opcache.ini /etc/php/8.3/fpm/conf.d/20-opcache.ini
+sudo systemctl restart php8.3-fpm
+```
+
+## 11. Ongoing releases & backups
+
+```bash
+./deploy/deploy.sh               # release: backup → composer → migrate → caches → queue:restart → /up check
+./deploy/deploy.sh --with-maintenance --skip-backup   # variant flags
+./deploy/backup.sh               # manual backup (cron it at 02:00)
+```
+
+Both scripts are safe to re-run and log to `storage/logs/`.
 
 ---
 
@@ -129,29 +206,40 @@ php artisan queue:work --tries=3
 
 ## Payment gateways
 
-The checkout UI presents Card / Apple Pay / Tabby / Tamara / COD exactly as designed.
-`PlaceOrderService` records the chosen method and creates every order with
-`payment_status = pending`. To take **live payments**, integrate the gateway
-inside `App\Services\Checkout\PlaceOrderService::place()` **inside the DB
-transaction, before the order is created** — call the gateway authorize/charge
-API, then persist its reference and flip `payment_status` accordingly. On
-webhook confirmation, update `orders.payment_status` directly (idempotently by
-`order_number`). Recommended packages:
+Payments are **implemented and ready** — the checkout flow creates a Stripe
+Checkout Session, redirects the customer, verifies the signed webhook and
+updates the order (idempotently by event id; see `app/Services/Payments/`).
 
-- Stripe: `composer require stripe/stripe-php` (card, Apple Pay)
-- Tabby: https://docs.tabby.ai (BNPL)
-- Tamara: `composer require tamara-sdk/php` (BNPL)
+To activate live payments:
 
-Webhook endpoints should validate the gateway signature, be idempotent, and be
-exempted from CSRF (register them outside the `web` middleware group).
+1. Set `PAYMENTS_DRIVER=stripe`, `STRIPE_SECRET` (live key) and
+   `STRIPE_WEBHOOK_SECRET` in `.env`.
+2. Register the webhook endpoint in the Stripe dashboard:
+   `https://your-domain.com/payments/webhook/stripe`
+   (events: `checkout.session.completed`, `checkout.session.expired`,
+   `payment_intent.payment_failed` — or simply “send all events”).
+3. Tabby / Tamara currently present through Stripe's BNPL offering; for the
+   native BNPL APIs swap the gateway class behind the same interface
+   (`app/Services/Payments/PaymentGateway.php`).
+4. `cod` (Cash on Delivery) needs no configuration and is always available.
+
+The webhook route is CSRF-exempt, signature-verified (HMAC-SHA256 with
+timestamp tolerance), and every event is persisted in the `payment_webhook_events`
+table — inspectable from Admin → Shop → Payment webhooks (with a reprocess
+action).
 
 ## Backup
 
 ```bash
-# database
-mysqldump -u sephora_app -p sephora_uae | gzip > backup_$(date +%F).sql.gz
-# uploads & images
-tar czf images_$(date +%F).tar.gz public/images
+./deploy/backup.sh
+# → storage/backups/<timestamp>/database.sql.gz + env.backup + uploads.tar.gz
+# cron it at 02:00 for daily backups with 14-day rotation
+```
+
+Manual fallback:
+
+```bash
+mysqldump --single-transaction -u sephora_app -p sephora_uae | gzip > backup_$(date +%F).sql.gz
 ```
 
 ## Security checklist
@@ -167,20 +255,21 @@ tar czf images_$(date +%F).tar.gz public/images
 - [x] Rate limiting (login 5/min + 30/h; forms 6/min; checkout 10/h)
 - [x] Transactional order placement with atomic stock & coupon guards
 - [x] Guest order pages protected (session or signed URL only)
+- [x] HTTPS enforced at nginx **and** app level (301 redirect + `URL::forceScheme`)
+- [x] HSTS on TLS responses (app + nginx)
+- [x] Trusted proxy handling (`TRUSTED_PROXIES`) — correct client IPs for rate limiting
+- [x] Webhook signature verification (Stripe HMAC-SHA256, timestamp tolerance)
+- [x] Pre-launch audit gate: `php artisan app:production-check`
 - [ ] Rotate seeder admin password on first login
 - [ ] Enable HTTPS (certbot steps above)
 - [ ] Configure `MAIL_*` for order confirmation emails
 
 ## Post-deploy services (required)
 
-```bash
-# Scheduler — cron entry (once per server):
-* * * * * cd /var/www/sephora && php artisan schedule:run >> /dev/null 2>&1
-
-# Queue worker — supervisor (config in OPERATIONS.md §1):
-php artisan queue:work --tries=3 --backoff=60 --timeout=60
-```
+See §9 above — supervisor/systemd units and the cron entry all ship
+ready-made in `deploy/`.
 
 Order-confirmation emails, the daily abandoned-cart cleanup, and coupon
 expiry all depend on these two services. Full runbook: **OPERATIONS.md**.
-Architecture reference: **ARCHITECTURE.md**.
+Architecture reference: **ARCHITECTURE.md**. Launch-day walk-through:
+**LAUNCH-CHECKLIST.md**.

@@ -82,4 +82,10 @@ class Coupon extends Model
     {
         return $query->where('is_active', true);
     }
+
+    public function isExpired(): bool
+    {
+        return $this->expires_at !== null
+            && $this->expires_at->copy()->endOfDay()->isPast();
+    }
 }

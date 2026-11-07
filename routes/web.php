@@ -4,10 +4,6 @@ use App\Http\Controllers\Account\ContactController;
 use App\Http\Controllers\Account\PrivacyController;
 use App\Http\Controllers\Account\SecurityController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
@@ -94,7 +90,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/sign-in', [LoginController::class, 'showLogin'])->name('login');
     Route::post('/sign-in', [LoginController::class, 'login'])->middleware('throttle:login')->name('login.attempt');
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('/register', [RegisterController::class, 'register'])->middleware('throttle:forms')->name('register');
+    // Named differently from the GET form: duplicate names are tolerated in
+    // dev but make `php artisan route:cache` (production) throw.
+    Route::post('/register', [RegisterController::class, 'register'])->middleware('throttle:forms')->name('register.store');
 
     // Password reset
     Route::get('/forgot-password', [PasswordResetController::class, 'requestForm'])->name('password.request');
@@ -157,22 +155,5 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap')
 Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('sitemap.robots');
 
 // ── Admin panel ──
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/products', [AdminProductController::class, 'index'])->name('products');
-    Route::get('/products/create', [AdminProductController::class, 'create'])->name('products.create');
-    Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
-    Route::get('/products/{product}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
-    Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('products.update');
-    Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
-
-    Route::get('/categories', [AdminCategoryController::class, 'index'])->name('categories');
-    Route::get('/categories/create', [AdminCategoryController::class, 'create'])->name('categories.create');
-    Route::post('/categories', [AdminCategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories/{category}/edit', [AdminCategoryController::class, 'edit'])->name('categories.edit');
-    Route::put('/categories/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{category}', [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
-    Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
-    Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
-    Route::patch('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.status');
-});
+// The /admin area is now powered by Filament (see AdminPanelProvider).
+// Legacy Blade admin routes were removed in favour of the Filament panel.
