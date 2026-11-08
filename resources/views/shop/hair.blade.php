@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Sephora UAE | Haircare Category - Luxury Beauty E-Commerce')
-@section('body_class', 'bg-surface text-on-surface antialiased selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-20">

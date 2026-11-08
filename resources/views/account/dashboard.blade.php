@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'My Account | SEPHORA UAE')
-@section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @php
     $currency = config('commerce.currency', 'AED');

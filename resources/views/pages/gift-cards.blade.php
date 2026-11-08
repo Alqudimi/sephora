@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Gift Cards At Sephora | Sephora UAE Official Online Store')
-@section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md min-h-screen flex flex-col selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased min-h-screen flex flex-col selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Delivery FAQs | Sephora UAE Official')
-@section('body_class', 'bg-surface text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col font-body-md text-body-md')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

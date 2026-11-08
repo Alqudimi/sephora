@@ -32,12 +32,11 @@
     if ($filters['q']) {
         $activeFilters[] = ['label' => 'Search: “' . $filters['q'] . '”', 'key' => 'q'];
     }
-
 @endphp
 
 @section('title', $heroTitle . ' | SEPHORA UAE')
 @section('meta_description', Str::limit(strip_tags($heroSubtitle ?: 'Shop ' . $category->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.'), 155))
-@section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @php
     $canonicalUrl = $category->slug === 'all' ? route('shop.all') : route('shop.category', ['slug' => $category->slug]);
@@ -69,52 +68,56 @@
 @endsection
 
 @section('content')
-<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
+<main class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
 
-    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-on-surface-variant flex items-center flex-wrap gap-2 mb-6">
-        <a class="hover:text-primary transition-colors" href="/">Home</a>
-        <span class="text-outline-variant">/</span>
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
+        <a class="hover:text-black transition-colors" href="/">Home</a>
+        <span>/</span>
         @if ($category->slug !== 'all')
-            <a class="hover:text-primary transition-colors" href="{{ route('shop.all') }}">Shop</a>
-            <span class="text-outline-variant">/</span>
+            <a class="hover:text-black transition-colors" href="{{ route('shop.all') }}">Shop</a>
+            <span>/</span>
         @endif
-        <span class="text-primary font-semibold">{{ $category->name }}</span>
+        <span class="text-black font-semibold">{{ $category->name }}</span>
     </nav>
 
-    {{-- Category hero --}}
-    <section class="relative mb-8 overflow-hidden border border-outline-variant bg-primary text-on-primary">
-        @if ($category->hero_image)
-            <img src="{{ media_url($category->hero_image) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
-        @endif
-        <div class="relative px-6 py-10 md:px-10 md:py-14 max-w-3xl">
-            <span class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-on-primary/70 block mb-2">SEPHORA UAE</span>
-            <h1 class="font-headline-md text-headline-md md:text-[40px] leading-tight font-bold uppercase mb-3">{{ $heroTitle }}</h1>
-            @if ($heroSubtitle)
-                <p class="font-body-md text-body-md text-on-primary/80 max-w-xl">{{ Str::limit(strip_tags($heroSubtitle), 220) }}</p>
-            @endif
-            <p class="font-body-sm text-body-sm text-on-primary/60 mt-4">{{ number_format($total) }} product{{ $total === 1 ? '' : 's' }}</p>
+    <!-- Category Header -->
+    <section class="border-b border-gray-200 pb-5 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-black">
+                    {{ $heroTitle }}
+                </h1>
+                @if ($heroSubtitle)
+                    <p class="text-xs sm:text-sm text-neutral-600 mt-1 max-w-2xl">{{ Str::limit(strip_tags($heroSubtitle), 220) }}</p>
+                @endif
+            </div>
+            <span class="text-xs sm:text-sm text-neutral-500 font-medium shrink-0">
+                {{ number_format($total) }} {{ Str::plural('product', $total) }}
+            </span>
         </div>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-        {{-- Filters --}}
+        <!-- Filters Sidebar -->
         <aside class="lg:col-span-3">
-            <details open class="lg:block border border-outline-variant bg-surface-container-lowest">
-                <summary class="lg:hidden cursor-pointer list-none flex items-center justify-between px-4 py-4 font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">
-                    Filters
-                    <span class="material-symbols-outlined text-[20px]">tune</span>
+            <details open class="lg:block border border-gray-200 rounded-sm bg-white p-4">
+                <summary class="lg:hidden cursor-pointer list-none flex items-center justify-between font-bold text-xs uppercase tracking-wider text-black pb-2 border-b border-gray-200 mb-4">
+                    <span>Filters</span>
+                    <span class="text-xs underline">Toggle</span>
                 </summary>
 
-                <form method="GET" action="{{ route('shop.category', ['slug' => $category->slug]) }}" class="p-4 md:p-5 space-y-6">
+                <form method="GET" action="{{ route('shop.category', ['slug' => $category->slug]) }}" class="space-y-6">
                     @if (request()->filled('sort'))
                         <input type="hidden" name="sort" value="{{ $filters['sort'] }}">
                     @endif
 
+                    <!-- Brand Filter -->
                     <div>
-                        <label for="filter-brand" class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Brand</label>
-                        <select id="filter-brand" name="brand" class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
-                            <option value="">All brands</option>
+                        <label for="filter-brand" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Brand</label>
+                        <select id="filter-brand" name="brand" class="w-full h-10 border border-gray-300 rounded-sm bg-white px-3 text-xs text-black focus:outline-none focus:border-black">
+                            <option value="">All Brands</option>
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->slug }}" @selected($filters['brand'] === $brand->slug)>
                                     {{ $brand->name }} ({{ $brand->products_count }})
@@ -123,67 +126,72 @@
                         </select>
                     </div>
 
+                    <!-- Price Filter -->
                     <div>
-                        <span class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Price ({{ $currency }})</span>
+                        <span class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Price ({{ $currency }})</span>
                         <div class="flex items-center gap-2">
                             <label class="sr-only" for="filter-min-price">Minimum price</label>
                             <input id="filter-min-price" name="min_price" type="number" inputmode="numeric" min="0" max="{{ $maxBound }}"
                                    value="{{ $filters['min_price'] !== null ? (int) $filters['min_price'] : '' }}"
                                    placeholder="{{ $minBound }}"
-                                   class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
-                            <span class="text-outline">–</span>
+                                   class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs text-black focus:outline-none focus:border-black">
+                            <span class="text-gray-400">–</span>
                             <label class="sr-only" for="filter-max-price">Maximum price</label>
                             <input id="filter-max-price" name="max_price" type="number" inputmode="numeric" min="0" max="{{ $maxBound }}"
                                    value="{{ $filters['max_price'] !== null ? (int) $filters['max_price'] : '' }}"
                                    placeholder="{{ $maxBound }}"
-                                   class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
+                                   class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs text-black focus:outline-none focus:border-black">
                         </div>
                     </div>
 
+                    <!-- Quick Checkbox Refinements -->
                     <fieldset>
-                        <legend class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Refine</legend>
-                        <div class="space-y-2.5">
-                            <label class="flex items-center gap-2.5 cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
-                                <input type="checkbox" name="clean" value="1" @checked($filters['clean']) class="h-4 w-4 border-outline text-primary focus:ring-primary">
-                                Clean beauty
+                        <legend class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Refine</legend>
+                        <div class="space-y-2.5 text-xs text-neutral-700">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
+                                <input type="checkbox" name="clean" value="1" @checked($filters['clean']) class="rounded-sm border-gray-300 text-black focus:ring-black">
+                                Clean at Sephora
                             </label>
-                            <label class="flex items-center gap-2.5 cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
-                                <input type="checkbox" name="new" value="1" @checked($filters['new']) class="h-4 w-4 border-outline text-primary focus:ring-primary">
-                                New arrivals
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
+                                <input type="checkbox" name="new" value="1" @checked($filters['new']) class="rounded-sm border-gray-300 text-black focus:ring-black">
+                                New Arrivals
                             </label>
-                            <label class="flex items-center gap-2.5 cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
-                                <input type="checkbox" name="in_stock" value="1" @checked($filters['in_stock']) class="h-4 w-4 border-outline text-primary focus:ring-primary">
-                                In stock only
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
+                                <input type="checkbox" name="in_stock" value="1" @checked($filters['in_stock']) class="rounded-sm border-gray-300 text-black focus:ring-black">
+                                In Stock Only
                             </label>
                         </div>
                     </fieldset>
 
+                    <!-- Search Filter -->
                     <div>
-                        <label for="filter-q" class="block font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Search in {{ $category->name }}</label>
-                        <input id="filter-q" name="q" type="search" value="{{ $filters['q'] }}" placeholder="Product or brand"
-                               class="w-full h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary">
+                        <label for="filter-q" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Keyword</label>
+                        <input id="filter-q" name="q" type="search" value="{{ $filters['q'] }}" placeholder="Search products..."
+                               class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs text-black focus:outline-none focus:border-black">
                     </div>
 
+                    <!-- Submit & Reset -->
                     <div class="flex flex-col gap-2 pt-2">
-                        <button type="submit" class="h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all">
-                            Apply filters
+                        <button type="submit" class="h-10 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-neutral-800 transition-colors">
+                            Apply Filters
                         </button>
                         <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
-                           class="h-11 flex items-center justify-center border border-outline-variant text-primary font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-all">
-                            Clear all
+                           class="h-10 flex items-center justify-center border border-gray-300 rounded-sm text-black text-xs font-bold uppercase tracking-wider hover:border-black transition-colors">
+                            Clear All
                         </a>
                     </div>
                 </form>
             </details>
         </aside>
 
-        {{-- Results --}}
+        <!-- Product Grid & Sorting -->
         <div class="lg:col-span-9">
 
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
-                <p class="font-body-sm text-body-sm text-on-surface-variant">
-                    Showing <strong class="text-primary">{{ $products->firstItem() ?? 0 }}–{{ $products->lastItem() ?? 0 }}</strong>
-                    of <strong class="text-primary">{{ number_format($total) }}</strong>
+            <!-- Sorting & Count Bar -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5 pb-3 border-b border-gray-200">
+                <p class="text-xs text-neutral-600">
+                    Showing <strong class="text-black">{{ $products->firstItem() ?? 0 }}–{{ $products->lastItem() ?? 0 }}</strong>
+                    of <strong class="text-black">{{ number_format($total) }}</strong>
                     {{ Str::plural('product', $total) }}
                 </p>
 
@@ -193,18 +201,16 @@
                             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
                         @endif
                     @endforeach
-                    <label for="sort" class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant whitespace-nowrap">Sort by</label>
-                    <select id="sort" name="sort" class="h-11 border border-outline-variant bg-surface-container-lowest px-3 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary" onchange="this.form.submit()">
+                    <label for="sort" class="text-xs font-bold uppercase tracking-wider text-neutral-600 whitespace-nowrap">Sort By:</label>
+                    <select id="sort" name="sort" class="h-9 border border-gray-300 rounded-sm bg-white px-3 text-xs text-black focus:outline-none focus:border-black" onchange="this.form.submit()">
                         @foreach ($sortOptions as $value => $label)
                             <option value="{{ $value }}" @selected($filters['sort'] === $value)>{{ $label }}</option>
                         @endforeach
                     </select>
-                    <noscript>
-                        <button type="submit" class="h-11 px-3 border border-primary text-primary font-label-caps text-label-caps uppercase">Go</button>
-                    </noscript>
                 </form>
             </div>
 
+            <!-- Active Filter Chips -->
             @if ($activeFilters)
                 <div class="flex flex-wrap items-center gap-2 mb-5">
                     @foreach ($activeFilters as $chip)
@@ -214,23 +220,22 @@
                                 : [$chip['key'] => null, 'page' => null];
                         @endphp
                         <a href="{{ request()->fullUrlWithQuery($removeQuery) }}"
-                           class="inline-flex items-center gap-1.5 border border-outline-variant bg-surface-container-low px-3 py-1.5 font-body-sm text-body-sm text-primary hover:border-primary transition-colors">
-                            {{ $chip['label'] }}
-                            <span class="material-symbols-outlined text-[16px]">close</span>
-                            <span class="sr-only">Remove filter</span>
+                           class="inline-flex items-center gap-1.5 border border-gray-300 bg-gray-50 px-2.5 py-1 text-xs text-black hover:border-black rounded-sm transition-colors">
+                            <span>{{ $chip['label'] }}</span>
+                            <span class="text-gray-400 hover:text-black font-bold">&times;</span>
                         </a>
                     @endforeach
-                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}" class="font-body-sm text-body-sm text-secondary underline ml-1">Clear all</a>
+                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}" class="text-xs font-bold text-black underline ml-1">Clear all</a>
                 </div>
             @endif
 
+            <!-- Product Cards -->
             @if ($products->isEmpty())
-                <div class="border border-outline-variant bg-surface-container-lowest text-center py-20 px-6">
-                    <span class="material-symbols-outlined text-[40px] text-outline-variant">search_off</span>
-                    <h2 class="font-headline-sm text-headline-sm text-primary mt-3 mb-2">No products match these filters</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant mb-5">Try removing a filter or browsing the full category.</p>
+                <div class="border border-gray-200 rounded-sm bg-white text-center py-20 px-6">
+                    <h3 class="text-lg font-bold text-black mb-2">No products match these filters</h3>
+                    <p class="text-xs text-neutral-500 mb-5">Try removing some filters or browse all categories.</p>
                     <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
-                       class="inline-block bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-3 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all">
+                       class="inline-block bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-sm hover:bg-neutral-800 transition-colors">
                         Show all {{ $category->name }}
                     </a>
                 </div>
@@ -242,40 +247,15 @@
                 </div>
 
                 @if ($products->hasPages())
-                    <nav aria-label="Pagination" class="mt-10 flex flex-wrap items-center justify-center gap-1.5">
-                        @if ($products->onFirstPage())
-                            <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm cursor-not-allowed" aria-disabled="true">
-                                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> Previous
-                            </span>
-                        @else
-                            <a href="{{ $products->previousPageUrl() }}" rel="prev"
-                               class="h-10 px-3 flex items-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">
-                                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> Previous
-                            </a>
-                        @endif
-
-                        @foreach ($products->getUrlRange(max(1, $products->currentPage() - 2), min($products->lastPage(), $products->currentPage() + 2)) as $page => $url)
-                            @if ($page === $products->currentPage())
-                                <span aria-current="page" class="h-10 w-10 flex items-center justify-center bg-primary text-on-primary border border-primary font-body-sm text-body-sm font-bold">{{ $page }}</span>
-                            @else
-                                <a href="{{ $url }}" class="h-10 w-10 flex items-center justify-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">{{ $page }}</a>
-                            @endif
-                        @endforeach
-
-                        @if ($products->hasMorePages())
-                            <a href="{{ $products->nextPageUrl() }}" rel="next"
-                               class="h-10 px-3 flex items-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">
-                                Next <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
-                            </a>
-                        @else
-                            <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm cursor-not-allowed" aria-disabled="true">
-                                Next <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
-                            </span>
-                        @endif
-                    </nav>
+                    <div class="mt-10 flex justify-center">
+                        {{ $products->links() }}
+                    </div>
                 @endif
             @endif
+
         </div>
+
     </div>
+
 </main>
 @endsection

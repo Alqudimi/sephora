@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Access Denied | SEPHORA UAE')
-@section('body_class', 'bg-background text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col font-body-md text-body-md')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl flex items-center justify-center">

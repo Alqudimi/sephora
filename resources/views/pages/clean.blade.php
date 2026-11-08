@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Clean + Planet Aware at Sephora | SEPHORA UAE')
-@section('body_class', 'bg-surface-container-lowest text-on-surface antialiased font-body-md selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

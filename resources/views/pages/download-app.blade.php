@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Download the App | Sephora Middle East')
-@section('body_class', 'bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

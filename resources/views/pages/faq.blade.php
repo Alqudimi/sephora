@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Frequently Asked Questions | SEPHORA Middle East')
-@section('body_class', 'bg-background text-on-surface antialiased selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

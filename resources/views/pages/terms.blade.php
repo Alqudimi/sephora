@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Terms & Conditions | SEPHORA UAE Official Luxury Beauty')
-@section('body_class', 'bg-surface text-on-surface antialiased selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

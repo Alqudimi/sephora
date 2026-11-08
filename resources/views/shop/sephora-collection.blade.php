@@ -206,50 +206,7 @@
 </article>
 <!-- Products Loop -->
 @foreach($products as $product)
-<article class="product-card group flex flex-col justify-between border border-gray-200 hover:border-black p-2.5 sm:p-3 transition-all relative">
-<div>
-<!-- Image & Badges Container -->
-<div class="relative aspect-square bg-[#fbfbfb] mb-3 overflow-hidden flex items-center justify-center">
-<!-- Badge -->
-@if($product->badge)
-<span class="absolute top-2 left-2 z-10 bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wide">
-  {{ $product->badge }}
-</span>
-@elseif($product->is_new)
-<span class="absolute top-2 left-2 z-10 bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wide">
-  New
-</span>
-@endif
-<!-- Wishlist Heart -->
-<button type="button" class="absolute top-2 right-2 z-10 text-neutral-400 hover:text-black transition-colors p-1" data-wishlist-toggle="{{ $product->id }}" title="Save to Wishlist">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="w-full h-full flex items-center justify-center p-3">
-  <img alt="{{ $product->name }}" class="product-img object-contain w-full h-full transition-transform duration-300 group-hover:scale-105" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
-</a>
-</div>
-<!-- Product Info -->
-<div class="space-y-1">
-<span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-neutral-900 block truncate">SEPHORA COLLECTION</span>
-<h3 class="text-xs font-medium text-neutral-800 line-clamp-2 hover:underline">
-  <a href="{{ route('product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
-</h3>
-<!-- Ratings -->
-<div class="flex items-center gap-1.5 pt-1">
-  @include('components.stars', ['rating' => (float) $product->rating])
-  <span class="text-[11px] text-neutral-500 font-medium">{{ number_format((float) $product->rating, 1) }} ({{ number_format((int) $product->reviews_count) }})</span>
-</div>
-<!-- Price -->
-<div class="pt-1.5">
-<span class="text-xs sm:text-sm font-bold text-neutral-900">AED {{ number_format($product->price, 2) }}</span>
-</div>
-</div>
-</div>
-<!-- Action Button -->
-<button type="button" class="quick-add-btn mt-3 w-full bg-black text-white text-[11px] sm:text-xs font-bold py-2 sm:py-2.5 uppercase tracking-wider hover:bg-neutral-800 transition-colors" data-add-to-bag="{{ $product->id }}">
-  ADD TO BAG
-</button>
-</article>
+    <x-product-card :product="$product" />
 @endforeach
 </div>
 <!-- Pagination & Load More Section -->

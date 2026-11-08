@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'All Brands Directory | SEPHORA UAE Official')
-@section('body_class', 'bg-background text-on-surface antialiased font-body-md text-body-md flex flex-col min-h-screen selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased flex flex-col min-h-screen selection:bg-black selection:text-white')
 
 @section('head')
 @endsection

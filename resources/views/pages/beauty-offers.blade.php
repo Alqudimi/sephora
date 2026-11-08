@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Beauty Offers | SEPHORA UAE')
-@section('body_class', 'bg-surface text-on-surface font-body-md antialiased selection:bg-primary selection:text-on-primary')
+@section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
 @endsection
