@@ -20,7 +20,7 @@ ehthumbs.db
 .project
 .settings/
 .vscode/
-
+storage
 # Environment (sempre ignorar – não dependem da stack)
 *.env
 .env
