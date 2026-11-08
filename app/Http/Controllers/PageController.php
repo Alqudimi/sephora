@@ -14,22 +14,82 @@ class PageController extends Controller
     public function home()
     {
         $holidayProducts = Product::active()
-            ->whereHas('categories', fn ($q) => $q->where('slug', 'gifts'))
+            ->where(function ($q) {
+                $q->whereHas('categories', fn ($c) => $c->whereIn('slug', ['gifts', 'sets', 'minis-more']))
+                  ->orWhere('name', 'like', '%set%')
+                  ->orWhere('name', 'like', '%holiday%')
+                  ->orWhere('name', 'like', '%kit%')
+                  ->orWhere('name', 'like', '%palette%');
+            })
             ->with(['brand', 'images'])
             ->orderBy('sort_order')
-            ->limit(4)
+            ->limit(8)
             ->get();
+
+        if ($holidayProducts->count() < 8) {
+            $holidayProducts = Product::active()->with(['brand', 'images'])->orderBy('sort_order')->limit(8)->get();
+        }
+
+        $fragrances = Product::active()
+            ->whereHas('categories', fn ($q) => $q->where('slug', 'fragrance'))
+            ->with(['brand', 'images'])
+            ->orderBy('sort_order')
+            ->limit(8)
+            ->get();
+
+        if ($fragrances->count() < 8) {
+            $fragrances = Product::active()->with(['brand', 'images'])->inRandomOrder()->limit(8)->get();
+        }
+
+        $bestsellers = Product::active()
+            ->where('is_bestseller', true)
+            ->with(['brand', 'images'])
+            ->orderBy('sort_order')
+            ->limit(8)
+            ->get();
+
+        if ($bestsellers->count() < 8) {
+            $bestsellers = Product::active()->where('rating', '>=', 4.5)->with(['brand', 'images'])->orderByDesc('reviews_count')->limit(8)->get();
+        }
 
         $justDropped = Product::active()
-            ->whereHas('categories', fn ($q) => $q->where('slug', 'new'))
+            ->where(function ($q) {
+                $q->where('is_new', true)
+                  ->orWhereHas('categories', fn ($c) => $c->where('slug', 'new'));
+            })
             ->with(['brand', 'images'])
-            ->orderBy('sort_order')
-            ->limit(4)
+            ->orderByDesc('id')
+            ->limit(8)
             ->get();
 
+        if ($justDropped->count() < 8) {
+            $justDropped = Product::active()->with(['brand', 'images'])->orderByDesc('id')->limit(8)->get();
+        }
+
+        $sephoraCollection = Product::active()
+            ->whereHas('brand', fn ($q) => $q->where('name', 'like', '%Sephora Collection%'))
+            ->with(['brand', 'images'])
+            ->orderBy('sort_order')
+            ->limit(8)
+            ->get();
+
+        if ($sephoraCollection->count() < 4) {
+            $sephoraCollection = Product::active()->with(['brand', 'images'])->limit(8)->get();
+        }
+
+        $featuredBrands = \App\Models\Brand::whereIn('name', [
+            'Huda Beauty', 'Fenty Beauty', 'Rare Beauty', 'Dior', 'Sol De Janeiro',
+            'Caudalie', 'Anastasia Beverly Hills', 'Makeup By Mario', 'Hourglass',
+            'Too Faced', 'Chanel', 'Sephora Collection', 'Benefit Cosmetics', 'Tarte'
+        ])->select('id', 'name', 'slug')->get();
+
         return view('pages.home', [
-            'holidayProducts' => $holidayProducts->count() >= 4 ? $holidayProducts : Product::active()->with(['brand', 'images'])->orderBy('sort_order')->limit(4)->get(),
-            'justDropped' => $justDropped->count() >= 4 ? $justDropped : Product::active()->with(['brand', 'images'])->orderByDesc('id')->limit(4)->get(),
+            'holidayProducts' => $holidayProducts,
+            'fragrances' => $fragrances,
+            'bestsellers' => $bestsellers,
+            'justDropped' => $justDropped,
+            'sephoraCollection' => $sephoraCollection,
+            'featuredBrands' => $featuredBrands,
         ]);
     }
 

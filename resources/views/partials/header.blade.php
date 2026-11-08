@@ -9,12 +9,22 @@
 @endphp
 
 <!-- BEGIN: AnnouncementBar -->
-<div class="bg-[#f2efe9] text-black text-[12px] md:text-[13px] py-2 px-3 sm:px-4 text-center font-normal tracking-tight border-b border-neutral-200" data-purpose="top-announcement">
-    <p class="leading-normal break-words max-w-4xl mx-auto">
-        <span class="font-bold">Want to turn heads?</span>
-        Your signature scent starts here. Discover the collection and layer without limits
-        <a class="underline font-bold hover:text-gray-700 ml-1 whitespace-nowrap inline-block" href="/shop/fragrance">SHOP NOW</a>
-    </p>
+<div class="bg-black text-white text-[11px] sm:text-[12px] py-2 px-3 sm:px-4 text-center font-normal tracking-wide border-b border-neutral-800" data-purpose="top-announcement">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-neutral-700">
+        <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <strong>FREE DELIVERY</strong> on orders above 250 AED
+        </span>
+        <span class="hidden sm:inline-flex items-center gap-1.5 pl-4 text-neutral-300">
+            <strong>3 FREE SAMPLES</strong> with every order
+        </span>
+        <span class="hidden md:inline-flex items-center gap-1.5 pl-4 text-neutral-300">
+            <strong>100% AUTHENTIC</strong> guaranteed
+        </span>
+        <a class="underline font-bold text-white hover:text-neutral-300 pl-0 sm:pl-4 transition-colors whitespace-nowrap inline-block" href="/shop/fragrance">
+            STACK YOUR SCENT &rarr;
+        </a>
+    </div>
 </div>
 <!-- END: AnnouncementBar -->
 
@@ -137,10 +147,7 @@
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/gifts"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-bold text-[#b45309] hover:text-[#78350f] transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#b45309] after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span class="inline-flex items-center gap-1">
-                    <svg class="w-3.5 h-3.5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    The Holiday Collection
-                </span>
+                <span>The Holiday Collection</span>
                 <svg class="w-3 h-3 text-amber-500/70 group-hover:text-amber-800 transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -1033,52 +1040,7 @@
             </div>
         </div>
 
-        {{-- 12. Best Sellers (Very Short Panel / Quick Filter) --}}
-        <div class="relative group flex items-center h-full shrink-0">
-            <a href="/shop/bestsellers"
-               class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Best Sellers</span>
-                <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </a>
-
-            <!-- Compact Dropdown -->
-            <div class="absolute top-full right-0 w-60 pt-1 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-left">
-                <div class="bg-white rounded-b-md border border-t-2 border-gray-200 border-t-black shadow-2xl overflow-hidden py-1 divide-y divide-gray-100">
-                    <div class="px-4 py-2 bg-neutral-50/70">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Top-Rated By Category</span>
-                    </div>
-                    <div class="py-1">
-                        <a href="/shop/makeup?bestseller=1" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">
-                            <span>Makeup</span>
-                            <span class="text-gray-300 text-xs">&rsaquo;</span>
-                        </a>
-                        <a href="/shop/fragrance?bestseller=1" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">
-                            <span>Fragrance</span>
-                            <span class="text-gray-300 text-xs">&rsaquo;</span>
-                        </a>
-                        <a href="/shop/skincare?bestseller=1" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">
-                            <span>Skincare</span>
-                            <span class="text-gray-300 text-xs">&rsaquo;</span>
-                        </a>
-                        <a href="/shop/hair?bestseller=1" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">
-                            <span>Haircare</span>
-                            <span class="text-gray-300 text-xs">&rsaquo;</span>
-                        </a>
-                        <a href="/brands/sephora-collection?bestseller=1" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">
-                            <span>Sephora Collection</span>
-                            <span class="text-gray-300 text-xs">&rsaquo;</span>
-                        </a>
-                    </div>
-                    <div class="p-2.5 bg-neutral-50">
-                        <a href="/shop/bestsellers" class="block w-full py-1.5 px-3 border border-black text-black hover:bg-black hover:text-white text-center text-xs font-bold uppercase tracking-wider transition-colors">
-                            SHOP ALL
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- 13. Gifts (Short Gifts Panel with 2 Browsing Paths) --}}
+        {{-- 12. Gifts (Short Gifts Panel with 2 Browsing Paths) --}}
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/gifts"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
@@ -1121,6 +1083,47 @@
                     <div class="p-2.5 bg-neutral-50">
                         <a href="/shop/gifts" class="block w-full py-1.5 px-3 border border-black text-black hover:bg-black hover:text-white text-center text-xs font-bold uppercase tracking-wider transition-colors">
                             SHOP ALL
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- 13. Clean (Clean at Sephora) --}}
+        <div class="relative group flex items-center h-full shrink-0">
+            <a href="/clean-at-sephora"
+               class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-emerald-800 hover:text-emerald-950 transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-emerald-700 after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
+                <span class="inline-flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path></svg>
+                    Clean
+                </span>
+                <svg class="w-3 h-3 text-emerald-600/70 group-hover:text-emerald-900 transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+
+            <!-- Compact Dropdown -->
+            <div class="absolute top-full right-0 w-64 pt-1 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-left">
+                <div class="bg-white rounded-b-md border border-t-2 border-gray-200 border-t-emerald-700 shadow-2xl overflow-hidden py-1 divide-y divide-gray-100">
+                    <div class="px-4 py-2 bg-emerald-50/60">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-emerald-800">Clean at Sephora</span>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Formulated without parabens, sulfates &amp; harmful phthalates.</p>
+                    </div>
+                    <div class="py-1">
+                        <a href="/shop/skincare?clean=1" class="flex items-center justify-between px-4 py-2 text-xs font-semibold text-black hover:bg-neutral-50 transition-colors">
+                            <span>Clean Skincare</span>
+                            <span class="text-gray-400 text-xs">&rsaquo;</span>
+                        </a>
+                        <a href="/shop/makeup?clean=1" class="flex items-center justify-between px-4 py-2 text-xs font-semibold text-black hover:bg-neutral-50 transition-colors">
+                            <span>Clean Makeup</span>
+                            <span class="text-gray-400 text-xs">&rsaquo;</span>
+                        </a>
+                        <a href="/shop/hair?clean=1" class="flex items-center justify-between px-4 py-2 text-xs font-semibold text-black hover:bg-neutral-50 transition-colors">
+                            <span>Clean Haircare</span>
+                            <span class="text-gray-400 text-xs">&rsaquo;</span>
+                        </a>
+                    </div>
+                    <div class="p-2.5 bg-neutral-50">
+                        <a href="/clean-at-sephora" class="block w-full py-1.5 px-3 border border-emerald-800 text-emerald-900 hover:bg-emerald-800 hover:text-white text-center text-xs font-bold uppercase tracking-wider transition-colors">
+                            EXPLORE CLEAN
                         </a>
                     </div>
                 </div>
@@ -1429,23 +1432,7 @@
                 </div>
             </details>
 
-            {{-- 12. Best Sellers --}}
-            <details class="group/mob py-2.5">
-                <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Best Sellers</span>
-                    <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                </summary>
-                <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-1.5 pb-1 text-xs">
-                    <a href="/shop/makeup?bestseller=1" class="block py-1 text-gray-700">Makeup</a>
-                    <a href="/shop/fragrance?bestseller=1" class="block py-1 text-gray-700">Fragrance</a>
-                    <a href="/shop/skincare?bestseller=1" class="block py-1 text-gray-700">Skincare</a>
-                    <a href="/shop/hair?bestseller=1" class="block py-1 text-gray-700">Haircare</a>
-                    <a href="/brands/sephora-collection?bestseller=1" class="block py-1 text-gray-700">Sephora Collection</a>
-                    <a href="/shop/bestsellers" class="block py-1.5 px-3 bg-black text-white text-center font-bold uppercase rounded-sm mt-1">SHOP ALL</a>
-                </div>
-            </details>
-
-            {{-- 13. Gifts --}}
+            {{-- 12. Gifts --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
                     <span>Gifts</span>
@@ -1462,6 +1449,23 @@
                         <a href="/shop/gifts?category=hair" class="block py-0.5 text-gray-600">Hair</a>
                     </div>
                     <a href="/shop/gifts" class="block py-1.5 px-3 bg-black text-white text-center font-bold uppercase rounded-sm mt-1">SHOP ALL</a>
+                </div>
+            </details>
+
+            {{-- 13. Clean --}}
+            <details class="group/mob py-2.5">
+                <summary class="flex items-center justify-between text-sm font-semibold text-emerald-800 cursor-pointer list-none py-1 hover:text-emerald-950">
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path></svg>
+                        Clean at Sephora
+                    </span>
+                    <svg class="w-4 h-4 text-emerald-600 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </summary>
+                <div class="mt-2 ml-3 pl-3 border-l-2 border-emerald-200 space-y-1.5 pb-1 text-xs">
+                    <a href="/shop/skincare?clean=1" class="block py-1 text-gray-700">Clean Skincare</a>
+                    <a href="/shop/makeup?clean=1" class="block py-1 text-gray-700">Clean Makeup</a>
+                    <a href="/shop/hair?clean=1" class="block py-1 text-gray-700">Clean Haircare</a>
+                    <a href="/clean-at-sephora" class="block py-1.5 px-3 bg-emerald-800 text-white text-center font-bold uppercase rounded-sm mt-1">EXPLORE CLEAN</a>
                 </div>
             </details>
 

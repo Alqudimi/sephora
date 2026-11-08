@@ -12,7 +12,7 @@ class ShareCartCount
     public function handle(Request $request, Closure $next): Response
     {
         try {
-            view()->share('bagCount', $this->bagCount());
+            view()->share('bagCount', $this->bagCount($request));
         } catch (\Throwable) {
             view()->share('bagCount', 0);
         }
@@ -24,7 +24,7 @@ class ShareCartCount
      * Single aggregate query — avoids eager-loading products/images on
      * every request.
      */
-    private function bagCount(): int
+    private function bagCount(Request $request): int
     {
         $sessionId = $request->hasSession() ? $request->session()->getId() : null;
 
