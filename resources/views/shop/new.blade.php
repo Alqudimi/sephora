@@ -151,7 +151,7 @@
 </div>
 <!-- Product Image -->
 <div class="w-full aspect-square flex items-center justify-center p-2 mb-3 overflow-hidden">
-<img alt="{{ $products->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 <!-- Product Info -->
 <h3 class="font-bold text-xs uppercase tracking-wide text-black mb-1">PATRICK TA</h3>

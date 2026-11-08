@@ -237,7 +237,7 @@
 </button>
 <!-- Packshot Image -->
 <div class="w-full aspect-square overflow-hidden mb-4 bg-surface-container-low flex items-center justify-center">
-<img alt="{{ $products->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 </div>
 <!-- Content Area -->

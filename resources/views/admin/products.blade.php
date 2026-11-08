@@ -44,7 +44,7 @@
             @forelse ($products as $product)
                 <tr class="border-t border-outline-variant hover:bg-surface-container-low/60">
                     <td class="px-4 py-2">
-                        <img alt="" class="w-12 h-12 object-contain bg-surface-container-low" src="{{ media_url($product->first_image) }}" loading="lazy">
+                        <img alt="" class="w-12 h-12 object-contain bg-surface-container-low" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                     </td>
                     <td class="px-4 py-3">
                         <span class="block font-semibold text-primary max-w-xs truncate">{{ $product->name }}</span>

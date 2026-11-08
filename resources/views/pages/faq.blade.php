@@ -7,23 +7,6 @@
 @endsection
 
 @section('content')
-<!-- ========================================== -->
-<!-- 1. ANNOUNCEMENT BAR                       -->
-<!-- ========================================== -->
-<aside class="w-full bg-primary text-on-primary py-2.5 px-4 text-center cursor-pointer transition-colors duration-200 hover:bg-neutral-900 border-b border-primary">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-2">
-<p class="font-label-caps text-label-caps text-on-primary tracking-widest uppercase hover:underline">
-        WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - SHOP NOW
-      </p>
-<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-</div>
-</aside>
-<!-- ========================================== -->
-<!-- 2. TOP APP BAR / BRAND HEADER (SHARED COMPONENT) -->
-<!-- ========================================== -->
-<!-- ========================================== -->
-<!-- 3. BREADCRUMB & HERO SEARCH BANNER        -->
-<!-- ========================================== -->
 <main class="w-full">
 <!-- Hero Intro Section -->
 <section class="bg-surface-container-lowest border-b border-outline-variant py-10 md:py-16">

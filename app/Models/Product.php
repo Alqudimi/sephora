@@ -71,7 +71,18 @@ class Product extends Model
 
     public function getFirstImageAttribute(): string
     {
-        return $this->images->first()?->path ?? 'images/placeholder.webp';
+        $packshot = $this->images->first(function ($img) {
+            $p = strtolower($img->path);
+            return !str_contains($p, '1744x992')
+                && !str_contains($p, 'brand_highlight')
+                && !str_contains($p, 'brandhighlight')
+                && !str_contains($p, 'bn_box')
+                && !str_contains($p, 'fragthematic')
+                && !str_contains($p, 'gift/gwp')
+                && !str_contains($p, 'noimagemedium');
+        });
+
+        return ($packshot ?? $this->images->first())?->path ?? 'images/placeholder.webp';
     }
 
     public function getStarsAttribute(): string

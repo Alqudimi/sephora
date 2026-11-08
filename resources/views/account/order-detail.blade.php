@@ -1,28 +1,30 @@
 @extends('layouts.app')
-@section('title', 'Order {{ $order->order_number }} | SEPHORA')
+@section('title', 'Order ' . $order->order_number . ' | SEPHORA UAE')
 @section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
 <nav class="text-body-sm font-body-sm text-outline mb-4"><a class="hover:text-secondary" href="/">Home</a> / <a class="hover:text-secondary" href="/my-account">My Account</a> / <a class="hover:text-secondary" href="{{ route('account.orders') }}">Orders</a> / <span class="text-on-surface font-semibold">{{ $order->order_number }}</span></nav>
-<div class="flex items-end justify-between border-b border-primary pb-4 mb-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-primary pb-4 mb-8 gap-3">
     <div>
         <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Order {{ $order->order_number }}</h1>
         <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Placed {{ $order->placed_at?->format('d F Y, h:i A') }}</p>
     </div>
-    <span class="font-label-tag text-label-tag uppercase px-3 py-1.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
+    <span class="self-start sm:self-auto font-label-tag text-label-tag uppercase px-3 py-1.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2 space-y-4">
         @foreach($order->items as $item)
-        <article class="bg-surface-container-lowest card-border p-4 flex gap-4 items-center">
-            <img alt="{{ $item->product_name }}" class="w-20 h-20 object-contain bg-surface-container-low" src="{{ media_url($item->image_path) }}"/>
-            <div class="flex-1">
-                <span class="font-label-caps text-label-caps uppercase text-outline font-bold">{{ $item->brand_name }}</span>
-                <p class="font-title-md text-title-md text-primary leading-tight">{{ $item->product_name }}</p>
-                <p class="font-body-sm text-body-sm text-outline mt-1">Qty {{ $item->quantity }} &times; AED {{ number_format($item->unit_price, 2) }}</p>
+        <article class="bg-surface-container-lowest card-border p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                <img alt="{{ $item->product_name }}" class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 object-contain bg-surface-container-low" src="{{ media_url($item->image_path) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
+                <div class="flex-1 min-w-0">
+                    <span class="font-label-caps text-label-caps uppercase text-outline font-bold truncate block">{{ $item->brand_name }}</span>
+                    <p class="font-title-md text-title-md text-primary leading-tight line-clamp-2">{{ $item->product_name }}</p>
+                    <p class="font-body-sm text-body-sm text-outline mt-1">Qty {{ $item->quantity }} &times; AED {{ number_format($item->unit_price, 2) }}</p>
+                </div>
             </div>
-            <span class="font-price-aed-md text-price-aed-md font-bold text-primary">AED {{ number_format($item->line_total, 2) }}</span>
+            <span class="font-price-aed-md text-price-aed-md font-bold text-primary self-end sm:self-center shrink-0">AED {{ number_format($item->line_total, 2) }}</span>
         </article>
         @endforeach
     </div>

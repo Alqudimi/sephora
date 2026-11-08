@@ -7,14 +7,6 @@
 @endsection
 
 @section('content')
-<!-- 1. Top Announcement Bar -->
-<aside class="w-full bg-surface-container-high py-2 px-margin-mobile md:px-margin text-center border-b border-outline-variant/40">
-<p class="font-label-caps text-label-caps tracking-widest text-on-surface">
-      Want to turn heads? Your signature scent starts here. Discover the collection and layer without limits 
-      <a class="underline font-bold text-primary ml-1 hover:text-secondary transition-colors duration-150" href="#fragrance">SHOP NOW</a>
-</p>
-</aside>
-<!-- 2. Top Header & Navigation (Shared Component implementation) -->
 <!-- Main Content Canvas -->
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- 3. Breadcrumbs & Page Heading -->

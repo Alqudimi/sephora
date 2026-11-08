@@ -39,13 +39,17 @@
 @section('meta_description', Str::limit(strip_tags($heroSubtitle ?: 'Shop ' . $category->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.'), 155))
 @section('body_class', 'bg-surface text-on-surface antialiased font-body-md text-body-md selection:bg-primary selection:text-on-primary')
 
+@php
+    $canonicalUrl = $category->slug === 'all' ? route('shop.all') : route('shop.category', ['slug' => $category->slug]);
+@endphp
+
 @section('head')
-    <link rel="canonical" href="{{ route('shop.category', ['slug' => $category->slug]) }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SEPHORA UAE">
     <meta property="og:title" content="{{ $heroTitle }} | SEPHORA UAE">
     <meta property="og:description" content="{{ Str::limit(strip_tags($heroSubtitle ?: 'Shop ' . $category->name . ' at SEPHORA UAE. 100% authentic products with free delivery over AED 250.'), 200) }}">
-    <meta property="og:url" content="{{ route('shop.category', ['slug' => $category->slug]) }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:image" content="{{ $category->hero_image ? media_url($category->hero_image) : asset('images/placeholder.webp') }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $heroTitle }} | SEPHORA UAE">
@@ -57,7 +61,7 @@
             '@type' => 'BreadcrumbList',
             'itemListElement' => [
                 ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => url('/')],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => $category->name, 'item' => route('shop.category', ['slug' => $category->slug])],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => $category->name, 'item' => $canonicalUrl],
             ],
         ];
     @endphp
@@ -70,15 +74,17 @@
     <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-on-surface-variant flex items-center flex-wrap gap-2 mb-6">
         <a class="hover:text-primary transition-colors" href="/">Home</a>
         <span class="text-outline-variant">/</span>
-        <a class="hover:text-primary transition-colors" href="/shop/makeup">Shop</a>
-        <span class="text-outline-variant">/</span>
+        @if ($category->slug !== 'all')
+            <a class="hover:text-primary transition-colors" href="{{ route('shop.all') }}">Shop</a>
+            <span class="text-outline-variant">/</span>
+        @endif
         <span class="text-primary font-semibold">{{ $category->name }}</span>
     </nav>
 
     {{-- Category hero --}}
     <section class="relative mb-8 overflow-hidden border border-outline-variant bg-primary text-on-primary">
         @if ($category->hero_image)
-            <img src="{{ media_url($category->hero_image) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy">
+            <img src="{{ media_url($category->hero_image) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
         @endif
         <div class="relative px-6 py-10 md:px-10 md:py-14 max-w-3xl">
             <span class="font-label-caps text-label-caps uppercase tracking-[0.25em] text-on-primary/70 block mb-2">SEPHORA UAE</span>
@@ -240,7 +246,8 @@
                                 <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="block" aria-label="View {{ $product->name }}">
                                     <div class="aspect-square bg-surface-bright flex items-center justify-center p-4 overflow-hidden">
                                         <img src="{{ media_url($product->first_image) }}" alt="{{ $product->name }}"
-                                             class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                                             class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy"
+                                             onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                                     </div>
                                 </a>
 

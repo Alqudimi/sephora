@@ -48,38 +48,38 @@
                         $stock = (int) ($item->product->stock ?? 0);
                         $maxQty = min($stock, (int) config('commerce.max_quantity_per_item', 20));
                     @endphp
-                    <article class="bg-surface-container-lowest card-border p-4 flex gap-4">
-                        <a class="w-24 h-24 shrink-0 bg-surface-container-low overflow-hidden flex items-center justify-center" href="{{ route('product.show', $item->product->slug) }}">
-                            <img alt="{{ $item->product->name }}" class="w-full h-full object-contain" src="{{ media_url($item->product->first_image) }}">
+                    <article class="bg-surface-container-lowest card-border p-3 sm:p-4 flex gap-3 sm:gap-4">
+                        <a class="w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-surface-container-low overflow-hidden flex items-center justify-center" href="{{ route('product.show', $item->product->slug) }}">
+                            <img alt="{{ $item->product->name }}" class="w-full h-full object-contain" src="{{ media_url($item->product->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                         </a>
 
-                        <div class="flex-1 flex flex-col">
-                            <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider font-bold">{{ $item->product->brand?->name }}</span>
-                            <a class="font-title-md text-title-md text-primary hover:underline leading-tight mt-0.5" href="{{ route('product.show', $item->product->slug) }}">{{ $item->product->name }}</a>
+                        <div class="flex-1 flex flex-col min-w-0">
+                            <span class="font-label-caps text-[11px] sm:text-label-caps uppercase text-outline tracking-wider font-bold truncate">{{ $item->product->brand?->name }}</span>
+                            <a class="font-title-md text-sm sm:text-title-md text-primary hover:underline leading-tight mt-0.5 line-clamp-2" href="{{ route('product.show', $item->product->slug) }}">{{ $item->product->name }}</a>
                             @if ($item->shade_name)
-                                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Shade: {{ $item->shade_name }}</span>
+                                <span class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant mt-0.5">Shade: {{ $item->shade_name }}</span>
                             @endif
                             @if ($stock <= 0)
-                                <span class="font-body-sm text-body-sm text-secondary mt-1">Out of stock — remove to continue</span>
+                                <span class="font-body-sm text-xs sm:text-body-sm text-secondary mt-1">Out of stock — remove to continue</span>
                             @elseif ($stock <= 5)
-                                <span class="font-body-sm text-body-sm text-secondary mt-1">Only {{ $stock }} left</span>
+                                <span class="font-body-sm text-xs sm:text-body-sm text-secondary mt-1">Only {{ $stock }} left</span>
                             @endif
 
-                            <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
+                            <div class="mt-auto flex flex-wrap items-center justify-between gap-2 sm:gap-3 pt-3">
                                 <div class="flex items-center border border-outline-variant">
-                                    <button class="px-3 py-1.5 hover:bg-surface-container disabled:opacity-40" data-qty-minus type="button" aria-label="Decrease quantity" @disabled($item->quantity <= 1)>−</button>
-                                    <input class="w-12 text-center font-body-md text-body-md text-primary bg-transparent"
+                                    <button class="px-2.5 sm:px-3 py-1 sm:py-1.5 hover:bg-surface-container disabled:opacity-40" data-qty-minus type="button" aria-label="Decrease quantity" @disabled($item->quantity <= 1)>−</button>
+                                    <input class="w-10 sm:w-12 text-center font-body-md text-xs sm:text-body-md text-primary bg-transparent"
                                            data-cart-item="{{ $item->id }}" data-qty-input type="number"
                                            min="1" max="{{ max(1, $maxQty) }}" value="{{ $item->quantity }}"
                                            aria-label="Quantity for {{ $item->product->name }}">
-                                    <button class="px-3 py-1.5 hover:bg-surface-container disabled:opacity-40" data-qty-plus type="button" aria-label="Increase quantity" @disabled($item->quantity >= $maxQty)>+</button>
+                                    <button class="px-2.5 sm:px-3 py-1 sm:py-1.5 hover:bg-surface-container disabled:opacity-40" data-qty-plus type="button" aria-label="Increase quantity" @disabled($item->quantity >= $maxQty)>+</button>
                                 </div>
-                                <span class="font-price-aed-lg text-price-aed-lg font-bold text-primary">AED {{ number_format($item->lineTotal(), 2) }}</span>
+                                <span class="font-price-aed-lg text-sm sm:text-price-aed-lg font-bold text-primary">AED {{ number_format($item->lineTotal(), 2) }}</span>
                             </div>
                         </div>
 
-                        <button class="text-outline hover:text-secondary transition-colors self-start" data-cart-remove="{{ $item->id }}" title="Remove {{ $item->product->name }}" type="button">
-                            <span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+                        <button class="text-outline hover:text-secondary transition-colors self-start shrink-0 p-1" data-cart-remove="{{ $item->id }}" title="Remove {{ $item->product->name }}" type="button">
+                            <span class="material-symbols-outlined text-[18px] sm:text-[20px]" data-icon="close">close</span>
                         </button>
                     </article>
                 @endforeach

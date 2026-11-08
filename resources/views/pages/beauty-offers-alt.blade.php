@@ -7,14 +7,6 @@
 @endsection
 
 @section('content')
-<!-- 1. ANNOUNCEMENT BAR -->
-<aside class="bg-primary text-on-primary py-space-xs px-margin-mobile md:px-margin-tablet lg:px-margin text-center">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-space-sm font-label-caps text-label-caps">
-<span>Want to turn heads? Your signature scent starts here. Discover the collection and layer without limits</span>
-<a class="underline tracking-widest font-bold hover:text-secondary-fixed transition-colors duration-150" href="#fragrance">SHOP NOW</a>
-</div>
-</aside>
-<!-- 2. TOP NAV BAR (SHARED COMPONENT EXECUTION) -->
 <!-- MAIN CANVAS -->
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <!-- 3. BREADCRUMBS -->

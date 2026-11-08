@@ -205,7 +205,7 @@
 </div>
 <!-- Product Image -->
 <div class="aspect-square w-full overflow-hidden bg-surface-container-lowest flex items-center justify-center p-2 mb-3">
-<img alt="{{ $products->name }}" class="product-card-img object-contain w-full h-full" src="{{ media_url($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="product-card-img object-contain w-full h-full" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 <!-- Metadata -->
 <h4 class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold">{{ $products->brand->name }}

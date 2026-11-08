@@ -7,15 +7,6 @@
 @endsection
 
 @section('content')
-<!-- TOP ANNOUNCEMENT BAR -->
-<aside class="bg-primary text-on-primary py-2.5 px-4 text-center cursor-pointer transition-opacity duration-150 hover:opacity-95">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-2">
-<span class="font-label-caps text-label-caps tracking-widest font-bold">
-        WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - SHOP NOW →
-      </span>
-</div>
-</aside>
-<!-- TOP NAV BAR (Shared Component Execution) -->
 <!-- BREADCRUMB & HERO INTRO -->
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- Breadcrumb -->

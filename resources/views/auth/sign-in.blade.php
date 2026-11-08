@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sephora UAE Sign In & Register Rebuild')
+@section('title', 'Sign In | SEPHORA UAE')
 @section('body_class', 'bg-background text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col justify-between font-body-md text-body-md')
 
 @section('head')

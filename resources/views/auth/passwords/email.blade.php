@@ -4,15 +4,6 @@
 @section('body_class', 'bg-background text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col justify-between font-body-md text-body-md')
 
 @section('content')
-<!-- TOP ANNOUNCEMENT BAR -->
-<aside class="w-full bg-primary text-on-primary py-2.5 px-4 text-center select-none relative z-50">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-2">
-<p class="font-label-caps text-label-caps uppercase tracking-widest text-[11px] text-on-primary">
-        SEPHORA CLIENT CONCIERGE - PASSWORD ASSISTANCE
-</p>
-</div>
-</aside>
-
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl">
 <div class="max-w-xl mx-auto">
 <nav class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase tracking-wider mb-8">

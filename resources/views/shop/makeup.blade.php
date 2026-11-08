@@ -290,7 +290,7 @@
 <button aria-label="Save to Wishlist" class="absolute top-2 right-2 z-10 p-1 text-primary hover:text-secondary transition-colors">
 <span class="material-symbols-outlined text-[20px]">favorite</span>
 </button>
-<img alt="{{ $products->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 <div class="flex-1 flex flex-col">
 <span class="font-label-caps text-label-caps uppercase font-bold tracking-widest text-primary mb-1">{{ $products->brand->name }}

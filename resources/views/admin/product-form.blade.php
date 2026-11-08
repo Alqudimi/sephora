@@ -171,7 +171,7 @@
 
                 <div class="w-[140px] h-[140px] border border-outline-variant bg-surface-container-low flex items-center justify-center p-2">
                     @if ($currentImage)
-                        <img src="{{ media_url($currentImage) }}" alt="{{ $product->name }}" class="max-h-full max-w-full object-contain">
+                        <img src="{{ media_url($currentImage) }}" alt="{{ $product->name }}" class="max-h-full max-w-full object-contain" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                     @else
                         <span class="material-symbols-outlined text-[32px] text-outline-variant">image</span>
                     @endif

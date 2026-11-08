@@ -7,12 +7,6 @@
 @endsection
 
 @section('content')
-<!-- TOP ANNOUNCEMENT BANNER -->
-<aside class="bg-primary text-on-primary py-2.5 px-4 text-center tracking-widest text-[11px] font-label-caps font-semibold flex items-center justify-center gap-2">
-<span>WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - SHOP NOW</span>
-<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-</aside>
-<!-- TOP NAVIGATION BAR (Shared Components JSON Anchor) -->
 <!-- BREADCRUMBS -->
 <div class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-4">
 <nav class="flex items-center space-x-2 text-[12px] font-body-sm text-outline">
@@ -25,24 +19,24 @@
 <section class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pb-12">
 <div class="relative bg-surface-container-lowest border border-primary overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
 <!-- Content Column -->
-<div class="lg:col-span-6 p-8 md:p-14 lg:p-16 flex flex-col justify-center space-y-6 z-10 bg-surface-container-lowest">
+<div class="lg:col-span-6 p-5 sm:p-8 md:p-14 lg:p-16 flex flex-col justify-center space-y-6 z-10 bg-surface-container-lowest">
 <div class="inline-flex items-center space-x-2">
 <span class="bg-primary text-on-primary text-[10px] font-label-caps uppercase px-2.5 py-1 tracking-widest">FLAGSHIP EXPERIENCE</span>
 <span class="text-[12px] font-label-caps uppercase text-secondary font-bold tracking-wider">UNITED ARAB EMIRATES</span>
 </div>
-<h1 class="font-display-hero text-[34px] md:text-headline-lg lg:text-display-hero leading-tight text-primary font-bold">
+<h1 class="font-display-hero text-2xl sm:text-[34px] md:text-headline-lg lg:text-display-hero leading-tight text-primary font-bold">
           DISCOVER OUR SEPHORA STORES &amp; SERVICES
         </h1>
 <p class="font-body-md text-on-surface-variant leading-relaxed text-[15px] max-w-xl">
           At Sephora stores, we offer you a unique beauty experience that combines expert beauty services and unparalleled choice among premium brands to help you discover your perfect look and express your beauty your way.
         </p>
 <!-- CTA Buttons -->
-<div class="flex flex-wrap items-center gap-4 pt-4">
-<a class="bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:outline hover:outline-1 hover:outline-primary px-8 py-3.5 font-label-caps text-label-caps tracking-widest transition-all duration-200 uppercase inline-flex items-center gap-3" href="#booking-section">
+<div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-4">
+<a class="bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:outline hover:outline-1 hover:outline-primary px-6 sm:px-8 py-3.5 font-label-caps text-label-caps tracking-widest transition-all duration-200 uppercase inline-flex items-center justify-center gap-3 text-center" href="#booking-section">
 <span>BOOK A SERVICE NOW</span>
 <span class="material-symbols-outlined text-[16px]">calendar_today</span>
 </a>
-<a class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-on-primary px-8 py-3.5 font-label-caps text-label-caps tracking-widest transition-all duration-200 uppercase inline-flex items-center gap-3" href="#locator">
+<a class="bg-transparent border border-primary text-primary hover:bg-primary hover:text-on-primary px-6 sm:px-8 py-3.5 font-label-caps text-label-caps tracking-widest transition-all duration-200 uppercase inline-flex items-center justify-center gap-3 text-center" href="#locator">
 <span>FIND A STORE NEAR YOU</span>
 <span class="material-symbols-outlined text-[16px]">near_me</span>
 </a>

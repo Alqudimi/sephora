@@ -17,15 +17,7 @@
     </nav>
 
     {{-- Account sub-navigation --}}
-    <div class="flex flex-wrap items-center gap-2 pb-6 border-b border-outline-variant mb-8">
-        <a class="h-11 px-5 flex items-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider border border-primary" href="{{ route('account.dashboard') }}" aria-current="page">My Account</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.orders') }}">Orders</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.addresses') }}">Addresses</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.wishlist') }}">Wishlist</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.settings') }}">Settings</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.privacy') }}">Privacy</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.contact') }}">Contact Us</a>
-    </div>
+    @include('partials.account-nav', ['active' => 'dashboard'])
 
     @if (session('verified'))
         <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">Your email address has been verified. Thank you.</div>

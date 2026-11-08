@@ -1836,7 +1836,7 @@ class ShopSeeder extends Seeder
         $products[] = $p98->id;
         $p99 = Product::updateOrCreate(['slug' => 'brazilian-crush-cheirosa-68-beija-flor-perfume-mist-mini-90ml'], [
             'brand_id' => $brands['sol-de-janeiro'], 'name' => 'Brazilian Crush Cheirosa 68 Beija Flor Perfume Mist (Mini 90ml)',
-            'price' => 105.0, 'rating' => 68.0, 'reviews_count' => 1240,
+            'price' => 105.0, 'rating' => 4.8, 'reviews_count' => 1240,
             'badge' => 'Exclusive', 'is_bestseller' => false, 'is_new' => false,
             'is_clean' => false, 'is_exclusive' => true, 'sort_order' => 99,
         ]);

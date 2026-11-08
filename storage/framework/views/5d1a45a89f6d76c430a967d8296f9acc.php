@@ -8,6 +8,34 @@
     <meta name="description" content="<?php echo $__env->yieldContent('meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.'); ?>">
 
     
+    <?php if (! empty(trim($__env->yieldContent('head')))): ?>
+        <?php echo $__env->yieldContent('head'); ?>
+    <?php else: ?>
+        <link rel="canonical" href="<?php echo e(url()->current()); ?>">
+        <meta property="og:site_name" content="SEPHORA UAE">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+        <meta property="og:url" content="<?php echo e(url()->current()); ?>">
+        <meta property="og:title" content="<?php echo $__env->yieldContent('title', 'SEPHORA | Makeup, Skincare, Fragrance & More'); ?>">
+        <meta property="og:description" content="<?php echo $__env->yieldContent('meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.'); ?>">
+        <meta property="og:image" content="<?php echo e(asset('images/placeholder.webp')); ?>">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="<?php echo $__env->yieldContent('title', 'SEPHORA | Makeup, Skincare, Fragrance & More'); ?>">
+        <meta name="twitter:description" content="<?php echo $__env->yieldContent('meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.'); ?>">
+        <meta name="twitter:image" content="<?php echo e(asset('images/placeholder.webp')); ?>">
+        <script type="application/ld+json"><?php echo json_encode([
+            '<?php $__contextArgs = [];
+if (context()->has($__contextArgs[0])) :
+if (isset($value)) { $__contextPrevious[] = $value; }
+$value = context()->get($__contextArgs[0]); ?>' => 'https://schema.org',
+            '@type' => 'WebSite',
+            'name' => 'SEPHORA UAE',
+            'url' => url('/'),
+            'description' => 'Shop makeup, skincare, fragrance & more at Sephora UAE.',
+        ], JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?></script>
+    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+
+    
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 
     
@@ -24,6 +52,7 @@
     <?php echo $__env->make('partials.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     <?php echo $__env->yieldContent('content'); ?>
     <?php echo $__env->make('partials.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.cookie-banner', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     <?php echo $__env->yieldContent('scripts'); ?>
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>

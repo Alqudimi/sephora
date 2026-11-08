@@ -7,15 +7,6 @@
 @endsection
 
 @section('content')
-<!-- 1. TOP ANNOUNCEMENT BAR -->
-<aside aria-label="Announcement" class="bg-primary text-on-primary py-2 px-4 text-center">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center space-x-2">
-<span class="font-label-caps text-label-caps tracking-[0.18em] font-semibold text-center">
-        WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - <a class="underline underline-offset-4 hover:text-on-primary-container transition-colors" href="#fragrance">SHOP NOW →</a>
-</span>
-</div>
-</aside>
-<!-- 2. BRAND HEADER & NAVIGATION -->
 <!-- MAIN CANVAS -->
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- 3. BREADCRUMB & PAGE HEADER -->

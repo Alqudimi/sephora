@@ -7,16 +7,6 @@
 @endsection
 
 @section('content')
-<!-- 1. TOP ANNOUNCEMENT BAR -->
-<aside class="w-full bg-primary text-on-primary py-2 px-4 text-center border-b border-primary">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-2">
-<span class="font-label-caps text-label-caps tracking-widest text-on-primary text-center">
-        WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - 
-        <a class="underline hover:text-secondary-fixed transition-colors inline-block ml-1" href="#fragrance">SHOP NOW →</a>
-</span>
-</div>
-</aside>
-<!-- 2. SHARED COMPONENT: TopNavBar -->
 <!-- 3. BREADCRUMBS -->
 <nav aria-label="Breadcrumb" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-2">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
@@ -192,52 +182,61 @@
     @if(session('contact_success'))
     <div class="bg-[#1b6b45] text-white px-4 py-3 font-body-sm">Thank you! Our client concierge will reply within 24 hours.</div>
     @endif
+    @if($errors->any())
+    <div class="border border-secondary bg-surface-container-low p-4 text-secondary text-sm">
+        <ul class="list-disc list-inside space-y-1">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Full Name -->
 <div>
-<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2">
+<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-name">
                   Full Name <span class="text-secondary">*</span>
 </label>
-<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="e.g. Layla Al-Mansoor" required="" type="text"/>
+<input id="contact-name" name="name" value="{{ old('name') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="e.g. Layla Al-Mansoor" required type="text"/>
 </div>
 <!-- Email Address -->
 <div>
-<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2">
+<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-email">
                   Email Address <span class="text-secondary">*</span>
 </label>
-<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="layla.almansoor@example.ae" required="" type="email" name="email" required />
+<input id="contact-email" name="email" value="{{ old('email') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="layla.almansoor@example.ae" required type="email" />
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Order Number -->
+<!-- Phone -->
 <div>
-<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2">
-                  Order Number <span class="text-on-surface-variant text-[10px]">(Optional)</span>
+<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-phone">
+                  Phone Number <span class="text-on-surface-variant text-[10px]">(Optional)</span>
 </label>
-<input class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="e.g. SEPH-AE-2024-9981" type="text"/>
+<input id="contact-phone" name="phone" value="{{ old('phone') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="+971 50 123 4567" type="tel"/>
 </div>
 <!-- Topic / Subject Dropdown -->
 <div>
-<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2">
+<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-subject">
                   Inquiry Topic <span class="text-secondary">*</span>
 </label>
-<select class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" required="">
-<option disabled="" selected="" value="">Select a subject</option>
-<option value="delivery">Delivery &amp; Shipping Status</option>
-<option value="returns">Return &amp; Refund Assistance</option>
-<option value="beautypass">Beauty Pass Points &amp; Tiers</option>
-<option value="product">Product Consultation &amp; Formula</option>
-<option value="store">Store Experience &amp; Appointments</option>
-<option value="other">Other Inquiry</option>
+<select id="contact-subject" name="subject" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" required>
+<option disabled value="" @selected(!old('subject'))>Select a subject</option>
+<option value="Delivery & Shipping Status" @selected(old('subject') === 'Delivery & Shipping Status')>Delivery &amp; Shipping Status</option>
+<option value="Return & Refund Assistance" @selected(old('subject') === 'Return & Refund Assistance')>Return &amp; Refund Assistance</option>
+<option value="Beauty Pass Points & Tiers" @selected(old('subject') === 'Beauty Pass Points & Tiers')>Beauty Pass Points &amp; Tiers</option>
+<option value="Product Consultation & Formula" @selected(old('subject') === 'Product Consultation & Formula')>Product Consultation &amp; Formula</option>
+<option value="Store Experience & Appointments" @selected(old('subject') === 'Store Experience & Appointments')>Store Experience &amp; Appointments</option>
+<option value="Other Inquiry" @selected(old('subject') === 'Other Inquiry')>Other Inquiry</option>
 </select>
 </div>
 </div>
 <!-- Message Textarea -->
 <div>
-<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2">
+<label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-message">
                 Your Message <span class="text-secondary">*</span>
 </label>
-<textarea class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="Kindly describe your inquiry in detail, including specific items or batch references..." required="" rows="5" name="message" required></textarea>
+<textarea id="contact-message" name="message" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="Kindly describe your inquiry in detail, including specific items or batch references..." required rows="5">{{ old('message') }}</textarea>
 </div>
 <!-- Data Privacy Disclosure -->
 <div class="flex items-center justify-between text-on-surface-variant pt-2">

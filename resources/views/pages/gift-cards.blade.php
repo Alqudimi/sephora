@@ -7,18 +7,11 @@
 @endsection
 
 @section('content')
-<!-- 1. TOP PROMO BANNER -->
-<aside class="w-full bg-primary text-on-primary py-2 px-margin-mobile md:px-margin text-center">
-<a class="inline-flex items-center justify-center gap-2 font-label-caps text-label-caps tracking-widest text-on-primary hover:text-outline-variant transition-colors duration-200 uppercase" href="/">
-<span>WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - SHOP NOW &gt;</span>
-</a>
-</aside>
-<!-- 2. TOP HEADER & NAVIGATION (Shared Component Anchor Protocol) -->
 <!-- MAIN CANVAS -->
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-md md:py-space-lg">
 <!-- 3. BREADCRUMB -->
 <nav class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-widest">
-<a class="hover:text-primary transition-colors" href="/ae-en">Home</a>
+<a class="hover:text-primary transition-colors" href="/">Home</a>
 <span class="text-outline-variant">/</span>
 <span class="text-primary font-bold">Gift Cards At Sephora</span>
 </nav>

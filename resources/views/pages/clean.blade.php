@@ -7,18 +7,6 @@
 @endsection
 
 @section('content')
-<!-- 1. Top Announcement Bar -->
-<aside aria-label="Announcement" class="bg-primary text-on-primary py-2.5 px-4 text-center">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-2">
-<p class="font-label-caps text-label-caps tracking-widest uppercase text-center text-xs">
-        WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - 
-        <a class="underline underline-offset-4 font-bold hover:text-surface-variant transition-colors ml-1 inline-flex items-center" href="/shop/skincare">
-          SHOP NOW →
-        </a>
-</p>
-</div>
-</aside>
-<!-- 2. Official Desktop Navigation & Header (Shared Component TopNavBar) -->
 <!-- 3. Breadcrumbs & Page Header -->
 <main class="w-full">
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-5">

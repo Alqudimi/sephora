@@ -66,7 +66,7 @@
                 data-carousel-slide
                 @if ($index !== 0) inert @endif
             >
-                <img alt="{{ $slide['alt'] }}" class="absolute inset-0 w-full h-full object-cover object-center" src="{{ media_url($slide['image']) }}"/>
+                <img alt="{{ $slide['alt'] }}" class="absolute inset-0 w-full h-full object-cover object-center" src="{{ media_url($slide['image']) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0c1b33]/95 via-[#0c1b33]/55 to-transparent md:bg-gradient-to-r md:from-transparent md:via-[#0c1b33]/60 md:to-[#0c1b33]/90"></div>
                 <div class="relative z-10 w-full grid grid-cols-1 md:grid-cols-12 items-center p-6 sm:p-8 md:p-12 lg:p-16">
                     <div class="hidden md:flex md:col-span-5 lg:col-span-6 justify-start items-start h-full">
@@ -123,8 +123,8 @@
 <span class="text-xs font-bold uppercase tracking-widest text-[#be7d76]">Limited Edition</span>
 <h2 class="text-xl md:text-2xl font-bold text-black mt-0.5">The Holiday Collection</h2>
 </div>
-<a class="text-xs md:text-sm font-semibold text-black hover:underline underline-offset-4 flex items-center gap-1" href="/shop/new">
-          View All <span aria-hidden="true">→</span>
+<a class="text-xs md:text-sm font-semibold text-black hover:underline underline-offset-4 flex items-center gap-1" href="/shop/gifts">
+          View All <span aria-hidden="true">&rarr;</span>
 </a>
 </div>
 <!-- Product Carousel / Grid Container -->
@@ -141,7 +141,7 @@
                     </svg>
                 </button>
                 <a aria-label="View {{ $product->name }}" class="block w-full h-full" href="/p/{{ $product->slug }}">
-                    <img alt="{{ $product->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}"/>
+                    <img alt="{{ $product->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
                 </a>
             </div>
             <div class="pt-3 flex flex-col flex-grow min-w-0">
@@ -190,7 +190,7 @@
                     </svg>
                 </button>
                 <a aria-label="View {{ $product->name }}" class="block w-full h-full" href="/p/{{ $product->slug }}">
-                    <img alt="{{ $product->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}"/>
+                    <img alt="{{ $product->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
                 </a>
             </div>
             <div class="pt-3 flex flex-col flex-grow min-w-0">

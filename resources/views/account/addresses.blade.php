@@ -5,6 +5,8 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
 <nav class="text-body-sm font-body-sm text-outline mb-4"><a class="hover:text-secondary" href="/">Home</a> / <a class="hover:text-secondary" href="/my-account">My Account</a> / <span class="text-on-surface font-semibold">Addresses</span></nav>
+
+@include('partials.account-nav', ['active' => 'addresses'])
 <div class="flex items-end justify-between border-b border-primary pb-4 mb-8">
     <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">My Addresses</h1>
 </div>

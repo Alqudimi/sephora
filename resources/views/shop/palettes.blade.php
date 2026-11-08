@@ -231,7 +231,7 @@
 <button aria-label="Add to Wishlist" class="absolute top-2 right-2 z-10 text-on-surface-variant hover:text-secondary p-1 bg-surface-container-lowest/80 backdrop-blur-sm transition-colors">
 <span class="material-symbols-outlined text-[18px]">favorite</span>
 </button>
-<img alt="{{ $products->name }}" class="w-full h-full object-contain" src="{{ media_url($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-contain" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 <div class="space-y-1">
 <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant block font-bold">{{ $products->brand->name }}

@@ -194,7 +194,7 @@
 @foreach($products as $products)
 <article onclick="window.location='/p/{{ $products->slug }}'" class="group relative flex flex-col justify-between bg-surface-container-lowest border border-outline-variant/60 hover:border-primary transition-all p-3">
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low mb-3">
-<img alt="{{ $products->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
+<img alt="{{ $products->name }}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 <div class="absolute top-1 left-1 flex flex-col gap-1 z-10">
 @if($products->badge)
 <span class="bg-primary text-on-primary font-label-tag text-label-tag px-1.5 py-0.5 tracking-wider uppercase">{{ $products->badge }}</span>

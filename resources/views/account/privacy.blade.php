@@ -12,13 +12,7 @@
         <span class="text-on-surface font-semibold">Privacy</span>
     </nav>
 
-    <div class="flex flex-wrap items-center gap-2 pb-6 border-b border-outline-variant mb-8">
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.dashboard') }}">My Account</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.orders') }}">Orders</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.addresses') }}">Addresses</a>
-        <a class="h-11 px-5 flex items-center bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-wider border border-outline-variant hover:border-primary transition-colors" href="{{ route('account.settings') }}">Settings</a>
-        <a class="h-11 px-5 flex items-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider border border-primary" href="{{ route('account.privacy') }}" aria-current="page">Privacy</a>
-    </div>
+    @include('partials.account-nav', ['active' => 'privacy'])
 
     <div class="mb-8 max-w-3xl">
         <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Privacy &amp; My Data</h1>

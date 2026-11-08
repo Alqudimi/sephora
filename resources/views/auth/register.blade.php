@@ -15,15 +15,6 @@
 @endsection
 
 @section('content')
-<!-- TOP ANNOUNCEMENT BAR -->
-<aside class="w-full bg-primary text-on-primary py-2.5 px-4 text-center select-none relative z-50">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center gap-2">
-<p class="font-label-caps text-label-caps uppercase tracking-widest text-[11px] text-on-primary">
-        JOIN THE BEAUTY PASS PROGRAM - EARN 1 POINT FOR EVERY 10 AED SPENT
-</p>
-</div>
-</aside>
-
 <!-- BREADCRUMB -->
 <div class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-2">
 <nav class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase tracking-wider">

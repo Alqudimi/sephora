@@ -7,25 +7,13 @@
 @endsection
 
 @section('content')
-<!-- 1. Top Announcement Bar -->
-<aside aria-label="Announcement" class="w-full bg-primary text-on-primary py-2 px-4 text-center border-b border-primary">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center space-x-2">
-<span class="font-label-caps text-label-caps tracking-widest uppercase">
-        WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - 
-      </span>
-<a class="font-label-caps text-label-caps underline hover:text-outline-variant transition-colors duration-150" href="/ae-en/shop/fragrance/stack-your-scent/stack-your-scent">
-        SHOP NOW →
-      </a>
-</div>
-</aside>
-<!-- 2. Header & Desktop Navigation (Conforming strictly to TopNavBar Shared Component JSON) -->
 <!-- Main Content Canvas -->
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-space-xl">
 <!-- 3. Breadcrumb Navigation -->
 <nav aria-label="Breadcrumb" class="py-2 mb-6">
 <ol class="flex items-center space-x-2 font-body-sm text-body-sm text-outline">
 <li>
-<a class="hover:text-primary transition-colors duration-150" href="/ae-en">Home</a>
+<a class="hover:text-primary transition-colors duration-150" href="/">Home</a>
 </li>
 <li class="select-none text-outline-variant">/</li>
 <li class="text-primary font-bold">Download the App</li>

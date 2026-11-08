@@ -234,4 +234,20 @@ class StorefrontTest extends TestCase
 
         $this->assertDatabaseCount('reviews', 0);
     }
+
+    public function test_shop_all_route_renders_and_lists_active_products(): void
+    {
+        $product1 = $this->makeProduct(['name' => 'Iconic Lipstick Red']);
+        $product2 = $this->makeProduct(['name' => 'Hydrating Face Serum']);
+
+        $response = $this->get('/shop');
+        $response->assertOk()
+            ->assertSee('All Products')
+            ->assertSee('Iconic Lipstick Red')
+            ->assertSee('Hydrating Face Serum');
+
+        $responseAlias = $this->get('/shop/all');
+        $responseAlias->assertOk()
+            ->assertSee('All Products');
+    }
 }

@@ -203,7 +203,7 @@
 <span class="material-symbols-outlined text-lg" data-icon="favorite">favorite</span>
 </button>
 <div class="aspect-square w-full overflow-hidden flex items-center justify-center mb-3 bg-surface-container-lowest">
-<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300" data-alt="{{ $products->name }}" src="{{ media_url($products->first_image) }}"/>
+<img class="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300" data-alt="{{ $products->name }}" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 <p class="font-label-caps text-[10px] tracking-widest uppercase text-outline">{{ $products->brand->name }}
 <h3 class="font-body-md text-body-md font-bold text-primary mt-1 line-clamp-2">{{ $products->name }}</h3>

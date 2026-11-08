@@ -84,5 +84,6 @@ class PagesTest extends TestCase
         $response->assertHeader('X-Frame-Options', 'SAMEORIGIN');
         $response->assertHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
         $this->assertStringContainsString("default-src 'self'", $response->headers->get('Content-Security-Policy'));
+        $this->assertStringContainsString("img-src 'self' data: https: blob:;", $response->headers->get('Content-Security-Policy'));
     }
 }

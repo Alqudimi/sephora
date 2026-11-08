@@ -173,7 +173,7 @@
                         @foreach ($order->items as $item)
                             <div class="p-4 flex items-center gap-4">
                                 <div class="w-16 h-16 shrink-0 bg-surface-container-low border border-outline-variant flex items-center justify-center p-1">
-                                    <img alt="{{ $item->product_name }}" class="w-full h-full object-contain" src="{{ media_url($item->image_path) }}">
+                                    <img alt="{{ $item->product_name }}" class="w-full h-full object-contain" src="{{ media_url($item->image_path) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ $item->brand_name }}</span>

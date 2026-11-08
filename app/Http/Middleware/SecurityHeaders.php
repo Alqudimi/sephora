@@ -37,7 +37,7 @@ class SecurityHeaders
             "style-src 'self'; ".
             "upgrade-insecure-requests; ".
             "font-src 'self' https://fonts.gstatic.com data:; ".
-            "img-src 'self' data:; ".
+            "img-src 'self' data: https: blob:; ".
             "connect-src 'self'; ".
             "object-src 'none'; ".
             "frame-ancestors 'self'; ".

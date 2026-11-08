@@ -28,7 +28,7 @@
 <!-- Filter Bar Header: Count & Sort Dropdown -->
 <div class="flex items-center justify-between border-b border-subtle pb-3 mb-6">
 <span class="text-xs sm:text-sm font-semibold text-neutral-700">
-        381 items
+        {{ $products->count() }} items
       </span>
 <div class="flex items-center gap-2">
 <label class="text-xs font-medium text-neutral-600" for="sort-select">Sort by:</label>
@@ -178,9 +178,9 @@
 <!-- END: LeftFilterSidebar -->
 <!-- BEGIN: ProductGrid -->
 <section aria-label="Product Catalog" class="lg:col-span-3 xl:col-span-4">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
 <!-- Card 1: Brand Feature Hero Card -->
-<article class="bg-[#1e1e1e] text-white rounded-none flex flex-col justify-between overflow-hidden relative group shadow-sm">
+<article class="col-span-2 md:col-span-1 bg-[#1e1e1e] text-white rounded-none flex flex-col justify-between overflow-hidden relative group shadow-sm">
 <div class="relative w-full aspect-square overflow-hidden bg-neutral-800">
 <!-- ONLY AT SEPHORA BADGE -->
 <div class="absolute top-3 left-3 z-10">
@@ -192,9 +192,9 @@
 </div>
 <img alt="Sephora Cheek Brush applying powder" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ asset('images/content/img_991d73ffa07c4484.jpg') }}"/>
 </div>
-<div class="p-5 flex flex-col flex-1 justify-between bg-[#232323]">
+<div class="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-[#232323]">
 <div>
-<h3 class="font-bold text-base uppercase tracking-wide mb-1 text-white">The Cheek Brush</h3>
+<h3 class="font-bold text-sm sm:text-base uppercase tracking-wide mb-1 text-white">The Cheek Brush</h3>
 <p class="text-xs text-neutral-300 font-light leading-relaxed mb-4">
                   Sculpt, contour and add warmth with ultra-soft vegan bristles.
                 </p>
@@ -204,58 +204,57 @@
               </a>
 </div>
 </article>
-<!-- Card 2: Cream Lip Stain Set 5 -->
-@foreach($products as $products)
-<article onclick="window.location='/p/{{ $products->slug }}'" class="product-card group flex flex-col justify-between border border-transparent hover:border-gray-200 p-3 transition-all relative">
+<!-- Products Loop -->
+@foreach($products as $product)
+<article class="product-card group flex flex-col justify-between border border-gray-200 hover:border-black p-2.5 sm:p-3 transition-all relative">
 <div>
 <!-- Image & Badges Container -->
 <div class="relative aspect-square bg-[#fbfbfb] mb-3 overflow-hidden flex items-center justify-center">
 <!-- Badge -->
+@if($product->badge)
 <span class="absolute top-2 left-2 z-10 bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wide">
-                  New
-                </span>
+  {{ $product->badge }}
+</span>
+@elseif($product->is_new)
+<span class="absolute top-2 left-2 z-10 bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wide">
+  New
+</span>
+@endif
 <!-- Wishlist Heart -->
-<button class="absolute top-2 right-2 z-10 text-neutral-400 hover:text-black transition-colors" title="Save to Wishlist">
+<button type="button" class="absolute top-2 right-2 z-10 text-neutral-400 hover:text-black transition-colors p-1" data-wishlist-toggle="{{ $product->id }}" title="Save to Wishlist">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
-<img alt="{{ $products->name }}" class="product-img object-contain w-full h-full p-4 transition-transform duration-300" src="{{ media_url($products->first_image) }}"/>
+<a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="w-full h-full flex items-center justify-center p-3">
+  <img alt="{{ $product->name }}" class="product-img object-contain w-full h-full transition-transform duration-300 group-hover:scale-105" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
+</a>
 </div>
 <!-- Product Info -->
 <div class="space-y-1">
-<span class="text-[11px] font-bold uppercase tracking-wider text-neutral-900 block">SEPHORA COLLECTION</span>
-<h3 class="text-xs font-medium text-neutral-800 line-clamp-2 hover:underline cursor-pointer">
-                  Cream Lip Stain Set 5 Matte Liquid Lipsticks
-                </h3>
+<span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-neutral-900 block truncate">SEPHORA COLLECTION</span>
+<h3 class="text-xs font-medium text-neutral-800 line-clamp-2 hover:underline">
+  <a href="{{ route('product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+</h3>
 <!-- Ratings -->
 <div class="flex items-center gap-1.5 pt-1">
-<div class="flex text-amber-500 text-xs">
-<span>@include('components.stars', ['rating' => $products->rating])</span><span>★</span><span>★</span><span>★</span><span class="text-neutral-300">★</span>
-</div>
-<span class="text-[11px] text-neutral-500 font-medium">4.8 ({{ number_format($products->reviews_count) }})</span>
+  @include('components.stars', ['rating' => (float) $product->rating])
+  <span class="text-[11px] text-neutral-500 font-medium">{{ number_format((float) $product->rating, 1) }} ({{ number_format((int) $product->reviews_count) }})</span>
 </div>
 <!-- Price -->
 <div class="pt-1.5">
-<span class="text-sm font-bold text-neutral-900">AED {{ number_format($products->price, 2) }}</span>
+<span class="text-xs sm:text-sm font-bold text-neutral-900">AED {{ number_format($product->price, 2) }}</span>
 </div>
 </div>
 </div>
 <!-- Action Button -->
-<button class="quick-add-btn mt-3 w-full bg-black text-white text-xs font-bold py-2.5 uppercase tracking-wider" data-add-to-bag="{{ $products->id }}">
-              ADD TO BAG
-            </button>
+<button type="button" class="quick-add-btn mt-3 w-full bg-black text-white text-[11px] sm:text-xs font-bold py-2 sm:py-2.5 uppercase tracking-wider hover:bg-neutral-800 transition-colors" data-add-to-bag="{{ $product->id }}">
+  ADD TO BAG
+</button>
 </article>
 @endforeach
 </div>
 <!-- Pagination & Load More Section -->
 <div class="mt-12 text-center flex flex-col items-center">
-<p class="text-xs text-neutral-600 font-medium mb-3">Showing 8 of 381 items</p>
-<!-- Progress Bar -->
-<div class="w-48 h-1 bg-gray-200 rounded-full mb-6 overflow-hidden">
-<div class="bg-black h-full w-[8%]"></div>
-</div>
-<button class="px-8 py-3 border border-black text-black hover:bg-black hover:text-white transition-all text-xs font-bold uppercase tracking-wider">
-            LOAD MORE PRODUCTS
-          </button>
+<p class="text-xs text-neutral-600 font-medium mb-3">Showing {{ $products->count() }} items</p>
 </div>
 </section>
 <!-- END: ProductGrid -->

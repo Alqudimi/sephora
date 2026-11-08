@@ -49,7 +49,10 @@ Route::get('/faq/cancellation-and-refund', [PageController::class, 'faqCancellat
 Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
 Route::post('/cookie-consent', [CookieConsentController::class, 'store'])->middleware('throttle:forms')->name('consent.cookies');
 
-// ── Shop: categories ──
+// ── Shop: all & categories ──
+Route::get('/shop', [CategoryController::class, 'all'])->name('shop.all');
+Route::get('/shop/all', [CategoryController::class, 'all'])->name('shop.all.alias');
+Route::get('/products', [CategoryController::class, 'all'])->name('products.index');
 Route::get('/shop/makeup', [CategoryController::class, 'makeup'])->name('shop.makeup');
 Route::get('/shop/skincare', [CategoryController::class, 'skincare'])->name('shop.skincare');
 Route::get('/shop/fragrance', [CategoryController::class, 'fragrance'])->name('shop.fragrance');
@@ -128,7 +131,7 @@ Route::get('/checkout/confirmation/{order}', [CheckoutController::class, 'confir
 Route::get('/order/{order}', [CheckoutController::class, 'confirmationGuest'])->name('checkout.confirmation.guest');
 
 // ── My Account ──
-Route::middleware(['auth', 'verified'])->prefix('my-account')->name('account.')->group(function () {
+Route::middleware('auth')->prefix('my-account')->name('account.')->group(function () {
     Route::get('/', [AccountController::class, 'dashboard'])->name('dashboard');
     Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
     Route::get('/orders/{order}', [AccountController::class, 'orderShow'])->name('orders.show');

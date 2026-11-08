@@ -7,13 +7,6 @@
 @endsection
 
 @section('content')
-<!-- TOP PROMO ANNOUNCEMENT BANNER -->
-<div class="bg-primary text-on-primary text-center py-2.5 px-4 tracking-widest text-[11px] font-bold uppercase transition-all">
-<div class="max-w-[1440px] mx-auto flex items-center justify-center space-x-2">
-<span class="tracking-widest">WANT TO TURN HEADS? YOUR SIGNATURE SCENT STARTS HERE. DISCOVER THE COLLECTION AND LAYER WITHOUT LIMITS - SHOP NOW →</span>
-</div>
-</div>
-<!-- LUXURY TOP APP BAR / BRAND HEADER -->
 <!-- MAIN CANVAS -->
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- BREADCRUMBS -->

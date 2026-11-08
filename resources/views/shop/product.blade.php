@@ -85,11 +85,11 @@
                                 data-alt="{{ $image->alt ?: $product->name }}"
                                 class="w-20 h-20 shrink-0 border {{ $loop->first ? 'border-2 border-primary' : 'border-outline-variant' }} bg-surface-container-lowest p-1 hover:border-primary transition-all"
                                 aria-label="View image {{ $loop->iteration }}">
-                            <img src="{{ media_url($image->path) }}" alt="{{ $image->alt ?: $product->name }}" class="w-full h-full object-cover" loading="lazy">
+                            <img src="{{ media_url($image->path) }}" alt="{{ $image->alt ?: $product->name }}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                         </button>
                     @empty
                         <span class="w-20 h-20 shrink-0 border border-outline-variant bg-surface-container-lowest p-1">
-                            <img src="{{ media_url($mainImage) }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
+                            <img src="{{ media_url($mainImage) }}" alt="{{ $product->name }}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                         </span>
                     @endforelse
                 </div>
@@ -119,10 +119,11 @@
                         <img id="pdp-main-image"
                              src="{{ media_url($mainImage) }}"
                              alt="{{ $product->name }}"
-                             class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105">
+                             class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                             onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                     </div>
 
-                    <div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 px-2.5 py-1.5 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps flex items-center gap-1.5 pointer-events-none">
+                    <div class="hidden sm:flex absolute bottom-4 right-4 bg-surface-container-lowest/90 px-2.5 py-1.5 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps items-center gap-1.5 pointer-events-none">
                         <span class="material-symbols-outlined text-[16px]">zoom_in</span>
                         <span>Hover to zoom</span>
                     </div>
@@ -197,27 +198,29 @@
             @endif
 
             <div class="flex flex-col sm:flex-row gap-3 mb-4">
-                <div class="flex items-center border border-outline-variant h-14 shrink-0{{ $stock <= 0 ? ' opacity-50 pointer-events-none' : '' }}">
-                    <button type="button" data-qty-minus class="w-11 h-full hover:bg-surface-container disabled:opacity-40" aria-label="Decrease quantity">−</button>
+                <div class="flex items-center justify-between sm:justify-start border border-outline-variant h-12 sm:h-14 shrink-0{{ $stock <= 0 ? ' opacity-50 pointer-events-none' : '' }}">
+                    <button type="button" data-qty-minus class="w-12 sm:w-11 h-full hover:bg-surface-container disabled:opacity-40" aria-label="Decrease quantity">−</button>
                     <input data-qty-input type="number" min="1" max="{{ $maxQty }}" value="1"
                            class="w-14 h-full text-center font-body-md text-body-md text-primary bg-transparent border-0 focus:ring-0"
                            aria-label="Quantity">
-                    <button type="button" data-qty-plus class="w-11 h-full hover:bg-surface-container disabled:opacity-40" aria-label="Increase quantity">+</button>
+                    <button type="button" data-qty-plus class="w-12 sm:w-11 h-full hover:bg-surface-container disabled:opacity-40" aria-label="Increase quantity">+</button>
                 </div>
 
-                <button type="button"
-                        data-add-to-bag="{{ $product->id }}"
-                        @disabled($stock <= 0)
-                        class="flex-1 h-14 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-[0.18em] font-bold border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                    {{ $stock > 0 ? 'Add to bag' : 'Out of stock' }}
-                </button>
+                <div class="flex items-center gap-3 flex-1">
+                    <button type="button"
+                            data-add-to-bag="{{ $product->id }}"
+                            @disabled($stock <= 0)
+                            class="flex-1 h-12 sm:h-14 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-[0.18em] font-bold border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                        {{ $stock > 0 ? 'Add to bag' : 'Out of stock' }}
+                    </button>
 
-                <button type="button"
-                        data-wishlist-toggle="{{ $product->id }}"
-                        class="h-14 w-14 border border-outline-variant text-primary hover:border-primary hover:bg-surface-container-low transition-colors flex items-center justify-center"
-                        aria-label="Add {{ $product->name }} to wishlist">
-                    <span class="material-symbols-outlined">favorite</span>
-                </button>
+                    <button type="button"
+                            data-wishlist-toggle="{{ $product->id }}"
+                            class="h-12 w-12 sm:h-14 sm:w-14 shrink-0 border border-outline-variant text-primary hover:border-primary hover:bg-surface-container-low transition-colors flex items-center justify-center"
+                            aria-label="Add {{ $product->name }} to wishlist">
+                        <span class="material-symbols-outlined">favorite</span>
+                    </button>
+                </div>
             </div>
 
             <div class="space-y-2 mb-6" aria-live="polite">
@@ -423,7 +426,8 @@
                             </div>
                             <div class="aspect-square flex items-center justify-center p-4 bg-surface-bright">
                                 <img alt="{{ $item->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                                     src="{{ media_url($item->first_image) }}" loading="lazy">
+                                     src="{{ media_url($item->first_image) }}" loading="lazy"
+                                     onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                             </div>
                         </a>
                         <div class="p-3 flex flex-col flex-1">
@@ -435,10 +439,10 @@
                                 @include('components.stars', ['rating' => (float) $item->rating])
                                 <span class="text-on-surface-variant ml-1">({{ number_format((int) $item->reviews_count) }})</span>
                             </div>
-                            <div class="mt-auto pt-3 flex items-center justify-between gap-2">
-                                <span class="font-price-aed-md text-price-aed-md font-bold text-primary">{{ $currency }} {{ number_format($item->price, 2) }}</span>
+                            <div class="mt-auto pt-3 flex flex-wrap items-center justify-between gap-2">
+                                <span class="font-price-aed-md text-sm sm:text-price-aed-md font-bold text-primary">{{ $currency }} {{ number_format($item->price, 2) }}</span>
                                 <button type="button" data-add-to-bag="{{ $item->id }}"
-                                        class="h-9 px-3 bg-primary text-on-primary font-label-tag text-label-tag uppercase tracking-wider border border-primary hover:bg-surface-container-lowest hover:text-primary transition-colors disabled:opacity-50"
+                                        class="h-8 sm:h-9 px-2.5 sm:px-3 bg-primary text-on-primary font-label-tag text-[11px] sm:text-label-tag uppercase tracking-wider border border-primary hover:bg-surface-container-lowest hover:text-primary transition-colors disabled:opacity-50"
                                         @disabled($item->stock <= 0)>
                                     {{ $item->stock > 0 ? 'Add' : 'Sold out' }}
                                 </button>

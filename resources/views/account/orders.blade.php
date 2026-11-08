@@ -5,7 +5,9 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
 <nav class="text-body-sm font-body-sm text-outline mb-4"><a class="hover:text-secondary" href="/">Home</a> / <a class="hover:text-secondary" href="/my-account">My Account</a> / <span class="text-on-surface font-semibold">Orders</span></nav>
-<div class="flex items-end justify-between border-b border-primary pb-4 mb-8">
+
+@include('partials.account-nav', ['active' => 'orders'])
+<div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-primary pb-4 mb-8 gap-2">
     <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">My Orders</h1>
     <span class="font-body-sm text-body-sm text-outline">{{ $orders->total() }} orders</span>
 </div>
@@ -19,25 +21,25 @@
 @else
 <div class="space-y-4">
     @foreach($orders as $order)
-    <article class="bg-surface-container-lowest card-border p-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+    <article class="bg-surface-container-lowest card-border p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <div>
                 <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider font-bold">{{ $order->placed_at?->format('d M Y') }}</span>
                 <h3 class="font-title-lg text-title-lg text-primary mt-0.5">{{ $order->order_number }}</h3>
             </div>
-            <span class="font-label-tag text-label-tag uppercase px-3 py-1.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
+            <span class="self-start sm:self-auto font-label-tag text-label-tag uppercase px-3 py-1.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
         </div>
-        <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 sm:gap-3 mb-4 overflow-x-auto pb-1">
             @foreach($order->items->take(4) as $item)
-            <img alt="{{ $item->product_name }}" class="w-14 h-14 object-contain bg-surface-container-low" src="{{ media_url($item->image_path) }}"/>
+            <img alt="{{ $item->product_name }}" class="w-12 h-12 sm:w-14 sm:h-14 object-contain bg-surface-container-low shrink-0" src="{{ media_url($item->image_path) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
             @endforeach
-            @if($order->items->count() > 4)<span class="font-body-sm text-body-sm text-outline">+{{ $order->items->count() - 4 }} more</span>@endif
+            @if($order->items->count() > 4)<span class="font-body-sm text-body-sm text-outline shrink-0">+{{ $order->items->count() - 4 }} more</span>@endif
         </div>
-        <div class="flex items-center justify-between border-t border-outline-variant pt-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-outline-variant pt-4">
             <span class="font-body-md text-body-md text-on-surface-variant">{{ $order->items->count() }} item(s)</span>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center justify-between sm:justify-end gap-4 sm:gap-6">
                 <span class="font-price-aed-lg text-price-aed-lg font-bold text-primary">AED {{ number_format($order->total, 2) }}</span>
-                <a class="font-label-caps text-label-caps uppercase underline text-primary hover:text-secondary" href="{{ route('account.orders.show', $order->order_number) }}">View Details</a>
+                <a class="font-label-caps text-label-caps uppercase underline text-primary hover:text-secondary shrink-0" href="{{ route('account.orders.show', $order->order_number) }}">View Details</a>
             </div>
         </div>
     </article>

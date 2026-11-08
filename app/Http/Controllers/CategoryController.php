@@ -80,10 +80,84 @@ class CategoryController extends Controller
     }
 
     /**
+     * All products catalog page: /shop, /shop/all, /products.
+     * Allows browsing all 17,742 products with sorting, filtering, and pagination.
+     */
+    public function all(Request $request)
+    {
+        $filters = $this->parseFilters($request);
+
+        $base = Product::active();
+
+        // Optional category filter if passed via ?category=slug
+        $selectedCategory = null;
+        if ($request->filled('category')) {
+            $catSlug = (string) $request->input('category');
+            $selectedCategory = Category::query()->where('slug', $catSlug)->where('is_active', true)->first();
+            if ($selectedCategory) {
+                $base->whereHas('categories', fn ($query) => $query->where('categories.id', $selectedCategory->id));
+            }
+        }
+
+        $perPage = max(12, min(48, (int) $request->input('per_page', 24)));
+
+        $products = (clone $base)
+            ->with(['brand', 'images'])
+            ->when($filters['brand'], fn ($query, $brand) => $query->whereHas('brand', fn ($b) => $b->where('slug', $brand)))
+            ->when($filters['min_price'] !== null, fn ($query) => $query->where('price', '>=', $filters['min_price']))
+            ->when($filters['max_price'] !== null, fn ($query) => $query->where('price', '<=', $filters['max_price']))
+            ->when($filters['clean'], fn ($query) => $query->where('is_clean', true))
+            ->when($filters['new'], fn ($query) => $query->where('is_new', true))
+            ->when($filters['in_stock'], fn ($query) => $query->where('stock', '>', 0))
+            ->when($filters['q'], function ($query, $term) {
+                $like = '%'.$term.'%';
+                $query->where(fn ($inner) => $inner
+                    ->where('name', 'like', $like)
+                    ->orWhereHas('brand', fn ($brand) => $brand->where('name', 'like', $like)));
+            })
+            ->sorted($filters['sort'])
+            ->paginate($perPage)
+            ->withQueryString();
+
+        $brands = Brand::query()
+            ->whereHas('products', fn ($query) => $query->where('is_active', true))
+            ->withCount(['products' => fn ($query) => $query->where('is_active', true)])
+            ->orderBy('name')
+            ->get();
+
+        $priceBounds = (clone $base)
+            ->selectRaw('MIN(price) as min_price, MAX(price) as max_price')
+            ->first();
+
+        $category = new Category([
+            'name' => $selectedCategory ? $selectedCategory->name : 'All Products',
+            'slug' => 'all',
+            'hero_title' => $selectedCategory ? $selectedCategory->name : 'All Products',
+            'hero_subtitle' => $selectedCategory ? $selectedCategory->description : 'Discover the complete Sephora UAE luxury beauty collection of authentic makeup, fragrance, skincare, and haircare.',
+            'meta_title' => 'Shop All Products | Sephora UAE',
+            'meta_description' => 'Browse all 17,742 authentic beauty products at Sephora UAE. Makeup, Fragrance, Skincare, Haircare, and more.',
+        ]);
+
+        return view('shop.category', [
+            'category' => $category,
+            'products' => $products,
+            'filters' => $filters,
+            'brands' => $brands,
+            'priceBounds' => $priceBounds,
+            'sortOptions' => self::SORT_OPTIONS,
+            'selectedCategory' => $selectedCategory,
+        ]);
+    }
+
+    /**
      * Generic category page: /shop/{slug}.
      */
     public function show(Request $request, string $slug)
     {
+        if ($slug === 'all') {
+            return $this->all($request);
+        }
+
         return $this->render($request, $slug);
     }
 

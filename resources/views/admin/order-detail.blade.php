@@ -102,7 +102,7 @@
                     @forelse ($order->items as $item)
                         <div class="p-4 md:p-5 flex items-center gap-3 md:gap-4">
                             <img alt="{{ $item->product_name }}" class="w-14 h-14 shrink-0 object-contain bg-surface-container-low border border-outline-variant p-1"
-                                 src="{{ media_url($item->image_path) }}">
+                                 src="{{ media_url($item->image_path) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                             <div class="flex-1 min-w-0">
                                 <p class="font-title-md text-body-md font-bold text-primary truncate">{{ $item->product_name }}</p>
                                 <p class="font-body-sm text-body-sm text-outline">

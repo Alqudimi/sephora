@@ -208,7 +208,7 @@
                                 <label class="border border-outline-variant p-3 relative flex flex-col justify-between cursor-pointer hover:border-primary has-[:checked]:border-2 has-[:checked]:border-primary">
                                     <input type="checkbox" class="absolute top-2 right-2 w-4 h-4 text-primary border-primary focus:ring-0" name="samples[]" value="{{ $sample->id }}" @checked(in_array((string) $sample->id, array_map('strval', (array) old('samples', [])), true))>
                                     <div class="w-full h-32 bg-surface-container-lowest flex items-center justify-center mb-2 overflow-hidden border border-outline-variant">
-                                        <img class="h-28 object-contain" alt="{{ $sample->name }}" src="{{ media_url($sample->first_image) }}">
+                                        <img class="h-28 object-contain" alt="{{ $sample->name }}" src="{{ media_url($sample->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                                     </div>
                                     <div>
                                         <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant block">{{ $sample->brand?->name }}</span>
@@ -309,9 +309,9 @@
                     @foreach ($items as $item)
                         <div class="p-4 flex gap-4 items-center">
                             <div class="w-20 h-20 bg-surface-container-low border border-outline-variant flex-shrink-0 flex items-center justify-center p-1">
-                                <img class="w-full h-full object-contain" alt="{{ $item->product->name }}" src="{{ media_url($item->product->first_image) }}">
+                                <img class="w-full h-full object-contain" alt="{{ $item->product->name }}" src="{{ media_url($item->product->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                             </div>
-                            <div class="flex-grow">
+                            <div class="flex-grow min-w-0">
                                 <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ $item->product->brand?->name }}</span>
                                 <h3 class="font-title-md text-body-md font-bold text-primary leading-tight">{{ $item->product->name }}</h3>
                                 <p class="font-body-sm text-body-sm text-on-surface-variant">Qty: {{ $item->quantity }}{{ $item->shade_name ? ' • '.$item->shade_name : '' }}</p>
