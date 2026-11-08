@@ -9,20 +9,13 @@
 @endphp
 
 <!-- BEGIN: AnnouncementBar -->
-<div class="bg-black text-white text-[11px] sm:text-[12px] py-2 px-3 sm:px-4 text-center font-normal tracking-wide border-b border-neutral-800" data-purpose="top-announcement">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-neutral-700">
-        <span class="flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-            <strong>FREE DELIVERY</strong> on orders above 250 AED
+<div class="bg-[#1A3066] text-white text-[13px] sm:text-[14px] py-2.5 px-4 text-center font-normal tracking-normal border-b border-[#142652]" data-purpose="top-announcement">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+        <span class="font-normal text-white/95">
+            <strong class="font-bold">Discover The Holiday Collection</strong> &nbsp;|&nbsp; Limited-edition sets, iconic bestsellers, and festive must-haves - shop them all.
         </span>
-        <span class="hidden sm:inline-flex items-center gap-1.5 pl-4 text-neutral-300">
-            <strong>3 FREE SAMPLES</strong> with every order
-        </span>
-        <span class="hidden md:inline-flex items-center gap-1.5 pl-4 text-neutral-300">
-            <strong>100% AUTHENTIC</strong> guaranteed
-        </span>
-        <a class="underline font-bold text-white hover:text-neutral-300 pl-0 sm:pl-4 transition-colors whitespace-nowrap inline-block" href="/shop/fragrance">
-            STACK YOUR SCENT &rarr;
+        <a class="underline font-bold text-white hover:text-amber-200 uppercase tracking-wider text-[12px] sm:text-[13px] transition-colors whitespace-nowrap inline-flex items-center gap-1" href="/shop/gifts">
+            SHOP NOW &rarr;
         </a>
     </div>
 </div>
@@ -56,14 +49,14 @@
         <form action="/search" class="flex-1 max-w-2xl hidden md:block min-w-0" method="GET" role="search">
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
                 <input
-                    class="w-full pl-10 pr-4 py-2 bg-[#f0f2f4] rounded-sm text-sm border-0 focus:ring-1 focus:ring-black placeholder-gray-500 text-gray-800 transition-colors"
+                    class="w-full pl-10 pr-4 py-2 bg-[#F2F2F2] rounded-sm text-sm border-0 focus:ring-1 focus:ring-black placeholder-gray-500 text-gray-800 transition-colors"
                     name="q"
-                    placeholder="Search for products, brands, or categories..."
+                    placeholder="Search…"
                     type="search"
                     value="{{ request('q') }}"
                 />
@@ -125,13 +118,13 @@
     <form action="/search" class="px-3 pb-3 md:hidden" method="GET" role="search">
         <div class="relative w-full">
             <input
-                class="w-full pl-9 pr-3 py-1.5 bg-[#f0f2f4] rounded-sm text-sm border-0 focus:ring-1 focus:ring-black placeholder-gray-500"
+                class="w-full pl-9 pr-3 py-1.5 bg-[#F2F2F2] rounded-sm text-sm border-0 focus:ring-1 focus:ring-black placeholder-gray-500"
                 name="q"
-                placeholder="Search products or brands..."
+                placeholder="Search…"
                 type="search"
                 value="{{ request('q') }}"
             />
-            <svg class="w-4 h-4 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
         </div>
@@ -143,19 +136,19 @@
 <nav aria-label="Primary" class="border-b border-gray-200 bg-white relative z-40">
     <div class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex items-stretch justify-between gap-1 xl:gap-2 text-gray-700 h-11 overflow-x-auto lg:overflow-visible custom-scrollbar scrollbar-hidden">
 
-        {{-- 1. The Holiday Collection (Compact Seasonal Panel) --}}
+        {{-- 1. The Holiday Collection (Official Deep Navy #1A3066) --}}
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/gifts"
-               class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-bold text-[#b45309] hover:text-[#78350f] transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#b45309] after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
+               class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-bold text-[#1A3066] hover:text-[#0f1f45] transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#1A3066] after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
                 <span>The Holiday Collection</span>
-                <svg class="w-3 h-3 text-amber-500/70 group-hover:text-amber-800 transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <svg class="w-3 h-3 text-[#1A3066]/70 group-hover:text-[#1A3066] transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
             <!-- Compact Seasonal Dropdown -->
             <div class="absolute top-full left-0 w-64 pt-1 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-left">
-                <div class="bg-white rounded-b-md border border-t-2 border-gray-200 border-t-[#b45309] shadow-2xl overflow-hidden py-1 divide-y divide-gray-100">
-                    <div class="px-4 py-2 bg-gradient-to-r from-amber-50/80 to-transparent">
-                        <span class="text-[10px] font-black uppercase tracking-widest text-[#b45309]">Holiday Gifts Campaign</span>
+                <div class="bg-white rounded-b-md border border-t-2 border-gray-200 border-t-[#1A3066] shadow-2xl overflow-hidden py-1 divide-y divide-gray-100">
+                    <div class="px-4 py-2 bg-gradient-to-r from-blue-50/80 to-transparent">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-[#1A3066]">Holiday Gifts Campaign</span>
                     </div>
                     <div class="py-1">
                         <a href="/shop/makeup" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">
@@ -192,19 +185,19 @@
             </div>
         </div>
 
-        {{-- 2. Stack Your Scent (Compact Editorial Fragrance Panel) --}}
+        {{-- 2. Stack Your Scent (Official Warm Bronze #BBA08B) --}}
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/fragrance"
-               class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
+               class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-bold text-[#BBA08B] hover:text-[#9e836e] transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#BBA08B] after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
                 <span>Stack Your Scent</span>
-                <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <svg class="w-3 h-3 text-[#BBA08B]/80 group-hover:text-[#BBA08B] transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
             <!-- Compact Editorial Dropdown -->
             <div class="absolute top-full left-0 w-64 pt-1 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-left">
-                <div class="bg-white rounded-b-md border border-t-2 border-gray-200 border-t-black shadow-2xl overflow-hidden py-1 divide-y divide-gray-100">
-                    <div class="px-4 py-2 bg-neutral-50/70">
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Curated Scent Layering</span>
+                <div class="bg-white rounded-b-md border border-t-2 border-gray-200 border-t-[#BBA08B] shadow-2xl overflow-hidden py-1 divide-y divide-gray-100">
+                    <div class="px-4 py-2 bg-[#BBA08B]/10">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-[#BBA08B]">Curated Scent Layering</span>
                     </div>
                     <div class="py-1">
                         <a href="/shop/fragrance?family=fruity" class="flex items-center justify-between px-4 py-2 text-xs font-medium text-gray-700 hover:bg-neutral-50 hover:text-black transition-colors">

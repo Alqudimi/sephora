@@ -235,74 +235,9 @@
                     </a>
                 </div>
             @else
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
                     @foreach ($products as $product)
-                        @php
-                            $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
-                            $inStock = (int) $product->stock > 0;
-                        @endphp
-                        <article class="group border border-outline-variant bg-surface-container-lowest flex flex-col">
-                            <div class="relative">
-                                <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="block" aria-label="View {{ $product->name }}">
-                                    <div class="aspect-square bg-surface-bright flex items-center justify-center p-4 overflow-hidden">
-                                        <img src="{{ media_url($product->first_image) }}" alt="{{ $product->name }}"
-                                             class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" loading="lazy"
-                                             onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
-                                    </div>
-                                </a>
-
-                                <div class="absolute top-2 left-2 flex flex-col gap-1 items-start">
-                                    @if ($product->is_exclusive)
-                                        <span class="bg-secondary text-on-secondary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">Exclusive</span>
-                                    @endif
-                                    @if ($product->is_new)
-                                        <span class="bg-surface text-on-surface border border-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">New</span>
-                                    @endif
-                                    @if ($product->is_bestseller)
-                                        <span class="bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">Best Seller</span>
-                                    @endif
-                                    @if ($product->badge)
-                                        <span class="bg-surface-container-low text-primary border border-outline-variant font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider">{{ $product->badge }}</span>
-                                    @endif
-                                    @if ($hasDiscount)
-                                        <span class="bg-secondary-fixed text-on-secondary-fixed-variant font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-wider font-bold">Sale</span>
-                                    @endif
-                                </div>
-
-                                <button type="button" data-wishlist-toggle="{{ $product->id }}"
-                                        class="absolute top-2 right-2 w-9 h-9 flex items-center justify-center bg-surface-container-lowest/90 border border-outline-variant text-primary hover:border-primary transition-colors"
-                                        aria-label="Add {{ $product->name }} to wishlist">
-                                    <span class="material-symbols-outlined text-[20px]">favorite_border</span>
-                                </button>
-                            </div>
-
-                            <div class="p-3 md:p-4 flex flex-col flex-1">
-                                <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ $product->brand?->name }}</span>
-                                <a href="{{ route('product.show', ['slug' => $product->slug]) }}"
-                                   class="font-title-md text-body-sm font-bold text-primary leading-snug line-clamp-2 mt-0.5 hover:underline">
-                                    {{ $product->name }}
-                                </a>
-
-                                <div class="flex items-center gap-1.5 mt-1.5">
-                                    @include('components.stars-m3', ['rating' => (float) $product->rating])
-                                    <span class="font-body-sm text-[12px] text-outline">({{ number_format((int) $product->reviews_count) }})</span>
-                                </div>
-
-                                <div class="mt-auto pt-3">
-                                    <div class="flex flex-wrap items-baseline gap-2 mb-2.5">
-                                        <span class="font-price-aed-md text-price-aed-md font-bold text-primary">{{ $currency }} {{ number_format($product->price, 2) }}</span>
-                                        @if ($hasDiscount)
-                                            <span class="font-body-sm text-[13px] line-through text-outline">{{ $currency }} {{ number_format($product->compare_at_price, 2) }}</span>
-                                        @endif
-                                    </div>
-
-                                    <button type="button" data-add-to-bag="{{ $product->id }}" @disabled(! $inStock)
-                                            class="w-full h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                                        {{ $inStock ? 'Add to bag' : 'Sold out' }}
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
+                        <x-product-card :product="$product" />
                     @endforeach
                 </div>
 

@@ -3,12 +3,11 @@
 <footer class="bg-black text-white text-xs pt-12 pb-8 mt-12 border-t border-neutral-800" data-purpose="site-footer">
     <div class="max-w-[1440px] mx-auto px-4 md:px-8 space-y-10">
 
-        <!-- Newsletter Row -->
+        <!-- Newsletter Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between pb-8 border-b border-neutral-800 gap-6">
             <div class="text-center md:text-left max-w-xl">
-                <span class="text-[10px] font-black uppercase tracking-widest text-neutral-400">BEAUTY INSIDER NEWSLETTER</span>
-                <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white mt-0.5">Stay In The Beauty Loop</h3>
-                <p class="text-neutral-400 text-xs mt-1">Sign up for exclusive offers, early VIP launches, personalized beauty recommendations &amp; event invites.</p>
+                <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">Subscribe to the Sephora newsletter!</h3>
+                <p class="text-neutral-400 text-xs mt-1">Get 10% off your first order and stay updated on the latest beauty launches &amp; trends.</p>
             </div>
             <form class="flex flex-col sm:flex-row w-full md:w-auto max-w-md gap-2" data-newsletter-form>
                 <input
@@ -23,93 +22,33 @@
             </form>
         </div>
 
-        <!-- Concierge & Mobile App Row -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8 border-b border-neutral-800">
-            <!-- Client Concierge -->
-            <div class="flex items-start gap-3.5">
-                <div class="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                        <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold text-xs uppercase tracking-wider">Client Concierge (UAE)</h4>
-                    <p class="text-neutral-300 text-xs mt-0.5">Call toll-free: <a href="tel:8007374672" class="font-bold underline text-white">800-SEPHORA (800 737 4672)</a></p>
-                    <p class="text-neutral-500 text-[11px] mt-0.5">Everyday: 9:00 AM – 9:00 PM (GST)</p>
-                </div>
-            </div>
-
-            <!-- Sephora App -->
-            <div class="flex items-start gap-3.5">
-                <div class="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                        <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold text-xs uppercase tracking-wider">Download Sephora App</h4>
-                    <p class="text-neutral-400 text-xs mt-0.5">Get 10% off your first app purchase with code <strong class="text-white">APP10</strong>.</p>
-                    <div class="flex items-center gap-2 mt-2">
-                        <a href="/download-app" class="px-2.5 py-1 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 rounded text-[10px] text-neutral-300 font-medium">iOS App Store</a>
-                        <a href="/download-app" class="px-2.5 py-1 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 rounded text-[10px] text-neutral-300 font-medium">Google Play</a>
-                    </div>
+        <!-- Social Media & Country Selector Bar -->
+        <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-neutral-800 gap-4">
+            <div class="flex items-center gap-4">
+                <span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Follow Us:</span>
+                <div class="flex items-center gap-3 text-neutral-300">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/sephoramiddleeast" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Instagram">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/sephoramiddleeast" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Facebook">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.667 5H18V0h-3.808C10.597 0 9 1.583 9 4.615V8z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://youtube.com/sephoramiddleeast" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="YouTube">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com/@sephoramiddleeast" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="TikTok">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <!-- Footer Columns -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-neutral-400">
-            <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">About Sephora</h4>
-                <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="{{ route('home') }}">About Sephora UAE</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/stores">Stores &amp; Services</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/my-account">Beauty Pass Loyalty Program</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/clean-at-sephora">Clean at Sephora</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/gift-card-info">Gift Cards</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Customer Service</h4>
-                <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="{{ route('faq') }}">Help &amp; FAQs</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.delivery') }}">Delivery &amp; Shipping Rates</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.cancellation') }}">Returns &amp; Exchanges</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('contact') }}">Contact Us</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/my-account">Track My Order</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Legal &amp; Privacy</h4>
-                <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}">Terms &amp; Conditions</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}#privacy">Privacy Notice</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}#cookies">Cookie Preferences</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}#supply-chain">Supply Chain Transparency</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Payment Methods</h4>
-                <p class="text-[11px] text-neutral-400 mb-2.5">100% secure payment across the UAE:</p>
-                <div class="flex flex-wrap gap-1.5 text-neutral-300">
-                    <span class="px-2 py-1 bg-neutral-900 rounded text-[10px] border border-neutral-800 font-bold">VISA</span>
-                    <span class="px-2 py-1 bg-neutral-900 rounded text-[10px] border border-neutral-800 font-bold">MasterCard</span>
-                    <span class="px-2 py-1 bg-neutral-900 rounded text-[10px] border border-neutral-800 font-bold">Apple Pay</span>
-                    <span class="px-2 py-1 bg-neutral-900 rounded text-[10px] border border-neutral-800 font-bold text-[#34e0a1]">Tabby</span>
-                    <span class="px-2 py-1 bg-neutral-900 rounded text-[10px] border border-neutral-800 font-bold text-[#ff9900]">Tamara</span>
-                    <span class="px-2 py-1 bg-neutral-900 rounded text-[10px] border border-neutral-800 text-neutral-400">Cash on Delivery</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyright Bottom Bar -->
-        <div class="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-neutral-500 text-[11px] gap-4 text-center sm:text-left">
-            <p>&copy; {{ date('Y') }} Sephora Middle East FZE. All rights reserved.</p>
-            <p class="flex items-center gap-2">
-                <span class="inline-flex w-3.5 h-2.5 overflow-hidden rounded-[1px] border border-neutral-700">
+            <!-- Country Selector -->
+            <div class="flex items-center gap-2 text-neutral-300">
+                <span class="inline-flex w-4 h-3 overflow-hidden rounded-[2px] border border-gray-600">
                     <svg viewBox="0 0 600 300" class="w-full h-full object-cover">
                         <rect width="600" height="100" fill="#00732f" />
                         <rect y="100" width="600" height="100" fill="#ffffff" />
@@ -117,10 +56,85 @@
                         <rect width="150" height="300" fill="#ff0000" />
                     </svg>
                 </span>
-                <span>United Arab Emirates</span>
+                <span class="text-xs font-semibold">United Arab Emirates | English</span>
+            </div>
+        </div>
+
+        <!-- 5-Column Sitemap Links -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-neutral-400">
+            <!-- 1. Top Categories -->
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Top Categories</h4>
+                <ul class="space-y-2">
+                    <li><a class="hover:text-white transition-colors" href="/shop/makeup">Makeup</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/fragrance">Fragrance</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/skincare">Skincare</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/sephora-collection">Sephora Collection</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/hair">Hair</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/bath-body">Bath &amp; Body</a></li>
+                </ul>
+            </div>
+
+            <!-- 2. Top Brands -->
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Top Brands</h4>
+                <ul class="space-y-2">
+                    <li><a class="hover:text-white transition-colors" href="/brands/fenty-beauty">Fenty Beauty</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/huda-beauty">Huda Beauty</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/kayali">Kayali</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/tarte">Tarte</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/nars">NARS</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/sephora-collection">Sephora Collection</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. My Sephora -->
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">My Sephora</h4>
+                <ul class="space-y-2">
+                    <li><a class="hover:text-white transition-colors" href="/my-account">My Account</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/my-account/orders">Order History</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/my-account/wishlist">My Wishlist</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/gift-cards">Gift Cards</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/beauty-offers">Beauty Offers</a></li>
+                </ul>
+            </div>
+
+            <!-- 4. Help & FAQs -->
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Help &amp; FAQs</h4>
+                <ul class="space-y-2">
+                    <li><a class="hover:text-white transition-colors" href="{{ route('contact') }}">Contact Us</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/stores">Stores &amp; Services</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.delivery') }}">Delivery &amp; Shipping</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.cancellation') }}">Returns &amp; Refunds</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('faq') }}">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- 5. About Sephora -->
+            <div>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">About Sephora</h4>
+                <ul class="space-y-2">
+                    <li><a class="hover:text-white transition-colors" href="{{ route('home') }}">About Sephora UAE</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/clean-at-sephora">Clean at Sephora</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/stores">Our Boutiques</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}">Terms &amp; Conditions</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}#privacy">Privacy Notice</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Legal & Copyright Bar -->
+        <div class="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-neutral-500 text-[11px] gap-4 text-center sm:text-left">
+            <p>Sephora Middle East &copy; {{ date('Y') }}. All rights reserved.</p>
+            <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
+                <a href="{{ route('terms') }}" class="hover:text-neutral-300 transition-colors">Terms &amp; Conditions</a>
                 <span class="w-1 h-1 bg-neutral-700 rounded-full"></span>
-                <a href="/my-account/settings/country-and-language" class="hover:text-neutral-300 transition-colors font-medium">English / AED</a>
-            </p>
+                <a href="{{ route('terms') }}#privacy" class="hover:text-neutral-300 transition-colors">Privacy Policy</a>
+                <span class="w-1 h-1 bg-neutral-700 rounded-full"></span>
+                <a href="{{ route('terms') }}#cookies" class="hover:text-neutral-300 transition-colors">Cookie Preferences</a>
+            </div>
         </div>
     </div>
 </footer>

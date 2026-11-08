@@ -1,54 +1,78 @@
 @extends('layouts.app')
 
-@section('title', 'SEPHORA UAE | Makeup, Skincare, Fragrance & More')
+@section('title', 'Beauty Products, Makeup, Perfume & Skincare ≡ Sephora UAE')
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
 <main class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-8 py-3 sm:py-5 space-y-8 sm:space-y-12">
 
-    <!-- BEGIN: HeroCarouselBanner -->
+    <!-- BEGIN: Guest Loyalty Block -->
+    <section class="bg-[#faf8f5] rounded-sm border border-neutral-200 p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm" data-purpose="guest-loyalty">
+        <div class="flex items-center gap-4 text-center md:text-left">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 flex items-center justify-center">
+                <img
+                    alt="Illustration for Non-Loyalty User"
+                    class="w-full h-full object-contain"
+                    src="https://img-content.sephora.me/m3aon8mn8vtz/3lfhaQmTln7O5XJQkOr3W5/8424af08532713db0712a304cae44fec/Illustration_for_Non-Loyalty_User.png?fm=webp&q=85"
+                    onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"
+                />
+            </div>
+            <div>
+                <h2 class="text-base sm:text-lg md:text-xl font-bold text-black tracking-tight">Sign in for exclusive perks!</h2>
+                <p class="text-xs sm:text-sm text-neutral-600 mt-0.5">Personalize your experience, track your orders, unlock gifts &amp; more.</p>
+            </div>
+        </div>
+        <div class="shrink-0 w-full md:w-auto flex items-center justify-center">
+            <a class="block w-full sm:w-auto text-center bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-bold tracking-wider px-7 py-3 rounded-sm transition-colors uppercase whitespace-nowrap shadow-sm" href="/sign-in">
+                SIGN IN / CREATE ACCOUNT
+            </a>
+        </div>
+    </section>
+    <!-- END: Guest Loyalty Block -->
+
+    <!-- BEGIN: HeroCarouselBanner (4 Official Sephora Campaigns) -->
     @php
         $heroSlides = [
             [
-                'badge' => 'LIMITED EDITION',
-                'title' => "The Holiday Collection\nDropped Early",
-                'subtext' => 'Be the first to shop exclusive holiday beauty vaults, festive kits & limited-edition sets.',
-                'cta' => '/shop/gifts',
-                'cta_label' => 'Shop Holiday Collection',
-                'image' => 'images/hero/luxury_black_and_white_striped_sephora_gift_card_on_an_elegant_sleek_marble.webp',
-                'alt' => 'The Holiday Collection at Sephora UAE',
+                'badge' => 'NEW LAUNCH',
+                'title' => "NARS New Notorious Mascara",
+                'subtext' => 'Steal the Scene. High-drama volume and irresistible lash lift, exclusively at Sephora.',
+                'cta' => '/brands/nars',
+                'cta_label' => 'Shop Now',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6yXJcFFTJWBuN2Zz3GwxjS/2085f5f8c7e0032c525f0a75f85bc515/Nars-Notorious_Hero-Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=1200',
+                'alt' => 'NARS New Notorious Mascara at Sephora UAE',
             ],
             [
-                'badge' => 'SIGNATURE SCENTS',
-                'title' => "Stack Your Scent:\nLayer Without Limits",
-                'subtext' => 'Fruity Gourmands, Skin Musks & Lavender Blends. Discover your bespoke fragrance trail.',
+                'badge' => 'EXCLUSIVE FRAGRANCE',
+                'title' => "Cherry Amber By Matiere Premiere",
+                'subtext' => 'A modern amber coloured by natural Cherry Extract. 50 ml, exclusively at Sephora Middle East.',
                 'cta' => '/shop/fragrance',
-                'cta_label' => 'Explore Fragrances',
-                'image' => 'images/hero/luxury_bottle_of_kayali_vanilla_28_or_yum_pistachio_gelato_perfume_high_end.webp',
-                'alt' => 'Stack Your Scent at Sephora UAE',
+                'cta_label' => 'Shop Now',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/vOUoBvO6GOSVYs6bDCj8L/1e31db6fb76da289f074d2757270b615/Matiere_Premiere_Cherry_Amber_ENG_1142x928.jpg?fm=webp&q=85&w=1200',
+                'alt' => 'Matiere Premiere Cherry Amber at Sephora UAE',
             ],
             [
-                'badge' => 'NEW & VIRAL',
-                'title' => "New In Beauty:\nIconic Launches",
-                'subtext' => 'The hottest drops from Haus Labs, Huda Beauty, Kayali & Fenty Beauty have arrived.',
-                'cta' => '/shop/new',
-                'cta_label' => 'Discover Newness',
-                'image' => 'images/hero/modern_luxury_sephora_beauty_flagship_store_interior_sleek_monochrome_black_and.webp',
-                'alt' => 'New In Beauty - Sephora UAE Flagship',
+                'badge' => 'ANNIVERSARY',
+                'title' => "tarte: 10 Years 10 Icons",
+                'subtext' => 'Celebrating a decade of tarte at Sephora Middle East with the beauty icons you know and love.',
+                'cta' => '/brands/tarte',
+                'cta_label' => 'Shop Now',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6pE1QhppKX12pww01udLL/4ce2ba15f9ee7e28bf6b77c5d7348981/tarte_Hero-Carousel_Tablet_1142x928_ENG.jpg?fm=webp&q=85&w=1200',
+                'alt' => 'tarte 10 Years at Sephora UAE',
             ],
             [
-                'badge' => 'PRESTIGE ESSENTIALS',
-                'title' => "Sephora Collection:\nHigh Performance",
-                'subtext' => 'Accessible luxury, clean pigments and clinical skincare formulas loved by millions.',
-                'cta' => '/shop/sephora-collection',
-                'cta_label' => 'Shop Sephora Collection',
-                'image' => 'images/hero/anastasia_beverly_hills_modern_renaissance_or_glam_eyeshadow_palette_open.webp',
-                'alt' => 'Sephora Collection Makeup & Skincare',
+                'badge' => 'SIGNATURE LAYERING',
+                'title' => "Stack Your Scent",
+                'subtext' => 'Discover a world of fragrances, from juicy gourmands to soft musks and modern lavenders. Mix, match, and create a scent that’s uniquely yours.',
+                'cta' => '/shop/fragrance',
+                'cta_label' => 'Shop Now',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/1U86f2Z19tG4l50kUqT5xV/6fd5317789498234399e46a782a20b99/Stack_Your_Scent_Hero_Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=1200',
+                'alt' => 'Stack Your Scent Fragrance Campaign at Sephora UAE',
             ],
         ];
     @endphp
-    <section aria-label="Featured collections" aria-roledescription="carousel" class="relative rounded-sm overflow-hidden shadow-sm bg-neutral-900" data-autoplay="5000" data-carousel data-purpose="hero-banner">
-        <div class="relative w-full min-h-[340px] sm:min-h-[420px] md:min-h-[480px]">
+    <section aria-label="Featured campaigns" aria-roledescription="carousel" class="relative rounded-sm overflow-hidden shadow-sm bg-neutral-900" data-autoplay="5000" data-carousel data-purpose="hero-banner">
+        <div class="relative w-full min-h-[340px] sm:min-h-[420px] md:min-h-[500px]">
             @foreach ($heroSlides as $index => $slide)
                 <article
                     aria-hidden="{{ $index === 0 ? 'false' : 'true' }}"
@@ -58,15 +82,15 @@
                     data-carousel-slide
                     @if ($index !== 0) inert @endif
                 >
-                    <img alt="{{ $slide['alt'] }}" class="absolute inset-0 w-full h-full object-cover object-center" src="{{ media_url($slide['image']) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/60 md:to-transparent"></div>
-                    <div class="relative z-10 w-full max-w-3xl p-6 sm:p-10 md:p-14 text-white space-y-3 sm:space-y-4">
+                    <img alt="{{ $slide['alt'] }}" class="absolute inset-0 w-full h-full object-cover object-center" src="{{ $slide['image'] }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/80 md:via-black/50 md:to-transparent"></div>
+                    <div class="relative z-10 w-full max-w-2xl p-6 sm:p-10 md:p-14 text-white space-y-3 sm:space-y-4">
                         <span class="inline-block bg-white text-black text-[10px] sm:text-xs font-black px-2.5 py-1 uppercase tracking-widest rounded-sm">
                             {{ $slide['badge'] }}
                         </span>
-                        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight uppercase font-sans">
-                            {!! nl2br(e($slide['title'])) !!}
-                        </h1>
+                        <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight uppercase font-sans">
+                            {{ $slide['title'] }}
+                        </h2>
                         <p class="text-xs sm:text-sm md:text-base text-neutral-200 font-normal max-w-xl leading-relaxed">
                             {{ $slide['subtext'] }}
                         </p>
@@ -80,12 +104,12 @@
             @endforeach
 
             <button aria-label="Previous slide" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-prev type="button">
-                <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+                <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
             <button aria-label="Next slide" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-next type="button">
-                <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+                <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
@@ -93,417 +117,342 @@
     </section>
     <!-- END: HeroCarouselBanner -->
 
-    <!-- BEGIN: CategoryRoundels (Circular Visual Navigation) -->
-    @php
-        $categoryRoundels = [
-            ['name' => 'Makeup', 'url' => '/shop/makeup', 'image' => 'images/hero/anastasia_beverly_hills_modern_renaissance_or_glam_eyeshadow_palette_open.webp'],
-            ['name' => 'Fragrance', 'url' => '/shop/fragrance', 'image' => 'images/hero/dior_sauvage_eau_de_parfum_bottle_luxury_studio_product_photography_on_solid.webp'],
-            ['name' => 'Skincare', 'url' => '/shop/skincare', 'image' => 'images/hero/drunk_elephant_protini_polypeptide_cream_teal_and_white_jar_luxury_skincare.webp'],
-            ['name' => 'Hair', 'url' => '/shop/hair', 'image' => 'images/hero/gisou_honey_infused_hair_oil_luxury_glass_dropper_bottle_with_golden_honey_oil.webp'],
-            ['name' => 'Bath & Body', 'url' => '/shop/bath-body', 'image' => 'images/hero/sol_de_janeiro_brazilian_bum_bum_cream_vibrant_yellow_jar_with_white_cap_luxury.webp'],
-            ['name' => 'Sephora Collection', 'url' => '/shop/sephora-collection', 'image' => 'images/hero/laneige_lip_sleeping_mask_berry_pink_jar_container_with_lid_luxury_studio.webp'],
-            ['name' => 'Beauty Offers', 'url' => '/beauty-offers', 'image' => 'images/hero/luxury_beauty_services_at_sephora_professional_makeup_artist_applying_glam.webp'],
-            ['name' => 'Gifts & Minis', 'url' => '/shop/gifts', 'image' => 'images/hero/luxury_black_and_white_striped_sephora_gift_card_on_an_elegant_sleek_marble.webp'],
-        ];
-    @endphp
-    <section aria-label="Shop by category" class="py-2" data-purpose="category-roundels">
-        <div class="grid grid-cols-4 md:grid-cols-8 gap-3 sm:gap-4 md:gap-6 text-center">
-            @foreach ($categoryRoundels as $cat)
-                <a href="{{ $cat['url'] }}" class="group flex flex-col items-center gap-2">
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-neutral-100 border-2 border-transparent group-hover:border-black transition-all duration-200 shadow-sm flex items-center justify-center p-1.5 sm:p-2">
-                        <img src="{{ media_url($cat['image']) }}" alt="{{ $cat['name'] }}" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
-                    </div>
-                    <span class="text-[11px] sm:text-xs font-bold text-neutral-800 uppercase tracking-tight group-hover:text-black transition-colors text-center leading-tight">
-                        {{ $cat['name'] }}
-                    </span>
-                </a>
-            @endforeach
-        </div>
-    </section>
-    <!-- END: CategoryRoundels -->
-
-    <!-- BEGIN: MemberPerkBanner -->
-    <section class="bg-[#faf8f5] rounded-sm border border-neutral-200 p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm" data-purpose="member-perks">
-        <div class="flex items-center gap-3.5 sm:gap-4 text-center md:text-left">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-sm bg-black text-white p-1.5 flex flex-col justify-around items-center shadow-md">
-                <span class="text-[9px] font-black tracking-widest uppercase">BEAUTY</span>
-                <div class="w-8 h-0.5 bg-white"></div>
-                <span class="text-[9px] font-black tracking-widest uppercase">PASS</span>
-            </div>
-            <div>
-                <h2 class="text-sm sm:text-base md:text-lg font-bold text-black tracking-tight">Sign in for exclusive Beauty Pass perks!</h2>
-                <p class="text-xs sm:text-sm text-neutral-600 mt-0.5">Earn points on every AED, track your orders & unlock free luxury gifts with every purchase.</p>
-            </div>
-        </div>
-        <div class="shrink-0 w-full md:w-auto flex items-center justify-center gap-3">
-            <a class="block w-full sm:w-auto text-center bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-bold tracking-wider px-6 py-2.5 sm:py-3 rounded-sm transition-colors uppercase whitespace-nowrap" href="/sign-in">
-                SIGN IN / REGISTER
-            </a>
-        </div>
-    </section>
-    <!-- END: MemberPerkBanner -->
-
-    <!-- BEGIN: CuratedHolidaySection -->
+    <!-- BEGIN: CuratedHolidaySection (Product Row 1) -->
     <section class="pt-2 sm:pt-4" data-purpose="holiday-collection">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#b45309]">Seasonal Special</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">The Holiday Collection</h2>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Curated festive vaults, limited-edition bundles and gifting sets.</p>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">Limited-Edition Sets</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">The Holiday Collection</h3>
+                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Iconic vaults, festive bundles, and exclusive beauty sets.</p>
             </div>
             <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/gifts">
-                Shop All <span aria-hidden="true">&rarr;</span>
+                Shop Now <span aria-hidden="true">&rarr;</span>
             </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
             @foreach ($holidayProducts as $product)
-                @php
-                    $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
-                @endphp
-                <article class="product-card group relative flex flex-col justify-between bg-white border border-neutral-200 rounded-sm hover:shadow-lg transition-all p-2.5 sm:p-3.5">
-                    <div class="relative w-full aspect-square bg-[#fafafa] rounded-sm overflow-hidden flex items-center justify-center">
-                        <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
-                            <span class="bg-[#b45309] text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 uppercase tracking-wider">
-                                Holiday Set
-                            </span>
-                            @if ($hasDiscount)
-                                <span class="bg-red-600 text-white text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 uppercase">Sale</span>
-                            @endif
-                        </div>
-                        <button aria-label="Add {{ $product->name }} to wishlist" class="absolute top-2 right-2 text-neutral-400 hover:text-black z-10 p-1.5 bg-white/90 rounded-full shadow-sm transition-colors" data-wishlist-toggle="{{ $product->id }}" type="button">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <a aria-label="View {{ $product->name }}" class="block w-full h-full p-2" href="/p/{{ $product->slug }}">
-                            <img alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
-                        </a>
-                    </div>
-                    <div class="pt-3 flex flex-col flex-grow min-w-0">
-                        <p class="text-[11px] sm:text-xs font-bold text-black uppercase tracking-wider truncate">{{ $product->brand?->name ?? 'Sephora' }}</p>
-                        <a class="mt-1 min-w-0" href="/p/{{ $product->slug }}">
-                            <h3 class="text-xs sm:text-sm text-neutral-800 line-clamp-2 font-normal group-hover:text-black leading-snug">{{ $product->name }}</h3>
-                        </a>
-                        <div class="flex items-center gap-1 mt-2 text-amber-500 text-xs">
-                            <span>@include('components.stars', ['rating' => $product->rating])</span>
-                            <span class="text-neutral-400 text-[11px]">({{ number_format($product->reviews_count) }})</span>
-                        </div>
-                        <div class="mt-auto pt-2 flex items-baseline gap-2">
-                            <span class="text-sm sm:text-base font-bold text-black">AED {{ number_format($product->price, 2) }}</span>
-                            @if ($hasDiscount)
-                                <span class="text-xs text-neutral-400 line-through">AED {{ number_format($product->compare_at_price, 2) }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <button class="mt-3 w-full py-2.5 bg-black text-white text-xs font-bold uppercase rounded-sm hover:bg-neutral-800 transition-colors tracking-wider" data-add-to-bag="{{ $product->id }}" type="button">
-                        Add to Bag
-                    </button>
-                </article>
+                <x-product-card :product="$product" badge="Holiday Set" />
             @endforeach
         </div>
     </section>
     <!-- END: CuratedHolidaySection -->
 
-    <!-- BEGIN: StackYourScent Section -->
-    <section class="pt-2 sm:pt-4" data-purpose="stack-your-scent">
-        <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
-            <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Editorial Fragrance</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Stack Your Scent: Layer Without Limits</h2>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Three iconic olfactory paths to craft your unforgettable signature trail.</p>
-            </div>
-            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/fragrance">
-                Shop Fragrance <span aria-hidden="true">&rarr;</span>
-            </a>
-        </div>
-
-        <!-- Editorial Scent Pillars -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/70 p-4 sm:p-5 rounded-md flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-amber-800">Scent Pillar 01</span>
-                    <h3 class="text-lg font-bold text-black mt-1">Fruity Gourmands</h3>
-                    <p class="text-xs text-neutral-600 mt-1 leading-relaxed">Sugared pistachio, creamy vanilla, juicy berries and delicious warmth.</p>
-                </div>
-                <a href="/shop/fragrance" class="mt-4 text-xs font-bold text-amber-900 uppercase tracking-wider hover:underline">Explore Gourmands &rarr;</a>
-            </div>
-
-            <div class="bg-gradient-to-br from-stone-50 to-neutral-100 border border-neutral-200 p-4 sm:p-5 rounded-md flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-700">Scent Pillar 02</span>
-                    <h3 class="text-lg font-bold text-black mt-1">Skin Musks</h3>
-                    <p class="text-xs text-neutral-600 mt-1 leading-relaxed">Intimate second-skin warmth, white amber, soft cashmere and solar petals.</p>
-                </div>
-                <a href="/shop/fragrance" class="mt-4 text-xs font-bold text-neutral-900 uppercase tracking-wider hover:underline">Explore Musks &rarr;</a>
-            </div>
-
-            <div class="bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200/70 p-4 sm:p-5 rounded-md flex flex-col justify-between">
-                <div>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-purple-800">Scent Pillar 03</span>
-                    <h3 class="text-lg font-bold text-black mt-1">Lavender &amp; Oud Blends</h3>
-                    <p class="text-xs text-neutral-600 mt-1 leading-relaxed">French lavender, velvety Middle Eastern oud, and rich aromatic woods.</p>
-                </div>
-                <a href="/shop/fragrance" class="mt-4 text-xs font-bold text-purple-900 uppercase tracking-wider hover:underline">Explore Woody Blends &rarr;</a>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            @foreach ($fragrances->take(4) as $product)
-                @php
-                    $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
-                @endphp
-                <article class="product-card group relative flex flex-col justify-between bg-white border border-neutral-200 rounded-sm hover:shadow-lg transition-all p-2.5 sm:p-3.5">
-                    <div class="relative w-full aspect-square bg-[#fafafa] rounded-sm overflow-hidden flex items-center justify-center">
-                        <span class="absolute top-2 left-2 bg-black text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 uppercase tracking-wider z-10">
-                            Fragrance
-                        </span>
-                        <button aria-label="Add {{ $product->name }} to wishlist" class="absolute top-2 right-2 text-neutral-400 hover:text-black z-10 p-1.5 bg-white/90 rounded-full shadow-sm transition-colors" data-wishlist-toggle="{{ $product->id }}" type="button">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <a aria-label="View {{ $product->name }}" class="block w-full h-full p-2" href="/p/{{ $product->slug }}">
-                            <img alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
-                        </a>
+    <!-- BEGIN: Secondary Editorial Promo Grid (6 Cards) -->
+    @php
+        $editorialCards = [
+            [
+                'title' => 'The Sets Everyone Wants',
+                'subtext' => 'All the most-loved beauty sets in one place.',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6ARX3CtDVjaAtfIT9njNfh/b910e93159bab4fc0a5f7263cd0c735c/Festive_Collection_1142x928_Eng.jpg?fm=webp&q=85&w=608',
+                'cta' => '/shop/gifts',
+            ],
+            [
+                'title' => 'New Make Up For Ever',
+                'subtext' => 'Artist Bronze and Sculpt Powders for effortless warmth and definition.',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/7aPFtxydFLWU9w8x4Z7rZb/18ab71b1a5c6bedc9e01fbbf3d944e99/Hero_Carousel_-_EN.jpg?fm=webp&q=85&w=608',
+                'cta' => '/brands/make-up-for-ever',
+            ],
+            [
+                'title' => 'Yum Vanilla Cupcake | 108',
+                'subtext' => 'Indulge in the sweetest new fragrance sensation from KAYALI.',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/1U86f2Z19tG4l50kUqT5xV/6fd5317789498234399e46a782a20b99/Stack_Your_Scent_Hero_Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=608',
+                'cta' => '/brands/kayali',
+            ],
+            [
+                'title' => 'New Erborian Triple Care BB Milk',
+                'subtext' => 'Get that dewy, bouncy BB skin everyone is watching.',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6yXJcFFTJWBuN2Zz3GwxjS/2085f5f8c7e0032c525f0a75f85bc515/Nars-Notorious_Hero-Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=608',
+                'cta' => '/brands/erborian',
+            ],
+            [
+                'title' => 'Your Glow, Made Easy',
+                'subtext' => "Effortless radiance in one kit, because glowing shouldn't be complicated.",
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/7HOUaojRlqzWNsiHYHHCPn/8ce82f85343ab8be27c55b5ca15f102d/Hero_Carousel_-_EN.jpg?fm=webp&q=85&w=608',
+                'cta' => '/shop/new',
+            ],
+            [
+                'title' => 'New! Power Grip Rosé Setting Spray',
+                'subtext' => 'Set makeup and brighten skin with the latest drip from e.l.f.',
+                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/3O7pbz0h020sC33lJ6H0uO/0ff32c443173791af651c33e6909b222/3931_elf_GCC_Sephora-P1-eComm-Rose_Spray_Hero-Carousel_1142x928.jpg?fm=webp&q=85&w=608',
+                'cta' => '/brands/e-l-f-cosmetics',
+            ],
+        ];
+    @endphp
+    <section class="pt-2 sm:pt-4" data-purpose="editorial-promo-grid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            @foreach ($editorialCards as $card)
+                <div class="group flex flex-col bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="aspect-[16/10] bg-gray-100 overflow-hidden relative">
+                        <img
+                            alt="{{ $card['title'] }}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                            src="{{ $card['image'] }}"
+                            onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"
+                        />
                     </div>
-                    <div class="pt-3 flex flex-col flex-grow min-w-0">
-                        <p class="text-[11px] sm:text-xs font-bold text-black uppercase tracking-wider truncate">{{ $product->brand?->name ?? 'Fragrance' }}</p>
-                        <a class="mt-1 min-w-0" href="/p/{{ $product->slug }}">
-                            <h3 class="text-xs sm:text-sm text-neutral-800 line-clamp-2 font-normal group-hover:text-black leading-snug">{{ $product->name }}</h3>
-                        </a>
-                        <div class="flex items-center gap-1 mt-2 text-amber-500 text-xs">
-                            <span>@include('components.stars', ['rating' => $product->rating])</span>
-                            <span class="text-neutral-400 text-[11px]">({{ number_format($product->reviews_count) }})</span>
+                    <div class="p-4 sm:p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h4 class="text-base sm:text-lg font-bold text-black tracking-tight group-hover:text-neutral-700 transition-colors">
+                                {{ $card['title'] }}
+                            </h4>
+                            <p class="text-xs sm:text-sm text-neutral-600 mt-1 leading-relaxed">
+                                {{ $card['subtext'] }}
+                            </p>
                         </div>
-                        <div class="mt-auto pt-2 flex items-baseline gap-2">
-                            <span class="text-sm sm:text-base font-bold text-black">AED {{ number_format($product->price, 2) }}</span>
-                            @if ($hasDiscount)
-                                <span class="text-xs text-neutral-400 line-through">AED {{ number_format($product->compare_at_price, 2) }}</span>
-                            @endif
+                        <div class="pt-4">
+                            <a class="text-xs font-bold text-black uppercase tracking-wider underline underline-offset-4 hover:text-neutral-600 transition-colors inline-flex items-center gap-1" href="{{ $card['cta'] }}">
+                                Shop Now &rarr;
+                            </a>
                         </div>
                     </div>
-                    <button class="mt-3 w-full py-2.5 bg-black text-white text-xs font-bold uppercase rounded-sm hover:bg-neutral-800 transition-colors tracking-wider" data-add-to-bag="{{ $product->id }}" type="button">
-                        Add to Bag
-                    </button>
-                </article>
+                </div>
             @endforeach
         </div>
     </section>
-    <!-- END: StackYourScent Section -->
+    <!-- END: Secondary Editorial Promo Grid -->
 
-    <!-- BEGIN: BestsellersSection -->
-    <section class="pt-2 sm:pt-4" data-purpose="bestsellers">
+    <!-- BEGIN: JustDroppedSection (Product Row 2) -->
+    <section class="pt-2 sm:pt-4" data-purpose="just-dropped">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Loved By You</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Sephora UAE Bestsellers</h2>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">The most wanted cosmetics, serums, and scents in Dubai &amp; Abu Dhabi.</p>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Trending Now</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Just Dropped.</h3>
+                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">The newest arrivals and viral formulations just landed at Sephora UAE.</p>
             </div>
-            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/bestsellers">
-                View All Bestsellers <span aria-hidden="true">&rarr;</span>
+            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/new">
+                Shop Now <span aria-hidden="true">&rarr;</span>
             </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            @foreach ($bestsellers as $product)
-                @php
-                    $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
-                @endphp
-                <article class="product-card group relative flex flex-col justify-between bg-white border border-neutral-200 rounded-sm hover:shadow-lg transition-all p-2.5 sm:p-3.5">
-                    <div class="relative w-full aspect-square bg-[#fafafa] rounded-sm overflow-hidden flex items-center justify-center">
-                        <span class="absolute top-2 left-2 bg-neutral-900 text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 uppercase tracking-wider z-10">
-                            Bestseller
-                        </span>
-                        <button aria-label="Add {{ $product->name }} to wishlist" class="absolute top-2 right-2 text-neutral-400 hover:text-black z-10 p-1.5 bg-white/90 rounded-full shadow-sm transition-colors" data-wishlist-toggle="{{ $product->id }}" type="button">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <a aria-label="View {{ $product->name }}" class="block w-full h-full p-2" href="/p/{{ $product->slug }}">
-                            <img alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
-                        </a>
-                    </div>
-                    <div class="pt-3 flex flex-col flex-grow min-w-0">
-                        <p class="text-[11px] sm:text-xs font-bold text-black uppercase tracking-wider truncate">{{ $product->brand?->name ?? 'Sephora' }}</p>
-                        <a class="mt-1 min-w-0" href="/p/{{ $product->slug }}">
-                            <h3 class="text-xs sm:text-sm text-neutral-800 line-clamp-2 font-normal group-hover:text-black leading-snug">{{ $product->name }}</h3>
-                        </a>
-                        <div class="flex items-center gap-1 mt-2 text-amber-500 text-xs">
-                            <span>@include('components.stars', ['rating' => $product->rating])</span>
-                            <span class="text-neutral-400 text-[11px]">({{ number_format($product->reviews_count) }})</span>
-                        </div>
-                        <div class="mt-auto pt-2 flex items-baseline gap-2">
-                            <span class="text-sm sm:text-base font-bold text-black">AED {{ number_format($product->price, 2) }}</span>
-                            @if ($hasDiscount)
-                                <span class="text-xs text-neutral-400 line-through">AED {{ number_format($product->compare_at_price, 2) }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <button class="mt-3 w-full py-2.5 bg-black text-white text-xs font-bold uppercase rounded-sm hover:bg-neutral-800 transition-colors tracking-wider" data-add-to-bag="{{ $product->id }}" type="button">
-                        Add to Bag
-                    </button>
-                </article>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+            @foreach ($justDropped as $product)
+                <x-product-card :product="$product" badge="NEW" />
             @endforeach
         </div>
     </section>
-    <!-- END: BestsellersSection -->
+    <!-- END: JustDroppedSection -->
 
-    <!-- BEGIN: BrandSpotlight -->
-    <section class="pt-2 sm:pt-4" data-purpose="brand-spotlight">
+    <!-- BEGIN: BrandFeatureSpotlight ("The Gift On Every Wishlist") -->
+    @php
+        $wishlistSpotlights = [
+            [
+                'title' => 'Gisou Cherry Chocolate Collection',
+                'subtitle' => 'Treat your hair and lips to the sweet indulgence of limited-edition holiday care.',
+                'image' => 'images/hero/gisou_honey_infused_hair_oil_luxury_glass_dropper_bottle_with_golden_honey_oil.webp',
+                'cta' => '/brands/gisou',
+            ],
+            [
+                'title' => 'Unlock the exclusive gift!',
+                'subtitle' => 'Receive iconic Sol De Janeiro Cheirosa treats when you spend AED 250 on the brand.',
+                'image' => 'images/hero/sol_de_janeiro_brazilian_bum_bum_cream_vibrant_yellow_jar_with_white_cap_luxury.webp',
+                'cta' => '/brands/sol-de-janeiro',
+            ],
+            [
+                'title' => 'NEW Sephora Collection Mascara!',
+                'subtitle' => 'High-drama volume, intense curl and deep carbon-black pigments for every festive look.',
+                'image' => 'images/hero/anastasia_beverly_hills_modern_renaissance_or_glam_eyeshadow_palette_open.webp',
+                'cta' => '/brands/sephora-collection',
+            ],
+        ];
+    @endphp
+    <section class="pt-2 sm:pt-4" data-purpose="wishlist-spotlight">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">The Houses We Love</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Featured Brands</h2>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">Curated Highlights</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">The Gift On Every Wishlist</h3>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            @foreach ($wishlistSpotlights as $spotlight)
+                <div class="group relative rounded-sm overflow-hidden bg-neutral-900 border border-neutral-800 shadow-sm min-h-[300px] flex items-end">
+                    <img
+                        alt="{{ $spotlight['title'] }}"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+                        loading="lazy"
+                        src="{{ media_url($spotlight['image']) }}"
+                        onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    <div class="relative z-10 p-5 sm:p-6 text-white space-y-2">
+                        <h4 class="text-lg sm:text-xl font-bold tracking-tight">
+                            {{ $spotlight['title'] }}
+                        </h4>
+                        <p class="text-xs text-neutral-300 leading-relaxed">
+                            {{ $spotlight['subtitle'] }}
+                        </p>
+                        <div class="pt-2">
+                            <a class="inline-block bg-white text-black text-xs font-bold uppercase tracking-wider px-5 py-2 rounded-sm hover:bg-neutral-200 transition-colors" href="{{ $spotlight['cta'] }}">
+                                Explore Now &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
+    <!-- END: BrandFeatureSpotlight -->
+
+    <!-- BEGIN: BeautyOffers Section -->
+    @if (isset($offers) && $offers->count() > 0)
+        <section class="pt-2 sm:pt-4" data-purpose="beauty-offers">
+            <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
+                <div>
+                    <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#BBA08B]">Gifts With Purchase</span>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Beauty Offers</h3>
+                    <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Exclusive complimentary deluxe miniatures with your favorite brand orders.</p>
+                </div>
+                <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/beauty-offers">
+                    View All <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+                @foreach ($offers->take(8) as $offer)
+                    <div class="bg-white border border-gray-100 rounded-sm p-3 hover:shadow-md transition-shadow flex flex-col justify-between">
+                        <div>
+                            <div class="aspect-square bg-[#fafafa] rounded-sm overflow-hidden mb-2.5 flex items-center justify-center p-2">
+                                <img
+                                    alt="{{ $offer->title }}"
+                                    class="w-full h-full object-contain"
+                                    loading="lazy"
+                                    src="{{ media_url($offer->image_path ?? 'images/placeholder.webp') }}"
+                                    onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"
+                                />
+                            </div>
+                            <span class="text-[10px] font-bold text-black uppercase tracking-widest block truncate">
+                                {{ $offer->brand_name ?? 'Special Gift' }}
+                            </span>
+                            <h4 class="text-xs sm:text-[13px] font-bold text-black mt-0.5 line-clamp-1">
+                                {{ $offer->title }}
+                            </h4>
+                            <p class="text-[11px] text-neutral-500 mt-1 line-clamp-2 leading-relaxed">
+                                {{ $offer->description }}
+                            </p>
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 mt-3">
+                            <a class="text-[11px] font-bold text-black uppercase tracking-wider hover:underline flex items-center justify-between" href="/beauty-offers">
+                                <span>Get Offer</span>
+                                <span>&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
+    <!-- END: BeautyOffers Section -->
+
+    <!-- BEGIN: DiscoverTheBrands Section (Brand Poster Cards) -->
+    <section class="pt-2 sm:pt-4" data-purpose="discover-the-brands">
+        <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
+            <div>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Iconic Houses</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Discover the Brands</h3>
+                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Shop the world’s most coveted luxury cosmetics and fragrance houses.</p>
             </div>
             <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/brands">
                 View All Brands <span aria-hidden="true">&rarr;</span>
             </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
             @foreach ($featuredBrands as $brand)
-                <a href="/brands/{{ $brand->slug }}" class="group border border-neutral-200 bg-white hover:border-black p-4 rounded-sm flex flex-col items-center justify-center text-center transition-all duration-200 hover:shadow-md min-h-[90px]">
+                <a href="/brands/{{ $brand->slug }}" class="group border border-gray-200 bg-white hover:border-black p-4 sm:p-6 rounded-sm flex flex-col items-center justify-center text-center transition-all duration-200 hover:shadow-md min-h-[110px]">
                     <span class="text-xs sm:text-sm font-black uppercase tracking-wider text-black group-hover:scale-105 transition-transform duration-200">
                         {{ $brand->name }}
                     </span>
-                    <span class="text-[10px] text-neutral-400 group-hover:text-neutral-600 uppercase tracking-widest mt-1">Shop Brand &rarr;</span>
+                    <span class="text-[10px] text-neutral-400 group-hover:text-black uppercase tracking-widest mt-1.5 flex items-center gap-1">
+                        Shop Now &rsaquo;
+                    </span>
                 </a>
             @endforeach
         </div>
     </section>
-    <!-- END: BrandSpotlight -->
+    <!-- END: DiscoverTheBrands Section -->
 
-    <!-- BEGIN: JustDroppedSection -->
-    <section class="pt-2 sm:pt-4" data-purpose="just-dropped">
-        <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
-            <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Trending Now</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Just Dropped: New In Beauty</h2>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Fresh formulas, seasonal drops and viral sensations.</p>
-            </div>
-            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/new">
-                Explore All New <span aria-hidden="true">&rarr;</span>
-            </a>
+    <!-- BEGIN: SephoraServices -->
+    <section class="pt-2 sm:pt-4" data-purpose="sephora-services">
+        <div class="border-b-2 border-black pb-3 mb-6">
+            <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">At Your Service</span>
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Sephora Services</h3>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            @foreach ($justDropped as $product)
-                @php
-                    $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
-                @endphp
-                <article class="product-card group relative flex flex-col justify-between bg-white border border-neutral-200 rounded-sm hover:shadow-lg transition-all p-2.5 sm:p-3.5">
-                    <div class="relative w-full aspect-square bg-[#fafafa] rounded-sm overflow-hidden flex items-center justify-center">
-                        <span class="absolute top-2 left-2 bg-white text-black border border-black text-[9px] sm:text-[10px] font-black px-2 py-0.5 uppercase tracking-wider z-10">
-                            New
-                        </span>
-                        <button aria-label="Add {{ $product->name }} to wishlist" class="absolute top-2 right-2 text-neutral-400 hover:text-black z-10 p-1.5 bg-white/90 rounded-full shadow-sm transition-colors" data-wishlist-toggle="{{ $product->id }}" type="button">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                        <a aria-label="View {{ $product->name }}" class="block w-full h-full p-2" href="/p/{{ $product->slug }}">
-                            <img alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($product->first_image) }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
-                        </a>
-                    </div>
-                    <div class="pt-3 flex flex-col flex-grow min-w-0">
-                        <p class="text-[11px] sm:text-xs font-bold text-black uppercase tracking-wider truncate">{{ $product->brand?->name ?? 'Sephora' }}</p>
-                        <a class="mt-1 min-w-0" href="/p/{{ $product->slug }}">
-                            <h3 class="text-xs sm:text-sm text-neutral-800 line-clamp-2 font-normal group-hover:text-black leading-snug">{{ $product->name }}</h3>
-                        </a>
-                        <div class="flex items-center gap-1 mt-2 text-amber-500 text-xs">
-                            <span>@include('components.stars', ['rating' => $product->rating])</span>
-                            <span class="text-neutral-400 text-[11px]">({{ number_format($product->reviews_count) }})</span>
-                        </div>
-                        <div class="mt-auto pt-2 flex items-baseline gap-2">
-                            <span class="text-sm sm:text-base font-bold text-black">AED {{ number_format($product->price, 2) }}</span>
-                            @if ($hasDiscount)
-                                <span class="text-xs text-neutral-400 line-through">AED {{ number_format($product->compare_at_price, 2) }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <button class="mt-3 w-full py-2.5 bg-black text-white text-xs font-bold uppercase rounded-sm hover:bg-neutral-800 transition-colors tracking-wider" data-add-to-bag="{{ $product->id }}" type="button">
-                        Add to Bag
-                    </button>
-                </article>
-            @endforeach
-        </div>
-    </section>
-    <!-- END: JustDroppedSection -->
-
-    <!-- BEGIN: SephoraAppBanner -->
-    <section class="bg-black text-white rounded-sm p-6 sm:p-8 md:p-10 relative overflow-hidden shadow-lg" data-purpose="app-download-banner">
-        <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            <div class="md:col-span-8 space-y-3">
-                <span class="inline-block bg-white text-black text-[10px] sm:text-xs font-black px-2.5 py-1 uppercase tracking-widest rounded-sm">
-                    MOBILE EXCLUSIVE
-                </span>
-                <h3 class="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight">
-                    Get 10% Off On Your First App Order
-                </h3>
-                <p class="text-neutral-300 text-xs sm:text-sm max-w-xl leading-relaxed">
-                    Download the Sephora UAE App and enjoy early product access, exclusive shade finder tools, instant order tracking &amp; 10% off with promo code <strong class="text-white bg-neutral-800 px-2 py-0.5 rounded border border-neutral-600 font-mono">APP10</strong>.
-                </p>
-                <div class="pt-2 flex flex-wrap items-center gap-3">
-                    <a href="/download-app" class="inline-flex items-center gap-2 bg-white text-black font-bold uppercase text-xs px-5 py-2.5 rounded-sm hover:bg-neutral-200 transition-colors">
-                        <span>Download App</span> &rarr;
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <!-- Gift Cards -->
+            <div class="bg-neutral-900 text-white p-6 sm:p-8 rounded-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+                <div class="relative z-10 max-w-md">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Perfect Gift</span>
+                    <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">Gift Cards</h4>
+                    <p class="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">Beauty that Fits Every Wish. Deliver joy instantly via email or physical cards.</p>
+                </div>
+                <div class="relative z-10 pt-4">
+                    <a href="/gift-cards" class="inline-block bg-white text-black font-bold uppercase text-xs px-6 py-2.5 rounded-sm hover:bg-neutral-200 transition-colors">
+                        DISCOVER
                     </a>
                 </div>
             </div>
-            <div class="md:col-span-4 flex items-center justify-center md:justify-end gap-4">
-                <div class="w-24 h-24 sm:w-28 sm:h-28 bg-white p-2 rounded-sm shadow-inner flex items-center justify-center">
-                    <img src="{{ media_url('images/hero/qr_code_mockup_for_downloading_mobile_app_with_elegant_sephora_minimalist.webp') }}" alt="QR Code to Download Sephora App" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
+
+            <!-- Stores -->
+            <div class="bg-neutral-100 text-black border border-neutral-300 p-6 sm:p-8 rounded-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+                <div class="relative z-10 max-w-md">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-600">Store Locator</span>
+                    <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">Visit our Stores</h4>
+                    <p class="text-xs sm:text-sm text-neutral-600 mt-1 leading-relaxed">Find a boutique near you across Dubai, Abu Dhabi, Sharjah &amp; all Emirates.</p>
                 </div>
-                <div class="text-left text-xs text-neutral-300">
-                    <p class="font-bold text-white uppercase text-[11px] tracking-wider">Scan to download</p>
-                    <p class="text-[11px] text-neutral-400 mt-0.5">Available for iOS &amp; Android</p>
+                <div class="relative z-10 pt-4">
+                    <a href="/stores" class="inline-block bg-black text-white font-bold uppercase text-xs px-6 py-2.5 rounded-sm hover:bg-neutral-800 transition-colors">
+                        OUR STORES
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- END: SephoraAppBanner -->
+    <!-- END: SephoraServices -->
 
-    <!-- BEGIN: ValueBannersAndServices -->
+    <!-- BEGIN: ValueBannersAndServices (4 Value Pillars) -->
     <section class="border-t border-b border-neutral-200 py-8 my-6 bg-white" data-purpose="services-banner">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center mb-2.5">
-                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
                 <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Free Delivery</h4>
-                <p class="text-xs text-neutral-500 mt-1">On all UAE orders over 250 AED</p>
+                <p class="text-xs text-neutral-500 mt-1">Over 250 AED</p>
             </div>
 
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center mb-2.5">
-                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">100% Authentic</h4>
-                <p class="text-xs text-neutral-500 mt-1">Direct from official luxury brands</p>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Secure Payment</h4>
+                <p class="text-xs text-neutral-500 mt-1">100% Secure Checkout</p>
             </div>
 
             <div class="flex flex-col items-center">
                 <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center mb-2.5">
-                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-                        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">3 Free Samples</h4>
-                <p class="text-xs text-neutral-500 mt-1">Chosen by you with every online order</p>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center mb-2.5">
-                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Easy In-Store Returns</h4>
-                <p class="text-xs text-neutral-500 mt-1">At any Sephora UAE boutique</p>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Easy Returns</h4>
+                <p class="text-xs text-neutral-500 mt-1">In any UAE store</p>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center mb-2.5">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Customer Service</h4>
+                <p class="text-xs text-neutral-500 mt-1">Questions? Call 800-SEPHORA</p>
             </div>
         </div>
     </section>

@@ -16,10 +16,10 @@ class PageController extends Controller
         $holidayProducts = Product::active()
             ->where(function ($q) {
                 $q->whereHas('categories', fn ($c) => $c->whereIn('slug', ['gifts', 'sets', 'minis-more']))
-                  ->orWhere('name', 'like', '%set%')
-                  ->orWhere('name', 'like', '%holiday%')
-                  ->orWhere('name', 'like', '%kit%')
-                  ->orWhere('name', 'like', '%palette%');
+                  ->orWhere('name', 'like', '%Set%')
+                  ->orWhere('name', 'like', '%Kit%')
+                  ->orWhere('name', 'like', '%Vault%')
+                  ->orWhere('name', 'like', '%Holiday%');
             })
             ->with(['brand', 'images'])
             ->orderBy('sort_order')
@@ -30,18 +30,25 @@ class PageController extends Controller
             $holidayProducts = Product::active()->with(['brand', 'images'])->orderBy('sort_order')->limit(8)->get();
         }
 
+        $holidayIds = $holidayProducts->pluck('id')->all();
+
         $fragrances = Product::active()
+            ->whereNotIn('id', $holidayIds)
             ->whereHas('categories', fn ($q) => $q->where('slug', 'fragrance'))
+            ->where('name', 'not like', '%Gift Set%')
             ->with(['brand', 'images'])
             ->orderBy('sort_order')
             ->limit(8)
             ->get();
 
         if ($fragrances->count() < 8) {
-            $fragrances = Product::active()->with(['brand', 'images'])->inRandomOrder()->limit(8)->get();
+            $fragrances = Product::active()->whereNotIn('id', $holidayIds)->whereHas('categories', fn ($q) => $q->where('slug', 'fragrance'))->with(['brand', 'images'])->limit(8)->get();
         }
 
+        $usedIds = array_merge($holidayIds, $fragrances->pluck('id')->all());
+
         $bestsellers = Product::active()
+            ->whereNotIn('id', $usedIds)
             ->where('is_bestseller', true)
             ->with(['brand', 'images'])
             ->orderBy('sort_order')
@@ -49,10 +56,13 @@ class PageController extends Controller
             ->get();
 
         if ($bestsellers->count() < 8) {
-            $bestsellers = Product::active()->where('rating', '>=', 4.5)->with(['brand', 'images'])->orderByDesc('reviews_count')->limit(8)->get();
+            $bestsellers = Product::active()->whereNotIn('id', $usedIds)->where('rating', '>=', 4.0)->with(['brand', 'images'])->orderByDesc('reviews_count')->limit(8)->get();
         }
 
+        $usedIds = array_merge($usedIds, $bestsellers->pluck('id')->all());
+
         $justDropped = Product::active()
+            ->whereNotIn('id', $usedIds)
             ->where(function ($q) {
                 $q->where('is_new', true)
                   ->orWhereHas('categories', fn ($c) => $c->where('slug', 'new'));
@@ -63,7 +73,7 @@ class PageController extends Controller
             ->get();
 
         if ($justDropped->count() < 8) {
-            $justDropped = Product::active()->with(['brand', 'images'])->orderByDesc('id')->limit(8)->get();
+            $justDropped = Product::active()->whereNotIn('id', $usedIds)->with(['brand', 'images'])->orderByDesc('id')->limit(8)->get();
         }
 
         $sephoraCollection = Product::active()
@@ -77,11 +87,12 @@ class PageController extends Controller
             $sephoraCollection = Product::active()->with(['brand', 'images'])->limit(8)->get();
         }
 
-        $featuredBrands = \App\Models\Brand::whereIn('name', [
-            'Huda Beauty', 'Fenty Beauty', 'Rare Beauty', 'Dior', 'Sol De Janeiro',
-            'Caudalie', 'Anastasia Beverly Hills', 'Makeup By Mario', 'Hourglass',
-            'Too Faced', 'Chanel', 'Sephora Collection', 'Benefit Cosmetics', 'Tarte'
+        $featuredBrands = \App\Models\Brand::whereIn('slug', [
+            'kayali', 'huda-beauty', 'sephora-collection', 'chloe', 'color-wow',
+            'starface', 'yves-saint-laurent', 'tarte', 'nars', 'fenty-beauty'
         ])->select('id', 'name', 'slug')->get();
+
+        $offers = Offer::where('is_active', true)->orderBy('sort_order')->limit(12)->get();
 
         return view('pages.home', [
             'holidayProducts' => $holidayProducts,
@@ -90,6 +101,7 @@ class PageController extends Controller
             'justDropped' => $justDropped,
             'sephoraCollection' => $sephoraCollection,
             'featuredBrands' => $featuredBrands,
+            'offers' => $offers,
         ]);
     }
 
