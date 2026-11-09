@@ -101,14 +101,23 @@ no orphan records possible.
 
 ## 6. Background Processing
 
-- **Jobs table** (database driver). One worker process is required in production:
-  `php artisan queue:work --tries=3 --backoff=60`.
-- `SendOrderConfirmation` implements `ShouldQueue` with `tries=3, backoff=60s`.
-- Failed jobs land in `failed_jobs` (retry: `php artisan queue:retry all`).
+- **Jobs table** (database driver). Multi-worker processes with strict queue prioritization:
+  `php artisan queue:work --queue=payments,emails,default,low --tries=3 --backoff=30 --timeout=60 --memory=256`
+  (or via `php artisan app:queue-work --workers=4`).
+- **Dedicated Queue Jobs**:
+  - `ProcessPaymentWebhookJob` (`payments` queue, 5 retries, exponential backoff) — processes async gateway notifications.
+  - `SendContactAlertJob` (`emails` queue, 3 retries) — notifies staff of client inquiries.
+  - `SendNewsletterWelcomeJob` (`emails` queue, 3 retries) — delivers welcome discount codes.
+  - `CancelUnpaidOrdersJob` (`default` queue) — releases stock from expired checkouts.
+  - `PruneAbandonedCartsJob` (`low` queue) — clears guest carts >30 days.
+  - `WarmSystemCacheJob` (`low` queue) — pre-caches sitemap and top catalog queries.
+- `SendOrderConfirmation` listener (`emails` queue) with `tries=3, backoff=60s`.
+- Failed jobs land in `failed_jobs` (retry via CLI or Admin Panel at `/admin/failed-jobs`).
 - Scheduled tasks (see `routes/console.php`):
-  - `shop-housekeeping` daily 03:00 — deletes guest carts idle >30 days (items cascade), deactivates expired coupons.
-  - `sitemap-refresh` daily 03:10 — invalidates the sitemap cache.
-  - `queue:prune-batches` daily.
+  - `shop-housekeeping` daily 03:00 — deletes guest carts idle >30 days, deactivates expired coupons.
+  - `system-cache-warm` daily 03:10 — invalidates and warms sitemap and database planner.
+  - `cancel-abandoned-pending` hourly — cancels pending orders > 48h and restocks inventory.
+  - `queue:prune-batches` daily & `queue:prune-failed` weekly.
 
 ## 7. Security Model
 
@@ -141,9 +150,8 @@ adding query caching would complicate invalidation without measurable benefit.
 - **Service layer only where it pays** — `PlaceOrderService` isolates the
   transactional core; simple CRUD stays in controllers (KISS).
 - **Blade-only frontend** — matches the design pack; no SPA complexity.
-- **`payment_status = pending`** — honest state until a real gateway confirms
-  (integration point documented in DEPLOYMENT.md §Payments).
-- **Gift-card balance endpoint** — deterministic demo response server-side;
-  the real provider API plugs in at `PageController::giftCardBalance`.
+- **Payment Gateways** — Live production-ready integrations with Stripe, ZainCash (v1 & v2 with JWT HS256), Tabby BNPL (API v2), and Tamara BNPL (API v3). All gateway webhooks verify cryptographic signatures and execute idempotently via queued jobs.
+- **Gift Cards Module** — Full database-backed gift card issuance and validation with 16-digit codes, secure PIN hashing, real-time balance check (`/gift-cards/balance`), and atomic balance deduction on checkout with concurrency locks.
+- **Couriers & Live Tracking** — First-class courier support (Aramex, DHL, FedEx, SMSA, Emirates Post, Fetchr) generating direct tracking URLs in customer order views, shipment emails, and customer VAT tax invoices.
 - **Address prefill** — logged-in users see their saved address; guests see
   placeholders (never fake data that could be submitted by accident).

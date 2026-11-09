@@ -7,15 +7,16 @@ Day-to-day running, monitoring, and emergency procedures.
 | Process | Command | Notes |
 |---|---|---|
 | App | nginx + PHP-FPM (`www-data`) | see `deploy/nginx.conf` |
-| Queue worker | `php artisan queue:work --tries=3 --backoff=60 --timeout=60` | supervisor config below |
+| Queue workers | `php artisan queue:work --queue=payments,emails,default,low --tries=3 --backoff=30 --timeout=60 --memory=256` | supervisor config below, or `php artisan app:queue-work --workers=4` |
 | Scheduler | `php artisan schedule:run` | cron entry, every minute |
 
-### Supervisor (queue worker)
+### Supervisor (queue workers)
 
 ```ini
 [program:sephora-queue]
-command=php /var/www/sephora/artisan queue:work --tries=3 --backoff=60 --timeout=60 --sleep=1
-numprocs=1
+command=php /var/www/sephora/artisan queue:work --queue=payments,emails,default,low --tries=3 --backoff=30 --timeout=60 --sleep=1 --max-time=3600 --memory=256
+process_name=%(program_name)s_%(process_num)02d
+numprocs=4
 autostart=true
 autorestart=true
 stopwaitsecs=30
@@ -28,6 +29,12 @@ killasgroup=true
 
 After **every deploy**: `php artisan queue:restart` (gracefully restarts workers).
 
+### Supervisor Alternative: Custom Process Manager
+For environments without system-wide supervisor access:
+```bash
+php artisan app:queue-work --workers=4 --queue=payments,emails,default,low
+```
+
 ### Cron
 
 ```
@@ -38,9 +45,11 @@ After **every deploy**: `php artisan queue:restart` (gracefully restarts workers
 
 | Task | Schedule | What it does |
 |---|---|---|
-| `shop-housekeeping` | daily 03:00 | deletes guest carts idle > 30 days; deactivates expired coupons |
-| `sitemap-refresh` | daily 03:10 | rebuilds the sitemap cache |
-| `queue:prune-batches` | daily | trims old batch records |
+| `shop-housekeeping` (`PruneAbandonedCartsJob`) | daily 03:00 | deletes guest carts idle > 30 days; deactivates expired coupons |
+| `system-cache-warm` (`WarmSystemCacheJob`) | daily 03:10 | rebuilds sitemap and pre-warms high-traffic category caches |
+| `cancel-abandoned-pending` (`CancelUnpaidOrdersJob`) | hourly | auto-cancels unpaid orders > 48 hours old and safely returns stock to inventory |
+| `queue:prune-batches` | daily | trims completed/cancelled batch records > 48h |
+| `queue:prune-failed` | weekly | cleans failed job records > 168h (7 days) |
 
 List them any time: `php artisan schedule:list`.
 

@@ -30,16 +30,18 @@ CSRF, dynamic data).
 - **Cart** (session+DB hybrid), **wishlist**, **search**
 - **Checkout**: delivery methods (standard / same-day / click&collect), UAE address
   form, free samples, gift box & message, payment methods (Card / Apple Pay /
-  Tabby / Tamara / COD), **promo codes**
+  Tabby / Tamara / ZainCash / COD / Gift Cards), **promo codes**
 - **Orders**: transactional placement, atomic stock & coupon guards, order numbers,
-  statuses, loyalty points (Beauty Pass), queued confirmation emails
+  statuses, loyalty tier auto-progression (Beauty Pass), queued confirmation emails, customer tax invoices
+- **Couriers & Live Tracking**: Aramex, DHL, FedEx, SMSA, Emirates Post, Fetchr
+- **Gift Cards**: Real 16-digit cards with secure PIN, balance inquiries, and checkout redemption
 - **Auth**: custom sign-in/register matching the design + password reset +
   login throttling
-- **Account**: dashboard, orders & tracking, settings, addresses, wishlist,
+- **Account**: dashboard, orders & tracking, tax invoices, settings, addresses, wishlist,
   country/language
 - **Admin panel** (`/admin`): full **Filament v5 + Livewire v4** control centre —
   see “Admin panel” below
-- **Newsletter**, **contact form**, **gift-card balance check**
+- **Newsletter**, **contact form**, **gift-card balance lookup**
 
 ### Technical
 | Layer | Choice |
@@ -47,10 +49,10 @@ CSRF, dynamic data).
 | Framework | Laravel 13 (PHP 8.3) + **Filament v5 / Livewire v4** admin panel |
 | Styling | Tailwind CSS v3 (exact merged design config, compiled via Vite — no CDN) |
 | DB | SQLite (dev) / MySQL 8 (production) |
-| Queue | `database` driver (worker required in production) |
+| Queue | Multi-queue prioritization (`payments`, `emails`, `default`, `low`) + Worker Supervisor |
 | Assets | 300+ images stored locally (`public/images`), optimized to WebP (q90) |
 | Auth | Laravel native (custom-designed views) + enforced 2FA for staff |
-| Tests | 235 feature tests / 1053 assertions (`php artisan test`) |
+| Tests | 288 feature & unit tests / 1272 assertions (100% passing) (`php artisan test`) |
 
 ## Quick start (local)
 
