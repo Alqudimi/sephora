@@ -158,7 +158,7 @@
                         $deliveryMeta = [
                             'standard' => ['icon' => 'local_shipping', 'title' => 'Standard Delivery', 'note' => '2–3 business days', 'fee' => (float) config('commerce.shipping.standard', 25)],
                             'same_day' => ['icon' => 'bolt', 'title' => 'Same-Day Delivery', 'note' => 'Dubai, Sharjah, Ajman — order before 2 PM', 'fee' => (float) config('commerce.shipping.same_day', 40)],
-                            'click_collect' => ['icon' => 'storefront', 'title' => 'Click &amp; Collect', 'note' => 'Ready in about 2 hours', 'fee' => 0.0],
+                            'click_collect' => ['icon' => 'storefront', 'title' => 'Click & Collect', 'note' => 'Ready in about 2 hours', 'fee' => 0.0],
                         ];
                     @endphp
                     @foreach ($deliveryMethods as $key => $label)
@@ -168,7 +168,7 @@
                             <div>
                                 <div class="flex items-center gap-2 mb-2">
                                     <span class="material-symbols-outlined text-primary text-[22px]">{{ $meta['icon'] }}</span>
-                                    <span class="font-title-md text-title-md text-primary font-bold">{!! $meta['title'] !!}</span>
+                                    <span class="font-title-md text-title-md text-primary font-bold">{{ $meta['title'] }}</span>
                                 </div>
                                 <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">{{ $meta['note'] }}</p>
                             </div>

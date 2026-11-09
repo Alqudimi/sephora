@@ -136,9 +136,9 @@ class ProductionCheck extends Command
 
         $connection = (string) config('database.default');
         $this->passFail(
-            $connection === 'mysql',
-            'Production database driver is MySQL',
-            "DB_CONNECTION={$connection} — a real launch should run MySQL/MariaDB, not sqlite",
+            in_array($connection, ['mysql', 'pgsql'], true),
+            "Production database driver is {$connection} (production-ready)",
+            "DB_CONNECTION={$connection} — a real launch should run MySQL/MariaDB or PostgreSQL, not sqlite",
         );
 
         try {
@@ -259,6 +259,39 @@ class ProductionCheck extends Command
                 'Stripe key is LIVE mode',
                 'Stripe key is in TEST mode (sk_test_) — switch to live keys at launch',
             );
+        }
+
+        $zaincash = app(\App\Services\Payments\ZainCashGateway::class);
+        if ($zaincash->isEnabled()) {
+            $this->line('  <fg=cyan>ZainCash Payment Gateway</>');
+            $mode = $zaincash->mode();
+            $version = $zaincash->apiVersion();
+
+            $this->warnOk(
+                $mode === 'production',
+                'ZainCash is in PRODUCTION mode',
+                'ZainCash is in UAT/Sandbox mode — switch to production mode in Admin Settings at launch',
+            );
+
+            if ($version === 'v2') {
+                $hasClientId = $zaincash->clientId() !== '';
+                $hasClientSecret = $zaincash->clientSecret() !== '';
+
+                $this->passFail(
+                    $hasClientId && $hasClientSecret,
+                    'ZainCash v2 Client ID & Secret configured',
+                    'ZainCash v2 credentials missing — configure them in Admin Settings',
+                );
+            } else {
+                $hasMerchantId = $zaincash->merchantId() !== '';
+                $hasSecret = $zaincash->secret() !== '';
+
+                $this->passFail(
+                    $hasMerchantId && $hasSecret,
+                    'ZainCash v1 Merchant ID & Secret configured',
+                    'ZainCash v1 credentials missing — configure them in Admin Settings',
+                );
+            }
         }
     }
 
