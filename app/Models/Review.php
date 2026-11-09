@@ -17,6 +17,17 @@ class Review extends Model
         'rating' => 'integer',
     ];
 
+    protected static function booted(): void
+    {
+        static::saved(function (Review $review) {
+            $review->product?->recalculateRating();
+        });
+
+        static::deleted(function (Review $review) {
+            $review->product?->recalculateRating();
+        });
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class);

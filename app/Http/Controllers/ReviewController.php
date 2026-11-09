@@ -19,6 +19,11 @@ class ReviewController extends Controller
             'body' => ['required', 'string', 'min:10', 'max:2000'],
         ]);
 
+        $hasPurchased = $request->user()->orders()
+            ->whereIn('status', ['processing', 'shipped', 'out_for_delivery', 'delivered'])
+            ->whereHas('items', fn ($q) => $q->where('product_id', $product->id))
+            ->exists();
+
         $product->allReviews()->create([
             'user_id' => $request->user()->id,
             'author_name' => $request->user()->name,
@@ -26,6 +31,7 @@ class ReviewController extends Controller
             'title' => $validated['title'] ?? null,
             'body' => $validated['body'],
             'is_approved' => false,
+            'is_verified_purchase' => $hasPurchased,
         ]);
 
         return redirect()
