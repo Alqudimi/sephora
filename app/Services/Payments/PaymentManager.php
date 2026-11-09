@@ -17,6 +17,11 @@ class PaymentManager
 
     public function isEnabled(string $method): bool
     {
+        $override = \App\Models\Setting::get("{$method}_enabled");
+        if ($override !== null && $override !== '') {
+            return filter_var($override, FILTER_VALIDATE_BOOLEAN);
+        }
+
         if ($method === 'zaincash') {
             return $this->zaincash->isEnabled();
         }

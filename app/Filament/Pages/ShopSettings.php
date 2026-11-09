@@ -4,8 +4,10 @@ namespace App\Filament\Pages;
 
 use App\Models\Setting;
 use App\Support\CommerceSettings;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -45,6 +47,23 @@ class ShopSettings extends Page implements HasForms
     public function mount(): void
     {
         $this->form->fill([
+            // General Information & Branding
+            'store_name' => Setting::get('store_name', config('app.name', 'SEPHORA UAE')),
+            'store_tagline' => Setting::get('store_tagline', 'Beauty Products, Makeup, Perfume & Skincare'),
+            'contact_email' => Setting::get('contact_email', 'customercare@sephora.ae'),
+            'contact_phone' => Setting::get('contact_phone', '+971 4 000 0000'),
+            'support_hours' => Setting::get('support_hours', '10 AM – 10 PM'),
+            'currency_symbol' => Setting::get('currency_symbol', 'AED'),
+
+            // Top Announcement Bar
+            'announcement_enabled' => Setting::get('announcement_enabled', '1') !== '0',
+            'announcement_bold' => Setting::get('announcement_bold', 'Discover The Holiday Collection'),
+            'announcement_message' => Setting::get('announcement_message', 'Limited-edition sets, iconic bestsellers, and festive must-haves - shop them all.'),
+            'announcement_action_text' => Setting::get('announcement_action_text', 'SHOP NOW →'),
+            'announcement_action_link' => Setting::get('announcement_action_link', '/shop/gifts'),
+            'announcement_bg_color' => Setting::get('announcement_bg_color', '#1A3066'),
+            'announcement_text_color' => Setting::get('announcement_text_color', '#FFFFFF'),
+
             'free_shipping_threshold' => Setting::get('free_shipping_threshold', config('commerce.free_shipping_threshold')),
             'shipping_fee' => Setting::get('shipping_fee', config('commerce.shipping.standard')),
             'same_day_fee' => Setting::get('same_day_fee', config('commerce.shipping.same_day')),
@@ -62,6 +81,18 @@ class ShopSettings extends Page implements HasForms
 
             'admin_notify_email' => Setting::get('admin_notify_email', ''),
 
+            // Payment Gateways
+            'card_enabled' => Setting::get('card_enabled', config('payments.methods.card.enabled', true) ? '1' : '0') !== '0',
+            'apple_pay_enabled' => Setting::get('apple_pay_enabled', config('payments.methods.apple_pay.enabled', true) ? '1' : '0') !== '0',
+            'cod_enabled' => Setting::get('cod_enabled', config('payments.methods.cod.enabled', true) ? '1' : '0') !== '0',
+            'cod_max_limit' => Setting::get('cod_max_limit', '5000'),
+            'tabby_enabled' => Setting::get('tabby_enabled', '0') === '1',
+            'tamara_enabled' => Setting::get('tamara_enabled', '0') === '1',
+
+            'stripe_secret' => Setting::get('stripe_secret', (string) config('payments.stripe.secret', '')),
+            'stripe_webhook_secret' => Setting::get('stripe_webhook_secret', (string) config('payments.stripe.webhook_secret', '')),
+
+            // ZainCash
             'zaincash_enabled' => (bool) Setting::get('zaincash_enabled', config('payments.zaincash.enabled', false)),
             'zaincash_mode' => Setting::get('zaincash_mode', config('payments.zaincash.mode', 'uat')),
             'zaincash_api_version' => Setting::get('zaincash_api_version', config('payments.zaincash.api_version', 'v2')),
@@ -72,6 +103,15 @@ class ShopSettings extends Page implements HasForms
             'zaincash_merchant_id' => Setting::get('zaincash_merchant_id', config('payments.zaincash.merchant_id', '')),
             'zaincash_secret' => Setting::get('zaincash_secret', config('payments.zaincash.secret', '')),
             'zaincash_msisdn' => Setting::get('zaincash_msisdn', config('payments.zaincash.msisdn', '')),
+
+            // Social & SEO
+            'social_instagram' => Setting::get('social_instagram', 'https://instagram.com/sephoramiddleeast'),
+            'social_facebook' => Setting::get('social_facebook', 'https://facebook.com/sephoramiddleeast'),
+            'social_tiktok' => Setting::get('social_tiktok', 'https://tiktok.com/@sephoramiddleeast'),
+            'social_youtube' => Setting::get('social_youtube', 'https://youtube.com/sephoramiddleeast'),
+            'social_twitter' => Setting::get('social_twitter', 'https://twitter.com/sephora'),
+            'seo_meta_title' => Setting::get('seo_meta_title', 'Beauty Products, Makeup, Perfume & Skincare ≡ Sephora UAE'),
+            'seo_meta_description' => Setting::get('seo_meta_description', 'Shop makeup, skincare, fragrance & more at Sephora UAE. Free delivery on orders over 250 AED. 100% authentic products from official brands.'),
         ]);
     }
 
@@ -80,6 +120,89 @@ class ShopSettings extends Page implements HasForms
         return $schema
             ->statePath('data')
             ->components([
+                Section::make('Store Identity & Contact (هوية المتجر وبيانات التواصل)')
+                    ->icon('heroicon-o-building-storefront')
+                    ->description('General store name, branding, customer concierge contacts, and currency.')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('store_name')
+                            ->label('Store Name (اسم المتجر)')
+                            ->required()
+                            ->maxLength(100),
+
+                        TextInput::make('currency_symbol')
+                            ->label('Currency Code (رمز العملة)')
+                            ->default('AED')
+                            ->required()
+                            ->maxLength(10),
+
+                        TextInput::make('store_tagline')
+                            ->label('Store Slogan (شعار المتجر)')
+                            ->maxLength(200)
+                            ->columnSpanFull(),
+
+                        TextInput::make('contact_email')
+                            ->label('Customer Care Email (بريد خدمة العملاء)')
+                            ->email()
+                            ->required()
+                            ->maxLength(120),
+
+                        TextInput::make('contact_phone')
+                            ->label('Customer Care Phone / WhatsApp (رقم الهاتف / واتساب)')
+                            ->required()
+                            ->maxLength(50),
+
+                        TextInput::make('support_hours')
+                            ->label('Concierge Working Hours (ساعات العمل)')
+                            ->default('10 AM – 10 PM')
+                            ->maxLength(100)
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Header Announcement Bar (شريط الإعلانات أعلى المتجر)')
+                    ->icon('heroicon-o-megaphone')
+                    ->description('The top announcement banner displayed across all storefront pages.')
+                    ->columns(2)
+                    ->schema([
+                        Toggle::make('announcement_enabled')
+                            ->label('Show Announcement Bar (عرض شريط الإعلانات)')
+                            ->onColor('success')
+                            ->offColor('danger')
+                            ->columnSpanFull(),
+
+                        TextInput::make('announcement_bold')
+                            ->label('Bold Highlight Text (النص البارز)')
+                            ->placeholder('e.g. Discover The Holiday Collection')
+                            ->maxLength(120),
+
+                        TextInput::make('announcement_message')
+                            ->label('Message Text (نص الرسالة)')
+                            ->placeholder('Limited-edition sets, iconic bestsellers, and festive must-haves')
+                            ->maxLength(255),
+
+                        TextInput::make('announcement_action_text')
+                            ->label('Button / Link Text (نص زر الانتقال)')
+                            ->placeholder('e.g. SHOP NOW →')
+                            ->maxLength(60),
+
+                        TextInput::make('announcement_action_link')
+                            ->label('Button / Link URL (رابط الانتقال)')
+                            ->placeholder('e.g. /shop/gifts or /shop/fragrance')
+                            ->maxLength(255),
+
+                        TextInput::make('announcement_bg_color')
+                            ->label('Background Color Hex (لون الخلفية)')
+                            ->default('#1A3066')
+                            ->placeholder('#1A3066')
+                            ->maxLength(20),
+
+                        TextInput::make('announcement_text_color')
+                            ->label('Text Color Hex (لون النص)')
+                            ->default('#FFFFFF')
+                            ->placeholder('#FFFFFF')
+                            ->maxLength(20),
+                    ]),
+
                 Section::make('Delivery')
                     ->icon('heroicon-o-truck')
                     ->description('These overrides are read live by the storefront checkout.')
@@ -175,19 +298,76 @@ class ShopSettings extends Page implements HasForms
                             ->content('1 point per AED 1 of merchandise spend (after discounts).'),
                     ]),
 
-                Section::make('Notifications')
-                    ->icon('heroicon-o-bell')
+                Section::make('Credit/Debit Cards & Stripe (البطاقات الائتمانية)')
+                    ->icon('heroicon-o-credit-card')
+                    ->description('Manage Stripe card gateway credentials and toggle card/Apple Pay methods.')
                     ->columns(2)
                     ->schema([
-                        TextInput::make('admin_notify_email')
-                            ->label('New-order alert email')
-                            ->email()
-                            ->helperText('Optional. Receives an alert every time an order is placed.')
+                        Toggle::make('card_enabled')
+                            ->label('Enable Credit/Debit Cards (تفعيل الدفع بالبطاقات)')
+                            ->helperText('Visa, MasterCard, American Express via Stripe.')
+                            ->onColor('success')
+                            ->offColor('danger'),
+
+                        Toggle::make('apple_pay_enabled')
+                            ->label('Enable Apple Pay (تفعيل الدفع عبر آبل باي)')
+                            ->helperText('Available on supported Apple devices.')
+                            ->onColor('success')
+                            ->offColor('danger'),
+
+                        TextInput::make('stripe_secret')
+                            ->label('Stripe Secret Key (sk_live_... / sk_test_...)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('sk_live_... or sk_test_...')
+                            ->helperText('Required for processing online card payments.'),
+
+                        TextInput::make('stripe_webhook_secret')
+                            ->label('Stripe Webhook Secret (whsec_...)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('whsec_...')
+                            ->helperText('Required for verifying asynchronous payment events.'),
+
+                        Placeholder::make('stripe_webhook_url')
+                            ->label('Stripe Webhook URL (رابط الويب هوك لإشعارات Stripe)')
+                            ->content(fn () => url('/payments/webhook/stripe'))
+                            ->helperText('Set this URL in your Stripe Dashboard under Developers > Webhooks.')
                             ->columnSpanFull(),
                     ]),
 
+                Section::make('Cash on Delivery & BNPL (الدفع عند الاستلام والتقسيط)')
+                    ->icon('heroicon-o-banknotes')
+                    ->description('Manage Cash on Delivery and Split-Payment services.')
+                    ->columns(2)
+                    ->schema([
+                        Toggle::make('cod_enabled')
+                            ->label('Enable Cash on Delivery (تفعيل الدفع عند الاستلام)')
+                            ->onColor('success')
+                            ->offColor('danger'),
+
+                        TextInput::make('cod_max_limit')
+                            ->label('COD Maximum Order Limit (الحد الأقصى للطلب)')
+                            ->numeric()
+                            ->prefix('AED')
+                            ->default(5000)
+                            ->helperText('Orders exceeding this total cannot use Cash on Delivery.'),
+
+                        Toggle::make('tabby_enabled')
+                            ->label('Enable Tabby (تفعيل تابي - 4 دفعات بدون فوائد)')
+                            ->helperText('Split into 4 monthly payments.')
+                            ->onColor('success')
+                            ->offColor('danger'),
+
+                        Toggle::make('tamara_enabled')
+                            ->label('Enable Tamara (تفعيل تمارا - متوافق مع الشريعة)')
+                            ->helperText('Split purchase with Tamara.')
+                            ->onColor('success')
+                            ->offColor('danger'),
+                    ]),
+
                 Section::make('ZainCash Payment Gateway (بوابة زين كاش)')
-                    ->icon('heroicon-o-credit-card')
+                    ->icon('heroicon-o-wallet')
                     ->description('ZainCash Iraq digital wallet gateway configuration. All keys and environment switches can be managed dynamically here.')
                     ->columns(2)
                     ->schema([
@@ -269,6 +449,59 @@ class ShopSettings extends Page implements HasForms
                             ->helperText('Register this URL in your ZainCash Merchant Portal for asynchronous transaction confirmation.')
                             ->columnSpanFull(),
                     ]),
+
+                Section::make('Social Media & SEO (شبكات التواصل ومحركات البحث)')
+                    ->icon('heroicon-o-globe-alt')
+                    ->description('Configure social links displayed in the footer/contact pages and meta tags.')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('social_instagram')
+                            ->label('Instagram URL')
+                            ->placeholder('https://instagram.com/sephoramiddleeast')
+                            ->maxLength(255),
+
+                        TextInput::make('social_facebook')
+                            ->label('Facebook URL')
+                            ->placeholder('https://facebook.com/sephoramiddleeast')
+                            ->maxLength(255),
+
+                        TextInput::make('social_tiktok')
+                            ->label('TikTok URL')
+                            ->placeholder('https://tiktok.com/@sephoramiddleeast')
+                            ->maxLength(255),
+
+                        TextInput::make('social_youtube')
+                            ->label('YouTube URL')
+                            ->placeholder('https://youtube.com/sephoramiddleeast')
+                            ->maxLength(255),
+
+                        TextInput::make('social_twitter')
+                            ->label('Twitter / X URL')
+                            ->placeholder('https://twitter.com/sephora')
+                            ->maxLength(255),
+
+                        TextInput::make('seo_meta_title')
+                            ->label('Default Meta Title (عنوان الموقع لمحركات البحث)')
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+
+                        Textarea::make('seo_meta_description')
+                            ->label('Default Meta Description (وصف الموقع لمحركات البحث)')
+                            ->rows(2)
+                            ->maxLength(500)
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Notifications')
+                    ->icon('heroicon-o-bell')
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('admin_notify_email')
+                            ->label('New-order alert email')
+                            ->email()
+                            ->helperText('Optional. Receives an alert every time an order is placed.')
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
@@ -277,6 +510,24 @@ class ShopSettings extends Page implements HasForms
         $state = $this->form->getState();
 
         foreach ([
+            // General & Branding
+            'store_name' => (string) ($state['store_name'] ?? 'SEPHORA UAE'),
+            'store_tagline' => (string) ($state['store_tagline'] ?? ''),
+            'contact_email' => (string) ($state['contact_email'] ?? ''),
+            'contact_phone' => (string) ($state['contact_phone'] ?? ''),
+            'support_hours' => (string) ($state['support_hours'] ?? ''),
+            'currency_symbol' => (string) ($state['currency_symbol'] ?? 'AED'),
+
+            // Announcement
+            'announcement_enabled' => ! empty($state['announcement_enabled']) ? '1' : '0',
+            'announcement_bold' => (string) ($state['announcement_bold'] ?? ''),
+            'announcement_message' => (string) ($state['announcement_message'] ?? ''),
+            'announcement_action_text' => (string) ($state['announcement_action_text'] ?? ''),
+            'announcement_action_link' => (string) ($state['announcement_action_link'] ?? ''),
+            'announcement_bg_color' => (string) ($state['announcement_bg_color'] ?? '#1A3066'),
+            'announcement_text_color' => (string) ($state['announcement_text_color'] ?? '#FFFFFF'),
+
+            // Delivery & limits
             'free_shipping_threshold' => (string) ($state['free_shipping_threshold'] ?? ''),
             'shipping_fee' => (string) ($state['shipping_fee'] ?? ''),
             'same_day_fee' => (string) ($state['same_day_fee'] ?? ''),
@@ -289,6 +540,18 @@ class ShopSettings extends Page implements HasForms
             'max_samples' => (string) ($state['max_samples'] ?? ''),
             'loyalty_enabled' => ! empty($state['loyalty_enabled']) ? '1' : '0',
             'admin_notify_email' => (string) ($state['admin_notify_email'] ?? ''),
+
+            // Payment Gateways
+            'card_enabled' => ! empty($state['card_enabled']) ? '1' : '0',
+            'apple_pay_enabled' => ! empty($state['apple_pay_enabled']) ? '1' : '0',
+            'cod_enabled' => ! empty($state['cod_enabled']) ? '1' : '0',
+            'cod_max_limit' => (string) ($state['cod_max_limit'] ?? '5000'),
+            'tabby_enabled' => ! empty($state['tabby_enabled']) ? '1' : '0',
+            'tamara_enabled' => ! empty($state['tamara_enabled']) ? '1' : '0',
+            'stripe_secret' => (string) ($state['stripe_secret'] ?? ''),
+            'stripe_webhook_secret' => (string) ($state['stripe_webhook_secret'] ?? ''),
+
+            // ZainCash
             'zaincash_enabled' => ! empty($state['zaincash_enabled']) ? '1' : '0',
             'zaincash_mode' => (string) ($state['zaincash_mode'] ?? 'uat'),
             'zaincash_api_version' => (string) ($state['zaincash_api_version'] ?? 'v2'),
@@ -299,6 +562,15 @@ class ShopSettings extends Page implements HasForms
             'zaincash_merchant_id' => (string) ($state['zaincash_merchant_id'] ?? ''),
             'zaincash_secret' => (string) ($state['zaincash_secret'] ?? ''),
             'zaincash_msisdn' => (string) ($state['zaincash_msisdn'] ?? ''),
+
+            // Social & SEO
+            'social_instagram' => (string) ($state['social_instagram'] ?? ''),
+            'social_facebook' => (string) ($state['social_facebook'] ?? ''),
+            'social_tiktok' => (string) ($state['social_tiktok'] ?? ''),
+            'social_youtube' => (string) ($state['social_youtube'] ?? ''),
+            'social_twitter' => (string) ($state['social_twitter'] ?? ''),
+            'seo_meta_title' => (string) ($state['seo_meta_title'] ?? ''),
+            'seo_meta_description' => (string) ($state['seo_meta_description'] ?? ''),
         ] as $key => $value) {
             Setting::set($key, $value);
         }

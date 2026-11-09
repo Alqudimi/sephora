@@ -18,11 +18,11 @@ class StripeGateway implements PaymentGateway
 
     public function start(Order $order): PaymentResult
     {
-        $secret = (string) config('payments.stripe.secret');
+        $secret = $this->secret();
 
         if ($secret === '') {
             throw new RuntimeException(
-                'Stripe is not configured. Set STRIPE_SECRET or switch PAYMENT_DRIVER=fake for local development.'
+                'Stripe is not configured. Set STRIPE_SECRET or configure Stripe keys in Admin Settings.'
             );
         }
 
@@ -69,7 +69,7 @@ class StripeGateway implements PaymentGateway
 
     public function confirm(Order $order): PaymentResult
     {
-        $secret = (string) config('payments.stripe.secret');
+        $secret = $this->secret();
         $reference = (string) $order->payment_reference;
 
         if ($secret === '' || $reference === '') {
@@ -101,7 +101,7 @@ class StripeGateway implements PaymentGateway
 
     public function verifyWebhook(Request $request): ?array
     {
-        $secret = (string) config('payments.stripe.webhook_secret');
+        $secret = $this->webhookSecret();
         $signature = (string) $request->header('Stripe-Signature', '');
         $payload = $request->getContent();
 
@@ -179,5 +179,19 @@ class StripeGateway implements PaymentGateway
     {
         return (string) (config('payments.stripe.cancel_url')
             ?: route('checkout.payment.return', ['order' => $order->order_number]).'?status=cancelled');
+    }
+
+    private function secret(): string
+    {
+        $admin = \App\Models\Setting::get('stripe_secret');
+
+        return is_string($admin) && $admin !== '' ? $admin : (string) config('payments.stripe.secret');
+    }
+
+    private function webhookSecret(): string
+    {
+        $admin = \App\Models\Setting::get('stripe_webhook_secret');
+
+        return is_string($admin) && $admin !== '' ? $admin : (string) config('payments.stripe.webhook_secret');
     }
 }

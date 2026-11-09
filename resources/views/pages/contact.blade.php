@@ -258,19 +258,25 @@
 <div class="mt-10 pt-6 border-t border-surface-container-highest flex flex-col sm:flex-row items-center justify-between gap-4">
 <span class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Follow Us</span>
 <div class="flex items-center gap-4">
-<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="https://www.instagram.com/sephoramiddleeast/" rel="noreferrer" target="_blank" title="Instagram">
+@php
+    $cInstagram = \App\Models\Setting::get('social_instagram', 'https://www.instagram.com/sephoramiddleeast/');
+    $cTiktok = \App\Models\Setting::get('social_tiktok', 'https://tiktok.com/@sephoramiddleeast');
+    $cYoutube = \App\Models\Setting::get('social_youtube', 'https://www.youtube.com/user/SEPHORAME');
+    $cFacebook = \App\Models\Setting::get('social_facebook', 'https://www.facebook.com/sephoramiddleeast');
+@endphp
+<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="{{ $cInstagram }}" rel="noreferrer" target="_blank" title="Instagram">
 <span class="font-label-caps text-label-caps uppercase font-bold">Instagram</span>
 </a>
-<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="https://tiktok.com/@sephoramiddleeast" rel="noreferrer" target="_blank" title="TikTok">
+<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="{{ $cTiktok }}" rel="noreferrer" target="_blank" title="TikTok">
 <span class="font-label-caps text-label-caps uppercase font-bold">TikTok</span>
 </a>
 <a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="https://www.snapchat.com/add/Sephoramesnaps" rel="noreferrer" target="_blank" title="Snapchat">
 <span class="font-label-caps text-label-caps uppercase font-bold">Snapchat</span>
 </a>
-<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="https://www.youtube.com/user/SEPHORAME" rel="noreferrer" target="_blank" title="YouTube">
+<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="{{ $cYoutube }}" rel="noreferrer" target="_blank" title="YouTube">
 <span class="font-label-caps text-label-caps uppercase font-bold">YouTube</span>
 </a>
-<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="https://www.facebook.com/sephoramiddleeast" rel="noreferrer" target="_blank" title="Facebook">
+<a class="p-2 border border-outline-variant hover:border-primary hover:text-secondary transition-all" href="{{ $cFacebook }}" rel="noreferrer" target="_blank" title="Facebook">
 <span class="font-label-caps text-label-caps uppercase font-bold">Facebook</span>
 </a>
 </div>

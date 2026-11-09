@@ -32,44 +32,56 @@
 
     <!-- BEGIN: HeroCarouselBanner (4 Official Sephora Campaigns) -->
     @php
-        $heroSlides = [
-            [
-                'badge' => 'NEW LAUNCH',
-                'title' => "NARS New Notorious Mascara",
-                'subtext' => 'Steal the Scene. High-drama volume and irresistible lash lift, exclusively at Sephora.',
-                'cta' => '/brands/nars',
-                'cta_label' => 'Shop Now',
-                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6yXJcFFTJWBuN2Zz3GwxjS/2085f5f8c7e0032c525f0a75f85bc515/Nars-Notorious_Hero-Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=1200',
-                'alt' => 'NARS New Notorious Mascara at Sephora UAE',
-            ],
-            [
-                'badge' => 'EXCLUSIVE FRAGRANCE',
-                'title' => "Cherry Amber By Matiere Premiere",
-                'subtext' => 'A modern amber coloured by natural Cherry Extract. 50 ml, exclusively at Sephora Middle East.',
-                'cta' => '/shop/fragrance',
-                'cta_label' => 'Shop Now',
-                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/vOUoBvO6GOSVYs6bDCj8L/1e31db6fb76da289f074d2757270b615/Matiere_Premiere_Cherry_Amber_ENG_1142x928.jpg?fm=webp&q=85&w=1200',
-                'alt' => 'Matiere Premiere Cherry Amber at Sephora UAE',
-            ],
-            [
-                'badge' => 'ANNIVERSARY',
-                'title' => "tarte: 10 Years 10 Icons",
-                'subtext' => 'Celebrating a decade of tarte at Sephora Middle East with the beauty icons you know and love.',
-                'cta' => '/brands/tarte',
-                'cta_label' => 'Shop Now',
-                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6pE1QhppKX12pww01udLL/4ce2ba15f9ee7e28bf6b77c5d7348981/tarte_Hero-Carousel_Tablet_1142x928_ENG.jpg?fm=webp&q=85&w=1200',
-                'alt' => 'tarte 10 Years at Sephora UAE',
-            ],
-            [
-                'badge' => 'SIGNATURE LAYERING',
-                'title' => "Stack Your Scent",
-                'subtext' => 'Discover a world of fragrances, from juicy gourmands to soft musks and modern lavenders. Mix, match, and create a scent that’s uniquely yours.',
-                'cta' => '/shop/fragrance',
-                'cta_label' => 'Shop Now',
-                'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/1U86f2Z19tG4l50kUqT5xV/6fd5317789498234399e46a782a20b99/Stack_Your_Scent_Hero_Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=1200',
-                'alt' => 'Stack Your Scent Fragrance Campaign at Sephora UAE',
-            ],
-        ];
+        if (isset($heroBanners) && $heroBanners->isNotEmpty()) {
+            $heroSlides = $heroBanners->map(fn ($b) => [
+                'badge' => $b->badge,
+                'title' => $b->title,
+                'subtext' => $b->subtitle,
+                'cta' => $b->link ?: '#',
+                'cta_label' => $b->cta_label ?: 'Shop Now',
+                'image' => media_url($b->image_path),
+                'alt' => $b->title . ' at Sephora UAE',
+            ])->all();
+        } else {
+            $heroSlides = [
+                [
+                    'badge' => 'NEW LAUNCH',
+                    'title' => "NARS New Notorious Mascara",
+                    'subtext' => 'Steal the Scene. High-drama volume and irresistible lash lift, exclusively at Sephora.',
+                    'cta' => '/brands/nars',
+                    'cta_label' => 'Shop Now',
+                    'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6yXJcFFTJWBuN2Zz3GwxjS/2085f5f8c7e0032c525f0a75f85bc515/Nars-Notorious_Hero-Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=1200',
+                    'alt' => 'NARS New Notorious Mascara at Sephora UAE',
+                ],
+                [
+                    'badge' => 'EXCLUSIVE FRAGRANCE',
+                    'title' => "Cherry Amber By Matiere Premiere",
+                    'subtext' => 'A modern amber coloured by natural Cherry Extract. 50 ml, exclusively at Sephora Middle East.',
+                    'cta' => '/shop/fragrance',
+                    'cta_label' => 'Shop Now',
+                    'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/vOUoBvO6GOSVYs6bDCj8L/1e31db6fb76da289f074d2757270b615/Matiere_Premiere_Cherry_Amber_ENG_1142x928.jpg?fm=webp&q=85&w=1200',
+                    'alt' => 'Matiere Premiere Cherry Amber at Sephora UAE',
+                ],
+                [
+                    'badge' => 'ANNIVERSARY',
+                    'title' => "tarte: 10 Years 10 Icons",
+                    'subtext' => 'Celebrating a decade of tarte at Sephora Middle East with the beauty icons you know and love.',
+                    'cta' => '/brands/tarte',
+                    'cta_label' => 'Shop Now',
+                    'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/6pE1QhppKX12pww01udLL/4ce2ba15f9ee7e28bf6b77c5d7348981/tarte_Hero-Carousel_Tablet_1142x928_ENG.jpg?fm=webp&q=85&w=1200',
+                    'alt' => 'tarte 10 Years at Sephora UAE',
+                ],
+                [
+                    'badge' => 'SIGNATURE LAYERING',
+                    'title' => "Stack Your Scent",
+                    'subtext' => 'Discover a world of fragrances, from juicy gourmands to soft musks and modern lavenders. Mix, match, and create a scent that’s uniquely yours.',
+                    'cta' => '/shop/fragrance',
+                    'cta_label' => 'Shop Now',
+                    'image' => 'https://img-content.sephora.me/m3aon8mn8vtz/1U86f2Z19tG4l50kUqT5xV/6fd5317789498234399e46a782a20b99/Stack_Your_Scent_Hero_Carousel_1142x928_Eng.jpg?fm=webp&q=85&w=1200',
+                    'alt' => 'Stack Your Scent Fragrance Campaign at Sephora UAE',
+                ],
+            ];
+        }
     @endphp
     <section aria-label="Featured campaigns" aria-roledescription="carousel" class="relative rounded-sm overflow-hidden shadow-sm bg-neutral-900" data-autoplay="5000" data-carousel data-purpose="hero-banner">
         <div class="relative w-full min-h-[340px] sm:min-h-[420px] md:min-h-[500px]">

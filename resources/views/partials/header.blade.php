@@ -6,20 +6,32 @@
 @php
     $cartBadgeCount = (int) ($cartCount ?? $bagCount ?? 0);
     $wishlistBadgeCount = (int) ($wishlistCount ?? 0);
+    $announcementEnabled = \App\Models\Setting::get('announcement_enabled', '1') !== '0';
+    $announcementBold = \App\Models\Setting::get('announcement_bold', 'Discover The Holiday Collection');
+    $announcementMessage = \App\Models\Setting::get('announcement_message', 'Limited-edition sets, iconic bestsellers, and festive must-haves - shop them all.');
+    $announcementAction = \App\Models\Setting::get('announcement_action_text', 'SHOP NOW →');
+    $announcementLink = \App\Models\Setting::get('announcement_action_link', '/shop/gifts');
+    $announcementBg = \App\Models\Setting::get('announcement_bg_color', '#1A3066');
+    $announcementColor = \App\Models\Setting::get('announcement_text_color', '#FFFFFF');
 @endphp
 
+@if ($announcementEnabled)
 <!-- BEGIN: AnnouncementBar -->
-<div class="bg-[#1A3066] text-white text-[13px] sm:text-[14px] py-2.5 px-4 text-center font-normal tracking-normal border-b border-[#142652]" data-purpose="top-announcement">
+<div class="text-[13px] sm:text-[14px] py-2.5 px-4 text-center font-normal tracking-normal border-b border-black/10" style="background-color: {{ $announcementBg }}; color: {{ $announcementColor }};" data-purpose="top-announcement">
     <div class="max-w-[1440px] mx-auto flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
-        <span class="font-normal text-white/95">
-            <strong class="font-bold">Discover The Holiday Collection</strong> &nbsp;|&nbsp; Limited-edition sets, iconic bestsellers, and festive must-haves - shop them all.
+        <span class="font-normal opacity-95">
+            @if ($announcementBold)<strong class="font-bold">{{ $announcementBold }}</strong> &nbsp;|&nbsp; @endif
+            {{ $announcementMessage }}
         </span>
-        <a class="underline font-bold text-white hover:text-amber-200 uppercase tracking-wider text-[12px] sm:text-[13px] transition-colors whitespace-nowrap inline-flex items-center gap-1" href="/shop/gifts">
-            SHOP NOW &rarr;
-        </a>
+        @if ($announcementAction && $announcementLink)
+            <a class="underline font-bold hover:opacity-80 uppercase tracking-wider text-[12px] sm:text-[13px] transition-colors whitespace-nowrap inline-flex items-center gap-1" style="color: {{ $announcementColor }};" href="{{ $announcementLink }}">
+                {{ $announcementAction }}
+            </a>
+        @endif
     </div>
 </div>
 <!-- END: AnnouncementBar -->
+@endif
 
 <!-- BEGIN: MainHeader -->
 <header class="bg-white border-b border-gray-200 sticky top-0 z-50" data-site-header>

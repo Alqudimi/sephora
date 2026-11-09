@@ -93,6 +93,7 @@ class PageController extends Controller
         ])->select('id', 'name', 'slug')->get();
 
         $offers = Offer::where('is_active', true)->orderBy('sort_order')->limit(12)->get();
+        $heroBanners = \App\Models\Banner::position('hero_carousel')->active()->orderBy('sort_order')->get();
 
         return view('pages.home', [
             'holidayProducts' => $holidayProducts,
@@ -102,6 +103,7 @@ class PageController extends Controller
             'sephoraCollection' => $sephoraCollection,
             'featuredBrands' => $featuredBrands,
             'offers' => $offers,
+            'heroBanners' => $heroBanners,
         ]);
     }
 

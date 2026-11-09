@@ -8,6 +8,7 @@ use App\Filament\Widgets\RecentOrdersWidget;
 use App\Filament\Widgets\RevenueChartWidget;
 use App\Filament\Widgets\ShopStatsWidget;
 use App\Filament\Widgets\TopProductsWidget;
+use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Cart;
 use App\Models\Category;
@@ -57,6 +58,7 @@ class AdminPanelSmokeTest extends TestCase
         $brand = Brand::firstOrCreate(['slug' => 'smoke-brand'], ['name' => 'Smoke Brand']);
         Category::firstOrCreate(['slug' => 'smoke-cat'], ['name' => 'Smoke Category']);
         Store::create(['name' => 'Smoke Store', 'city' => 'Dubai', 'address' => 'Mall of the Emirates']);
+        Banner::create(['title' => 'Smoke Banner', 'image_path' => 'banners/smoke.jpg']);
         Faq::create(['category' => 'orders', 'question' => 'Smoke?', 'answer' => 'Test.', 'sort_order' => 1]);
         Offer::create(['title' => 'Smoke Offer', 'description' => 'Three for two on skincare.']);
         NewsletterSubscriber::create(['email' => 'smoke@example.com']);
@@ -143,6 +145,8 @@ class AdminPanelSmokeTest extends TestCase
             '/admin/reviews',
             '/admin/coupons',
             '/admin/offers',
+            '/admin/banners',
+            '/admin/banners/create',
             '/admin/stores',
             '/admin/faqs',
             '/admin/contact-messages',
@@ -198,6 +202,9 @@ class AdminPanelSmokeTest extends TestCase
 
         $cart = Cart::first();
         $this->actingAs($this->admin)->get("/admin/carts/{$cart->id}")->assertOk();
+
+        $banner = \App\Models\Banner::first();
+        $this->actingAs($this->admin)->get("/admin/banners/{$banner->id}/edit")->assertOk();
     }
 
     public function test_dashboard_widgets_render_with_data(): void
