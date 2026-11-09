@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Country & Language | SEPHORA UAE')
+@section('title', __('messages.nav.country_language') . ' | ' . __('messages.app_name'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @php
     $languages = [
         'en' => ['label' => 'English', 'native' => 'English', 'note' => 'Default storefront language'],
-        'ar' => ['label' => 'Arabic', 'native' => 'العربية', 'note' => 'واجهة المتجر بالكامل باللغة العربية مع دعم RTL'],
-        'fr' => ['label' => 'French', 'native' => 'Français', 'note' => 'French storefront content is rolling out'],
+        'ar' => ['label' => 'العربية', 'native' => 'العربية', 'note' => 'واجهة المتجر بالكامل باللغة العربية مع دعم RTL'],
+        'fr' => ['label' => 'Français', 'native' => 'Français', 'note' => 'French storefront content is rolling out'],
     ];
     $current = old('preferred_language', $user->preferred_language ?: 'en');
 @endphp
@@ -16,26 +16,26 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
     <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
-        <a class="hover:text-secondary" href="/">Home</a> /
-        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">My Account</a> /
-        <a class="hover:text-secondary" href="{{ route('account.settings') }}">Settings</a> /
-        <span class="text-on-surface font-semibold">Country &amp; Language</span>
+        <a class="hover:text-secondary" href="/">{{ __('messages.home') }}</a> /
+        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('messages.account.my_account') }}</a> /
+        <a class="hover:text-secondary" href="{{ route('account.settings') }}">{{ __('messages.account.settings') }}</a> /
+        <span class="text-on-surface font-semibold">{{ __('messages.nav.country_language') }}</span>
     </nav>
 
     @include('partials.account-nav', ['active' => 'country-language'])
 
     <div class="mb-8 max-w-3xl">
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Country &amp; language</h1>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-2">Choose the language you prefer for your account and storefront experience.</p>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('messages.nav.country_language') }}</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-2">{{ __('messages.account.language_preference_desc') }}</p>
     </div>
 
     @if (session('language_saved'))
-        <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">Your language preference has been saved.</div>
+        <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">{{ __('messages.account.language_saved') }}</div>
     @endif
 
     @if ($errors->any())
         <div class="border border-secondary bg-surface-container-lowest px-4 py-3 mb-6" role="alert">
-            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">Please check your selection</p>
+            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">{{ __('messages.errors.validation_failed') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -48,49 +48,27 @@
         @csrf
 
         <section class="border border-outline-variant bg-surface-container-lowest p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">Storefront language</h2>
-            <p class="font-body-sm text-body-sm text-outline mb-4">Your selection is stored on your account and applied to future visits.</p>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">{{ __('messages.account.language_preference') }}</h2>
+            <p class="font-body-sm text-body-sm text-outline mb-4">{{ __('messages.account.language_preference_desc') }}</p>
 
             <fieldset class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <legend class="sr-only">Preferred language</legend>
+                <legend class="sr-only">{{ __('messages.account.language_preference') }}</legend>
                 @foreach ($languages as $value => $language)
                     <label class="border px-4 py-4 cursor-pointer transition-colors {{ $current === $value ? 'border-primary bg-surface-container-low' : 'border-outline-variant hover:border-primary' }}">
                         <span class="flex items-center justify-between gap-2">
                             <span class="font-title-md text-title-md text-primary">{{ $language['label'] }}</span>
-                            <input type="radio" name="preferred_language" value="{{ $value }}" @checked($current === $value)
-                                   class="h-4 w-4 border-outline text-primary focus:ring-primary">
+                            <input type="radio" name="preferred_language" value="{{ $value }}" @checked($current === $value) class="text-primary focus:ring-0">
                         </span>
-                        <span class="block font-body-sm text-body-sm text-on-surface-variant mt-1">{{ $language['native'] }}</span>
-                        <span class="block font-body-sm text-[12px] text-outline mt-1">{{ $language['note'] }}</span>
+                        <span class="block font-label-tag text-label-tag uppercase tracking-wider text-outline mt-1">{{ $language['native'] }}</span>
+                        <span class="block font-body-sm text-body-sm text-on-surface-variant mt-2">{{ $language['note'] }}</span>
                     </label>
                 @endforeach
             </fieldset>
-            @error('preferred_language')<span class="block font-body-sm text-body-sm text-secondary mt-3">{{ $message }}</span>@enderror
         </section>
 
-        <section class="border border-outline-variant bg-surface-container-low p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">Country &amp; currency</h2>
-            <dl class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-body-sm text-body-sm">
-                <div>
-                    <dt class="text-outline uppercase text-[12px]">Country</dt>
-                    <dd class="font-title-md text-title-md text-primary mt-1">United Arab Emirates</dd>
-                </div>
-                <div>
-                    <dt class="text-outline uppercase text-[12px]">Currency</dt>
-                    <dd class="font-title-md text-title-md text-primary mt-1">{{ config('commerce.currency', 'AED') }}</dd>
-                </div>
-                <div>
-                    <dt class="text-outline uppercase text-[12px]">Prices include</dt>
-                    <dd class="font-title-md text-title-md text-primary mt-1">5% VAT</dd>
-                </div>
-            </dl>
-            <p class="font-body-sm text-body-sm text-outline mt-4">To shop in another country, use the region selector in the site header.</p>
-        </section>
-
-        <div class="flex flex-wrap gap-3">
-            <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 h-12 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" type="submit">Save language</button>
-            <a class="border border-outline px-8 h-12 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('account.settings') }}">Back to settings</a>
-        </div>
+        <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-10 h-12 hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" type="submit">
+            {{ __('messages.account.save_changes') }}
+        </button>
     </form>
 </main>
 @endsection

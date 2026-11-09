@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Order ' . $order->order_number . ' | SEPHORA UAE')
+@section('title', __('messages.confirmation.title', ['number' => $order->order_number]))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
@@ -20,10 +20,10 @@
         default => -1,
     };
     $timeline = [
-        ['label' => 'Order Placed', 'icon' => 'receipt_long'],
-        ['label' => 'Preparing', 'icon' => 'inventory_2'],
-        ['label' => 'Shipped', 'icon' => 'local_shipping'],
-        ['label' => 'Delivered', 'icon' => 'check_circle'],
+        ['label' => __('messages.confirmation.order_placed'), 'icon' => 'receipt_long'],
+        ['label' => __('messages.confirmation.preparing'), 'icon' => 'inventory_2'],
+        ['label' => __('messages.confirmation.shipped'), 'icon' => 'local_shipping'],
+        ['label' => __('messages.confirmation.delivered'), 'icon' => 'check_circle'],
     ];
 
     $isPickup = $order->delivery_method === 'click_collect';
@@ -34,9 +34,9 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
     <nav class="text-body-sm font-body-sm text-outline mb-4" aria-label="Breadcrumb">
-        <a class="hover:text-secondary transition-colors" href="/">Home</a>
+        <a class="hover:text-secondary transition-colors" href="/">{{ __('messages.home') }}</a>
         <span class="mx-1.5">/</span>
-        <span class="text-on-surface font-semibold">Order Confirmation</span>
+        <span class="text-on-surface font-semibold">{{ __('messages.confirmation.heading') }}</span>
     </nav>
 
     {{-- Flash messages from the payment flow --}}
@@ -55,10 +55,10 @@
                 <span class="material-symbols-outlined text-[40px]">{{ $isCancelled ? 'cancel' : ($isRefunded ? 'undo' : 'check_circle') }}</span>
             </div>
             <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold block mb-2">
-                {{ $isCancelled ? 'Order Cancelled' : ($isRefunded ? 'Order Refunded' : 'Thank you for your order') }}
+                {{ $isCancelled ? __('messages.confirmation.order_cancelled') : ($isRefunded ? __('messages.confirmation.order_refunded') : __('messages.confirmation.thank_you')) }}
             </span>
             <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase mb-3">
-                {{ $isCancelled ? 'Your order was cancelled' : 'Thank You, ' . $order->customer_name . '!' }}
+                {{ $isCancelled ? __('messages.confirmation.order_cancelled') : __('messages.confirmation.thank_you') . ', ' . $order->customer_name . '!' }}
             </h1>
             <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
                 Order <strong class="text-primary">{{ $order->order_number }}</strong>
@@ -328,15 +328,15 @@
                 <div class="mt-4 flex flex-col gap-3">
                     @auth
                         <a class="text-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-4 hover:bg-surface-container-lowest hover:text-primary border border-primary transition-all" href="{{ route('account.orders') }}">
-                            Track my order
+                            {{ __('messages.confirmation.track_package') }}
                         </a>
                     @else
                         <a class="text-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-4 hover:bg-surface-container-lowest hover:text-primary border border-primary transition-all" href="{{ route('login') }}">
-                            Sign in to track
+                            {{ __('messages.auth.login') }}
                         </a>
                     @endauth
                     <a class="text-center border border-primary text-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-4 hover:bg-primary hover:text-on-primary transition-all" href="/">
-                        Continue shopping
+                        {{ __('messages.continue_shopping') }}
                     </a>
                 </div>
 

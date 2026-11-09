@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout | SEPHORA UAE')
+@section('title', __('messages.checkout.title'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
     <nav class="text-body-sm font-body-sm text-outline mb-4" aria-label="Breadcrumb">
-        <a class="hover:text-secondary transition-colors" href="/">Home</a>
+        <a class="hover:text-secondary transition-colors" href="/">{{ __('messages.home') }}</a>
         <span class="mx-1.5">/</span>
-        <a class="hover:text-secondary transition-colors" href="{{ route('cart') }}">Shopping Bag</a>
+        <a class="hover:text-secondary transition-colors" href="{{ route('cart') }}">{{ __('messages.cart.heading') }}</a>
         <span class="mx-1.5">/</span>
-        <span class="text-on-surface font-semibold">Checkout</span>
+        <span class="text-on-surface font-semibold">{{ __('messages.checkout.heading') }}</span>
     </nav>
 
     <div class="flex flex-wrap items-end justify-between gap-3 border-b border-primary pb-4 mb-8">
         <div>
-            <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Secure Checkout</h1>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">United Arab Emirates &middot; Prices include 5% VAT</p>
+            <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('messages.checkout.heading') }}</h1>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('messages.checkout.united_arab_emirates') }}</p>
         </div>
         <div class="flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps">
             <span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
-            <span>Encrypted connection</span>
+            <span>{{ __('messages.checkout.encrypted_connection') }}</span>
         </div>
     </div>
 
     @if ($errors->any())
         <div class="mb-6 border border-secondary bg-surface-container-low p-4" role="alert">
-            <p class="font-title-md text-title-md text-secondary font-bold uppercase mb-2">Please review the highlighted fields</p>
+            <p class="font-title-md text-title-md text-secondary font-bold uppercase mb-2">{{ __('messages.checkout.review_fields') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-on-surface-variant space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -50,94 +50,94 @@
                 <header class="p-space-md md:p-space-lg border-b border-primary flex items-center gap-4">
                     <span class="w-8 h-8 bg-primary text-on-primary flex items-center justify-center font-title-md text-title-md">1</span>
                     <div>
-                        <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">Receive Your Order</h2>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Contact details and delivery address</p>
+                        <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">{{ __('messages.checkout.receive_order') }}</h2>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.checkout.contact_details') }}</p>
                     </div>
                 </header>
 
                 <div class="p-space-md md:p-space-lg space-y-space-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="customer_name">Recipient full name *</label>
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="customer_name">{{ __('messages.checkout.recipient_name') }} *</label>
                             <input id="customer_name" name="customer_name" type="text" required autocomplete="name"
                                    value="{{ old('customer_name', auth()->user()->name ?? '') }}"
                                    class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
                         </div>
                         <div>
-                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="customer_phone">UAE mobile number *</label>
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="customer_phone">{{ __('messages.checkout.uae_mobile') }} *</label>
                             <input id="customer_phone" name="customer_phone" type="tel" required autocomplete="tel"
                                    inputmode="tel" placeholder="+971 50 123 4567" maxlength="40"
                                    value="{{ old('customer_phone', auth()->user()->phone ?? $defaultAddress->phone ?? '') }}"
                                    class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
                         </div>
                         <div class="md:col-span-2">
-                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="customer_email">Email for confirmation *</label>
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="customer_email">{{ __('messages.checkout.email_confirmation') }} *</label>
                             <input id="customer_email" name="customer_email" type="email" autocomplete="email"
                                    @guest required @endguest
                                    value="{{ old('customer_email', auth()->user()->email ?? '') }}"
                                    class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
-                            <p class="font-body-sm text-body-sm text-outline mt-1">We email the order confirmation and tracking link here.</p>
+                            <p class="font-body-sm text-body-sm text-outline mt-1">{{ __('messages.checkout.email_text') }}</p>
                         </div>
                     </div>
 
                     <div class="pt-space-sm border-t border-primary/10">
-                        <h3 class="font-title-md text-title-md uppercase tracking-wider text-primary mb-4">Delivery address</h3>
+                        <h3 class="font-title-md text-title-md uppercase tracking-wider text-primary mb-4">{{ __('messages.checkout.delivery_address') }}</h3>
                         <div id="address-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="emirate">Emirate *</label>
+                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="emirate">{{ __('messages.checkout.emirate') }} *</label>
                                 <select id="emirate" name="emirate" class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md uppercase bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
-                                    <option value="">Select emirate</option>
+                                    <option value="">{{ __('messages.checkout.select_emirate') }}</option>
                                     @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'Al Ain', 'Ras Al Khaimah', 'Fujairah', 'Umm Al Quwain'] as $emirate)
                                         <option value="{{ $emirate }}" @selected(old('emirate', $defaultAddress->emirate ?? 'Dubai') === $emirate)>{{ $emirate }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
-                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="area">District / area</label>
+                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="area">{{ __('messages.checkout.district') }}</label>
                                 <input id="area" name="area" type="text" autocomplete="address-level2"
                                        value="{{ old('area', $defaultAddress->area ?? '') }}"
-                                       placeholder="e.g. Downtown Dubai"
+                                       placeholder="{{ __('messages.checkout.district_placeholder') }}"
                                        class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="street_address">Building, street or villa *</label>
+                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="street_address">{{ __('messages.checkout.building_street') }} *</label>
                                 <input id="street_address" name="street_address" type="text" autocomplete="street-address"
                                        value="{{ old('street_address', $defaultAddress->street_address ?? '') }}"
-                                       placeholder="e.g. Burj Crown Residences, Suite 1804"
+                                       placeholder="{{ __('messages.checkout.building_street_placeholder') }}"
                                        class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
                             </div>
                             <div>
-                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="building">Apartment / villa no.</label>
+                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="building">{{ __('messages.checkout.apartment') }}</label>
                                 <input id="building" name="building" type="text"
                                        value="{{ old('building', $defaultAddress->building ?? '') }}"
                                        class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
                             </div>
                             <div>
-                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="delivery_instructions">Delivery notes / landmark</label>
+                                <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="delivery_instructions">{{ __('messages.checkout.delivery_notes') }}</label>
                                 <input id="delivery_instructions" name="delivery_instructions" type="text" maxlength="500"
                                        value="{{ old('delivery_instructions', $defaultAddress->delivery_instructions ?? '') }}"
-                                       placeholder="e.g. Leave with concierge"
+                                       placeholder="{{ __('messages.checkout.delivery_notes_placeholder') }}"
                                        class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
                             </div>
                         </div>
 
                         <div id="store-field" class="mt-4 hidden">
-                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="store_id">Pick-up boutique *</label>
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="store_id">{{ __('messages.checkout.pickup_boutique') }} *</label>
                             <select id="store_id" name="store_id" class="w-full h-12 border border-outline px-3 py-2 text-primary font-body-md bg-surface-container-lowest focus:outline-none focus:border-primary focus:ring-0">
-                                <option value="">Select a boutique</option>
+                                <option value="">{{ __('messages.checkout.select_boutique') }}</option>
                                 @foreach ($stores as $store)
                                     <option value="{{ $store->id }}" @selected((string) old('store_id') === (string) $store->id)>
                                         {{ $store->name }} — {{ $store->city }}
                                     </option>
                                 @endforeach
                             </select>
-                            <p class="font-body-sm text-body-sm text-outline mt-1">You will receive a ready-for-collection email. Bring your order number and photo ID.</p>
+                            <p class="font-body-sm text-body-sm text-outline mt-1">{{ __('messages.checkout.pickup_text') }}</p>
                         </div>
 
                         @auth
                             <label class="mt-4 flex items-center gap-3 cursor-pointer">
                                 <input class="w-4 h-4 text-primary border-primary focus:ring-0" id="save_address" type="checkbox" name="save_address" value="1" @checked(old('save_address'))>
-                                <span class="font-body-sm text-body-sm text-on-surface">Save this address to my account</span>
+                                <span class="font-body-sm text-body-sm text-on-surface">{{ __('messages.checkout.save_address') }}</span>
                             </label>
                         @endauth
                     </div>
@@ -149,16 +149,16 @@
                 <header class="p-space-md md:p-space-lg border-b border-outline-variant flex items-center gap-4">
                     <span class="w-8 h-8 bg-surface-container-low text-primary border border-outline-variant flex items-center justify-center font-title-md text-title-md">2</span>
                     <div>
-                        <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">Delivery Method</h2>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Choose how and when you receive your order</p>
+                        <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">{{ __('messages.checkout.delivery_method') }}</h2>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.checkout.choose_delivery') }}</p>
                     </div>
                 </header>
                 <div class="p-space-md md:p-space-lg grid grid-cols-1 md:grid-cols-3 gap-3">
                     @php
                         $deliveryMeta = [
-                            'standard' => ['icon' => 'local_shipping', 'title' => 'Standard Delivery', 'note' => '2–3 business days', 'fee' => (float) config('commerce.shipping.standard', 25)],
-                            'same_day' => ['icon' => 'bolt', 'title' => 'Same-Day Delivery', 'note' => 'Dubai, Sharjah, Ajman — order before 2 PM', 'fee' => (float) config('commerce.shipping.same_day', 40)],
-                            'click_collect' => ['icon' => 'storefront', 'title' => 'Click & Collect', 'note' => 'Ready in about 2 hours', 'fee' => 0.0],
+                            'standard' => ['icon' => 'local_shipping', 'title' => __('messages.checkout.standard_delivery'), 'note' => '2–3 business days', 'fee' => (float) config('commerce.shipping.standard', 25)],
+                            'same_day' => ['icon' => 'bolt', 'title' => __('messages.checkout.same_day_delivery'), 'note' => 'Dubai, Sharjah, Ajman — order before 2 PM', 'fee' => (float) config('commerce.shipping.same_day', 40)],
+                            'click_collect' => ['icon' => 'storefront', 'title' => __('messages.checkout.click_collect'), 'note' => 'Ready in about 2 hours', 'fee' => 0.0],
                         ];
                     @endphp
                     @foreach ($deliveryMethods as $key => $label)
@@ -173,14 +173,14 @@
                                 <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">{{ $meta['note'] }}</p>
                             </div>
                             <div class="mt-4 pt-2 border-t border-outline-variant/40 flex items-center justify-between text-primary">
-                                <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">Fee</span>
+                                <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ __('messages.checkout.fee') }}</span>
                                 <span class="font-title-md text-body-md font-bold">
                                     @if ($key === 'standard')
-                                        FREE over {{ number_format($freeShippingThreshold, 0) }} AED
+                                        {{ __('messages.checkout.free_over', ['amount' => number_format($freeShippingThreshold, 0)]) }}
                                     @elseif ($meta['fee'] <= 0)
                                         FREE
                                     @else
-                                        AED {{ number_format($meta['fee'], 2) }}
+                                        {{ __('messages.aed') }} {{ number_format($meta['fee'], 2) }}
                                     @endif
                                 </span>
                             </div>
@@ -195,11 +195,11 @@
                     <div class="flex items-center gap-4">
                         <span class="w-8 h-8 bg-surface-container-low text-primary border border-outline-variant flex items-center justify-center font-title-md text-title-md">3</span>
                         <div>
-                            <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">Samples &amp; Gift Options</h2>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant">Select up to {{ (int) config('commerce.max_samples', 3) }} complimentary deluxe minis</p>
+                            <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">{{ __('messages.checkout.samples_gift') }}</h2>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.checkout.select_samples', ['element' => (int) config('commerce.max_samples', 3)]) }}</p>
                         </div>
                     </div>
-                    <span class="font-label-caps text-label-caps uppercase text-secondary font-bold tracking-widest" id="sample-counter">0 selected</span>
+                    <span class="font-label-caps text-label-caps uppercase text-secondary font-bold tracking-widest" id="sample-counter">{{ __('messages.checkout.selected', ['element' => 0]) }}</span>
                 </header>
                 <div class="p-space-md md:p-space-lg space-y-space-md">
                     @if ($samples->isNotEmpty())
@@ -218,25 +218,25 @@
                             @endforeach
                         </div>
                     @else
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">No samples are available right now.</p>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.checkout.no_samples') }}</p>
                     @endif
 
                     <div class="pt-space-sm border-t border-primary/10">
                         <div class="flex items-start justify-between gap-3">
                             <div>
-                                <h3 class="font-title-md text-title-md uppercase tracking-wider text-primary">Signature gift box</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Complimentary Sephora black-and-white striped box with ribbon.</p>
+                                <h3 class="font-title-md text-title-md uppercase tracking-wider text-primary">{{ __('messages.checkout.signature_gift_box') }}</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('messages.checkout.gift_box_text') }}</p>
                             </div>
                             <label class="flex items-center gap-2 cursor-pointer">
                                 <input class="w-4 h-4 text-primary border-primary focus:ring-0" id="gift_box" type="checkbox" name="gift_box" value="1" @checked(old('gift_box'))>
-                                <span class="font-body-sm text-body-sm text-primary whitespace-nowrap">Add gift box</span>
+                                <span class="font-body-sm text-body-sm text-primary whitespace-nowrap">{{ __('messages.checkout.add_gift_box') }}</span>
                             </label>
                         </div>
                         <div class="mt-3">
-                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="gift_message">Gift message</label>
+                            <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-1" for="gift_message">{{ __('messages.gift_message') }}</label>
                             <textarea id="gift_message" name="gift_message" rows="2" maxlength="400"
                                       class="w-full border border-outline p-2.5 font-body-sm text-body-sm bg-surface-container-lowest focus:outline-none focus:border-primary"
-                                      placeholder="Write a message for the gift card (max 400 characters)">{{ old('gift_message') }}</textarea>
+                                      placeholder="{{ __('messages.checkout.write_gift_message') }}">{{ old('gift_message') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -248,13 +248,13 @@
                     <div class="flex items-center gap-4">
                         <span class="w-8 h-8 bg-primary text-on-primary flex items-center justify-center font-title-md text-title-md">4</span>
                         <div>
-                            <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">Payment Method</h2>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant">Card details are entered on the payment provider's secure page</p>
+                            <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">{{ __('messages.checkout.payment_method') }}</h2>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.checkout.card_details') }}</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-1 text-primary">
                         <span class="material-symbols-outlined text-[18px]">lock</span>
-                        <span class="font-label-caps text-label-caps uppercase">Secure payment</span>
+                        <span class="font-label-caps text-label-caps uppercase">{{ __('messages.checkout.secure_payment') }}</span>
                     </div>
                 </header>
 
@@ -264,10 +264,10 @@
                             $paymentMeta = [
                                 'card' => ['icon' => 'credit_card', 'note' => 'Visa, Mastercard, American Express. 3-D Secure where required.'],
                                 'apple_pay' => ['icon' => 'phone_iphone', 'note' => 'Pay with Apple Pay on supported devices.'],
-                                'cod' => ['icon' => 'payments', 'note' => 'Pay the courier in cash on delivery. A AED '.number_format((float) config('commerce.shipping.cod_fee', 20), 0).' fee applies.'],
-                                'tabby' => ['icon' => 'account_balance_wallet', 'note' => 'Split your purchase into 4 interest-free payments.'],
-                                'tamara' => ['icon' => 'account_balance_wallet', 'note' => 'Split your purchase into 4 payments. Sharia-compliant.'],
-                                'zaincash' => ['icon' => 'account_balance_wallet', 'badge' => 'ZainCash', 'note' => 'Pay seamlessly with your ZainCash wallet (IQD). Instant & secure.'],
+                                'cod' => ['icon' => 'payments', 'note' => __('messages.checkout.cod_note', ['element' => number_format((float) config('commerce.shipping.cod_fee', 20), 0)])],
+                                'tabby' => ['icon' => 'account_balance_wallet', 'note' => __('messages.checkout.tabby_note')],
+                                'tamara' => ['icon' => 'account_balance_wallet', 'note' => __('messages.checkout.tamara_note')],
+                                'zaincash' => ['icon' => 'account_balance_wallet', 'badge' => 'ZainCash', 'note' => __('messages.checkout.zaincash_note')],
                             ];
                             $meta = $paymentMeta[$key] ?? ['icon' => 'payments', 'note' => ''];
                         @endphp
@@ -288,15 +288,14 @@
                         </label>
                     @empty
                         <p class="font-body-sm text-body-sm text-secondary" role="alert">
-                            Online payment is temporarily unavailable. Please contact client concierge to complete your order.
+                            {{ __('messages.checkout.online_unavailable') }}
                         </p>
                     @endforelse
 
                     <label class="flex items-start gap-3 pt-2 cursor-pointer">
                         <input class="mt-0.5 w-4 h-4 text-primary border-primary focus:ring-0" type="checkbox" name="terms" value="1" required @checked(old('terms'))>
                         <span class="font-body-sm text-body-sm text-on-surface">
-                            I agree to the <a class="underline hover:text-secondary" href="{{ url('/terms') }}">Terms &amp; Conditions</a>,
-                            <a class="underline hover:text-secondary" href="{{ url('/privacy') }}">Privacy Policy</a> and confirm my order details.
+                            {{ __('messages.checkout.terms_agree') }}
                         </span>
                     </label>
                 </div>
@@ -307,8 +306,8 @@
         <aside class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28 space-y-space-md" aria-label="Order summary">
             <div class="border-2 border-primary bg-surface-container-lowest">
                 <div class="p-space-md border-b border-primary flex items-center justify-between bg-surface-container-lowest">
-                    <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">Order Summary</h2>
-                    <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant font-bold">{{ $items->sum('quantity') }} item{{ $items->sum('quantity') === 1 ? '' : 's' }}</span>
+                    <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">{{ __('messages.checkout.order_summary') }}</h2>
+                    <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant font-bold">{{ $items->sum('quantity') }} {{ __('messages.items') }}</span>
                 </div>
 
                 <div class="divide-y divide-primary/10 max-h-80 overflow-y-auto">
@@ -320,56 +319,56 @@
                             <div class="flex-grow min-w-0">
                                 <span class="font-label-tag text-label-tag uppercase tracking-widest text-on-surface-variant">{{ $item->product->brand?->name }}</span>
                                 <h3 class="font-title-md text-body-md font-bold text-primary leading-tight">{{ $item->product->name }}</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">Qty: {{ $item->quantity }}{{ $item->shade_name ? ' • '.$item->shade_name : '' }}</p>
-                                <p class="font-price-aed-md text-price-aed-md text-primary mt-1">AED {{ number_format($item->product->price * $item->quantity, 2) }}</p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.confirmation.qty') }}: {{ $item->quantity }}{{ $item->shade_name ? ' • '.$item->shade_name : '' }}</p>
+                                <p class="font-price-aed-md text-price-aed-md text-primary mt-1">{{ __('messages.aed') }} {{ number_format($item->product->price * $item->quantity, 2) }}</p>
                             </div>
                         </div>
                     @endforeach
                 </div>
 
                 <div class="p-4 border-t border-b border-primary bg-surface-container-low">
-                    <label class="block font-label-caps text-label-caps uppercase text-primary mb-1.5 tracking-wider" for="promo-code-input">Promo code</label>
+                    <label class="block font-label-caps text-label-caps uppercase text-primary mb-1.5 tracking-wider" for="promo-code-input">{{ __('messages.checkout.promo_code') }}</label>
                     <div class="flex gap-2">
                         <input class="flex-grow h-11 border border-outline px-3 py-2 text-primary font-body-md uppercase bg-surface-container-lowest focus:outline-none focus:border-primary"
-                               placeholder="e.g. WELCOME10" type="text" id="promo-code-input" value="{{ $appliedCoupon }}" autocomplete="off">
+                               placeholder="{{ __('messages.checkout.promo_placeholder') }}" type="text" id="promo-code-input" value="{{ $appliedCoupon }}" autocomplete="off">
                         <button class="px-5 h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container-lowest hover:text-primary border border-primary transition-colors"
-                                type="button" id="promo-apply-btn">Apply</button>
+                                type="button" id="promo-apply-btn">{{ __('messages.checkout.apply_promo') }}</button>
                     </div>
                     <p class="hidden mt-2 font-body-sm text-body-sm" id="promo-feedback" aria-live="polite"></p>
                     @if ($appliedCoupon)
-                        <button type="button" id="promo-remove-btn" class="mt-2 font-body-sm text-body-sm text-secondary underline">Remove promo code</button>
+                        <button type="button" id="promo-remove-btn" class="mt-2 font-body-sm text-body-sm text-secondary underline">{{ __('messages.checkout.remove_promo') }}</button>
                     @endif
                 </div>
 
                 <div class="p-space-md space-y-3" aria-live="polite">
                     <div class="flex justify-between font-body-md text-body-md">
-                        <span class="text-on-surface-variant">Subtotal</span>
-                        <span class="font-bold text-primary" id="summary-subtotal">AED {{ number_format($totals->subtotal, 2) }}</span>
+                        <span class="text-on-surface-variant">{{ __('messages.subtotal') }}</span>
+                        <span class="font-bold text-primary" id="summary-subtotal">{{ __('messages.aed') }} {{ number_format($totals->subtotal, 2) }}</span>
                     </div>
                     <div class="flex justify-between font-body-md text-body-md {{ $discount > 0 ? '' : 'hidden' }}" id="discount-row">
-                        <span class="text-on-surface-variant">Promo ({{ $appliedCoupon }})</span>
-                        <span class="font-bold text-secondary" id="summary-discount">-AED {{ number_format($discount, 2) }}</span>
+                        <span class="text-on-surface-variant">{{ __('messages.checkout.promo') }} ({{ $appliedCoupon }})</span>
+                        <span class="font-bold text-secondary" id="summary-discount">-{{ __('messages.aed') }} {{ number_format($discount, 2) }}</span>
                     </div>
                     <div class="flex justify-between font-body-md text-body-md">
-                        <span class="text-on-surface-variant" id="summary-shipping-label">{{ $deliveryMethods[$deliveryMethod] ?? 'Delivery' }}</span>
-                        <span class="font-bold text-secondary uppercase tracking-wider" id="summary-shipping">{{ $totals->shipping <= 0 ? 'FREE' : 'AED '.number_format($totals->shipping, 2) }}</span>
+                        <span class="text-on-surface-variant" id="summary-shipping-label">{{ $deliveryMethods[$deliveryMethod] ?? __('messages.delivery') }}</span>
+                        <span class="font-bold text-secondary uppercase tracking-wider" id="summary-shipping">{{ $totals->shipping <= 0 ? 'FREE' : __('messages.aed') . ' ' . number_format($totals->shipping, 2) }}</span>
                     </div>
                     <div class="flex justify-between font-body-sm text-body-sm">
-                        <span class="text-on-surface-variant">VAT ({{ number_format($totals->taxRate, 0) }}%) included</span>
-                        <span class="text-on-surface-variant" id="summary-tax">AED {{ number_format($totals->taxAmount, 2) }}</span>
+                        <span class="text-on-surface-variant">{{ __('messages.checkout.vat_included', ['element' => number_format($totals->taxRate, 0)]) }}</span>
+                        <span class="text-on-surface-variant" id="summary-tax">{{ __('messages.aed') }} {{ number_format($totals->taxAmount, 2) }}</span>
                     </div>
                     <div class="border-t border-primary/20 pt-3 flex justify-between items-baseline">
                         <div>
-                            <span class="font-title-lg text-title-lg uppercase tracking-wider text-primary block">Total</span>
-                            <span class="font-label-caps text-label-caps text-on-surface-variant">All taxes included</span>
+                            <span class="font-title-lg text-title-lg uppercase tracking-wider text-primary block">{{ __('messages.total') }}</span>
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">{{ __('messages.checkout.all_taxes_included') }}</span>
                         </div>
-                        <span class="font-price-aed-lg text-price-aed-lg text-primary" id="checkout-total">AED {{ number_format($totals->total, 2) }}</span>
+                        <span class="font-price-aed-lg text-price-aed-lg text-primary" id="checkout-total">{{ __('messages.aed') }} {{ number_format($totals->total, 2) }}</span>
                     </div>
 
                     <div class="p-3 bg-surface-container-low border border-primary flex items-center gap-3 mt-2">
                         <span class="material-symbols-outlined text-secondary text-[20px]">stars</span>
                         <p class="font-label-caps text-label-caps text-primary tracking-wider uppercase">
-                            <span class="font-bold text-secondary" id="summary-points">+{{ (int) floor($totals->total) }} Beauty Pass points</span> will be credited
+                            <span class="font-bold text-secondary" id="summary-points">{{ __('messages.checkout.beauty_pass_points', ['element' => (int) floor($totals->total)]) }}</span>
                         </p>
                     </div>
 
@@ -377,22 +376,22 @@
                         <button id="checkout-submit" class="w-full h-14 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-[0.2em] font-bold border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-60"
                                 type="submit">
                             <span class="material-symbols-outlined text-[20px]">lock</span>
-                            <span id="checkout-submit-label">Complete Purchase</span>
+                            <span id="checkout-submit-label">{{ __('messages.checkout.complete_purchase') }}</span>
                         </button>
                     </div>
 
                     <div class="pt-3 border-t border-primary/10 space-y-2">
                         <div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
                             <span class="material-symbols-outlined text-[16px] text-primary">verified</span>
-                            <span>100% authentic brand guarantee</span>
+                            <span>{{ __('messages.checkout.authentic_guarantee') }}</span>
                         </div>
                         <div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
                             <span class="material-symbols-outlined text-[16px] text-primary">assignment_return</span>
-                            <span>Complimentary 14-day returns</span>
+                            <span>{{ __('messages.checkout.returns_14') }}</span>
                         </div>
                         <div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
                             <span class="material-symbols-outlined text-[16px] text-primary">support_agent</span>
-                            <span>Client concierge 10 AM – 10 PM</span>
+                            <span>{{ __('messages.checkout.concierge') }}</span>
                         </div>
                     </div>
                 </div>
@@ -401,10 +400,10 @@
             <div class="border border-outline-variant p-4 bg-surface-container-lowest">
                 <div class="flex items-center justify-between gap-3">
                     <div>
-                        <h3 class="font-title-md text-body-md font-bold text-primary uppercase tracking-wider">Need help?</h3>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Our beauty advisors are available 10 AM – 10 PM.</p>
+                        <h3 class="font-title-md text-body-md font-bold text-primary uppercase tracking-wider">{{ __('messages.checkout.need_help') }}</h3>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('messages.checkout.beauty_advisors') }}</p>
                     </div>
-                    <a class="font-label-caps text-label-caps uppercase tracking-wider text-primary underline font-bold" href="mailto:customercare@sephora.ae">Contact us</a>
+                    <a class="font-label-caps text-label-caps uppercase tracking-wider text-primary underline font-bold" href="mailto:customercare@sephora.ae">{{ __('messages.checkout.contact_us') }}</a>
                 </div>
             </div>
         </aside>

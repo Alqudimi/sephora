@@ -1,22 +1,22 @@
 @extends('layouts.app')
-@section('title', 'My Orders | SEPHORA')
+@section('title', __('messages.account.my_orders') . ' | ' . __('messages.app_name'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-<nav class="text-body-sm font-body-sm text-outline mb-4"><a class="hover:text-secondary" href="/">Home</a> / <a class="hover:text-secondary" href="/my-account">My Account</a> / <span class="text-on-surface font-semibold">Orders</span></nav>
+<nav class="text-body-sm font-body-sm text-outline mb-4"><a class="hover:text-secondary" href="/">{{ __('messages.home') }}</a> / <a class="hover:text-secondary" href="/my-account">{{ __('messages.account.my_account') }}</a> / <span class="text-on-surface font-semibold">{{ __('messages.account.orders') }}</span></nav>
 
 @include('partials.account-nav', ['active' => 'orders'])
 <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-primary pb-4 mb-8 gap-2">
-    <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">My Orders</h1>
-    <span class="font-body-sm text-body-sm text-outline">{{ $orders->total() }} orders</span>
+    <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('messages.account.my_orders') }}</h1>
+    <span class="font-body-sm text-body-sm text-outline">{{ __('messages.account.orders_count', ['count' => $orders->total()]) }}</span>
 </div>
 @if($orders->isEmpty())
 <div class="text-center py-24 space-y-5">
     <span class="material-symbols-outlined text-[64px] text-outline-variant" data-icon="receipt_long">receipt_long</span>
-    <h2 class="font-headline-sm text-headline-sm text-primary">No orders yet</h2>
-    <p class="font-body-md text-body-md text-on-surface-variant">Your order history and tracking will appear here.</p>
-    <a class="inline-block bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-10 py-4 hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" href="/shop/bestsellers">Start Shopping</a>
+    <h2 class="font-headline-sm text-headline-sm text-primary">{{ __('messages.account.no_orders') }}</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">{{ __('messages.account.no_orders_history') }}</p>
+    <a class="inline-block bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-10 py-4 hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" href="/shop/bestsellers">{{ __('messages.account.start_shopping') }}</a>
 </div>
 @else
 <div class="space-y-4">
@@ -36,10 +36,10 @@
             @if($order->items->count() > 4)<span class="font-body-sm text-body-sm text-outline shrink-0">+{{ $order->items->count() - 4 }} more</span>@endif
         </div>
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-outline-variant pt-4">
-            <span class="font-body-md text-body-md text-on-surface-variant">{{ $order->items->count() }} item(s)</span>
+            <span class="font-body-md text-body-md text-on-surface-variant">{{ __('messages.account.items_count', ['count' => $order->items->count()]) }}</span>
             <div class="flex items-center justify-between sm:justify-end gap-4 sm:gap-6">
-                <span class="font-price-aed-lg text-price-aed-lg font-bold text-primary">AED {{ number_format($order->total, 2) }}</span>
-                <a class="font-label-caps text-label-caps uppercase underline text-primary hover:text-secondary shrink-0" href="{{ route('account.orders.show', $order->order_number) }}">View Details</a>
+                <span class="font-price-aed-lg text-price-aed-lg font-bold text-primary">{{ __('messages.aed') }} {{ number_format($order->total, 2) }}</span>
+                <a class="font-label-caps text-label-caps uppercase underline text-primary hover:text-secondary shrink-0" href="{{ route('account.orders.show', $order->order_number) }}">{{ __('messages.account.view_details') }}</a>
             </div>
         </div>
     </article>

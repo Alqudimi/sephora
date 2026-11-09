@@ -24,15 +24,15 @@
                 </span>
             @elseif ($product->is_new)
                 <span class="bg-black text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wider rounded-[1px]">
-                    NEW
+                    {{ __('messages.new') }}
                 </span>
             @elseif ($product->is_exclusive)
                 <span class="bg-white text-black border border-black text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wider rounded-[1px]">
-                    ONLINE ONLY
+                    {{ __('messages.product.online_only') }}
                 </span>
             @elseif ($hasDiscount)
                 <span class="bg-[#1A3066] text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wider rounded-[1px]">
-                    VALUE SET
+                    {{ __('messages.product.value_set') }}
                 </span>
             @endif
         </div>
@@ -83,21 +83,21 @@
 
         <!-- Variant indicator -->
         <p class="text-[11px] text-neutral-500 mt-1 font-normal">
-            {{ $product->shade_count > 1 ? $product->shade_count . ' Shades' : '1 Size' }}
+            {{ $product->shade_count > 1 ? __('messages.product.shades_count', ['count' => $product->shade_count]) : __('messages.product.one_size') }}
         </p>
 
         <!-- Price Layout -->
         <div class="mt-auto pt-2 flex flex-col">
             @if ($hasDiscount)
                 <span class="text-[11px] text-neutral-500 line-through">
-                    Real value AED {{ number_format($product->compare_at_price, 2) }}
+                    {{ __('messages.product.real_value', ['amount' => number_format($product->compare_at_price, 2)]) }}
                 </span>
                 <span class="text-xs sm:text-sm font-bold text-black">
-                    AED {{ number_format($product->price, 2) }}
+                    {{ __('messages.aed') }} {{ number_format($product->price, 2) }}
                 </span>
             @else
                 <span class="text-xs sm:text-sm font-bold text-black">
-                    AED {{ number_format($product->price, 2) }}
+                    {{ __('messages.aed') }} {{ number_format($product->price, 2) }}
                 </span>
             @endif
         </div>
@@ -110,7 +110,7 @@
             data-add-to-bag="{{ $product->id }}"
             type="button"
         >
-            ADD TO BASKET
+            {{ __('messages.product.add_to_basket') }}
         </button>
     @endif
 </article>

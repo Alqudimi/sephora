@@ -221,7 +221,7 @@
                         data-add-to-bag="{{ $product->id }}"
                         @disabled($stock <= 0)
                         class="flex-1 h-12 bg-black text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-neutral-800 active:bg-neutral-900 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
-                    {{ $stock > 0 ? 'ADD TO BASKET' : 'OUT OF STOCK' }}
+                    {{ $stock > 0 ? __('messages.product.add_to_basket') : __('messages.product.out_of_stock') }}
                 </button>
 
                 <!-- Wishlist Heart Button -->
@@ -241,7 +241,7 @@
                     PASS
                 </div>
                 <p class="text-xs text-neutral-800">
-                    Join <strong>MY SEPHORA</strong> and earn <strong>{{ $loyaltyPoints }} points</strong> on this item toward your next beauty gift.
+                    {!! __('messages.product.pass_loyalty_text', ['points' => $loyaltyPoints]) !!}
                 </p>
             </div>
 
@@ -249,23 +249,23 @@
             <div class="border border-gray-200 rounded-sm p-4 space-y-2.5 text-xs text-neutral-700 mb-6 bg-white">
                 <div class="flex items-center gap-2 text-black font-semibold">
                     <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    <span>Home or pickup point delivery: Available</span>
+                    <span>{{ __('messages.product.delivery_available') }}</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                    <span>Standard delivery in 1-2 working days (Free over 250 AED)</span>
+                    <span>{{ __('messages.product.standard_delivery_text') }}</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                    <span>Express &amp; Same Day delivery available in Dubai &amp; Abu Dhabi</span>
+                    <span>{{ __('messages.product.express_delivery_text') }}</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                    <span>Free in-store returns across any Sephora UAE boutique</span>
+                    <span>{{ __('messages.product.free_returns_text') }}</span>
                 </div>
                 <div class="pt-2 border-t border-gray-100">
                     <a href="/stores" class="text-xs font-bold text-black uppercase underline hover:opacity-75">
-                        CHECK IN-STORE AVAILABILITY &rarr;
+                        {{ __('messages.product.check_in_store') }}
                     </a>
                 </div>
             </div>
@@ -275,7 +275,7 @@
                 @if ($product->description)
                     <details class="group py-3.5" open>
                         <summary class="flex items-center justify-between cursor-pointer list-none text-xs font-bold uppercase tracking-wider text-black">
-                            <span>Description</span>
+                            <span>{{ __('messages.product.description') }}</span>
                             <span class="group-open:rotate-180 transition-transform">&dtrif;</span>
                         </summary>
                         <div class="text-xs text-neutral-600 leading-relaxed mt-2.5">
@@ -287,7 +287,7 @@
                 @if ($product->how_to_use)
                     <details class="group py-3.5">
                         <summary class="flex items-center justify-between cursor-pointer list-none text-xs font-bold uppercase tracking-wider text-black">
-                            <span>How to use</span>
+                            <span>{{ __('messages.product.how_to_use') }}</span>
                             <span class="group-open:rotate-180 transition-transform">&dtrif;</span>
                         </summary>
                         <div class="text-xs text-neutral-600 leading-relaxed mt-2.5">
@@ -299,7 +299,7 @@
                 @if ($product->ingredients)
                     <details class="group py-3.5">
                         <summary class="flex items-center justify-between cursor-pointer list-none text-xs font-bold uppercase tracking-wider text-black">
-                            <span>Ingredients</span>
+                            <span>{{ __('messages.product.ingredients') }}</span>
                             <span class="group-open:rotate-180 transition-transform">&dtrif;</span>
                         </summary>
                         <div class="text-xs text-neutral-600 leading-relaxed mt-2.5">
@@ -317,7 +317,7 @@
     <section id="reviews" class="py-10 border-b border-gray-200">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div class="lg:col-span-4">
-                <h2 class="text-lg sm:text-xl font-bold uppercase tracking-tight text-black mb-3">Customer reviews</h2>
+                <h2 class="text-lg sm:text-xl font-bold uppercase tracking-tight text-black mb-3">{{ __('messages.product.customer_reviews') }}</h2>
                 <div class="flex items-baseline gap-3 mb-2">
                     <span class="text-3xl font-extrabold text-black">{{ number_format($rating, 1) }}</span>
                     <div>

@@ -8,7 +8,7 @@
     $wishlistBadgeCount = (int) ($wishlistCount ?? 0);
     $announcementEnabled = \App\Models\Setting::get('announcement_enabled', '1') !== '0';
     $announcementBold = __($announcementSettingBold = \App\Models\Setting::get('announcement_bold', __('messages.nav.holiday_collection')));
-    $announcementMessage = __($announcementSettingMessage = \App\Models\Setting::get('announcement_message', __('messages.home.holiday_subtitle')));
+    $announcementMessage = __($announcementSettingMessage = \App\Models\Setting::get('announcement_message', __('messages.homepage.holiday_subtitle')));
     $announcementAction = __($announcementSettingAction = \App\Models\Setting::get('announcement_action_text', __('messages.shop_all')));
     $announcementLink = \App\Models\Setting::get('announcement_action_link', '/shop/gifts');
     $announcementBg = \App\Models\Setting::get('announcement_bg_color', '#1A3066');
@@ -156,7 +156,7 @@
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/gifts"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-bold text-[#1A3066] hover:text-[#0f1f45] transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#1A3066] after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>The Holiday Collection</span>
+                <span>{{ __('messages.nav.holiday_collection') }}</span>
                 <svg class="w-3 h-3 text-[#1A3066]/70 group-hover:text-[#1A3066] transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -205,7 +205,7 @@
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/fragrance"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-bold text-[#BBA08B] hover:text-[#9e836e] transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#BBA08B] after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Stack Your Scent</span>
+                <span>{{ __('messages.nav.stack_your_scent') }}</span>
                 <svg class="w-3 h-3 text-[#BBA08B]/80 group-hover:text-[#BBA08B] transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -246,7 +246,7 @@
         <div class="flex items-center h-full shrink-0">
             <a href="/beauty-offers"
                class="h-full flex items-center px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 hover:after:w-full after:transition-all after:duration-150">
-                <span>Beauty Offers</span>
+                <span>{{ __('messages.nav.beauty_offers') }}</span>
             </a>
         </div>
 
@@ -254,7 +254,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/shop/new"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>New</span>
+                <span>{{ __('messages.nav.new') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -336,7 +336,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/shop/makeup"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Makeup</span>
+                <span>{{ __('messages.nav.makeup') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -462,7 +462,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/shop/fragrance"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Fragrance</span>
+                <span>{{ __('messages.nav.fragrance') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -552,7 +552,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/shop/skincare"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Skincare</span>
+                <span>{{ __('messages.nav.skincare') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -754,7 +754,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/shop/hair"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Hair</span>
+                <span>{{ __('messages.nav.hair') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -870,7 +870,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/brands/sephora-collection"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Sephora Collection</span>
+                <span>{{ __('messages.nav.sephora_collection') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -972,7 +972,7 @@
         <div class="group flex items-center h-full shrink-0">
             <a href="/brands"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Brands</span>
+                <span>{{ __('messages.nav.brands_list') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -1053,7 +1053,7 @@
         <div class="relative group flex items-center h-full shrink-0">
             <a href="/shop/gifts"
                class="h-full flex items-center gap-1 px-1.5 xl:px-2 text-[12px] xl:text-[13px] font-semibold text-gray-800 hover:text-black transition-colors whitespace-nowrap relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-black after:w-0 group-hover:after:w-full after:transition-all after:duration-150">
-                <span>Gifts</span>
+                <span>{{ __('messages.nav.gifts') }}</span>
                 <svg class="w-3 h-3 text-gray-400 group-hover:text-black transition-transform duration-200 group-hover:rotate-180 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </a>
 
@@ -1160,7 +1160,7 @@
             {{-- 1. The Holiday Collection --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-bold text-[#b45309] cursor-pointer list-none py-1">
-                    <span>The Holiday Collection</span>
+                    <span>{{ __('messages.nav.holiday_collection') }}</span>
                     <svg class="w-4 h-4 text-amber-600 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-amber-200 space-y-1.5 pb-1 text-xs">
@@ -1177,7 +1177,7 @@
             {{-- 2. Stack Your Scent --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Stack Your Scent</span>
+                    <span>{{ __('messages.nav.stack_your_scent') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-1.5 pb-1 text-xs">
@@ -1191,13 +1191,13 @@
 
             {{-- 3. Beauty Offers (Direct Link) --}}
             <a class="block py-3 text-sm font-semibold text-gray-900 hover:text-black hover:translate-x-1 transition-all" href="/beauty-offers">
-                Beauty Offers
+                {{ __('messages.nav.beauty_offers') }}
             </a>
 
             {{-- 4. New --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>New</span>
+                    <span>{{ __('messages.nav.new') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-1.5 pb-1 text-xs">
@@ -1229,7 +1229,7 @@
             {{-- 5. Makeup --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Makeup</span>
+                    <span>{{ __('messages.nav.makeup') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-2 pb-1 text-xs">
@@ -1282,7 +1282,7 @@
             {{-- 6. Fragrance --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Fragrance</span>
+                    <span>{{ __('messages.nav.fragrance') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-2 pb-1 text-xs">
@@ -1319,7 +1319,7 @@
             {{-- 7. Skincare --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Skincare</span>
+                    <span>{{ __('messages.nav.skincare') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-2 pb-1 text-xs">
@@ -1352,7 +1352,7 @@
             {{-- 8. Bath & Body --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Bath &amp; Body</span>
+                    <span>{{ __('messages.nav.bath_body') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-1.5 pb-1 text-xs">
@@ -1369,7 +1369,7 @@
             {{-- 9. Hair --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Hair</span>
+                    <span>{{ __('messages.nav.hair') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-2 pb-1 text-xs">
@@ -1397,7 +1397,7 @@
             {{-- 10. Sephora Collection --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Sephora Collection</span>
+                    <span>{{ __('messages.nav.sephora_collection') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-1.5 pb-1 text-xs">
@@ -1413,7 +1413,7 @@
             {{-- 11. Brands --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Brands</span>
+                    <span>{{ __('messages.nav.brands_list') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-2 pb-1 text-xs">
@@ -1444,7 +1444,7 @@
             {{-- 12. Gifts --}}
             <details class="group/mob py-2.5">
                 <summary class="flex items-center justify-between text-sm font-semibold text-gray-900 cursor-pointer list-none py-1 hover:text-black">
-                    <span>Gifts</span>
+                    <span>{{ __('messages.nav.gifts') }}</span>
                     <svg class="w-4 h-4 text-gray-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </summary>
                 <div class="mt-2 ml-3 pl-3 border-l-2 border-gray-200 space-y-1.5 pb-1 text-xs">

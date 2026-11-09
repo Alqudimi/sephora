@@ -106,11 +106,11 @@
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.my_sephora') }}</h4>
                 <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="/my-account">My Account</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/my-account/orders">Order History</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/my-account/wishlist">My Wishlist</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/gift-cards">Gift Cards</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/beauty-offers">Beauty Offers</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/my-account">{{ __('messages.account.my_account') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/my-account/orders">{{ __('messages.account.orders') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/my-account/wishlist">{{ __('messages.nav.wishlist') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/gift-cards">{{ __('messages.gift_cards') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/beauty-offers">{{ __('messages.nav.beauty_offers') }}</a></li>
                 </ul>
             </div>
 
@@ -118,36 +118,36 @@
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.help_faqs') }}</h4>
                 <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="{{ route('contact') }}">Contact Us</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/stores">Stores &amp; Services</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.delivery') }}">Delivery &amp; Shipping</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.cancellation') }}">Returns &amp; Refunds</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('faq') }}">FAQs</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('contact') }}">{{ __('messages.contact') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/stores">{{ __('messages.nav.stores_services') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.delivery') }}">{{ __('messages.delivery') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('faq.cancellation') }}">{{ __('messages.easy_returns') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('faq') }}">{{ __('messages.faq') }}</a></li>
                 </ul>
             </div>
 
             <!-- 5. About Sephora -->
             <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">About Sephora</h4>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.about_sephora') }}</h4>
                 <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="{{ route('home') }}">About Sephora UAE</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/clean-at-sephora">Clean at Sephora</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/stores">Our Boutiques</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}">Terms &amp; Conditions</a></li>
-                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}#privacy">Privacy Notice</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('home') }}">{{ __('messages.footer.about_sephora_uae') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/clean-at-sephora">{{ __('messages.nav.clean') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/stores">{{ __('messages.footer.stores') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}">{{ __('messages.terms') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="{{ route('terms') }}#privacy">{{ __('messages.footer.privacy_notice') }}</a></li>
                 </ul>
             </div>
         </div>
 
         <!-- Legal & Copyright Bar -->
         <div class="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-neutral-500 text-[11px] gap-4 text-center sm:text-left">
-            <p>Sephora Middle East &copy; {{ date('Y') }}. All rights reserved.</p>
+            <p>{{ __('messages.footer.copyright', ['year' => date('Y')]) }}</p>
             <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
-                <a href="{{ route('terms') }}" class="hover:text-neutral-300 transition-colors">Terms &amp; Conditions</a>
+                <a href="{{ route('terms') }}" class="hover:text-neutral-300 transition-colors">{{ __('messages.terms') }}</a>
                 <span class="w-1 h-1 bg-neutral-700 rounded-full"></span>
-                <a href="{{ route('terms') }}#privacy" class="hover:text-neutral-300 transition-colors">Privacy Policy</a>
+                <a href="{{ route('terms') }}#privacy" class="hover:text-neutral-300 transition-colors">{{ __('messages.privacy') }}</a>
                 <span class="w-1 h-1 bg-neutral-700 rounded-full"></span>
-                <a href="{{ route('terms') }}#cookies" class="hover:text-neutral-300 transition-colors">Cookie Preferences</a>
+                <a href="{{ route('terms') }}#cookies" class="hover:text-neutral-300 transition-colors">{{ __('messages.footer.cookie_preferences') }}</a>
             </div>
         </div>
     </div>
