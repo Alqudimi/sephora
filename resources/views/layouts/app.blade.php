@@ -1,5 +1,10 @@
+@php
+    $currentLocale = app()->getLocale();
+    $isRtl = $currentLocale === 'ar';
+    $dirAttribute = $isRtl ? 'rtl' : 'ltr';
+@endphp
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', $currentLocale ) }}" dir="{{ $dirAttribute }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

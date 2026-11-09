@@ -86,7 +86,11 @@
                     @if($order->courier_label)
                         Courier: <strong>{{ $order->courier_label }}</strong><br>
                     @endif
-                    Tracking: {{ $order->tracking_number ?? '—' }}
+                    @if($order->tracking_url)
+                        Tracking: <a href="{{ $order->tracking_url }}" target="_blank" style="color:#1a1a1a; text-decoration:underline">{{ $order->tracking_number }}</a>
+                    @else
+                        Tracking: {{ $order->tracking_number ?? '—' }}
+                    @endif
                 @endif
             </div>
             <div>

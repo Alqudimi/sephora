@@ -6,18 +6,18 @@
         <!-- Newsletter Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between pb-8 border-b border-neutral-800 gap-6">
             <div class="text-center md:text-left max-w-xl">
-                <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">Subscribe to the Sephora newsletter!</h3>
-                <p class="text-neutral-400 text-xs mt-1">Get 10% off your first order and stay updated on the latest beauty launches &amp; trends.</p>
+                <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">{{ __('messages.footer.newsletter_heading') }}</h3>
+                <p class="text-neutral-400 text-xs mt-1">{{ __('messages.footer.newsletter_text') }}</p>
             </div>
             <form class="flex flex-col sm:flex-row w-full md:w-auto max-w-md gap-2" data-newsletter-form>
                 <input
                     class="bg-neutral-900 border border-neutral-700 text-white px-4 py-2.5 text-xs rounded-sm focus:outline-none focus:border-white flex-1 min-w-0 placeholder-neutral-500"
-                    placeholder="Enter your email address..."
+                    placeholder="{{ __('messages.footer.email_placeholder') }}"
                     type="email"
                     required
                 />
                 <button class="bg-white text-black font-bold uppercase tracking-wider px-6 py-2.5 rounded-sm text-xs hover:bg-neutral-200 shrink-0 transition-colors" type="submit">
-                    SUBSCRIBE
+                    {{ __('messages.footer.subscribe') }}
                 </button>
             </form>
         </div>
@@ -31,7 +31,7 @@
         <!-- Social Media & Country Selector Bar -->
         <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-neutral-800 gap-4">
             <div class="flex items-center gap-4">
-                <span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">Follow Us:</span>
+                <span class="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">{{ __('messages.footer.follow_us') }}</span>
                 <div class="flex items-center gap-3 text-neutral-300">
                     <!-- Instagram -->
                     <a href="{{ $socialInstagram }}" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Instagram">
@@ -62,7 +62,7 @@
                         <rect width="150" height="300" fill="#ff0000" />
                     </svg>
                 </span>
-                <span class="text-xs font-semibold">United Arab Emirates | English</span>
+                <span class="text-xs font-semibold">{{ __('messages.footer.country') }}</span>
             </div>
         </div>
 
@@ -70,20 +70,20 @@
         <div class="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-neutral-400">
             <!-- 1. Top Categories -->
             <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Top Categories</h4>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.top_categories') }}</h4>
                 <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="/shop/makeup">Makeup</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/shop/fragrance">Fragrance</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/shop/skincare">Skincare</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/shop/sephora-collection">Sephora Collection</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/shop/hair">Hair</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/shop/bath-body">Bath &amp; Body</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/makeup">{{ __('messages.nav.makeup') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/fragrance">{{ __('messages.nav.fragrance') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/skincare">{{ __('messages.nav.skincare') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/sephora-collection">{{ __('messages.nav.sephora_collection') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/hair">{{ __('messages.nav.hair') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/shop/bath-body">{{ __('messages.nav.bath_body') }}</a></li>
                 </ul>
             </div>
 
             <!-- 2. Top Brands -->
             <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Top Brands</h4>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.top_brands') }}</h4>
                 <ul class="space-y-2">
                     <li><a class="hover:text-white transition-colors" href="/brands/fenty-beauty">Fenty Beauty</a></li>
                     <li><a class="hover:text-white transition-colors" href="/brands/huda-beauty">Huda Beauty</a></li>
@@ -96,7 +96,7 @@
 
             <!-- 3. My Sephora -->
             <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">My Sephora</h4>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.my_sephora') }}</h4>
                 <ul class="space-y-2">
                     <li><a class="hover:text-white transition-colors" href="/my-account">My Account</a></li>
                     <li><a class="hover:text-white transition-colors" href="/my-account/orders">Order History</a></li>
@@ -108,7 +108,7 @@
 
             <!-- 4. Help & FAQs -->
             <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Help &amp; FAQs</h4>
+                <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.help_faqs') }}</h4>
                 <ul class="space-y-2">
                     <li><a class="hover:text-white transition-colors" href="{{ route('contact') }}">Contact Us</a></li>
                     <li><a class="hover:text-white transition-colors" href="/stores">Stores &amp; Services</a></li>

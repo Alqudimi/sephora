@@ -42,9 +42,18 @@ class GiftCard extends Model
             });
     }
 
+    public function isExpired(): bool
+    {
+        return $this->expires_at !== null && $this->expires_at->isPast();
+    }
+
     public function isValid(?string $pin = null): bool
     {
         if (! $this->is_active) {
+            return false;
+        }
+
+        if ($this->balance <= 0) {
             return false;
         }
 

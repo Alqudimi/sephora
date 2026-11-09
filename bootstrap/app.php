@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\ForceHttps;
 use App\Http\Middleware\SecurityHeaders;
+use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\ShareCartCount;
 use App\Http\Middleware\TrustProxies;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->prependToGroup('web', TrustProxies::class);
 
         $middleware->web(append: [
+            SetLocale::class,
             ShareCartCount::class,
             SecurityHeaders::class,
             ForceHttps::class,

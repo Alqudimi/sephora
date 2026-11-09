@@ -7,9 +7,9 @@
     $cartBadgeCount = (int) ($cartCount ?? $bagCount ?? 0);
     $wishlistBadgeCount = (int) ($wishlistCount ?? 0);
     $announcementEnabled = \App\Models\Setting::get('announcement_enabled', '1') !== '0';
-    $announcementBold = \App\Models\Setting::get('announcement_bold', 'Discover The Holiday Collection');
-    $announcementMessage = \App\Models\Setting::get('announcement_message', 'Limited-edition sets, iconic bestsellers, and festive must-haves - shop them all.');
-    $announcementAction = \App\Models\Setting::get('announcement_action_text', 'SHOP NOW →');
+    $announcementBold = __($announcementSettingBold = \App\Models\Setting::get('announcement_bold', __('messages.nav.holiday_collection')));
+    $announcementMessage = __($announcementSettingMessage = \App\Models\Setting::get('announcement_message', __('messages.home.holiday_subtitle')));
+    $announcementAction = __($announcementSettingAction = \App\Models\Setting::get('announcement_action_text', __('messages.shop_all')));
     $announcementLink = \App\Models\Setting::get('announcement_action_link', '/shop/gifts');
     $announcementBg = \App\Models\Setting::get('announcement_bg_color', '#1A3066');
     $announcementColor = \App\Models\Setting::get('announcement_text_color', '#FFFFFF');
@@ -68,7 +68,7 @@
                 <input
                     class="w-full pl-10 pr-4 py-2 bg-[#F2F2F2] rounded-sm text-sm border-0 focus:ring-1 focus:ring-black placeholder-gray-500 text-gray-800 transition-colors"
                     name="q"
-                    placeholder="Search…"
+                    placeholder="{{ __('messages.nav.search_placeholder') }}"
                     type="search"
                     value="{{ request('q') }}"
                 />
@@ -82,7 +82,7 @@
                 <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                <span class="text-[13px] tracking-tight whitespace-nowrap">Stores & Services</span>
+                <span class="text-[13px] tracking-tight whitespace-nowrap">{{ __('messages.nav.stores_services') }}</span>
             </a>
 
             <!-- Divider Line -->
@@ -98,7 +98,7 @@
                         <rect width="150" height="300" fill="#ff0000" />
                     </svg>
                 </span>
-                <span class="text-[12px] font-semibold tracking-tight">UAE &middot; AED</span>
+                <span class="text-[12px] font-semibold tracking-tight">{{ __('messages.nav.country_language') }}</span>
             </a>
 
             <!-- Account / Sign In -->
@@ -132,7 +132,7 @@
             <input
                 class="w-full pl-9 pr-3 py-1.5 bg-[#F2F2F2] rounded-sm text-sm border-0 focus:ring-1 focus:ring-black placeholder-gray-500"
                 name="q"
-                placeholder="Search…"
+                placeholder="{{ __('messages.nav.search_placeholder') }}"
                 type="search"
                 value="{{ request('q') }}"
             />
