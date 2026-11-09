@@ -52,8 +52,12 @@
                 </div>
             </div>
 
-            <!-- Country Selector -->
-            <div class="flex items-center gap-2 text-neutral-300">
+            <!-- Country & Language Selector -->
+            @php
+                $footerTargetLang = app()->getLocale() === 'ar' ? 'en' : 'ar';
+                $footerTargetLabel = app()->getLocale() === 'ar' ? 'English' : 'العربية';
+            @endphp
+            <div class="flex items-center gap-3 text-neutral-300">
                 <span class="inline-flex w-4 h-3 overflow-hidden rounded-[2px] border border-gray-600">
                     <svg viewBox="0 0 600 300" class="w-full h-full object-cover">
                         <rect width="600" height="100" fill="#00732f" />
@@ -63,6 +67,10 @@
                     </svg>
                 </span>
                 <span class="text-xs font-semibold">{{ __('messages.footer.country') }}</span>
+                <span class="text-neutral-600">|</span>
+                <a href="{{ route('locale.switch', ['lang' => $footerTargetLang]) }}" class="text-xs font-bold text-white hover:underline">
+                    {{ $footerTargetLabel }}
+                </a>
             </div>
         </div>
 

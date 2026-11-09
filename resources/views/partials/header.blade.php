@@ -88,9 +88,13 @@
             <!-- Divider Line -->
             <div class="hidden lg:block h-5 w-px bg-gray-200 shrink-0"></div>
 
-            <!-- Country Flag UAE -->
-            <a href="/my-account/settings/country-and-language" aria-label="Select Country and Currency" class="hidden lg:flex items-center gap-1.5 hover:opacity-85 transition-opacity rounded-full px-2.5 py-1 border border-gray-200 bg-gray-50/70 text-gray-800 shrink-0">
-                <span class="inline-flex w-4 h-3 overflow-hidden rounded-[2px] border border-gray-300 shrink-0">
+            <!-- Quick Language Switcher Button (English / العربية) -->
+            @php
+                $targetLang = app()->getLocale() === 'ar' ? 'en' : 'ar';
+                $targetLabel = app()->getLocale() === 'ar' ? 'English' : 'العربية';
+            @endphp
+            <a href="{{ route('locale.switch', ['lang' => $targetLang]) }}" aria-label="Switch Language to {{ $targetLabel }}" class="hidden lg:flex items-center gap-1.5 hover:bg-gray-100 transition-colors rounded-full px-3 py-1 border border-gray-300 bg-white text-gray-900 font-bold text-xs shrink-0">
+                <span class="inline-flex w-4 h-3 overflow-hidden rounded-[2px] border border-gray-200 shrink-0">
                     <svg viewBox="0 0 600 300" class="w-full h-full object-cover">
                         <rect width="600" height="100" fill="#00732f" />
                         <rect y="100" width="600" height="100" fill="#ffffff" />
@@ -98,7 +102,7 @@
                         <rect width="150" height="300" fill="#ff0000" />
                     </svg>
                 </span>
-                <span class="text-[12px] font-semibold tracking-tight">{{ __('messages.nav.country_language') }}</span>
+                <span>{{ $targetLabel }}</span>
             </a>
 
             <!-- Account / Sign In -->
@@ -1488,7 +1492,7 @@
                 </svg>
                 <span>My Account</span>
             </a>
-            <a class="flex items-center gap-3 py-2 text-gray-900 font-medium" href="/my-account/settings/country-and-language">
+            <a class="flex items-center gap-3 py-2 text-gray-900 font-bold" href="{{ route('locale.switch', ['lang' => $targetLang]) }}">
                 <span class="inline-flex w-5 h-3.5 overflow-hidden rounded-[2px] border border-gray-300 shrink-0">
                     <svg viewBox="0 0 600 300" class="w-full h-full object-cover">
                         <rect width="600" height="100" fill="#00732f" />
@@ -1497,7 +1501,7 @@
                         <rect width="150" height="300" fill="#ff0000" />
                     </svg>
                 </span>
-                <span>United Arab Emirates (AED)</span>
+                <span>{{ $targetLabel }} (تبديل اللغة)</span>
             </a>
         </div>
     </aside>

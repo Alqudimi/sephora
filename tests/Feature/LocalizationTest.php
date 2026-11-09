@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -26,6 +27,7 @@ class LocalizationTest extends TestCase
         $response->assertSessionHas('locale', 'ar');
         $this->assertSame('ar', app()->getLocale());
         $response->assertSee('dir="rtl"', false);
+        $response->assertSee('Cairo', false);
     }
 
     public function test_persisted_session_locale_is_respected(): void
@@ -45,5 +47,76 @@ class LocalizationTest extends TestCase
         $this->assertSame('en', app()->getLocale());
         $response->assertSee('dir="ltr"', false);
     }
+
+    public function test_one_click_locale_switch_route_for_guest(): void
+    {
+        $response = $this->from('/')->get(route('locale.switch', ['lang' => 'ar']));
+
+        $response->assertRedirect('/');
+        $response->assertSessionHas('locale', 'ar');
+        $response->assertCookie('locale', 'ar');
+    }
+
+    public function test_one_click_locale_switch_updates_authenticated_user_profile(): void
+    {
+        $user = User::factory()->create([
+            'preferred_language' => 'en',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->from('/my-account')
+            ->get(route('locale.switch', ['lang' => 'ar']));
+
+        $response->assertRedirect('/my-account');
+        $response->assertSessionHas('locale', 'ar');
+        $response->assertCookie('locale', 'ar');
+        $this->assertSame('ar', $user->fresh()->preferred_language);
+    }
+
+    public function test_switching_back_to_english(): void
+    {
+        $user = User::factory()->create([
+            'preferred_language' => 'ar',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->withSession(['locale' => 'ar'])
+            ->from('/')
+            ->get(route('locale.switch', ['lang' => 'en']));
+
+        $response->assertRedirect('/');
+        $response->assertSessionHas('locale', 'en');
+        $response->assertCookie('locale', 'en');
+        $this->assertSame('en', $user->fresh()->preferred_language);
+    }
+
+    public function test_account_country_language_form_persists_choice(): void
+    {
+        $user = User::factory()->create([
+            'preferred_language' => 'en',
+        ]);
+
+        $response = $this->actingAs($user)
+            ->post('/my-account/settings/country-and-language', [
+                'preferred_language' => 'ar',
+            ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('locale', 'ar');
+        $response->assertCookie('locale', 'ar');
+        $this->assertSame('ar', $user->fresh()->preferred_language);
+    }
+
+    public function test_arabic_translations_are_complete_and_loadable(): void
+    {
+        app()->setLocale('ar');
+
+        $this->assertSame('سيفورا الإمارات', __('messages.app_name'));
+        $this->assertSame('حقيبة التسوق', __('messages.nav.bag'));
+        $this->assertSame('الدفع | سيفورا الإمارات', __('messages.checkout.title'));
+        $this->assertSame('تأكيد الطلب', __('messages.confirmation.heading'));
+        $this->assertSame('الإمارات العربية المتحدة · العربية', __('messages.footer.country'));
+    }
 }
+
 

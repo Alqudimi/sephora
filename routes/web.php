@@ -32,6 +32,18 @@ use Illuminate\Support\Facades\Route;
 // ── Home ──
 Route::get('/', [PageController::class, 'home'])->name('home');
 
+// ── Locale Switcher ──
+Route::get('/locale/{lang}', function (string $lang) {
+    if (in_array($lang, ['en', 'ar'], true)) {
+        session(['locale' => $lang]);
+        if (auth()->check()) {
+            auth()->user()->update(['preferred_language' => $lang]);
+        }
+        return back()->withCookie(cookie('locale', $lang, 60 * 24 * 365, '/', null, request()->isSecure(), false, false, 'lax'));
+    }
+    return back();
+})->name('locale.switch');
+
 // ── Static / content pages ──
 Route::get('/beauty-offers', [PageController::class, 'beautyOffers'])->name('beauty-offers');
 Route::get('/beauty-offers/offers', [PageController::class, 'beautyOffersAlt'])->name('beauty-offers.alt');

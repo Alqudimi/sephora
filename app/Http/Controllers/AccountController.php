@@ -114,9 +114,12 @@ class AccountController extends Controller
         $validated = $request->validate([
             'preferred_language' => 'required|in:en,ar,fr',
         ]);
+        $lang = $validated['preferred_language'] === 'fr' ? 'en' : $validated['preferred_language'];
         auth()->user()->update($validated);
+        session(['locale' => $lang]);
 
-        return back()->with('language_saved', true);
+        return back()->with('language_saved', true)
+            ->withCookie(cookie('locale', $lang, 60 * 24 * 365, '/', null, $request->isSecure(), false, false, 'lax'));
     }
 
     public function addresses()

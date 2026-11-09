@@ -36,7 +36,17 @@ class SetLocale
         App::setLocale($locale);
         Session::put('locale', $locale);
 
-        return $next($request);
+        $response = $next($request);
+
+        if ($request->has('lang')) {
+            $response->headers->setCookie(cookie('locale', $locale, 60 * 24 * 365, '/', null, $request->isSecure(), false, false, 'lax'));
+
+            if ($request->user() && $request->user()->preferred_language !== $locale) {
+                $request->user()->update(['preferred_language' => $locale]);
+            }
+        }
+
+        return $response;
     }
 
     /**
@@ -55,13 +65,19 @@ class SetLocale
             return $session;
         }
 
-        // 3. Cookie value
+        // 3. User saved preference
+        $userLang = $request->user()?->preferred_language;
+        if ($userLang && in_array($userLang, self::SUPPORTED, true)) {
+            return $userLang;
+        }
+
+        // 4. Cookie value
         $cookie = $request->cookie('locale');
         if ($cookie && in_array($cookie, self::SUPPORTED, true)) {
             return $cookie;
         }
 
-        // 4. Default
+        // 5. Default
         return self::DEFAULT;
     }
 }

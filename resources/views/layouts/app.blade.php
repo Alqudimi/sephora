@@ -40,12 +40,20 @@
     {{-- Vite build: Tailwind v3 (combined design config) + app JS --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Google Fonts: Bodoni Moda + Manrope + Montserrat (all design families) --}}
+    {{-- Google Fonts: Cairo (Arabic) + Bodoni Moda + Manrope + Montserrat (all design families) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     {{-- Material Symbols Outlined (icon system used across design pages) --}}
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+
+    @if($isRtl)
+    <style>
+        body, [dir="rtl"], input, select, textarea, button {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif !important;
+        }
+    </style>
+    @endif
 
     @yield('head')
     @stack('styles')

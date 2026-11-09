@@ -6,7 +6,7 @@
 @php
     $languages = [
         'en' => ['label' => 'English', 'native' => 'English', 'note' => 'Default storefront language'],
-        'ar' => ['label' => 'Arabic', 'native' => 'العربية', 'note' => 'Arabic storefront content is rolling out'],
+        'ar' => ['label' => 'Arabic', 'native' => 'العربية', 'note' => 'واجهة المتجر بالكامل باللغة العربية مع دعم RTL'],
         'fr' => ['label' => 'French', 'native' => 'Français', 'note' => 'French storefront content is rolling out'],
     ];
     $current = old('preferred_language', $user->preferred_language ?: 'en');
