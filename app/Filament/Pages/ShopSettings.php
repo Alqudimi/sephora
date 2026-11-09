@@ -86,8 +86,19 @@ class ShopSettings extends Page implements HasForms
             'apple_pay_enabled' => Setting::get('apple_pay_enabled', config('payments.methods.apple_pay.enabled', true) ? '1' : '0') !== '0',
             'cod_enabled' => Setting::get('cod_enabled', config('payments.methods.cod.enabled', true) ? '1' : '0') !== '0',
             'cod_max_limit' => Setting::get('cod_max_limit', '5000'),
-            'tabby_enabled' => Setting::get('tabby_enabled', '0') === '1',
-            'tamara_enabled' => Setting::get('tamara_enabled', '0') === '1',
+            // Tabby
+            'tabby_enabled' => (bool) Setting::get('tabby_enabled', config('payments.tabby.enabled', false)),
+            'tabby_mode' => Setting::get('tabby_mode', config('payments.tabby.mode', 'sandbox')),
+            'tabby_public_key' => Setting::get('tabby_public_key', config('payments.tabby.public_key', '')),
+            'tabby_secret_key' => Setting::get('tabby_secret_key', config('payments.tabby.secret_key', '')),
+            'tabby_merchant_code' => Setting::get('tabby_merchant_code', config('payments.tabby.merchant_code', 'sephora_ae')),
+
+            // Tamara
+            'tamara_enabled' => (bool) Setting::get('tamara_enabled', config('payments.tamara.enabled', false)),
+            'tamara_mode' => Setting::get('tamara_mode', config('payments.tamara.mode', 'sandbox')),
+            'tamara_api_token' => Setting::get('tamara_api_token', config('payments.tamara.api_token', '')),
+            'tamara_notification_token' => Setting::get('tamara_notification_token', config('payments.tamara.notification_token', '')),
+            'tamara_public_key' => Setting::get('tamara_public_key', config('payments.tamara.public_key', '')),
 
             'stripe_secret' => Setting::get('stripe_secret', (string) config('payments.stripe.secret', '')),
             'stripe_webhook_secret' => Setting::get('stripe_webhook_secret', (string) config('payments.stripe.webhook_secret', '')),
@@ -352,18 +363,78 @@ class ShopSettings extends Page implements HasForms
                             ->prefix('AED')
                             ->default(5000)
                             ->helperText('Orders exceeding this total cannot use Cash on Delivery.'),
+                    ]),
 
+                Section::make('Tabby Pay Later (بوابة تابي - الدفع بالتقسيط)')
+                    ->icon('heroicon-o-credit-card')
+                    ->description('Tabby Buy Now Pay Later (Split in 4). Configure API keys for test and live operations.')
+                    ->columns(2)
+                    ->schema([
                         Toggle::make('tabby_enabled')
-                            ->label('Enable Tabby (تفعيل تابي - 4 دفعات بدون فوائد)')
-                            ->helperText('Split into 4 monthly payments.')
+                            ->label('Enable Tabby (تفعيل بوابة تابي)')
+                            ->helperText('Allow shoppers to split payments into 4 interest-free instalments.')
                             ->onColor('success')
-                            ->offColor('danger'),
+                            ->offColor('danger')
+                            ->columnSpanFull(),
 
+                        Select::make('tabby_mode')
+                            ->label('Environment Mode (بيئة العمل)')
+                            ->options([
+                                'sandbox' => 'Sandbox / Test Mode (بيئة الاختبار)',
+                                'production' => 'Production / Live (بيئة الإنتاج الحقيقية)',
+                            ])
+                            ->default('sandbox'),
+
+                        TextInput::make('tabby_merchant_code')
+                            ->label('Merchant Code (كود التاجر)')
+                            ->placeholder('e.g. sephora_ae'),
+
+                        TextInput::make('tabby_public_key')
+                            ->label('Public Key (المفتاح العام)')
+                            ->placeholder('pk_test_... or pk_live_...'),
+
+                        TextInput::make('tabby_secret_key')
+                            ->label('Secret Key (المفتاح السري)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('sk_test_... or sk_live_...'),
+                    ]),
+
+                Section::make('Tamara Pay in 3 (بوابة تمارا - الدفع بالتقسيط)')
+                    ->icon('heroicon-o-sparkles')
+                    ->description('Tamara Sharia-compliant Buy Now Pay Later. Configure API credentials and webhook tokens.')
+                    ->columns(2)
+                    ->schema([
                         Toggle::make('tamara_enabled')
-                            ->label('Enable Tamara (تفعيل تمارا - متوافق مع الشريعة)')
-                            ->helperText('Split purchase with Tamara.')
+                            ->label('Enable Tamara (تفعيل بوابة تمارا)')
+                            ->helperText('Allow shoppers to split payments into 3 instalments.')
                             ->onColor('success')
-                            ->offColor('danger'),
+                            ->offColor('danger')
+                            ->columnSpanFull(),
+
+                        Select::make('tamara_mode')
+                            ->label('Environment Mode (بيئة العمل)')
+                            ->options([
+                                'sandbox' => 'Sandbox / Test Mode (بيئة الاختبار)',
+                                'production' => 'Production / Live (بيئة الإنتاج الحقيقية)',
+                            ])
+                            ->default('sandbox'),
+
+                        TextInput::make('tamara_public_key')
+                            ->label('Public Key (المفتاح العام)')
+                            ->placeholder('Tamara Public Key'),
+
+                        TextInput::make('tamara_api_token')
+                            ->label('API Token / Secret (رمز الدخول البرمجي)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('Enter Tamara API Bearer Token'),
+
+                        TextInput::make('tamara_notification_token')
+                            ->label('Notification / Webhook Token (رمز الإشعارات)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('Token used to verify incoming Tamara webhooks'),
                     ]),
 
                 Section::make('ZainCash Payment Gateway (بوابة زين كاش)')
@@ -546,8 +617,19 @@ class ShopSettings extends Page implements HasForms
             'apple_pay_enabled' => ! empty($state['apple_pay_enabled']) ? '1' : '0',
             'cod_enabled' => ! empty($state['cod_enabled']) ? '1' : '0',
             'cod_max_limit' => (string) ($state['cod_max_limit'] ?? '5000'),
+            // Tabby
             'tabby_enabled' => ! empty($state['tabby_enabled']) ? '1' : '0',
+            'tabby_mode' => (string) ($state['tabby_mode'] ?? 'sandbox'),
+            'tabby_public_key' => (string) ($state['tabby_public_key'] ?? ''),
+            'tabby_secret_key' => (string) ($state['tabby_secret_key'] ?? ''),
+            'tabby_merchant_code' => (string) ($state['tabby_merchant_code'] ?? 'sephora_ae'),
+
+            // Tamara
             'tamara_enabled' => ! empty($state['tamara_enabled']) ? '1' : '0',
+            'tamara_mode' => (string) ($state['tamara_mode'] ?? 'sandbox'),
+            'tamara_api_token' => (string) ($state['tamara_api_token'] ?? ''),
+            'tamara_notification_token' => (string) ($state['tamara_notification_token'] ?? ''),
+            'tamara_public_key' => (string) ($state['tamara_public_key'] ?? ''),
             'stripe_secret' => (string) ($state['stripe_secret'] ?? ''),
             'stripe_webhook_secret' => (string) ($state['stripe_webhook_secret'] ?? ''),
 

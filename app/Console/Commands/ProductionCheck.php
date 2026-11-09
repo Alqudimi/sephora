@@ -293,6 +293,28 @@ class ProductionCheck extends Command
                 );
             }
         }
+
+        $tabby = app(\App\Services\Payments\TabbyGateway::class);
+        if ($tabby->isEnabled()) {
+            $this->line('  <fg=cyan>Tabby Pay Later Gateway</>');
+            $hasSecret = $tabby->secretKey() !== '';
+            $this->passFail(
+                $hasSecret,
+                'Tabby Secret Key configured',
+                'Tabby Secret Key is missing — checkout will fail',
+            );
+        }
+
+        $tamara = app(\App\Services\Payments\TamaraGateway::class);
+        if ($tamara->isEnabled()) {
+            $this->line('  <fg=cyan>Tamara Pay in 3 Gateway</>');
+            $hasToken = $tamara->apiToken() !== '';
+            $this->passFail(
+                $hasToken,
+                'Tamara API Token configured',
+                'Tamara API Token is missing — checkout will fail',
+            );
+        }
     }
 
     private function checkAccounts(): void

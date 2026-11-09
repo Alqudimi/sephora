@@ -136,7 +136,18 @@ class PageController extends Controller
             'message' => 'required|string|max:4000',
         ]);
 
-        ContactMessage::create($validated);
+        $contactRecord = ContactMessage::create($validated);
+
+        try {
+            $adminEmail = \App\Models\Setting::get('admin_notify_email')
+                ?: \App\Models\Setting::get('contact_email', config('mail.from.address'));
+
+            if ($adminEmail && filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
+                \Illuminate\Support\Facades\Mail::to($adminEmail)->send(new \App\Mail\ContactMessageReceivedMail($contactRecord));
+            }
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Contact email alert failed: '.$e->getMessage());
+        }
 
         if ($request->expectsJson()) {
             return response()->json(['success' => true, 'message' => 'Thank you! Our client concierge will reply within 24 hours.']);
@@ -159,17 +170,64 @@ class PageController extends Controller
 
     public function giftCardBalance(Request $request)
     {
-        $request->validate(['card_number' => 'required|string']);
+        $request->validate([
+            'card_number' => 'required|string',
+            'card_pin' => 'nullable|string|max:8',
+        ]);
 
-        // Deterministic demo balance: a production build would call the gift-card provider API.
-        $number = preg_replace('/\D/', '', $request->input('card_number'));
-        $valid = strlen($number) === 16 && str_starts_with($number, '6046');
+        $rawNumber = (string) $request->input('card_number');
+        $cleanNumber = preg_replace('/\D/', '', $rawNumber);
+        $pin = (string) $request->input('card_pin', '');
+
+        $card = \App\Models\GiftCard::where('code', $cleanNumber)
+            ->orWhere('code', $rawNumber)
+            ->first();
+
+        if (! $card) {
+            return response()->json([
+                'success' => true,
+                'valid' => false,
+                'balance' => '0.00',
+                'message' => 'Card number not recognized. Please verify your 16-digit card number.',
+            ]);
+        }
+
+        if (! $card->is_active) {
+            return response()->json([
+                'success' => true,
+                'valid' => false,
+                'balance' => '0.00',
+                'message' => 'This gift card is currently deactivated. Please contact client concierge.',
+            ]);
+        }
+
+        if ($card->expires_at !== null && $card->expires_at->isPast()) {
+            return response()->json([
+                'success' => true,
+                'valid' => false,
+                'balance' => '0.00',
+                'message' => 'This gift card expired on '.$card->expires_at->format('d M Y').'.',
+            ]);
+        }
+
+        if ($card->pin !== null && $card->pin !== '' && $pin !== '') {
+            if ($card->pin !== $pin) {
+                return response()->json([
+                    'success' => true,
+                    'valid' => false,
+                    'balance' => '0.00',
+                    'message' => 'The security PIN entered is incorrect.',
+                ]);
+            }
+        }
 
         return response()->json([
             'success' => true,
-            'valid' => $valid,
-            'balance' => $valid ? number_format((int) substr($number, -4) % 2500 + 50, 2) : '0.00',
-            'message' => $valid ? 'Card is active.' : 'Card number not recognized. Please verify the 16-digit number.',
+            'valid' => true,
+            'balance' => number_format((float) $card->balance, 2),
+            'currency' => $card->currency ?? 'AED',
+            'expires_at' => $card->expires_at?->format('d M Y') ?? 'Never',
+            'message' => 'Card is active and ready to spend.',
         ]);
     }
 

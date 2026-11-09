@@ -60,13 +60,23 @@ class PlaceOrderService
                 $paymentMethod = $validated['payment_method'];
                 $subtotal = $cart->subtotal();
 
-                // ── Coupon (atomic redemption) ─────────────────────────
+                // ── Coupon or Gift Card (atomic redemption) ────────────
                 $coupon = $this->resolveCoupon($subtotal, $validated);
-                $discount = $coupon ? $coupon->discountFor($subtotal) : 0.0;
+                $giftCard = null;
+                $discount = 0.0;
 
-                if ($coupon && ! $this->redeemCoupon($coupon)) {
-                    $coupon = null;
-                    $discount = 0.0;
+                if ($coupon) {
+                    $discount = $coupon->discountFor($subtotal);
+                    if (! $this->redeemCoupon($coupon)) {
+                        $coupon = null;
+                        $discount = 0.0;
+                    }
+                } else {
+                    $giftCard = $this->resolveGiftCard($subtotal, $validated);
+                    if ($giftCard) {
+                        $discount = min($subtotal, (float) $giftCard->balance);
+                        $giftCard->deduct($discount);
+                    }
                 }
 
                 // ── Delivery + VAT ────────────────────────────────────
@@ -197,6 +207,30 @@ class PlaceOrderService
         $user = auth()->user();
 
         return $coupon->isValid($subtotal, $user, $validated['customer_email'] ?? null) ? $coupon : null;
+    }
+
+    /**
+     * Resolve a valid gift card with remaining funds, or null.
+     */
+    private function resolveGiftCard(float $subtotal, array $validated): ?\App\Models\GiftCard
+    {
+        $code = trim((string) ($validated['coupon_code'] ?? Session::get('coupon_code', '')));
+
+        if ($code === '') {
+            return null;
+        }
+
+        $cleanCode = preg_replace('/\D/', '', $code);
+
+        $card = \App\Models\GiftCard::query()
+            ->active()
+            ->where(function ($q) use ($code, $cleanCode) {
+                $q->where('code', $code)->orWhere('code', $cleanCode);
+            })
+            ->lockForUpdate()
+            ->first();
+
+        return ($card && $card->balance > 0) ? $card : null;
     }
 
     /**

@@ -40,6 +40,21 @@ class WebhookProcessor
             $orderNumber = is_string($candidate) && $candidate !== '' ? $candidate : null;
         }
 
+        if (! $orderNumber && $event->gateway === 'tabby') {
+            $candidate = $event->payload['payment']['order']['reference_id']
+                ?? ($event->payload['order']['reference_id']
+                ?? ($event->payload['reference_id']
+                ?? ($event->payload['order_id'] ?? null)));
+            $orderNumber = is_string($candidate) && $candidate !== '' ? $candidate : null;
+        }
+
+        if (! $orderNumber && $event->gateway === 'tamara') {
+            $candidate = $event->payload['order_reference_id']
+                ?? ($event->payload['order_number']
+                ?? ($event->payload['data']['order_reference_id'] ?? null));
+            $orderNumber = is_string($candidate) && $candidate !== '' ? $candidate : null;
+        }
+
         $applied = false;
 
         if ($orderNumber && in_array($type, ['checkout.session.completed', 'payment_intent.succeeded'], true)) {
@@ -68,6 +83,46 @@ class WebhookProcessor
                         $order,
                         'zaincash',
                         (string) ($event->payload['reference'] ?? $event->payload['id'] ?? ''),
+                        $event->payload,
+                    );
+
+                    $applied = true;
+                }
+            }
+        } elseif ($orderNumber && $event->gateway === 'tabby') {
+            $tabbyStatus = strtoupper((string) ($event->payload['status'] ?? ($event->payload['payment']['status'] ?? '')));
+            $tabbyPaid = in_array($tabbyStatus, ['AUTHORIZED', 'CLOSED', 'SUCCEEDED'], true)
+                || in_array($type, ['payment.authorized', 'payment.captured'], true);
+
+            if ($tabbyPaid) {
+                $order = Order::where('order_number', $orderNumber)->first();
+
+                if ($order && $order->payment_status !== 'paid') {
+                    $ref = (string) ($event->payload['id'] ?? ($event->payload['payment']['id'] ?? ''));
+                    $this->states->markPaid(
+                        $order,
+                        'tabby',
+                        $ref,
+                        $event->payload,
+                    );
+
+                    $applied = true;
+                }
+            }
+        } elseif ($orderNumber && $event->gateway === 'tamara') {
+            $tamaraStatus = strtolower((string) ($event->payload['order_status'] ?? ($event->payload['data']['order_status'] ?? ($event->payload['status'] ?? ''))));
+            $tamaraPaid = in_array($tamaraStatus, ['approved', 'authorised', 'captured', 'fully_captured'], true)
+                || in_array($type, ['order_approved', 'order_captured'], true);
+
+            if ($tamaraPaid) {
+                $order = Order::where('order_number', $orderNumber)->first();
+
+                if ($order && $order->payment_status !== 'paid') {
+                    $ref = (string) ($event->payload['order_id'] ?? ($event->payload['data']['order_id'] ?? ''));
+                    $this->states->markPaid(
+                        $order,
+                        'tamara',
+                        $ref,
                         $event->payload,
                     );
 

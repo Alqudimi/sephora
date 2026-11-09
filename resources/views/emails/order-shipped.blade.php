@@ -31,9 +31,19 @@
 
             @if ($order->tracking_number)
                 <div class="track">
+                    @if ($order->courier_label)
+                        Courier: <strong>{{ $order->courier_label }}</strong><br>
+                    @endif
                     Tracking number: <strong>{{ $order->tracking_number }}</strong>
                 </div>
-                <p>Use this number with your courier to follow every step of the delivery.</p>
+
+                @if ($order->tracking_url)
+                    <p style="text-align: center; margin: 20px 0;">
+                        <a href="{{ $order->tracking_url }}" target="_blank" style="display: inline-block; background: #000000; color: #ffffff; padding: 12px 24px; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">Track Your Shipment →</a>
+                    </p>
+                @else
+                    <p>Use this number with your courier to follow every step of the delivery.</p>
+                @endif
             @endif
 
             @if ($order->delivery_method === 'click_collect' && $order->store)

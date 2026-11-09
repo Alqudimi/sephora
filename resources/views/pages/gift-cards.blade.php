@@ -453,6 +453,7 @@
     // Real balance check via the backend endpoint
     function simulateBalanceCheck() {
       const cardNum = document.getElementById('card-number').value;
+      const cardPin = document.getElementById('card-pin') ? document.getElementById('card-pin').value : '';
       const resultBox = document.getElementById('balance-result');
       const balanceValue = document.getElementById('balance-value');
       const balanceMeta = document.getElementById('balance-meta');
@@ -468,14 +469,17 @@
           'X-Requested-With': 'XMLHttpRequest',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({ card_number: cardNum }),
+        body: JSON.stringify({
+          card_number: cardNum,
+          card_pin: cardPin
+        }),
       })
       .then(r => r.json())
       .then(res => {
         resultBox.classList.remove('hidden');
         const digits = cardNum.replace(/\D/g, '');
         if (res.valid) {
-          balanceValue.textContent = 'AED ' + res.balance;
+          balanceValue.textContent = (res.currency || 'AED') + ' ' + res.balance;
           balanceMeta.textContent = 'Card # ' + digits.slice(0,4) + ' \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 ' + digits.slice(-4) + ' | ' + res.message;
         } else {
           balanceValue.textContent = '\u2014';
@@ -483,33 +487,13 @@
         }
         resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       })
-      .catch(() => window.sephoraToast('Network error', 'error'));
+      .catch(() => {
+        if (window.sephoraToast) {
+          window.sephoraToast('Network error verifying card', 'error');
+        } else {
+          alert('Network error verifying card. Please try again.');
+        }
+      });
     }
   </script>
 @endsection
-
-@push('scripts')
-<script>
-// Format card number with spaces as typed
-    const cardInput = document.getElementById('card-number');
-    if (cardInput) {
-      cardInput.addEventListener('input', function(e) {
-        let val = e.target.value.replace(/\D/g, '');
-        let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
-        e.target.value = formatted.substring(0, 19);
-      });
-    }
-
-    // Interactive Balance Check Simulation
-    function simulateBalanceCheck() {
-      const cardNum = document.getElementById('card-number').value;
-      const cardPin = document.getElementById('card-pin').value;
-      const resultBox = document.getElementById('balance-result');
-      
-      if (cardNum && cardPin) {
-        resultBox.classList.remove('hidden');
-        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-</script>
-@endpush

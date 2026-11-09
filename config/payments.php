@@ -29,18 +29,15 @@ return [
             'enabled' => true,
             'gateway' => 'stripe',
         ],
-        // BNPL (Tabby / Tamara) is not backed by a real gateway integration
-        // yet — they currently point at the card-only Stripe checkout, which
-        // would silently charge the full amount. Disabled until integrated.
         'tabby' => [
             'label' => 'Tabby — 4 payments, no interest',
-            'enabled' => false,
-            'gateway' => 'stripe',
+            'enabled' => env('TABBY_ENABLED', false),
+            'gateway' => 'tabby',
         ],
         'tamara' => [
             'label' => 'Tamara — pay in 3',
-            'enabled' => false,
-            'gateway' => 'stripe',
+            'enabled' => env('TAMARA_ENABLED', false),
+            'gateway' => 'tamara',
         ],
         'cod' => [
             'label' => 'Cash on Delivery',
@@ -70,6 +67,22 @@ return [
         'exchange_rate' => env('ZAINCASH_EXCHANGE_RATE', 355.0),
         'language' => env('ZAINCASH_LANG', 'ar'),
         'use_fake_driver' => env('ZAINCASH_USE_FAKE_DRIVER', false),
+    ],
+
+    'tabby' => [
+        'enabled' => env('TABBY_ENABLED', false),
+        'mode' => env('TABBY_MODE', 'sandbox'),
+        'public_key' => env('TABBY_PUBLIC_KEY', ''),
+        'secret_key' => env('TABBY_SECRET_KEY', ''),
+        'merchant_code' => env('TABBY_MERCHANT_CODE', 'sephora_ae'),
+    ],
+
+    'tamara' => [
+        'enabled' => env('TAMARA_ENABLED', false),
+        'mode' => env('TAMARA_MODE', 'sandbox'),
+        'api_token' => env('TAMARA_API_TOKEN', ''),
+        'notification_token' => env('TAMARA_NOTIFICATION_TOKEN', ''),
+        'public_key' => env('TAMARA_PUBLIC_KEY', ''),
     ],
 
     'stripe' => [

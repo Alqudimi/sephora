@@ -29,6 +29,26 @@
         @endforeach
     </div>
     <aside class="space-y-6">
+        @if ($order->tracking_number)
+        <div class="bg-surface-container-lowest card-border p-6 border-l-4 border-l-primary">
+            <h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                Shipment Tracking
+            </h2>
+            <div class="space-y-1 font-body-sm text-body-sm text-on-surface-variant">
+                @if ($order->courier_label)
+                    <p>Courier: <strong>{{ $order->courier_label }}</strong></p>
+                @endif
+                <p>Tracking Number: <strong class="font-mono">{{ $order->tracking_number }}</strong></p>
+            </div>
+            @if ($order->tracking_url)
+                <a href="{{ $order->tracking_url }}" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center w-full h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-white hover:text-primary transition-all">
+                    Track Parcel Live →
+                </a>
+            @endif
+        </div>
+        @endif
+
         <div class="bg-surface-container-lowest card-border p-6">
             <h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-4">Summary</h2>
             <dl class="space-y-2 font-body-md text-body-md text-on-surface-variant">

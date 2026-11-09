@@ -10,7 +10,7 @@ class Order extends Model
         'order_number', 'user_id', 'guest_email', 'status', 'payment_method',
         'payment_status', 'delivery_method', 'customer_name', 'customer_phone',
         'customer_email', 'emirate', 'area', 'shipping_address', 'delivery_instructions',
-        'store_id', 'tracking_number', 'subtotal', 'subtotal_ex_tax', 'tax_rate',
+        'store_id', 'tracking_number', 'courier', 'subtotal', 'subtotal_ex_tax', 'tax_rate',
         'tax_amount', 'discount', 'shipping_fee', 'coupon_code', 'total',
         'loyalty_points_earned', 'samples', 'gift_message', 'gift_box',
         'payment_gateway', 'payment_reference', 'payment_payload', 'idempotency_key',
@@ -92,6 +92,41 @@ class Order extends Model
             'tamara' => 'Tamara',
             'zaincash' => 'ZainCash (محفظة زين كاش)',
             default => ucfirst(str_replace('_', ' ', $this->payment_method)),
+        };
+    }
+
+    public function getCourierLabelAttribute(): ?string
+    {
+        return match (strtolower((string) $this->courier)) {
+            'aramex' => 'Aramex (أرامكس)',
+            'dhl' => 'DHL Express',
+            'fedex' => 'FedEx',
+            'smsa' => 'SMSA Express',
+            'emirates_post' => 'Emirates Post',
+            'fetchr' => 'Fetchr',
+            'other' => 'Private Delivery Fleet',
+            default => $this->courier ? ucfirst($this->courier) : null,
+        };
+    }
+
+    public function getTrackingUrlAttribute(): ?string
+    {
+        $tracking = trim((string) $this->tracking_number);
+
+        if ($tracking === '') {
+            return null;
+        }
+
+        $courier = strtolower((string) $this->courier);
+
+        return match ($courier) {
+            'aramex' => "https://www.aramex.com/track/results?shipmentNumber={$tracking}",
+            'dhl' => "https://www.dhl.com/ae-en/home/tracking/tracking-express.html?submit=1&tracking-id={$tracking}",
+            'fedex' => "https://www.fedex.com/fedextrack/?trknbr={$tracking}",
+            'smsa' => "https://www.smsaexpress.com/track?track={$tracking}",
+            'emirates_post' => "https://emiratespost.ae/portal/track?tracknum={$tracking}",
+            'fetchr' => "https://track.fetchr.us/?tracking_number={$tracking}",
+            default => null,
         };
     }
 

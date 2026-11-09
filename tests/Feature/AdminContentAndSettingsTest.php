@@ -5,7 +5,9 @@ namespace Tests\Feature;
 use App\Filament\Pages\ShopSettings;
 use App\Filament\Resources\BannerResource\Pages\CreateBanner;
 use App\Filament\Resources\BannerResource\Pages\EditBanner;
+use App\Filament\Resources\GiftCardResource\Pages\CreateGiftCard;
 use App\Models\Banner;
+use App\Models\GiftCard;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -153,6 +155,60 @@ class AdminContentAndSettingsTest extends TestCase
         // Verify live storefront footer reflects custom social links
         $response->assertSee('https://instagram.com/mycustomstore', false);
         $response->assertSee('https://tiktok.com/@mycustomstore', false);
+    }
+
+    public function test_admin_can_issue_gift_card_via_filament_resource(): void
+    {
+        Livewire::actingAs($this->admin)
+            ->test(CreateGiftCard::class)
+            ->fillForm([
+                'code' => '6046111122223333',
+                'pin' => '7890',
+                'initial_balance' => 750.00,
+                'balance' => 750.00,
+                'currency' => 'AED',
+                'is_active' => true,
+                'recipient_name' => 'Layla Hassan',
+                'recipient_email' => 'layla@example.com',
+                'sender_name' => 'Store Concierge',
+                'message' => 'Happy Anniversary!',
+            ])
+            ->call('create')
+            ->assertHasNoFormErrors();
+
+        $this->assertDatabaseHas('gift_cards', [
+            'code' => '6046111122223333',
+            'pin' => '7890',
+            'initial_balance' => 750.00,
+            'balance' => 750.00,
+            'recipient_email' => 'layla@example.com',
+            'is_active' => true,
+        ]);
+    }
+
+    public function test_admin_can_configure_bnpl_gateways(): void
+    {
+        Livewire::actingAs($this->admin)
+            ->test(ShopSettings::class)
+            ->set('data.tabby_enabled', true)
+            ->set('data.tabby_mode', 'production')
+            ->set('data.tabby_merchant_code', 'sephora_uae_live')
+            ->set('data.tabby_public_key', 'pk_live_tabby_123')
+            ->set('data.tabby_secret_key', 'sk_live_tabby_456')
+            ->set('data.tamara_enabled', true)
+            ->set('data.tamara_mode', 'production')
+            ->set('data.tamara_api_token', 'tamara_live_token_789')
+            ->set('data.tamara_notification_token', 'tamara_wh_token_abc')
+            ->call('save')
+            ->assertHasNoErrors();
+
+        $this->assertEquals('1', Setting::get('tabby_enabled'));
+        $this->assertEquals('production', Setting::get('tabby_mode'));
+        $this->assertEquals('sephora_uae_live', Setting::get('tabby_merchant_code'));
+        $this->assertEquals('pk_live_tabby_123', Setting::get('tabby_public_key'));
+        $this->assertEquals('1', Setting::get('tamara_enabled'));
+        $this->assertEquals('production', Setting::get('tamara_mode'));
+        $this->assertEquals('tamara_live_token_789', Setting::get('tamara_api_token'));
     }
 }
 

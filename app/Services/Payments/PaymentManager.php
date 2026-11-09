@@ -13,6 +13,8 @@ class PaymentManager
         private readonly StripeGateway $stripe,
         private readonly CodGateway $cod,
         private readonly ZainCashGateway $zaincash,
+        private readonly TabbyGateway $tabby,
+        private readonly TamaraGateway $tamara,
     ) {}
 
     public function isEnabled(string $method): bool
@@ -24,6 +26,14 @@ class PaymentManager
 
         if ($method === 'zaincash') {
             return $this->zaincash->isEnabled();
+        }
+
+        if ($method === 'tabby') {
+            return $this->tabby->isEnabled();
+        }
+
+        if ($method === 'tamara') {
+            return $this->tamara->isEnabled();
         }
 
         return (bool) config("payments.methods.{$method}.enabled", false);
@@ -58,6 +68,22 @@ class PaymentManager
             return $this->zaincash;
         }
 
+        if ($configured === 'tabby') {
+            if ($driver === 'fake') {
+                return $this->fake;
+            }
+
+            return $this->tabby;
+        }
+
+        if ($configured === 'tamara') {
+            if ($driver === 'fake') {
+                return $this->fake;
+            }
+
+            return $this->tamara;
+        }
+
         if ($driver === 'fake') {
             return $this->fake;
         }
@@ -84,6 +110,8 @@ class PaymentManager
         return match ($gateway) {
             'stripe' => $this->stripe->verifyWebhook($request),
             'zaincash' => $this->zaincash->verifyWebhook($request),
+            'tabby' => $this->tabby->verifyWebhook($request),
+            'tamara' => $this->tamara->verifyWebhook($request),
             default => null,
         };
     }

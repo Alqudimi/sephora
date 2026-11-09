@@ -13,6 +13,7 @@ use App\Services\Orders\OrderStateMachine;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\RepeatableEntry;
@@ -114,9 +115,16 @@ class ViewOrder extends ViewRecord
                                 TextEntry::make('delivery_instructions')
                                     ->placeholder('—'),
 
+                                TextEntry::make('courier')
+                                    ->formatStateUsing(fn ($record): string => $record->courier_label ?? '—')
+                                    ->badge()
+                                    ->placeholder('—'),
+
                                 TextEntry::make('tracking_number')
                                     ->placeholder('—')
-                                    ->copyable(),
+                                    ->copyable()
+                                    ->url(fn ($record): ?string => $record->tracking_url)
+                                    ->openUrlInNewTab(),
                             ]),
 
                         Section::make('Timeline')
@@ -254,10 +262,23 @@ class ViewOrder extends ViewRecord
             $this->makeTransitionAction('processing', 'Mark as Processing', 'heroicon-o-cog-6-tooth', 'info'),
             $this->makeTransitionAction('shipped', 'Mark as Shipped', 'heroicon-o-truck', 'info')
                 ->form([
+                    Select::make('courier')
+                        ->label('Courier / Carrier')
+                        ->options([
+                            'aramex' => 'Aramex (أرامكس)',
+                            'dhl' => 'DHL Express',
+                            'fedex' => 'FedEx',
+                            'smsa' => 'SMSA Express',
+                            'emirates_post' => 'Emirates Post',
+                            'fetchr' => 'Fetchr',
+                            'other' => 'Private Delivery Fleet',
+                        ])
+                        ->default('aramex')
+                        ->required(),
                     TextInput::make('tracking_number')
                         ->label('Tracking number')
                         ->maxLength(100)
-                        ->placeholder('e.g. DHL-123456789'),
+                        ->placeholder('e.g. 123456789 or DHL-987654321'),
                 ]),
             $this->makeTransitionAction('out_for_delivery', 'Out for Delivery', 'heroicon-o-paper-airplane', 'info'),
             $this->makeTransitionAction('delivered', 'Mark as Delivered', 'heroicon-o-check-circle', 'success'),

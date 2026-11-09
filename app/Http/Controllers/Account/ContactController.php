@@ -23,7 +23,18 @@ class ContactController extends Controller
             'message' => 'required|string|min:10|max:4000',
         ]);
 
-        ContactMessage::create($validated + ['status' => 'new']);
+        $contactRecord = ContactMessage::create($validated + ['status' => 'new']);
+
+        try {
+            $adminEmail = \App\Models\Setting::get('admin_notify_email')
+                ?: \App\Models\Setting::get('contact_email', config('mail.from.address'));
+
+            if ($adminEmail && filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
+                \Illuminate\Support\Facades\Mail::to($adminEmail)->send(new \App\Mail\ContactMessageReceivedMail($contactRecord));
+            }
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning('Contact email alert failed: '.$e->getMessage());
+        }
 
         return back()->with('contact_success', true);
     }

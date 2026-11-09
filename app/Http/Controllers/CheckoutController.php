@@ -180,7 +180,7 @@ class CheckoutController extends Controller
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number]);
         }
 
-        if (! in_array($orderModel->payment_method, ['card', 'apple_pay', 'zaincash'], true)) {
+        if (! in_array($orderModel->payment_method, ['card', 'apple_pay', 'zaincash', 'tabby', 'tamara'], true)) {
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number])
                 ->with('payment_error', 'This order does not support online payment retry.');
         }
@@ -204,10 +204,11 @@ class CheckoutController extends Controller
         }
 
         $eventId = (string) ($event['id'] ?? hash('sha256', $request->getContent()));
+        $type = (string) ($event['type'] ?? ($event['event_type'] ?? ($event['status'] ?? "{$gateway}.event")));
 
         $record = PaymentWebhookEvent::firstOrCreate(
             ['gateway' => $gateway, 'event_id' => $eventId],
-            ['type' => $event['type'] ?? null, 'payload' => $event],
+            ['type' => $type, 'payload' => $event],
         );
 
         $result = app(WebhookProcessor::class)->process($record);
@@ -269,12 +270,25 @@ class CheckoutController extends Controller
 
         $coupon = Coupon::where('code', $code)->first();
 
-        if (! $coupon || ! $coupon->isValid($subtotal, auth()->user(), $request->user()?->email)) {
-            return response()->json(['success' => false, 'message' => 'This code is not valid for your bag.'], 422);
+        if ($coupon && $coupon->isValid($subtotal, auth()->user(), $request->user()?->email)) {
+            Session::put('coupon_code', $code);
+            $discount = $coupon->discountFor($subtotal);
+            $message = 'Promo code applied.';
+        } else {
+            $cleanCode = preg_replace('/\D/', '', $code);
+            $card = \App\Models\GiftCard::active()->where(function ($q) use ($code, $cleanCode) {
+                $q->where('code', $code)->orWhere('code', $cleanCode);
+            })->first();
+
+            if ($card && $card->balance > 0) {
+                Session::put('coupon_code', $card->code);
+                $discount = min($subtotal, (float) $card->balance);
+                $message = 'Gift card applied (Balance: AED '.number_format((float) $card->balance, 2).').';
+            } else {
+                return response()->json(['success' => false, 'message' => 'This promo code or gift card is not valid.'], 422);
+            }
         }
 
-        Session::put('coupon_code', $code);
-        $discount = $coupon->discountFor($subtotal);
         $totals = $cart->totals(
             (string) $request->input('delivery_method', 'standard'),
             $request->input('payment_method'),
@@ -296,7 +310,7 @@ class CheckoutController extends Controller
                 'tax' => $this->money($totals->taxAmount),
                 'total' => $this->money($totals->total),
             ],
-            'message' => 'Promo code applied.',
+            'message' => $message,
         ]);
     }
 
@@ -406,7 +420,20 @@ class CheckoutController extends Controller
 
         $coupon = Coupon::where('code', $code)->first();
 
-        return ($coupon && $coupon->isValid($subtotal, auth()->user())) ? $coupon->discountFor($subtotal) : 0.0;
+        if ($coupon && $coupon->isValid($subtotal, auth()->user())) {
+            return $coupon->discountFor($subtotal);
+        }
+
+        $cleanCode = preg_replace('/\D/', '', $code);
+        $card = \App\Models\GiftCard::active()->where(function ($q) use ($code, $cleanCode) {
+            $q->where('code', $code)->orWhere('code', $cleanCode);
+        })->first();
+
+        if ($card && $card->balance > 0) {
+            return min($subtotal, (float) $card->balance);
+        }
+
+        return 0.0;
     }
 
     private function defaultPaymentMethod(): string
