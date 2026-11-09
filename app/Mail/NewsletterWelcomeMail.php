@@ -14,7 +14,10 @@ class NewsletterWelcomeMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public readonly NewsletterSubscriber $subscriber) {}
+    public function __construct(public readonly NewsletterSubscriber $subscriber)
+    {
+        $this->onQueue('emails');
+    }
 
     public function envelope(): Envelope
     {

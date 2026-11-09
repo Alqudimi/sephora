@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendNewsletterWelcomeJob;
 use App\Models\NewsletterSubscriber;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,7 @@ class NewsletterController extends Controller
         );
 
         if ($subscriber->wasRecentlyCreated) {
-            try {
-                \Illuminate\Support\Facades\Mail::to($subscriber->email)
-                    ->send(new \App\Mail\NewsletterWelcomeMail($subscriber));
-            } catch (\Throwable $e) {
-                \Illuminate\Support\Facades\Log::warning('Newsletter welcome email failed: '.$e->getMessage());
-            }
+            SendNewsletterWelcomeJob::dispatch($subscriber);
         }
 
         return response()->json([

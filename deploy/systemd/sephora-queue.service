@@ -14,7 +14,7 @@ User=www-data
 Group=www-data
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/php /var/www/sephora/artisan queue:work --tries=3 --backoff=60 --timeout=60 --sleep=1 --max-time=3600
+ExecStart=/usr/bin/php /var/www/sephora/artisan queue:work --queue=payments,emails,default,low --tries=3 --backoff=30 --timeout=60 --sleep=1 --max-time=3600 --memory=256
 
 # Graceful shutdown: let the current job finish
 TimeoutStopSec=30

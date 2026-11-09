@@ -14,7 +14,10 @@ class ContactMessageReceivedMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public readonly ContactMessage $contactMessage) {}
+    public function __construct(public readonly ContactMessage $contactMessage)
+    {
+        $this->onQueue('emails');
+    }
 
     public function envelope(): Envelope
     {

@@ -15,7 +15,10 @@ class OrderConfirmationMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public readonly Order $order) {}
+    public function __construct(public readonly Order $order)
+    {
+        $this->onQueue('emails');
+    }
 
     public function envelope(): Envelope
     {

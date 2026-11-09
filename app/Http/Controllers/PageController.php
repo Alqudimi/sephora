@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendContactAlertJob;
 use App\Models\ContactMessage;
 use App\Models\Faq;
 use App\Models\Offer;
@@ -138,16 +139,7 @@ class PageController extends Controller
 
         $contactRecord = ContactMessage::create($validated);
 
-        try {
-            $adminEmail = \App\Models\Setting::get('admin_notify_email')
-                ?: \App\Models\Setting::get('contact_email', config('mail.from.address'));
-
-            if ($adminEmail && filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
-                \Illuminate\Support\Facades\Mail::to($adminEmail)->send(new \App\Mail\ContactMessageReceivedMail($contactRecord));
-            }
-        } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::warning('Contact email alert failed: '.$e->getMessage());
-        }
+        SendContactAlertJob::dispatch($contactRecord);
 
         if ($request->expectsJson()) {
             return response()->json(['success' => true, 'message' => 'Thank you! Our client concierge will reply within 24 hours.']);

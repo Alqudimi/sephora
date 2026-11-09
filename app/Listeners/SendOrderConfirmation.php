@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Notification;
 
 class SendOrderConfirmation implements ShouldQueue
 {
+    public string $queue = 'emails';
+
     public int $tries = 3;
 
     public int $backoff = 60;

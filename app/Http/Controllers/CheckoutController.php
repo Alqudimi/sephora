@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckoutRequest;
+use App\Jobs\ProcessPaymentWebhookJob;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Order;
@@ -211,11 +212,15 @@ class CheckoutController extends Controller
             ['type' => $type, 'payload' => $event],
         );
 
-        $result = app(WebhookProcessor::class)->process($record);
+        $isDuplicate = ! $record->wasRecentlyCreated && $record->processed_at !== null;
+
+        if (! $isDuplicate) {
+            ProcessPaymentWebhookJob::dispatch($record);
+        }
 
         return response()->json([
-            'ok' => $result['ok'],
-            'duplicate' => $result['duplicate'],
+            'ok' => true,
+            'duplicate' => $isDuplicate,
         ]);
     }
 
