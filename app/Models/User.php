@@ -126,4 +126,25 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerif
     {
         return $this->two_factor_confirmed_at !== null;
     }
+
+    public function awardLoyaltyPoints(int $points): void
+    {
+        if ($points <= 0) {
+            return;
+        }
+
+        $this->increment('loyalty_points', $points);
+        $total = $this->fresh()->loyalty_points;
+
+        $newTier = match (true) {
+            $total >= 2000 => 'platinum',
+            $total >= 1000 => 'gold',
+            $total >= 200 => 'silver',
+            default => 'member',
+        };
+
+        if ($this->loyalty_tier !== $newTier) {
+            $this->forceFill(['loyalty_tier' => $newTier])->save();
+        }
+    }
 }

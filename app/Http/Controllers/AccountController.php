@@ -36,6 +36,16 @@ class AccountController extends Controller
         return view('account.order-detail', ['order' => $order]);
     }
 
+    public function orderInvoice(string $orderNumber)
+    {
+        $order = auth()->user()->orders()
+            ->with(['items', 'store', 'user'])
+            ->where('order_number', $orderNumber)
+            ->firstOrFail();
+
+        return view('filament.invoice', ['order' => $order]);
+    }
+
     public function settings()
     {
         return view('account.settings', ['user' => auth()->user()]);

@@ -83,6 +83,9 @@
                     <strong>{{ $order->store->name }}</strong><br>
                     {{ $order->store->address }}, {{ $order->store->city }}
                 @else
+                    @if($order->courier_label)
+                        Courier: <strong>{{ $order->courier_label }}</strong><br>
+                    @endif
                     Tracking: {{ $order->tracking_number ?? '—' }}
                 @endif
             </div>

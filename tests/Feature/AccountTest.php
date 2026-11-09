@@ -310,4 +310,43 @@ class AccountTest extends TestCase
         $this->assertAuthenticatedAs($user);
         Notification::assertSentTo($user, VerifyEmail::class);
     }
+
+    public function test_user_can_view_own_tax_invoice(): void
+    {
+        $user = $this->makeUser();
+        $order = $this->makeOrder($user, ['order_number' => 'AE-INV-12345']);
+
+        $this->actingAs($user)
+            ->get(route('account.orders.invoice', $order->order_number))
+            ->assertOk()
+            ->assertSee('Tax Invoice')
+            ->assertSee('AE-INV-12345')
+            ->assertSee('Billed to');
+    }
+
+    public function test_user_cannot_view_another_users_tax_invoice(): void
+    {
+        $user1 = $this->makeUser(['email' => 'user1@example.com']);
+        $user2 = $this->makeUser(['email' => 'user2@example.com']);
+        $order = $this->makeOrder($user2, ['order_number' => 'AE-INV-99999']);
+
+        $this->actingAs($user1)
+            ->get(route('account.orders.invoice', $order->order_number))
+            ->assertNotFound();
+    }
+
+    public function test_loyalty_tier_automatically_upgrades_with_points(): void
+    {
+        $user = $this->makeUser(['loyalty_points' => 0, 'loyalty_tier' => 'member']);
+
+        $user->awardLoyaltyPoints(250);
+        $this->assertSame('silver', $user->fresh()->loyalty_tier);
+        $this->assertSame(250, $user->fresh()->loyalty_points);
+
+        $user->awardLoyaltyPoints(800); // total 1050
+        $this->assertSame('gold', $user->fresh()->loyalty_tier);
+
+        $user->awardLoyaltyPoints(1500); // total 2550
+        $this->assertSame('platinum', $user->fresh()->loyalty_tier);
+    }
 }

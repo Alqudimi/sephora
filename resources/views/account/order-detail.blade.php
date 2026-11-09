@@ -10,7 +10,13 @@
         <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Order {{ $order->order_number }}</h1>
         <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Placed {{ $order->placed_at?->format('d F Y, h:i A') }}</p>
     </div>
-    <span class="self-start sm:self-auto font-label-tag text-label-tag uppercase px-3 py-1.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
+    <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+        <a href="{{ route('account.orders.invoice', $order->order_number) }}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-primary text-primary text-label-tag font-label-tag uppercase tracking-wider hover:bg-primary hover:text-white transition-all">
+            <span class="material-symbols-outlined text-[16px]">receipt_long</span>
+            Tax Invoice
+        </a>
+        <span class="font-label-tag text-label-tag uppercase px-3 py-1.5 font-bold {{ $order->status === 'delivered' ? 'bg-[#1b6b45] text-white' : ($order->status === 'cancelled' ? 'bg-error text-on-error' : 'bg-primary text-on-primary') }}">{{ $order->status_label }}</span>
+    </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <div class="lg:col-span-2 space-y-4">

@@ -135,6 +135,7 @@ Route::middleware('auth')->prefix('my-account')->name('account.')->group(functio
     Route::get('/', [AccountController::class, 'dashboard'])->name('dashboard');
     Route::get('/orders', [AccountController::class, 'orders'])->name('orders');
     Route::get('/orders/{order}', [AccountController::class, 'orderShow'])->name('orders.show');
+    Route::get('/orders/{order}/invoice', [AccountController::class, 'orderInvoice'])->name('orders.invoice');
     Route::get('/settings', [AccountController::class, 'settings'])->name('settings');
     Route::post('/settings', [AccountController::class, 'updateSettings'])->name('settings.update');
     Route::get('/settings/country-and-language', [AccountController::class, 'countryLanguage'])->name('country-language');

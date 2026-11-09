@@ -151,9 +151,9 @@ class PlaceOrderService
                     ]);
                 }
 
-                // ── Loyalty points ────────────────────────────────────
+                // ── Loyalty points & Tier Progression ─────────────────
                 if (auth()->check()) {
-                    auth()->user()->increment('loyalty_points', $order->loyalty_points_earned);
+                    auth()->user()->awardLoyaltyPoints($order->loyalty_points_earned);
                 }
 
                 // ── Persist the delivery address when requested ───────
