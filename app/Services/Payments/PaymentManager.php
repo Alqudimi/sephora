@@ -12,17 +12,22 @@ class PaymentManager
         private readonly FakeGateway $fake,
         private readonly StripeGateway $stripe,
         private readonly CodGateway $cod,
+        private readonly ZainCashGateway $zaincash,
     ) {}
 
     public function isEnabled(string $method): bool
     {
+        if ($method === 'zaincash') {
+            return $this->zaincash->isEnabled();
+        }
+
         return (bool) config("payments.methods.{$method}.enabled", false);
     }
 
     public function enabledMethods(): array
     {
         return collect(config('payments.methods', []))
-            ->filter(fn (array $method) => (bool) ($method['enabled'] ?? false))
+            ->filter(fn (array $method, string $key) => $this->isEnabled($key))
             ->keys()
             ->all();
     }
@@ -38,6 +43,14 @@ class PaymentManager
 
         if ($configured === 'cod') {
             return $this->cod;
+        }
+
+        if ($configured === 'zaincash') {
+            if ($driver === 'fake' && config('payments.zaincash.use_fake_driver', false)) {
+                return $this->fake;
+            }
+
+            return $this->zaincash;
         }
 
         if ($driver === 'fake') {
@@ -65,6 +78,7 @@ class PaymentManager
     {
         return match ($gateway) {
             'stripe' => $this->stripe->verifyWebhook($request),
+            'zaincash' => $this->zaincash->verifyWebhook($request),
             default => null,
         };
     }

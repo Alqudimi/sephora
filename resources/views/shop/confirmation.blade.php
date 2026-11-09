@@ -9,7 +9,7 @@
     $isRefunded = $order->payment_status === 'refunded' || $order->status === 'refunded';
     $isCancelled = $order->status === 'cancelled';
     $isCod = $order->payment_method === 'cod';
-    $isOnline = in_array($order->payment_method, ['card', 'apple_pay', 'tabby', 'tamara'], true);
+    $isOnline = in_array($order->payment_method, ['card', 'apple_pay', 'tabby', 'tamara', 'zaincash'], true);
     $canRetry = ! $isPaid && ! $isRefunded && ! $isCancelled && $isOnline;
 
     $statusIndex = match ($order->status) {

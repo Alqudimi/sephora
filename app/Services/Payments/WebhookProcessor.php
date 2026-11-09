@@ -32,6 +32,14 @@ class WebhookProcessor
             ?? ($object['metadata']['order_number'] ?? null);
         $orderNumber = is_string($orderNumber) && $orderNumber !== '' ? $orderNumber : null;
 
+        if (! $orderNumber && $event->gateway === 'zaincash') {
+            $candidate = $event->payload['order_id']
+                ?? ($event->payload['orderId']
+                ?? ($event->payload['orderid']
+                ?? ($object['order_id'] ?? null)));
+            $orderNumber = is_string($candidate) && $candidate !== '' ? $candidate : null;
+        }
+
         $applied = false;
 
         if ($orderNumber && in_array($type, ['checkout.session.completed', 'payment_intent.succeeded'], true)) {
@@ -46,6 +54,25 @@ class WebhookProcessor
                 );
 
                 $applied = true;
+            }
+        } elseif ($orderNumber && $event->gateway === 'zaincash') {
+            $zcStatus = strtolower((string) ($event->payload['status'] ?? $object['status'] ?? ''));
+            $zcPaid = in_array($zcStatus, ['success', 'completed', 'paid'], true)
+                || str_ends_with($type, '.success');
+
+            if ($zcPaid) {
+                $order = Order::where('order_number', $orderNumber)->first();
+
+                if ($order && $order->payment_status !== 'paid') {
+                    $this->states->markPaid(
+                        $order,
+                        'zaincash',
+                        (string) ($event->payload['reference'] ?? $event->payload['id'] ?? ''),
+                        $event->payload,
+                    );
+
+                    $applied = true;
+                }
             }
         }
 

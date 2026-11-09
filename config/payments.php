@@ -47,10 +47,29 @@ return [
             'enabled' => true,
             'gateway' => 'cod',
         ],
+        'zaincash' => [
+            'label' => 'ZainCash (محفظة زين كاش)',
+            'enabled' => env('ZAINCASH_ENABLED', false),
+            'gateway' => 'zaincash',
+        ],
     ],
 
     'fake' => [
         'auto_succeed' => env('PAYMENTS_FAKE_AUTO_SUCCEED', true),
+    ],
+
+    'zaincash' => [
+        'enabled' => env('ZAINCASH_ENABLED', false),
+        'mode' => env('ZAINCASH_MODE', 'uat'),
+        'api_version' => env('ZAINCASH_API_VERSION', 'v2'),
+        'client_id' => env('ZAINCASH_CLIENT_ID', ''),
+        'client_secret' => env('ZAINCASH_CLIENT_SECRET', ''),
+        'merchant_id' => env('ZAINCASH_MERCHANT_ID', ''),
+        'secret' => env('ZAINCASH_SECRET', ''),
+        'msisdn' => env('ZAINCASH_MSISDN', ''),
+        'exchange_rate' => env('ZAINCASH_EXCHANGE_RATE', 355.0),
+        'language' => env('ZAINCASH_LANG', 'ar'),
+        'use_fake_driver' => env('ZAINCASH_USE_FAKE_DRIVER', false),
     ],
 
     'stripe' => [

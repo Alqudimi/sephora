@@ -267,6 +267,7 @@
                                 'cod' => ['icon' => 'payments', 'note' => 'Pay the courier in cash on delivery. A AED '.number_format((float) config('commerce.shipping.cod_fee', 20), 0).' fee applies.'],
                                 'tabby' => ['icon' => 'account_balance_wallet', 'note' => 'Split your purchase into 4 interest-free payments.'],
                                 'tamara' => ['icon' => 'account_balance_wallet', 'note' => 'Split your purchase into 4 payments. Sharia-compliant.'],
+                                'zaincash' => ['icon' => 'account_balance_wallet', 'badge' => 'ZainCash', 'note' => 'Pay seamlessly with your ZainCash wallet (IQD). Instant & secure.'],
                             ];
                             $meta = $paymentMeta[$key] ?? ['icon' => 'payments', 'note' => ''];
                         @endphp
@@ -274,7 +275,12 @@
                             <div class="flex items-center gap-3">
                                 <input class="w-4 h-4 text-primary border-primary focus:ring-0" name="payment_method" type="radio" value="{{ $key }}" @checked(old('payment_method', $paymentMethod) === $key)>
                                 <div>
-                                    <span class="font-title-md text-title-md uppercase tracking-wider text-primary">{{ $label }}</span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-title-md text-title-md uppercase tracking-wider text-primary">{{ $label }}</span>
+                                        @if (! empty($meta['badge']))
+                                            <span class="bg-[#1c355e] text-white text-[10px] font-bold tracking-widest px-2 py-0.5 uppercase">{{ $meta['badge'] }}</span>
+                                        @endif
+                                    </div>
                                     <p class="font-body-sm text-body-sm text-on-surface-variant">{{ $meta['note'] }}</p>
                                 </div>
                             </div>

@@ -90,6 +90,7 @@ class Order extends Model
             'card' => 'Credit or Debit Card',
             'tabby' => 'Tabby',
             'tamara' => 'Tamara',
+            'zaincash' => 'ZainCash (محفظة زين كاش)',
             default => ucfirst(str_replace('_', ' ', $this->payment_method)),
         };
     }

@@ -24,6 +24,10 @@ return Application::configure(basePath: dirname(__DIR__))
             SecurityHeaders::class,
             ForceHttps::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'payments/webhook/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

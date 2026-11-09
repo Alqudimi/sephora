@@ -180,7 +180,7 @@ class CheckoutController extends Controller
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number]);
         }
 
-        if (! in_array($orderModel->payment_method, ['card', 'apple_pay'], true)) {
+        if (! in_array($orderModel->payment_method, ['card', 'apple_pay', 'zaincash'], true)) {
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number])
                 ->with('payment_error', 'This order does not support online payment retry.');
         }

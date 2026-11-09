@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Models\Setting;
 use App\Support\CommerceSettings;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -60,6 +61,17 @@ class ShopSettings extends Page implements HasForms
             'loyalty_enabled' => Setting::get('loyalty_enabled', '1') !== '0',
 
             'admin_notify_email' => Setting::get('admin_notify_email', ''),
+
+            'zaincash_enabled' => (bool) Setting::get('zaincash_enabled', config('payments.zaincash.enabled', false)),
+            'zaincash_mode' => Setting::get('zaincash_mode', config('payments.zaincash.mode', 'uat')),
+            'zaincash_api_version' => Setting::get('zaincash_api_version', config('payments.zaincash.api_version', 'v2')),
+            'zaincash_exchange_rate' => Setting::get('zaincash_exchange_rate', (string) config('payments.zaincash.exchange_rate', 355.0)),
+            'zaincash_language' => Setting::get('zaincash_language', config('payments.zaincash.language', 'ar')),
+            'zaincash_client_id' => Setting::get('zaincash_client_id', config('payments.zaincash.client_id', '')),
+            'zaincash_client_secret' => Setting::get('zaincash_client_secret', config('payments.zaincash.client_secret', '')),
+            'zaincash_merchant_id' => Setting::get('zaincash_merchant_id', config('payments.zaincash.merchant_id', '')),
+            'zaincash_secret' => Setting::get('zaincash_secret', config('payments.zaincash.secret', '')),
+            'zaincash_msisdn' => Setting::get('zaincash_msisdn', config('payments.zaincash.msisdn', '')),
         ]);
     }
 
@@ -173,6 +185,90 @@ class ShopSettings extends Page implements HasForms
                             ->helperText('Optional. Receives an alert every time an order is placed.')
                             ->columnSpanFull(),
                     ]),
+
+                Section::make('ZainCash Payment Gateway (بوابة زين كاش)')
+                    ->icon('heroicon-o-credit-card')
+                    ->description('ZainCash Iraq digital wallet gateway configuration. All keys and environment switches can be managed dynamically here.')
+                    ->columns(2)
+                    ->schema([
+                        Toggle::make('zaincash_enabled')
+                            ->label('Enable ZainCash Gateway (تفعيل بوابة زين كاش)')
+                            ->helperText('Enables the ZainCash wallet option in the storefront checkout.')
+                            ->onColor('success')
+                            ->offColor('danger')
+                            ->columnSpanFull(),
+
+                        Select::make('zaincash_mode')
+                            ->label('Environment Mode (بيئة العمل)')
+                            ->options([
+                                'uat' => 'UAT / Sandbox (بيئة الاختبار والتجربة)',
+                                'production' => 'Production (البيئة الحقيقية المباشرة)',
+                            ])
+                            ->default('uat')
+                            ->required(),
+
+                        Select::make('zaincash_api_version')
+                            ->label('API Version (إصدار الواجهة البرمجية)')
+                            ->options([
+                                'v2' => 'API v2 (Modern OAuth2 - الواجهة الحديثة الموصى بها)',
+                                'v1' => 'API v1 (Standard JWT HS256 - الواجهة التقليدية)',
+                            ])
+                            ->default('v2')
+                            ->required(),
+
+                        TextInput::make('zaincash_exchange_rate')
+                            ->label('Exchange Rate (سعر الصرف: 1 درهم = دينار عراقي)')
+                            ->numeric()
+                            ->step(0.1)
+                            ->minValue(1)
+                            ->default(355.0)
+                            ->helperText('Conversion rate from AED to IQD. Orders are converted to IQD when sending to ZainCash.')
+                            ->required(),
+
+                        Select::make('zaincash_language')
+                            ->label('Payment Page Language (لغة صفحة الدفع)')
+                            ->options([
+                                'ar' => 'العربية (Arabic)',
+                                'en' => 'English (الإنجليزية)',
+                            ])
+                            ->default('ar')
+                            ->required(),
+
+                        TextInput::make('zaincash_client_id')
+                            ->label('OAuth2 Client ID (معرف العميل v2)')
+                            ->placeholder('Enter ZainCash Client ID for v2 API')
+                            ->helperText('Required for API v2 OAuth2 token generation.'),
+
+                        TextInput::make('zaincash_client_secret')
+                            ->label('OAuth2 Client Secret (الرمز السري للعميل v2)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('Enter ZainCash Client Secret')
+                            ->helperText('Required for API v2 OAuth2 token generation.'),
+
+                        TextInput::make('zaincash_merchant_id')
+                            ->label('Merchant ID (معرف التاجر)')
+                            ->placeholder('e.g. 5ff64b154782d40008090d8c')
+                            ->helperText('ZainCash Merchant ID.'),
+
+                        TextInput::make('zaincash_secret')
+                            ->label('Merchant Secret / JWT Key (المفتاح السري)')
+                            ->password()
+                            ->revealable()
+                            ->placeholder('Secret key for JWT signing & webhook verification')
+                            ->helperText('Used for signing v1 requests and verifying callback/webhook tokens.'),
+
+                        TextInput::make('zaincash_msisdn')
+                            ->label('Merchant MSISDN / Wallet Number (رقم محفظة التاجر)')
+                            ->placeholder('9647800000000')
+                            ->helperText('ZainCash mobile wallet number (e.g. 9647800000000).'),
+
+                        Placeholder::make('zaincash_webhook_url')
+                            ->label('ZainCash Webhook URL (رابط الويب هوك لإشعارات السيرفر)')
+                            ->content(fn () => url('/payments/webhook/zaincash'))
+                            ->helperText('Register this URL in your ZainCash Merchant Portal for asynchronous transaction confirmation.')
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
@@ -193,6 +289,16 @@ class ShopSettings extends Page implements HasForms
             'max_samples' => (string) ($state['max_samples'] ?? ''),
             'loyalty_enabled' => ! empty($state['loyalty_enabled']) ? '1' : '0',
             'admin_notify_email' => (string) ($state['admin_notify_email'] ?? ''),
+            'zaincash_enabled' => ! empty($state['zaincash_enabled']) ? '1' : '0',
+            'zaincash_mode' => (string) ($state['zaincash_mode'] ?? 'uat'),
+            'zaincash_api_version' => (string) ($state['zaincash_api_version'] ?? 'v2'),
+            'zaincash_exchange_rate' => (string) ($state['zaincash_exchange_rate'] ?? '355'),
+            'zaincash_language' => (string) ($state['zaincash_language'] ?? 'ar'),
+            'zaincash_client_id' => (string) ($state['zaincash_client_id'] ?? ''),
+            'zaincash_client_secret' => (string) ($state['zaincash_client_secret'] ?? ''),
+            'zaincash_merchant_id' => (string) ($state['zaincash_merchant_id'] ?? ''),
+            'zaincash_secret' => (string) ($state['zaincash_secret'] ?? ''),
+            'zaincash_msisdn' => (string) ($state['zaincash_msisdn'] ?? ''),
         ] as $key => $value) {
             Setting::set($key, $value);
         }
