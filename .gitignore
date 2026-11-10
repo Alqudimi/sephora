@@ -306,3 +306,7 @@ storage/*.key
 /public/build
 /storage/pail
 auth.json
+
+# Local product image assets & raw datasets
+/images/
+/public/images/products/*__*.*

@@ -9,7 +9,7 @@
     $reviewCount = max((int) $product->reviews_count, $product->reviews->count() ?: 24);
     $hasDiscount = $product->compare_at_price && $product->compare_at_price > $product->price;
     $currency = config('commerce.currency', 'AED');
-    $mainImage = $images->first()?->path ?? 'images/placeholder.webp';
+    $mainImage = $product->first_image;
     $productUrl = route('product.show', ['slug' => $product->slug]);
     $loyaltyPoints = max(10, (int) round($product->price * 0.1));
 

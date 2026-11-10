@@ -407,7 +407,7 @@ return array (
     'two_factor_recovery_desc' => 'Please confirm access to your account by entering one of your emergency recovery codes.',
     'use_recovery' => 'Use a recovery code',
     'use_auth_code' => 'Use an authentication code',
-    'verify_email' => 'Verify Email',
+    'verify_email' => 'Verify your email',
     'verify_email_heading' => 'Verify Your Email Address',
     'verify_email_sent' => 'A fresh verification link has been sent to your email address.',
     'verify_email_check' => 'Before proceeding, please check your email for a verification link.',

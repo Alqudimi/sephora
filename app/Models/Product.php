@@ -78,7 +78,13 @@ class Product extends Model
                 && !str_contains($p, 'brandhighlight')
                 && !str_contains($p, 'bn_box')
                 && !str_contains($p, 'fragthematic')
-                && !str_contains($p, 'gift/gwp')
+                && !str_contains($p, 'gift')
+                && !str_contains($p, 'gwp')
+                && !str_contains($p, 'reassurance')
+                && !str_contains($p, 'authorized-retailer')
+                && !str_contains($p, 'image.png')
+                && !str_contains($p, '765003dandgbodycream296')
+                && !str_contains($p, '733904lancomeset296')
                 && !str_contains($p, 'noimagemedium');
         });
 

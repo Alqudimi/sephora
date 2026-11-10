@@ -59,7 +59,15 @@ class Media
                 || str_contains($lf, 'brand_highlight')
                 || str_contains($lf, 'brandhighlight')
                 || str_contains($lf, 'bn_box')
-                || str_contains($lf, 'fragthematic');
+                || str_contains($lf, 'fragthematic')
+                || str_contains($lf, 'gift')
+                || str_contains($lf, 'gwp')
+                || str_contains($lf, 'reassurance')
+                || str_contains($lf, 'authorized-retailer')
+                || str_contains($lf, 'image.png')
+                || str_contains($lf, '765003dandgbodycream296')
+                || str_contains($lf, '733904lancomeset296')
+                || str_contains($lf, 'noimagemedium');
 
             if (! $isGenericBanner && isset(self::$localProductFiles[$filename])) {
                 return asset('images/products/' . $filename);
