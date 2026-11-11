@@ -68,7 +68,7 @@ class AccountController extends Controller
 
         if (! empty($validated['current_password'])) {
             if (! Hash::check($validated['current_password'], $user->password)) {
-                return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+                return back()->withErrors(['current_password' => __('shop.controllers.current_password_incorrect')]);
             }
             $validated['password'] = Hash::make($validated['new_password']);
         }
@@ -112,9 +112,9 @@ class AccountController extends Controller
     public function updateCountryLanguage(Request $request)
     {
         $validated = $request->validate([
-            'preferred_language' => 'required|in:en,ar,fr',
+            'preferred_language' => 'required|in:en,ar',
         ]);
-        $lang = $validated['preferred_language'] === 'fr' ? 'en' : $validated['preferred_language'];
+        $lang = $validated['preferred_language'];
         auth()->user()->update($validated);
         session(['locale' => $lang]);
 

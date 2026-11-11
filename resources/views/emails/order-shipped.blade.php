@@ -1,14 +1,15 @@
+@php($isRtl = app()->getLocale() === 'ar')
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your order is on its way · {{ $order->order_number }}</title>
+    <title>{{ __('emails.order_shipped.title', ['number' => $order->order_number]) }}</title>
     <style>
-        body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #f5f5f5; margin: 0; padding: 24px; }
+        body { font-family: {{ $isRtl ? "'Tahoma', 'Segoe UI', Arial, sans-serif" : 'Arial, Helvetica, sans-serif' }}; color: #1a1a1a; background: #f5f5f5; margin: 0; padding: 24px; direction: {{ $isRtl ? 'rtl' : 'ltr' }}; }
         .card { max-width: 560px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e5e5; }
         .head { background: #000000; color: #ffffff; padding: 20px 28px; }
-        .head h1 { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .head h1 { font-size: 18px; letter-spacing: {{ $isRtl ? '0' : '2px' }}; text-transform: uppercase; margin: 0; }
         .body { padding: 24px 28px; }
         .body h2 { font-size: 16px; margin: 0 0 8px; }
         p { font-size: 13px; line-height: 1.6; color: #444; margin: 0 0 12px; }
@@ -20,43 +21,40 @@
 <body>
     <div class="card">
         <div class="head">
-            <h1>Sephora UAE — Order Shipped</h1>
+            <h1>{{ __('emails.order_shipped.banner') }}</h1>
         </div>
         <div class="body">
-            <h2>Great news, {{ $order->customer_name }}!</h2>
-            <p>
-                Your order <strong>{{ $order->order_number }}</strong> has left our fulfilment centre
-                and is on its way to you.
-            </p>
+            <h2>{{ __('emails.order_shipped.greeting', ['name' => $order->customer_name]) }}</h2>
+            <p>{!! __('emails.order_shipped.intro', ['number' => e($order->order_number)]) !!}</p>
 
             @if ($order->tracking_number)
                 <div class="track">
                     @if ($order->courier_label)
-                        Courier: <strong>{{ $order->courier_label }}</strong><br>
+                        {{ __('emails.order_shipped.courier') }} <strong>{{ $order->courier_label }}</strong><br>
                     @endif
-                    Tracking number: <strong>{{ $order->tracking_number }}</strong>
+                    {{ __('emails.order_shipped.tracking_number') }} <strong dir="ltr" style="display:inline-block;">{{ $order->tracking_number }}</strong>
                 </div>
 
                 @if ($order->tracking_url)
                     <p style="text-align: center; margin: 20px 0;">
-                        <a href="{{ $order->tracking_url }}" target="_blank" style="display: inline-block; background: #000000; color: #ffffff; padding: 12px 24px; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">Track Your Shipment →</a>
+                        <a href="{{ $order->tracking_url }}" target="_blank" style="display: inline-block; background: #000000; color: #ffffff; padding: 12px 24px; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: {{ $isRtl ? '0' : '1px' }}; text-transform: uppercase;">{{ __('emails.order_shipped.track_cta') }} {{ $isRtl ? '←' : '→' }}</a>
                     </p>
                 @else
-                    <p>Use this number with your courier to follow every step of the delivery.</p>
+                    <p>{{ __('emails.order_shipped.track_note') }}</p>
                 @endif
             @endif
 
             @if ($order->delivery_method === 'click_collect' && $order->store)
-                <p>Once the parcel arrives at <strong>{{ $order->store->name }}</strong> we will send you a pick-up reminder.</p>
+                <p>{!! __('emails.order_shipped.pickup_arrival', ['store' => e($order->store->name)]) !!}</p>
             @else
-                <p>Estimated delivery is within 2–3 business days. If you are not home, the courier will try again or leave the parcel with your building's concierge.</p>
+                <p>{{ __('emails.order_shipped.delivery_eta') }}</p>
             @endif
 
-            <p>Thank you for shopping with Sephora UAE.</p>
+            <p>{{ __('emails.order_shipped.closing') }}</p>
         </div>
         <div class="foot">
-            Order {{ $order->order_number }} · Placed {{ optional($order->placed_at)->format('d M Y') }}<br>
-            This is an automated message from SEPHORA UAE.
+            {{ __('emails.common.order_placed_footer', ['number' => $order->order_number, 'date' => optional($order->placed_at)->format('d M Y')]) }}<br>
+            {{ __('emails.common.automated_footer_caps') }}
         </div>
     </div>
 </body>

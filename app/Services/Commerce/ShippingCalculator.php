@@ -25,6 +25,13 @@ class ShippingCalculator
 
     public function label(string $deliveryMethod): string
     {
+        $key = "shop.delivery_methods.{$deliveryMethod}";
+        $translated = __($key);
+
+        if ($translated !== $key) {
+            return $translated;
+        }
+
         return (string) config("commerce.delivery_methods.{$deliveryMethod}", ucfirst(str_replace('_', ' ', $deliveryMethod)));
     }
 

@@ -17,12 +17,18 @@ class ContactMessageReceivedMail extends Mailable implements ShouldQueue
     public function __construct(public readonly ContactMessage $contactMessage)
     {
         $this->onQueue('emails');
+        $this->locale(app()->getLocale());
     }
 
     public function envelope(): Envelope
     {
+        $subject = $this->contactMessage->subject ?: __('emails.subjects.contact_general', [], $this->locale);
+
         return new Envelope(
-            subject: '[Concierge Alert] New message from '.$this->contactMessage->name.' · '.($this->contactMessage->subject ?: 'General Inquiry'),
+            subject: __('emails.subjects.contact_received', [
+                'name' => $this->contactMessage->name,
+                'subject' => $subject,
+            ], $this->locale),
             replyTo: [$this->contactMessage->email],
         );
     }

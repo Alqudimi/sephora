@@ -18,12 +18,14 @@ class OrderConfirmationMail extends Mailable implements ShouldQueue
     public function __construct(public readonly Order $order)
     {
         $this->onQueue('emails');
+        $pref = $order->user?->preferred_language;
+        $this->locale(in_array($pref, ['en', 'ar'], true) ? $pref : app()->getLocale());
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Order Confirmation · '.$this->order->order_number.' · SEPHORA UAE',
+            subject: __('emails.subjects.order_confirmation', ['number' => $this->order->order_number], $this->locale),
         );
     }
 

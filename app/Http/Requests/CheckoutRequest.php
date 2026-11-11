@@ -54,16 +54,16 @@ class CheckoutRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'customer_name.required' => 'Please enter the recipient full name.',
-            'customer_phone.required' => 'Please enter a UAE mobile number.',
-            'customer_phone.regex' => 'Please enter a valid phone number.',
-            'customer_email.required' => 'Please enter your email address so we can send the confirmation.',
-            'emirate.required_unless' => 'Please select your emirate.',
-            'street_address.required_unless' => 'Please enter your building / street address.',
-            'store_id.required_if' => 'Please choose a pick-up boutique.',
-            'store_id.exists' => 'The selected boutique is not available. Please choose another.',
-            'payment_method.required' => 'Please choose a payment method.',
-            'terms.accepted' => 'Please accept the terms and conditions.',
+            'customer_name.required' => __('shop.controllers.req_customer_name'),
+            'customer_phone.required' => __('shop.controllers.req_customer_phone'),
+            'customer_phone.regex' => __('shop.controllers.req_customer_phone_regex'),
+            'customer_email.required' => __('shop.controllers.req_customer_email'),
+            'emirate.required_unless' => __('shop.controllers.req_emirate'),
+            'street_address.required_unless' => __('shop.controllers.req_street'),
+            'store_id.required_if' => __('shop.controllers.req_store_required'),
+            'store_id.exists' => __('shop.controllers.req_store_exists'),
+            'payment_method.required' => __('shop.controllers.req_payment_method'),
+            'terms.accepted' => __('shop.controllers.req_terms'),
         ];
     }
 }

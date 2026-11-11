@@ -5,7 +5,7 @@
 
         <!-- Newsletter Bar -->
         <div class="flex flex-col md:flex-row items-center justify-between pb-8 border-b border-neutral-800 gap-6">
-            <div class="text-center md:text-left max-w-xl">
+            <div class="text-center md:text-start max-w-xl">
                 <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">{{ __('messages.footer.newsletter_heading') }}</h3>
                 <p class="text-neutral-400 text-xs mt-1">{{ __('messages.footer.newsletter_text') }}</p>
             </div>
@@ -109,7 +109,7 @@
                     <li><a class="hover:text-white transition-colors" href="/my-account">{{ __('messages.account.my_account') }}</a></li>
                     <li><a class="hover:text-white transition-colors" href="/my-account/orders">{{ __('messages.account.orders') }}</a></li>
                     <li><a class="hover:text-white transition-colors" href="/my-account/wishlist">{{ __('messages.nav.wishlist') }}</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/gift-cards">{{ __('messages.gift_cards') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/gift-card-info">{{ __('messages.gift_cards') }}</a></li>
                     <li><a class="hover:text-white transition-colors" href="/beauty-offers">{{ __('messages.nav.beauty_offers') }}</a></li>
                 </ul>
             </div>
@@ -140,7 +140,7 @@
         </div>
 
         <!-- Legal & Copyright Bar -->
-        <div class="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-neutral-500 text-[11px] gap-4 text-center sm:text-left">
+        <div class="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-neutral-500 text-[11px] gap-4 text-center sm:text-start">
             <p>{{ __('messages.footer.copyright', ['year' => date('Y')]) }}</p>
             <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
                 <a href="{{ route('terms') }}" class="hover:text-neutral-300 transition-colors">{{ __('messages.terms') }}</a>

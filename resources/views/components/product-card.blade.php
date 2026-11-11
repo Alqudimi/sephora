@@ -13,11 +13,11 @@
     $productUrl = route('product.show', ['slug' => $product->slug]);
 @endphp
 
-<article class="product-card group relative flex flex-col justify-between bg-white border border-gray-100 hover:border-gray-300 rounded-sm hover:shadow-md transition-all duration-200 p-2 sm:p-3 text-left">
+<article class="product-card group relative flex flex-col justify-between bg-white border border-gray-100 hover:border-gray-300 rounded-sm hover:shadow-md transition-all duration-200 p-2 sm:p-3 text-start">
     <!-- Image Box -->
     <div class="relative w-full aspect-square bg-[#fafafa] rounded-sm overflow-hidden flex items-center justify-center">
-        <!-- Badges (Top-Left) -->
-        <div class="absolute top-2 left-2 flex flex-col gap-1 z-10 pointer-events-none">
+        <!-- Badges (Top-Start) -->
+        <div class="absolute top-2 start-2 flex flex-col gap-1 z-10 pointer-events-none">
             @if ($badge)
                 <span class="bg-black text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-wider rounded-[1px]">
                     {{ $badge }}
@@ -37,10 +37,10 @@
             @endif
         </div>
 
-        <!-- Wishlist Button (Top-Right) -->
+        <!-- Wishlist Button (Top-End) -->
         <button
-            aria-label="Add {{ $product->name }} to wishlist"
-            class="absolute top-2 right-2 text-neutral-400 hover:text-black z-10 p-1.5 bg-white/90 rounded-full shadow-sm hover:shadow transition-colors"
+            aria-label="{{ __('shop.product.add_to_wishlist', ['name' => $product->name]) }}"
+            class="absolute top-2 end-2 text-neutral-400 hover:text-black z-10 p-1.5 bg-white/90 rounded-full shadow-sm hover:shadow transition-colors"
             data-wishlist-toggle="{{ $product->id }}"
             type="button"
         >
@@ -50,7 +50,7 @@
         </button>
 
         <!-- Product Image -->
-        <a aria-label="View {{ $product->name }}" class="block w-full h-full p-2.5 flex items-center justify-center" href="{{ $productUrl }}">
+        <a aria-label="{{ $product->name }}" class="block w-full h-full p-2.5 flex items-center justify-center" href="{{ $productUrl }}">
             <img
                 alt="{{ $product->name }}"
                 class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"

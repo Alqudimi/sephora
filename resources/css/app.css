@@ -9,7 +9,7 @@
 
 /* ── Material Symbols baseline ── */
 .material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
+    font-family: 'Material Symbols Outlined' !important;
     font-weight: normal;
     font-style: normal;
     display: inline-block;
@@ -85,6 +85,9 @@
 .hero-gradient-overlay {
     background: linear-gradient(90deg, rgba(12, 27, 51, 0.2) 0%, rgba(12, 27, 51, 0.95) 60%, rgba(12, 27, 51, 1) 100%);
 }
+[dir="rtl"] .hero-gradient-overlay {
+    background: linear-gradient(270deg, rgba(12, 27, 51, 0.2) 0%, rgba(12, 27, 51, 0.95) 60%, rgba(12, 27, 51, 1) 100%);
+}
 
 /* ── Scrollbars ── */
 .custom-scrollbar::-webkit-scrollbar {
@@ -118,7 +121,7 @@
     border-bottom: 1px solid #cfc4c5;
 }
 .hairline-r {
-    border-right: 1px solid #cfc4c5;
+    border-inline-end: 1px solid #cfc4c5;
 }
 .hairline-t {
     border-top: 1px solid #cfc4c5;
@@ -173,6 +176,13 @@ input:checked + .slider {
 }
 input:checked + .slider:before {
     transform: translateX(20px);
+}
+[dir="rtl"] .slider:before {
+    left: auto;
+    right: 3px;
+}
+[dir="rtl"] input:checked + .slider:before {
+    transform: translateX(-20px);
 }
 
 /* ── Filter sidebar ── */

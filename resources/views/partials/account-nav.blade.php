@@ -12,7 +12,7 @@
         ['route' => 'account.contact', 'key' => 'contact', 'label' => __('messages.contact')],
     ];
 @endphp
-<nav aria-label="Account navigation" class="flex items-center gap-2 pb-4 border-b border-outline-variant mb-8 overflow-x-auto whitespace-nowrap md:flex-wrap">
+<nav aria-label="{{ __('nav_menu.account_nav') }}" class="flex items-center gap-2 pb-4 border-b border-outline-variant mb-8 overflow-x-auto whitespace-nowrap md:flex-wrap">
     @foreach ($navItems as $item)
         @php $isActive = ($current === $item['key']); @endphp
         <a href="{{ route($item['route']) }}"

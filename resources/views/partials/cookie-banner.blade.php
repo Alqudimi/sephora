@@ -3,7 +3,7 @@
 @endphp
 
 @if (! in_array($cookieChoice, ['accepted', 'declined'], true))
-    <div id="cookie-banner" role="dialog" aria-label="Cookie preferences"
+    <div id="cookie-banner" role="dialog" aria-label="{{ __('nav_menu.cookie_preferences_label') }}"
          class="fixed inset-x-0 bottom-0 z-[100] bg-black text-white border-t border-gray-800">
         <div class="max-w-[1440px] mx-auto px-4 md:px-8 py-4 flex flex-col lg:flex-row lg:items-center gap-4">
             <p class="font-body-sm text-body-sm text-gray-300 flex-1">

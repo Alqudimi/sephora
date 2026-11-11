@@ -1,13 +1,18 @@
 // SEPHORA UAE — application JS
 // Global helpers for cart, wishlist, and page interactions.
 
+// Translation helper populated by layouts/app.blade.php
+function t(key, fallback) {
+    return (window.SEPHORA_I18N && window.SEPHORA_I18N[key]) || fallback;
+}
+
 // Announce helper (toast)
 window.sephoraToast = function (message, type = 'success') {
     let toast = document.getElementById('sephora-global-toast');
     if (!toast) {
         toast = document.createElement('div');
         toast.id = 'sephora-global-toast';
-        toast.className = 'fixed top-24 right-4 z-[9999] bg-black text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded shadow-2xl transition-all duration-300 opacity-0 translate-y-2';
+        toast.className = 'fixed top-24 end-4 z-[9999] bg-black text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded shadow-2xl transition-all duration-300 opacity-0 translate-y-2';
         document.body.appendChild(toast);
     }
     toast.textContent = message;
@@ -44,7 +49,12 @@ function updateCounterBadges(selector, count) {
         document.body.classList.toggle('overflow-hidden', open);
 
         if (panel) {
-            panel.classList.toggle('-translate-x-full', !open);
+            const isRtl = document.documentElement.dir === 'rtl';
+            const offClass = isRtl ? 'translate-x-full' : '-translate-x-full';
+            panel.classList.remove('translate-x-full', '-translate-x-full');
+            if (!open) {
+                panel.classList.add(offClass);
+            }
             panel.classList.toggle('translate-x-0', open);
         }
         if (backdrop) backdrop.classList.toggle('opacity-0', !open);
@@ -191,7 +201,8 @@ document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
 
         // Horizontal swipes change slides; vertical scrolling is left alone.
         if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
-            goTo(activeIndex + (deltaX < 0 ? 1 : -1));
+            const isRtl = document.documentElement.dir === 'rtl';
+            goTo(activeIndex + ((deltaX < 0) !== isRtl ? 1 : -1));
         }
         resumeAutoplay(3000);
     }, { passive: true });
@@ -227,7 +238,7 @@ document.addEventListener('click', function (e) {
     };
     btn.disabled = true;
     const original = btn.textContent;
-    btn.textContent = 'Adding...';
+    btn.textContent = t('adding', 'Adding...');
 
     fetch(btn.dataset.url || '/cart/add', {
         method: 'POST',
@@ -242,14 +253,14 @@ document.addEventListener('click', function (e) {
     .then(r => r.json())
     .then(res => {
         if (res.success) {
-            window.sephoraToast('Added to your bag');
+            window.sephoraToast(t('added_to_bag', 'Added to your bag'));
             updateCounterBadges('[data-bag-count]', res.count);
             if (btn.dataset.redirect) window.location.href = btn.dataset.redirect;
         } else {
-            window.sephoraToast(res.message || 'Could not add to bag', 'error');
+            window.sephoraToast(res.message || t('could_not_add', 'Could not add to bag'), 'error');
         }
     })
-    .catch(() => window.sephoraToast('Network error', 'error'))
+    .catch(() => window.sephoraToast(t('network_error', 'Network error'), 'error'))
     .finally(() => { btn.disabled = false; btn.textContent = original; });
 });
 
@@ -271,7 +282,7 @@ document.addEventListener('click', function (e) {
     .then(r => r.json())
     .then(res => {
         if (res.success) {
-            window.sephoraToast(res.added ? 'Saved to wishlist' : 'Removed from wishlist');
+            window.sephoraToast(res.added ? t('saved_to_wishlist', 'Saved to wishlist') : t('removed_from_wishlist', 'Removed from wishlist'));
             updateCounterBadges('[data-wishlist-count]', res.count);
             const icon = btn.querySelector('.material-symbols-outlined, svg');
             if (icon) {
@@ -280,7 +291,7 @@ document.addEventListener('click', function (e) {
             }
         }
     })
-    .catch(() => window.sephoraToast('Network error', 'error'));
+    .catch(() => window.sephoraToast(t('network_error', 'Network error'), 'error'));
 });
 
 // Newsletter subscribe (global)
@@ -295,12 +306,13 @@ document.addEventListener('submit', function (e) {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
             'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
         },
         body: JSON.stringify({ email }),
     })
     .then(r => r.json())
-    .then(res => window.sephoraToast(res.message || 'Subscribed'))
-    .catch(() => window.sephoraToast('Network error', 'error'));
+    .then(res => window.sephoraToast(res.message || t('subscribed', 'Subscribed')))
+    .catch(() => window.sephoraToast(t('network_error', 'Network error'), 'error'));
     form.querySelector('input[type="email"]').value = '';
 });
 
@@ -405,7 +417,7 @@ document.addEventListener('click', function (e) {
         feedback.classList.toggle('text-outline', !res.success);
         if (res.success) window.applyCheckoutTotals(res);
     })
-    .catch(() => window.sephoraToast('Network error', 'error'))
+    .catch(() => window.sephoraToast(t('network_error', 'Network error'), 'error'))
     .finally(() => { btn.disabled = false; });
 });
 
@@ -435,7 +447,7 @@ window.applyCheckoutTotals = function (res) {
 
     const points = document.getElementById('summary-points');
     if (points && typeof res.total !== 'undefined') {
-        points.textContent = '+' + Math.floor(Number(res.total)) + ' Beauty Pass points';
+        points.textContent = '+' + Math.floor(Number(res.total)) + t('beauty_pass_points_suffix', ' Beauty Pass points');
     }
 
     document.dispatchEvent(new CustomEvent('checkout:totals', { detail: res }));

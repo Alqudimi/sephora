@@ -70,43 +70,31 @@ class Order extends Model
 
     public function getStatusLabelAttribute(): string
     {
-        return match ($this->status) {
-            'pending' => 'Pending',
-            'processing' => 'Processing',
-            'shipped' => 'Shipped',
-            'out_for_delivery' => 'Out for Delivery',
-            'delivered' => 'Delivered',
-            'cancelled' => 'Cancelled',
-            'refunded' => 'Refunded',
-            default => ucfirst($this->status),
-        };
+        $key = 'shop.order_statuses.'.$this->status;
+        $translated = __($key);
+
+        return $translated !== $key ? $translated : ucfirst((string) $this->status);
     }
 
     public function getPaymentMethodLabelAttribute(): string
     {
-        return match ($this->payment_method) {
-            'cod' => 'Cash on Delivery',
-            'apple_pay' => 'Apple Pay',
-            'card' => 'Credit or Debit Card',
-            'tabby' => 'Tabby',
-            'tamara' => 'Tamara',
-            'zaincash' => 'ZainCash (محفظة زين كاش)',
-            default => ucfirst(str_replace('_', ' ', $this->payment_method)),
-        };
+        $key = 'shop.payment_methods.'.$this->payment_method;
+        $translated = __($key);
+
+        return $translated !== $key ? $translated : ucfirst(str_replace('_', ' ', (string) $this->payment_method));
     }
 
     public function getCourierLabelAttribute(): ?string
     {
-        return match (strtolower((string) $this->courier)) {
-            'aramex' => 'Aramex (أرامكس)',
-            'dhl' => 'DHL Express',
-            'fedex' => 'FedEx',
-            'smsa' => 'SMSA Express',
-            'emirates_post' => 'Emirates Post',
-            'fetchr' => 'Fetchr',
-            'other' => 'Private Delivery Fleet',
-            default => $this->courier ? ucfirst($this->courier) : null,
-        };
+        $courier = strtolower((string) $this->courier);
+        if ($courier === '') {
+            return null;
+        }
+
+        $key = 'shop.couriers.'.$courier;
+        $translated = __($key);
+
+        return $translated !== $key ? $translated : ucfirst((string) $this->courier);
     }
 
     public function getTrackingUrlAttribute(): ?string

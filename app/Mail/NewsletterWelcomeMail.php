@@ -17,12 +17,13 @@ class NewsletterWelcomeMail extends Mailable implements ShouldQueue
     public function __construct(public readonly NewsletterSubscriber $subscriber)
     {
         $this->onQueue('emails');
+        $this->locale(app()->getLocale());
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to the Sephora Inner Circle · 10% Off Your Next Indulgence',
+            subject: __('emails.subjects.newsletter_welcome', [], $this->locale),
         );
     }
 

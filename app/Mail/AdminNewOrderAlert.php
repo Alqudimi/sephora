@@ -17,12 +17,16 @@ class AdminNewOrderAlert extends Mailable implements ShouldQueue
     public function __construct(public readonly Order $order)
     {
         $this->onQueue('emails');
+        $this->locale(app()->getLocale());
     }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '[Admin] New order '.$this->order->order_number.' — AED '.number_format($this->order->total, 2),
+            subject: __('emails.subjects.admin_new_order', [
+                'number' => $this->order->order_number,
+                'total' => number_format($this->order->total, 2),
+            ], $this->locale),
         );
     }
 
