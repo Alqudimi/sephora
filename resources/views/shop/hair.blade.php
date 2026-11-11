@@ -8,14 +8,14 @@
 <!-- 3. BREADCRUMBS & CATEGORY HEADER -->
 <div class="mb-8">
 <nav aria-label="Breadcrumb" class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest text-on-surface-variant mb-4">
-<a class="hover:text-primary uppercase transition-colors" href="/">Home</a>
+<a class="hover:text-primary uppercase transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant font-normal">/</span>
-<span class="text-primary font-bold uppercase">Hair</span>
+<span class="text-primary font-bold uppercase">{{ __('ui.hair') }}</span>
 </nav>
 <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-outline-variant pb-6 gap-4">
 <div>
 <div class="flex items-baseline space-x-3">
-<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">Hair</h1>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">{{ __('ui.hair') }}</h1>
 <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(780 items)</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
@@ -24,15 +24,15 @@
 </div>
 <!-- Sort dropdown -->
 <div class="flex items-center space-x-3 self-end md:self-auto">
-<label class="font-label-caps text-label-caps tracking-wider text-on-surface-variant uppercase whitespace-nowrap" for="sort-select">Sort By:</label>
+<label class="font-label-caps text-label-caps tracking-wider text-on-surface-variant uppercase whitespace-nowrap" for="sort-select">{{ __('ui.sort_by') }}</label>
 <div class="relative inline-block w-48">
 <select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant px-3.5 py-2 font-body-sm text-body-sm text-primary focus:outline-none focus:border-primary rounded-none cursor-pointer" id="sort-select">
-<option selected="">Recommended</option>
-<option>Bestsellers</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
+<option selected="">{{ __('ui.recommended') }}</option>
+<option>{{ __('ui.bestsellers') }}</option>
+<option>{{ __('ui.price_low_high') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
 <option>Customer Rating</option>
-<option>New Arrivals</option>
+<option>{{ __('ui.new_arrivals') }}</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[18px]">
               expand_more
@@ -48,7 +48,7 @@
 <!-- Collapsible CATEGORIES -->
 <div class="py-4">
 <div class="flex items-center justify-between cursor-pointer mb-3">
-<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Categories</h3>
+<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">{{ __('ui.categories') }}</h3>
 <span class="material-symbols-outlined text-[18px]">remove</span>
 </div>
 <ul class="space-y-2 text-on-surface-variant font-body-sm">
@@ -58,14 +58,14 @@
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Tools &amp; Accessories</span> <span class="text-outline text-[11px]">(75)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Shop By Concern</span> <span class="text-outline text-[11px]">(130)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Sets</span> <span class="text-outline text-[11px]">(48)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Travel Size</span> <span class="text-outline text-[11px]">(52)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('ui.travel_size') }}</span> <span class="text-outline text-[11px]">(52)</span></a></li>
 </ul>
 </div>
 <!-- REFINE SECTION & EXCLUSIVES TOGGLE -->
 <div class="py-4">
 <div class="flex items-center justify-between mb-3">
 <h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Refine By</h3>
-<button class="font-label-caps text-[10px] tracking-wider text-on-surface-variant hover:text-primary underline">Clear All</button>
+<button class="font-label-caps text-[10px] tracking-wider text-on-surface-variant hover:text-primary underline">{{ __('ui.clear_all') }}</button>
 </div>
 <div class="flex items-center justify-between bg-surface-container-low p-2.5 border border-outline-variant">
 <span class="font-label-caps text-label-caps uppercase text-primary font-semibold">Sephora Exclusive Only</span>
@@ -78,7 +78,7 @@
 <!-- BRAND FILTER SECTION (Expanded with search & checkboxes) -->
 <div class="py-4">
 <div class="flex items-center justify-between cursor-pointer mb-3">
-<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Brand</h3>
+<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">{{ __('ui.brand') }}</h3>
 <span class="material-symbols-outlined text-[18px]">remove</span>
 </div>
 <!-- Brand filter search -->
@@ -179,7 +179,7 @@
 </div>
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">Price</span>
+<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">{{ __('ui.price') }}</span>
 <span class="material-symbols-outlined text-[18px]">add</span>
 </button>
 </div>

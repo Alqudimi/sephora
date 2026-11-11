@@ -49,7 +49,7 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Payment</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.payment') }}</span>
                     <select class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="payment_status">
                         @foreach (['pending', 'paid', 'failed', 'refunded'] as $status)
                             <option value="{{ $status }}" @selected(old('payment_status', $order->payment_status) === $status)>{{ ucfirst($status) }}</option>
@@ -124,7 +124,7 @@
                 <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">{{ $isPickup ? 'Collection' : 'Delivery' }}</h2>
 
                 <div class="flex justify-between gap-4 font-body-sm text-body-sm">
-                    <span class="text-on-surface-variant">Method</span>
+                    <span class="text-on-surface-variant">{{ __('ui.method') }}</span>
                     <span class="text-primary font-semibold text-right">{{ $deliveryLabel }}</span>
                 </div>
 
@@ -190,11 +190,11 @@
                 <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">Payment &amp; totals</h2>
 
                 <div class="flex justify-between gap-3">
-                    <span class="text-on-surface-variant">Method</span>
+                    <span class="text-on-surface-variant">{{ __('ui.method') }}</span>
                     <span class="text-primary font-semibold text-right">{{ $order->payment_method_label }}</span>
                 </div>
                 <div class="flex justify-between gap-3">
-                    <span class="text-on-surface-variant">Status</span>
+                    <span class="text-on-surface-variant">{{ __('ui.status') }}</span>
                     <span class="text-primary font-semibold uppercase text-right">{{ $order->payment_status }}</span>
                 </div>
                 @if ($order->coupon_code)
@@ -206,12 +206,12 @@
 
                 <div class="border-t border-outline-variant/60 pt-3 space-y-2">
                     <div class="flex justify-between gap-3">
-                        <span class="text-on-surface-variant">Subtotal</span>
+                        <span class="text-on-surface-variant">{{ __('ui.subtotal') }}</span>
                         <span>{{ $currency }} {{ number_format($order->subtotal, 2) }}</span>
                     </div>
                     @if ($order->discount > 0)
                         <div class="flex justify-between gap-3 text-secondary">
-                            <span>Discount</span>
+                            <span>{{ __('ui.discount') }}</span>
                             <span>−{{ $currency }} {{ number_format($order->discount, 2) }}</span>
                         </div>
                     @endif
@@ -228,7 +228,7 @@
                 </div>
 
                 <div class="flex justify-between gap-3 border-t border-primary pt-3 font-title-md text-title-md font-bold text-primary">
-                    <span>Total</span>
+                    <span>{{ __('ui.total') }}</span>
                     <span>{{ $currency }} {{ number_format($order->total, 2) }}</span>
                 </div>
 

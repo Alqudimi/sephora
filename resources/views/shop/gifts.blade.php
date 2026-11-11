@@ -7,9 +7,9 @@
 <main class="flex-grow max-w-[1440px] mx-auto px-6 py-4 w-full">
 <!-- Breadcrumb Navigation -->
 <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-gray-600 mb-6">
-<a class="hover:text-black" href="/">Home</a>
+<a class="hover:text-black" href="/">{{ __('ui.home') }}</a>
 <span class="text-gray-400">/</span>
-<a class="hover:text-black" href="/shop/gifts">Gifts</a>
+<a class="hover:text-black" href="/shop/gifts">{{ __('ui.gifts') }}</a>
 <span class="text-gray-400">/</span>
 <span class="font-bold text-black border-b border-black pb-0.5">View all gifts</span>
 </nav>
@@ -23,7 +23,7 @@
 <div class="mt-4 md:mt-0 flex items-center justify-end">
 <div class="relative inline-block text-left">
 <button class="inline-flex items-center gap-2 text-xs font-semibold text-black hover:text-gray-700 bg-white py-1.5 px-3 border border-transparent rounded hover:border-gray-300 transition-colors" type="button">
-<span>Sort by: <strong class="font-bold underline underline-offset-4">Recommended</strong></span>
+<span>Sort by: <strong class="font-bold underline underline-offset-4">{{ __('ui.recommended') }}</strong></span>
 <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -38,7 +38,7 @@
 <!-- Category Nav Box (Selected Group) -->
 <div class="border border-gray-200 rounded-sm mb-6 p-4 bg-white">
 <div class="flex items-center justify-between pb-3 border-b border-gray-100 font-bold text-sm text-black">
-<span>Gifts <span class="text-gray-400 font-normal text-xs">(772)</span></span>
+<span>{{ __('ui.gifts') }}<span class="text-gray-400 font-normal text-xs">(772)</span></span>
 <svg class="w-4 h-4 text-black cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -65,13 +65,13 @@
 </ul>
 </div>
 <!-- Facet Heading -->
-<h2 class="text-sm font-bold text-black mb-3 uppercase tracking-wider">Refine</h2>
+<h2 class="text-sm font-bold text-black mb-3 uppercase tracking-wider">{{ __('ui.refine') }}</h2>
 <!-- Facets Accordion List -->
 <div class="divide-y divide-gray-200 border-t border-b border-gray-200">
 <!-- Accordion Item: Type of product -->
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="text-xs font-semibold text-black group-hover:text-gray-600">Type of product</span>
+<span class="text-xs font-semibold text-black group-hover:text-gray-600">{{ __('ui.product_type') }}</span>
 <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -80,7 +80,7 @@
 <!-- Accordion Item: Brands -->
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="text-xs font-semibold text-black group-hover:text-gray-600">Brands</span>
+<span class="text-xs font-semibold text-black group-hover:text-gray-600">{{ __('ui.brands') }}</span>
 <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -98,7 +98,7 @@
 <!-- Accordion Item: Coverage -->
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="text-xs font-semibold text-black group-hover:text-gray-600">Coverage</span>
+<span class="text-xs font-semibold text-black group-hover:text-gray-600">{{ __('ui.coverage') }}</span>
 <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -116,7 +116,7 @@
 <!-- Accordion Item: Benefits -->
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="text-xs font-semibold text-black group-hover:text-gray-600">Benefits</span>
+<span class="text-xs font-semibold text-black group-hover:text-gray-600">{{ __('ui.benefits') }}</span>
 <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -125,7 +125,7 @@
 <!-- Accordion Item: Price -->
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="text-xs font-semibold text-black group-hover:text-gray-600">Price</span>
+<span class="text-xs font-semibold text-black group-hover:text-gray-600">{{ __('ui.price') }}</span>
 <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -135,7 +135,7 @@
 </aside>
 <!-- END: FilterSidebar -->
 <!-- BEGIN: ProductCatalogGrid -->
-<section aria-label="Products" class="flex-1">
+<section aria-label="{{ __('ui.products') }}" class="flex-1">
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10">
 <!-- Product Card 1: Sol De Janeiro -->
 @foreach($products as $products)
@@ -143,7 +143,7 @@
 <div>
 <!-- Top Badges & Wishlist -->
 <div class="flex items-center justify-between mb-2">
-<span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xs">Exclusive</span>
+<span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xs">{{ __('ui.exclusive') }}</span>
 <button aria-label="Add to wishlist" class="text-gray-400 hover:text-black transition-colors">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24">
 <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>

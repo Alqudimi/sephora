@@ -33,10 +33,10 @@
             <tr>
                 <th class="px-4 py-3">Order</th>
                 <th class="px-4 py-3">Customer</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3">Payment</th>
-                <th class="px-4 py-3">Total</th>
-                <th class="px-4 py-3 text-right">Actions</th>
+                <th class="px-4 py-3">{{ __('ui.status') }}</th>
+                <th class="px-4 py-3">{{ __('ui.payment') }}</th>
+                <th class="px-4 py-3">{{ __('ui.total') }}</th>
+                <th class="px-4 py-3 text-right">{{ __('ui.actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -56,14 +56,14 @@
                     </td>
                     <td class="px-4 py-3 font-bold whitespace-nowrap">AED {{ number_format($order->total, 2) }}</td>
                     <td class="px-4 py-3 text-right">
-                        <a class="underline hover:text-secondary whitespace-nowrap" href="{{ route('admin.orders.show', $order) }}">View</a>
+                        <a class="underline hover:text-secondary whitespace-nowrap" href="{{ route('admin.orders.show', $order) }}">{{ __('ui.view') }}</a>
                     </td>
                 </tr>
             @empty
                 <tr>
                     <td colspan="6" class="px-4 py-16 text-center">
                         <span class="material-symbols-outlined text-[40px] text-outline-variant">receipt_long</span>
-                        <p class="font-body-md text-body-md text-primary mt-2">No orders yet.</p>
+                        <p class="font-body-md text-body-md text-primary mt-2">{{ __('ui.no_orders') }}</p>
                         <p class="font-body-sm text-body-sm text-outline">New orders will appear here as soon as they are placed.</p>
                     </td>
                 </tr>

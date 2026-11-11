@@ -8,9 +8,9 @@
 
     <!-- Breadcrumb -->
     <nav class="text-xs text-neutral-500 mb-4" aria-label="Breadcrumb">
-        <a class="hover:text-black transition-colors" href="/">Home</a>
+        <a class="hover:text-black transition-colors" href="/">{{ __('ui.home') }}</a>
         <span class="mx-1.5">&rsaquo;</span>
-        <a class="hover:text-black transition-colors" href="/brands">Brands</a>
+        <a class="hover:text-black transition-colors" href="/brands">{{ __('ui.brands') }}</a>
         <span class="mx-1.5">&rsaquo;</span>
         <span class="text-black font-semibold">{{ $brand->name }}</span>
     </nav>

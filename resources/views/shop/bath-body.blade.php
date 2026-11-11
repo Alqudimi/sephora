@@ -7,15 +7,15 @@
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- Breadcrumb -->
 <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-outline font-label-caps text-label-caps mb-6">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
-<span class="text-primary font-bold">Bath &amp; Body</span>
+<span class="text-primary font-bold">{{ __('ui.bath_body') }}</span>
 </nav>
 <!-- Header & Filter Row -->
 <div class="border-b border-outline-variant pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
 <div>
 <div class="flex items-baseline space-x-3 mb-2">
-<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Bath &amp; Body</h1>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">{{ __('ui.bath_body') }}</h1>
 <span class="font-body-md text-body-md text-outline">(540 items)</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
@@ -27,12 +27,12 @@
 <label class="font-label-caps text-label-caps text-on-surface whitespace-nowrap" for="sort-select">SORT BY:</label>
 <div class="relative inline-block border border-primary bg-surface-container-lowest">
 <select class="appearance-none bg-transparent pr-10 pl-3 py-2 font-label-caps text-label-caps text-primary cursor-pointer focus:outline-none" id="sort-select">
-<option>Recommended</option>
-<option>New Arrivals</option>
-<option>Bestsellers</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
-<option>Top Rated</option>
+<option>{{ __('ui.recommended') }}</option>
+<option>{{ __('ui.new_arrivals') }}</option>
+<option>{{ __('ui.bestsellers') }}</option>
+<option>{{ __('ui.price_low_high') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
+<option>{{ __('ui.top_rated') }}</option>
 </select>
 <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-primary text-[18px]">keyboard_arrow_down</span>
 </div>
@@ -45,7 +45,7 @@
 <!-- CATEGORIES Accordion -->
 <div class="border border-outline-variant bg-surface-container-lowest p-5">
 <div class="flex items-center justify-between pb-3 border-b border-surface-container cursor-pointer">
-<h3 class="font-title-md text-title-md font-bold text-primary uppercase">Categories</h3>
+<h3 class="font-title-md text-title-md font-bold text-primary uppercase">{{ __('ui.categories') }}</h3>
 <span class="material-symbols-outlined text-primary text-[20px]">expand_less</span>
 </div>
 <ul class="pt-4 space-y-3 font-body-sm text-body-sm">
@@ -86,10 +86,8 @@
 <!-- REFINE SECTION -->
 <div class="border border-outline-variant bg-surface-container-lowest p-5 space-y-5">
 <div class="flex items-center justify-between pb-3 border-b border-surface-container">
-<h3 class="font-title-md text-title-md font-bold text-primary uppercase">Refine</h3>
-<button class="font-label-caps text-label-caps text-outline hover:text-secondary underline cursor-pointer transition-colors">
-              Clear All
-            </button>
+<h3 class="font-title-md text-title-md font-bold text-primary uppercase">{{ __('ui.refine') }}</h3>
+<button class="font-label-caps text-label-caps text-outline hover:text-secondary underline cursor-pointer transition-colors">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Exclusive Toggle -->
 <div class="flex items-center justify-between py-1">

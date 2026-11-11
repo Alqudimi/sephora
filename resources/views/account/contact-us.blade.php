@@ -7,9 +7,9 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
     <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
-        <a class="hover:text-secondary" href="/">Home</a> /
-        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">My Account</a> /
-        <span class="text-on-surface font-semibold">Contact Us</span>
+        <a class="hover:text-secondary" href="/">{{ __('ui.home') }}</a> /
+        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('ui.my_account') }}</a> /
+        <span class="text-on-surface font-semibold">{{ __('ui.contact_us') }}</span>
     </nav>
 
     @include('partials.account-nav', ['active' => 'contact'])
@@ -56,7 +56,7 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Phone</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.phone') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('phone') border-secondary @enderror"
                            name="phone" maxlength="40" type="tel" value="{{ old('phone', auth()->user()->phone) }}">
                     @error('phone')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror

@@ -51,14 +51,11 @@
                 <span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard
             </a>
             <a class="flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-primary-container transition-colors {{ request()->routeIs('admin.products*') ? 'bg-primary-container' : '' }}" href="{{ route('admin.products') }}">
-                <span class="material-symbols-outlined text-[20px]">inventory_2</span> Products
-            </a>
+                <span class="material-symbols-outlined text-[20px]">inventory_2</span>{{ __('ui.products') }}</a>
             <a class="flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-primary-container transition-colors {{ request()->routeIs('admin.categories*') ? 'bg-primary-container' : '' }}" href="{{ route('admin.categories') }}">
-                <span class="material-symbols-outlined text-[20px]">category</span> Categories
-            </a>
+                <span class="material-symbols-outlined text-[20px]">category</span>{{ __('ui.categories') }}</a>
             <a class="flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-primary-container transition-colors {{ request()->routeIs('admin.orders*') ? 'bg-primary-container' : '' }}" href="{{ route('admin.orders') }}">
-                <span class="material-symbols-outlined text-[20px]">receipt_long</span> Orders
-            </a>
+                <span class="material-symbols-outlined text-[20px]">receipt_long</span>{{ __('ui.orders') }}</a>
         </nav>
 
         <div class="p-3 border-t border-primary-container">

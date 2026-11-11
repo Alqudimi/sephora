@@ -10,18 +10,18 @@
 <!-- Breadcrumbs -->
 <nav aria-label="Breadcrumb" class="mb-5">
 <ol class="flex items-center gap-2 font-body-sm text-body-sm text-outline">
-<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span>/</span></li>
-<li><a class="hover:text-primary transition-colors" href="/shop/makeup">Makeup</a></li>
+<li><a class="hover:text-primary transition-colors" href="/shop/makeup">{{ __('ui.makeup') }}</a></li>
 <li><span>/</span></li>
-<li aria-current="page" class="text-primary font-semibold">Lips</li>
+<li aria-current="page" class="text-primary font-semibold">{{ __('ui.lips') }}</li>
 </ol>
 </nav>
 <!-- Category Title & Sorting Bar -->
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-outline-variant">
 <div class="max-w-3xl">
 <div class="flex items-baseline gap-3">
-<h1 class="font-headline-lg text-headline-lg font-semibold tracking-tight text-primary">Lips</h1>
+<h1 class="font-headline-lg text-headline-lg font-semibold tracking-tight text-primary">{{ __('ui.lips') }}</h1>
 <span class="font-body-md text-body-md text-outline font-normal">(344 items)</span>
 </div>
 <p class="mt-3 font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
@@ -238,34 +238,32 @@
 <!-- Badge 1 -->
 <div class="space-y-2">
 <span class="material-symbols-outlined text-2xl text-primary" data-icon="local_shipping">local_shipping</span>
-<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">Free Delivery</h4>
+<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">{{ __('ui.free_delivery') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant">On all orders above AED 250</p>
 </div>
 <!-- Badge 2 -->
 <div class="space-y-2">
 <span class="material-symbols-outlined text-2xl text-primary" data-icon="verified">verified</span>
-<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">100% Authentic</h4>
+<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">{{ __('ui.authentic') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Direct from certified brands</p>
 </div>
 <!-- Badge 3 -->
 <div class="space-y-2">
 <span class="material-symbols-outlined text-2xl text-primary" data-icon="cached">cached</span>
-<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">Easy Returns</h4>
+<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">{{ __('ui.easy_returns') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant">In-store across all UAE branches</p>
 </div>
 <!-- Badge 4 -->
 <div class="space-y-2">
 <span class="material-symbols-outlined text-2xl text-primary" data-icon="loyalty">loyalty</span>
-<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">Beauty Pass Points</h4>
+<h4 class="font-label-caps text-label-caps uppercase font-bold text-primary">{{ __('ui.beauty_pass_points') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Earn points on every dirham spent</p>
 </div>
 </div>
 </section>
 <!-- 7. Newsletter Subscription Banner -->
 <section class="mt-14 p-8 md:p-12 bg-surface-container-low border border-outline-variant text-center max-w-4xl mx-auto">
-<h3 class="font-display-hero text-headline-sm uppercase tracking-widest font-bold text-primary">
-        STAY CONNECTED WITH SEPHORA
-      </h3>
+<h3 class="font-display-hero text-headline-sm uppercase tracking-widest font-bold text-primary">{{ __('ui.stay_connected') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-lg mx-auto">
         Be the first to receive exclusive previews, personalized product drops, and winter holiday exclusives.
       </p>

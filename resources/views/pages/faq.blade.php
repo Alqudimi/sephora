@@ -13,18 +13,16 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <!-- Breadcrumb -->
 <nav class="flex items-center gap-2 mb-6">
-<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/">Home</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant text-[12px]">/</span>
-<span class="font-body-sm text-body-sm text-primary font-bold">Frequently Asked Questions</span>
+<span class="font-body-sm text-body-sm text-primary font-bold">{{ __('ui.faq') }}</span>
 </nav>
 <!-- Editorial Hero Title -->
 <div class="max-w-3xl">
 <span class="bg-primary text-on-primary px-2.5 py-1 font-label-tag text-label-tag uppercase tracking-widest inline-block mb-3">
             SEPHORA CLIENT CONCIERGE &amp; SUPPORT
           </span>
-<h1 class="font-headline-lg text-headline-lg md:text-display-hero text-primary tracking-tight font-bold mb-4">
-            Frequently Asked Questions
-          </h1>
+<h1 class="font-headline-lg text-headline-lg md:text-display-hero text-primary tracking-tight font-bold mb-4">{{ __('ui.faq') }}</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
             Find answers to all your beauty shopping, order tracking, Beauty Pass, and customer service inquiries. Experience seamless luxury support across the United Arab Emirates.
           </p>
@@ -34,14 +32,12 @@
 <div class="relative flex items-stretch border-2 border-primary bg-surface-container-lowest">
 <span class="material-symbols-outlined self-center ml-4 text-outline text-[24px]">search</span>
 <input class="w-full bg-transparent border-0 px-4 py-4 text-on-surface font-body-md text-body-md focus:ring-0 placeholder:text-outline" id="faqSearchInput" placeholder="How can we help you today? Type keywords like delivery, refund, beauty pass..." type="text"/>
-<button class="bg-primary hover:bg-neutral-800 text-on-primary px-8 font-label-caps text-label-caps tracking-widest uppercase transition-colors flex items-center justify-center">
-              Search
-            </button>
+<button class="bg-primary hover:bg-neutral-800 text-on-primary px-8 font-label-caps text-label-caps tracking-widest uppercase transition-colors flex items-center justify-center">{{ __('ui.search') }}</button>
 </div>
 <div class="flex flex-wrap gap-2 mt-3 items-center">
 <span class="font-label-caps text-label-caps text-outline uppercase">Quick Queries:</span>
 <button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Order Tracking</button>
-<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Beauty Pass Points</button>
+<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('ui.beauty_pass_points') }}</button>
 <button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Tabby &amp; Tamara</button>
 <button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Store Returns</button>
 </div>
@@ -126,7 +122,7 @@
 <span class="font-label-tag text-label-tag text-outline">06</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Products</h3>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.products') }}</h3>
 <p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">100% authenticity, formulas &amp; shade matching</p>
 </div>
 </a>
@@ -137,7 +133,7 @@
 <span class="font-label-tag text-label-tag text-outline">07</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Payment</h3>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.payment') }}</h3>
 <p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Apple Pay, Tabby, Tamara &amp; Cash on Delivery</p>
 </div>
 </a>
@@ -159,7 +155,7 @@
 <span class="font-label-tag text-label-tag text-outline">09</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Delivery</h3>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.delivery') }}</h3>
 <p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">UAE same-day &amp; 1-2 day express shipping</p>
 </div>
 </a>
@@ -170,7 +166,7 @@
 <span class="font-label-tag text-label-tag text-outline">10</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Cancellation &amp; Refund</h3>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.cancellation_refund') }}</h3>
 <p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">14-day store &amp; online returns, refund timelines</p>
 </div>
 </a>
@@ -203,7 +199,7 @@
 <span class="font-label-tag text-label-tag text-outline">13</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Gift Cards</h3>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.gift_cards') }}</h3>
 <p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Check balance, online activation &amp; e-cards</p>
 </div>
 </a>
@@ -296,7 +292,7 @@
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                You can book an appointment at the Benefit BrowBar, receive a customized 45-minute Full Glam Makeover, or book a Complimentary 15-minute Skin Consultation via the <strong>Stores &amp; Services</strong> tab in our header menu, or by contacting your preferred Sephora boutique directly via phone. Beauty Pass Gold members receive complimentary priority bookings.
+                You can book an appointment at the Benefit BrowBar, receive a customized 45-minute Full Glam Makeover, or book a Complimentary 15-minute Skin Consultation via the <strong>{{ __('ui.stores_services') }}</strong> tab in our header menu, or by contacting your preferred Sephora boutique directly via phone. Beauty Pass Gold members receive complimentary priority bookings.
               </p>
 </div>
 </div>
@@ -435,22 +431,22 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-outline-variant">
 <div class="flex flex-col items-center justify-center p-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">local_shipping</span>
-<h4 class="font-title-md text-title-md text-primary font-bold uppercase">Free Delivery</h4>
+<h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.free_delivery') }}</h4>
 <p class="font-body-sm text-body-sm text-outline">Over 250 AED</p>
 </div>
 <div class="flex flex-col items-center justify-center p-3 pt-6 md:pt-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">verified_user</span>
-<h4 class="font-title-md text-title-md text-primary font-bold uppercase">Secure Payment</h4>
+<h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.secure_payment') }}</h4>
 <p class="font-body-sm text-body-sm text-outline">100% Encrypted Transactions</p>
 </div>
 <div class="flex flex-col items-center justify-center p-3 pt-6 md:pt-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">replay</span>
-<h4 class="font-title-md text-title-md text-primary font-bold uppercase">Easy Returns</h4>
+<h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.easy_returns') }}</h4>
 <p class="font-body-sm text-body-sm text-outline">In any UAE store</p>
 </div>
 <div class="flex flex-col items-center justify-center p-3 pt-6 md:pt-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">support_agent</span>
-<h4 class="font-title-md text-title-md text-primary font-bold uppercase">Customer Service</h4>
+<h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.customer_service') }}</h4>
 <p class="font-body-sm text-body-sm text-outline">Questions? Daily 10am – 10pm</p>
 </div>
 </div>

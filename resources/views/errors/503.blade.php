@@ -20,7 +20,7 @@
         <h1>Sephora</h1>
         <h2>We will be back shortly.</h2>
         <p>We are performing scheduled maintenance to serve you better. Please check back soon.</p>
-        <a class="btn" href="/">Back to Home</a>
+        <a class="btn" href="/">{{ __('ui.back_home') }}</a>
     </div>
 </body>
 </html>

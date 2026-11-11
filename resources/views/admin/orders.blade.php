@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
     <div>
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Orders</h1>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('ui.orders') }}</h1>
         <p class="font-body-sm text-body-sm text-outline mt-1">{{ number_format($orders->total()) }} orders</p>
     </div>
 </div>
@@ -12,14 +12,14 @@
     <label class="sr-only" for="order-search">Search orders</label>
     <input id="order-search" class="h-11 px-4 bg-surface-container-lowest border border-outline font-body-sm text-body-sm focus:border-primary flex-1 min-w-0"
            name="q" placeholder="Order number..." value="{{ request('q') }}" type="text">
-    <label class="sr-only" for="order-status">Status</label>
+    <label class="sr-only" for="order-status">{{ __('ui.status') }}</label>
     <select id="order-status" name="status" class="h-11 px-3 bg-surface-container-lowest border border-outline font-body-sm text-body-sm focus:border-primary">
         <option value="">All statuses</option>
         @foreach (['pending', 'processing', 'shipped', 'out_for_delivery', 'delivered', 'cancelled'] as $status)
             <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst(str_replace('_', ' ', $status)) }}</option>
         @endforeach
     </select>
-    <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-5 h-11 hover:bg-secondary transition-colors" type="submit">Filter</button>
+    <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-5 h-11 hover:bg-secondary transition-colors" type="submit">{{ __('ui.filter') }}</button>
     @if (request()->filled('q') || request()->filled('status'))
         <a class="h-11 px-4 inline-flex items-center border border-outline-variant font-label-caps text-label-caps uppercase text-primary hover:border-primary transition-colors" href="{{ route('admin.orders') }}">Clear</a>
     @endif
@@ -32,10 +32,10 @@
                 <th class="px-4 py-3">Order</th>
                 <th class="px-4 py-3">Customer</th>
                 <th class="px-4 py-3">Date</th>
-                <th class="px-4 py-3">Payment</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3">Total</th>
-                <th class="px-4 py-3 text-right">Actions</th>
+                <th class="px-4 py-3">{{ __('ui.payment') }}</th>
+                <th class="px-4 py-3">{{ __('ui.status') }}</th>
+                <th class="px-4 py-3">{{ __('ui.total') }}</th>
+                <th class="px-4 py-3 text-right">{{ __('ui.actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -56,7 +56,7 @@
                     </td>
                     <td class="px-4 py-3 font-bold whitespace-nowrap">AED {{ number_format($order->total, 2) }}</td>
                     <td class="px-4 py-3 text-right">
-                        <a class="underline hover:text-secondary whitespace-nowrap" href="{{ route('admin.orders.show', $order) }}">View</a>
+                        <a class="underline hover:text-secondary whitespace-nowrap" href="{{ route('admin.orders.show', $order) }}">{{ __('ui.view') }}</a>
                     </td>
                 </tr>
             @empty
@@ -64,7 +64,7 @@
                     <td colspan="7" class="px-4 py-16 text-center">
                         <span class="material-symbols-outlined text-[40px] text-outline-variant">receipt_long</span>
                         <p class="font-body-md text-body-md text-primary mt-2">No orders match this filter.</p>
-                        <a class="inline-block mt-3 underline text-primary hover:text-secondary" href="{{ route('admin.orders') }}">Clear filters</a>
+                        <a class="inline-block mt-3 underline text-primary hover:text-secondary" href="{{ route('admin.orders') }}">{{ __('ui.clear_filters') }}</a>
                     </td>
                 </tr>
             @endforelse

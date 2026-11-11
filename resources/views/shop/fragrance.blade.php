@@ -7,14 +7,14 @@
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- 3. BREADCRUMBS & TITLE HEADER -->
 <nav class="flex items-center gap-2 text-outline text-[12px] font-body-sm mb-4">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
-<span class="text-on-surface font-semibold">Fragrance</span>
+<span class="text-on-surface font-semibold">{{ __('ui.fragrance') }}</span>
 </nav>
 <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-primary pb-5 mb-8">
 <div>
 <div class="flex items-baseline gap-3">
-<h1 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">Fragrance</h1>
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">{{ __('ui.fragrance') }}</h1>
 <span class="font-body-md text-outline font-normal text-sm">846 items</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-xl">
@@ -26,10 +26,10 @@
 <label class="font-label-caps text-label-caps uppercase text-outline" for="sort-select">Sort by:</label>
 <div class="relative">
 <select class="appearance-none bg-surface-container-lowest border border-outline pl-3 pr-8 py-2 font-label-caps text-label-caps tracking-wider rounded-none cursor-pointer focus:border-primary focus:ring-0 text-on-surface" id="sort-select">
-<option>Recommended</option>
-<option>New Arrivals</option>
-<option>Price: High to Low</option>
-<option>Price: Low to High</option>
+<option>{{ __('ui.recommended') }}</option>
+<option>{{ __('ui.new_arrivals') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
+<option>{{ __('ui.price_low_high') }}</option>
 <option>Best Sellers</option>
 <option>Customer Rating</option>
 </select>
@@ -70,7 +70,7 @@
 <span class="text-outline text-xs">(32)</span>
 </li>
 <li class="flex items-center justify-between text-on-surface hover:text-primary cursor-pointer font-medium group">
-<span class="group-hover:translate-x-0.5 transition-transform">Travel Size</span>
+<span class="group-hover:translate-x-0.5 transition-transform">{{ __('ui.travel_size') }}</span>
 <span class="text-outline text-xs">(88)</span>
 </li>
 <li class="flex items-center justify-between text-on-surface hover:text-primary cursor-pointer font-medium group">
@@ -83,7 +83,7 @@
 <div class="border border-outline-variant p-5 bg-surface-container-lowest">
 <div class="flex items-center justify-between pb-3 border-b border-surface-container">
 <span class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-extrabold">REFINE</span>
-<button class="font-label-caps text-[10px] tracking-wider text-outline hover:text-secondary underline transition-colors" type="button">Clear All</button>
+<button class="font-label-caps text-[10px] tracking-wider text-outline hover:text-secondary underline transition-colors" type="button">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="flex items-center justify-between py-4 border-b border-surface-container">
@@ -367,7 +367,7 @@
 <section class="mt-16 bg-[#111111] text-white p-8 md:p-12 text-center">
 <div class="max-w-2xl mx-auto">
 <span class="material-symbols-outlined text-[36px] text-white mb-2" data-icon="mail">mail</span>
-<h2 class="font-display-hero text-headline-sm uppercase tracking-widest font-bold">STAY CONNECTED WITH SEPHORA</h2>
+<h2 class="font-display-hero text-headline-sm uppercase tracking-widest font-bold">{{ __('ui.stay_connected') }}</h2>
 <p class="font-body-sm text-body-sm text-outline-variant mt-2 mb-6">
           Sign up to receive early access to new launches, gifts with purchase and holiday exclusives.
         </p>

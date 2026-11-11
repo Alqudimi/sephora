@@ -9,7 +9,7 @@
 <nav aria-label="Breadcrumb" class="mb-4">
 <ol class="flex items-center space-x-2 text-xs text-neutral-500">
 <li>
-<a class="hover:underline hover:text-black" href="/">Home</a>
+<a class="hover:underline hover:text-black" href="/">{{ __('ui.home') }}</a>
 </li>
 <li class="text-neutral-400">/</li>
 <li class="font-bold text-neutral-900 tracking-wider">SEPHORA COLLECTION</li>
@@ -34,10 +34,10 @@
 <label class="text-xs font-medium text-neutral-600" for="sort-select">Sort by:</label>
 <div class="relative">
 <select class="text-xs font-bold text-neutral-900 border-none bg-transparent pr-6 py-0 focus:ring-0 cursor-pointer" id="sort-select">
-<option>Recommended</option>
-<option>New Arrivals</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
+<option>{{ __('ui.recommended') }}</option>
+<option>{{ __('ui.new_arrivals') }}</option>
+<option>{{ __('ui.price_low_high') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
 <option>Customer Rating</option>
 </select>
 </div>
@@ -49,47 +49,47 @@
 <aside class="hidden lg:block lg:col-span-1 border-r border-subtle pr-6 space-y-6 text-xs">
 <!-- Category Hierarchy Facets -->
 <div>
-<h2 class="text-xs font-bold uppercase tracking-wider text-black mb-3">Categories</h2>
+<h2 class="text-xs font-bold uppercase tracking-wider text-black mb-3">{{ __('ui.categories') }}</h2>
 <ul class="space-y-2.5 font-medium text-neutral-700">
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>The Holiday Collection</span>
+<span>{{ __('ui.holiday_collection') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(19)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>New</span>
+<span>{{ __('ui.new') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(40)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Makeup</span>
+<span>{{ __('ui.makeup') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(234)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Fragrance</span>
+<span>{{ __('ui.fragrance') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(3)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Skincare</span>
+<span>{{ __('ui.skincare') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(129)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Bath &amp; Body</span>
+<span>{{ __('ui.bath_body') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(28)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Hair</span>
+<span>{{ __('ui.hair') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(35)</span>
 </a>
 </li>
@@ -108,7 +108,7 @@
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Gifts</span>
+<span>{{ __('ui.gifts') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(40)</span>
 </a>
 </li>
@@ -129,7 +129,7 @@
 <hr class="border-subtle"/>
 <!-- Refine Accordion Filter Groups -->
 <div class="space-y-4">
-<h3 class="text-xs font-bold uppercase tracking-wider text-black">Refine</h3>
+<h3 class="text-xs font-bold uppercase tracking-wider text-black">{{ __('ui.refine') }}</h3>
 <!-- Exclusivity Toggle -->
 <div class="flex items-center justify-between py-1">
 <span class="text-neutral-800 font-medium">Sephora Exclusive Only</span>
@@ -141,35 +141,35 @@
 <!-- Filter Accordion Item 1 -->
 <div class="border-t border-subtle pt-3">
 <button class="w-full flex justify-between items-center text-left font-semibold text-neutral-900 py-1">
-<span>Type of product</span>
+<span>{{ __('ui.product_type') }}</span>
 <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
 <!-- Filter Accordion Item 2 -->
 <div class="border-t border-subtle pt-3">
 <button class="w-full flex justify-between items-center text-left font-semibold text-neutral-900 py-1">
-<span>Shades &amp; Tones</span>
+<span>{{ __('ui.shades_tones') }}</span>
 <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
 <!-- Filter Accordion Item 3 -->
 <div class="border-t border-subtle pt-3">
 <button class="w-full flex justify-between items-center text-left font-semibold text-neutral-900 py-1">
-<span>Coverage</span>
+<span>{{ __('ui.coverage') }}</span>
 <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
 <!-- Filter Accordion Item 4 -->
 <div class="border-t border-subtle pt-3">
 <button class="w-full flex justify-between items-center text-left font-semibold text-neutral-900 py-1">
-<span>Price</span>
+<span>{{ __('ui.price') }}</span>
 <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>
 <!-- Filter Accordion Item 5 -->
 <div class="border-t border-subtle pt-3">
 <button class="w-full flex justify-between items-center text-left font-semibold text-neutral-900 py-1">
-<span>Benefits</span>
+<span>{{ __('ui.benefits') }}</span>
 <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
 </button>
 </div>

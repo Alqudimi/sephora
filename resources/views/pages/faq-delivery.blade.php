@@ -11,11 +11,11 @@
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- Breadcrumb -->
 <nav class="flex items-center space-x-2 text-on-surface-variant font-body-sm text-body-sm mb-6">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
-<a class="hover:text-primary transition-colors" href="/faq">Frequently Asked Questions</a>
+<a class="hover:text-primary transition-colors" href="/faq">{{ __('ui.faq') }}</a>
 <span class="text-outline-variant">/</span>
-<span class="text-primary font-semibold">Delivery</span>
+<span class="text-primary font-semibold">{{ __('ui.delivery') }}</span>
 </nav>
 <!-- Header Section -->
 <section class="border-b border-primary pb-8 mb-10">
@@ -50,14 +50,14 @@
         </h2>
 <nav class="space-y-1">
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md bg-primary text-on-primary font-bold" href="/faq">
-<span>Delivery</span>
+<span>{{ __('ui.delivery') }}</span>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
 <span>My Sephora</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/stores">
-<span>Stores &amp; Services</span>
+<span>{{ __('ui.stores_services') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
 <span>Online Account</span>
@@ -66,16 +66,16 @@
 <span>Online Shopping</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Products</span>
+<span>{{ __('ui.products') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Payment Methods</span>
+<span>{{ __('ui.payment_methods') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
 <span>Offers, Samples &amp; Gifts</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq/cancellation-and-refund">
-<span>Cancellation &amp; Refund</span>
+<span>{{ __('ui.cancellation_refund') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
 <span>Health &amp; Safety</span>
@@ -84,7 +84,7 @@
 <span>Corporate Information</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/gift-card-info">
-<span>Gift Cards</span>
+<span>{{ __('ui.gift_cards') }}</span>
 </a>
 </nav>
 <!-- Quick Help Card -->
@@ -493,17 +493,17 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
-<span class="font-title-md text-title-md text-primary uppercase tracking-wider">Free Delivery</span>
+<span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.free_delivery') }}</span>
 <span class="font-body-sm text-body-sm text-outline mt-0.5">Over 250 AED</span>
 </div>
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified</span>
-<span class="font-title-md text-title-md text-primary uppercase tracking-wider">100% Authentic</span>
+<span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.authentic') }}</span>
 <span class="font-body-sm text-body-sm text-outline mt-0.5">Direct luxury source</span>
 </div>
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">replay</span>
-<span class="font-title-md text-title-md text-primary uppercase tracking-wider">Easy Returns</span>
+<span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.easy_returns') }}</span>
 <span class="font-body-sm text-body-sm text-outline mt-0.5">In any UAE store</span>
 </div>
 <div class="flex flex-col items-center">

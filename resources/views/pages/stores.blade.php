@@ -10,9 +10,9 @@
 <!-- BREADCRUMBS -->
 <div class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-4">
 <nav class="flex items-center space-x-2 text-[12px] font-body-sm text-outline">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
-<span class="text-primary font-bold">Stores &amp; Services</span>
+<span class="text-primary font-bold">{{ __('ui.stores_services') }}</span>
 </nav>
 </div>
 <!-- HERO SECTION -->
@@ -624,28 +624,28 @@
 <div class="flex items-center space-x-4">
 <span class="material-symbols-outlined text-[36px] text-primary">local_shipping</span>
 <div>
-<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">Free Delivery</h4>
+<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.free_delivery') }}</h4>
 <p class="font-body-sm text-[12px] text-outline">On all orders over 250 AED</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
 <span class="material-symbols-outlined text-[36px] text-primary">verified</span>
 <div>
-<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">100% Authentic</h4>
+<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.authentic') }}</h4>
 <p class="font-body-sm text-[12px] text-outline">Direct from luxury ateliers</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
 <span class="material-symbols-outlined text-[36px] text-primary">replay</span>
 <div>
-<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">Easy Returns</h4>
+<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.easy_returns') }}</h4>
 <p class="font-body-sm text-[12px] text-outline">In any UAE Sephora store</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
 <span class="material-symbols-outlined text-[36px] text-primary">loyalty</span>
 <div>
-<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">Beauty Pass Points</h4>
+<h4 class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.beauty_pass_points') }}</h4>
 <p class="font-body-sm text-[12px] text-outline">Earn points in-store &amp; online</p>
 </div>
 </div>
@@ -656,9 +656,7 @@
 <section class="bg-surface-container-low border-b border-outline-variant py-14">
 <div class="w-full max-w-[800px] mx-auto px-4 text-center space-y-4">
 <span class="material-symbols-outlined text-[32px] text-primary">mail</span>
-<h3 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">
-        STAY CONNECTED WITH SEPHORA
-      </h3>
+<h3 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">{{ __('ui.stay_connected') }}</h3>
 <p class="font-body-md text-outline text-[14px]">
         Subscribe to receive backstage beauty invitations, private VIP masterclasses, and tailored Middle East previews.
       </p>

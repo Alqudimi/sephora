@@ -7,16 +7,16 @@
 <main class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-5">
 <!-- Breadcrumb Navigation -->
 <nav class="text-xs text-gray-500 mb-6 flex items-center space-x-2" data-purpose="breadcrumbs">
-<a class="hover:underline" href="/">Home</a>
+<a class="hover:underline" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
-<a class="hover:underline" href="/shop/new">New</a>
+<a class="hover:underline" href="/shop/new">{{ __('ui.new') }}</a>
 <span>/</span>
 <span class="text-black font-bold underline cursor-default">View all</span>
 </nav>
 <!-- Page Title & Top Filters Controls Bar -->
 <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 mb-6 gap-4">
 <div>
-<h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-black">View All</h1>
+<h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-black">{{ __('ui.view_all') }}</h1>
 <p class="text-xs sm:text-sm text-gray-500 mt-2 font-normal">471 items</p>
 </div>
 <!-- Sort Dropdown -->
@@ -24,11 +24,11 @@
 <label class="text-xs font-medium text-gray-700" for="sort">Sort by:</label>
 <div class="relative inline-block">
 <select class="appearance-none bg-white border border-gray-300 rounded px-3 py-1.5 pr-8 text-xs font-semibold focus:outline-none focus:border-black cursor-pointer" id="sort">
-<option>Recommended</option>
+<option>{{ __('ui.recommended') }}</option>
 <option>Newest Arrivals</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
-<option>Top Rated</option>
+<option>{{ __('ui.price_low_high') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
+<option>{{ __('ui.top_rated') }}</option>
 </select>
 <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-500">
 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -45,7 +45,7 @@
 <!-- New Category Filter Accordion -->
 <div class="border border-gray-200 rounded p-4 mb-5">
 <div class="flex items-center justify-between font-bold text-sm text-black pb-2 mb-2 border-b border-gray-100 cursor-pointer">
-<span>New <span class="text-xs font-normal text-gray-500">(494)</span></span>
+<span>{{ __('ui.new') }}<span class="text-xs font-normal text-gray-500">(494)</span></span>
 <svg class="w-4 h-4 text-gray-600 transform rotate-180" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -53,7 +53,7 @@
 <ul class="space-y-2.5 text-xs pt-1 pl-1">
 <li>
 <a class="font-bold text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
-<span>View All</span>
+<span>{{ __('ui.view_all') }}</span>
 <span class="text-gray-400 font-normal">(471)</span>
 </a>
 </li>
@@ -90,12 +90,12 @@
 </ul>
 </div>
 <!-- Refine Heading -->
-<h2 class="font-bold text-sm tracking-wider uppercase text-black mb-3">Refine</h2>
+<h2 class="font-bold text-sm tracking-wider uppercase text-black mb-3">{{ __('ui.refine') }}</h2>
 <!-- Facet Accordions -->
 <div class="border-t border-gray-200 divide-y divide-gray-200">
 <!-- Brands Accordion -->
 <button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Brands</span>
+<span>{{ __('ui.brands') }}</span>
 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -109,14 +109,14 @@
 </button>
 <!-- Price Accordion -->
 <button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Price</span>
+<span>{{ __('ui.price') }}</span>
 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
 </button>
 <!-- Benefits Accordion -->
 <button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Benefits</span>
+<span>{{ __('ui.benefits') }}</span>
 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -141,7 +141,7 @@
 <!-- Header Badges & Wishlist -->
 <div class="flex items-start justify-between min-h-[24px] mb-2">
 <div class="flex flex-col gap-1 items-start">
-<span class="bg-black text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">New</span>
+<span class="bg-black text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">{{ __('ui.new') }}</span>
 </div>
 <button aria-label="Add to wishlist" class="text-gray-400 hover:text-black transition-colors">
 <svg class="w-5 h-5 stroke-current" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -165,9 +165,7 @@
 </div>
 <div>
 <p class="font-bold text-sm text-black mb-3">AED {{ number_format($products->price, 2) }}</p>
-<button class="add-to-bag-btn w-full bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded-none" data-add-to-bag="{{ $products->id }}">
-                Add to Bag
-              </button>
+<button class="add-to-bag-btn w-full bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded-none" data-add-to-bag="{{ $products->id }}">{{ __('ui.add_to_bag') }}</button>
 </div>
 </article>
 @endforeach

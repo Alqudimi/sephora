@@ -117,6 +117,23 @@ class LocalizationTest extends TestCase
         $this->assertSame('تأكيد الطلب', __('messages.confirmation.heading'));
         $this->assertSame('الإمارات العربية المتحدة · العربية', __('messages.footer.country'));
     }
+
+    public function test_static_page_uses_arabic_ui_translation_keys(): void
+    {
+        $response = $this->get('/faq?lang=ar');
+
+        $response->assertOk();
+        $response->assertSee('الأسئلة الشائعة', false);
+        $response->assertDontSee('Frequently Asked Questions', false);
+        $response->assertSee('dir="rtl"', false);
+    }
+
+    public function test_shared_ui_translation_keys_exist_in_both_locales(): void
+    {
+        $english = require resource_path('lang/en/ui.php');
+        $arabic = require resource_path('lang/ar/ui.php');
+
+        $this->assertSame(array_keys($english), array_keys($arabic));
+    }
+
 }
-
-

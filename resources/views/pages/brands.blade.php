@@ -12,7 +12,7 @@
 <!-- 3. Breadcrumbs & Page Heading -->
 <div class="mb-8">
 <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-on-surface-variant font-label-caps text-label-caps tracking-widest uppercase mb-3">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
 <span class="text-primary font-bold">All brands</span>
 </nav>
@@ -58,7 +58,7 @@
 <h3 class="font-title-lg text-title-lg uppercase tracking-widest font-bold my-auto text-center group-hover:scale-105 transition-transform duration-200">
             HUDA BEAUTY
           </h3>
-<span class="font-label-caps text-label-caps text-center text-outline group-hover:text-primary transition-colors">Shop All</span>
+<span class="font-label-caps text-label-caps text-center text-outline group-hover:text-primary transition-colors">{{ __('ui.shop_all') }}</span>
 </a>
 <!-- KAYALI -->
 <a class="group p-5 bg-surface-container-lowest border border-outline-variant hover:border-primary flex flex-col justify-between hover:bg-surface-container-low transition-all duration-200 min-h-[140px]" href="/brands/kayali">
@@ -500,9 +500,7 @@
 <!-- 8. Newsletter Subscription Strip -->
 <section class="mt-16 bg-surface-container-low border border-outline-variant p-8 md:p-12 text-center max-w-4xl mx-auto">
 <span class="font-label-caps text-label-caps tracking-widest text-outline uppercase block mb-1">VIP Exclusives</span>
-<h3 class="font-headline-sm text-headline-sm uppercase font-bold tracking-tight text-primary">
-        STAY CONNECTED WITH SEPHORA
-      </h3>
+<h3 class="font-headline-sm text-headline-sm uppercase font-bold tracking-tight text-primary">{{ __('ui.stay_connected') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto mt-2 mb-6">
         Subscribe for exclusive product previews, beauty news, and VIP member offers.
       </p>

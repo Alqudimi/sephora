@@ -8,20 +8,18 @@
 <!-- Breadcrumb -->
 <nav aria-label="Breadcrumb" class="mb-4">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest uppercase text-on-primary-container">
-<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li class="select-none">/</li>
-<li><a class="hover:text-primary transition-colors" href="/shop/makeup">Makeup</a></li>
+<li><a class="hover:text-primary transition-colors" href="/shop/makeup">{{ __('ui.makeup') }}</a></li>
 <li class="select-none">/</li>
-<li class="text-primary font-bold">Makeup Palettes</li>
+<li class="text-primary font-bold">{{ __('ui.makeup_palettes') }}</li>
 </ol>
 </nav>
 <!-- 4. Category Title, Description & Sort Bar -->
 <div class="border-b border-primary pb-6 mb-8">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
 <div>
-<h1 class="font-display-hero text-headline-lg text-primary uppercase font-bold tracking-tight">
-            Makeup Palettes 
-            <span class="font-body-md text-title-md font-normal text-on-surface-variant ml-2 tracking-normal lowercase">(148 items)</span>
+<h1 class="font-display-hero text-headline-lg text-primary uppercase font-bold tracking-tight">{{ __('ui.makeup_palettes') }}<span class="font-body-md text-title-md font-normal text-on-surface-variant ml-2 tracking-normal lowercase">(148 items)</span>
 </h1>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-2">
             Curate your signature looks with all-in-one eyeshadow, contour, blush, and highlighting palettes from world-renowned beauty houses.
@@ -32,11 +30,11 @@
 <label class="font-label-caps text-label-caps uppercase text-primary font-bold whitespace-nowrap" for="sort-select">SORT BY:</label>
 <div class="relative">
 <select class="font-body-sm text-body-sm bg-surface-container-lowest border border-outline-variant py-2 pl-3 pr-8 rounded-none text-primary font-medium focus:border-primary focus:ring-0 appearance-none cursor-pointer" id="sort-select">
-<option>Recommended</option>
-<option>New Arrivals</option>
+<option>{{ __('ui.recommended') }}</option>
+<option>{{ __('ui.new_arrivals') }}</option>
 <option>Best Sellers</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
+<option>{{ __('ui.price_low_high') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
 <option>Customer Rating</option>
 </select>
 <span class="material-symbols-outlined pointer-events-none absolute right-2 top-2.5 text-[18px] text-primary">expand_more</span>
@@ -51,7 +49,7 @@
 <!-- Filter Header & Refine Actions -->
 <div class="flex items-center justify-between pb-3 border-b border-primary">
 <h2 class="font-title-lg text-title-lg uppercase tracking-wider text-primary">Filter By</h2>
-<button class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-secondary underline decoration-1">Clear All</button>
+<button class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-secondary underline decoration-1">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="flex items-center justify-between p-3 bg-surface-container-low border border-surface-container">
@@ -209,7 +207,7 @@
 <span class="text-outline">-</span>
 <input class="w-1/2 text-xs py-1.5 px-2 border border-outline-variant rounded-none text-center" placeholder="AED 500" type="text"/>
 </div>
-<button class="w-full mt-2 py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors text-xs font-bold tracking-widest uppercase">Apply</button>
+<button class="w-full mt-2 py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors text-xs font-bold tracking-widest uppercase">{{ __('ui.apply') }}</button>
 </div>
 </aside>
 <!-- 6. Main Product Grid (9 Columns on Large Screen -> 4 Columns Product Layout) -->
@@ -290,7 +288,7 @@
 </section>
 <!-- 9. Newsletter Section -->
 <section aria-label="Newsletter" class="my-16 bg-surface-container-low border border-surface-container p-8 md:p-12 text-center max-w-4xl mx-auto">
-<h3 class="font-display-hero text-headline-sm uppercase tracking-wider font-bold text-primary mb-2">STAY CONNECTED WITH SEPHORA</h3>
+<h3 class="font-display-hero text-headline-sm uppercase tracking-wider font-bold text-primary mb-2">{{ __('ui.stay_connected') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-xl mx-auto">
         Be the first to discover exclusive masterclasses, VIP product drops, and bespoke beauty perks delivered straight to your inbox.
       </p>

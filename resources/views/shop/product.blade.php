@@ -61,7 +61,7 @@
 
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
-        <a class="hover:text-black transition-colors" href="/">Home</a>
+        <a class="hover:text-black transition-colors" href="/">{{ __('ui.home') }}</a>
         <span>&rsaquo;</span>
         @if ($primaryCategory)
             <a class="hover:text-black transition-colors" href="{{ route('shop.category', ['slug' => $primaryCategory->slug]) }}">{{ $primaryCategory->name }}</a>
@@ -103,10 +103,10 @@
                     <!-- Badges -->
                     <div class="absolute top-4 left-4 z-10 flex flex-col gap-1.5 items-start pointer-events-none">
                         @if ($product->is_exclusive)
-                            <span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">Online Only</span>
+                            <span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">{{ __('ui.online_only') }}</span>
                         @endif
                         @if ($product->is_new)
-                            <span class="bg-white text-black border border-black text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">New</span>
+                            <span class="bg-white text-black border border-black text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">{{ __('ui.new') }}</span>
                         @endif
                         @if ($product->is_bestseller)
                             <span class="bg-[#1A3066] text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">Best Seller</span>
@@ -155,7 +155,7 @@
                     ({{ number_format($reviewCount) }})
                 </a>
                 <span class="text-gray-300">&bull;</span>
-                <a class="text-neutral-500 hover:text-black underline" href="#write-review">Write a review</a>
+                <a class="text-neutral-500 hover:text-black underline" href="#write-review">{{ __('ui.write_review') }}</a>
             </div>
 
             <!-- Price & Size/Variant -->
@@ -362,7 +362,7 @@
 
         <!-- Write Review Form -->
         <div id="write-review" class="mt-8 max-w-2xl">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-black mb-3">Write a review</h3>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-black mb-3">{{ __('ui.write_review') }}</h3>
             @auth
                 @if ($errors->any())
                     <div class="mb-4 border border-red-500 bg-red-50 p-3" role="alert">

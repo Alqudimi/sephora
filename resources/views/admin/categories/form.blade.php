@@ -19,7 +19,7 @@
 
     @if ($errors->any())
         <div class="border border-secondary bg-surface-container-lowest p-4 mb-6" role="alert">
-            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-2">Please fix the following</p>
+            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-2">{{ __('ui.fix_following') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -119,9 +119,7 @@
             <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 h-11 hover:bg-secondary transition-colors" type="submit">
                 {{ $isEdit ? 'Save changes' : 'Create category' }}
             </button>
-            <a class="border border-outline px-6 h-11 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('admin.categories') }}">
-                Cancel
-            </a>
+            <a class="border border-outline px-6 h-11 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('admin.categories') }}">{{ __('ui.cancel') }}</a>
         </div>
     </form>
 </div>

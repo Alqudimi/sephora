@@ -21,7 +21,7 @@
 
     @if ($errors->any())
         <div class="border border-secondary bg-surface-container-lowest p-4 mb-6" role="alert">
-            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-2">Please fix the following</p>
+            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-2">{{ __('ui.fix_following') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -53,7 +53,7 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Brand</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.brand') }}</span>
                     <select class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none" name="brand_id">
                         <option value="">— No brand —</option>
                         @foreach ($brands as $brand)
@@ -131,7 +131,7 @@
 
         {{-- Categories --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">Categories</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">{{ __('ui.categories') }}</h2>
             <p class="font-body-sm text-body-sm text-outline mb-4">A product can appear in several categories. Removing every selection hides it from all category listings.</p>
 
             <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -256,9 +256,7 @@
             <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 h-12 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" type="submit">
                 {{ $isEdit ? 'Save changes' : 'Create product' }}
             </button>
-            <a class="border border-outline px-8 h-12 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('admin.products') }}">
-                Cancel
-            </a>
+            <a class="border border-outline px-8 h-12 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('admin.products') }}">{{ __('ui.cancel') }}</a>
         </div>
     </form>
 </div>

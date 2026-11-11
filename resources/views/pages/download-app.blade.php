@@ -13,7 +13,7 @@
 <nav aria-label="Breadcrumb" class="py-2 mb-6">
 <ol class="flex items-center space-x-2 font-body-sm text-body-sm text-outline">
 <li>
-<a class="hover:text-primary transition-colors duration-150" href="/">Home</a>
+<a class="hover:text-primary transition-colors duration-150" href="/">{{ __('ui.home') }}</a>
 </li>
 <li class="select-none text-outline-variant">/</li>
 <li class="text-primary font-bold">Download the App</li>
@@ -229,25 +229,25 @@
 <!-- Badge 1 -->
 <div class="flex flex-col items-center space-y-2 border-r border-outline-variant last:border-r-0">
 <span class="material-symbols-outlined text-3xl text-primary">local_shipping</span>
-<span class="font-title-md text-title-md font-bold text-primary uppercase">Free Delivery</span>
+<span class="font-title-md text-title-md font-bold text-primary uppercase">{{ __('ui.free_delivery') }}</span>
 <span class="font-body-sm text-body-sm text-outline">Over 250 AED</span>
 </div>
 <!-- Badge 2 -->
 <div class="flex flex-col items-center space-y-2 border-r border-outline-variant last:border-r-0">
 <span class="material-symbols-outlined text-3xl text-primary">verified</span>
-<span class="font-title-md text-title-md font-bold text-primary uppercase">100% Authentic</span>
+<span class="font-title-md text-title-md font-bold text-primary uppercase">{{ __('ui.authentic') }}</span>
 <span class="font-body-sm text-body-sm text-outline">Direct luxury brands</span>
 </div>
 <!-- Badge 3 -->
 <div class="flex flex-col items-center space-y-2 border-r border-outline-variant last:border-r-0">
 <span class="material-symbols-outlined text-3xl text-primary">sync_alt</span>
-<span class="font-title-md text-title-md font-bold text-primary uppercase">Easy Returns</span>
+<span class="font-title-md text-title-md font-bold text-primary uppercase">{{ __('ui.easy_returns') }}</span>
 <span class="font-body-sm text-body-sm text-outline">In any UAE store</span>
 </div>
 <!-- Badge 4 -->
 <div class="flex flex-col items-center space-y-2">
 <span class="material-symbols-outlined text-3xl text-primary">support_agent</span>
-<span class="font-title-md text-title-md font-bold text-primary uppercase">Customer Service</span>
+<span class="font-title-md text-title-md font-bold text-primary uppercase">{{ __('ui.customer_service') }}</span>
 <span class="font-body-sm text-body-sm text-outline">Questions? Contact us</span>
 </div>
 </div>

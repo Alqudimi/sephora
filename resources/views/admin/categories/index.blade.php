@@ -5,7 +5,7 @@
 @section('content')
 <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
     <div>
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Categories</h1>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('ui.categories') }}</h1>
         <p class="font-body-sm text-body-sm text-outline mt-1">{{ number_format($categories->total()) }} categories</p>
     </div>
     <a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-5 h-11 inline-flex items-center hover:bg-surface-container-lowest hover:text-primary border border-primary transition-all" href="{{ route('admin.categories.create') }}">
@@ -20,10 +20,10 @@
                 <th class="px-4 py-3">Name</th>
                 <th class="px-4 py-3">Slug</th>
                 <th class="px-4 py-3">Parent</th>
-                <th class="px-4 py-3">Products</th>
+                <th class="px-4 py-3">{{ __('ui.products') }}</th>
                 <th class="px-4 py-3">Nav</th>
-                <th class="px-4 py-3">Status</th>
-                <th class="px-4 py-3 text-right">Actions</th>
+                <th class="px-4 py-3">{{ __('ui.status') }}</th>
+                <th class="px-4 py-3 text-right">{{ __('ui.actions') }}</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-outline-variant">
@@ -41,11 +41,11 @@
                     </td>
                     <td class="px-4 py-3">
                         <div class="flex items-center justify-end gap-3">
-                            <a class="underline hover:text-secondary" href="{{ route('admin.categories.edit', $category) }}">Edit</a>
+                            <a class="underline hover:text-secondary" href="{{ route('admin.categories.edit', $category) }}">{{ __('ui.edit') }}</a>
                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Delete {{ addslashes($category->name) }}? This cannot be undone.');">
                                 @csrf
                                 @method('DELETE')
-                                <button class="underline text-error hover:no-underline" type="submit">Delete</button>
+                                <button class="underline text-error hover:no-underline" type="submit">{{ __('ui.delete') }}</button>
                             </form>
                         </div>
                     </td>

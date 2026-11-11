@@ -12,7 +12,7 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8 md:py-12">
 <!-- Breadcrumb row -->
 <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant mb-6">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
 <span class="text-primary font-bold">Terms &amp; Conditions</span>
 </nav>
@@ -421,7 +421,7 @@
 <tbody class="divide-y divide-outline-variant">
 <tr>
 <td class="p-3 font-bold text-primary">Standard UAE Delivery (Orders &gt; 250 AED)</td>
-<td class="p-3 text-secondary font-bold">FREE</td>
+<td class="p-3 text-secondary font-bold">{{ __('ui.free') }}</td>
 <td class="p-3">1 to 2 Business Days (Dubai &amp; Abu Dhabi)</td>
 </tr>
 <tr>
@@ -436,7 +436,7 @@
 </tr>
 <tr>
 <td class="p-3 font-bold text-primary">Click &amp; Collect (Any UAE Store)</td>
-<td class="p-3 text-secondary font-bold">FREE</td>
+<td class="p-3 text-secondary font-bold">{{ __('ui.free') }}</td>
 <td class="p-3">Ready in 2 Hours during mall operating hours</td>
 </tr>
 </tbody>
@@ -604,19 +604,19 @@
 <!-- Badge 1 -->
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="local_shipping">local_shipping</span>
-<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">Free Delivery</span>
+<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('ui.free_delivery') }}</span>
 <span class="font-body-sm text-body-sm text-on-surface-variant">On all orders over 250 AED</span>
 </div>
 <!-- Badge 2 -->
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="verified">verified</span>
-<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">100% Authentic</span>
+<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('ui.authentic') }}</span>
 <span class="font-body-sm text-body-sm text-on-surface-variant">Guaranteed direct prestige origin</span>
 </div>
 <!-- Badge 3 -->
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="cached">cached</span>
-<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">Easy Returns</span>
+<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('ui.easy_returns') }}</span>
 <span class="font-body-sm text-body-sm text-on-surface-variant">In any UAE store within 14 days</span>
 </div>
 <!-- Badge 4 -->

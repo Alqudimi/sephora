@@ -196,7 +196,7 @@
                     </h2>
 
                     <div class="flex justify-between gap-4 font-body-sm text-body-sm">
-                        <span class="text-on-surface-variant">Method</span>
+                        <span class="text-on-surface-variant">{{ __('ui.method') }}</span>
                         <span class="text-primary font-semibold text-right">{{ $deliveryLabel }}</span>
                     </div>
 
@@ -261,7 +261,7 @@
 
                     <dl class="p-5 space-y-3 font-body-md text-body-md">
                         <div class="flex justify-between gap-4">
-                            <dt class="text-on-surface-variant">Subtotal</dt>
+                            <dt class="text-on-surface-variant">{{ __('ui.subtotal') }}</dt>
                             <dd class="text-primary font-semibold">{{ $currency }} {{ number_format($order->subtotal, 2) }}</dd>
                         </div>
 
@@ -292,7 +292,7 @@
                         </div>
 
                         <div class="flex justify-between items-baseline gap-4 pt-4 border-t border-primary">
-                            <dt class="font-title-lg text-title-lg text-primary uppercase tracking-wider">Total</dt>
+                            <dt class="font-title-lg text-title-lg text-primary uppercase tracking-wider">{{ __('ui.total') }}</dt>
                             <dd class="font-price-aed-lg text-price-aed-lg font-bold text-primary">{{ $currency }} {{ number_format($order->total, 2) }}</dd>
                         </div>
 

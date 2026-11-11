@@ -11,7 +11,7 @@
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-md md:py-space-lg">
 <!-- 3. BREADCRUMB -->
 <nav class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-widest">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
 <span class="text-primary font-bold">Gift Cards At Sephora</span>
 </nav>
@@ -231,7 +231,7 @@
 <div class="border-b border-primary pb-4 mb-8 flex items-baseline justify-between">
 <div>
 <span class="font-label-caps text-label-caps uppercase tracking-widest text-outline">ASSISTANCE &amp; POLICY</span>
-<h2 class="font-headline-lg text-headline-lg text-primary uppercase font-bold mt-1">Frequently Asked Questions</h2>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase font-bold mt-1">{{ __('ui.faq') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps text-on-surface-variant hidden sm:inline">12 TOPICS</span>
 </div>
@@ -413,25 +413,25 @@
 <!-- 1 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
-<h4 class="font-title-md text-title-md text-primary uppercase font-bold">Free Delivery</h4>
+<h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.free_delivery') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">On all orders over 250 AED</p>
 </div>
 <!-- 2 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified</span>
-<h4 class="font-title-md text-title-md text-primary uppercase font-bold">100% Authentic</h4>
+<h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.authentic') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Direct from luxury ateliers</p>
 </div>
 <!-- 3 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">sync</span>
-<h4 class="font-title-md text-title-md text-primary uppercase font-bold">Easy Returns</h4>
+<h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.easy_returns') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">In any UAE Sephora store</p>
 </div>
 <!-- 4 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">stars</span>
-<h4 class="font-title-md text-title-md text-primary uppercase font-bold">Beauty Pass Points</h4>
+<h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.beauty_pass_points') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Earn points on every dirham spent</p>
 </div>
 </div>

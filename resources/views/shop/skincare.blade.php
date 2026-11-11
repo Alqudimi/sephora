@@ -7,15 +7,15 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-6 md:py-8">
 <!-- Breadcrumbs -->
 <nav class="flex items-center space-x-2 text-on-surface-variant font-label-caps text-label-caps uppercase mb-4 tracking-wider">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
-<span class="text-primary font-bold">Skincare</span>
+<span class="text-primary font-bold">{{ __('ui.skincare') }}</span>
 </nav>
 <!-- Page Header & Editorial Header -->
 <div class="flex flex-col md:flex-row md:items-end justify-between hairline-b pb-6 mb-8 gap-4">
 <div>
 <div class="flex items-baseline gap-3 mb-2">
-<h1 class="font-headline-md text-headline-md font-semibold text-primary tracking-tight">Skincare</h1>
+<h1 class="font-headline-md text-headline-md font-semibold text-primary tracking-tight">{{ __('ui.skincare') }}</h1>
 <span class="font-body-md text-outline font-normal text-sm">(1,120 items)</span>
 </div>
 <p class="font-body-md text-on-surface-variant max-w-2xl text-[14px] leading-relaxed">
@@ -27,10 +27,10 @@
 <label class="font-label-caps text-label-caps uppercase text-outline" for="sort-select">Sort by:</label>
 <div class="relative inline-block">
 <select class="appearance-none bg-surface-container-lowest border border-primary pl-4 pr-10 py-2.5 text-body-sm font-title-md text-primary font-bold cursor-pointer rounded-none focus:outline-none hover:bg-surface-container-low transition-colors" id="sort-select">
-<option>Recommended</option>
+<option>{{ __('ui.recommended') }}</option>
 <option>Best Sellers</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
+<option>{{ __('ui.price_low_high') }}</option>
+<option>{{ __('ui.price_high_low') }}</option>
 <option>Newest Arrivals</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-primary text-[18px]" data-icon="expand_more">expand_more</span>
@@ -86,7 +86,7 @@
 <div class="hairline-b pb-6 mb-6">
 <div class="flex items-center justify-between mb-4">
 <h2 class="font-title-lg text-[13px] font-bold uppercase tracking-widest text-primary">REFINE</h2>
-<button class="font-label-caps text-label-caps underline uppercase text-outline hover:text-primary transition-colors">Clear All</button>
+<button class="font-label-caps text-label-caps underline uppercase text-outline hover:text-primary transition-colors">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="flex items-center justify-between py-2 border-b border-surface-container-high mb-4">

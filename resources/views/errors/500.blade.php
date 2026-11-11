@@ -20,7 +20,7 @@
         <h1>Sephora</h1>
         <h2>Something went wrong on our side.</h2>
         <p>Our team has been notified and is working on it. Please try again in a few moments.</p>
-        <a class="btn" href="/">Back to Home</a>
+        <a class="btn" href="/">{{ __('ui.back_home') }}</a>
     </div>
 </body>
 </html>

@@ -14,11 +14,11 @@
 <!-- Breadcrumb -->
 <nav aria-label="Breadcrumb" class="mb-4">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span>/</span></li>
-<li><a class="hover:text-primary transition-colors" href="/faq">Frequently Asked Questions</a></li>
+<li><a class="hover:text-primary transition-colors" href="/faq">{{ __('ui.faq') }}</a></li>
 <li><span>/</span></li>
-<li class="text-primary font-bold">Cancellation &amp; Refund</li>
+<li class="text-primary font-bold">{{ __('ui.cancellation_refund') }}</li>
 </ol>
 </nav>
 <!-- Editorial Header Block -->
@@ -117,7 +117,7 @@
 </li>
 <li>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface hover:bg-surface-container transition-colors" href="/stores">
-<span>Stores &amp; Services</span>
+<span>{{ __('ui.stores_services') }}</span>
 <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
 </a>
 </li>
@@ -135,13 +135,13 @@
 </li>
 <li>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface hover:bg-surface-container transition-colors" href="/faq">
-<span>Products</span>
+<span>{{ __('ui.products') }}</span>
 <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
 </a>
 </li>
 <li>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface hover:bg-surface-container transition-colors" href="/faq">
-<span>Payment Methods</span>
+<span>{{ __('ui.payment_methods') }}</span>
 <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
 </a>
 </li>
@@ -153,14 +153,14 @@
 </li>
 <li>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface hover:bg-surface-container transition-colors" href="/faq">
-<span>Delivery</span>
+<span>{{ __('ui.delivery') }}</span>
 <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
 </a>
 </li>
 <!-- Active Nav Item -->
 <li>
 <a class="flex items-center justify-between px-3 py-2.5 bg-primary text-on-primary font-title-md text-title-md font-bold" href="/faq/cancellation-and-refund">
-<span>Cancellation &amp; Refund</span>
+<span>{{ __('ui.cancellation_refund') }}</span>
 <span class="material-symbols-outlined text-sm text-on-primary">chevron_right</span>
 </a>
 </li>
@@ -178,7 +178,7 @@
 </li>
 <li>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface hover:bg-surface-container transition-colors" href="/gift-card-info">
-<span>Gift Cards</span>
+<span>{{ __('ui.gift_cards') }}</span>
 <span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
 </a>
 </li>
@@ -530,19 +530,19 @@
 <!-- Badge 1 -->
 <div class="flex flex-col items-center justify-center p-3">
 <span class="material-symbols-outlined text-3xl text-primary mb-2">local_shipping</span>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary">Free Delivery</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary">{{ __('ui.free_delivery') }}</h4>
 <span class="font-body-sm text-body-sm text-outline">Over 250 AED</span>
 </div>
 <!-- Badge 2 -->
 <div class="flex flex-col items-center justify-center p-3 border-l border-outline-variant">
 <span class="material-symbols-outlined text-3xl text-primary mb-2">verified</span>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary">100% Authentic</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary">{{ __('ui.authentic') }}</h4>
 <span class="font-body-sm text-body-sm text-outline">Direct luxury source</span>
 </div>
 <!-- Badge 3 -->
 <div class="flex flex-col items-center justify-center p-3 border-l-0 md:border-l border-outline-variant">
 <span class="material-symbols-outlined text-3xl text-primary mb-2">cached</span>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary">Easy Returns</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary">{{ __('ui.easy_returns') }}</h4>
 <span class="font-body-sm text-body-sm text-outline">In any UAE store</span>
 </div>
 <!-- Badge 4 -->

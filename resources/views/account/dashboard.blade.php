@@ -127,11 +127,11 @@
     {{-- Account shortcuts --}}
     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.settings') }}">
-            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">Settings</h2>
+            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.settings') }}</h2>
             <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Update your profile, password and preferences.</p>
         </a>
         <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.country-language') }}">
-            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">Country &amp; language</h2>
+            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.country_language') }}</h2>
             <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Choose the language used on your account.</p>
         </a>
         <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.contact') }}">

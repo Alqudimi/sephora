@@ -10,19 +10,17 @@
 <!-- 3. BREADCRUMBS -->
 <nav aria-label="Breadcrumb" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-2">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
-<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span class="text-outline">/</span></li>
-<li><a class="hover:text-primary transition-colors" href="/my-account">My Account</a></li>
+<li><a class="hover:text-primary transition-colors" href="/my-account">{{ __('ui.my_account') }}</a></li>
 <li><span class="text-outline">/</span></li>
-<li class="text-primary font-bold">Contact Us</li>
+<li class="text-primary font-bold">{{ __('ui.contact_us') }}</li>
 </ol>
 </nav>
 <!-- 4. ACCOUNT NAVIGATION TABS -->
 <section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-4 pb-8">
 <div class="flex items-center gap-1 border-b border-primary overflow-x-auto scrollbar-none">
-<a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/my-account">
-        My Account
-      </a>
+<a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/my-account">{{ __('ui.my_account') }}</a>
 <a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/">
         MY SEPHORA
       </a>
@@ -44,7 +42,7 @@
 <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-primary pb-6">
 <div>
 <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-2 font-bold">Client Support &amp; Concierge</span>
-<h1 class="font-display-hero text-headline-lg lg:text-display-hero text-primary">Contact Us</h1>
+<h1 class="font-display-hero text-headline-lg lg:text-display-hero text-primary">{{ __('ui.contact_us') }}</h1>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-4 md:mt-0">
           Our dedicated luxury beauty advisors are available across the UAE &amp; GCC to assist with personal formulations, order consultations, and Beauty Pass privileges.
@@ -293,7 +291,7 @@
 <span class="material-symbols-outlined text-primary text-2xl">local_shipping</span>
 </div>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">Free Delivery</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.free_delivery') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Over 250 AED across UAE with temperature-controlled dispatch.</p>
 </div>
 </div>
@@ -303,7 +301,7 @@
 <span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
 </div>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">100% Authentic</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.authentic') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Directly sourced and guaranteed authentic from prestige beauty houses.</p>
 </div>
 </div>
@@ -313,7 +311,7 @@
 <span class="material-symbols-outlined text-primary text-2xl">restart_alt</span>
 </div>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">Easy Returns</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.easy_returns') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">In any UAE Sephora boutique within 14 days of purchase.</p>
 </div>
 </div>
@@ -323,7 +321,7 @@
 <span class="material-symbols-outlined text-primary text-2xl">support_agent</span>
 </div>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">Customer Service</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.customer_service') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Questions? Toll-Free 800 7374672 daily 10:00 am - 10:00 pm.</p>
 </div>
 </div>

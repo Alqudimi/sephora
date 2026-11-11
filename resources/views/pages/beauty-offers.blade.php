@@ -11,9 +11,9 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- BREADCRUMBS -->
 <nav class="flex items-center space-x-2 text-outline font-label-caps text-label-caps uppercase mb-6">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
-<span class="text-primary font-bold">Beauty Offers</span>
+<span class="text-primary font-bold">{{ __('ui.beauty_offers') }}</span>
 </nav>
 <!-- EDITORIAL HERO HEADER & BANNER -->
 <section class="border border-primary bg-surface-container-lowest p-8 md:p-12 mb-10 relative overflow-hidden">
@@ -21,9 +21,7 @@
 <div class="inline-block bg-primary text-on-primary font-label-caps text-label-caps uppercase px-2.5 py-1 mb-3">
           Complimentary Gifts &amp; Deluxe Treats
         </div>
-<h1 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight mb-4">
-          Beauty Offers
-        </h1>
+<h1 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight mb-4">{{ __('ui.beauty_offers') }}</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
           Discover our exclusive complimentary gifts, limited-edition deluxe miniatures, and brand offers available with your purchases online across the UAE. Valid while promotional supplies last.
         </p>
@@ -749,22 +747,22 @@
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 <div class="p-4 border-r border-outline-variant last:border-none">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
-<h4 class="font-title-md text-title-md uppercase font-bold text-primary">Free Delivery</h4>
+<h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.free_delivery') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Over 250 AED across UAE</p>
 </div>
 <div class="p-4 border-r border-outline-variant last:border-none">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified_user</span>
-<h4 class="font-title-md text-title-md uppercase font-bold text-primary">100% Authentic</h4>
+<h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.authentic') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Official brand partnerships</p>
 </div>
 <div class="p-4 border-r border-outline-variant last:border-none">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">replay</span>
-<h4 class="font-title-md text-title-md uppercase font-bold text-primary">Easy Returns</h4>
+<h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.easy_returns') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">In any UAE store</p>
 </div>
 <div class="p-4">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">support_agent</span>
-<h4 class="font-title-md text-title-md uppercase font-bold text-primary">Customer Service</h4>
+<h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.customer_service') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Dedicated support (800 7374672)</p>
 </div>
 </div>

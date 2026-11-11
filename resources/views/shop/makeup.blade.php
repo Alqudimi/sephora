@@ -9,14 +9,14 @@
 <section class="mb-8">
 <nav aria-label="Breadcrumb" class="mb-4">
 <ol class="flex items-center space-x-2 font-body-sm text-body-sm text-on-surface-variant">
-<li><a class="hover:text-primary transition-colors" href="/">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span class="text-outline-variant">/</span></li>
-<li aria-current="page" class="font-bold text-on-surface">Makeup</li>
+<li aria-current="page" class="font-bold text-on-surface">{{ __('ui.makeup') }}</li>
 </ol>
 </nav>
 <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-outline-variant pb-6 gap-4">
 <div class="flex items-baseline space-x-4">
-<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Makeup</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">{{ __('ui.makeup') }}</h1>
 <span class="font-body-md text-body-md text-on-surface-variant">1,240 items</span>
 </div>
 <!-- Sorting Dropdown -->
@@ -24,7 +24,7 @@
 <label class="sr-only" for="sort-select">Sort products</label>
 <div class="relative inline-block text-left">
 <button aria-expanded="false" aria-haspopup="true" class="inline-flex items-center justify-between border border-primary bg-surface-container-lowest px-4 py-2 text-on-surface font-title-md text-title-md min-w-[220px] focus:outline-none" id="sort-menu-button" type="button">
-<span>Sort by: <span class="font-normal text-on-surface-variant">Recommended</span></span>
+<span>Sort by: <span class="font-normal text-on-surface-variant">{{ __('ui.recommended') }}</span></span>
 <span aria-hidden="true" class="material-symbols-outlined text-sm ml-2">expand_more</span>
 </button>
 </div>
@@ -38,19 +38,19 @@
 <!-- Accordion: Categories -->
 <div class="border-b border-outline-variant pb-6">
 <h2 class="font-title-lg text-title-lg tracking-wider uppercase mb-4 text-primary flex items-center justify-between">
-<span>Categories</span>
+<span>{{ __('ui.categories') }}</span>
 <span aria-hidden="true" class="material-symbols-outlined text-sm">expand_less</span>
 </h2>
 <ul class="space-y-2.5 font-body-md text-body-md text-on-surface">
 <li>
 <a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
-<span class="group-hover:translate-x-1 transition-transform">Face</span>
+<span class="group-hover:translate-x-1 transition-transform">{{ __('ui.face') }}</span>
 <span class="text-on-surface-variant text-body-sm">(412)</span>
 </a>
 </li>
 <li>
 <a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
-<span class="group-hover:translate-x-1 transition-transform">Lips</span>
+<span class="group-hover:translate-x-1 transition-transform">{{ __('ui.lips') }}</span>
 <span class="text-on-surface-variant text-body-sm">(280)</span>
 </a>
 </li>
@@ -74,7 +74,7 @@
 </li>
 <li>
 <a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
-<span class="group-hover:translate-x-1 transition-transform">Makeup Palettes</span>
+<span class="group-hover:translate-x-1 transition-transform">{{ __('ui.makeup_palettes') }}</span>
 <span class="text-on-surface-variant text-body-sm">(54)</span>
 </a>
 </li>
@@ -89,8 +89,8 @@
 <!-- Section: Refine -->
 <div class="space-y-4">
 <div class="flex items-center justify-between pb-2 border-b border-outline-variant">
-<h2 class="font-title-lg text-title-lg tracking-wider uppercase text-primary">Refine</h2>
-<button class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary underline">Clear All</button>
+<h2 class="font-title-lg text-title-lg tracking-wider uppercase text-primary">{{ __('ui.refine') }}</h2>
+<button class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-primary underline">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="py-3 flex items-center justify-between border-b border-outline-variant">
@@ -105,7 +105,7 @@
 <!-- Brand -->
 <details class="group border-b border-outline-variant py-3" open="">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Brand</span>
+<span>{{ __('ui.brand') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 space-y-2 max-h-48 overflow-y-auto custom-scroll pr-2">
@@ -155,7 +155,7 @@
 <!-- Shades & Tones -->
 <details class="group border-b border-outline-variant py-3">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Shades &amp; Tones</span>
+<span>{{ __('ui.shades_tones') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 grid grid-cols-5 gap-2">
@@ -190,7 +190,7 @@
 <!-- Coverage -->
 <details class="group border-b border-outline-variant py-3">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Coverage</span>
+<span>{{ __('ui.coverage') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 space-y-2 text-body-sm">
@@ -211,7 +211,7 @@
 <!-- Price -->
 <details class="group border-b border-outline-variant py-3">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Price</span>
+<span>{{ __('ui.price') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 space-y-2 text-body-sm">
@@ -232,7 +232,7 @@
 <!-- Benefits -->
 <details class="group border-b border-outline-variant py-3">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Benefits</span>
+<span>{{ __('ui.benefits') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 space-y-2 text-body-sm">
@@ -361,7 +361,7 @@
 </section>
 <!-- 8. VIP / Newsletter Section -->
 <section class="my-16 py-12 px-6 bg-surface-container-low border border-outline-variant text-center max-w-4xl mx-auto">
-<h3 class="font-headline-md text-headline-md uppercase tracking-widest text-primary mb-3">STAY CONNECTED WITH SEPHORA</h3>
+<h3 class="font-headline-md text-headline-md uppercase tracking-widest text-primary mb-3">{{ __('ui.stay_connected') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto mb-6">
         Sign up to receive early access to new launches, gifts with purchase and holiday exclusives.
       </p>

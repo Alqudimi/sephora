@@ -11,7 +11,7 @@
 <!-- Category Tree Box -->
 <div class="border border-neutral-200 p-4 rounded-sm">
 <div class="flex items-center justify-between font-bold text-sm text-black cursor-pointer pb-2">
-<span>Gifts <span class="font-normal text-neutral-500 text-xs">(772)</span></span>
+<span>{{ __('ui.gifts') }}<span class="font-normal text-neutral-500 text-xs">(772)</span></span>
 <svg class="w-4 h-4 text-neutral-700" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -24,7 +24,7 @@
 </div>
 <!-- Refine Section Title -->
 <div>
-<h2 class="font-bold text-sm uppercase tracking-wide text-black mb-3">Refine</h2>
+<h2 class="font-bold text-sm uppercase tracking-wide text-black mb-3">{{ __('ui.refine') }}</h2>
 <div class="border-t border-neutral-200">
 <!-- Exclusivity Toggle Item -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between">
@@ -36,14 +36,14 @@
 </div>
 <!-- Type of Product Accordion -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between cursor-pointer hover:bg-neutral-50 px-1">
-<span class="text-sm font-medium text-black">Type of product</span>
+<span class="text-sm font-medium text-black">{{ __('ui.product_type') }}</span>
 <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
 </div>
 <!-- Brands Accordion -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between cursor-pointer hover:bg-neutral-50 px-1">
-<span class="text-sm font-medium text-black">Brands</span>
+<span class="text-sm font-medium text-black">{{ __('ui.brands') }}</span>
 <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -57,21 +57,21 @@
 </div>
 <!-- Coverage Accordion -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between cursor-pointer hover:bg-neutral-50 px-1">
-<span class="text-sm font-medium text-black">Coverage</span>
+<span class="text-sm font-medium text-black">{{ __('ui.coverage') }}</span>
 <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
 </div>
 <!-- Price Accordion -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between cursor-pointer hover:bg-neutral-50 px-1">
-<span class="text-sm font-medium text-black">Price</span>
+<span class="text-sm font-medium text-black">{{ __('ui.price') }}</span>
 <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
 </div>
 <!-- Benefits Accordion -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between cursor-pointer hover:bg-neutral-50 px-1">
-<span class="text-sm font-medium text-black">Benefits</span>
+<span class="text-sm font-medium text-black">{{ __('ui.benefits') }}</span>
 <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -89,7 +89,7 @@
 <span class="text-neutral-600 font-medium">362 items</span>
 <!-- Sort dropdown -->
 <div class="relative inline-flex items-center cursor-pointer group">
-<span class="font-normal text-neutral-800">Sort by: <strong class="font-bold underline text-black">Recommended</strong></span>
+<span class="font-normal text-neutral-800">Sort by: <strong class="font-bold underline text-black">{{ __('ui.recommended') }}</strong></span>
 <svg class="w-4 h-4 ml-1 text-black" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -137,9 +137,7 @@
 <!-- Price & Button -->
 <div class="mt-4 pt-2">
 <p class="text-sm font-bold text-black mb-3">AED {{ number_format($products->price, 2) }}</p>
-<button class="w-full bg-black text-white text-xs font-bold py-2.5 uppercase tracking-wide hover:bg-neutral-800 transition-colors" data-add-to-bag="{{ $products->id }}">
-                Add to Bag
-              </button>
+<button class="w-full bg-black text-white text-xs font-bold py-2.5 uppercase tracking-wide hover:bg-neutral-800 transition-colors" data-add-to-bag="{{ $products->id }}">{{ __('ui.add_to_bag') }}</button>
 </div>
 </article>
 @endforeach

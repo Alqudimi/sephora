@@ -72,7 +72,7 @@
 
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
-        <a class="hover:text-black transition-colors" href="/">Home</a>
+        <a class="hover:text-black transition-colors" href="/">{{ __('ui.home') }}</a>
         <span>/</span>
         @if ($category->slug !== 'all')
             <a class="hover:text-black transition-colors" href="{{ route('shop.all') }}">Shop</a>
@@ -115,7 +115,7 @@
 
                     <!-- Brand Filter -->
                     <div>
-                        <label for="filter-brand" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Brand</label>
+                        <label for="filter-brand" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">{{ __('ui.brand') }}</label>
                         <select id="filter-brand" name="brand" class="w-full h-10 border border-gray-300 rounded-sm bg-white px-3 text-xs text-black focus:outline-none focus:border-black">
                             <option value="">All Brands</option>
                             @foreach ($brands as $brand)
@@ -146,16 +146,14 @@
 
                     <!-- Quick Checkbox Refinements -->
                     <fieldset>
-                        <legend class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Refine</legend>
+                        <legend class="block text-xs font-bold uppercase tracking-wider text-black mb-2">{{ __('ui.refine') }}</legend>
                         <div class="space-y-2.5 text-xs text-neutral-700">
                             <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
                                 <input type="checkbox" name="clean" value="1" @checked($filters['clean']) class="rounded-sm border-gray-300 text-black focus:ring-black">
                                 Clean at Sephora
                             </label>
                             <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
-                                <input type="checkbox" name="new" value="1" @checked($filters['new']) class="rounded-sm border-gray-300 text-black focus:ring-black">
-                                New Arrivals
-                            </label>
+                                <input type="checkbox" name="new" value="1" @checked($filters['new']) class="rounded-sm border-gray-300 text-black focus:ring-black">{{ __('ui.new_arrivals') }}</label>
                             <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
                                 <input type="checkbox" name="in_stock" value="1" @checked($filters['in_stock']) class="rounded-sm border-gray-300 text-black focus:ring-black">
                                 In Stock Only
@@ -176,9 +174,7 @@
                             Apply Filters
                         </button>
                         <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
-                           class="h-10 flex items-center justify-center border border-gray-300 rounded-sm text-black text-xs font-bold uppercase tracking-wider hover:border-black transition-colors">
-                            Clear All
-                        </a>
+                           class="h-10 flex items-center justify-center border border-gray-300 rounded-sm text-black text-xs font-bold uppercase tracking-wider hover:border-black transition-colors">{{ __('ui.clear_all') }}</a>
                     </div>
                 </form>
             </details>
@@ -201,7 +197,7 @@
                             <input type="hidden" name="{{ $key }}" value="{{ $value }}">
                         @endif
                     @endforeach
-                    <label for="sort" class="text-xs font-bold uppercase tracking-wider text-neutral-600 whitespace-nowrap">Sort By:</label>
+                    <label for="sort" class="text-xs font-bold uppercase tracking-wider text-neutral-600 whitespace-nowrap">{{ __('ui.sort_by') }}</label>
                     <select id="sort" name="sort" class="h-9 border border-gray-300 rounded-sm bg-white px-3 text-xs text-black focus:outline-none focus:border-black" onchange="this.form.submit()">
                         @foreach ($sortOptions as $value => $label)
                             <option value="{{ $value }}" @selected($filters['sort'] === $value)>{{ $label }}</option>
@@ -232,7 +228,7 @@
             <!-- Product Cards -->
             @if ($products->isEmpty())
                 <div class="border border-gray-200 rounded-sm bg-white text-center py-20 px-6">
-                    <h3 class="text-lg font-bold text-black mb-2">No products match these filters</h3>
+                    <h3 class="text-lg font-bold text-black mb-2">{{ __('ui.no_products_filters') }}</h3>
                     <p class="text-xs text-neutral-500 mb-5">Try removing some filters or browse all categories.</p>
                     <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
                        class="inline-block bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-sm hover:bg-neutral-800 transition-colors">

@@ -134,11 +134,10 @@
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
                 <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">Limited-Edition Sets</span>
-                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">The Holiday Collection</h3>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('ui.holiday_collection') }}</h3>
                 <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Iconic vaults, festive bundles, and exclusive beauty sets.</p>
             </div>
-            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/gifts">
-                Shop Now <span aria-hidden="true">&rarr;</span>
+            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/gifts">{{ __('ui.shop_now') }}<span aria-hidden="true">&rarr;</span>
             </a>
         </div>
 
@@ -233,8 +232,7 @@
                 <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Just Dropped.</h3>
                 <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">The newest arrivals and viral formulations just landed at Sephora UAE.</p>
             </div>
-            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/new">
-                Shop Now <span aria-hidden="true">&rarr;</span>
+            <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/new">{{ __('ui.shop_now') }}<span aria-hidden="true">&rarr;</span>
             </a>
         </div>
 
@@ -313,11 +311,10 @@
             <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
                 <div>
                     <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#BBA08B]">Gifts With Purchase</span>
-                    <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Beauty Offers</h3>
+                    <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('ui.beauty_offers') }}</h3>
                     <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Exclusive complimentary deluxe miniatures with your favorite brand orders.</p>
                 </div>
-                <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/beauty-offers">
-                    View All <span aria-hidden="true">&rarr;</span>
+                <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/beauty-offers">{{ __('ui.view_all') }}<span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
 
@@ -397,7 +394,7 @@
             <div class="bg-neutral-900 text-white p-6 sm:p-8 rounded-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
                 <div class="relative z-10 max-w-md">
                     <span class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Perfect Gift</span>
-                    <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">Gift Cards</h4>
+                    <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">{{ __('ui.gift_cards') }}</h4>
                     <p class="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">Beauty that Fits Every Wish. Deliver joy instantly via email or physical cards.</p>
                 </div>
                 <div class="relative z-10 pt-4">
@@ -433,7 +430,7 @@
                         <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Free Delivery</h4>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.free_delivery') }}</h4>
                 <p class="text-xs text-neutral-500 mt-1">Over 250 AED</p>
             </div>
 
@@ -443,7 +440,7 @@
                         <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Secure Payment</h4>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.secure_payment') }}</h4>
                 <p class="text-xs text-neutral-500 mt-1">100% Secure Checkout</p>
             </div>
 
@@ -453,7 +450,7 @@
                         <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Easy Returns</h4>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.easy_returns') }}</h4>
                 <p class="text-xs text-neutral-500 mt-1">In any UAE store</p>
             </div>
 
@@ -463,7 +460,7 @@
                         <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">Customer Service</h4>
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.customer_service') }}</h4>
                 <p class="text-xs text-neutral-500 mt-1">Questions? Call 800-SEPHORA</p>
             </div>
         </div>

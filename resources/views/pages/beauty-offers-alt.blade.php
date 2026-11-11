@@ -13,18 +13,16 @@
 <nav aria-label="Breadcrumb" class="py-space-md">
 <ol class="flex items-center gap-space-xs font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">
 <li>
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 </li>
 <li class="select-none text-outline">/</li>
-<li aria-current="page" class="text-primary font-bold">Beauty Offers</li>
+<li aria-current="page" class="text-primary font-bold">{{ __('ui.beauty_offers') }}</li>
 </ol>
 </nav>
 <!-- 4. PAGE HEADER & QUICK FILTER CHIPS -->
 <section class="pb-space-xl pt-2">
 <div class="border-b border-outline-variant pb-space-lg">
-<h1 class="font-headline-lg text-headline-lg md:text-display-hero text-primary tracking-tight">
-          Beauty Offers
-        </h1>
+<h1 class="font-headline-lg text-headline-lg md:text-display-hero text-primary tracking-tight">{{ __('ui.beauty_offers') }}</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs max-w-2xl">
           Explore our exclusive gifts with purchase, deluxe samples, and limited-edition beauty bundles.
         </p>
@@ -33,15 +31,9 @@
 <button class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-2 border border-primary transition-colors duration-150" type="button">
             All Offers (19)
           </button>
-<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">
-            Fragrance
-          </button>
-<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">
-            Makeup
-          </button>
-<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">
-            Skincare
-          </button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.fragrance') }}</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.makeup') }}</button>
+<button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.skincare') }}</button>
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">
             Haircare
           </button>
@@ -67,7 +59,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 2: TARTE -->
@@ -84,7 +76,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 3: NARCISO RODRIGUEZ -->
@@ -100,7 +92,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 4: RABANNE -->
@@ -116,7 +108,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 5: PRADA -->
@@ -133,7 +125,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 6: NARS -->
@@ -150,7 +142,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 7: ELEMIS -->
@@ -167,7 +159,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 8: COLOR WOW -->
@@ -183,7 +175,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 9: TATCHA -->
@@ -200,7 +192,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 10: MILK MAKEUP -->
@@ -216,7 +208,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 11: BIODANCE -->
@@ -232,7 +224,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 12: CLARINS -->
@@ -248,7 +240,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 13: HOURGLASS -->
@@ -264,7 +256,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 14: GUCCI -->
@@ -280,7 +272,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 15: HUDA BEAUTY -->
@@ -297,7 +289,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 16: CAROLINA HERRERA -->
@@ -313,7 +305,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 17: BENEFIT -->
@@ -330,7 +322,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 18: URBAN DECAY -->
@@ -347,7 +339,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 <!-- CARD 19: LANCÔME -->
@@ -364,7 +356,7 @@
 </div>
 </div>
 <div class="p-space-md pt-0 mt-2">
-<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">Shop Now</a>
+<a href="/shop" class="w-full bg-primary hover:bg-surface-container-lowest text-on-primary hover:text-primary border border-primary font-label-caps text-label-caps py-3 transition-colors duration-200">{{ __('ui.shop_now') }}</a>
 </div>
 </article>
 </div>
@@ -376,7 +368,7 @@
 <div class="flex items-center gap-space-md p-2 justify-center lg:justify-start">
 <span class="material-symbols-outlined text-[32px] text-primary">local_shipping</span>
 <div>
-<h3 class="font-title-md text-title-md text-primary">Free Delivery</h3>
+<h3 class="font-title-md text-title-md text-primary">{{ __('ui.free_delivery') }}</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">On orders over 250 AED</p>
 </div>
 </div>
@@ -384,7 +376,7 @@
 <div class="flex items-center gap-space-md p-2 justify-center lg:justify-start">
 <span class="material-symbols-outlined text-[32px] text-primary">verified</span>
 <div>
-<h3 class="font-title-md text-title-md text-primary">100% Authentic</h3>
+<h3 class="font-title-md text-title-md text-primary">{{ __('ui.authentic') }}</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Direct from official brands</p>
 </div>
 </div>
@@ -400,7 +392,7 @@
 <div class="flex items-center gap-space-md p-2 justify-center lg:justify-start">
 <span class="material-symbols-outlined text-[32px] text-primary">card_membership</span>
 <div>
-<h3 class="font-title-md text-title-md text-primary">Beauty Pass Points</h3>
+<h3 class="font-title-md text-title-md text-primary">{{ __('ui.beauty_pass_points') }}</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Earn with every order</p>
 </div>
 </div>

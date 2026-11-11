@@ -11,7 +11,7 @@
 <!-- Categories Accordion (Open) -->
 <div class="border-b border-outline-variant pb-6">
 <div class="flex items-center justify-between mb-4 cursor-pointer">
-<h2 class="font-title-lg text-title-lg uppercase tracking-wider text-primary">Categories</h2>
+<h2 class="font-title-lg text-title-lg uppercase tracking-wider text-primary">{{ __('ui.categories') }}</h2>
 <span class="material-symbols-outlined text-lg" data-icon="expand_less">expand_less</span>
 </div>
 <ul class="space-y-2.5 text-body-md font-body-md">
@@ -75,9 +75,7 @@
 <div class="space-y-6">
 <div class="flex items-center justify-between">
 <h3 class="font-title-lg text-title-lg uppercase tracking-wider text-primary">REFINE</h3>
-<button class="font-label-caps text-label-caps uppercase text-outline underline hover:text-primary transition-colors">
-              Clear All
-            </button>
+<button class="font-label-caps text-label-caps uppercase text-outline underline hover:text-primary transition-colors">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="flex items-center justify-between p-3 bg-surface-container-low border border-outline-variant/60">
@@ -90,7 +88,7 @@
 <!-- Brand Filter Section -->
 <div class="border-b border-outline-variant pb-6">
 <div class="flex items-center justify-between mb-3 cursor-pointer">
-<span class="font-title-md text-title-md uppercase tracking-wider text-primary">Brand</span>
+<span class="font-title-md text-title-md uppercase tracking-wider text-primary">{{ __('ui.brand') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
 </div>
 <!-- Search Inside Brands -->
@@ -157,7 +155,7 @@
 </div>
 <div class="border-b border-outline-variant pb-4">
 <button class="w-full flex items-center justify-between text-left font-title-md text-title-md uppercase tracking-wider text-primary py-2 hover:opacity-80">
-<span>Coverage</span>
+<span>{{ __('ui.coverage') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
 </button>
 </div>
@@ -175,13 +173,13 @@
 </div>
 <div class="border-b border-outline-variant pb-4">
 <button class="w-full flex items-center justify-between text-left font-title-md text-title-md uppercase tracking-wider text-primary py-2 hover:opacity-80">
-<span>Benefits</span>
+<span>{{ __('ui.benefits') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
 </button>
 </div>
 <div class="border-b border-outline-variant pb-4">
 <button class="w-full flex items-center justify-between text-left font-title-md text-title-md uppercase tracking-wider text-primary py-2 hover:opacity-80">
-<span>Price</span>
+<span>{{ __('ui.price') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
 </button>
 </div>

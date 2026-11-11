@@ -12,7 +12,7 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-5">
 <!-- Breadcrumb -->
 <nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase text-[10px] tracking-wider mb-6">
-<a class="hover:text-primary transition-colors" href="/">Home</a>
+<a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
 <span class="text-primary font-bold">Clean + Planet Aware at Sephora</span>
 </nav>
@@ -61,9 +61,7 @@
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto mb-6">
           Discover beauty backed by environmental commitments and created without certain ingredients. Transparency, uncompromising efficacy, and radiant formulations.
         </p>
-<button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-8 py-3.5 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all duration-200">
-          Learn More
-        </button>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-8 py-3.5 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all duration-200">{{ __('ui.learn_more') }}</button>
 </section>
 <!-- 4. Clean Skincare Carousel & Grid -->
 <section class="mb-16">
@@ -108,7 +106,7 @@
 <!-- Item 2 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img alt="Drunk Elephant PLUMP-C Lip Mask" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_fa93b718f81461ee.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -136,7 +134,7 @@
 <!-- Item 3 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img alt="Caudalie Vinoclean Instant Detox Mask" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_0d65c90c90a4cac3.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -206,7 +204,7 @@
 <!-- Makeup 1 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img alt="Milk Makeup Mini Kush Big Hit Volumizing Mascara" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_0ac071ffad051a87.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -234,7 +232,7 @@
 <!-- Makeup 2 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img alt="TOWER 28 GetSet Blur + Set Matte Powder Blush" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_5906b63ae9b02a83.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -262,7 +260,7 @@
 <!-- Makeup 3 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="Kosas Revealer Extra Bright Serum-Powered Color Correctors bottle in radiant editorial light with crisp reflection on white counter." src="{{ asset('images/content/img_2e0a236f76fa29c3.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -290,7 +288,7 @@
 <!-- Makeup 4 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="ILIA Limitless Lash Lengthening Clean Mascara white sleek tube in luxury minimalist studio composition with pure light." src="{{ asset('images/content/img_6fc11dad299df6da.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -332,7 +330,7 @@
 <!-- Hair 1 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img alt="Gisou Honey Gloss Ceramide Therapy Hydrating Shampoo" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_f69ae8dfcb0a1e03.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -360,7 +358,7 @@
 <!-- Hair 2 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="Amika Frizz-Me-Not Anti-Frizz Treatment spray bottle photographed in a luxury studio setting with bright editorial light and high sharpness." src="{{ asset('images/content/img_35110e8c9c1ede6c.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -416,7 +414,7 @@
 <!-- Hair 4 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="Fenty Hair The Comeback Kid Instant Damage Treatment tube showcasing modern packaging with crisp black outline framing." src="{{ asset('images/content/img_f6846622fa702a8a.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -459,8 +457,8 @@
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
 <div class="absolute top-3 left-3 flex flex-col gap-1">
-<span class="bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
-<span class="bg-surface-container-highest text-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Online Only</span>
+<span class="bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
+<span class="bg-surface-container-highest text-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.online_only') }}</span>
 </div>
 <img alt="PHLUR Amber Haze Hair and Body Fragrance Mist" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_6a3f9451eba456cb.jpg') }}"/>
 </div>
@@ -489,7 +487,7 @@
 <!-- Fragrance 2 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="PHLUR Cherry Stem Eau de Parfum bottle with crimson luxury glass in sharp studio setting." src="{{ asset('images/content/img_193583fe1670d2f2.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -517,7 +515,7 @@
 <!-- Fragrance 3 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="PHLUR Heavy Cream Hair and Body Fragrance Mist bottle with soft frosted texture in premium monochromatic light." src="{{ asset('images/content/img_f51babaa8138b90b.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -545,7 +543,7 @@
 <!-- Fragrance 4 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">Exclusive</span>
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.exclusive') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="PHLUR Missing Person Eau de Parfum minimalist glass flacon against an pristine editorial backdrop." src="{{ asset('images/content/img_ea998308c005f3b8.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -667,7 +665,7 @@
 </section>
 <!-- 10. Clean at Sephora FAQs Accordion -->
 <section class="border border-primary p-8 md:p-12 mb-16 bg-surface-container-lowest">
-<h2 class="font-headline-md text-headline-md text-primary mb-8 text-center">Frequently Asked Questions</h2>
+<h2 class="font-headline-md text-headline-md text-primary mb-8 text-center">{{ __('ui.faq') }}</h2>
 <div class="divide-y divide-outline-variant border-t border-b border-outline-variant max-w-3xl mx-auto">
 <!-- FAQ 1 -->
 <details class="group py-5 cursor-pointer">
@@ -705,22 +703,22 @@
 <section class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-outline-variant border border-outline-variant mb-16 bg-surface-container-lowest">
 <div class="p-6 text-center flex flex-col items-center">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2" data-icon="local_shipping">local_shipping</span>
-<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">Free Delivery</h3>
+<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">{{ __('ui.free_delivery') }}</h3>
 <p class="font-body-sm text-body-sm text-outline">On all orders over 250 AED</p>
 </div>
 <div class="p-6 text-center flex flex-col items-center">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2" data-icon="verified">verified</span>
-<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">100% Authentic</h3>
+<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">{{ __('ui.authentic') }}</h3>
 <p class="font-body-sm text-body-sm text-outline">Directly sourced luxury products</p>
 </div>
 <div class="p-6 text-center flex flex-col items-center">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2" data-icon="assignment_return">assignment_return</span>
-<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">Easy Returns</h3>
+<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">{{ __('ui.easy_returns') }}</h3>
 <p class="font-body-sm text-body-sm text-outline">In any UAE boutique store</p>
 </div>
 <div class="p-6 text-center flex flex-col items-center">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2" data-icon="support_agent">support_agent</span>
-<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">Customer Service</h3>
+<h3 class="font-title-md text-title-md font-bold text-primary uppercase mb-1">{{ __('ui.customer_service') }}</h3>
 <p class="font-body-sm text-body-sm text-outline">Available daily 10am - 10pm</p>
 </div>
 </section>

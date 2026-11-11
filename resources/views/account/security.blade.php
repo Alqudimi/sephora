@@ -7,8 +7,8 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
     <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
-        <a class="hover:text-secondary" href="/">Home</a> /
-        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">My Account</a> /
+        <a class="hover:text-secondary" href="/">{{ __('ui.home') }}</a> /
+        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('ui.my_account') }}</a> /
         <span class="text-on-surface font-semibold">Security</span>
     </nav>
 
@@ -33,7 +33,7 @@
 
     @if ($errors->any())
         <div class="border border-secondary bg-surface-container-lowest px-4 py-3 mb-6" role="alert">
-            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">Please fix the following</p>
+            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">{{ __('ui.fix_following') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

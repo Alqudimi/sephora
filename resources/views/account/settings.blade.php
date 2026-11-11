@@ -16,15 +16,15 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
     <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
-        <a class="hover:text-secondary" href="/">Home</a> /
-        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">My Account</a> /
-        <span class="text-on-surface font-semibold">Settings</span>
+        <a class="hover:text-secondary" href="/">{{ __('ui.home') }}</a> /
+        <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('ui.my_account') }}</a> /
+        <span class="text-on-surface font-semibold">{{ __('ui.settings') }}</span>
     </nav>
 
     @include('partials.account-nav', ['active' => 'settings'])
 
     <div class="mb-8 max-w-3xl">
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Settings</h1>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('ui.settings') }}</h1>
         <p class="font-body-md text-body-md text-on-surface-variant mt-2">Manage your personal information and sign-in password.</p>
     </div>
 
@@ -34,7 +34,7 @@
 
     @if ($errors->any())
         <div class="border border-secondary bg-surface-container-lowest px-4 py-3 mb-6" role="alert">
-            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">Please fix the following</p>
+            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">{{ __('ui.fix_following') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -148,7 +148,7 @@
 
             <div class="flex flex-wrap gap-3">
                 <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 h-12 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" type="submit">Save changes</button>
-                <a class="border border-outline px-8 h-12 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('account.dashboard') }}">Cancel</a>
+                <a class="border border-outline px-8 h-12 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('account.dashboard') }}">{{ __('ui.cancel') }}</a>
             </div>
         </div>
 
@@ -161,7 +161,7 @@
             </section>
 
             <a class="block border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.country-language') }}">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Country &amp; language</h2>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">{{ __('ui.country_language') }}</h2>
                 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Currently: {{ strtoupper($user->preferred_language ?: 'en') }}</p>
             </a>
 
