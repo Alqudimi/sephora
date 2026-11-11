@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Skincare | SEPHORA UAE Official Online Store')
+@section('title', __('meta.skincare'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
@@ -19,19 +19,19 @@
 <span class="font-body-md text-outline font-normal text-sm">(1,120 items)</span>
 </div>
 <p class="font-body-md text-on-surface-variant max-w-2xl text-[14px] leading-relaxed">
-          Reveal radiant, healthy skin with our curated collection of clinical actives, clean hydration, and luxury botanicals.
+          {{ __('content.t_3a8327f9fb55') }}
         </p>
 </div>
 <!-- Sort by Dropdown -->
 <div class="flex items-center gap-3 self-end md:self-auto">
-<label class="font-label-caps text-label-caps uppercase text-outline" for="sort-select">Sort by:</label>
+<label class="font-label-caps text-label-caps uppercase text-outline" for="sort-select">{{ __('content.t_9bb640e5a014') }}</label>
 <div class="relative inline-block">
 <select class="appearance-none bg-surface-container-lowest border border-primary pl-4 pr-10 py-2.5 text-body-sm font-title-md text-primary font-bold cursor-pointer rounded-none focus:outline-none hover:bg-surface-container-low transition-colors" id="sort-select">
 <option>{{ __('ui.recommended') }}</option>
-<option>Best Sellers</option>
+<option>{{ __('content.t_a1118d1ba9c9') }}</option>
 <option>{{ __('ui.price_low_high') }}</option>
 <option>{{ __('ui.price_high_low') }}</option>
-<option>Newest Arrivals</option>
+<option>{{ __('content.t_6dbb398c44c7') }}</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-primary text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
@@ -44,7 +44,7 @@
 <!-- CATEGORIES FACET (Collapsible, Expanded) -->
 <div class="hairline-b pb-6 mb-6">
 <div class="flex items-center justify-between cursor-pointer mb-4">
-<h2 class="font-title-lg text-[13px] font-bold uppercase tracking-widest text-primary">CATEGORIES</h2>
+<h2 class="font-title-lg text-[13px] font-bold uppercase tracking-widest text-primary">{{ __('ui.categories') }}</h2>
 <span class="material-symbols-outlined text-primary text-[20px]" data-icon="expand_less">expand_less</span>
 </div>
 <ul class="space-y-2.5 text-body-sm text-on-surface-variant font-body-sm">
@@ -57,11 +57,11 @@
 <span class="text-outline text-[11px]">(215)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Serums &amp; Face Oils</span>
+<span class="hover:font-semibold">{{ __('content.t_f8c2c1041ec8') }}</span>
 <span class="text-outline text-[11px]">(280)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Eye Cream</span>
+<span class="hover:font-semibold">{{ __('content.t_3e6d5b64cfa3') }}</span>
 <span class="text-outline text-[11px]">(95)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
@@ -73,11 +73,11 @@
 <span class="text-outline text-[11px]">(85)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Lip Care</span>
+<span class="hover:font-semibold">{{ __('content.t_67558eab9077') }}</span>
 <span class="text-outline text-[11px]">(72)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Sets &amp; Travel Size</span>
+<span class="hover:font-semibold">{{ __('content.t_98242e0e2092') }}</span>
 <span class="text-outline text-[11px]">(93)</span>
 </li>
 </ul>
@@ -85,12 +85,12 @@
 <!-- REFINE SECTION -->
 <div class="hairline-b pb-6 mb-6">
 <div class="flex items-center justify-between mb-4">
-<h2 class="font-title-lg text-[13px] font-bold uppercase tracking-widest text-primary">REFINE</h2>
+<h2 class="font-title-lg text-[13px] font-bold uppercase tracking-widest text-primary">{{ __('ui.refine') }}</h2>
 <button class="font-label-caps text-label-caps underline uppercase text-outline hover:text-primary transition-colors">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="flex items-center justify-between py-2 border-b border-surface-container-high mb-4">
-<span class="font-title-md text-[13px] font-semibold text-primary">Sephora Exclusive Only</span>
+<span class="font-title-md text-[13px] font-semibold text-primary">{{ __('content.t_a283183b6457') }}</span>
 <label class="relative inline-flex items-center cursor-pointer">
 <input checked="" class="sr-only peer" type="checkbox" value=""/>
 <div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
@@ -106,21 +106,21 @@
 <label class="flex items-center justify-between text-body-sm cursor-pointer group">
 <span class="flex items-center gap-2.5">
 <input checked="" class="w-4 h-4 rounded-none border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
-<span class="group-hover:text-primary font-medium">Glow Recipe</span>
+<span class="group-hover:text-primary font-medium">{{ __('content.t_d197a3e56e4e') }}</span>
 </span>
 <span class="text-outline text-[11px]">(24)</span>
 </label>
 <label class="flex items-center justify-between text-body-sm cursor-pointer group">
 <span class="flex items-center gap-2.5">
 <input class="w-4 h-4 rounded-none border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
-<span class="group-hover:text-primary">The Ordinary</span>
+<span class="group-hover:text-primary">{{ __('content.t_915c26519761') }}</span>
 </span>
 <span class="text-outline text-[11px]">(38)</span>
 </label>
 <label class="flex items-center justify-between text-body-sm cursor-pointer group">
 <span class="flex items-center gap-2.5">
 <input checked="" class="w-4 h-4 rounded-none border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
-<span class="group-hover:text-primary font-medium">Drunk Elephant</span>
+<span class="group-hover:text-primary font-medium">{{ __('content.t_785f6dcaf07c') }}</span>
 </span>
 <span class="text-outline text-[11px]">(29)</span>
 </label>
@@ -155,7 +155,7 @@
 <label class="flex items-center justify-between text-body-sm cursor-pointer group">
 <span class="flex items-center gap-2.5">
 <input class="w-4 h-4 rounded-none border-outline text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
-<span class="group-hover:text-primary">Paula's Choice</span>
+<span class="group-hover:text-primary">{{ __('content.t_457e9573c3bb') }}</span>
 </span>
 <span class="text-outline text-[11px]">(16)</span>
 </label>
@@ -164,39 +164,39 @@
 <!-- SKIN CONCERN (Dropdown/Expanded) -->
 <div class="mb-5">
 <div class="flex items-center justify-between cursor-pointer mb-3">
-<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">SKIN CONCERN</span>
+<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('content.t_1598e302df92') }}</span>
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_less">expand_less</span>
 </div>
 <div class="space-y-2 text-body-sm">
 <div class="flex justify-between items-center hover:text-primary cursor-pointer">
-<span>Dryness &amp; Dehydration</span>
+<span>{{ __('content.t_f209a1766334') }}</span>
 <span class="text-outline text-[11px]">(190)</span>
 </div>
 <div class="flex justify-between items-center hover:text-primary cursor-pointer">
-<span>Anti-Aging &amp; Fine Lines</span>
+<span>{{ __('content.t_5a27b8cbc064') }}</span>
 <span class="text-outline text-[11px]">(165)</span>
 </div>
 <div class="flex justify-between items-center hover:text-primary cursor-pointer">
-<span>Dark Spots &amp; Hyperpigmentation</span>
+<span>{{ __('content.t_e28b50011c17') }}</span>
 <span class="text-outline text-[11px]">(110)</span>
 </div>
 <div class="flex justify-between items-center hover:text-primary cursor-pointer">
-<span>Acne &amp; Blemish</span>
+<span>{{ __('content.t_0b262de23fda') }}</span>
 <span class="text-outline text-[11px]">(95)</span>
 </div>
 <div class="flex justify-between items-center hover:text-primary cursor-pointer">
-<span>Dullness &amp; Uneven Texture</span>
+<span>{{ __('content.t_d2506c604b65') }}</span>
 <span class="text-outline text-[11px]">(145)</span>
 </div>
 <div class="flex justify-between items-center hover:text-primary cursor-pointer">
-<span>Pore Care</span>
+<span>{{ __('content.t_62b78f5123f4') }}</span>
 <span class="text-outline text-[11px]">(80)</span>
 </div>
 </div>
 </div>
 <!-- Other Collapsible Sections -->
 <div class="py-3 border-t border-surface-container-high flex items-center justify-between cursor-pointer">
-<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">PRODUCT TYPE</span>
+<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('content.t_1b0f4cd9df91') }}</span>
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
 <div class="py-3 border-t border-surface-container-high flex items-center justify-between cursor-pointer">
@@ -204,11 +204,11 @@
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
 <div class="py-3 border-t border-surface-container-high flex items-center justify-between cursor-pointer">
-<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">FORMULATION</span>
+<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.formulation') }}</span>
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
 <div class="py-3 border-t border-surface-container-high flex items-center justify-between cursor-pointer">
-<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">PRICE</span>
+<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.price') }}</span>
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
 <div class="py-3 border-t border-surface-container-high flex items-center justify-between cursor-pointer">
@@ -232,7 +232,7 @@
 
 </div>
 <!-- Wishlist Heart -->
-<button class="absolute top-0 right-0 z-10 text-on-surface hover:text-secondary p-1" title="Add to Wishlist">
+<button class="absolute top-0 right-0 z-10 text-on-surface hover:text-secondary p-1" title="{{ __('content.t_a44253758df5') }}">
 <span class="material-symbols-outlined text-[20px]" data-icon="favorite_border">favorite_border</span>
 </button>
 <!-- Packshot Image -->
@@ -253,7 +253,7 @@
 <div class="mt-auto">
 <p class="font-price-aed-lg text-price-aed-lg font-bold text-primary mb-3">AED {{ number_format($products->price, 2) }}</p>
 <button class="w-full h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider font-bold hover:bg-surface-container-lowest hover:border hover:border-primary hover:text-primary transition-all duration-150" data-add-to-bag="{{ $products->id }}">
-                  ADD TO BAG
+                  {{ __('content.t_ea34a3a7ca7b') }}
                 </button>
 </div>
 </div>
@@ -262,12 +262,12 @@
 </div>
 <!-- PAGINATION & PROGRESS INDICATOR -->
 <div class="mt-12 flex flex-col items-center justify-center text-center">
-<p class="font-body-md text-on-surface-variant mb-3">Showing <strong class="text-primary">12</strong> of <strong class="text-primary">1,120</strong> items</p>
+<p class="font-body-md text-on-surface-variant mb-3">{{ __('ui.showing') }} <strong class="text-primary">12</strong> {{ __('ui.of') }} <strong class="text-primary">1,120</strong> items</p>
 <div class="w-64 h-1 bg-surface-container-high overflow-hidden mb-6">
 <div class="bg-primary h-full" style="width: 1.07%;"></div>
 </div>
 <button class="px-10 py-3.5 border border-primary text-primary font-label-caps text-label-caps uppercase tracking-widest font-bold hover:bg-primary hover:text-on-primary transition-all duration-150">
-            LOAD MORE PRODUCTS
+            {{ __('content.t_ff6255edd8b2') }}
           </button>
 </div>
 </section>

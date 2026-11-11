@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error | SEPHORA UAE</title>
+    <title>{{ __('content.t_2c744a159cf6') }}</title>
     <style>
         body { font-family: Georgia, 'Times New Roman', serif; background: #ffffff; color: #1a1a1a; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
         .wrap { text-align: center; padding: 48px 24px; max-width: 560px; }
@@ -18,8 +18,8 @@
     <div class="wrap">
         <div class="tag">Error 503</div>
         <h1>Sephora</h1>
-        <h2>We will be back shortly.</h2>
-        <p>We are performing scheduled maintenance to serve you better. Please check back soon.</p>
+        <h2>{{ __('content.t_cde25f44d287') }}</h2>
+        <p>{{ __('content.t_7758b403bdec') }}</p>
         <a class="btn" href="/">{{ __('ui.back_home') }}</a>
     </div>
 </body>

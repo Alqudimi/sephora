@@ -63,7 +63,7 @@
 <form class="space-y-6" method="POST" action="{{ route('login.attempt') }}">
 @csrf
 @if(session('status'))<p class="text-secondary font-body-sm">{{ session('status') }}</p>@endif
-@if(session('password_reset'))<p class="text-secondary font-body-sm mb-2">Your password has been updated. Please sign in.</p>@endif
+@if(session('password_reset'))<p class="text-secondary font-body-sm mb-2">{{ __('content.t_89f53f9f0d0a') }}</p>@endif
 @auth
 <meta http-equiv="refresh" content="0;url={{ route('account.dashboard') }}"/>
 @endauth
@@ -172,7 +172,7 @@
 <!-- Luxury Beauty Pass Physical Card Vitrine using the provided reference Image -->
 <div class="relative w-full mb-8 bg-surface-container p-4 border border-outline-variant group overflow-hidden">
 <div class="relative aspect-[16/10] overflow-hidden bg-surface-container-highest">
-<img alt="SEPHORA VIP Beauty Pass Black Tier card with opulent gold trim and metallic detailing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ asset('images/content/img_4c436417accfce85.jpg') }}"/>
+<img alt="{{ __('content.t_7d1503948035') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ asset('images/content/img_4c436417accfce85.jpg') }}"/>
 </div>
 <div class="mt-3 flex items-center justify-between font-label-tag text-label-tag uppercase tracking-widest text-outline">
 <span>{{ __('messages.auth.beauty_pass_card') }}</span>

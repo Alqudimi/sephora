@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'View All Newness | Sephora UAE')
+@section('title', __('meta.newness'))
 @section('body_class', 'font-sans text-sm selection:bg-black selection:text-white')
 
 @section('content')
@@ -11,7 +11,7 @@
 <span>/</span>
 <a class="hover:underline" href="/shop/new">{{ __('ui.new') }}</a>
 <span>/</span>
-<span class="text-black font-bold underline cursor-default">View all</span>
+<span class="text-black font-bold underline cursor-default">{{ __('content.t_931e1a4b152a') }}</span>
 </nav>
 <!-- Page Title & Top Filters Controls Bar -->
 <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 mb-6 gap-4">
@@ -21,11 +21,11 @@
 </div>
 <!-- Sort Dropdown -->
 <div class="flex items-center self-end sm:self-auto space-x-2">
-<label class="text-xs font-medium text-gray-700" for="sort">Sort by:</label>
+<label class="text-xs font-medium text-gray-700" for="sort">{{ __('content.t_9bb640e5a014') }}</label>
 <div class="relative inline-block">
 <select class="appearance-none bg-white border border-gray-300 rounded px-3 py-1.5 pr-8 text-xs font-semibold focus:outline-none focus:border-black cursor-pointer" id="sort">
 <option>{{ __('ui.recommended') }}</option>
-<option>Newest Arrivals</option>
+<option>{{ __('content.t_6dbb398c44c7') }}</option>
 <option>{{ __('ui.price_low_high') }}</option>
 <option>{{ __('ui.price_high_low') }}</option>
 <option>{{ __('ui.top_rated') }}</option>
@@ -59,31 +59,31 @@
 </li>
 <li>
 <a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
-<span>New In Makeup</span>
+<span>{{ __('content.t_1411312757e3') }}</span>
 <span class="text-gray-400">(102)</span>
 </a>
 </li>
 <li>
 <a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
-<span>New In Skincare</span>
+<span>{{ __('content.t_63e21e0ef014') }}</span>
 <span class="text-gray-400">(55)</span>
 </a>
 </li>
 <li>
 <a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
-<span>New In Fragrance</span>
+<span>{{ __('content.t_8f0fe12661cb') }}</span>
 <span class="text-gray-400">(65)</span>
 </a>
 </li>
 <li>
 <a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
-<span>New In Hair</span>
+<span>{{ __('content.t_26ea5d123b5f') }}</span>
 <span class="text-gray-400">(36)</span>
 </a>
 </li>
 <li>
 <a class="text-gray-700 hover:text-black flex items-center justify-between" href="{{ route('shop.category', ['slug' => 'new']) }}">
-<span>New In Bath &amp; Body</span>
+<span>{{ __('content.t_d27c84b3b553') }}</span>
 <span class="text-gray-400">(32)</span>
 </a>
 </li>
@@ -102,7 +102,7 @@
 </button>
 <!-- Shades Accordion -->
 <button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Shades</span>
+<span>{{ __('ui.shades') }}</span>
 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -143,7 +143,7 @@
 <div class="flex flex-col gap-1 items-start">
 <span class="bg-black text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">{{ __('ui.new') }}</span>
 </div>
-<button aria-label="Add to wishlist" class="text-gray-400 hover:text-black transition-colors">
+<button aria-label="{{ __('content.t_c7a159eeb9d2') }}" class="text-gray-400 hover:text-black transition-colors">
 <svg class="w-5 h-5 stroke-current" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
 </svg>
@@ -154,8 +154,8 @@
 <img alt="{{ $products->name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ media_url($products->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"/>
 </div>
 <!-- Product Info -->
-<h3 class="font-bold text-xs uppercase tracking-wide text-black mb-1">PATRICK TA</h3>
-<p class="text-xs text-gray-700 line-clamp-2 min-h-[32px] mb-1.5 leading-snug">Major Headlines Double-Take Crème &amp; Powder Blush</p>
+<h3 class="font-bold text-xs uppercase tracking-wide text-black mb-1">{{ __('content.t_5ab61473e0dd') }}</h3>
+<p class="text-xs text-gray-700 line-clamp-2 min-h-[32px] mb-1.5 leading-snug">{{ __('content.t_82e0a85cb79d') }}</p>
 <!-- Rating -->
 <div class="flex items-center text-xs text-amber-500 mb-2">
 <span class="text-amber-500">@include('components.stars', ['rating' => $products->rating])</span>
@@ -172,12 +172,12 @@
 </div>
 <!-- Pagination / Load More Button -->
 <div class="mt-12 text-center pb-8">
-<p class="text-xs text-gray-500 mb-3">Showing 9 of 471 items</p>
+<p class="text-xs text-gray-500 mb-3">{{ __('content.t_3d0798551206') }}</p>
 <div class="w-48 h-1 bg-gray-200 mx-auto rounded-full overflow-hidden mb-5">
 <div class="w-1/6 h-full bg-black"></div>
 </div>
 <button class="inline-block border border-black bg-white hover:bg-black hover:text-white px-8 py-3 text-xs uppercase tracking-widest font-bold transition-colors">
-            Load More Products
+            {{ __('content.t_176de849c65c') }}
           </button>
 </div>
 </section>

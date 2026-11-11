@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us | SEPHORA Middle East')
+@section('title', __('meta.contact'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
@@ -22,16 +22,16 @@
 <div class="flex items-center gap-1 border-b border-primary overflow-x-auto scrollbar-none">
 <a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/my-account">{{ __('ui.my_account') }}</a>
 <a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/">
-        MY SEPHORA
+        {{ __('content.t_a4231e2500a9') }}
       </a>
 <a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/">
         SETTINGS
       </a>
 <a class="px-6 py-3 font-label-caps text-label-caps tracking-widest text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors uppercase whitespace-nowrap" href="/faq">
-        HELP &amp; FAQS
+        {{ __('content.t_95c6f6c30d6f') }}
       </a>
 <a class="px-6 py-3 font-label-caps text-label-caps tracking-widest bg-primary text-on-primary font-bold uppercase whitespace-nowrap" href="/contact-us">
-        CONTACT US
+        {{ __('content.t_03848e34035c') }}
       </a>
 </div>
 </section>
@@ -41,20 +41,20 @@
 <div class="mb-8">
 <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-primary pb-6">
 <div>
-<span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-2 font-bold">Client Support &amp; Concierge</span>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-2 font-bold">{{ __('content.t_cb4397defaee') }}</span>
 <h1 class="font-display-hero text-headline-lg lg:text-display-hero text-primary">{{ __('ui.contact_us') }}</h1>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-4 md:mt-0">
-          Our dedicated luxury beauty advisors are available across the UAE &amp; GCC to assist with personal formulations, order consultations, and Beauty Pass privileges.
+          {{ __('content.t_25ced2ebfabb') }}
         </p>
 </div>
 <!-- Urgent Delay Advisory Banner -->
 <div class="mt-6 border border-primary bg-surface-container-low p-4 md:p-5 flex items-start gap-4">
 <span class="material-symbols-outlined text-secondary text-2xl flex-shrink-0">info</span>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase tracking-wider text-primary">Service Update</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase tracking-wider text-primary">{{ __('content.t_0977bddcbc4c') }}</h4>
 <p class="font-body-md text-body-md text-on-surface mt-1">
-            Due to a high volume of orders, there may be delays in our usual response time. We appreciate your understanding.
+            {{ __('content.t_4b940091b867') }}
           </p>
 </div>
 </div>
@@ -65,23 +65,23 @@
 <div class="lg:col-span-5 flex flex-col gap-6">
 <div class="border border-primary bg-surface-container-lowest p-6 md:p-8">
 <div class="flex items-baseline justify-between border-b border-surface-container-highest pb-4 mb-6">
-<h2 class="font-headline-sm text-headline-sm text-primary">Contact Numbers</h2>
-<span class="font-label-tag text-label-tag text-on-surface-variant uppercase tracking-widest">Voice Direct</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_4dc26af4d57c') }}</h2>
+<span class="font-label-tag text-label-tag text-on-surface-variant uppercase tracking-widest">{{ __('content.t_0cee79267b7d') }}</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-6 uppercase tracking-wider font-semibold">
             Call us between 10:00 am - 10:00 pm (GST)
           </p>
 <!-- UAE Highlighted Card -->
 <div class="border-2 border-primary bg-surface-container-low p-5 mb-4 relative">
-<span class="absolute top-0 right-0 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-widest font-bold">Toll Free</span>
+<span class="absolute top-0 right-0 bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-widest font-bold">{{ __('content.t_147ae4f3eebd') }}</span>
 <div class="flex items-center gap-3 mb-2">
 <span class="text-xl">🇦🇪</span>
-<span class="font-title-md text-title-md text-primary font-bold">United Arab Emirates</span>
+<span class="font-title-md text-title-md text-primary font-bold">{{ __('content.t_d115b8d5acb8') }}</span>
 </div>
 <a class="font-price-aed-lg text-price-aed-lg text-primary tracking-widest hover:text-secondary transition-colors block" href="tel:8007374672">
               8007374672
             </a>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Complimentary concierge line for UAE residents</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_d94b2fd4e3f1') }}</p>
 </div>
 <!-- Regional Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -89,7 +89,7 @@
 <div class="border border-outline-variant p-3 hover:border-primary transition-colors">
 <div class="flex items-center gap-2 mb-1">
 <span>🇸🇦</span>
-<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">Saudi Arabia</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">{{ __('content.t_6f49c31192f5') }}</span>
 </div>
 <a class="font-body-md text-body-md font-bold text-primary hover:text-secondary block" href="tel:+966114797382">
                 +966114797382
@@ -138,7 +138,7 @@
 </div>
 <!-- Quick Email Tray -->
 <div class="mt-6 pt-6 border-t border-surface-container-highest">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-2">Email Inquiries</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-2">{{ __('content.t_645117049fb7') }}</span>
 <div class="flex items-center justify-between bg-surface-container-low border border-outline-variant p-3">
 <span class="font-body-sm text-body-sm font-semibold text-primary truncate">customercare@sephora.ae</span>
 <button class="font-label-caps text-label-caps uppercase bg-primary text-on-primary px-3 py-1.5 hover:bg-surface hover:text-primary border border-primary transition-all ml-2 flex-shrink-0" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert('Email copied to clipboard!');">
@@ -151,17 +151,17 @@
 <div class="border border-primary bg-primary text-on-primary p-6 relative overflow-hidden">
 <div class="flex justify-between items-start mb-6">
 <div>
-<span class="font-label-caps text-label-caps text-tertiary-fixed-dim uppercase tracking-widest block">Priority Access</span>
-<h3 class="font-headline-sm text-headline-sm text-on-primary mt-1">SEPHORA BEAUTY PASS VIP</h3>
+<span class="font-label-caps text-label-caps text-tertiary-fixed-dim uppercase tracking-widest block">{{ __('content.t_841a4e133902') }}</span>
+<h3 class="font-headline-sm text-headline-sm text-on-primary mt-1">{{ __('content.t_6f133815925f') }}</h3>
 </div>
 <span class="material-symbols-outlined text-tertiary-fixed-dim text-3xl">verified</span>
 </div>
 <p class="font-body-sm text-body-sm text-surface-variant mb-6">
-            Gold &amp; Black Tier members enjoy priority call routing and bespoke fragrance consultations. Please have your 16-digit Member ID ready.
+            {{ __('content.t_ef366e772383') }}
           </p>
 <div class="flex items-center justify-between border-t border-outline pt-4">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline-variant">Gold &amp; Black Line</span>
-<span class="font-price-aed-md text-price-aed-md text-tertiary-fixed font-bold">PRIORITY VERIFIED</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline-variant">{{ __('content.t_ac3d63638987') }}</span>
+<span class="font-price-aed-md text-price-aed-md text-tertiary-fixed font-bold">{{ __('content.t_dcb88306064f') }}</span>
 </div>
 </div>
 </div>
@@ -169,16 +169,16 @@
 <div class="lg:col-span-7">
 <div class="border border-primary bg-surface-container-lowest p-6 md:p-8">
 <div class="border-b border-surface-container-highest pb-4 mb-6">
-<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold block mb-1">Direct Correspondence</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Interactive Client Concierge Form</h2>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold block mb-1">{{ __('content.t_cbafe5fe1e1c') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_3cfb77466ac9') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
-              Please enter your details below. Our customer care representatives aim to respond within 24 business hours.
+              {{ __('content.t_11c94fece7f3') }}
             </p>
 </div>
 <form class="space-y-6" id="conciergeForm" method="POST" action="{{ route('contact.submit') }}">
     @csrf
     @if(session('contact_success'))
-    <div class="bg-[#1b6b45] text-white px-4 py-3 font-body-sm">Thank you! Our client concierge will reply within 24 hours.</div>
+    <div class="bg-[#1b6b45] text-white px-4 py-3 font-body-sm">{{ __('content.t_47abc71be320') }}</div>
     @endif
     @if($errors->any())
     <div class="border border-secondary bg-surface-container-low p-4 text-secondary text-sm">
@@ -193,14 +193,14 @@
 <!-- Full Name -->
 <div>
 <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-name">
-                  Full Name <span class="text-secondary">*</span>
+                  {{ __('content.t_64346b483c0a') }} <span class="text-secondary">*</span>
 </label>
-<input id="contact-name" name="name" value="{{ old('name') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="e.g. Layla Al-Mansoor" required type="text"/>
+<input id="contact-name" name="name" value="{{ old('name') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="{{ __('content.t_5c2afbdedd38') }}" required type="text"/>
 </div>
 <!-- Email Address -->
 <div>
 <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-email">
-                  Email Address <span class="text-secondary">*</span>
+                  {{ __('content.t_09ba557fd106') }} <span class="text-secondary">*</span>
 </label>
 <input id="contact-email" name="email" value="{{ old('email') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="layla.almansoor@example.ae" required type="email" />
 </div>
@@ -209,52 +209,52 @@
 <!-- Phone -->
 <div>
 <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-phone">
-                  Phone Number <span class="text-on-surface-variant text-[10px]">(Optional)</span>
+                  {{ __('content.t_ab25d61bb124') }} <span class="text-on-surface-variant text-[10px]">(Optional)</span>
 </label>
 <input id="contact-phone" name="phone" value="{{ old('phone') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="+971 50 123 4567" type="tel"/>
 </div>
 <!-- Topic / Subject Dropdown -->
 <div>
 <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-subject">
-                  Inquiry Topic <span class="text-secondary">*</span>
+                  {{ __('content.t_9a01561f2467') }} <span class="text-secondary">*</span>
 </label>
 <select id="contact-subject" name="subject" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" required>
-<option disabled value="" @selected(!old('subject'))>Select a subject</option>
-<option value="Delivery & Shipping Status" @selected(old('subject') === 'Delivery & Shipping Status')>Delivery &amp; Shipping Status</option>
-<option value="Return & Refund Assistance" @selected(old('subject') === 'Return & Refund Assistance')>Return &amp; Refund Assistance</option>
-<option value="Beauty Pass Points & Tiers" @selected(old('subject') === 'Beauty Pass Points & Tiers')>Beauty Pass Points &amp; Tiers</option>
-<option value="Product Consultation & Formula" @selected(old('subject') === 'Product Consultation & Formula')>Product Consultation &amp; Formula</option>
-<option value="Store Experience & Appointments" @selected(old('subject') === 'Store Experience & Appointments')>Store Experience &amp; Appointments</option>
-<option value="Other Inquiry" @selected(old('subject') === 'Other Inquiry')>Other Inquiry</option>
+<option disabled value="" @selected(!old('subject'))>{{ __('content.t_d5f51ea80cfd') }}</option>
+<option value="Delivery & Shipping Status" @selected(old('subject') === 'Delivery & Shipping Status')>{{ __('content.t_a98a99a7c5b5') }}</option>
+<option value="Return & Refund Assistance" @selected(old('subject') === 'Return & Refund Assistance')>{{ __('content.t_e59ae2b6b5be') }}</option>
+<option value="Beauty Pass Points & Tiers" @selected(old('subject') === 'Beauty Pass Points & Tiers')>{{ __('content.t_37f768508900') }}</option>
+<option value="Product Consultation & Formula" @selected(old('subject') === 'Product Consultation & Formula')>{{ __('content.t_376781da6bba') }}</option>
+<option value="Store Experience & Appointments" @selected(old('subject') === 'Store Experience & Appointments')>{{ __('content.t_10d4687688c7') }}</option>
+<option value="Other Inquiry" @selected(old('subject') === 'Other Inquiry')>{{ __('content.t_63a00a34a39d') }}</option>
 </select>
 </div>
 </div>
 <!-- Message Textarea -->
 <div>
 <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-message">
-                Your Message <span class="text-secondary">*</span>
+                {{ __('content.t_8ae188c575e6') }} <span class="text-secondary">*</span>
 </label>
-<textarea id="contact-message" name="message" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="Kindly describe your inquiry in detail, including specific items or batch references..." required rows="5">{{ old('message') }}</textarea>
+<textarea id="contact-message" name="message" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="{{ __('content.t_bd5500a53985') }}" required rows="5">{{ old('message') }}</textarea>
 </div>
 <!-- Data Privacy Disclosure -->
 <div class="flex items-center justify-between text-on-surface-variant pt-2">
 <span class="font-body-sm text-body-sm">
-                Your privacy is paramount.
+                {{ __('content.t_e1506322eb87') }}
               </span>
 <a class="font-label-caps text-label-caps text-primary hover:text-secondary uppercase underline tracking-wider font-bold" href="#privacy">
-                Read more about our DATA PRIVACY →
+                {{ __('content.t_cde83aa6f4f1') }}
               </a>
 </div>
 <!-- Submit Primary CTA -->
 <div>
 <button class="w-full h-12 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest font-bold hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all duration-200" type="submit">
-                SEND MESSAGE →
+                {{ __('content.t_6422426b4bad') }}
               </button>
 </div>
 </form>
 <!-- Follow Us / Social Channels Bar -->
 <div class="mt-10 pt-6 border-t border-surface-container-highest flex flex-col sm:flex-row items-center justify-between gap-4">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Follow Us</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">{{ __('content.t_cca2bfb1727c') }}</span>
 <div class="flex items-center gap-4">
 @php
     $cInstagram = \App\Models\Setting::get('social_instagram', 'https://www.instagram.com/sephoramiddleeast/');
@@ -292,7 +292,7 @@
 </div>
 <div>
 <h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.free_delivery') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Over 250 AED across UAE with temperature-controlled dispatch.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_98bff91b1a1b') }}</p>
 </div>
 </div>
 <!-- Badge 2: Authenticity -->
@@ -302,7 +302,7 @@
 </div>
 <div>
 <h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.authentic') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Directly sourced and guaranteed authentic from prestige beauty houses.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_286e649d3f5e') }}</p>
 </div>
 </div>
 <!-- Badge 3: Easy Returns -->
@@ -312,7 +312,7 @@
 </div>
 <div>
 <h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.easy_returns') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">In any UAE Sephora boutique within 14 days of purchase.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_cdc080bb65b6') }}</p>
 </div>
 </div>
 <!-- Badge 4: Customer Care -->
@@ -322,7 +322,7 @@
 </div>
 <div>
 <h4 class="font-title-md text-title-md font-bold uppercase text-primary tracking-wider">{{ __('ui.customer_service') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Questions? Toll-Free 800 7374672 daily 10:00 am - 10:00 pm.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_b5d38bb0ba30') }}</p>
 </div>
 </div>
 </div>
@@ -330,15 +330,15 @@
 <!-- 7. NEWSLETTER SUBSCRIPTION BOX -->
 <section class="border border-primary bg-primary text-on-primary p-8 md:p-12 mb-12">
 <div class="max-w-3xl mx-auto text-center">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-tertiary-fixed-dim block mb-2 font-bold">Exclusive Invitations</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-tertiary-fixed-dim block mb-2 font-bold">{{ __('content.t_d9f175bc5d52') }}</span>
 <h3 class="font-headline-md text-headline-md lg:text-headline-lg text-on-primary mb-3">
-          Subscribe to the Sephora newsletter!
+          {{ __('content.t_518c2ee6743f') }}
         </h3>
 <p class="font-body-md text-body-md text-surface-variant mb-8">
-          Receive exclusive previews of prestige fragrance drops, private VIP sales, and masterclasses across Dubai &amp; Abu Dhabi.
+          {{ __('content.t_ef06b10ee560') }}
         </p>
 <form class="flex flex-col sm:flex-row gap-0 max-w-xl mx-auto" data-newsletter-form>
-<input class="flex-1 bg-surface-container-lowest text-on-surface font-body-md text-body-md border-0 p-4 focus:ring-0 rounded-none placeholder:text-outline" placeholder="Enter your email address" required="" type="email"/>
+<input class="flex-1 bg-surface-container-lowest text-on-surface font-body-md text-body-md border-0 p-4 focus:ring-0 rounded-none placeholder:text-outline" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-tertiary-fixed text-on-tertiary-fixed font-label-caps text-label-caps uppercase px-8 py-4 font-bold tracking-widest hover:bg-on-primary hover:text-primary transition-colors" type="submit">
             Subscribe
           </button>

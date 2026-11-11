@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Order ' . $order->order_number)
+@section('title', __('ui.order') . ' ' . $order->order_number)
 
 @php
     $currency = config('commerce.currency', 'AED');
@@ -17,7 +17,7 @@
 <div class="max-w-6xl">
     <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div>
-            <a class="font-body-sm text-body-sm underline text-on-surface-variant hover:text-primary" href="{{ route('admin.orders') }}">&larr; All orders</a>
+            <a class="font-body-sm text-body-sm underline text-on-surface-variant hover:text-primary" href="{{ route('admin.orders') }}">{{ __('content.t_54f36d7c24a7') }}</a>
             <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase mt-1">{{ $order->order_number }}</h1>
             <p class="font-body-sm text-body-sm text-outline mt-1">
                 Placed {{ ($order->placed_at ?? $order->created_at)?->format('d M Y, h:i A') }}
@@ -28,19 +28,19 @@
     </div>
 
     @if (session('status_saved'))
-        <div class="bg-[#1b6b45] text-white px-4 py-3 mb-6 font-body-sm" role="status">Order status updated.</div>
+        <div class="bg-[#1b6b45] text-white px-4 py-3 mb-6 font-body-sm" role="status">{{ __('content.t_c1039db7a2b6') }}</div>
     @endif
 
     {{-- Status form --}}
     <section class="bg-surface-container-lowest border border-outline-variant p-4 md:p-5 mb-6">
-        <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">Update status</h2>
+        <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">{{ __('content.t_eae1f5caf558') }}</h2>
         <form class="space-y-3" method="POST" action="{{ route('admin.orders.status', $order) }}">
             @csrf
             @method('PATCH')
 
             <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-3">
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Fulfilment</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.fulfilment') }}</span>
                     <select class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="status">
                         @foreach (['pending', 'processing', 'shipped', 'out_for_delivery', 'delivered', 'cancelled', 'refunded'] as $status)
                             <option value="{{ $status }}" @selected(old('status', $order->status) === $status)>{{ ucfirst(str_replace('_', ' ', $status)) }}</option>
@@ -58,24 +58,24 @@
                 </label>
 
                 <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 h-11 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all self-end" type="submit">
-                    Update
+                    {{ __('ui.update') }}
                 </button>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Cancellation reason</span>
-                    <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="cancel_reason" value="{{ old('cancel_reason', $order->cancel_reason) }}" maxlength="500" placeholder="Required context for cancellations">
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_e212c93cd5e6') }}</span>
+                    <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="cancel_reason" value="{{ old('cancel_reason', $order->cancel_reason) }}" maxlength="500" placeholder="{{ __('content.t_5bada599d72e') }}">
                 </label>
 
                 <label class="space-y-1.5">
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Refund amount (AED)</span>
-                    <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="refund_amount" type="number" min="0" max="{{ $order->total }}" step="0.01" value="{{ old('refund_amount') }}" placeholder="Defaults to order total">
+                    <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="refund_amount" type="number" min="0" max="{{ $order->total }}" step="0.01" value="{{ old('refund_amount') }}" placeholder="{{ __('content.t_8440da3f4e97') }}">
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Refund reference</span>
-                    <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="refund_reference" value="{{ old('refund_reference', $order->refund_reference) }}" maxlength="190" placeholder="Gateway / bank reference">
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_d5bd42f2690d') }}</span>
+                    <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="refund_reference" value="{{ old('refund_reference', $order->refund_reference) }}" maxlength="190" placeholder="{{ __('content.t_ba8fabf12351') }}">
                 </label>
             </div>
         </form>
@@ -85,7 +85,7 @@
         @enderror
 
         <p class="font-body-sm text-body-sm text-outline mt-3">
-            Cancelling or refunding restores stock automatically — once per order. Refunds also force the payment status to <strong>Refunded</strong>.
+            {{ __('content.t_962c7220fe87') }} <strong>{{ __('ui.refunded') }}</strong>.
         </p>
     </section>
 
@@ -95,7 +95,7 @@
         <div class="lg:col-span-2 space-y-6">
             <section class="bg-surface-container-lowest border border-outline-variant">
                 <header class="px-4 md:px-5 py-4 border-b border-outline-variant flex items-center justify-between gap-3">
-                    <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Items</h2>
+                    <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">{{ __('ui.items') }}</h2>
                     <span class="font-body-sm text-body-sm text-outline">{{ $order->items->count() }} line{{ $order->items->count() === 1 ? '' : 's' }}</span>
                 </header>
                 <div class="divide-y divide-outline-variant/60">
@@ -115,7 +115,7 @@
                             <span class="font-price-aed-md text-price-aed-md font-bold text-primary whitespace-nowrap">{{ $currency }} {{ number_format($item->line_total, 2) }}</span>
                         </div>
                     @empty
-                        <p class="p-6 font-body-sm text-body-sm text-outline">No items recorded for this order.</p>
+                        <p class="p-6 font-body-sm text-body-sm text-outline">{{ __('content.t_8bfa49fcd6f0') }}</p>
                     @endforelse
                 </div>
             </section>
@@ -151,16 +151,16 @@
 
                 @if ($order->tracking_number)
                     <div class="border-t border-outline-variant/60 pt-3 font-body-sm text-body-sm">
-                        Tracking number: <strong class="text-primary">{{ $order->tracking_number }}</strong>
+                        {{ __('content.t_ff8c1d22751a') }} <strong class="text-primary">{{ $order->tracking_number }}</strong>
                     </div>
                 @endif
             </section>
 
             @if ($order->gift_box || $order->gift_message || ! empty($order->samples))
                 <section class="bg-surface-container-lowest border border-outline-variant p-4 md:p-5 space-y-2">
-                    <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Gift &amp; extras</h2>
+                    <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">{{ __('content.t_f86793526dc3') }}</h2>
                     @if ($order->gift_box)
-                        <p class="font-body-sm text-body-sm text-on-surface-variant">Signature gift box requested.</p>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_154f6837871f') }}</p>
                     @endif
                     @if ($order->gift_message)
                         <p class="font-body-sm text-body-sm text-on-surface-variant italic">“{{ $order->gift_message }}”</p>
@@ -175,7 +175,7 @@
         {{-- Customer + totals --}}
         <aside class="space-y-6">
             <section class="bg-surface-container-lowest border border-outline-variant p-4 md:p-5 font-body-sm text-body-sm">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">Customer</h2>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">{{ __('ui.customer') }}</h2>
                 <p class="font-body-md text-body-md text-primary font-semibold">{{ $order->customer_name }}</p>
                 @if ($order->customer_phone)
                     <p class="text-on-surface-variant mt-1"><a class="hover:underline" href="tel:{{ $order->customer_phone }}">{{ $order->customer_phone }}</a></p>
@@ -187,7 +187,7 @@
             </section>
 
             <section class="bg-surface-container-lowest border border-outline-variant p-4 md:p-5 font-body-sm text-body-sm space-y-2.5">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">Payment &amp; totals</h2>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">{{ __('content.t_a183bd0039f2') }}</h2>
 
                 <div class="flex justify-between gap-3">
                     <span class="text-on-surface-variant">{{ __('ui.method') }}</span>
@@ -199,7 +199,7 @@
                 </div>
                 @if ($order->coupon_code)
                     <div class="flex justify-between gap-3">
-                        <span class="text-on-surface-variant">Coupon</span>
+                        <span class="text-on-surface-variant">{{ __('ui.coupon') }}</span>
                         <span class="text-primary font-semibold uppercase text-right">{{ $order->coupon_code }}</span>
                     </div>
                 @endif

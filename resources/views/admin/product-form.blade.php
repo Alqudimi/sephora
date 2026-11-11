@@ -6,7 +6,7 @@
     $currentImage = old('image_path', $isEdit ? $product->images->first()?->path : null);
 @endphp
 
-@section('title', $isEdit ? 'Edit Product' : 'New Product')
+@section('title', __($isEdit ? 'meta.edit_product' : 'meta.new_product'))
 
 @section('content')
 <div class="max-w-5xl">
@@ -15,7 +15,7 @@
             {{ $isEdit ? 'Edit: ' . $product->name : 'Add New Product' }}
         </h1>
         <a class="border border-outline px-5 h-11 inline-flex items-center font-label-caps text-label-caps uppercase tracking-widest hover:border-primary transition-colors" href="{{ route('admin.products') }}">
-            Back to products
+            {{ __('content.t_becfcf5a0bc9') }}
         </a>
     </div>
 
@@ -43,10 +43,10 @@
 
         {{-- Basics --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">Basics</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('ui.basics') }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label class="space-y-1.5 md:col-span-2">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Product name *</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_145fead9a29c') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('name') border-secondary @enderror"
                            name="name" required maxlength="190" type="text" value="{{ old('name', $product->name) }}">
                     @error('name')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -55,7 +55,7 @@
                 <label class="space-y-1.5">
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.brand') }}</span>
                     <select class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none" name="brand_id">
-                        <option value="">— No brand —</option>
+                        <option value="">{{ __('content.t_0ca89c3178d4') }}</option>
                         @foreach ($brands as $brand)
                             <option value="{{ $brand->id }}" @selected((int) old('brand_id', $product->brand_id) === $brand->id)>{{ $brand->name }}</option>
                         @endforeach
@@ -64,38 +64,38 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Product type</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_c345f2388a65') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
-                           name="type" maxlength="60" type="text" placeholder="e.g. Eau de Parfum" value="{{ old('type', $product->type) }}">
+                           name="type" maxlength="60" type="text" placeholder="{{ __('content.t_8aa8b1fa13a3') }}" value="{{ old('type', $product->type) }}">
                     @error('type')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">SKU</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.sku') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                            name="sku" maxlength="80" type="text" value="{{ old('sku', $product->sku) }}">
                     @error('sku')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Size / volume</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_be672fc86611') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                            name="size" maxlength="100" type="text" placeholder="e.g. 50ml" value="{{ old('size', $product->size) }}">
                     @error('size')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Badge</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.badge') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
-                           name="badge" maxlength="60" type="text" placeholder="e.g. Best Seller" value="{{ old('badge', $product->badge) }}">
+                           name="badge" maxlength="60" type="text" placeholder="{{ __('content.t_7665a2b6eebe') }}" value="{{ old('badge', $product->badge) }}">
                     @error('badge')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Sort order</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_5601af90fba7') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                            name="sort_order" min="0" type="number" value="{{ old('sort_order', $product->sort_order ?? 0) }}">
-                    <span class="block font-body-sm text-[12px] text-outline">Lower numbers appear first in listings.</span>
+                    <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_69f5caa9bae0') }}</span>
                     @error('sort_order')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
             </div>
@@ -103,7 +103,7 @@
 
         {{-- Pricing and stock --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">Pricing &amp; stock</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('content.t_70b648724a37') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <label class="space-y-1.5">
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Price (AED) *</span>
@@ -113,10 +113,10 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Compare-at price</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_08df155f73ba') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                            name="compare_at_price" min="0" step="0.01" type="number" value="{{ old('compare_at_price', $product->compare_at_price) }}">
-                    <span class="block font-body-sm text-[12px] text-outline">Leave empty when the product is not on sale.</span>
+                    <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_e6660c9e6dbc') }}</span>
                     @error('compare_at_price')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
@@ -132,7 +132,7 @@
         {{-- Categories --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
             <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-1">{{ __('ui.categories') }}</h2>
-            <p class="font-body-sm text-body-sm text-outline mb-4">A product can appear in several categories. Removing every selection hides it from all category listings.</p>
+            <p class="font-body-sm text-body-sm text-outline mb-4">{{ __('content.t_ab025763921f') }}</p>
 
             <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5">
                 @foreach ($categories as $category)
@@ -150,14 +150,14 @@
 
         {{-- Media --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">Primary image</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('content.t_7fe418fc7a47') }}</h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_140px] gap-4 items-start">
                 <label class="space-y-1.5">
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Image path (public disk)</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                            name="image_path" maxlength="500" type="text" placeholder="images/products/product_001.webp"
                            value="{{ old('image_path', $currentImage) }}">
-                    <span class="block font-body-sm text-[12px] text-outline">Relative to <code>public/</code>. Saving the same path updates the existing image instead of duplicating it.</span>
+                    <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_a78e783a95d0') }} <code>public/</code>{{ __('content.t_0da7176c683f') }}</span>
                     @error('image_path')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
@@ -165,7 +165,7 @@
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Upload image (JPEG/PNG/WebP, max 5 MB)</span>
                     <input class="w-full h-12 px-4 py-2 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none file:mr-3 file:border-0 file:bg-primary file:text-on-primary file:px-3 file:py-1"
                            name="image" type="file" accept="image/jpeg,image/png,image/webp">
-                    <span class="block font-body-sm text-[12px] text-outline">Uploading replaces the primary image and stores it on the public disk.</span>
+                    <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_b0853ed2d31c') }}</span>
                     @error('image')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
@@ -181,24 +181,24 @@
 
         {{-- Content --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">Content</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('ui.content') }}</h2>
             <div class="space-y-4">
                 <label class="space-y-1.5 block">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Description</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.description') }}</span>
                     <textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none min-h-28"
                               name="description" maxlength="5000">{{ old('description', $product->description) }}</textarea>
                     @error('description')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5 block">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">How to use</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_dd45fd3f2e34') }}</span>
                     <textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none min-h-24"
                               name="how_to_use" maxlength="3000">{{ old('how_to_use', $product->how_to_use) }}</textarea>
                     @error('how_to_use')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5 block">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Ingredients</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.ingredients') }}</span>
                     <textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none min-h-24"
                               name="ingredients" maxlength="3000">{{ old('ingredients', $product->ingredients) }}</textarea>
                     @error('ingredients')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -208,22 +208,22 @@
 
         {{-- SEO --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">Search engine listing</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('content.t_1439c25097c7') }}</h2>
             <div class="space-y-4">
                 <label class="space-y-1.5 block">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Meta title</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_79e3c0634fe2') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                            name="meta_title" maxlength="190" type="text" value="{{ old('meta_title', $product->meta_title) }}"
                            placeholder="{{ $product->name ?: 'Product name' }} | SEPHORA UAE">
-                    <span class="block font-body-sm text-[12px] text-outline">Aim for 50–60 characters. Falls back to the product name.</span>
+                    <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_e66d01f52443') }}</span>
                     @error('meta_title')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5 block">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Meta description</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_0ffb7074be05') }}</span>
                     <textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none min-h-20"
                               name="meta_description" maxlength="300">{{ old('meta_description', $product->meta_description) }}</textarea>
-                    <span class="block font-body-sm text-[12px] text-outline">Aim for 140–160 characters. Falls back to the description.</span>
+                    <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_25f1b4a71d49') }}</span>
                     @error('meta_description')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
             </div>
@@ -231,7 +231,7 @@
 
         {{-- Visibility --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">Visibility &amp; merchandising</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('content.t_bfb5f7577dea') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 @foreach ([
                     'is_active' => ['Active — visible on the storefront', true],

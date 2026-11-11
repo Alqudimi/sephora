@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sephora UAE | Haircare Category - Luxury Beauty E-Commerce')
+@section('title', __('meta.hair'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
@@ -19,7 +19,7 @@
 <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(780 items)</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
-            From everyday essentials to salon-grade treatments, discover our curated collection for strong, lustrous, healthy hair from root to tip.
+            {{ __('content.t_6cda56cff690') }}
           </p>
 </div>
 <!-- Sort dropdown -->
@@ -31,7 +31,7 @@
 <option>{{ __('ui.bestsellers') }}</option>
 <option>{{ __('ui.price_low_high') }}</option>
 <option>{{ __('ui.price_high_low') }}</option>
-<option>Customer Rating</option>
+<option>{{ __('content.t_c9418ddbe778') }}</option>
 <option>{{ __('ui.new_arrivals') }}</option>
 </select>
 <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-[18px]">
@@ -52,11 +52,11 @@
 <span class="material-symbols-outlined text-[18px]">remove</span>
 </div>
 <ul class="space-y-2 text-on-surface-variant font-body-sm">
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Shampoo &amp; Conditioner</span> <span class="text-outline text-[11px]">(240)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_c90748ce8f27') }}</span> <span class="text-outline text-[11px]">(240)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors font-medium text-primary" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Treatments</span> <span class="text-outline text-[11px]">(195)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Hair Type</span> <span class="text-outline text-[11px]">(160)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Tools &amp; Accessories</span> <span class="text-outline text-[11px]">(75)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Shop By Concern</span> <span class="text-outline text-[11px]">(130)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_c09cb99e975f') }}</span> <span class="text-outline text-[11px]">(160)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_6cab3fb9d490') }}</span> <span class="text-outline text-[11px]">(75)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_16591cf73c89') }}</span> <span class="text-outline text-[11px]">(130)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Sets</span> <span class="text-outline text-[11px]">(48)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('ui.travel_size') }}</span> <span class="text-outline text-[11px]">(52)</span></a></li>
 </ul>
@@ -64,11 +64,11 @@
 <!-- REFINE SECTION & EXCLUSIVES TOGGLE -->
 <div class="py-4">
 <div class="flex items-center justify-between mb-3">
-<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Refine By</h3>
+<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">{{ __('content.t_96c857ca3a60') }}</h3>
 <button class="font-label-caps text-[10px] tracking-wider text-on-surface-variant hover:text-primary underline">{{ __('ui.clear_all') }}</button>
 </div>
 <div class="flex items-center justify-between bg-surface-container-low p-2.5 border border-outline-variant">
-<span class="font-label-caps text-label-caps uppercase text-primary font-semibold">Sephora Exclusive Only</span>
+<span class="font-label-caps text-label-caps uppercase text-primary font-semibold">{{ __('content.t_a283183b6457') }}</span>
 <label class="relative inline-flex items-center cursor-pointer">
 <input checked="" class="sr-only peer" type="checkbox"/>
 <div class="w-8 h-4 bg-outline-variant peer-focus:outline-none rounded-none peer peer-checked:bg-primary after:content-[''] after:absolute after:top-[1px] after:left-[1px] after:bg-on-primary after:h-3.5 after:w-3.5 after:transition-all peer-checked:after:translate-x-4"></div>
@@ -83,7 +83,7 @@
 </div>
 <!-- Brand filter search -->
 <div class="relative mb-3">
-<input class="w-full pl-7 pr-2 py-1.5 border border-outline-variant bg-surface-container-lowest text-xs rounded-none focus:outline-none focus:border-primary" placeholder="Search brands..." type="text"/>
+<input class="w-full pl-7 pr-2 py-1.5 border border-outline-variant bg-surface-container-lowest text-xs rounded-none focus:outline-none focus:border-primary" placeholder="{{ __('content.t_5c1d91f3c2a3') }}" type="text"/>
 <span class="material-symbols-outlined absolute left-1.5 top-1.5 text-outline text-[16px]">search</span>
 </div>
 <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
@@ -111,7 +111,7 @@
 <label class="flex items-center justify-between cursor-pointer group">
 <div class="flex items-center space-x-2">
 <input checked="" class="w-4 h-4 rounded-none border-outline text-primary focus:ring-0" type="checkbox"/>
-<span class="text-primary font-semibold group-hover:text-secondary transition-colors">Color Wow</span>
+<span class="text-primary font-semibold group-hover:text-secondary transition-colors">{{ __('content.t_33452044ba46') }}</span>
 </div>
 <span class="text-outline text-xs">(20)</span>
 </label>
@@ -132,7 +132,7 @@
 <label class="flex items-center justify-between cursor-pointer group">
 <div class="flex items-center space-x-2">
 <input class="w-4 h-4 rounded-none border-outline text-primary focus:ring-0" type="checkbox"/>
-<span class="text-on-surface-variant group-hover:text-primary transition-colors">Fable &amp; Mane</span>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">{{ __('content.t_58cb39776e84') }}</span>
 </div>
 <span class="text-outline text-xs">(16)</span>
 </label>
@@ -155,19 +155,19 @@
 <!-- COLLAPSIBLE ACCORDIONS -->
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">Hair Type</span>
+<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">{{ __('content.t_c09cb99e975f') }}</span>
 <span class="material-symbols-outlined text-[18px]">add</span>
 </button>
 </div>
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">Hair Concern</span>
+<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">{{ __('content.t_4f5b0c359785') }}</span>
 <span class="material-symbols-outlined text-[18px]">add</span>
 </button>
 </div>
 <div class="py-3.5">
 <button class="w-full flex items-center justify-between text-left group">
-<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">Product Formulation</span>
+<span class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold group-hover:text-secondary transition-colors">{{ __('content.t_ae1f4d25db2b') }}</span>
 <span class="material-symbols-outlined text-[18px]">add</span>
 </button>
 </div>
@@ -222,7 +222,7 @@
 </div>
 <!-- Action Button -->
 <button class="mt-4 w-full h-11 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all duration-150" data-add-to-bag="{{ $products->id }}">
-              ADD TO BAG
+              {{ __('content.t_ea34a3a7ca7b') }}
             </button>
 </article>
 @endforeach
@@ -230,13 +230,13 @@
 <!-- PAGINATION & PROGRESS INDICATOR -->
 <div class="mt-16 text-center max-w-md mx-auto">
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-2.5">
-            Showing <strong class="text-primary">12</strong> of <strong class="text-primary">780</strong> items
+            {{ __('ui.showing') }} <strong class="text-primary">12</strong> {{ __('ui.of') }} <strong class="text-primary">780</strong> items
           </p>
 <div class="w-full bg-outline-variant h-0.5 mb-6 overflow-hidden">
 <div class="bg-primary h-0.5 w-[2%]"></div>
 </div>
 <button class="w-full h-12 bg-transparent text-primary border border-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors duration-150">
-            LOAD MORE PRODUCTS
+            {{ __('content.t_ff6255edd8b2') }}
           </button>
 </div>
 </section>

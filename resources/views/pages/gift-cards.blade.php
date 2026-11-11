@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gift Cards At Sephora | Sephora UAE Official Online Store')
+@section('title', __('meta.gift_cards'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased min-h-screen flex flex-col selection:bg-black selection:text-white')
 
 @section('head')
@@ -13,25 +13,25 @@
 <nav class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-widest">
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
-<span class="text-primary font-bold">Gift Cards At Sephora</span>
+<span class="text-primary font-bold">{{ __('content.t_7eda08b0b56f') }}</span>
 </nav>
 <!-- 4. HERO HEADER & INTRO -->
 <div class="text-center max-w-3xl mx-auto pt-2 pb-8">
 <div class="inline-flex items-center gap-2 border border-primary px-3.5 py-1 mb-4">
 <span class="material-symbols-outlined text-[14px] text-primary">card_giftcard</span>
-<span class="font-label-caps text-label-caps tracking-widest uppercase font-bold text-primary">GIFT SOMETHING BEAUTIFUL</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase font-bold text-primary">{{ __('content.t_7716ea4630c6') }}</span>
 </div>
 <h1 class="font-headline-lg text-headline-lg md:text-display-hero text-primary tracking-tight font-bold mb-4 uppercase">
-        GIFT CARDS AT SEPHORA
+        {{ __('content.t_2f8bf50e0dd7') }}
       </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto font-light">
-        The ultimate passport to beauty luxury. Perfect for birthdays, celebrations, or an effortless prestige indulgence.
+        {{ __('content.t_39bde0924b38') }}
       </p>
 <!-- Announcement Callout Box -->
 <div class="mt-8 bg-surface-container-lowest border-2 border-primary p-4 md:p-5 flex items-center justify-center gap-3 text-left">
 <span class="material-symbols-outlined text-secondary text-[24px] flex-shrink-0">verified</span>
 <p class="font-body-md text-body-md font-medium text-on-surface">
-<strong class="font-bold text-primary">You asked, We listened</strong> — Gift Cards bought in Sephora stores can now be redeemed online at the checkout step!
+<strong class="font-bold text-primary">{{ __('content.t_afa6e50bb7af') }}</strong> {{ __('content.t_29920ad7763f') }}
         </p>
 </div>
 </div>
@@ -40,22 +40,22 @@
 <!-- Left: Iconic Striped Sephora Gift Card Presentation -->
 <div class="lg:col-span-7 bg-surface-container-lowest border border-primary overflow-hidden flex flex-col justify-between group">
 <div class="relative overflow-hidden bg-primary aspect-[16/9]">
-<img alt="Sephora Gift Card luxury black and white striped shopping card on marble podium" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out" src="{{ asset('images/content/img_b1cfece087ddc206.jpg') }}"/>
+<img alt="{{ __('content.t_fceeba409a87') }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out" src="{{ asset('images/content/img_b1cfece087ddc206.jpg') }}"/>
 <div class="absolute top-4 left-4 bg-primary text-on-primary font-label-tag text-label-tag px-3 py-1 uppercase tracking-widest">
-            OFFICIAL GIFT CARD
+            {{ __('content.t_d12f9c16ea92') }}
           </div>
 </div>
 <div class="p-6 md:p-8 border-t border-outline-variant bg-surface-container-lowest">
-<h2 class="font-headline-sm text-headline-sm text-primary mb-2">The Quintessential Beauty Gesture</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2">{{ __('content.t_20f99dba3567') }}</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
-            Available in any custom amount from AED 100 to AED 5,000. Valid across hundreds of coveted international brands in makeup, skincare, and bespoke niche fragrance.
+            {{ __('content.t_660732403864') }}
           </p>
 <div class="flex flex-wrap items-center gap-4">
 <a class="inline-flex items-center justify-center h-12 px-8 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all duration-200" href="#balance-module">
-              CHECK CARD BALANCE
+              {{ __('content.t_32f4504fa488') }}
             </a>
 <a class="inline-flex items-center justify-center h-12 px-6 bg-transparent text-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-primary hover:text-on-primary transition-all duration-200" href="#stores">
-              FIND A STORE
+              {{ __('content.t_4c037fba544e') }}
             </a>
 </div>
 </div>
@@ -64,9 +64,9 @@
 <div class="lg:col-span-5 flex flex-col justify-between space-y-gutter">
 <div class="bg-surface-container-lowest border border-outline-variant overflow-hidden group">
 <div class="relative aspect-[16/9] overflow-hidden">
-<img alt="Sephora luxury gift packaging envelope with gold ribbons" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out" src="{{ asset('images/content/img_394b44c9b6270c9c.jpg') }}"/>
+<img alt="{{ __('content.t_77fd2bd4635e') }}" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out" src="{{ asset('images/content/img_394b44c9b6270c9c.jpg') }}"/>
 <div class="absolute bottom-3 left-3 bg-surface-container-lowest/90 backdrop-blur-none px-3 py-1 font-label-caps text-label-caps text-primary border border-primary">
-              IN-STORE &amp; DIGITAL COMPATIBLE
+              {{ __('content.t_15d1c4f7e21a') }}
             </div>
 </div>
 </div>
@@ -77,8 +77,8 @@
               1
             </div>
 <div>
-<h3 class="font-title-lg text-title-lg text-primary uppercase tracking-wide">Buy a Gift Card</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-1">Pick one up at any Sephora store near you and top it up!</p>
+<h3 class="font-title-lg text-title-lg text-primary uppercase tracking-wide">{{ __('content.t_26b44a0416d7') }}</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">{{ __('content.t_025810d12044') }}</p>
 </div>
 </div>
 <div class="h-[1px] bg-surface-container w-full"></div>
@@ -87,8 +87,8 @@
               2
             </div>
 <div>
-<h3 class="font-title-lg text-title-lg text-primary uppercase tracking-wide">Give the Gift of Beauty</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-1">Share it with someone special for any occasion or just because.</p>
+<h3 class="font-title-lg text-title-lg text-primary uppercase tracking-wide">{{ __('content.t_f962ea088391') }}</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">{{ __('content.t_8fdacd9fa699') }}</p>
 </div>
 </div>
 <div class="h-[1px] bg-surface-container w-full"></div>
@@ -97,8 +97,8 @@
               3
             </div>
 <div>
-<h3 class="font-title-lg text-title-lg text-primary uppercase tracking-wide">Redeem Online or In-Store</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-1">Use the card at checkout on the app or website or at your favourite store - simple and instant.</p>
+<h3 class="font-title-lg text-title-lg text-primary uppercase tracking-wide">{{ __('content.t_b82627d186dc') }}</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">{{ __('content.t_39e1647d6283') }}</p>
 </div>
 </div>
 </div>
@@ -108,10 +108,10 @@
 <section class="my-space-xl bg-surface-container-lowest border-2 border-primary p-6 md:p-12 relative overflow-hidden" id="balance-module">
 <div class="max-w-3xl mx-auto">
 <div class="text-center mb-8">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold mb-1 block">INSTANT VERIFICATION</span>
-<h2 class="font-headline-lg text-headline-lg text-primary font-bold uppercase mb-2">Check Your Gift Card Balance</h2>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold mb-1 block">{{ __('content.t_994fdb363109') }}</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-bold uppercase mb-2">{{ __('content.t_0dccdae55d78') }}</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant">
-            Have a gift card? Check your gift card balance here instantly and enjoy your shopping!
+            {{ __('content.t_ee3f377cebf4') }}
           </p>
 </div>
 <form class="space-y-6" id="balance-form" onsubmit="event.preventDefault(); simulateBalanceCheck();">
@@ -119,7 +119,7 @@
 <!-- 16-digit card number input -->
 <div class="md:col-span-2">
 <label class="block font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant mb-2" for="card-number">
-                16-Digit Card Number <span class="text-secondary">*</span>
+                {{ __('content.t_c58da805744f') }} <span class="text-secondary">*</span>
 </label>
 <div class="relative">
 <input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline focus:border-primary focus:ring-0 font-mono text-title-md text-primary tracking-widest placeholder:text-outline-variant transition-colors" id="card-number" maxlength="19" placeholder="6036 1234 5678 9012" required="" type="text"/>
@@ -127,12 +127,12 @@
 <span class="material-symbols-outlined text-[20px]">credit_card</span>
 </span>
 </div>
-<p class="font-body-sm text-body-sm text-outline mt-1.5">Found on the reverse side of your physical card or in your e-voucher email.</p>
+<p class="font-body-sm text-body-sm text-outline mt-1.5">{{ __('content.t_63901d3e481d') }}</p>
 </div>
 <!-- 4-digit PIN -->
 <div class="md:col-span-1">
 <label class="block font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant mb-2" for="card-pin">
-                4-Digit PIN <span class="text-secondary">*</span>
+                {{ __('content.t_dba9f0567585') }} <span class="text-secondary">*</span>
 </label>
 <div class="relative">
 <input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline focus:border-primary focus:ring-0 font-mono text-title-md text-primary tracking-widest placeholder:text-outline-variant transition-colors" id="card-pin" maxlength="4" placeholder="••••" required="" type="password"/>
@@ -140,29 +140,29 @@
 <span class="material-symbols-outlined text-[20px]">lock</span>
 </span>
 </div>
-<p class="font-body-sm text-body-sm text-outline mt-1.5">Scratch gently to reveal.</p>
+<p class="font-body-sm text-body-sm text-outline mt-1.5">{{ __('content.t_34ba2513ed3a') }}</p>
 </div>
 </div>
 <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-surface-container">
 <button class="w-full sm:w-auto h-12 px-10 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all duration-200 cursor-pointer flex items-center justify-center gap-2" type="submit">
-<span>CHECK YOUR BALANCE</span>
+<span>{{ __('content.t_50baae95d4c4') }}</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </button>
 <a class="font-label-caps text-label-caps text-primary hover:text-secondary underline tracking-widest uppercase flex items-center gap-1.5" href="/" id="stores">
 <span class="material-symbols-outlined text-[16px]">storefront</span>
-<span>Find a Store to Purchase</span>
+<span>{{ __('content.t_8534e87c8d6b') }}</span>
 </a>
 </div>
 <!-- Result Simulation Box (Hidden by default) -->
 <div class="hidden p-5 bg-surface border border-primary mt-4" id="balance-result">
 <div class="flex items-center justify-between">
 <div>
-<span class="font-label-tag text-label-tag uppercase tracking-widest text-outline">CURRENT CARD BALANCE</span>
+<span class="font-label-tag text-label-tag uppercase tracking-widest text-outline">{{ __('content.t_b8d4a100e29b') }}</span>
 <div class="font-price-aed-lg text-display-hero-mobile text-primary font-bold mt-1" id="balance-value">AED —</div>
-<div class="font-body-sm text-body-sm text-on-surface-variant mt-1" id="balance-meta">Enter your 16-digit card number above.</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1" id="balance-meta">{{ __('content.t_9ca061e2fe4b') }}</div>
 </div>
 <a class="h-10 px-6 bg-secondary text-on-secondary font-label-caps text-label-caps uppercase tracking-widest flex items-center hover:opacity-90" href="/shop/bestsellers">
-                SHOP NOW
+                {{ __('content.t_b6f0837261c6') }}
               </a>
 </div>
 </div>
@@ -172,8 +172,8 @@
 <!-- 7. HOW TO USE & REDEEM STEPS (Visual 3-Step Guide) -->
 <section class="my-space-xl">
 <div class="text-center mb-10">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-outline font-bold">SIMPLE &amp; INSTANT</span>
-<h2 class="font-headline-lg text-headline-lg text-primary uppercase font-bold mt-1">How Sephora Gift Cards Work</h2>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-outline font-bold">{{ __('content.t_9ab1ac74fcaf') }}</span>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase font-bold mt-1">{{ __('content.t_1ff843b41933') }}</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <!-- Step 1 -->
@@ -182,14 +182,14 @@
 <div class="w-12 h-12 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold mb-6">
               01
             </div>
-<h3 class="font-title-lg text-title-lg text-primary uppercase mb-3">Choose Your Amount</h3>
+<h3 class="font-title-lg text-title-lg text-primary uppercase mb-3">{{ __('content.t_a64d43752ba5') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Select any denomination starting from 100 AED up to 5,000 AED. Custom amounts are available at cash desks in any Sephora store across the United Arab Emirates.
+              {{ __('content.t_d01ab43a68d5') }}
             </p>
 </div>
 <div class="mt-6 pt-4 border-t border-surface-container flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps uppercase">
 <span class="material-symbols-outlined text-[18px]">payments</span>
-<span>Flexible top-up values</span>
+<span>{{ __('content.t_735c35a94565') }}</span>
 </div>
 </div>
 <!-- Step 2 -->
@@ -198,14 +198,14 @@
 <div class="w-12 h-12 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold mb-6">
               02
             </div>
-<h3 class="font-title-lg text-title-lg text-primary uppercase mb-3">Select In-Store or Digital</h3>
+<h3 class="font-title-lg text-title-lg text-primary uppercase mb-3">{{ __('content.t_bffa0011a818') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Opt for the signature monochrome striped physical card enclosed in a luxurious keepsake envelope, or dispatch an instant e-gift voucher straight to their phone or inbox.
+              {{ __('content.t_42cb634ed73b') }}
             </p>
 </div>
 <div class="mt-6 pt-4 border-t border-surface-container flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps uppercase">
 <span class="material-symbols-outlined text-[18px]">mail</span>
-<span>Instant delivery or physical gift</span>
+<span>{{ __('content.t_7ca8a3a62fc4') }}</span>
 </div>
 </div>
 <!-- Step 3 -->
@@ -214,14 +214,14 @@
 <div class="w-12 h-12 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold mb-6">
               03
             </div>
-<h3 class="font-title-lg text-title-lg text-primary uppercase mb-3">Seamless Checkout</h3>
+<h3 class="font-title-lg text-title-lg text-primary uppercase mb-3">{{ __('content.t_ffe7438d64c1') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-              Redeem in seconds! Apply the 16-digit card code during online checkout on Sephora.me or the Sephora UAE App, or present the barcode to the beauty advisor at store payment terminals.
+              {{ __('content.t_6530b403310e') }}
             </p>
 </div>
 <div class="mt-6 pt-4 border-t border-surface-container flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps uppercase">
 <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
-<span>Online &amp; in-store redemption</span>
+<span>{{ __('content.t_4f0122ce6bc9') }}</span>
 </div>
 </div>
 </div>
@@ -230,7 +230,7 @@
 <section class="my-space-xl max-w-4xl mx-auto">
 <div class="border-b border-primary pb-4 mb-8 flex items-baseline justify-between">
 <div>
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-outline">ASSISTANCE &amp; POLICY</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-outline">{{ __('content.t_4765a20619c3') }}</span>
 <h2 class="font-headline-lg text-headline-lg text-primary uppercase font-bold mt-1">{{ __('ui.faq') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps text-on-surface-variant hidden sm:inline">12 TOPICS</span>
@@ -240,50 +240,50 @@
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              I’ve received a gift card: What are the terms and conditions?
+              {{ __('content.t_11643728e5dc') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Sephora Gift Cards issued in the UAE are valid for 12 months from the date of issuance or activation. They can be redeemed for merchandise across all official Sephora standalone stores within the UAE, as well as on Sephora.me and the mobile app. Gift Cards cannot be refunded or exchanged for cash.
+            {{ __('content.t_e4778054c102') }}
           </div>
 </details>
 <!-- FAQ Item 2 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              How do I check my gift card’s balance and its validity period?
+              {{ __('content.t_dce82c37496d') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            You can verify your current balance and expiration date directly using our interactive Balance Checker tool above, at the checkout page by entering your 16-digit card code, or by asking any Sephora Beauty Advisor at our cash desks in-store.
+            {{ __('content.t_b2c207180465') }}
           </div>
 </details>
 <!-- FAQ Item 3 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              How do I use my gift card online/in store?
+              {{ __('content.t_896b45c33cee') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-<strong>Online:</strong> During Step 3 (Payment) of checkout, select "Sephora Gift Card", type in your 16-digit card number and 4-digit PIN, then click "Apply". If the purchase amount exceeds your card balance, you can pay the remainder via Credit Card, Apple Pay, or Tabby.<br/>
-<strong>In-Store:</strong> Simply show your physical gift card or digital barcode email/SMS to the Beauty Advisor at the cash desk before finalizing payment.
+<strong>{{ __('ui.online') }}</strong> During Step 3 (Payment) of checkout, select "Sephora Gift Card", type in your 16-digit card number and 4-digit PIN, then click "Apply". If the purchase amount exceeds your card balance, you can pay the remainder via Credit Card, Apple Pay, or Tabby.<br/>
+<strong>{{ __('content.t_995319c342d6') }}</strong> {{ __('content.t_29807615cecf') }}
           </div>
 </details>
 <!-- FAQ Item 4 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              Will I earn beauty pass points with my Sephora gift card?
+              {{ __('content.t_856d42bc5da3') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
@@ -297,112 +297,112 @@
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              Returns and Refunds
+              {{ __('content.t_c41acc0436c0') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Products purchased using a Sephora Gift Card follow our standard 14-day return policy. If eligible for a return in unused condition with receipt, the refunded amount will be re-credited to an electronic merchandise credit card or replacement gift card. Cash refunds are strictly prohibited.
+            {{ __('content.t_9e73a7bb629f') }}
           </div>
 </details>
 <!-- FAQ Item 6 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              How do I get a Sephora gift card?
+              {{ __('content.t_39aefb5da70b') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            You can purchase physical gift cards at any Sephora store located in Dubai Mall, Mall of the Emirates, Yas Mall, Galleria Mall Abu Dhabi, and all other UAE locations. Digital e-gift cards can also be purchased through selected corporate partnership channels.
+            {{ __('content.t_b34450d01bdb') }}
           </div>
 </details>
 <!-- FAQ Item 7 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              My Sephora gift card was lost, stolen, or damaged what should I do?
+              {{ __('content.t_45c4930dc41e') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Please treat your gift card like cash. Sephora is not responsible for lost or stolen cards. However, if your card is damaged and the 16-digit card number alongside original purchase receipt is legible, our Customer Care team or store managers may assist in transferring remaining verified balances to a replacement card.
+            {{ __('content.t_0aa68ba96032') }}
           </div>
 </details>
 <!-- FAQ Item 8 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              Can I offer a beauty service as a gift?
+              {{ __('content.t_f77a857cf184') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Yes! You can load a gift card with the exact amount required for Benefit Brow Bar waxing, Sephora Beauty Studio makeovers, or express skin treatments, allowing your recipient to book and pay for their desired atelier service.
+            {{ __('content.t_d7832dadee0c') }}
           </div>
 </details>
 <!-- FAQ Item 9 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              Can I pay a beauty service with a gift card?
+              {{ __('content.t_3c985d80df6a') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Absolutely. Sephora Gift Cards can be applied toward both product purchases and in-store Beauty Hub services across all participating Sephora UAE boutiques.
+            {{ __('content.t_c1e096eb8c88') }}
           </div>
 </details>
 <!-- FAQ Item 10 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              Can I extend the validity of my gift card?
+              {{ __('content.t_09f5b4c67a0d') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Under UAE retail regulations, cards maintain an active lifespan of 365 calendar days from the date of activation. Extensions cannot be processed once the card has officially expired, so we recommend enjoying your beauty shopping well before the expiry period.
+            {{ __('content.t_0dbfa53e7466') }}
           </div>
 </details>
 <!-- FAQ Item 11 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              Can I top up my gift card?
+              {{ __('content.t_3fdc018822c0') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Yes! You can top up an existing active Sephora physical gift card at any store checkout counter across the UAE. Digital e-gift vouchers cannot be topped up and are single-lifecycle codes.
+            {{ __('content.t_a579cb0e2bc0') }}
           </div>
 </details>
 <!-- FAQ Item 12 -->
 <details class="group py-5 cursor-pointer">
 <summary class="flex items-center justify-between list-none">
 <h3 class="font-title-lg text-title-lg text-primary font-semibold pr-4">
-              I’m having issues with using my gift card, who can help?
+              {{ __('content.t_252eac24ce31') }}
             </h3>
 <span class="material-symbols-outlined text-[22px] text-primary transition-transform duration-200 group-open:rotate-180">
               expand_more
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Our dedicated Sephora UAE Concierge is at your disposal. You can call us toll-free at <strong>800 SEPHORA (800 7374672)</strong> from 9:00 AM to 9:00 PM daily, or initiate a live chat session via our mobile app for immediate validation assistance.
+            {{ __('content.t_eb3dba60619f') }} <strong>800 SEPHORA (800 7374672)</strong> {{ __('content.t_62554a17a360') }}
           </div>
 </details>
 </div>
@@ -414,25 +414,25 @@
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
 <h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.free_delivery') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">On all orders over 250 AED</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('content.t_5ae4fa42fde1') }}</p>
 </div>
 <!-- 2 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified</span>
 <h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.authentic') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Direct from luxury ateliers</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('content.t_e414293259ed') }}</p>
 </div>
 <!-- 3 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">sync</span>
 <h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.easy_returns') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">In any UAE Sephora store</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('content.t_3bf5a2803a2f') }}</p>
 </div>
 <!-- 4 -->
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">stars</span>
 <h4 class="font-title-md text-title-md text-primary uppercase font-bold">{{ __('ui.beauty_pass_points') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Earn points on every dirham spent</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('content.t_c5bdd6223bae') }}</p>
 </div>
 </div>
 </section>

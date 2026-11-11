@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Products')
+@section('title', __('meta.products'))
 @section('content')
 <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
     <div>
@@ -7,23 +7,23 @@
         <p class="font-body-sm text-body-sm text-outline mt-1">{{ number_format($products->total()) }} products in the catalog</p>
     </div>
     <a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-5 h-11 inline-flex items-center hover:bg-surface-container-lowest hover:text-primary border border-primary transition-all" href="{{ route('admin.products.create') }}">
-        + Add Product
+        {{ __('content.t_3c36081df152') }}
     </a>
 </div>
 
 <form class="mb-5 flex flex-col sm:flex-row gap-2 max-w-2xl" method="GET">
-    <label class="sr-only" for="product-search">Search products</label>
+    <label class="sr-only" for="product-search">{{ __('content.t_4412bfe59cdf') }}</label>
     <input id="product-search" class="h-11 px-4 bg-surface-container-lowest border border-outline font-body-sm text-body-sm focus:border-primary flex-1 min-w-0"
-           name="q" placeholder="Search by name, SKU or brand..." value="{{ request('q') }}" type="text">
+           name="q" placeholder="{{ __('content.t_b760db0d88b6') }}" value="{{ request('q') }}" type="text">
     <label class="sr-only" for="product-status">{{ __('ui.status') }}</label>
     <select id="product-status" name="status" class="h-11 px-3 bg-surface-container-lowest border border-outline font-body-sm text-body-sm focus:border-primary">
-        <option value="">All statuses</option>
+        <option value="">{{ __('content.t_6405179d241b') }}</option>
         <option value="active" @selected(request('status') === 'active')>Live</option>
         <option value="hidden" @selected(request('status') === 'hidden')>Hidden</option>
     </select>
     <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-5 h-11 hover:bg-secondary transition-colors" type="submit">{{ __('ui.filter') }}</button>
     @if (request()->filled('q') || request()->filled('status'))
-        <a class="h-11 px-4 inline-flex items-center border border-outline-variant font-label-caps text-label-caps uppercase text-primary hover:border-primary transition-colors" href="{{ route('admin.products') }}">Clear</a>
+        <a class="h-11 px-4 inline-flex items-center border border-outline-variant font-label-caps text-label-caps uppercase text-primary hover:border-primary transition-colors" href="{{ route('admin.products') }}">{{ __('ui.clear') }}</a>
     @endif
 </form>
 
@@ -31,11 +31,11 @@
     <table class="w-full text-left font-body-sm text-body-sm min-w-[820px]">
         <thead class="bg-surface-container text-on-surface-variant font-label-caps text-label-caps uppercase">
             <tr>
-                <th class="px-4 py-3">Image</th>
-                <th class="px-4 py-3">Product</th>
+                <th class="px-4 py-3">{{ __('ui.image') }}</th>
+                <th class="px-4 py-3">{{ __('ui.product') }}</th>
                 <th class="px-4 py-3">{{ __('ui.brand') }}</th>
                 <th class="px-4 py-3">{{ __('ui.price') }}</th>
-                <th class="px-4 py-3">Stock</th>
+                <th class="px-4 py-3">{{ __('ui.stock') }}</th>
                 <th class="px-4 py-3">{{ __('ui.status') }}</th>
                 <th class="px-4 py-3 text-right">{{ __('ui.actions') }}</th>
             </tr>

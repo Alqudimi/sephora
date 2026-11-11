@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy & My Data | SEPHORA UAE')
+@section('title', __('meta.privacy'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
@@ -9,13 +9,13 @@
     <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
         <a class="hover:text-secondary" href="/">{{ __('ui.home') }}</a> /
         <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('ui.my_account') }}</a> /
-        <span class="text-on-surface font-semibold">Privacy</span>
+        <span class="text-on-surface font-semibold">{{ __('ui.privacy') }}</span>
     </nav>
 
     @include('partials.account-nav', ['active' => 'privacy'])
 
     <div class="mb-8 max-w-3xl">
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Privacy &amp; My Data</h1>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('content.t_fc6feac41dd0') }}</h1>
         <p class="font-body-md text-body-md text-on-surface-variant mt-2">
             Under the UAE Personal Data Protection Law (Federal Decree-Law No. 45 of 2021) you can
             request a copy of your data, review your consent history, and ask us to erase your
@@ -39,7 +39,7 @@
         <div class="lg:col-span-2 space-y-6">
             {{-- Data export --}}
             <section class="border border-outline-variant bg-surface-container-lowest p-5 md:p-6">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Download my data</h2>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">{{ __('content.t_af53dade8377') }}</h2>
                 <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
                     Receive a JSON file containing your profile, addresses, orders, wishlist,
                     reviews and consent history. The file is generated on demand and is not
@@ -47,16 +47,16 @@
                 </p>
                 <a class="inline-flex h-11 px-5 items-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider border border-primary hover:bg-secondary hover:border-secondary transition-colors"
                    href="{{ route('account.privacy.export') }}">
-                    Download JSON export
+                    {{ __('content.t_85176ce073aa') }}
                 </a>
             </section>
 
             {{-- Consent history --}}
             <section class="border border-outline-variant bg-surface-container-lowest p-5 md:p-6">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">Consent history</h2>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">{{ __('content.t_9f998ba2b5f8') }}</h2>
 
                 @if ($consents->isEmpty())
-                    <p class="font-body-sm text-body-sm text-on-surface-variant">No consent records are stored for this account.</p>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_e857aa579880') }}</p>
                 @else
                     <div class="overflow-x-auto">
                         <table class="w-full text-left font-body-sm text-body-sm">
@@ -65,7 +65,7 @@
                                     <th class="py-2 pr-3">Type</th>
                                     <th class="py-2 pr-3">Version</th>
                                     <th class="py-2 pr-3">{{ __('ui.status') }}</th>
-                                    <th class="py-2">Accepted at</th>
+                                    <th class="py-2">{{ __('content.t_6fdd2d93260b') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,15 +83,15 @@
                 @endif
 
                 <p class="font-body-sm text-body-sm text-on-surface-variant mt-4">
-                    Email preferences can be changed any time from
-                    <a class="underline hover:text-secondary" href="{{ route('account.settings') }}">account settings</a>.
+                    {{ __('content.t_0754dbeb570b') }}
+                    <a class="underline hover:text-secondary" href="{{ route('account.settings') }}">{{ __('content.t_3e3dc940d4ad') }}</a>.
                 </p>
             </section>
         </div>
 
         {{-- Erasure --}}
         <aside class="border border-secondary bg-surface-container-lowest p-5 md:p-6">
-            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold mb-2">Delete my account</h2>
+            <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold mb-2">{{ __('content.t_2ae3a019040b') }}</h2>
             <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
                 We remove your profile, addresses, wishlist and reviews, and replace the personal
                 details on past orders with anonymised values. Order totals are kept for tax and
@@ -103,7 +103,7 @@
                 @method('DELETE')
 
                 <label class="block space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Current password *</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_1cd495617ad0') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('password') border-secondary @enderror"
                            name="password" required autocomplete="current-password" type="password">
                     @error('password')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -111,13 +111,13 @@
 
                 <label class="flex items-start gap-2 font-body-sm text-body-sm text-on-surface-variant">
                     <input class="mt-1" name="confirm" value="1" required type="checkbox">
-                    <span>I understand that deleting my account cannot be undone.</span>
+                    <span>{{ __('content.t_35007df9b75e') }}</span>
                 </label>
                 @error('confirm')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
 
                 <button class="w-full h-11 px-5 bg-secondary text-on-secondary font-label-caps text-label-caps uppercase tracking-wider border border-secondary hover:bg-primary hover:border-primary transition-colors"
                         type="submit">
-                    Delete my account
+                    {{ __('content.t_2ae3a019040b') }}
                 </button>
             </form>
         </aside>

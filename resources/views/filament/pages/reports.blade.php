@@ -45,7 +45,7 @@
 
     {{-- ── Revenue trend ── --}}
     <x-filament::section class="mt-6" icon="heroicon-o-chart-bar">
-        <x-slot name="heading">Revenue trend</x-slot>
+        <x-slot name="heading">{{ __('content.t_8126da036b60') }}</x-slot>
         <div class="flex h-48 items-end gap-1 overflow-x-auto">
             @foreach($trend['data'] as $i => $value)
                 <div class="group relative flex min-w-[18px] flex-1 flex-col items-center justify-end self-stretch">
@@ -62,7 +62,7 @@
     <div class="grid gap-6 xl:grid-cols-2">
         {{-- ── Top products ── --}}
         <x-filament::section icon="heroicon-o-cube">
-            <x-slot name="heading">Top products</x-slot>
+            <x-slot name="heading">{{ __('content.t_a3b3ba6bd7ef') }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($topProducts as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -72,14 +72,14 @@
                     </tr>
                 @endforeach
                 @if(empty($topProducts))
-                    <tr><td class="py-6 text-center text-gray-500">No orders in this period.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_3012d48610b3') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>
 
         {{-- ── Top brands ── --}}
         <x-filament::section icon="heroicon-o-tag">
-            <x-slot name="heading">Top brands</x-slot>
+            <x-slot name="heading">{{ __('content.t_888ed91c9ad9') }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($topBrands as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -89,14 +89,14 @@
                     </tr>
                 @endforeach
                 @if(empty($topBrands))
-                    <tr><td class="py-6 text-center text-gray-500">No orders in this period.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_3012d48610b3') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>
 
         {{-- ── Top emirates ── --}}
         <x-filament::section icon="heroicon-o-map-pin">
-            <x-slot name="heading">Sales by emirate</x-slot>
+            <x-slot name="heading">{{ __('content.t_795faa052c46') }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($topEmirates as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -106,14 +106,14 @@
                     </tr>
                 @endforeach
                 @if(empty($topEmirates))
-                    <tr><td class="py-6 text-center text-gray-500">No orders in this period.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_3012d48610b3') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>
 
         {{-- ── Top customers ── --}}
         <x-filament::section icon="heroicon-o-users">
-            <x-slot name="heading">Top customers</x-slot>
+            <x-slot name="heading">{{ __('content.t_b6c600062323') }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($topCustomers as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -126,14 +126,14 @@
                     </tr>
                 @endforeach
                 @if(empty($topCustomers))
-                    <tr><td class="py-6 text-center text-gray-500">No orders in this period.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_3012d48610b3') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>
 
         {{-- ── Payment methods ── --}}
         <x-filament::section icon="heroicon-o-credit-card">
-            <x-slot name="heading">Payment methods</x-slot>
+            <x-slot name="heading">{{ __('content.t_dc80127fcd41') }}</x-slot>
             @foreach($paymentMethods as $row)
                 <div class="mb-3">
                     <div class="mb-1 flex justify-between text-sm">
@@ -146,13 +146,13 @@
                 </div>
             @endforeach
             @if(empty($paymentMethods))
-                <p class="py-6 text-center text-gray-500">No orders in this period.</p>
+                <p class="py-6 text-center text-gray-500">{{ __('content.t_3012d48610b3') }}</p>
             @endif
         </x-filament::section>
 
         {{-- ── Delivery methods ── --}}
         <x-filament::section icon="heroicon-o-truck">
-            <x-slot name="heading">Delivery methods</x-slot>
+            <x-slot name="heading">{{ __('content.t_8046fd600489') }}</x-slot>
             @foreach($deliveryMethods as $row)
                 <div class="mb-3">
                     <div class="mb-1 flex justify-between text-sm">
@@ -165,13 +165,13 @@
                 </div>
             @endforeach
             @if(empty($deliveryMethods))
-                <p class="py-6 text-center text-gray-500">No orders in this period.</p>
+                <p class="py-6 text-center text-gray-500">{{ __('content.t_3012d48610b3') }}</p>
             @endif
         </x-filament::section>
 
         {{-- ── Coupon performance ── --}}
         <x-filament::section icon="heroicon-o-ticket">
-            <x-slot name="heading">Coupon performance</x-slot>
+            <x-slot name="heading">{{ __('content.t_5ebae6ec8a40') }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($couponPerformance as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -182,7 +182,7 @@
                     </tr>
                 @endforeach
                 @if(empty($couponPerformance))
-                    <tr><td class="py-6 text-center text-gray-500">No coupon redemptions in this period.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_f5ff07ca029f') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>
@@ -196,7 +196,7 @@
                     <td class="py-2 pl-3 text-right font-semibold w-40">AED {{ number_format($vatSummary['taxable'], 2) }}</td>
                 </tr>
                 <tr class="border-b border-gray-100 dark:border-gray-800">
-                    <td class="py-2 pr-3">VAT collected</td>
+                    <td class="py-2 pr-3">{{ __('content.t_2c623cd85a30') }}</td>
                     <td class="py-2 pl-3 text-right font-semibold w-40">AED {{ number_format($vatSummary['vat'], 2) }}</td>
                 </tr>
                 <tr>
@@ -219,20 +219,20 @@
                 </div>
             @endforeach
             @if($reviewsSummary['total'] === 0)
-                <p class="py-6 text-center text-gray-500">No reviews in this period.</p>
+                <p class="py-6 text-center text-gray-500">{{ __('content.t_704845c6414b') }}</p>
             @endif
         </x-filament::section>
 
         {{-- ── Refunds & cancellations ── --}}
         <x-filament::section icon="heroicon-o-arrow-uturn-left">
-            <x-slot name="heading">Refunds & cancellations</x-slot>
+            <x-slot name="heading">{{ __('content.t_a6835649080f') }}</x-slot>
             <table class="w-full text-sm">
                 <tr class="border-b border-gray-100 dark:border-gray-800">
-                    <td class="py-2 pr-3">Refunded orders</td>
+                    <td class="py-2 pr-3">{{ __('content.t_d7f8e35536c3') }}</td>
                     <td class="py-2 pl-3 text-right font-semibold w-40">{{ $refundsSummary['refunded_orders'] }} · AED {{ number_format($refundsSummary['refunded_amount'], 2) }}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 pr-3">Cancelled orders</td>
+                    <td class="py-2 pr-3">{{ __('content.t_345c1cc5747c') }}</td>
                     <td class="py-2 pl-3 text-right font-semibold w-40">{{ $refundsSummary['cancelled_orders'] }} · AED {{ number_format($refundsSummary['cancelled_value'], 2) }}</td>
                 </tr>
             </table>
@@ -240,7 +240,7 @@
 
         {{-- ── Most wished for ── --}}
         <x-filament::section icon="heroicon-o-heart">
-            <x-slot name="heading">Most wished for</x-slot>
+            <x-slot name="heading">{{ __('content.t_27fc4f87c4d5') }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($mostWished as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -249,7 +249,7 @@
                     </tr>
                 @endforeach
                 @if(empty($mostWished))
-                    <tr><td class="py-6 text-center text-gray-500">No wishlist activity yet.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_d4e63ec282ce') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>
@@ -270,7 +270,7 @@
                     </tr>
                 @endforeach
                 @if(empty($abandonedCarts))
-                    <tr><td class="py-6 text-center text-gray-500">No stale carts right now.</td></tr>
+                    <tr><td class="py-6 text-center text-gray-500">{{ __('content.t_320394460f01') }}</td></tr>
                 @endif
             </table>
         </x-filament::section>

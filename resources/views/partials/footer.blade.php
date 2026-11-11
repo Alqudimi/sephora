@@ -93,12 +93,12 @@
             <div>
                 <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-3">{{ __('messages.footer.top_brands') }}</h4>
                 <ul class="space-y-2">
-                    <li><a class="hover:text-white transition-colors" href="/brands/fenty-beauty">Fenty Beauty</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/brands/huda-beauty">Huda Beauty</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/fenty-beauty">{{ __('content.t_b003ed5119d2') }}</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/huda-beauty">{{ __('content.t_e0ea11438af0') }}</a></li>
                     <li><a class="hover:text-white transition-colors" href="/brands/kayali">Kayali</a></li>
                     <li><a class="hover:text-white transition-colors" href="/brands/tarte">Tarte</a></li>
                     <li><a class="hover:text-white transition-colors" href="/brands/nars">NARS</a></li>
-                    <li><a class="hover:text-white transition-colors" href="/brands/sephora-collection">Sephora Collection</a></li>
+                    <li><a class="hover:text-white transition-colors" href="/brands/sephora-collection">{{ __('content.t_289b65242e3b') }}</a></li>
                 </ul>
             </div>
 

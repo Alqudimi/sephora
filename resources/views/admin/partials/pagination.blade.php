@@ -2,11 +2,11 @@
     <nav aria-label="Pagination" class="mt-6 flex flex-wrap items-center justify-center gap-1.5">
         @if ($paginator->onFirstPage())
             <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm" aria-disabled="true">
-                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> Previous
+                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> {{ __('ui.previous') }}
             </span>
         @else
             <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="h-10 px-3 flex items-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">
-                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> Previous
+                <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> {{ __('ui.previous') }}
             </a>
         @endif
 
@@ -20,11 +20,11 @@
 
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="h-10 px-3 flex items-center border border-outline-variant text-primary font-body-sm text-body-sm hover:border-primary transition-colors">
-                Next <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
+                {{ __('ui.next') }} <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
             </a>
         @else
             <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm" aria-disabled="true">
-                Next <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
+                {{ __('ui.next') }} <span class="material-symbols-outlined text-[18px] ml-1">chevron_right</span>
             </span>
         @endif
     </nav>

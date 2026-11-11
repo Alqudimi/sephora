@@ -136,4 +136,20 @@ class LocalizationTest extends TestCase
         $this->assertSame(array_keys($english), array_keys($arabic));
     }
 
+    public function test_full_content_translation_keys_exist_in_both_locales(): void
+    {
+        $english = require resource_path('lang/en/content.php');
+        $arabic = require resource_path('lang/ar/content.php');
+
+        $this->assertSame(array_keys($english), array_keys($arabic));
+    }
+
+    public function test_meta_translation_keys_exist_in_both_locales(): void
+    {
+        $english = require resource_path('lang/en/meta.php');
+        $arabic = require resource_path('lang/ar/meta.php');
+
+        $this->assertSame(array_keys($english), array_keys($arabic));
+    }
+
 }

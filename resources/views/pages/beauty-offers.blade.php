@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Beauty Offers | SEPHORA UAE')
+@section('title', __('meta.beauty_offers'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
@@ -19,16 +19,16 @@
 <section class="border border-primary bg-surface-container-lowest p-8 md:p-12 mb-10 relative overflow-hidden">
 <div class="max-w-3xl relative z-10">
 <div class="inline-block bg-primary text-on-primary font-label-caps text-label-caps uppercase px-2.5 py-1 mb-3">
-          Complimentary Gifts &amp; Deluxe Treats
+          {{ __('content.t_964b223afa02') }}
         </div>
 <h1 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight mb-4">{{ __('ui.beauty_offers') }}</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
-          Discover our exclusive complimentary gifts, limited-edition deluxe miniatures, and brand offers available with your purchases online across the UAE. Valid while promotional supplies last.
+          {{ __('content.t_db6b969475bc') }}
         </p>
 <div class="flex flex-wrap items-center gap-6 text-body-sm font-label-caps text-on-surface-variant uppercase tracking-wider">
-<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-primary">auto_fix_high</span> Auto-applied in basket</span>
-<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-primary">verified</span> 100% Authentic Brands</span>
-<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-primary">inventory_2</span> Deluxe miniatures &amp; GWPs</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-primary">auto_fix_high</span> {{ __('content.t_6e21d07cd409') }}</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-primary">verified</span> {{ __('content.t_9dc710fefcca') }}</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-primary">inventory_2</span> {{ __('content.t_c3c2bc21d2b4') }}</span>
 </div>
 </div>
 <!-- Decorative High-Fashion Hairline Brand Tag -->
@@ -44,28 +44,28 @@
           All Offers (35)
         </button>
 <button class="border border-outline-variant text-on-surface hover:border-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap bg-surface-container-lowest transition-colors">
-          Fragrance Gifts
+          {{ __('content.t_a785c722a82d') }}
         </button>
 <button class="border border-outline-variant text-on-surface hover:border-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap bg-surface-container-lowest transition-colors">
-          Skincare Treats
+          {{ __('content.t_ca34a40bc972') }}
         </button>
 <button class="border border-outline-variant text-on-surface hover:border-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap bg-surface-container-lowest transition-colors">
-          Makeup Exclusives
+          {{ __('content.t_4e0ed30f1930') }}
         </button>
 <button class="border border-outline-variant text-on-surface hover:border-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap bg-surface-container-lowest transition-colors">
-          Haircare Gifts
+          {{ __('content.t_d75b6819de8e') }}
         </button>
 <button class="border border-outline-variant text-on-surface hover:border-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap bg-surface-container-lowest transition-colors">
-          Brand GWPs
+          {{ __('content.t_6cfca4c8fd8c') }}
         </button>
 </div>
 <!-- Sort Selection -->
 <div class="flex items-center space-x-3 self-end md:self-auto">
-<span class="text-body-sm font-label-caps uppercase text-outline">Sort by:</span>
+<span class="text-body-sm font-label-caps uppercase text-outline">{{ __('content.t_9bb640e5a014') }}</span>
 <select class="bg-surface-container-lowest border border-outline font-label-caps text-label-caps uppercase py-1.5 px-3 rounded-none focus:outline-none focus:border-primary text-on-surface cursor-pointer">
-<option>Featured Offers</option>
-<option>Newest Additions</option>
-<option>Expiring Soon</option>
+<option>{{ __('content.t_6b8ba94e683d') }}</option>
+<option>{{ __('content.t_a025e1593549') }}</option>
+<option>{{ __('content.t_50b61e0c8341') }}</option>
 <option>Brand A-Z</option>
 </select>
 </div>
@@ -77,20 +77,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              DELUXE GIFT
+              {{ __('content.t_5259d8e60e65') }}
             </span>
-<img alt="Nuxe Summer Pouch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/qr_code_mockup_for_downloading_mobile_app_with_elegant_sephora_minimalist.webp') }}"/>
+<img alt="{{ __('content.t_a06e4257191d') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/qr_code_mockup_for_downloading_mobile_app_with_elegant_sephora_minimalist.webp') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">NUXE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Summer Pouch</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_f2e1a3b51c56') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of any 2 products from Nuxe
+              {{ __('content.t_b8ac711d9d86') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP NUXE</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_ff002eaa9b68') }}</a>
 </div>
 </article>
 <!-- Card 2: Tarte Star Brush -->
@@ -98,20 +98,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              FREE GIFT
+              {{ __('content.t_7b61aa1ecac1') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="A minimalist studio still life of a sleek metallic star-shaped cosmetic brush from Tarte resting on a pristine white marble vanity against a high-contrast luxury studio background. High-key soft editorial lighting, ultra-sharp detail, monochrome contrast with subtle rose accents." src="{{ asset('images/content/img_29a65c938ee04f17.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_e6313cc64b97') }}" src="{{ asset('images/content/img_29a65c938ee04f17.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">TARTE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Get a Star Brush Free</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_ef2430595af4') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              A little Star Brush for your beauty bag when you purchase any 2 full-size products
+              {{ __('content.t_f6cff8b12ce5') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP TARTE</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_5d1e15b873d1') }}</a>
 </div>
 </article>
 <!-- Card 3: Narciso Rodriguez Patchouli Musc 10ml -->
@@ -119,20 +119,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              FRAGRANCE MINI
+              {{ __('content.t_068325a1aa4c') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Narciso Rodriguez Patchouli Musc 10ml deluxe travel fragrance miniature bottle photographed in an architectural gallery setting with deep black accents, crisp clean light, and pure luxury aesthetic. Ultra refined packaging photography." src="{{ asset('images/content/img_d5515c46c027760d.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_9f3676381c23') }}" src="{{ asset('images/content/img_d5515c46c027760d.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">NARCISO RODRIGUEZ</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Patchouli Musc Eau de Parfum Intense 10ml</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_3f10fb00303d') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_c39c79d5a28d') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Buy any Narciso Rodriguez fragrance and enjoy an exclusive gift
+              {{ __('content.t_c22ffa2e02c2') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP NARCISO RODRIGUEZ</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_4775d1a242ec') }}</a>
 </div>
 </article>
 <!-- Card 4: Youth To The People Water Bottle -->
@@ -140,20 +140,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              ECO GWP
+              {{ __('content.t_cb2bf5f0f8a7') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Youth to the People branded frosted glass water bottle with black lid displayed in a clean contemporary architectural light setting with soft shadows, minimal styling and Sephora luxury beauty composition." src="{{ asset('images/content/img_13c1dfe2b8ba358b.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_a647a757f104') }}" src="{{ asset('images/content/img_13c1dfe2b8ba358b.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">YOUTH TO THE PEOPLE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">YTTP Glass Water Bottle</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_0cbcb5221857') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_11a50a8c8f43') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of YTTP Superfood Protein Balm
+              {{ __('content.t_6f75ec33e27b') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP YTTP</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_03ef5a1041a5') }}</a>
 </div>
 </article>
 <!-- Card 5: Rabanne Million Gold Miniature 5ml -->
@@ -161,20 +161,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              GOLD EXCLUSIVE
+              {{ __('content.t_4e47cf89b9bb') }}
             </span>
-<img alt="Rabanne Million Gold 5ml Miniature" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/natasha_denona_glam_or_bronze_eyeshadow_palette_open_showing_shimmering.webp') }}"/>
+<img alt="{{ __('content.t_e5d51ce72e61') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/natasha_denona_glam_or_bronze_eyeshadow_palette_open_showing_shimmering.webp') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">RABANNE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Million Gold Eau de Parfum Intense 5ml Miniature</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_ac29f01d5338') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Buy any Rabanne fragrance and enjoy an exclusive gift
+              {{ __('content.t_546b3c3d56a8') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP RABANNE</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_ba3efae884c4') }}</a>
 </div>
 </article>
 <!-- Card 6: Prada Deluxe Wisteria Balm -->
@@ -182,20 +182,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              COUTURE BEAUTY
+              {{ __('content.t_e45a9be90ce7') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Prada Beauty luxury lip balm packaging with iconic Prada green and silver triangle logo in a museum vitrine studio setup with pure white high-key lighting and couture minimal composition." src="{{ asset('images/content/img_f55510eb9ee312ed.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_b82d22f91667') }}" src="{{ asset('images/content/img_f55510eb9ee312ed.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">PRADA</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Deluxe Prada Wisteria Balm</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_d42bcea15f43') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Enjoy the lip balm on purchase of any Prada makeup!
+              {{ __('content.t_1655829cb40b') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP PRADA</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_38c2bbe2ba92') }}</a>
 </div>
 </article>
 <!-- Card 7: Nars Powermatte Duos -->
@@ -203,20 +203,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              MAKEUP DUO
+              {{ __('content.t_5c94854e2b14') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Nars Powermatte Lip Pencil Duos displayed on a monochrome geometric pedestal, high-contrast black matte packaging with rich pigment swatches in a luxury editorial beauty shoot setting." src="{{ asset('images/content/img_b0ecdfdd6f170bf8.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_be06e5382570') }}" src="{{ asset('images/content/img_b0ecdfdd6f170bf8.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">NARS</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Nars Powermatte Lip Pencil Duos</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_7f847b69061c') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Purchase of any 2 Nars products to avail the gift.
+              {{ __('content.t_288de05847f3') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP NARS</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_50b33198d954') }}</a>
 </div>
 </article>
 <!-- Card 8: Laneige Donut Keychain Cap -->
@@ -224,20 +224,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              LIMITED EDITION
+              {{ __('content.t_37a725d141e3') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="A playful designer collectible donut keychain cap for Laneige lip sleeping mask sitting on a light pastel pedestal in a pristine high-key cosmetics shoot, Parisian aesthetic." src="{{ asset('images/content/img_9ab4d130f1c6be0e.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_7f14739e1c11') }}" src="{{ asset('images/content/img_9ab4d130f1c6be0e.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">LANEIGE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Donut Keychain Cap</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_87a18535d822') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of any 2 full size products from Laneige
+              {{ __('content.t_9dad0b4f89ce') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP LANEIGE</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_020b9a1b0af8') }}</a>
 </div>
 </article>
 <!-- Card 9: Elemis Dynamic Resurfacing 30ml -->
@@ -245,20 +245,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              SKINCARE MINI
+              {{ __('content.t_3bc04d98a851') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Elemis Dynamic Resurfacing Facial Wash 30ml sleek white tube displayed next to pristine water reflections and clean white marble background with crisp clinical lighting." src="{{ asset('images/content/img_f94e8bff6537398b.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_93561027fa70') }}" src="{{ asset('images/content/img_f94e8bff6537398b.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">ELEMIS</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Dynamic Resurfacing Facial Wash 30ml</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_a4ca41843d23') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On any purchase from Elemis
+              {{ __('content.t_7c8563bd6b69') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP ELEMIS</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_36cb0b925c71') }}</a>
 </div>
 </article>
 <!-- Card 10: Color Wow Dream Coat Spray 50ml -->
@@ -266,20 +266,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              HAIRCARE ICON
+              {{ __('content.t_809e585b918a') }}
             </span>
-<img alt="Color Wow Dream Coat Spray 50ml" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_64342687abdf467c.jpg') }}"/>
+<img alt="{{ __('content.t_d393ac2df381') }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_64342687abdf467c.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">COLOR WOW</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Dream Coat Supernatural Spray 50ml</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_0b95d626b4f2') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_267712ed71b5') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of any 2 products from Color Wow
+              {{ __('content.t_1e4d6af1ba9e') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP COLOR WOW</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_82e099cf5645') }}</a>
 </div>
 </article>
 <!-- Card 11: Tatcha Brightening Serum 5ml -->
@@ -287,20 +287,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              J-BEAUTY LUXURY
+              {{ __('content.t_a1ce78ae79f0') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Tatcha Brightening Serum 5ml miniature violet dropper bottle perched on white raked sand with Japanese zen aesthetic, soft diffuse studio light and minimalist perfection." src="{{ asset('images/content/img_66eeb2e01888735b.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_7b19d545374b') }}" src="{{ asset('images/content/img_66eeb2e01888735b.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">TATCHA</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Brightening Serum 5ml</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_40660270f230') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of any full size product from Tatcha
+              {{ __('content.t_9d9c20737ddb') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP TATCHA</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_f0d2c1793b74') }}</a>
 </div>
 </article>
 <!-- Card 12: Milk Makeup Concealer Brush -->
@@ -308,20 +308,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              BEAUTY TOOL
+              {{ __('content.t_b20c147c7e19') }}
             </span>
-<img alt="Milk Makeup Concealer Brush" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/sol_de_janeiro_brazilian_bum_bum_cream_vibrant_yellow_jar_with_white_cap_luxury.webp') }}"/>
+<img alt="{{ __('content.t_e99ac5366638') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/sol_de_janeiro_brazilian_bum_bum_cream_vibrant_yellow_jar_with_white_cap_luxury.webp') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">MILK MAKEUP</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Milk Makeup Concealer Brush</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_2dcd5b8905c1') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_e99ac5366638') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Avail the above gift on purchase of any 2 products from Milk Makeup
+              {{ __('content.t_ba47277f321c') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP MILK MAKEUP</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_21dc377d1b65') }}</a>
 </div>
 </article>
 <!-- Card 13: Biodance Serum Sample Trio -->
@@ -329,20 +329,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              K-BEAUTY TRIO
+              {{ __('content.t_6696899d932f') }}
             </span>
-<img alt="Biodance Serum Sample Trio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/k18_leave_in_molecular_repair_hair_mask_white_pump_bottle_with_pink_accent_high.webp') }}"/>
+<img alt="{{ __('content.t_efc53bc76afe') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/k18_leave_in_molecular_repair_hair_mask_white_pump_bottle_with_pink_accent_high.webp') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">BIODANCE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Serum Sample Trio</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_b2425f1ea042') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of any 2 products from Biodance
+              {{ __('content.t_9d669643c766') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP BIODANCE</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_949124dad4e9') }}</a>
 </div>
 </article>
 <!-- Card 14: BBB London The Chic Mirror Sleeve -->
@@ -352,18 +352,18 @@
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
               ACCESSORY
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="BBB London compact travel mirror nestled in an elegant black pebbled leather protective sleeve, photographed from above in a luxury handbag flatlay style with clean white studio lighting." src="{{ asset('images/content/img_b1e0691c21c80697.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_6ceb439ce69e') }}" src="{{ asset('images/content/img_b1e0691c21c80697.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">BBB LONDON</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">The Chic Mirror Sleeve</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_3a1b3fe573d7') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_a40d4040d880') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Avail the above gift on purchase of any BBB London Products.
+              {{ __('content.t_4348ce3513ad') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP BBB LONDON</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_cd7529fc306a') }}</a>
 </div>
 </article>
 <!-- Card 15: Clarins Pouch with Minis -->
@@ -371,20 +371,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              DELUXE BUNDLE
+              {{ __('content.t_498dcb1cd141') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Clarins red and white designer cosmetic travel pouch packed with deluxe skincare miniature tubes, positioned on a crisp clean white surface with editorial lighting." src="{{ asset('images/content/img_f2119405498dd8c4.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_d883c023abe0') }}" src="{{ asset('images/content/img_f2119405498dd8c4.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">CLARINS</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Pouch with Minis</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_8c7d038ef13d') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchase of 3 products from Clarins
+              {{ __('content.t_2acefaf3248d') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP CLARINS</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_8dbc7d2b7c47') }}</a>
 </div>
 </article>
 <!-- Card 16: Hourglass Luxury Makeup Bag -->
@@ -392,20 +392,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              VIP GWP
+              {{ __('content.t_27e6ba2a93b9') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Hourglass Cosmetics gleaming deep bronze metallic luxury makeup bag with gold zipper detail resting on minimalist black plinth, Parisian elegance." src="{{ asset('images/content/img_d0e12a2bc9a7d42b.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_96955e3ca3e3') }}" src="{{ asset('images/content/img_d0e12a2bc9a7d42b.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">HOURGLASS</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Your Beauty Essentials, Beautifully Stored</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_55ab9143a9a5') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Get a makeup bag when you purchase any 2 full-size Hourglass products.
+              {{ __('content.t_f06b5914702b') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP HOURGLASS</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_1dda5de60ca8') }}</a>
 </div>
 </article>
 <!-- Card 17: Gucci Flora Mirror & Eye Mask -->
@@ -413,20 +413,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              HIGH COUTURE
+              {{ __('content.t_bd6ca7dc7dc0') }}
             </span>
-<img alt="Gucci Flora Mirror and Eye Mask" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/luxury_black_and_white_striped_sephora_gift_card_on_an_elegant_sleek_marble.webp') }}"/>
+<img alt="{{ __('content.t_515ce61fc46d') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/luxury_black_and_white_striped_sephora_gift_card_on_an_elegant_sleek_marble.webp') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">GUCCI</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">A Floral Treat, Just for You</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_64d429444fc6') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Enjoy a complimentary Gucci Flora mirror &amp; eye mask with every 100ml fragrance purchase from the Gucci Flora collection.
+              {{ __('content.t_97737a7dc563') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP GUCCI</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_75cd559049bd') }}</a>
 </div>
 </article>
 <!-- Card 18: Carolina Herrera Good Girl Jasmine Absolute 7ml -->
@@ -434,20 +434,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              FRAGRANCE DELUXE
+              {{ __('content.t_56f506c1664f') }}
             </span>
-<img alt="Good Girl Jasmine Absolute 7ml Miniature" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/drunk_elephant_protini_polypeptide_cream_teal_and_white_jar_luxury_skincare.webp') }}"/>
+<img alt="{{ __('content.t_53f69c2fc447') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/drunk_elephant_protini_polypeptide_cream_teal_and_white_jar_luxury_skincare.webp') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">CAROLINA HERRERA</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Good Girl Jasmine Absolute 7ml Miniature</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_046c1d9503bb') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_53f69c2fc447') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Enjoy a complimentary gift with the purchase of any 100ml fragrance from the brand.
+              {{ __('content.t_8b8a9ed35190') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP CAROLINA HERRERA</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_2bf9924e9377') }}</a>
 </div>
 </article>
 <!-- Card 19: Huda Beauty Bronze Filter Palette Gift -->
@@ -455,20 +455,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              ICONIC ME
+              {{ __('content.t_04c0c7fce676') }}
             </span>
-<img alt="Huda Beauty Gift Bronze Filter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/qr_code_mockup_for_downloading_mobile_app_with_elegant_sephora_minimalist.webp') }}"/>
+<img alt="{{ __('content.t_ec4f66b62e8f') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/qr_code_mockup_for_downloading_mobile_app_with_elegant_sephora_minimalist.webp') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">HUDA BEAUTY</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Get your Huda Beauty Gift</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_d6675db98e96') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_e73ea0294738') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Avail the above gift on purchase of any Bronze Filter Pallette
+              {{ __('content.t_1a7cd12fe93b') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP HUDA BEAUTY</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_ae606ddb18cc') }}</a>
 </div>
 </article>
 <!-- Card 20: Benefit POREfessional Sponge -->
@@ -476,20 +476,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              SPECIAL EDITION
+              {{ __('content.t_75b83ae8fda4') }}
             </span>
-<img alt="Benefit POREfessional Sponge Applicator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/tartelette_in_bloom_clay_eyeshadow_palette_open_with_mirror_showing_12_neutral.webp') }}"/>
+<img alt="{{ __('content.t_0951e8259776') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/hero/tartelette_in_bloom_clay_eyeshadow_palette_open_with_mirror_showing_12_neutral.webp') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">BENEFIT</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Porefessional Sponge Applicator</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_dac65c9decae') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Get a free Sponge Applicator- Upon purchase of 1 POREfessional Concealer and any Benefit full-size product
+              {{ __('content.t_4dc571e46b30') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP BENEFIT</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_9c930e3dbcce') }}</a>
 </div>
 </article>
 <!-- Card 21: Urban Decay Pouch & Mini Bestsellers -->
@@ -497,20 +497,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              EDGY DELUXE
+              {{ __('content.t_8bec8ca8d0d4') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Urban Decay edgy black crinkle makeup pouch with graffiti graphics next to mini setting spray bottle and eyeliner pencil on bright studio light background." src="{{ asset('images/content/img_b72cb6750298b70a.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_c216f32d7659') }}" src="{{ asset('images/content/img_b72cb6750298b70a.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">URBAN DECAY</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Urban Decay pouch &amp; mini bestsellers</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_6a8278fe00c8') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_3db3ec1369e4') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Purchase any 2 Urban decay products and receive an Urban Decay Pouch + 2 Mini bestsellers
+              {{ __('content.t_d5df4ce1a2e6') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP URBAN DECAY</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_a14a0af930ad') }}</a>
 </div>
 </article>
 <!-- Card 22: Lancôme Idôle Set Miniature -->
@@ -518,20 +518,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              FRENCH COUTURE
+              {{ __('content.t_6f80612365d6') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Lancôme Idôle slim architectural glass miniature bottle in ultra luxury high-contrast beauty studio setting with rose-gold metallic accents and bright clean aesthetic." src="{{ asset('images/content/img_86c814e3a71a7738.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_b18b5fb9fad6') }}" src="{{ asset('images/content/img_86c814e3a71a7738.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">LANCÔME</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Idôle Set Miniature</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_070fb3f5c3c6') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_5d82d6caf9f9') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Avail the above gift on purchase of any 2 products from Lancôme.
+              {{ __('content.t_68cef1937c6b') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP LANCÔME</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_b64c921282b8') }}</a>
 </div>
 </article>
 <!-- Card 23: Maison Margiela Replica Totebag -->
@@ -539,20 +539,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              AVANT-GARDE
+              {{ __('content.t_d8c5c06d6170') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Maison Margiela Replica unbleached canvas tote bag featuring raw cotton texture and the iconic numeric label printed sharply in black ink, captured in a sunlit architectural Parisian studio." src="{{ asset('images/content/img_a37566368ed47806.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_e07ae14dbbd4') }}" src="{{ asset('images/content/img_a37566368ed47806.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">MAISON MARGIELA</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Maison Margiela Replica Totebag</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_be31ba2c1ccd') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_b1316e0623d3') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              With any purchase from Maison Margiela.
+              {{ __('content.t_ec7b6732d218') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP MAISON MARGIELA</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_aa5ade03372c') }}</a>
 </div>
 </article>
 <!-- Card 24: Moonglaze Disco Ball Keychain -->
@@ -562,18 +562,18 @@
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
               TRENDING
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="A shimmering miniature disco ball mirror keychain casting prismatic reflections over a glossy vanity, high-fashion cosmetics commercial photograph with intense studio highlight." src="{{ asset('images/content/img_5906b63ae9b02a83.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_18e279b736aa') }}" src="{{ asset('images/content/img_5906b63ae9b02a83.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">MOONGLAZE</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Get a free Disco Ball Keychain</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_86a4cce5c858') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Avail the above gift from Moonglaze with every Moonglow Highlighter purchase!
+              {{ __('content.t_74dd39b1ca1e') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP MOONGLAZE</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_bcd12b0f9af9') }}</a>
 </div>
 </article>
 <!-- Card 25: Fugazzi Canvas Totebag XL -->
@@ -581,20 +581,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              NICHE GWP
+              {{ __('content.t_36c142873e44') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Fugazzi Fragrances oversized heavy canvas tote bag in off-white with bold black brutalist typography, luxury niche perfumery aesthetic." src="{{ asset('images/content/img_4370ee2033cc2dbe.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_cbaaa266cef1') }}" src="{{ asset('images/content/img_4370ee2033cc2dbe.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">FUGAZZI</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Fugazzi Canvas Totebag XL</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_54438046b4b5') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Upon the purchase of any 50ml or 100ml fragrance
+              {{ __('content.t_65f24606492f') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP FUGAZZI</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_5888190f4fed') }}</a>
 </div>
 </article>
 <!-- Card 26: Slip Single Skinny Scrunchie -->
@@ -602,20 +602,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              PURE SILK
+              {{ __('content.t_b3d94e36fdcd') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Pure mulberry black silk skinny hair scrunchie by Slip placed gracefully on an alabaster dish, ultra crisp high-contrast studio photograph, luxury light-mode." src="{{ asset('images/content/img_d6e20d8e62bbcf85.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_0584681a0619') }}" src="{{ asset('images/content/img_d6e20d8e62bbcf85.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">SLIP</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Slip Single Scrunchie – Black</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_55d5eec8e4d3') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Receive a multi-award winning Slip skinny scrunchie when you spend 500 AED on Slip products
+              {{ __('content.t_27821ea1e0c7') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP SLIP</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_dd3d04bc7554') }}</a>
 </div>
 </article>
 <!-- Card 27: Rare Beauty Soft Pinch Blush Deluxe -->
@@ -623,20 +623,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              BESTSELLER MINI
+              {{ __('content.t_5f4644fa5580') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Rare Beauty Soft Pinch liquid blush miniature bottle with pale peach gold cap standing next to a soft dew droplet, high-fashion Sephora makeup photo." src="{{ asset('images/content/img_a01311f0e4ad8f4d.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_3e2e524c0578') }}" src="{{ asset('images/content/img_a01311f0e4ad8f4d.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">RARE BEAUTY</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Free Soft Pinch Liquid Blush Deluxe</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_bd5f1e1ea5d0') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_e73eceb0cbaa') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Upon the purchase of any 2 products from Rare Beauty.
+              {{ __('content.t_a4a0fca1630c') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP RARE BEAUTY</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_06dc00e80191') }}</a>
 </div>
 </article>
 <!-- Card 28: Burberry Luxury GWP -->
@@ -644,20 +644,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              HERITAGE GIFT
+              {{ __('content.t_0f8cdacef9ca') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Burberry luxury signature check pattern cosmetic pouch and deluxe gold miniature bottle positioned in a minimalist architectural vitrine with bright white lighting." src="{{ asset('images/content/img_c03fe87dd9b9dcf2.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_8033302053c9') }}" src="{{ asset('images/content/img_c03fe87dd9b9dcf2.jpg') }}"/>
 </div>
 <div class="p-5">
 <span class="font-label-caps text-label-caps uppercase text-outline block mb-1">BURBERRY</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Unlock the exclusive gift!</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_beed9b84c694') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              On purchases above AED 600 from the brand.
+              {{ __('content.t_6b07aa3c2275') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP BURBERRY</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_adcbbbabb7e0') }}</a>
 </div>
 </article>
 <!-- Card 29: Jean Paul Gaultier La Belle 6ml -->
@@ -665,20 +665,20 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              DELUXE MINIATURE
+              {{ __('content.t_79e2c44b739f') }}
             </span>
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="Jean Paul Gaultier sculpted torso perfume bottle in radiant crimson glass with golden rose collar miniature 6ml, opulent studio lighting, high contrast monochromatic set." src="{{ asset('images/content/img_45325766470b3402.jpg') }}"/>
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_c197a862bdd0') }}" src="{{ asset('images/content/img_45325766470b3402.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">JEAN PAUL GAULTIER</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">La Belle Rosea Eau de Parfum 6ml</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_d353c1c0fc5b') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_b83bc3af8d31') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Purchase any Jean Paul Gaultier fragrance to avail this gift.
+              {{ __('content.t_ddc88f7a7c5d') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP JEAN PAUL GAULTIER</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_d62e39db5da7') }}</a>
 </div>
 </article>
 <!-- Card 30: Maison Francis Kurkdjian Baccarat Rouge 540 5ml -->
@@ -686,57 +686,57 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              PRESTIGE NICHE
+              {{ __('content.t_9fca7460fece') }}
             </span>
-<img alt="Maison Francis Kurkdjian Baccarat Rouge 540" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_9fc7f307517320b3.jpg') }}"/>
+<img alt="{{ __('content.t_833f99c5fc67') }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="{{ asset('images/content/img_9fc7f307517320b3.jpg') }}"/>
 </div>
 <div class="p-5">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">MAISON FRANCIS KURKDJIAN</span>
-<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">Baccarat Rouge 540 EDP 5ml</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_e4868601b50d') }}</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase mb-2">{{ __('content.t_8023a3d35013') }}</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Enjoy a complimentary gift with every purchase of an 70ml fragrance.
+              {{ __('content.t_7314472d0dee') }}
             </p>
 </div>
 </div>
 <div class="p-5 pt-0">
-<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">SHOP MAISON FRANCIS KURKDJIAN</a>
+<a href="/shop" class="w-full bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary hover:border-primary border border-primary font-label-caps text-label-caps uppercase py-3 transition-colors">{{ __('content.t_e6515aa87a9b') }}</a>
 </div>
 </article>
 </section>
 <!-- SECTION: HOW TO CLAIM YOUR BEAUTY OFFERS -->
 <section class="mt-16 border border-primary bg-surface-container-lowest p-8 md:p-12">
 <div class="max-w-2xl mb-8">
-<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">TERMS &amp; REDEMPTION POLICY</span>
-<h2 class="font-headline-md text-headline-md text-primary uppercase">How to Claim Your Beauty Offers</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline block mb-1">{{ __('content.t_554c2809703b') }}</span>
+<h2 class="font-headline-md text-headline-md text-primary uppercase">{{ __('content.t_9c62d5f02ea8') }}</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2">
-          Complimentary gifts with purchase are automatically evaluated in real-time according to your bag contents.
+          {{ __('content.t_4ef175114eec') }}
         </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-outline-variant pt-8">
 <div class="flex items-start space-x-4">
 <span class="font-display-hero text-headline-lg text-primary leading-none">01</span>
 <div>
-<h3 class="font-title-md text-title-md uppercase font-bold text-primary mb-1">Add Qualifying Items</h3>
+<h3 class="font-title-md text-title-md uppercase font-bold text-primary mb-1">{{ __('content.t_7b395ac88ec3') }}</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Select your favorite brand products that satisfy minimum quantity or cart spending limits described on the offer card.
+              {{ __('content.t_913ab0323d08') }}
             </p>
 </div>
 </div>
 <div class="flex items-start space-x-4">
 <span class="font-display-hero text-headline-lg text-primary leading-none">02</span>
 <div>
-<h3 class="font-title-md text-title-md uppercase font-bold text-primary mb-1">Automatic GWP Trigger</h3>
+<h3 class="font-title-md text-title-md uppercase font-bold text-primary mb-1">{{ __('content.t_5428ccdee78a') }}</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              The qualifying complimentary deluxe miniatures, branded bags, or beauty gifts will appear in your online basket at checkout.
+              {{ __('content.t_ca72cb244022') }}
             </p>
 </div>
 </div>
 <div class="flex items-start space-x-4">
 <span class="font-display-hero text-headline-lg text-primary leading-none">03</span>
 <div>
-<h3 class="font-title-md text-title-md uppercase font-bold text-primary mb-1">Stock Availability</h3>
+<h3 class="font-title-md text-title-md uppercase font-bold text-primary mb-1">{{ __('content.t_8f757bd6b9f5') }}</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-              Offers are strictly valid while stocks last. One gift per transaction unless stated otherwise. Returns recalculate gift eligibility.
+              {{ __('content.t_16a159f75b3c') }}
             </p>
 </div>
 </div>
@@ -748,17 +748,17 @@
 <div class="p-4 border-r border-outline-variant last:border-none">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
 <h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.free_delivery') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Over 250 AED across UAE</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_d5ddb243405b') }}</p>
 </div>
 <div class="p-4 border-r border-outline-variant last:border-none">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified_user</span>
 <h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.authentic') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Official brand partnerships</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_3727deb206ce') }}</p>
 </div>
 <div class="p-4 border-r border-outline-variant last:border-none">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">replay</span>
 <h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.easy_returns') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">In any UAE store</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_de87fa640461') }}</p>
 </div>
 <div class="p-4">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">support_agent</span>
@@ -769,13 +769,13 @@
 </section>
 <!-- SECTION: NEWSLETTER SUBSCRIPTION -->
 <section class="mt-12 mb-16 bg-primary text-on-primary p-8 md:p-12 text-center max-w-4xl mx-auto border border-primary">
-<span class="font-label-caps text-label-caps uppercase text-outline-variant block mb-2">BEAUTY PASS EXCLUSIVE</span>
-<h2 class="font-headline-md text-headline-md uppercase mb-3">Subscribe to the Sephora Newsletter</h2>
+<span class="font-label-caps text-label-caps uppercase text-outline-variant block mb-2">{{ __('content.t_18891874ae4b') }}</span>
+<h2 class="font-headline-md text-headline-md uppercase mb-3">{{ __('content.t_e01e16e1c2df') }}</h2>
 <p class="font-body-md text-body-md text-surface-container-highest max-w-xl mx-auto mb-6">
-        Receive private preview access to Beauty Offers, tier point boosts, invitations to masterclasses, and secret promotional codes.
+        {{ __('content.t_9b3275b51822') }}
       </p>
 <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto" onsubmit="event.preventDefault();" data-newsletter-form>
-<input class="bg-surface-container-lowest border border-outline text-primary font-body-sm text-body-sm px-4 py-3 rounded-none focus:outline-none focus:ring-0 flex-1 placeholder:text-outline" placeholder="Enter your email address" required="" type="email"/>
+<input class="bg-surface-container-lowest border border-outline text-primary font-body-sm text-body-sm px-4 py-3 rounded-none focus:outline-none focus:ring-0 flex-1 placeholder:text-outline" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-surface-container-lowest text-primary hover:bg-secondary hover:text-on-secondary font-label-caps text-label-caps uppercase px-6 py-3 transition-colors" type="submit">
           Subscribe
         </button>

@@ -81,7 +81,7 @@
         <div class="lg:col-span-7 flex flex-col gap-4">
             <div class="flex flex-col-reverse md:flex-row gap-3">
                 <!-- Thumbnails Strip -->
-                <div class="flex md:flex-col gap-2.5 overflow-x-auto md:overflow-visible pb-1 md:pb-0 shrink-0" role="list" aria-label="Product thumbnails">
+                <div class="flex md:flex-col gap-2.5 overflow-x-auto md:overflow-visible pb-1 md:pb-0 shrink-0" role="list" aria-label="{{ __('content.t_3a56da3d60c3') }}">
                     @forelse ($images->take(6) as $image)
                         <button type="button"
                                 data-pdp-thumb
@@ -109,7 +109,7 @@
                             <span class="bg-white text-black border border-black text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">{{ __('ui.new') }}</span>
                         @endif
                         @if ($product->is_bestseller)
-                            <span class="bg-[#1A3066] text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">Best Seller</span>
+                            <span class="bg-[#1A3066] text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">{{ __('content.t_44cab63fe62a') }}</span>
                         @endif
                         @if ($hasDiscount)
                             <span class="bg-[#BBA08B] text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">
@@ -177,7 +177,7 @@
                     </p>
                 @endif
                 @if ($stock <= 0)
-                    <p class="text-xs text-red-600 font-semibold mt-1.5">Out of stock</p>
+                    <p class="text-xs text-red-600 font-semibold mt-1.5">{{ __('content.t_8b78c7aec415') }}</p>
                 @elseif ($stock <= 5)
                     <p class="text-xs text-amber-700 font-semibold mt-1.5">Only {{ $stock }} left</p>
                 @endif
@@ -209,11 +209,11 @@
             <div class="flex items-stretch gap-3 mb-4">
                 <!-- Quantity Selector -->
                 <div class="flex items-center border border-gray-300 rounded-sm h-12 shrink-0{{ $stock <= 0 ? ' opacity-50 pointer-events-none' : '' }}">
-                    <button type="button" data-qty-minus class="w-9 h-full flex items-center justify-center text-black hover:bg-gray-100 disabled:opacity-40" aria-label="Decrease quantity">−</button>
+                    <button type="button" data-qty-minus class="w-9 h-full flex items-center justify-center text-black hover:bg-gray-100 disabled:opacity-40" aria-label="{{ __('content.t_6c02abf3beed') }}">−</button>
                     <input data-qty-input type="number" min="1" max="{{ $maxQty }}" value="1"
                            class="w-10 h-full text-center text-xs font-bold text-black bg-transparent border-0 focus:ring-0 p-0"
                            aria-label="Quantity">
-                    <button type="button" data-qty-plus class="w-9 h-full flex items-center justify-center text-black hover:bg-gray-100 disabled:opacity-40" aria-label="Increase quantity">+</button>
+                    <button type="button" data-qty-plus class="w-9 h-full flex items-center justify-center text-black hover:bg-gray-100 disabled:opacity-40" aria-label="{{ __('content.t_062e79bd33f1') }}">+</button>
                 </div>
 
                 <!-- ADD TO BASKET CTA -->
@@ -325,7 +325,7 @@
                         <p class="text-xs text-neutral-500 mt-0.5">Based on {{ number_format($reviewCount) }} review{{ $reviewCount === 1 ? '' : 's' }}</p>
                     </div>
                 </div>
-                <p class="text-xs text-neutral-400 mt-2">Verified buyer reviews moderated according to Sephora UAE review guidelines.</p>
+                <p class="text-xs text-neutral-400 mt-2">{{ __('content.t_abc58860d094') }}</p>
             </div>
 
             <div class="lg:col-span-8 space-y-4">
@@ -353,8 +353,8 @@
                     </article>
                 @empty
                     <div class="border border-gray-200 rounded-sm bg-gray-50/50 p-6 text-center">
-                        <p class="text-xs font-bold text-black">No customer reviews yet.</p>
-                        <p class="text-xs text-neutral-500 mt-1">Be the first to share your experience with this beauty icon.</p>
+                        <p class="text-xs font-bold text-black">{{ __('content.t_39eca75081ed') }}</p>
+                        <p class="text-xs text-neutral-500 mt-1">{{ __('content.t_f6f5ad5a00c7') }}</p>
                     </div>
                 @endforelse
             </div>
@@ -378,7 +378,7 @@
                     @csrf
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-rating">Rating *</label>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-rating">{{ __('ui.rating') }}</label>
                             <select id="review-rating" name="rating" required class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs bg-white text-black focus:outline-none focus:border-black">
                                 @for ($i = 5; $i >= 1; $i--)
                                     <option value="{{ $i }}" @selected(old('rating') === (string) $i)>{{ $i }} star{{ $i === 1 ? '' : 's' }}</option>
@@ -389,23 +389,23 @@
                             <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-title">Title</label>
                             <input id="review-title" name="title" type="text" maxlength="120" value="{{ old('title') }}"
                                    class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs bg-white text-black focus:outline-none focus:border-black"
-                                   placeholder="Sum it up in a few words">
+                                   placeholder="{{ __('content.t_1c6665c2bc31') }}">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-body">Your review *</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-body">{{ __('content.t_fc13f92c4ffa') }}</label>
                         <textarea id="review-body" name="body" rows="3" required minlength="10" maxlength="2000"
                                   class="w-full border border-gray-300 rounded-sm p-3 text-xs bg-white text-black focus:outline-none focus:border-black"
-                                  placeholder="What did you love about this product?">{{ old('body') }}</textarea>
+                                  placeholder="{{ __('content.t_07af9be2684f') }}">{{ old('body') }}</textarea>
                     </div>
                     <button type="submit" class="bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-sm hover:bg-neutral-800 transition-colors">
-                        Submit review
+                        {{ __('content.t_44cddb4f5033') }}
                     </button>
                 </form>
             @else
                 <div class="border border-gray-200 rounded-sm bg-neutral-50 p-4">
                     <p class="text-xs text-neutral-600">
-                        <a class="text-black underline font-bold" href="{{ route('login') }}">Sign in</a> to write a review for this product.
+                        <a class="text-black underline font-bold" href="{{ route('login') }}">{{ __('content.t_ada2e9e96fa9') }}</a> {{ __('content.t_c42f56d564ba') }}
                     </p>
                 </div>
             @endauth
@@ -417,8 +417,8 @@
         <section class="py-10">
             <div class="flex items-end justify-between gap-3 mb-6">
                 <div>
-                    <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-500">Pair It With</span>
-                    <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-black mt-0.5">Complete Your Look</h2>
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-neutral-500">{{ __('content.t_90b8f5df2f79') }}</span>
+                    <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-black mt-0.5">{{ __('content.t_520c7dd9644a') }}</h2>
                 </div>
                 @if ($primaryCategory)
                     <a class="text-xs font-bold uppercase tracking-wider underline text-black hover:text-neutral-600" href="{{ route('shop.category', ['slug' => $primaryCategory->slug]) }}">

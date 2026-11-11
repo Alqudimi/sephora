@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Face Makeup - Foundation, Concealer, Blush & Powder | SEPHORA UAE')
+@section('title', __('meta.face'))
 @section('body_class', 'bg-surface-container-lowest text-on-surface antialiased font-body-md text-body-md min-h-screen flex flex-col')
 
 @section('content')
@@ -23,7 +23,7 @@
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Concealers &amp; Correctors</span>
+<span>{{ __('content.t_4561c77011f4') }}</span>
 <span class="text-outline text-body-sm">(88)</span>
 </a>
 </li>
@@ -41,7 +41,7 @@
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Primer &amp; Setting Spray</span>
+<span>{{ __('content.t_d1eae8272950') }}</span>
 <span class="text-outline text-body-sm">(45)</span>
 </a>
 </li>
@@ -53,19 +53,19 @@
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Bronzer &amp; Contour</span>
+<span>{{ __('content.t_0bc209e7ffac') }}</span>
 <span class="text-outline text-body-sm">(29)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Tinted Moisturizer &amp; BB Cream</span>
+<span>{{ __('content.t_ba08523daa63') }}</span>
 <span class="text-outline text-body-sm">(18)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Face Palette</span>
+<span>{{ __('content.t_8f4f9a2d8799') }}</span>
 <span class="text-outline text-body-sm">(22)</span>
 </a>
 </li>
@@ -74,12 +74,12 @@
 <!-- Refine Section -->
 <div class="space-y-6">
 <div class="flex items-center justify-between">
-<h3 class="font-title-lg text-title-lg uppercase tracking-wider text-primary">REFINE</h3>
+<h3 class="font-title-lg text-title-lg uppercase tracking-wider text-primary">{{ __('ui.refine') }}</h3>
 <button class="font-label-caps text-label-caps uppercase text-outline underline hover:text-primary transition-colors">{{ __('ui.clear_all') }}</button>
 </div>
 <!-- Sephora Exclusive Toggle -->
 <div class="flex items-center justify-between p-3 bg-surface-container-low border border-outline-variant/60">
-<span class="font-title-md text-title-md text-primary">Sephora Exclusive Only</span>
+<span class="font-title-md text-title-md text-primary">{{ __('content.t_a283183b6457') }}</span>
 <label class="relative inline-flex items-center cursor-pointer">
 <input checked="" class="sr-only peer" type="checkbox"/>
 <div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
@@ -93,7 +93,7 @@
 </div>
 <!-- Search Inside Brands -->
 <div class="relative mb-3">
-<input class="w-full text-body-sm font-body-sm py-1.5 px-3 bg-surface-container-lowest border border-outline-variant focus:border-primary outline-none" placeholder="Search Brand..." type="text"/>
+<input class="w-full text-body-sm font-body-sm py-1.5 px-3 bg-surface-container-lowest border border-outline-variant focus:border-primary outline-none" placeholder="{{ __('content.t_78b4075237a1') }}" type="text"/>
 </div>
 <div class="space-y-2 max-h-52 overflow-y-auto custom-scrollbar pr-1">
 <label class="flex items-center gap-2.5 text-body-sm cursor-pointer select-none">
@@ -149,7 +149,7 @@
 <!-- Collapsible Accordions: Product Type, Coverage, Finish, Formulation, Benefits, Price -->
 <div class="border-b border-outline-variant pb-4">
 <button class="w-full flex items-center justify-between text-left font-title-md text-title-md uppercase tracking-wider text-primary py-2 hover:opacity-80">
-<span>Product Type</span>
+<span>{{ __('content.t_ac278bc760c9') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
 </button>
 </div>
@@ -199,13 +199,13 @@
 @endif
 
 </div>
-<button class="absolute top-1 right-1 p-1 text-primary hover:text-secondary transition-colors" title="Add to Wishlist">
+<button class="absolute top-1 right-1 p-1 text-primary hover:text-secondary transition-colors" title="{{ __('content.t_a44253758df5') }}">
 <span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
 </button>
 </div>
 <div class="flex-1 flex flex-col">
 <h4 class="font-title-md text-title-md font-bold text-primary uppercase tracking-wider">{{ $products->brand->name }}
-<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5 min-h-[36px]">Matte &amp; Glow Bronze Filter 4-Pan Palette</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-0.5 min-h-[36px]">{{ __('content.t_a049f1a4da0d') }}</p>
 <div class="flex items-center gap-1.5 my-1.5">
 <span class="text-xs text-primary font-bold">@include('components.stars', ['rating' => $products->rating]) 4.8</span>
 <span class="text-outline text-xs">({{ number_format($products->reviews_count) }})</span>
@@ -213,19 +213,19 @@
 <p class="font-price-aed-lg text-price-aed-lg text-primary mt-auto">AED {{ number_format($products->price, 2) }}</p>
 </div>
 <button class="w-full mt-3 py-2.5 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest uppercase hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" data-add-to-bag="{{ $products->id }}">
-              ADD TO BAG
+              {{ __('content.t_ea34a3a7ca7b') }}
             </button>
 </article>
 @endforeach
 </div>
 <!-- 6. Pagination & Progress -->
 <div class="mt-12 flex flex-col items-center justify-center space-y-4">
-<p class="font-body-sm text-body-sm text-outline tracking-wider">Showing 16 of 412 items</p>
+<p class="font-body-sm text-body-sm text-outline tracking-wider">{{ __('content.t_67717193b5c3') }}</p>
 <div class="w-64 h-1 bg-surface-container-highest rounded-full overflow-hidden">
 <div class="w-[4%] h-full bg-primary"></div>
 </div>
 <button class="px-8 py-3 rounded-full border border-primary text-primary font-title-md text-title-md uppercase tracking-wider hover:bg-primary hover:text-on-primary transition-colors cursor-pointer mt-2">
-            LOAD MORE PRODUCTS
+            {{ __('content.t_ff6255edd8b2') }}
           </button>
 </div>
 </section>

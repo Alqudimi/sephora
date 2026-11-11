@@ -75,7 +75,7 @@
         <a class="hover:text-black transition-colors" href="/">{{ __('ui.home') }}</a>
         <span>/</span>
         @if ($category->slug !== 'all')
-            <a class="hover:text-black transition-colors" href="{{ route('shop.all') }}">Shop</a>
+            <a class="hover:text-black transition-colors" href="{{ route('shop.all') }}">{{ __('ui.shop') }}</a>
             <span>/</span>
         @endif
         <span class="text-black font-semibold">{{ $category->name }}</span>
@@ -117,7 +117,7 @@
                     <div>
                         <label for="filter-brand" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">{{ __('ui.brand') }}</label>
                         <select id="filter-brand" name="brand" class="w-full h-10 border border-gray-300 rounded-sm bg-white px-3 text-xs text-black focus:outline-none focus:border-black">
-                            <option value="">All Brands</option>
+                            <option value="">{{ __('content.t_1a8970fe81ac') }}</option>
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->slug }}" @selected($filters['brand'] === $brand->slug)>
                                     {{ $brand->name }} ({{ $brand->products_count }})
@@ -130,13 +130,13 @@
                     <div>
                         <span class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Price ({{ $currency }})</span>
                         <div class="flex items-center gap-2">
-                            <label class="sr-only" for="filter-min-price">Minimum price</label>
+                            <label class="sr-only" for="filter-min-price">{{ __('content.t_2e56b2d2622d') }}</label>
                             <input id="filter-min-price" name="min_price" type="number" inputmode="numeric" min="0" max="{{ $maxBound }}"
                                    value="{{ $filters['min_price'] !== null ? (int) $filters['min_price'] : '' }}"
                                    placeholder="{{ $minBound }}"
                                    class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs text-black focus:outline-none focus:border-black">
                             <span class="text-gray-400">–</span>
-                            <label class="sr-only" for="filter-max-price">Maximum price</label>
+                            <label class="sr-only" for="filter-max-price">{{ __('content.t_20c2e7a42c6f') }}</label>
                             <input id="filter-max-price" name="max_price" type="number" inputmode="numeric" min="0" max="{{ $maxBound }}"
                                    value="{{ $filters['max_price'] !== null ? (int) $filters['max_price'] : '' }}"
                                    placeholder="{{ $maxBound }}"
@@ -150,13 +150,13 @@
                         <div class="space-y-2.5 text-xs text-neutral-700">
                             <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
                                 <input type="checkbox" name="clean" value="1" @checked($filters['clean']) class="rounded-sm border-gray-300 text-black focus:ring-black">
-                                Clean at Sephora
+                                {{ __('content.t_d3c0f8404f3f') }}
                             </label>
                             <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
                                 <input type="checkbox" name="new" value="1" @checked($filters['new']) class="rounded-sm border-gray-300 text-black focus:ring-black">{{ __('ui.new_arrivals') }}</label>
                             <label class="flex items-center gap-2.5 cursor-pointer hover:text-black">
                                 <input type="checkbox" name="in_stock" value="1" @checked($filters['in_stock']) class="rounded-sm border-gray-300 text-black focus:ring-black">
-                                In Stock Only
+                                {{ __('content.t_31540ffd976f') }}
                             </label>
                         </div>
                     </fieldset>
@@ -164,14 +164,14 @@
                     <!-- Search Filter -->
                     <div>
                         <label for="filter-q" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Keyword</label>
-                        <input id="filter-q" name="q" type="search" value="{{ $filters['q'] }}" placeholder="Search products..."
+                        <input id="filter-q" name="q" type="search" value="{{ $filters['q'] }}" placeholder="{{ __('content.t_b73f756bef16') }}"
                                class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs text-black focus:outline-none focus:border-black">
                     </div>
 
                     <!-- Submit & Reset -->
                     <div class="flex flex-col gap-2 pt-2">
                         <button type="submit" class="h-10 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-neutral-800 transition-colors">
-                            Apply Filters
+                            {{ __('content.t_6b2a78a8f716') }}
                         </button>
                         <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
                            class="h-10 flex items-center justify-center border border-gray-300 rounded-sm text-black text-xs font-bold uppercase tracking-wider hover:border-black transition-colors">{{ __('ui.clear_all') }}</a>
@@ -186,8 +186,8 @@
             <!-- Sorting & Count Bar -->
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5 pb-3 border-b border-gray-200">
                 <p class="text-xs text-neutral-600">
-                    Showing <strong class="text-black">{{ $products->firstItem() ?? 0 }}–{{ $products->lastItem() ?? 0 }}</strong>
-                    of <strong class="text-black">{{ number_format($total) }}</strong>
+                    {{ __('ui.showing') }} <strong class="text-black">{{ $products->firstItem() ?? 0 }}–{{ $products->lastItem() ?? 0 }}</strong>
+                    {{ __('ui.of') }} <strong class="text-black">{{ number_format($total) }}</strong>
                     {{ Str::plural('product', $total) }}
                 </p>
 
@@ -221,7 +221,7 @@
                             <span class="text-gray-400 hover:text-black font-bold">&times;</span>
                         </a>
                     @endforeach
-                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}" class="text-xs font-bold text-black underline ml-1">Clear all</a>
+                    <a href="{{ route('shop.category', ['slug' => $category->slug]) }}" class="text-xs font-bold text-black underline ml-1">{{ __('content.t_c043160a89ba') }}</a>
                 </div>
             @endif
 
@@ -229,7 +229,7 @@
             @if ($products->isEmpty())
                 <div class="border border-gray-200 rounded-sm bg-white text-center py-20 px-6">
                     <h3 class="text-lg font-bold text-black mb-2">{{ __('ui.no_products_filters') }}</h3>
-                    <p class="text-xs text-neutral-500 mb-5">Try removing some filters or browse all categories.</p>
+                    <p class="text-xs text-neutral-500 mb-5">{{ __('content.t_5964ae3c15c1') }}</p>
                     <a href="{{ route('shop.category', ['slug' => $category->slug]) }}"
                        class="inline-block bg-black text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-sm hover:bg-neutral-800 transition-colors">
                         Show all {{ $category->name }}

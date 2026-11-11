@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Frequently Asked Questions | SEPHORA Middle East')
+@section('title', __('meta.faq'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
@@ -20,26 +20,26 @@
 <!-- Editorial Hero Title -->
 <div class="max-w-3xl">
 <span class="bg-primary text-on-primary px-2.5 py-1 font-label-tag text-label-tag uppercase tracking-widest inline-block mb-3">
-            SEPHORA CLIENT CONCIERGE &amp; SUPPORT
+            {{ __('content.t_84d3e9880e34') }}
           </span>
 <h1 class="font-headline-lg text-headline-lg md:text-display-hero text-primary tracking-tight font-bold mb-4">{{ __('ui.faq') }}</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-            Find answers to all your beauty shopping, order tracking, Beauty Pass, and customer service inquiries. Experience seamless luxury support across the United Arab Emirates.
+            {{ __('content.t_e1c4afab8b01') }}
           </p>
 </div>
 <!-- Search FAQ Input Box -->
 <div class="mt-8 max-w-3xl">
 <div class="relative flex items-stretch border-2 border-primary bg-surface-container-lowest">
 <span class="material-symbols-outlined self-center ml-4 text-outline text-[24px]">search</span>
-<input class="w-full bg-transparent border-0 px-4 py-4 text-on-surface font-body-md text-body-md focus:ring-0 placeholder:text-outline" id="faqSearchInput" placeholder="How can we help you today? Type keywords like delivery, refund, beauty pass..." type="text"/>
+<input class="w-full bg-transparent border-0 px-4 py-4 text-on-surface font-body-md text-body-md focus:ring-0 placeholder:text-outline" id="faqSearchInput" placeholder="{{ __('content.t_131f9e0a2537') }}" type="text"/>
 <button class="bg-primary hover:bg-neutral-800 text-on-primary px-8 font-label-caps text-label-caps tracking-widest uppercase transition-colors flex items-center justify-center">{{ __('ui.search') }}</button>
 </div>
 <div class="flex flex-wrap gap-2 mt-3 items-center">
-<span class="font-label-caps text-label-caps text-outline uppercase">Quick Queries:</span>
-<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Order Tracking</button>
+<span class="font-label-caps text-label-caps text-outline uppercase">{{ __('content.t_8e0fe5a1ac63') }}</span>
+<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('content.t_feed8ebda059') }}</button>
 <button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('ui.beauty_pass_points') }}</button>
-<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Tabby &amp; Tamara</button>
-<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">Store Returns</button>
+<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('content.t_4c834b2a77fe') }}</button>
+<button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('content.t_d7a59de2f92e') }}</button>
 </div>
 </div>
 </div>
@@ -51,12 +51,12 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <div class="flex items-center justify-between mb-8 pb-3 border-b border-primary">
 <div>
-<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest block">Explore Topics</span>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest block">{{ __('content.t_75cdcd8296a2') }}</span>
 <h2 class="font-headline-sm text-headline-sm text-primary uppercase font-bold tracking-wider">
-              Browse by Category
+              {{ __('content.t_af053cb0cd01') }}
             </h2>
 </div>
-<span class="font-label-caps text-label-caps text-outline uppercase">13 Essential Categories</span>
+<span class="font-label-caps text-label-caps text-outline uppercase">{{ __('content.t_217aed3df5ee') }}</span>
 </div>
 <!-- 13 Official Category Cards Grid -->
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 md:gap-4">
@@ -67,8 +67,8 @@
 <span class="font-label-tag text-label-tag text-secondary font-bold">01</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">MY SEPHORA</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Beauty Pass, points, tier perks &amp; rewards</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('content.t_a4231e2500a9') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_6828c0892ba6') }}</p>
 </div>
 </a>
 <!-- Category 2: Stores -->
@@ -78,8 +78,8 @@
 <span class="font-label-tag text-label-tag text-outline">02</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Stores</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">UAE boutique locations, Mall hours &amp; events</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.stores') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_31c2c2d48617') }}</p>
 </div>
 </a>
 <!-- Category 3: Services -->
@@ -89,8 +89,8 @@
 <span class="font-label-tag text-label-tag text-outline">03</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Services</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Brow bar appointments, skin diagnostics &amp; makeup</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.services') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_538d6f50404f') }}</p>
 </div>
 </a>
 <!-- Category 4: Online Account -->
@@ -100,8 +100,8 @@
 <span class="font-label-tag text-label-tag text-outline">04</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Online Account</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Login, password recovery &amp; address book</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('content.t_e94aa6260312') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_2c620dba8eeb') }}</p>
 </div>
 </a>
 <!-- Category 5: Online Shopping -->
@@ -111,8 +111,8 @@
 <span class="font-label-tag text-label-tag text-outline">05</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Online Shopping</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Placing orders, bag management &amp; stock alerts</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('content.t_57cc0a7b1b8f') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_bd2d27277528') }}</p>
 </div>
 </a>
 <!-- Category 6: Products -->
@@ -123,7 +123,7 @@
 </div>
 <div>
 <h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.products') }}</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">100% authenticity, formulas &amp; shade matching</p>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_a9d6f1caecd7') }}</p>
 </div>
 </a>
 <!-- Category 7: Payment -->
@@ -134,7 +134,7 @@
 </div>
 <div>
 <h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.payment') }}</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Apple Pay, Tabby, Tamara &amp; Cash on Delivery</p>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_a34626686862') }}</p>
 </div>
 </a>
 <!-- Category 8: Offers, Samples & Gifts -->
@@ -144,8 +144,8 @@
 <span class="font-label-tag text-label-tag text-outline">08</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Offers, Samples &amp; Gifts</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Promo codes, deluxe miniatures &amp; GWP thresholds</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('content.t_672200de3a97') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_25441a1b5e99') }}</p>
 </div>
 </a>
 <!-- Category 9: Delivery -->
@@ -156,7 +156,7 @@
 </div>
 <div>
 <h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.delivery') }}</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">UAE same-day &amp; 1-2 day express shipping</p>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_e93e1a14ccec') }}</p>
 </div>
 </a>
 <!-- Category 10: Cancellation & Refund -->
@@ -167,7 +167,7 @@
 </div>
 <div>
 <h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.cancellation_refund') }}</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">14-day store &amp; online returns, refund timelines</p>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_16f9224792f5') }}</p>
 </div>
 </a>
 <!-- Category 11: Health & Safety -->
@@ -177,8 +177,8 @@
 <span class="font-label-tag text-label-tag text-outline">11</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Health &amp; Safety</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Clean beauty certifications &amp; store sanitation</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('content.t_fd9c888975e8') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_7283e3cfab13') }}</p>
 </div>
 </a>
 <!-- Category 12: Corporate Information -->
@@ -188,8 +188,8 @@
 <span class="font-label-tag text-label-tag text-outline">12</span>
 </div>
 <div>
-<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">Corporate Information</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Sephora Middle East careers, PR &amp; legal governance</p>
+<h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('content.t_dea335290fc6') }}</h3>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_a14d9d9f5093') }}</p>
 </div>
 </a>
 <!-- Category 13: Gift Cards -->
@@ -200,7 +200,7 @@
 </div>
 <div>
 <h3 class="font-title-md text-title-md text-primary font-bold group-hover:underline">{{ __('ui.gift_cards') }}</h3>
-<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">Check balance, online activation &amp; e-cards</p>
+<p class="font-body-sm text-body-sm text-outline mt-1 line-clamp-2">{{ __('content.t_a6a56c272d69') }}</p>
 </div>
 </a>
 </div>
@@ -213,36 +213,36 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <div class="flex items-center justify-between mb-8 pb-3 border-b border-primary">
 <div>
-<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block font-bold">Frequently Consulted</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block font-bold">{{ __('content.t_3bb37ce6edd3') }}</span>
 <h2 class="font-headline-sm text-headline-sm text-primary uppercase font-bold tracking-wider">
-              Top Questions
+              {{ __('content.t_a853b2bbf481') }}
             </h2>
 </div>
-<span class="font-label-caps text-label-caps text-outline uppercase hidden sm:inline">Official Answers &amp; Solutions</span>
+<span class="font-label-caps text-label-caps text-outline uppercase hidden sm:inline">{{ __('content.t_36385ec9c7c0') }}</span>
 </div>
 <!-- Accordion Container -->
 <div class="space-y-4 max-w-4xl" id="accordionContainer">
 <!-- Accordion Item 1 (DEFAULT OPEN) -->
 <div class="border border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>I think points may be missing on my account. What should I do?</span>
+<span>{{ __('content.t_e069b31db99b') }}</span>
 <span class="material-symbols-outlined text-primary transition-transform duration-200 shrink-0 transform rotate-180">expand_more</span>
 </button>
 <div class="px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p class="mb-3">
-                Points from in-store purchases typically update within 24 to 48 hours, while online purchase points are credited immediately upon dispatch of your parcel. If your points have not reflected after this timeframe, please verify that your Beauty Pass card number is accurately linked to your online profile under Account Settings.
+                {{ __('content.t_b739901782d0') }}
               </p>
 <div class="bg-surface-container-low p-4 border border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div>
-<span class="font-label-caps text-label-caps text-outline uppercase block">Need manual verification?</span>
-<p class="text-primary font-bold text-body-md">Email us at: <span class="font-mono text-secondary">customercare@sephora.ae</span></p>
+<span class="font-label-caps text-label-caps text-outline uppercase block">{{ __('content.t_42b85c4c8636') }}</span>
+<p class="text-primary font-bold text-body-md">{{ __('content.t_ea9eb44cf9a6') }} <span class="font-mono text-secondary">customercare@sephora.ae</span></p>
 </div>
 <div class="flex items-center gap-3">
 <button class="border border-primary bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary px-4 py-2 font-label-caps text-label-caps tracking-widest uppercase transition-colors" onclick="copyToClipboard('customercare@sephora.ae')">
                     COPY
                   </button>
 <a class="bg-primary text-on-primary hover:bg-neutral-800 px-5 py-2 font-label-caps text-label-caps tracking-widest uppercase transition-colors" href="#contact-section">
-                    WRITE TO US
+                    {{ __('content.t_8c8146bc6b2d') }}
                   </a>
 </div>
 </div>
@@ -251,55 +251,55 @@
 <!-- Accordion Item 2 -->
 <div class="border border-outline-variant hover:border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>How do I track my order delivery in UAE?</span>
+<span>{{ __('content.t_14afa7dd1476') }}</span>
 <span class="material-symbols-outlined text-outline transition-transform duration-200 shrink-0">expand_more</span>
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                Once your order departs our Dubai fulfillment hub, you will receive an automated SMS and email containing your carrier tracking code (via Aramex or Fetchr). Deliveries within Dubai and Abu Dhabi arrive within 1-2 business days. You can also monitor real-time tracking by visiting your <strong>Online Account &gt; Order History</strong>.
+                Once your order departs our Dubai fulfillment hub, you will receive an automated SMS and email containing your carrier tracking code (via Aramex or Fetchr). Deliveries within Dubai and Abu Dhabi arrive within 1-2 business days. You can also monitor real-time tracking by visiting your <strong>{{ __('content.t_b32a5969f15d') }}</strong>.
               </p>
 </div>
 </div>
 <!-- Accordion Item 3 -->
 <div class="border border-outline-variant hover:border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>Can I return an item purchased online at a Sephora store in UAE?</span>
+<span>{{ __('content.t_8634ff02efa2') }}</span>
 <span class="material-symbols-outlined text-outline transition-transform duration-200 shrink-0">expand_more</span>
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                Yes! Any item purchased online at sephora.me can be returned within <strong>14 calendar days</strong> of receipt at any official Sephora boutique in the United Arab Emirates (including The Dubai Mall, Mall of the Emirates, Yas Mall, and Galleria Al Maryah). Items must be in their original packaging, unopened, unused, and accompanied by the digital e-invoice or printed delivery note.
+                {{ __('content.t_0ab02c418173') }} <strong>{{ __('content.t_1d01c362549f') }}</strong> of receipt at any official Sephora boutique in the United Arab Emirates (including The Dubai Mall, Mall of the Emirates, Yas Mall, and Galleria Al Maryah). Items must be in their original packaging, unopened, unused, and accompanied by the digital e-invoice or printed delivery note.
               </p>
 </div>
 </div>
 <!-- Accordion Item 4 -->
 <div class="border border-outline-variant hover:border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>How does Tabby and Tamara split in 4 work at checkout?</span>
+<span>{{ __('content.t_bcd0295e146d') }}</span>
 <span class="material-symbols-outlined text-outline transition-transform duration-200 shrink-0">expand_more</span>
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                Both Tabby and Tamara allow you to split your purchase amount into 4 equal interest-free monthly installments. At checkout, select either Tabby or Tamara as your payment provider. You will pay 25% today upon checkout confirmation, and the remaining 3 installments will be charged automatically every 30 days. No hidden fees or interest apply if paid on schedule. Valid for UAE residents with a valid Emirates ID.
+                {{ __('content.t_7adaecad8168') }}
               </p>
 </div>
 </div>
 <!-- Accordion Item 5 -->
 <div class="border border-outline-variant hover:border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>How do I book an in-store beauty or brow service?</span>
+<span>{{ __('content.t_30af5d813dd6') }}</span>
 <span class="material-symbols-outlined text-outline transition-transform duration-200 shrink-0">expand_more</span>
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                You can book an appointment at the Benefit BrowBar, receive a customized 45-minute Full Glam Makeover, or book a Complimentary 15-minute Skin Consultation via the <strong>{{ __('ui.stores_services') }}</strong> tab in our header menu, or by contacting your preferred Sephora boutique directly via phone. Beauty Pass Gold members receive complimentary priority bookings.
+                {{ __('content.t_989970830f62') }} <strong>{{ __('ui.stores_services') }}</strong> {{ __('content.t_a3fc8af4ac3f') }}
               </p>
 </div>
 </div>
 <!-- Accordion Item 6 -->
 <div class="border border-outline-variant hover:border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>What should I do if my promo code or free gift is not applying?</span>
+<span>{{ __('content.t_2a31f36005df') }}</span>
 <span class="material-symbols-outlined text-outline transition-transform duration-200 shrink-0">expand_more</span>
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
@@ -311,12 +311,12 @@
 <!-- Accordion Item 7 -->
 <div class="border border-outline-variant hover:border-primary bg-surface-container-lowest transition-all">
 <button class="w-full py-5 px-6 text-left flex items-center justify-between gap-4 font-title-lg text-title-lg text-primary font-bold focus:outline-none" onclick="toggleAccordion(this)" type="button">
-<span>How do I check my Sephora Gift Card balance and validity?</span>
+<span>{{ __('content.t_1be739cb6f41') }}</span>
 <span class="material-symbols-outlined text-outline transition-transform duration-200 shrink-0">expand_more</span>
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                Sephora UAE gift cards remain valid for 1 full calendar year from the date of issue. You can verify your live balance at any Sephora cash register in the UAE or directly online by entering your 16-digit card number and security PIN in the Gift Card module under Checkout &gt; Payment Methods.
+                {{ __('content.t_f315aec1f36d') }}
               </p>
 </div>
 </div>
@@ -333,13 +333,13 @@
 <!-- Left Header -->
 <div class="max-w-xl">
 <span class="bg-secondary text-on-secondary px-2.5 py-0.5 font-label-tag text-label-tag uppercase tracking-widest inline-block mb-3">
-                LIVE CONCIERGE SUPPORT
+                {{ __('content.t_51aa9f6e94e1') }}
               </span>
 <h2 class="font-headline-md text-headline-md text-primary font-bold uppercase mb-2">
-                Still need assistance? We are here to help.
+                {{ __('content.t_e4d3525ca7a9') }}
               </h2>
 <p class="font-body-md text-body-md text-on-surface-variant">
-                Our client service advisors are dedicated to ensuring your Sephora experience is exceptional.
+                {{ __('content.t_f06285167b2f') }}
               </p>
 <div class="flex items-center gap-2 mt-4 text-primary">
 <span class="material-symbols-outlined text-[20px] text-secondary">schedule</span>
@@ -350,7 +350,7 @@
 </div>
 <!-- Email & Direct Actions -->
 <div class="bg-surface-container p-6 border border-outline-variant flex flex-col justify-between max-w-md w-full">
-<span class="font-label-caps text-label-caps text-outline uppercase block mb-1">Email us at</span>
+<span class="font-label-caps text-label-caps text-outline uppercase block mb-1">{{ __('content.t_3653a49c649a') }}</span>
 <a class="font-title-lg text-title-lg text-primary font-bold hover:text-secondary mb-4 break-all" href="mailto:customercare@sephora.ae">
                 customercare@sephora.ae
               </a>
@@ -359,7 +359,7 @@
                   COPY
                 </button>
 <a class="flex-1 text-center bg-primary hover:bg-neutral-800 text-on-primary py-2.5 px-4 font-label-caps text-label-caps tracking-widest uppercase transition-colors" href="/">
-                  WRITE TO US
+                  {{ __('content.t_8c8146bc6b2d') }}
                 </a>
 </div>
 </div>
@@ -367,20 +367,20 @@
 <!-- Regional Call Center Numbers Grid -->
 <div class="pt-10">
 <h3 class="font-title-lg text-title-lg text-primary uppercase font-bold tracking-wider mb-6">
-              Contact Numbers Across Middle East
+              {{ __('content.t_6bc9a03dea02') }}
             </h3>
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 <!-- UAE -->
 <div class="border-l-2 border-primary pl-4 py-1">
-<span class="font-label-caps text-label-caps text-outline block uppercase">United Arab Emirates</span>
+<span class="font-label-caps text-label-caps text-outline block uppercase">{{ __('content.t_d115b8d5acb8') }}</span>
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:8007374672">
                   8007374672
                 </a>
-<span class="font-label-tag text-[9px] text-secondary font-bold uppercase tracking-wider">TOLL FREE</span>
+<span class="font-label-tag text-[9px] text-secondary font-bold uppercase tracking-wider">{{ __('content.t_5906bc0d825e') }}</span>
 </div>
 <!-- Saudi Arabia -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
-<span class="font-label-caps text-label-caps text-outline block uppercase">Saudi Arabia</span>
+<span class="font-label-caps text-label-caps text-outline block uppercase">{{ __('content.t_6f49c31192f5') }}</span>
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+966114797382">
                   +966 11 479 7382
                 </a>
@@ -392,7 +392,7 @@
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+96522208178">
                   +965 2220 8178
                 </a>
-<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">DIRECT LINE</span>
+<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">{{ __('content.t_c52e783d55ae') }}</span>
 </div>
 <!-- Bahrain -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
@@ -400,7 +400,7 @@
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+97316639148">
                   +973 1663 9148
                 </a>
-<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">DIRECT LINE</span>
+<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">{{ __('content.t_c52e783d55ae') }}</span>
 </div>
 <!-- Oman -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
@@ -408,7 +408,7 @@
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+96821030711">
                   +968 2103 0711
                 </a>
-<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">DIRECT LINE</span>
+<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">{{ __('content.t_c52e783d55ae') }}</span>
 </div>
 <!-- Qatar -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
@@ -416,7 +416,7 @@
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+97444196648">
                   +974 4419 6648
                 </a>
-<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">DIRECT LINE</span>
+<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">{{ __('content.t_c52e783d55ae') }}</span>
 </div>
 </div>
 </div>
@@ -432,22 +432,22 @@
 <div class="flex flex-col items-center justify-center p-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">local_shipping</span>
 <h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.free_delivery') }}</h4>
-<p class="font-body-sm text-body-sm text-outline">Over 250 AED</p>
+<p class="font-body-sm text-body-sm text-outline">{{ __('content.t_d76dbfd4ac0b') }}</p>
 </div>
 <div class="flex flex-col items-center justify-center p-3 pt-6 md:pt-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">verified_user</span>
 <h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.secure_payment') }}</h4>
-<p class="font-body-sm text-body-sm text-outline">100% Encrypted Transactions</p>
+<p class="font-body-sm text-body-sm text-outline">{{ __('content.t_0d9411173996') }}</p>
 </div>
 <div class="flex flex-col items-center justify-center p-3 pt-6 md:pt-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">replay</span>
 <h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.easy_returns') }}</h4>
-<p class="font-body-sm text-body-sm text-outline">In any UAE store</p>
+<p class="font-body-sm text-body-sm text-outline">{{ __('content.t_de87fa640461') }}</p>
 </div>
 <div class="flex flex-col items-center justify-center p-3 pt-6 md:pt-3">
 <span class="material-symbols-outlined text-primary text-[32px] mb-2">support_agent</span>
 <h4 class="font-title-md text-title-md text-primary font-bold uppercase">{{ __('ui.customer_service') }}</h4>
-<p class="font-body-sm text-body-sm text-outline">Questions? Daily 10am – 10pm</p>
+<p class="font-body-sm text-body-sm text-outline">{{ __('content.t_4f20581dfe8e') }}</p>
 </div>
 </div>
 </div>
@@ -462,7 +462,7 @@
 <div class="fixed bottom-6 right-6 bg-primary text-on-primary border border-surface-container-lowest px-5 py-3 shadow-2xl transition-all duration-300 opacity-0 pointer-events-none translate-y-4 z-50" id="copyToast">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
-<span class="font-label-caps text-label-caps uppercase tracking-wider">Email copied to clipboard!</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">{{ __('content.t_13902280590d') }}</span>
 </div>
 </div>
 <!-- Inline Script for Accordion, Search Filter, and Clipboard -->

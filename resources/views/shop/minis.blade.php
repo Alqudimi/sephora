@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Minis & More | Sephora UAE')
+@section('title', __('meta.minis'))
 @section('body_class', 'bg-white text-neutral-900 font-sans antialiased text-sm')
 
 @section('content')
@@ -18,7 +18,7 @@
 </div>
 <div class="pl-3 pt-2">
 <span class="text-xs font-bold text-black cursor-pointer hover:underline">
-              Minis &amp; More <span class="font-normal text-neutral-500">(362)</span>
+              {{ __('content.t_3824cba44244') }} <span class="font-normal text-neutral-500">(362)</span>
 </span>
 </div>
 </div>
@@ -29,7 +29,7 @@
 <!-- Exclusivity Toggle Item -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between">
 <span class="text-sm font-medium text-black">Exclusivity</span>
-<label aria-label="Toggle Exclusivity Filter" class="switch">
+<label aria-label="{{ __('content.t_e9f530a7305c') }}" class="switch">
 <input checked="" type="checkbox"/>
 <span class="slider"></span>
 </label>
@@ -50,7 +50,7 @@
 </div>
 <!-- Shades Accordion -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between cursor-pointer hover:bg-neutral-50 px-1">
-<span class="text-sm font-medium text-black">Shades</span>
+<span class="text-sm font-medium text-black">{{ __('ui.shades') }}</span>
 <svg class="w-4 h-4 text-neutral-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -84,12 +84,12 @@
 <section class="lg:col-span-9" data-purpose="product-catalog">
 <!-- Header Info & Sort By Bar -->
 <div class="mb-6">
-<h1 class="text-3xl lg:text-4xl font-black text-black tracking-tight mb-4">Minis &amp; More</h1>
+<h1 class="text-3xl lg:text-4xl font-black text-black tracking-tight mb-4">{{ __('content.t_3824cba44244') }}</h1>
 <div class="flex items-center justify-between border-b border-neutral-200 pb-3 text-xs md:text-sm">
 <span class="text-neutral-600 font-medium">362 items</span>
 <!-- Sort dropdown -->
 <div class="relative inline-flex items-center cursor-pointer group">
-<span class="font-normal text-neutral-800">Sort by: <strong class="font-bold underline text-black">{{ __('ui.recommended') }}</strong></span>
+<span class="font-normal text-neutral-800">{{ __('content.t_9bb640e5a014') }} <strong class="font-bold underline text-black">{{ __('ui.recommended') }}</strong></span>
 <svg class="w-4 h-4 ml-1 text-black" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -109,7 +109,7 @@
 <div class="w-1/2 bg-yellow-400 h-full rounded flex flex-col items-center justify-center p-2 text-center border border-yellow-500 shadow-inner">
 <span class="text-2xl">😊</span>
 <span class="font-black text-black text-xs tracking-tighter mt-1">STARFACE</span>
-<span class="text-[8px] text-neutral-700 leading-none mt-1">star strips</span>
+<span class="text-[8px] text-neutral-700 leading-none mt-1">{{ __('content.t_c5617bccd78b') }}</span>
 </div>
 <div class="w-1/2 h-full flex flex-col justify-around pl-2 items-center">
 <span class="text-yellow-500 font-black text-xl">@include('components.stars', ['rating' => $products->rating]) ★ ★</span>
@@ -117,7 +117,7 @@
 <span class="text-purple-600 font-black text-xl">★ ★ ★</span>
 </div>
 </div>
-<button aria-label="Add to Wishlist" class="absolute top-2 right-2 text-neutral-600 hover:text-black p-1 bg-white/80 rounded-full" type="button">
+<button aria-label="{{ __('content.t_a44253758df5') }}" class="absolute top-2 right-2 text-neutral-600 hover:text-black p-1 bg-white/80 rounded-full" type="button">
 <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
@@ -126,7 +126,7 @@
 <!-- Product Details -->
 <div class="space-y-1">
 <h3 class="text-xs font-black uppercase text-black tracking-wider">STARFACE</h3>
-<p class="text-xs text-neutral-800 product-title-clamp font-normal">Star Strips</p>
+<p class="text-xs text-neutral-800 product-title-clamp font-normal">{{ __('content.t_c33fdca33e4c') }}</p>
 <div class="flex items-center text-xs text-neutral-600 pt-1">
 <div class="flex text-sephora-gold mr-1 text-sm">★★★★<span class="text-neutral-300">★</span></div>
 <span class="font-bold text-neutral-900 mr-1">{{ $products->rating }}</span>
@@ -144,12 +144,12 @@
 </div>
 <!-- Pagination & Load More Section -->
 <div class="mt-12 text-center max-w-sm mx-auto space-y-3" data-purpose="pagination-controls">
-<p class="text-xs text-neutral-600">Showing 8 of 362 items</p>
+<p class="text-xs text-neutral-600">{{ __('content.t_d1cf2c321ba6') }}</p>
 <div class="w-full bg-neutral-200 h-1 rounded-full overflow-hidden">
 <div class="bg-black h-1 w-[2.2%]"></div>
 </div>
 <button class="w-full border border-black bg-white text-black py-3 text-xs font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-            LOAD MORE PRODUCTS
+            {{ __('content.t_ff6255edd8b2') }}
           </button>
 </div>
 </section>

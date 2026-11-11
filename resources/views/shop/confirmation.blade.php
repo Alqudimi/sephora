@@ -61,7 +61,7 @@
                 {{ $isCancelled ? __('messages.confirmation.order_cancelled') : __('messages.confirmation.thank_you') . ', ' . $order->customer_name . '!' }}
             </h1>
             <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
-                Order <strong class="text-primary">{{ $order->order_number }}</strong>
+                {{ __('ui.order') }} <strong class="text-primary">{{ $order->order_number }}</strong>
                 @if (! $isCancelled && ! $isRefunded)
                     has been received and is being prepared with care.
                 @else
@@ -128,7 +128,7 @@
         {{-- Status timeline --}}
         @if (! $isCancelled && ! $isRefunded)
             <section class="mb-6 border border-outline-variant bg-surface-container-lowest p-5 md:p-6">
-                <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold mb-5">Order status</h2>
+                <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold mb-5">{{ __('content.t_22edd6c1ad2b') }}</h2>
                 <ol class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     @foreach ($timeline as $index => $step)
                         @php $done = $statusIndex >= $index; @endphp
@@ -153,7 +153,7 @@
                 </ol>
                 @if ($order->tracking_number)
                     <p class="font-body-sm text-body-sm text-on-surface-variant mt-5 pt-4 border-t border-outline-variant">
-                        Tracking number: <strong class="text-primary">{{ $order->tracking_number }}</strong>
+                        {{ __('content.t_ff8c1d22751a') }} <strong class="text-primary">{{ $order->tracking_number }}</strong>
                     </p>
                 @endif
             </section>
@@ -166,7 +166,7 @@
                 {{-- Items --}}
                 <section class="border border-outline-variant bg-surface-container-lowest">
                     <header class="p-5 border-b border-outline-variant flex items-center justify-between">
-                        <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Your items</h2>
+                        <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">{{ __('content.t_01ccd648fd8e') }}</h2>
                         <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">{{ $order->items->sum('quantity') }} item{{ $order->items->sum('quantity') === 1 ? '' : 's' }}</span>
                     </header>
                     <div class="divide-y divide-outline-variant/60">
@@ -207,7 +207,7 @@
                             @if ($order->store->phone)
                                 <p class="font-body-sm text-body-sm text-on-surface-variant">Phone: {{ $order->store->phone }}</p>
                             @endif
-                            <p class="font-body-sm text-body-sm text-outline mt-2">Bring your order number and a photo ID. We hold uncollected orders for 7 days.</p>
+                            <p class="font-body-sm text-body-sm text-outline mt-2">{{ __('content.t_56ff9d755a21') }}</p>
                         </div>
                     @else
                         <div class="border-t border-outline-variant/60 pt-3 space-y-1">
@@ -229,16 +229,16 @@
                 {{-- Gift options --}}
                 @if ($order->gift_box || $order->gift_message || ! empty($order->samples))
                     <section class="border border-outline-variant bg-surface-container-lowest p-5 space-y-3">
-                        <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Gift & extras</h2>
+                        <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">{{ __('content.t_f86793526dc3') }}</h2>
                         @if ($order->gift_box)
                             <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
                                 <span class="material-symbols-outlined text-[18px] text-primary">redeem</span>
-                                Signature Sephora gift box included.
+                                {{ __('content.t_d57376a1f468') }}
                             </p>
                         @endif
                         @if ($order->gift_message)
                             <div class="border-l-2 border-primary pl-3">
-                                <p class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Gift message</p>
+                                <p class="font-label-caps text-label-caps uppercase text-outline tracking-wider">{{ __('content.t_d900206bf51f') }}</p>
                                 <p class="font-body-sm text-body-sm text-on-surface-variant italic">“{{ $order->gift_message }}”</p>
                             </div>
                         @endif
@@ -256,7 +256,7 @@
             <aside class="lg:col-span-5">
                 <div class="border-2 border-primary bg-surface-container-lowest lg:sticky lg:top-28">
                     <header class="p-5 border-b border-primary">
-                        <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">Payment summary</h2>
+                        <h2 class="font-title-md text-title-md uppercase tracking-wider text-primary font-bold">{{ __('content.t_e1ea7b9cbd0d') }}</h2>
                     </header>
 
                     <dl class="p-5 space-y-3 font-body-md text-body-md">
@@ -281,8 +281,8 @@
 
                         @if ($order->payment_method === 'cod')
                             <div class="flex justify-between gap-4">
-                                <dt class="text-on-surface-variant">Cash-on-delivery fee</dt>
-                                <dd class="text-on-surface-variant">Included</dd>
+                                <dt class="text-on-surface-variant">{{ __('content.t_44393de20501') }}</dt>
+                                <dd class="text-on-surface-variant">{{ __('ui.included') }}</dd>
                             </div>
                         @endif
 
@@ -314,12 +314,12 @@
 
                     @guest
                         <div class="mx-5 mb-5 p-4 bg-surface-container-low border border-outline-variant">
-                            <p class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold mb-1">Guest checkout</p>
+                            <p class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold mb-1">{{ __('content.t_711a7efff5ee') }}</p>
                             <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                This page is available from the session that placed the order and from the link in your confirmation email. Bookmark it now to keep your receipt.
+                                {{ __('content.t_43acd6225e19') }}
                             </p>
                             <a class="inline-block mt-2 font-body-sm text-body-sm text-primary underline" href="{{ URL::temporarySignedRoute('checkout.confirmation.guest', now()->addDays(30), ['order' => $order->order_number]) }}">
-                                Get a secure receipt link
+                                {{ __('content.t_05bd549caeb5') }}
                             </a>
                         </div>
                     @endguest
@@ -341,7 +341,7 @@
                 </div>
 
                 <p class="font-body-sm text-body-sm text-outline mt-4 text-center">
-                    Questions? <a class="underline hover:text-secondary" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a> · 800 SEPHORA
+                    {{ __('ui.questions') }} <a class="underline hover:text-secondary" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a> · 800 SEPHORA
                 </p>
             </aside>
         </div>

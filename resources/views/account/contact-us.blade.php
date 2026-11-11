@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Client Concierge | SEPHORA UAE')
+@section('title', __('meta.client_concierge'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
@@ -15,19 +15,19 @@
     @include('partials.account-nav', ['active' => 'contact'])
 
     <div class="mb-8 max-w-3xl">
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Client concierge</h1>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-2">Send us a message and our team will reply within 24 hours. For urgent order issues, call us free on 800 7374672.</p>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('content.t_9bf5aa98f550') }}</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-2">{{ __('content.t_66fa02bbc520') }}</p>
     </div>
 
     @if (session('contact_success'))
         <div class="border border-[#1b6b45] bg-[#eef7f1] text-[#1b6b45] px-4 py-3 mb-6 font-body-sm text-body-sm" role="status">
-            Thank you. Your message has been received and our client concierge will reply within 24 hours.
+            {{ __('content.t_3940bb2945b7') }}
         </div>
     @endif
 
     @if ($errors->any())
         <div class="border border-secondary bg-surface-container-lowest px-4 py-3 mb-6" role="alert">
-            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">Please check your message</p>
+            <p class="font-label-caps text-label-caps uppercase tracking-wider text-secondary font-bold mb-1">{{ __('content.t_2b42305acc0b') }}</p>
             <ul class="list-disc list-inside font-body-sm text-body-sm text-secondary space-y-1">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -42,14 +42,14 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Your name *</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_c3a94deb80cf') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('name') border-secondary @enderror"
                            name="name" required maxlength="120" type="text" value="{{ old('name', auth()->user()->name) }}">
                     @error('name')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Email *</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.email_required') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('email') border-secondary @enderror"
                            name="email" required maxlength="190" type="email" value="{{ old('email', auth()->user()->email) }}">
                     @error('email')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -63,10 +63,10 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Subject</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.subject') }}</span>
                     <select class="w-full h-12 px-3 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none" name="subject">
-                        @foreach (['Order enquiry', 'Delivery and tracking', 'Returns and refunds', 'Product advice', 'Account and loyalty', 'Something else'] as $subject)
-                            <option value="{{ $subject }}" @selected(old('subject') === $subject)>{{ $subject }}</option>
+                        @foreach ([['Order enquiry', 'order_enquiry'], ['Delivery and tracking', 'delivery_tracking'], ['Returns and refunds', 'returns_refunds'], ['Product advice', 'product_advice'], ['Account and loyalty', 'account_loyalty'], ['Something else', 'something_else']] as [$subject, $subjectKey])
+                            <option value="{{ $subject }}" @selected(old('subject') === $subject)>{{ __('ui.' . $subjectKey) }}</option>
                         @endforeach
                     </select>
                     @error('subject')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -74,32 +74,32 @@
             </div>
 
             <label class="space-y-1.5 block">
-                <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Message *</span>
+                <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.message_required') }}</span>
                 <textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none min-h-40 @error('message') border-secondary @enderror"
-                          name="message" required maxlength="4000" placeholder="Tell us how we can help. Include your order number when relevant.">{{ old('message') }}</textarea>
+                          name="message" required maxlength="4000" placeholder="{{ __('content.t_e468c15f3c27') }}">{{ old('message') }}</textarea>
                 @error('message')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
             </label>
 
             <div class="flex flex-wrap items-center gap-3">
-                <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 h-12 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" type="submit">Send message</button>
-                <span class="font-body-sm text-body-sm text-outline">We reply within 24 hours, 7 days a week.</span>
+                <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-8 h-12 border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" type="submit">{{ __('content.t_c70a890d1411') }}</button>
+                <span class="font-body-sm text-body-sm text-outline">{{ __('content.t_657248f07499') }}</span>
             </div>
         </form>
 
         <aside class="space-y-4">
             <section class="border border-outline-variant bg-surface-container-low p-5 font-body-sm text-body-sm">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">Other ways to reach us</h2>
-                <p class="text-on-surface-variant">Toll-free: <a class="text-primary underline" href="tel:8007374672">800 7374672</a></p>
-                <p class="text-on-surface-variant mt-1">Email: <a class="text-primary underline" href="mailto:concierge@sephora.ae">concierge@sephora.ae</a></p>
-                <p class="text-on-surface-variant mt-1">Daily, 9:00–21:00 GST</p>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">{{ __('content.t_69b82d3770fa') }}</h2>
+                <p class="text-on-surface-variant">{{ __('content.t_e6dfa9b28394') }} <a class="text-primary underline" href="tel:8007374672">800 7374672</a></p>
+                <p class="text-on-surface-variant mt-1">{{ __('ui.email_label') }} <a class="text-primary underline" href="mailto:concierge@sephora.ae">concierge@sephora.ae</a></p>
+                <p class="text-on-surface-variant mt-1">{{ __('content.t_1979ea45203d') }}</p>
             </section>
 
             <section class="border border-outline-variant bg-surface-container-lowest p-5 font-body-sm text-body-sm">
-                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">Quick answers</h2>
+                <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-3">{{ __('content.t_88a09039e843') }}</h2>
                 <ul class="space-y-2">
-                    <li><a class="text-primary underline hover:text-secondary" href="/faq/delivery">Delivery times and fees</a></li>
-                    <li><a class="text-primary underline hover:text-secondary" href="/faq/cancellation-and-refund">Returns and refunds</a></li>
-                    <li><a class="text-primary underline hover:text-secondary" href="/faq">All frequently asked questions</a></li>
+                    <li><a class="text-primary underline hover:text-secondary" href="/faq/delivery">{{ __('content.t_ef33222a6c96') }}</a></li>
+                    <li><a class="text-primary underline hover:text-secondary" href="/faq/cancellation-and-refund">{{ __('content.t_3322a2092ac9') }}</a></li>
+                    <li><a class="text-primary underline hover:text-secondary" href="/faq">{{ __('content.t_f17e3c7971f6') }}</a></li>
                 </ul>
             </section>
         </aside>

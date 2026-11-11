@@ -7,7 +7,7 @@
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl flex items-center justify-center">
 <div class="text-center max-w-xl">
 <div class="inline-block mb-4">
-<span class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-outline border-b border-outline-variant pb-1">Error 404</span>
+<span class="font-label-caps text-label-caps uppercase tracking-[0.2em] text-outline border-b border-outline-variant pb-1">{{ __('ui.error_404') }}</span>
 </div>
 <h1 class="font-display-hero text-primary font-serif tracking-tight mb-4">{{ __('messages.errors.oops') }}</h1>
 <p class="font-headline-md text-headline-md font-serif text-primary mb-3">{{ __('messages.errors.404_subtitle') }}</p>

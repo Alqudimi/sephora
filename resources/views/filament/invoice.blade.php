@@ -54,10 +54,10 @@
         <header>
             <div class="brand">
                 Sephora
-                <small>SEPHORA UAE — Beauty Retail FZ-LLC<br>Dubai, United Arab Emirates</small>
+                <small>{{ __('content.t_48e6e879c59e') }}<br>{{ __('content.t_6c064b906229') }}</small>
             </div>
             <div class="doc-title">
-                <h1>Tax Invoice</h1>
+                <h1>{{ __('content.t_4e97647b9e76') }}</h1>
                 <p>
                     <strong>{{ $order->order_number }}</strong><br>
                     {{ optional($order->placed_at ?? $order->created_at)->format('d M Y, H:i') }}
@@ -67,7 +67,7 @@
 
         <div class="grid">
             <div>
-                <h2>Billed to</h2>
+                <h2>{{ __('content.t_0112a7c9f6fe') }}</h2>
                 <strong>{{ $order->customer_name }}</strong><br>
                 {{ $order->customer_email }}<br>
                 {{ $order->customer_phone }}
@@ -96,7 +96,7 @@
             <div>
                 <h2>{{ __('ui.payment') }}</h2>
                 {{ $order->payment_method_label }}<br>
-                Status: <strong>{{ ucfirst($order->payment_status) }}</strong><br>
+                {{ __('ui.status_label') }} <strong>{{ ucfirst($order->payment_status) }}</strong><br>
                 @if($order->payment_reference)
                     Ref: {{ $order->payment_reference }}
                 @endif
@@ -106,7 +106,7 @@
         <div class="badges">
             <span class="badge">Order: {{ str($order->status)->headline() }}</span>
             <span class="badge">Payment: {{ $order->payment_status }}</span>
-            @if($order->gift_box)<span class="badge">Gift box</span>@endif
+            @if($order->gift_box)<span class="badge">{{ __('content.t_950daa2eadd5') }}</span>@endif
             @if($order->loyalty_points_earned)<span class="badge">+{{ $order->loyalty_points_earned }} Beauty Pass points</span>@endif
         </div>
 
@@ -114,9 +114,9 @@
             <thead>
                 <tr>
                     <th style="width:44%">Item</th>
-                    <th>Shade</th>
-                    <th class="num">Unit price</th>
-                    <th class="num">Qty</th>
+                    <th>{{ __('ui.shade') }}</th>
+                    <th class="num">{{ __('content.t_3c6c777f4d1f') }}</th>
+                    <th class="num">{{ __('ui.qty') }}</th>
                     <th class="num">{{ __('ui.total') }}</th>
                 </tr>
             </thead>
@@ -148,12 +148,12 @@
             @endif
             <div class="row total"><span>Total (VAT inclusive)</span><span>AED {{ number_format($order->total, 2) }}</span></div>
             @if((float) $order->refund_amount > 0)
-                <div class="row discount"><span>Refunded</span><span>- AED {{ number_format($order->refund_amount, 2) }}</span></div>
+                <div class="row discount"><span>{{ __('ui.refunded') }}</span><span>- AED {{ number_format($order->refund_amount, 2) }}</span></div>
             @endif
         </div>
 
         @if($order->gift_message)
-            <p style="margin-top:24px"><strong>Gift message:</strong> “{{ $order->gift_message }}”</p>
+            <p style="margin-top:24px"><strong>{{ __('content.t_452bc3d2e9b5') }}</strong> “{{ $order->gift_message }}”</p>
         @endif
 
         <footer>
@@ -167,7 +167,7 @@
     </div>
 
     <div class="no-print" style="text-align:center; margin-top:16px">
-        <button onclick="window.print()" style="padding:10px 28px; background:#1a1a1a; color:#fff; border:0; cursor:pointer; font-size:14px; letter-spacing:0.06em">Print / Save PDF</button>
+        <button onclick="window.print()" style="padding:10px 28px; background:#1a1a1a; color:#fff; border:0; cursor:pointer; font-size:14px; letter-spacing:0.06em">{{ __('content.t_6b15347b0bca') }}</button>
     </div>
 </body>
 </html>

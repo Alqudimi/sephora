@@ -128,15 +128,15 @@
     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.settings') }}">
             <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.settings') }}</h2>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Update your profile, password and preferences.</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_1cc2c71e48e0') }}</p>
         </a>
         <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.country-language') }}">
             <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.country_language') }}</h2>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Choose the language used on your account.</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_095793ecb2e4') }}</p>
         </a>
         <a class="border border-outline-variant bg-surface-container-lowest p-5 hover:border-primary transition-colors" href="{{ route('account.contact') }}">
-            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">Client concierge</h2>
-            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Send a message and our team will reply within 24 hours.</p>
+            <h2 class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('content.t_9bf5aa98f550') }}</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_3e9fd39ceee4') }}</p>
         </a>
     </section>
 </main>

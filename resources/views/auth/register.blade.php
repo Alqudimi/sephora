@@ -65,7 +65,7 @@
 <label class="block font-label-caps text-label-caps uppercase text-on-surface tracking-wider mb-2" for="reg-name">
               {{ __('messages.auth.full_name') }} <span class="text-secondary">*</span>
 </label>
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('name') border-secondary @enderror" id="reg-name" placeholder="Your full name" required="" type="text" name="name" value="{{ old('name') }}"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('name') border-secondary @enderror" id="reg-name" placeholder="{{ __('content.t_d9047642f7c4') }}" required="" type="text" name="name" value="{{ old('name') }}"/>
 @error('name')
 <p class="text-secondary font-body-sm mt-1">{{ $message }}</p>
 @enderror
@@ -101,7 +101,7 @@
 <label class="block font-label-caps text-label-caps uppercase text-on-surface tracking-wider mb-2" for="reg-password">
               {{ __('messages.password') }} <span class="text-secondary">*</span>
 </label>
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('password') border-secondary @enderror" id="reg-password" placeholder="Minimum 8 characters" required="" type="password" name="password"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('password') border-secondary @enderror" id="reg-password" placeholder="{{ __('content.t_77c6662e8b7e') }}" required="" type="password" name="password"/>
 @error('password')
 <p class="text-secondary font-body-sm mt-1">{{ $message }}</p>
 @enderror
@@ -112,13 +112,13 @@
 <label class="block font-label-caps text-label-caps uppercase text-on-surface tracking-wider mb-2" for="reg-password-confirm">
               {{ __('messages.auth.confirm_password') }} <span class="text-secondary">*</span>
 </label>
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('password') border-secondary @enderror" id="reg-password-confirm" placeholder="Repeat your password" required="" type="password" name="password_confirmation"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('password') border-secondary @enderror" id="reg-password-confirm" placeholder="{{ __('content.t_148c22e8997d') }}" required="" type="password" name="password_confirmation"/>
 </div>
 
 <!-- Marketing opt-in -->
 <label class="flex items-start gap-3 cursor-pointer">
 <input class="mt-1 w-4 h-4 rounded-none border border-outline text-primary focus:ring-0 focus:ring-offset-0 cursor-pointer checked:bg-primary checked:border-primary" name="marketing_email" type="checkbox" value="1" @checked(old('marketing_email'))/>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Email me about new arrivals, offers, and Beauty Pass events. <span class="text-outline">({{ __('messages.optional') }})</span></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_3a842a4264ac') }} <span class="text-outline">({{ __('messages.optional') }})</span></span>
 </label>
 @error('marketing_email')
 <p class="text-secondary font-body-sm mt-1">{{ $message }}</p>
@@ -139,35 +139,35 @@
 <!-- RIGHT COLUMN: Beauty Pass benefits (mirrors sign-in page promo column) -->
 <section class="lg:col-span-6 flex flex-col gap-space-md">
 <div class="bg-surface-container-lowest border border-outline-variant p-8">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold block mb-2">Beauty Pass Rewards</span>
-<h3 class="font-headline-md text-headline-md font-serif text-primary mb-3">Why Join Sephora?</h3>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold block mb-2">{{ __('content.t_b981967c7b0f') }}</span>
+<h3 class="font-headline-md text-headline-md font-serif text-primary mb-3">{{ __('content.t_9f1cd69770f7') }}</h3>
 <ul class="space-y-4">
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">stars</span>
 <div>
-<p class="font-title-md text-title-md text-primary">Earn Points On Every Order</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Collect 1 point per 10 AED and unlock Black &amp; Gold VIP tiers.</p>
+<p class="font-title-md text-title-md text-primary">{{ __('content.t_7cc129adfcd2') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_b83cffbbfc96') }}</p>
 </div>
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">local_shipping</span>
 <div>
-<p class="font-title-md text-title-md text-primary">Free Delivery Over 250 AED</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Complimentary standard shipping across the Emirates.</p>
+<p class="font-title-md text-title-md text-primary">{{ __('content.t_1dbbd1b188cb') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_cb5e4595303f') }}</p>
 </div>
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">redeem</span>
 <div>
-<p class="font-title-md text-title-md text-primary">Exclusive Member Gifts</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Deluxe samples, birthday gifts and early access to launches.</p>
+<p class="font-title-md text-title-md text-primary">{{ __('content.t_70b0687bf8c8') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_aafbfb380b59') }}</p>
 </div>
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">favorite</span>
 <div>
-<p class="font-title-md text-title-md text-primary">Personal Wishlist</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Save your favourite products and shop them anytime.</p>
+<p class="font-title-md text-title-md text-primary">{{ __('content.t_f49818b2bf68') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_cb2ca6151efd') }}</p>
 </div>
 </li>
 </ul>

@@ -26,17 +26,17 @@
             </p>
         </div>
         <a class="text-xs font-bold text-black uppercase underline hover:text-neutral-600 transition-colors" href="/brands">
-            View All Brands &rarr;
+            {{ __('content.t_ddbdf555a7fb') }}
         </a>
     </div>
 
     @if ($products->isEmpty())
         <div class="text-center py-20 border border-gray-200 rounded-sm bg-white space-y-4">
-            <h2 class="text-xl font-bold uppercase tracking-tight text-black">Coming Soon</h2>
+            <h2 class="text-xl font-bold uppercase tracking-tight text-black">{{ __('content.t_04d2fd852a2b') }}</h2>
             <p class="text-xs text-neutral-500 max-w-sm mx-auto">New drops and products from {{ $brand->name }} are arriving shortly.</p>
             <div class="pt-2">
                 <a class="inline-block bg-black text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-sm hover:bg-neutral-800 transition-colors" href="/brands">
-                    EXPLORE ALL BRANDS &rarr;
+                    {{ __('content.t_34ec6f6612b3') }}
                 </a>
             </div>
         </div>

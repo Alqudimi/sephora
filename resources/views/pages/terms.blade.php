@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Terms & Conditions | SEPHORA UAE Official Luxury Beauty')
+@section('title', __('meta.terms'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
@@ -14,40 +14,40 @@
 <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant mb-6">
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
-<span class="text-primary font-bold">Terms &amp; Conditions</span>
+<span class="text-primary font-bold">{{ __('content.t_d35f2b98edf8') }}</span>
 </nav>
 <div class="max-w-4xl">
 <!-- Tag & Overline -->
 <div class="flex items-center gap-3 mb-3">
 <span class="bg-primary text-on-primary font-label-tag text-label-tag px-2.5 py-1 uppercase tracking-widest">
-            LEGAL &amp; COMPLIANCE
+            {{ __('content.t_b28c1814c518') }}
           </span>
 <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest text-[11px]">
-            SEPHORA MIDDLE EAST • UAE JURISDICTION
+            {{ __('content.t_24f81de297d5') }}
           </span>
 </div>
 <!-- Headline -->
 <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-4">
-          Terms &amp; Conditions
+          {{ __('content.t_d35f2b98edf8') }}
         </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
-          Please review the official terms and contractual provisions governing your access to and use of our digital platforms, in-store services, and luxury beauty commerce transactions across the United Arab Emirates.
+          {{ __('content.t_f5f12504f902') }}
         </p>
 <!-- Meta badges & tab switcher -->
 <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-outline-variant">
 <div class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant">
 <span class="material-symbols-outlined text-[18px] text-primary" data-icon="schedule">schedule</span>
-<span>Last Updated: <strong class="text-primary">January 2025</strong></span>
+<span>{{ __('content.t_c26d954c5197') }} <strong class="text-primary">January 2025</strong></span>
 <span class="text-outline-variant">•</span>
 <span>Region: <strong class="text-primary">United Arab Emirates (UAE)</strong></span>
 </div>
 <!-- Section Switcher Pills -->
 <div class="flex items-center border border-primary p-0.5 bg-surface-container-lowest">
 <a class="px-4 py-1.5 font-label-caps text-label-caps tracking-widest uppercase bg-primary text-on-primary font-bold transition-all" href="#terms-of-use">
-              Terms of Use
+              {{ __('content.t_97738411d629') }}
             </a>
 <a class="px-4 py-1.5 font-label-caps text-label-caps tracking-widest uppercase text-primary hover:bg-surface-container transition-all" href="#terms-of-sale">
-              Terms of Sale
+              {{ __('content.t_1e0a1aad71b0') }}
             </a>
 </div>
 </div>
@@ -71,38 +71,38 @@
 <!-- TOC Block 1: Terms of Use -->
 <div class="mb-6">
 <a class="block font-label-caps text-label-caps uppercase text-primary font-bold mb-3 tracking-widest hover:text-secondary" href="#terms-of-use">
-              Part I — Terms of Use
+              {{ __('content.t_721f6464d73a') }}
             </a>
 <ul class="space-y-2 text-body-sm font-body-sm text-on-surface-variant pl-3 border-l-2 border-outline-variant">
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-1">Article 1 - Legal Notice &amp; Entity</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-2">Article 2 - Website Services</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-3">Article 3 - Acceptable Use &amp; Conduct</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-4">Article 4 - Personal Data &amp; Cookies</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-5">Article 5 - Intellectual Property</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-6">Article 6 - Limitation of Liability</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-7">Article 7 - Governing Law</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-1">{{ __('content.t_889c4b3cdf80') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-2">{{ __('content.t_16d9c545e173') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-3">{{ __('content.t_e70d5f83016a') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-4">{{ __('content.t_7e2a1a96f0e8') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-5">{{ __('content.t_a02301388cf6') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-6">{{ __('content.t_abb4581d6751') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#use-art-7">{{ __('content.t_819d9fd8f9d3') }}</a></li>
 </ul>
 </div>
 <!-- TOC Block 2: Terms of Sale -->
 <div>
 <a class="block font-label-caps text-label-caps uppercase text-primary font-bold mb-3 tracking-widest hover:text-secondary" href="#terms-of-sale">
-              Part II — Terms of Sale
+              {{ __('content.t_2df92cc97a88') }}
             </a>
 <ul class="space-y-2 text-body-sm font-body-sm text-on-surface-variant pl-3 border-l-2 border-outline-variant max-h-72 overflow-y-auto pr-2">
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-1">Article 1 - Scope &amp; Purpose</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-2">Article 2 - Eligibility &amp; Status</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-3">Article 3 - Orders &amp; Authenticity</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-1">{{ __('content.t_549b3b3bf719') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-2">{{ __('content.t_a630cb249fd4') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-3">{{ __('content.t_f93c43fb2a33') }}</a></li>
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-4">Article 4 - Prices &amp; Payment (AED)</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-5">Article 5 - Delivery &amp; Timelines</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-6">Article 6 - 14-Day Returns &amp; Exchange</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-7">Article 7 - Product Guarantees</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-8">Article 8 - Intellectual Rights</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-9">Article 9 - Privacy &amp; Data Security</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-10">Article 10 - Client Concierge</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-11">Article 11 - Account Security</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-12">Article 12 - Force Majeure</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-13">Article 13 - Amendments</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-14">Article 14 - UAE Jurisdiction</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-5">{{ __('content.t_76517f449e5c') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-6">{{ __('content.t_76fc944a13bb') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-7">{{ __('content.t_a9ea7eb1e87b') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-8">{{ __('content.t_5e0c699b912f') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-9">{{ __('content.t_7582252c3d85') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-10">{{ __('content.t_0c6d536193ef') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-11">{{ __('content.t_2b2f88ad38b8') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-12">{{ __('content.t_ce6d96a0f97c') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-13">{{ __('content.t_38ce8d4a83f4') }}</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-14">{{ __('content.t_13bcf04d35d3') }}</a></li>
 </ul>
 </div>
 </div>
@@ -110,23 +110,23 @@
 <div class="border border-outline-variant bg-surface-container-low p-6">
 <div class="flex items-center space-x-3 mb-3">
 <span class="material-symbols-outlined text-primary text-[24px]" data-icon="support_agent">support_agent</span>
-<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary">Need Clarification?</h3>
+<h3 class="font-title-md text-title-md uppercase tracking-wider text-primary">{{ __('content.t_8d561bb57e4d') }}</h3>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
-            Our luxury advisory team is at your disposal 7 days a week for any legal or transactional inquiries.
+            {{ __('content.t_c82aa1819c3b') }}
           </p>
 <div class="space-y-2 text-body-sm font-body-sm">
 <div class="flex items-center justify-between py-1 border-b border-outline-variant">
-<span class="text-on-surface-variant">Toll-Free UAE:</span>
+<span class="text-on-surface-variant">{{ __('content.t_0c891f0ce6ad') }}</span>
 <a class="font-bold text-primary hover:text-secondary" href="tel:8007374672">800 7374672</a>
 </div>
 <div class="flex items-center justify-between py-1 border-b border-outline-variant">
-<span class="text-on-surface-variant">Concierge Email:</span>
+<span class="text-on-surface-variant">{{ __('content.t_c1e3aafb0acf') }}</span>
 <a class="font-bold text-primary hover:text-secondary" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a>
 </div>
 <div class="flex items-center justify-between py-1">
-<span class="text-on-surface-variant">Service Hours:</span>
-<span class="font-bold text-primary">10:00 AM – 10:00 PM GST</span>
+<span class="text-on-surface-variant">{{ __('content.t_fa5ecbc2f1f5') }}</span>
+<span class="font-bold text-primary">{{ __('content.t_7074b9485138') }}</span>
 </div>
 </div>
 </div>
@@ -138,20 +138,20 @@
 <div class="border-b-2 border-primary pb-4">
 <div class="flex items-center space-x-2 text-secondary mb-1">
 <span class="material-symbols-outlined text-[20px]" data-icon="gavel">gavel</span>
-<span class="font-label-caps text-label-caps tracking-widest uppercase">Contractual Governance</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">{{ __('content.t_1d38fcb77908') }}</span>
 </div>
 <h2 class="font-headline-md text-headline-md text-primary">
-              Terms of Use
+              {{ __('content.t_97738411d629') }}
             </h2>
 <p class="font-body-md text-body-md text-on-surface-variant mt-1">
-              The rules governing browsing, registration, user accounts, and digital content interaction across all Sephora UAE platforms.
+              {{ __('content.t_089a2e02ae0f') }}
             </p>
 </div>
 <!-- Article 1 -->
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-1">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 1 - Legal notice &amp; Corporate Entity
+                {{ __('content.t_647b3a058ff2') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 1
@@ -159,12 +159,12 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                The digital platform <a class="text-primary font-bold underline" href="https://www.sephora.me">www.sephora.me</a> and associated Sephora Middle East mobile applications are operated by <strong>SEPHORA CYPRUS LIMITED (Dubai Branch)</strong>, a commercial entity duly registered under the laws of the Emirate of Dubai, United Arab Emirates, with commercial registration under the Dubai Department of Economy and Tourism.
+                {{ __('content.t_782bba5abd7d') }} <a class="text-primary font-bold underline" href="https://www.sephora.me">{{ __('content.t_94d669c60d89') }}</a> {{ __('content.t_bca346f0b39e') }} <strong>SEPHORA CYPRUS LIMITED (Dubai Branch)</strong>{{ __('content.t_16b10de63396') }}
               </p>
 <div class="bg-surface-container-low p-4 border-l-2 border-primary text-body-sm font-body-sm">
-<p><strong>Corporate Head Office:</strong> Sephora Middle East, Design District (d3), Building 2, PO Box 34111, Dubai, United Arab Emirates.</p>
+<p><strong>{{ __('content.t_6884f8ea247b') }}</strong> Sephora Middle East, Design District (d3), Building 2, PO Box 34111, Dubai, United Arab Emirates.</p>
 <p class="mt-1"><strong>Tax Registration Number (TRN):</strong> 100034872900003</p>
-<p class="mt-1"><strong>Official Hosting Provider:</strong> Amazon Web Services (AWS) EMEA, Frankfurt Region, ISO 27001 certified architecture.</p>
+<p class="mt-1"><strong>{{ __('content.t_f884984c3976') }}</strong> Amazon Web Services (AWS) EMEA, Frankfurt Region, ISO 27001 certified architecture.</p>
 </div>
 </div>
 </article>
@@ -172,7 +172,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-2">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 2 – Services available through the Website
+                {{ __('content.t_ed63a504f225') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 2
@@ -180,13 +180,13 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                The Website grants clients access to prestige luxury beauty shopping services, comprehensive fragrance notes directory, skin diagnostic consultation booking, store locator services across all 7 Emirates (Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah), as well as real-time access to the <strong>Sephora Beauty Pass Loyalty Program</strong>.
+                The Website grants clients access to prestige luxury beauty shopping services, comprehensive fragrance notes directory, skin diagnostic consultation booking, store locator services across all 7 Emirates (Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah), as well as real-time access to the <strong>{{ __('content.t_9b67ab71e74b') }}</strong>.
               </p>
 <ul class="list-disc pl-5 space-y-2 text-body-md">
-<li>Online prestige cosmetic catalog consultation and instant inventory check.</li>
-<li>Digital shade matching, virtual artist consultations, and masterclass reservations.</li>
-<li>Consolidated order tracking and historical invoices for all digital purchases.</li>
-<li>Beauty Pass tier validation, point balance tracking, and deluxe gift redemption tokens.</li>
+<li>{{ __('content.t_b5c284486fdd') }}</li>
+<li>{{ __('content.t_b2d43cbf8993') }}</li>
+<li>{{ __('content.t_bb80ef38eef4') }}</li>
+<li>{{ __('content.t_3d7a0e8cc433') }}</li>
 </ul>
 </div>
 </article>
@@ -194,7 +194,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-3">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 3 – Use of the Website &amp; User Conduct
+                {{ __('content.t_880f8eee5c59') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 3
@@ -202,24 +202,24 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                By navigating this website, you commit strictly to lawful purposes in compliance with Federal Decree-Law No. 34 of 2021 on Combatting Rumors and Cybercrime. Users agree not to:
+                {{ __('content.t_d177af7ed108') }}
               </p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-body-sm font-body-sm">
 <div class="p-3 border border-outline-variant bg-surface-container-low">
-<span class="font-bold text-primary block mb-1">✕ Prohibited Scraping</span>
-                  Deploy automated software, scrapers, crawlers, or harvesting tools to siphon pricing, imagery, or stock levels without written consent.
+<span class="font-bold text-primary block mb-1">{{ __('content.t_4c57cd50acd9') }}</span>
+                  {{ __('content.t_446a8aec0a3b') }}
                 </div>
 <div class="p-3 border border-outline-variant bg-surface-container-low">
-<span class="font-bold text-primary block mb-1">✕ Fraudulent Bidding &amp; Resale</span>
-                  Purchase items in commercial volumes for unauthorized re-exportation, parallel gray-market trade, or counterfeit aggregation.
+<span class="font-bold text-primary block mb-1">{{ __('content.t_18ff910a35b6') }}</span>
+                  {{ __('content.t_b3f9e74778d1') }}
                 </div>
 <div class="p-3 border border-outline-variant bg-surface-container-low">
-<span class="font-bold text-primary block mb-1">✕ Platform Disruption</span>
-                  Interfere with server integrity, transmit malicious code, or induce denial-of-service disruptions against Sephora infrastructure.
+<span class="font-bold text-primary block mb-1">{{ __('content.t_b980f6f8d4d9') }}</span>
+                  {{ __('content.t_24feb8f93d5d') }}
                 </div>
 <div class="p-3 border border-outline-variant bg-surface-container-low">
 <span class="font-bold text-primary block mb-1">✕ Impersonation</span>
-                  Impersonate any individual, prestige beauty consultant, brand partner, or Sephora representative.
+                  {{ __('content.t_c39069b0b5dc') }}
                 </div>
 </div>
 </div>
@@ -228,7 +228,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-4">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 4 – Personal Data &amp; Cookies
+                {{ __('content.t_a6cb4dab6abb') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 4
@@ -239,7 +239,7 @@
                 Protection of your confidential data complies with the UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL). Sephora processes your information exclusively to curate personal fragrance notes, fulfill shipping dispatches, process secure payments, and reward loyalty benefits.
               </p>
 <p>
-                Our platforms leverage strictly necessary authentication cookies alongside performance cookies. You retain complete authority to calibrate your tracking preferences at any juncture via your browser controls or our dedicated <a class="text-primary font-bold underline" href="/terms-and-conditions">Cookie Preferences</a> portal.
+                {{ __('content.t_a57f120b8883') }} <a class="text-primary font-bold underline" href="/terms-and-conditions">{{ __('content.t_9c11fe0a7d4e') }}</a> portal.
               </p>
 </div>
 </article>
@@ -247,7 +247,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-5">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 5 – Intellectual Property
+                {{ __('content.t_2e282069148d') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 5
@@ -255,10 +255,10 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                All trademarks, visual assets, packaging photography, botanical fragrance icons, typefaces, editorial descriptions, and code architectures are the exclusive property of <strong>SEPHORA SAS</strong>, its parent holding company <strong>LVMH Moët Hennessy Louis Vuitton</strong>, or licensed prestige beauty houses (including Huda Beauty, Kayali, Haus Labs, and Fenty Beauty).
+                {{ __('content.t_41613fc6e8ae') }} <strong>{{ __('content.t_05177045b7e2') }}</strong>{{ __('content.t_3a3969d52dd3') }} <strong>{{ __('content.t_3b2439cc635b') }}</strong>, or licensed prestige beauty houses (including Huda Beauty, Kayali, Haus Labs, and Fenty Beauty).
               </p>
 <p class="font-bold text-primary">
-                Any reproduction, republication, modification, or redistribution, whether in whole or in part, without explicit prior written authorization is strictly prohibited under UAE and international copyright treaties.
+                {{ __('content.t_9f7ed232c0e5') }}
               </p>
 </div>
 </article>
@@ -266,7 +266,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-6">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 6 – Liability
+                {{ __('content.t_e439014b5473') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 6
@@ -274,7 +274,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                While Sephora employs best-in-class encryption and updates product compositions with utmost diligence, Sephora shall not be held liable for temporary technical outages caused by internet routing intermediaries, unscheduled server maintenance, or indirect damages stemming from unauthorized access to third-party devices.
+                {{ __('content.t_8c35a6cffd2f') }}
               </p>
 </div>
 </article>
@@ -282,7 +282,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="use-art-7">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 7 – General provisions &amp; Governing Law
+                {{ __('content.t_29d1ecf9eabc') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 Article 7
@@ -300,23 +300,23 @@
 <div class="border-b-2 border-primary pb-4">
 <div class="flex items-center space-x-2 text-secondary mb-1">
 <span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart_checkout">shopping_cart_checkout</span>
-<span class="font-label-caps text-label-caps tracking-widest uppercase">E-Commerce &amp; Retail Transactions</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">{{ __('content.t_d2db28be1807') }}</span>
 </div>
 <h2 class="font-headline-md text-headline-md text-primary">
-              Terms of Sale
+              {{ __('content.t_1e0a1aad71b0') }}
             </h2>
 <p class="font-body-md text-body-md text-on-surface-variant mt-1">
-              Contractual terms governing commercial purchases, pricing policies in AED, deliveries across the 7 Emirates, returns, and authenticity guarantees.
+              {{ __('content.t_05f1ecfe74a8') }}
             </p>
 </div>
 <!-- Sale Article 1 -->
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="sale-art-1">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 1 – Purpose of the Terms of Sale
+                {{ __('content.t_ce963d8378d0') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Sale Art. 1
+                {{ __('content.t_d98c24526c27') }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -329,15 +329,15 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="sale-art-2">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 2 – Eligibility &amp; Customer Status
+                {{ __('content.t_027b66a9b462') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Sale Art. 2
+                {{ __('content.t_369a9a4fe4bb') }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                To place an order, the Client must be at least 18 years of age or possess legal parental authorization in accordance with the UAE Civil Transactions Law, and possess legal capacity to enter binding commercial covenants. Products are exclusively designated for personal use; commercial resale is grounds for immediate order cancellation.
+                {{ __('content.t_0ce0deea6ec0') }}
               </p>
 </div>
 </article>
@@ -348,19 +348,19 @@
                 Article 3 - Orders and products (100% Authenticity)
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Sale Art. 3
+                {{ __('content.t_5805f8039f2a') }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                Every product displayed on Sephora UAE is sourced directly through brand principals and official luxury ateliers. Sephora formally guarantees that <strong>100% of all items are authentic, pristine, and stored in climate-controlled conditions</strong> conforming to Dubai Municipality and UAE Ministry of Industry and Advanced Technology (MoIAT) standards.
+                {{ __('content.t_295e8a0acaca') }} <strong>{{ __('content.t_5c5874ab60bb') }}</strong> conforming to Dubai Municipality and UAE Ministry of Industry and Advanced Technology (MoIAT) standards.
               </p>
 <div class="p-4 bg-surface-container border border-outline-variant">
 <span class="font-label-caps text-label-caps uppercase text-primary font-bold block mb-1">
-                  Order Confirmation Protocol:
+                  {{ __('content.t_786de651cbed') }}
                 </span>
 <p class="text-body-sm font-body-sm">
-                  An order is deemed finalized once the Client receives an official Electronic Order Confirmation email featuring a unique SEPHORA tracking code. Sephora reserves the right to cancel orders suspected of reselling, fraudulent coupon stacking, or incorrect system pricing.
+                  {{ __('content.t_525e95215671') }}
                 </p>
 </div>
 </div>
@@ -372,26 +372,26 @@
                 Article 4 - Prices and payment policy (Currency in AED)
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Sale Art. 4
+                {{ __('content.t_af68d38ac8a6') }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                All prices are stated in <strong>United Arab Emirates Dirham (AED)</strong> and are inclusive of the statutory 5% Value Added Tax (VAT) imposed under UAE Federal Tax Authority regulations.
+                {{ __('content.t_68160d36f5e2') }} <strong>United Arab Emirates Dirham (AED)</strong> and are inclusive of the statutory 5% Value Added Tax (VAT) imposed under UAE Federal Tax Authority regulations.
               </p>
 <div class="space-y-3 pt-2">
-<h4 class="font-title-md text-title-md text-primary">Authorized Payment Gateways:</h4>
+<h4 class="font-title-md text-title-md text-primary">{{ __('content.t_0e6ae89a951a') }}</h4>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-center text-body-sm font-body-sm">
-<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">VISA / MASTERCARD</div>
-<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">APPLE PAY</div>
+<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_a5e7c513c191') }}</div>
+<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_51137b2e6c73') }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">TABBY (Split in 4)</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">TAMARA (Pay in 3)</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">CASH ON DELIVERY (COD)</div>
-<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">SEPHORA E-GIFT CARDS</div>
+<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_003dff3d02b0') }}</div>
 </div>
 </div>
 <p class="text-body-sm font-body-sm text-on-surface-variant italic">
-                *Cash on Delivery incurs an administrative convenience fee of 20 AED. Transactions above 2,500 AED must be settled via credit card or digital wallet for courier safety.
+                {{ __('content.t_3eb7b2e4eb15') }}
               </p>
 </div>
 </article>
@@ -399,23 +399,23 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="sale-art-5">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 5 - Delivery &amp; UAE Timelines
+                {{ __('content.t_82e4688c143b') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Sale Art. 5
+                {{ __('content.t_ec432199a213') }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                Deliveries are dispatched exclusively across the territory of the United Arab Emirates through specialized temperature-controlled courier fleets.
+                {{ __('content.t_050dda265f26') }}
               </p>
 <div class="overflow-x-auto">
 <table class="w-full text-left text-body-sm font-body-sm border border-outline-variant">
 <thead class="bg-surface-container font-label-caps text-label-caps uppercase text-primary">
 <tr>
-<th class="p-3 border-b border-outline-variant">Delivery Tier</th>
-<th class="p-3 border-b border-outline-variant">Applicable Fee</th>
-<th class="p-3 border-b border-outline-variant">Transit Schedule</th>
+<th class="p-3 border-b border-outline-variant">{{ __('content.t_0d04850eabc1') }}</th>
+<th class="p-3 border-b border-outline-variant">{{ __('content.t_376d529e0cab') }}</th>
+<th class="p-3 border-b border-outline-variant">{{ __('content.t_3e2448c37615') }}</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-outline-variant">
@@ -432,12 +432,12 @@
 <tr>
 <td class="p-3 font-bold text-primary">Same-Day Express (Dubai Only, before 12 PM)</td>
 <td class="p-3">35 AED</td>
-<td class="p-3">Same Day between 6:00 PM – 10:00 PM</td>
+<td class="p-3">{{ __('content.t_2a200a107add') }}</td>
 </tr>
 <tr>
 <td class="p-3 font-bold text-primary">Click &amp; Collect (Any UAE Store)</td>
 <td class="p-3 text-secondary font-bold">{{ __('ui.free') }}</td>
-<td class="p-3">Ready in 2 Hours during mall operating hours</td>
+<td class="p-3">{{ __('content.t_6482dbe711a5') }}</td>
 </tr>
 </tbody>
 </table>
@@ -448,74 +448,74 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="sale-art-6">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 6 - Cancellation, 14-Day Return and Exchange Policy
+                {{ __('content.t_5d5f59bb110b') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Sale Art. 6
+                {{ __('content.t_d9bb4cdc8846') }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                In strict compliance with Federal Law No. 15 of 2020 on Consumer Protection, Clients enjoy a <strong>14-day return and exchange window</strong> from the date of package delivery.
+                {{ __('content.t_e126f91666c0') }} <strong>{{ __('content.t_b18ec433c1b6') }}</strong> {{ __('content.t_364916d6e4e0') }}
               </p>
 <div class="border border-outline-variant p-4 space-y-3 bg-surface-container-low">
-<h4 class="font-title-md text-title-md text-primary">Mandatory Conditions for Return:</h4>
+<h4 class="font-title-md text-title-md text-primary">{{ __('content.t_c1bb199b1c9e') }}</h4>
 <ul class="list-disc pl-5 space-y-1 text-body-sm font-body-sm text-on-surface-variant">
-<li>Products must remain unopened, entirely unused, in pristine original packaging with intact cellophane and security seal.</li>
-<li>Original physical tax invoice or digital QR receipt must accompany the merchandise.</li>
-<li>Due to strict hygiene regulations, opened mascaras, lip products, cosmetic brushes, and skincare formulas cannot be refunded.</li>
+<li>{{ __('content.t_f6fc8634cf08') }}</li>
+<li>{{ __('content.t_06dea5aabef4') }}</li>
+<li>{{ __('content.t_903c863f0b1f') }}</li>
 </ul>
 </div>
 <p>
-<strong>In-Store Returns:</strong> Any purchase made online can be brought to any official Sephora store across Dubai Mall, Mall of the Emirates, Yas Mall, Galleria Abu Dhabi, and other UAE branches for immediate exchange or store credit.
+<strong>{{ __('content.t_f2a2f633e964') }}</strong> {{ __('content.t_bc3eb73a7691') }}
               </p>
 </div>
 </article>
 <!-- Sale Article 7 through 14 in clean concise luxury accordion vitrine -->
 <div class="space-y-4 pt-4">
 <h4 class="font-title-lg text-title-lg text-primary uppercase tracking-wider">
-              Additional Sales Directives
+              {{ __('content.t_0c620b19035c') }}
             </h4>
 <!-- Article 7 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 7 - Product liability &amp; Guarantees</span>
+<span>{{ __('content.t_30af429443e6') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  Products distributed are backed by official manufacturer warranties against defective formulation or packaging dispenser malfunction. If an item is received damaged or compromised, Clients must notify Concierge within 48 hours with photographic proof for immediate replacement.
+                  {{ __('content.t_14855ecde40c') }}
                 </p>
 </div>
 </details>
 <!-- Article 8 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 8 - Intellectual Property Rights in Commerce</span>
+<span>{{ __('content.t_a54cfc6f0ce1') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  The purchase of items confers no license, transfer, or assignment of intellectual property rights over formulas, brand marks, bottle silhouettes, or copyrighted materials.
+                  {{ __('content.t_4450925f18c6') }}
                 </p>
 </div>
 </details>
 <!-- Article 9 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 9 – Personal Data Protection &amp; Financial Security</span>
+<span>{{ __('content.t_b36c47032421') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  Payment card credentials are encrypted via PCI-DSS Level 1 compliant tokenized gateways. Sephora never stores full 16-digit credit card numbers or CVV codes on local UAE servers.
+                  {{ __('content.t_84281dc5549e') }}
                 </p>
 </div>
 </details>
 <!-- Article 10 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 10 – Customer Service &amp; Concierge Channels</span>
+<span>{{ __('content.t_45f09b54831f') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
@@ -527,48 +527,48 @@
 <!-- Article 11 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 11 – Account Security and Electronic Evidence</span>
+<span>{{ __('content.t_f5ed556f7d33') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  In accordance with UAE Federal Decree-Law No. 46 of 2021 on Electronic Transactions and Trust Services, electronic logs, click-to-accept logs, and digital dispatch signatures constitute conclusive legal evidence of order placement and receipt.
+                  {{ __('content.t_27858b61ab3b') }}
                 </p>
 </div>
 </details>
 <!-- Article 12 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 12 - Force Majeure</span>
+<span>{{ __('content.t_ce6d96a0f97c') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  Sephora shall not be deemed in breach of its obligations where performance is impeded by unforeseen events beyond reasonable human control, including extreme weather events, sovereign air traffic restrictions, or nationwide telecommunication interruptions.
+                  {{ __('content.t_9cfd25c3afc4') }}
                 </p>
 </div>
 </details>
 <!-- Article 13 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 13 - Modifications to Terms</span>
+<span>{{ __('content.t_baac47459e52') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  Sephora reserves the prerogative to update these Terms of Sale at any time. The applicable version is that which was accepted by the Client on the date of checkout.
+                  {{ __('content.t_255696e50fa0') }}
                 </p>
 </div>
 </details>
 <!-- Article 14 -->
 <details class="group border border-outline-variant bg-surface-container-lowest">
 <summary class="flex items-center justify-between p-5 cursor-pointer select-none font-headline-sm text-headline-sm text-primary group-open:border-b group-open:border-outline-variant">
-<span>Article 14 - Miscellaneous &amp; UAE Jurisdiction</span>
+<span>{{ __('content.t_9ef82739a57b') }}</span>
 <span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  Should any provision of these Terms be declared void or unenforceable under UAE law, all remaining covenants shall maintain complete legal vigor and effect.
+                  {{ __('content.t_63ace16a1de6') }}
                 </p>
 </div>
 </details>
@@ -582,16 +582,16 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <div class="border border-primary bg-surface-container-lowest p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
 <div class="space-y-2 text-center md:text-left">
-<span class="font-label-caps text-label-caps tracking-widest uppercase text-secondary font-bold">CLIENT SERVICES DIRECT LINE</span>
-<h3 class="font-headline-md text-headline-md text-primary">Need assistance with your order or rights?</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Our dedicated UAE Beauty Concierge is here to help with policy inquiries and returns.</p>
+<span class="font-label-caps text-label-caps tracking-widest uppercase text-secondary font-bold">{{ __('content.t_2024f9606bbf') }}</span>
+<h3 class="font-headline-md text-headline-md text-primary">{{ __('content.t_3578581c768f') }}</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">{{ __('content.t_ba00b290aeba') }}</p>
 </div>
 <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
 <a class="w-full sm:w-auto px-8 py-3.5 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest text-center hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-colors" href="tel:8007374672">
             CALL 800 7374672
           </a>
 <a class="w-full sm:w-auto px-8 py-3.5 border border-primary text-primary font-label-caps text-label-caps tracking-widest text-center hover:bg-primary hover:text-on-primary transition-colors" href="mailto:customercare@sephora.ae">
-            EMAIL CONCIERGE
+            {{ __('content.t_c703d15a483e') }}
           </a>
 </div>
 </div>
@@ -605,25 +605,25 @@
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="local_shipping">local_shipping</span>
 <span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('ui.free_delivery') }}</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">On all orders over 250 AED</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_5ae4fa42fde1') }}</span>
 </div>
 <!-- Badge 2 -->
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="verified">verified</span>
 <span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('ui.authentic') }}</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Guaranteed direct prestige origin</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_a5381098f41f') }}</span>
 </div>
 <!-- Badge 3 -->
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="cached">cached</span>
 <span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('ui.easy_returns') }}</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">In any UAE store within 14 days</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_b13ce43a2f42') }}</span>
 </div>
 <!-- Badge 4 -->
 <div class="flex flex-col items-center space-y-2 p-4">
 <span class="material-symbols-outlined text-[32px] text-primary" data-icon="loyalty">loyalty</span>
-<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">Beauty Pass</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Earn points on every dirham</span>
+<span class="font-title-md text-title-md text-primary font-bold uppercase tracking-wider">{{ __('content.t_302ae874320b') }}</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_dabb08c0d20a') }}</span>
 </div>
 </div>
 </div>
@@ -633,13 +633,13 @@
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <div class="max-w-2xl mx-auto text-center space-y-4">
 <h4 class="font-headline-sm text-headline-sm text-primary uppercase tracking-widest">
-          Subscribe to the Sephora Newsletter!
+          {{ __('content.t_98a7b9d37c27') }}
         </h4>
 <p class="font-body-md text-body-md text-on-surface-variant">
-          Receive exclusive invitations to private sales, deluxe miniatures, and couture fragrance releases across the UAE.
+          {{ __('content.t_0b74e91e68d1') }}
         </p>
 <form class="flex flex-col sm:flex-row items-center gap-2 pt-2" onsubmit="event.preventDefault()" data-newsletter-form>
-<input class="w-full px-4 py-3.5 bg-surface-container-lowest border border-outline-variant text-body-sm font-body-sm text-primary placeholder-on-surface-variant focus:outline-none focus:border-primary" placeholder="Enter your email address..." required="" type="email"/>
+<input class="w-full px-4 py-3.5 bg-surface-container-lowest border border-outline-variant text-body-sm font-body-sm text-primary placeholder-on-surface-variant focus:outline-none focus:border-primary" placeholder="{{ __('content.t_205dfd13124d') }}" required="" type="email"/>
 <button class="w-full sm:w-auto px-8 py-3.5 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest whitespace-nowrap hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" type="submit">
             SUBSCRIBE
           </button>

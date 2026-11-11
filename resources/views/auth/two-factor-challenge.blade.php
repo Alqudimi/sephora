@@ -53,7 +53,7 @@
                 <label class="block" for="two-factor-recovery">
                     <span class="block font-body-sm text-body-sm text-on-surface-variant mb-2">{{ __('messages.auth.use_recovery_desc') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md uppercase tracking-widest focus:border-primary focus:ring-0 rounded-none transition-all"
-                           id="two-factor-recovery" name="recovery_code" type="text" autocomplete="off" maxlength="9" placeholder="XXXX-XXXX">
+                           id="two-factor-recovery" name="recovery_code" type="text" autocomplete="off" maxlength="9" placeholder="{{ __('content.t_9c64ab90cda8') }}">
                 </label>
 
                 <button class="h-11 px-6 border border-primary text-primary font-label-caps text-label-caps uppercase tracking-wider hover:bg-primary hover:text-on-primary transition-colors" type="submit">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error | SEPHORA UAE</title>
+    <title>{{ __('content.t_2c744a159cf6') }}</title>
     <style>
         body { font-family: Georgia, 'Times New Roman', serif; background: #ffffff; color: #1a1a1a; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
         .wrap { text-align: center; padding: 48px 24px; max-width: 560px; }
@@ -18,8 +18,8 @@
     <div class="wrap">
         <div class="tag">Error 500</div>
         <h1>Sephora</h1>
-        <h2>Something went wrong on our side.</h2>
-        <p>Our team has been notified and is working on it. Please try again in a few moments.</p>
+        <h2>{{ __('content.t_708c33557c7c') }}</h2>
+        <p>{{ __('content.t_0fe0a5f86091') }}</p>
         <a class="btn" href="/">{{ __('ui.back_home') }}</a>
     </div>
 </body>

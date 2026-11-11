@@ -83,7 +83,7 @@
                             <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
                                 <!-- Quantity Controls -->
                                 <div class="flex items-center border border-gray-300 rounded-sm h-8">
-                                    <button class="w-8 h-full flex items-center justify-center hover:bg-gray-100 text-black text-sm disabled:opacity-40" data-qty-minus type="button" aria-label="{{ __('messages.cart.decrease_quantity') }}" @disabled($item->quantity <= 1)>−</button>
+                                    <button class="w-8 h-full flex items-center justify-center hover:bg-gray-100 text-black text-sm disabled:opacity-40" data-qty-minus type="button" aria-label="{{ __('messages.cart.decrease_quantity') }}" @disabled($item->{{ __('ui.quantity') }} <= 1)>−</button>
                                     <input class="w-10 text-center text-xs font-bold text-black bg-transparent border-0 p-0"
                                            data-cart-item="{{ $item->id }}" data-qty-input type="number"
                                            min="1" max="{{ max(1, $maxQty) }}" value="{{ $item->quantity }}"

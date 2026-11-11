@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'SEPHORA COLLECTION - Makeup, Skincare & Fragrance | Sephora UAE')
+@section('title', __('meta.sephora_collection'))
 @section('body_class', 'min-h-screen flex flex-col bg-white text-gray-900')
 
 @section('content')
@@ -12,17 +12,17 @@
 <a class="hover:underline hover:text-black" href="/">{{ __('ui.home') }}</a>
 </li>
 <li class="text-neutral-400">/</li>
-<li class="font-bold text-neutral-900 tracking-wider">SEPHORA COLLECTION</li>
+<li class="font-bold text-neutral-900 tracking-wider">{{ __('content.t_7e772d9d5bf0') }}</li>
 </ol>
 </nav>
 <!-- Page Title & Brand Story -->
 <div class="mb-8">
 <h1 class="text-2xl md:text-3xl font-black tracking-tight uppercase text-neutral-950 mb-2">
-        SEPHORA COLLECTION
+        {{ __('content.t_7e772d9d5bf0') }}
       </h1>
 <p class="text-xs md:text-sm text-neutral-700 max-w-4xl leading-relaxed">
-        An inspiring brand, in constant progress; discover our thousands of products, colors, effects and finishes. Feel free to wear what you love and express your unique style with high performance beauty formulas created for everyone...
-        <button class="font-bold underline text-black hover:opacity-80 uppercase ml-1 text-xs">READ MORE</button>
+        {{ __('content.t_6ab9723b0554') }}
+        <button class="font-bold underline text-black hover:opacity-80 uppercase ml-1 text-xs">{{ __('content.t_78577dbc45db') }}</button>
 </p>
 </div>
 <!-- Filter Bar Header: Count & Sort Dropdown -->
@@ -31,14 +31,14 @@
         {{ $products->count() }} items
       </span>
 <div class="flex items-center gap-2">
-<label class="text-xs font-medium text-neutral-600" for="sort-select">Sort by:</label>
+<label class="text-xs font-medium text-neutral-600" for="sort-select">{{ __('content.t_9bb640e5a014') }}</label>
 <div class="relative">
 <select class="text-xs font-bold text-neutral-900 border-none bg-transparent pr-6 py-0 focus:ring-0 cursor-pointer" id="sort-select">
 <option>{{ __('ui.recommended') }}</option>
 <option>{{ __('ui.new_arrivals') }}</option>
 <option>{{ __('ui.price_low_high') }}</option>
 <option>{{ __('ui.price_high_low') }}</option>
-<option>Customer Rating</option>
+<option>{{ __('content.t_c9418ddbe778') }}</option>
 </select>
 </div>
 </div>
@@ -96,13 +96,13 @@
 <!-- Active Filter -->
 <li class="bg-neutral-100 -mx-2 px-2 py-1 rounded">
 <a class="flex justify-between items-center font-bold text-black" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Sephora Collection</span>
+<span>{{ __('content.t_289b65242e3b') }}</span>
 <span class="text-black">(376)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Best Sellers</span>
+<span>{{ __('content.t_a1118d1ba9c9') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(28)</span>
 </a>
 </li>
@@ -114,13 +114,13 @@
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Beauty Finds</span>
+<span>{{ __('content.t_0b3ff1e45ba6') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(10)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center hover:text-black group" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-<span>Great Hair Starts Here</span>
+<span>{{ __('content.t_491aa5dbd5ed') }}</span>
 <span class="text-neutral-400 group-hover:text-neutral-700">(1)</span>
 </a>
 </li>
@@ -132,7 +132,7 @@
 <h3 class="text-xs font-bold uppercase tracking-wider text-black">{{ __('ui.refine') }}</h3>
 <!-- Exclusivity Toggle -->
 <div class="flex items-center justify-between py-1">
-<span class="text-neutral-800 font-medium">Sephora Exclusive Only</span>
+<span class="text-neutral-800 font-medium">{{ __('content.t_a283183b6457') }}</span>
 <label class="relative inline-flex items-center cursor-pointer">
 <input class="sr-only peer" type="checkbox" value=""/>
 <div class="w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-black"></div>
@@ -177,7 +177,7 @@
 </aside>
 <!-- END: LeftFilterSidebar -->
 <!-- BEGIN: ProductGrid -->
-<section aria-label="Product Catalog" class="lg:col-span-3 xl:col-span-4">
+<section aria-label="{{ __('content.t_4971e32f3bcc') }}" class="lg:col-span-3 xl:col-span-4">
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
 <!-- Card 1: Brand Feature Hero Card -->
 <article class="col-span-2 md:col-span-1 bg-[#1e1e1e] text-white rounded-none flex flex-col justify-between overflow-hidden relative group shadow-sm">
@@ -186,21 +186,21 @@
 <div class="absolute top-3 left-3 z-10">
 <span class="inline-flex items-center justify-center bg-black/80 text-white rounded-full p-1.5 border border-white/40 shadow">
 <span class="text-[9px] font-black uppercase tracking-tight text-center leading-tight px-1">
-                    ONLY AT<br/>SEPHORA
+                    {{ __('content.t_1eff8e171f5a') }}<br/>SEPHORA
                   </span>
 </span>
 </div>
-<img alt="Sephora Cheek Brush applying powder" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ asset('images/content/img_991d73ffa07c4484.jpg') }}"/>
+<img alt="{{ __('content.t_eaf4cc0416d8') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="{{ asset('images/content/img_991d73ffa07c4484.jpg') }}"/>
 </div>
 <div class="p-4 sm:p-5 flex flex-col flex-1 justify-between bg-[#232323]">
 <div>
-<h3 class="font-bold text-sm sm:text-base uppercase tracking-wide mb-1 text-white">The Cheek Brush</h3>
+<h3 class="font-bold text-sm sm:text-base uppercase tracking-wide mb-1 text-white">{{ __('content.t_3e62beb7aeb0') }}</h3>
 <p class="text-xs text-neutral-300 font-light leading-relaxed mb-4">
-                  Sculpt, contour and add warmth with ultra-soft vegan bristles.
+                  {{ __('content.t_47aeb07fd3a4') }}
                 </p>
 </div>
 <a class="inline-block text-center w-full py-2.5 bg-white text-black text-xs font-bold tracking-wider uppercase hover:bg-neutral-200 transition-colors" href="{{ route('shop.category', ['slug' => 'bestsellers']) }}">
-                DISCOVER NOW
+                {{ __('content.t_137db5768297') }}
               </a>
 </div>
 </article>

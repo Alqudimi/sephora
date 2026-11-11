@@ -303,7 +303,7 @@
         </div>
 
         {{-- Order summary --}}
-        <aside class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28 space-y-space-md" aria-label="Order summary">
+        <aside class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28 space-y-space-md" aria-label="{{ __('content.t_db14f4987e96') }}">
             <div class="border-2 border-primary bg-surface-container-lowest">
                 <div class="p-space-md border-b border-primary flex items-center justify-between bg-surface-container-lowest">
                     <h2 class="font-headline-sm text-headline-sm uppercase tracking-wide text-primary">{{ __('messages.checkout.order_summary') }}</h2>

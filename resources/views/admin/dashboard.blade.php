@@ -1,14 +1,14 @@
 @extends('admin.layout')
-@section('title', 'Dashboard')
+@section('title', __('meta.dashboard'))
 @section('content')
 <div class="flex flex-wrap items-end justify-between gap-3 mb-6">
     <div>
-        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">Dashboard</h1>
-        <p class="font-body-sm text-body-sm text-outline mt-1">Store health at a glance.</p>
+        <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('ui.dashboard') }}</h1>
+        <p class="font-body-sm text-body-sm text-outline mt-1">{{ __('content.t_dfaddff9bf1e') }}</p>
     </div>
     <div class="flex flex-wrap gap-2">
         <a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-4 h-10 inline-flex items-center border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" href="{{ route('admin.products.create') }}">+ Product</a>
-        <a class="border border-primary text-primary font-label-caps text-label-caps uppercase tracking-widest px-4 h-10 inline-flex items-center hover:bg-primary hover:text-on-primary transition-all" href="{{ route('admin.orders') }}">View orders</a>
+        <a class="border border-primary text-primary font-label-caps text-label-caps uppercase tracking-widest px-4 h-10 inline-flex items-center hover:bg-primary hover:text-on-primary transition-all" href="{{ route('admin.orders') }}">{{ __('content.t_9682d749b140') }}</a>
     </div>
 </div>
 
@@ -23,16 +23,16 @@
 </div>
 
 <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-    <h2 class="font-headline-sm text-headline-sm text-primary uppercase">Recent orders</h2>
-    <a class="font-body-sm text-body-sm underline text-primary hover:text-secondary" href="{{ route('admin.orders') }}">View all orders</a>
+    <h2 class="font-headline-sm text-headline-sm text-primary uppercase">{{ __('content.t_cfc7dec215d0') }}</h2>
+    <a class="font-body-sm text-body-sm underline text-primary hover:text-secondary" href="{{ route('admin.orders') }}">{{ __('content.t_b652ae434a11') }}</a>
 </div>
 
 <div class="bg-surface-container-lowest border border-outline-variant overflow-x-auto">
     <table class="w-full text-left font-body-sm text-body-sm min-w-[720px]">
         <thead class="bg-surface-container text-on-surface-variant font-label-caps text-label-caps uppercase">
             <tr>
-                <th class="px-4 py-3">Order</th>
-                <th class="px-4 py-3">Customer</th>
+                <th class="px-4 py-3">{{ __('ui.order') }}</th>
+                <th class="px-4 py-3">{{ __('ui.customer') }}</th>
                 <th class="px-4 py-3">{{ __('ui.status') }}</th>
                 <th class="px-4 py-3">{{ __('ui.payment') }}</th>
                 <th class="px-4 py-3">{{ __('ui.total') }}</th>
@@ -64,7 +64,7 @@
                     <td colspan="6" class="px-4 py-16 text-center">
                         <span class="material-symbols-outlined text-[40px] text-outline-variant">receipt_long</span>
                         <p class="font-body-md text-body-md text-primary mt-2">{{ __('ui.no_orders') }}</p>
-                        <p class="font-body-sm text-body-sm text-outline">New orders will appear here as soon as they are placed.</p>
+                        <p class="font-body-sm text-body-sm text-outline">{{ __('content.t_eb7a0c8bec5c') }}</p>
                     </td>
                 </tr>
             @endforelse

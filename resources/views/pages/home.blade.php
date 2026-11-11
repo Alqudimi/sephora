@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Beauty Products, Makeup, Perfume & Skincare ≡ Sephora UAE')
+@section('title', __('meta.home'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('content')
@@ -11,20 +11,20 @@
         <div class="flex items-center gap-4 text-center md:text-left">
             <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 flex items-center justify-center">
                 <img
-                    alt="Illustration for Non-Loyalty User"
+                    alt="{{ __('content.t_ee937b20ec23') }}"
                     class="w-full h-full object-contain"
                     src="https://img-content.sephora.me/m3aon8mn8vtz/3lfhaQmTln7O5XJQkOr3W5/8424af08532713db0712a304cae44fec/Illustration_for_Non-Loyalty_User.png?fm=webp&q=85"
                     onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';"
                 />
             </div>
             <div>
-                <h2 class="text-base sm:text-lg md:text-xl font-bold text-black tracking-tight">Sign in for exclusive perks!</h2>
-                <p class="text-xs sm:text-sm text-neutral-600 mt-0.5">Personalize your experience, track your orders, unlock gifts &amp; more.</p>
+                <h2 class="text-base sm:text-lg md:text-xl font-bold text-black tracking-tight">{{ __('content.t_b4735dba91aa') }}</h2>
+                <p class="text-xs sm:text-sm text-neutral-600 mt-0.5">{{ __('content.t_d64582c1ec86') }}</p>
             </div>
         </div>
         <div class="shrink-0 w-full md:w-auto flex items-center justify-center">
             <a class="block w-full sm:w-auto text-center bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-bold tracking-wider px-7 py-3 rounded-sm transition-colors uppercase whitespace-nowrap shadow-sm" href="/sign-in">
-                SIGN IN / CREATE ACCOUNT
+                {{ __('content.t_09944537bf11') }}
             </a>
         </div>
     </section>
@@ -83,7 +83,7 @@
             ];
         }
     @endphp
-    <section aria-label="Featured campaigns" aria-roledescription="carousel" class="relative rounded-sm overflow-hidden shadow-sm bg-neutral-900" data-autoplay="5000" data-carousel data-purpose="hero-banner">
+    <section aria-label="{{ __('content.t_8da9466243e5') }}" aria-roledescription="carousel" class="relative rounded-sm overflow-hidden shadow-sm bg-neutral-900" data-autoplay="5000" data-carousel data-purpose="hero-banner">
         <div class="relative w-full min-h-[340px] sm:min-h-[420px] md:min-h-[500px]">
             @foreach ($heroSlides as $index => $slide)
                 <article
@@ -115,12 +115,12 @@
                 </article>
             @endforeach
 
-            <button aria-label="Previous slide" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-prev type="button">
+            <button aria-label="{{ __('content.t_8e53512a50fa') }}" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-prev type="button">
                 <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
-            <button aria-label="Next slide" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-next type="button">
+            <button aria-label="{{ __('content.t_a4cf971af7dc') }}" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-next type="button">
                 <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
@@ -133,9 +133,9 @@
     <section class="pt-2 sm:pt-4" data-purpose="holiday-collection">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">Limited-Edition Sets</span>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">{{ __('content.t_1a6045df8123') }}</span>
                 <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('ui.holiday_collection') }}</h3>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Iconic vaults, festive bundles, and exclusive beauty sets.</p>
+                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">{{ __('content.t_945823b0fd78') }}</p>
             </div>
             <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/gifts">{{ __('ui.shop_now') }}<span aria-hidden="true">&rarr;</span>
             </a>
@@ -214,7 +214,7 @@
                         </div>
                         <div class="pt-4">
                             <a class="text-xs font-bold text-black uppercase tracking-wider underline underline-offset-4 hover:text-neutral-600 transition-colors inline-flex items-center gap-1" href="{{ $card['cta'] }}">
-                                Shop Now &rarr;
+                                {{ __('content.t_c68cd9ee2124') }}
                             </a>
                         </div>
                     </div>
@@ -228,9 +228,9 @@
     <section class="pt-2 sm:pt-4" data-purpose="just-dropped">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Trending Now</span>
-                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Just Dropped.</h3>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">The newest arrivals and viral formulations just landed at Sephora UAE.</p>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">{{ __('content.t_1cfe4b0b313e') }}</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('content.t_5a6ae1102fc6') }}</h3>
+                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">{{ __('content.t_72e42ab9e21d') }}</p>
             </div>
             <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/shop/new">{{ __('ui.shop_now') }}<span aria-hidden="true">&rarr;</span>
             </a>
@@ -270,8 +270,8 @@
     <section class="pt-2 sm:pt-4" data-purpose="wishlist-spotlight">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">Curated Highlights</span>
-                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">The Gift On Every Wishlist</h3>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#1A3066]">{{ __('content.t_17f3cd8c2dd2') }}</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('content.t_32a7891bb1c4') }}</h3>
             </div>
         </div>
 
@@ -295,7 +295,7 @@
                         </p>
                         <div class="pt-2">
                             <a class="inline-block bg-white text-black text-xs font-bold uppercase tracking-wider px-5 py-2 rounded-sm hover:bg-neutral-200 transition-colors" href="{{ $spotlight['cta'] }}">
-                                Explore Now &rarr;
+                                {{ __('content.t_ce40ecbfa573') }}
                             </a>
                         </div>
                     </div>
@@ -310,9 +310,9 @@
         <section class="pt-2 sm:pt-4" data-purpose="beauty-offers">
             <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
                 <div>
-                    <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#BBA08B]">Gifts With Purchase</span>
+                    <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#BBA08B]">{{ __('content.t_76828a55be5e') }}</span>
                     <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('ui.beauty_offers') }}</h3>
-                    <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Exclusive complimentary deluxe miniatures with your favorite brand orders.</p>
+                    <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">{{ __('content.t_d38e2c3917b4') }}</p>
                 </div>
                 <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/beauty-offers">{{ __('ui.view_all') }}<span aria-hidden="true">&rarr;</span>
                 </a>
@@ -343,7 +343,7 @@
                         </div>
                         <div class="pt-3 border-t border-gray-100 mt-3">
                             <a class="text-[11px] font-bold text-black uppercase tracking-wider hover:underline flex items-center justify-between" href="/beauty-offers">
-                                <span>Get Offer</span>
+                                <span>{{ __('content.t_596bb99d7451') }}</span>
                                 <span>&rarr;</span>
                             </a>
                         </div>
@@ -358,12 +358,12 @@
     <section class="pt-2 sm:pt-4" data-purpose="discover-the-brands">
         <div class="flex items-end justify-between border-b-2 border-black pb-3 mb-6">
             <div>
-                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">Iconic Houses</span>
-                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Discover the Brands</h3>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Shop the world’s most coveted luxury cosmetics and fragrance houses.</p>
+                <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">{{ __('content.t_c6d51225fb1d') }}</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('content.t_cda0d2f07f71') }}</h3>
+                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">{{ __('content.t_deb07b3a0a2b') }}</p>
             </div>
             <a class="text-xs sm:text-sm font-bold text-black hover:underline underline-offset-4 flex items-center gap-1 shrink-0 uppercase tracking-wider" href="/brands">
-                View All Brands <span aria-hidden="true">&rarr;</span>
+                {{ __('content.t_7122cfdc0084') }} <span aria-hidden="true">&rarr;</span>
             </a>
         </div>
 
@@ -374,7 +374,7 @@
                         {{ $brand->name }}
                     </span>
                     <span class="text-[10px] text-neutral-400 group-hover:text-black uppercase tracking-widest mt-1.5 flex items-center gap-1">
-                        Shop Now &rsaquo;
+                        {{ __('content.t_553bb5f6ae3e') }}
                     </span>
                 </a>
             @endforeach
@@ -385,17 +385,17 @@
     <!-- BEGIN: SephoraServices -->
     <section class="pt-2 sm:pt-4" data-purpose="sephora-services">
         <div class="border-b-2 border-black pb-3 mb-6">
-            <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">At Your Service</span>
-            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">Sephora Services</h3>
+            <span class="text-[11px] sm:text-xs font-black uppercase tracking-widest text-neutral-600">{{ __('content.t_0c0b0d609667') }}</span>
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-black uppercase tracking-tight mt-0.5">{{ __('content.t_489ef0cbad81') }}</h3>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <!-- Gift Cards -->
             <div class="bg-neutral-900 text-white p-6 sm:p-8 rounded-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
                 <div class="relative z-10 max-w-md">
-                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-400">Perfect Gift</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-400">{{ __('content.t_cc485d17e2d4') }}</span>
                     <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">{{ __('ui.gift_cards') }}</h4>
-                    <p class="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">Beauty that Fits Every Wish. Deliver joy instantly via email or physical cards.</p>
+                    <p class="text-xs sm:text-sm text-neutral-300 mt-1 leading-relaxed">{{ __('content.t_507db2d449e0') }}</p>
                 </div>
                 <div class="relative z-10 pt-4">
                     <a href="/gift-cards" class="inline-block bg-white text-black font-bold uppercase text-xs px-6 py-2.5 rounded-sm hover:bg-neutral-200 transition-colors">
@@ -407,13 +407,13 @@
             <!-- Stores -->
             <div class="bg-neutral-100 text-black border border-neutral-300 p-6 sm:p-8 rounded-sm relative overflow-hidden flex flex-col justify-between min-h-[220px]">
                 <div class="relative z-10 max-w-md">
-                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-600">Store Locator</span>
-                    <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">Visit our Stores</h4>
-                    <p class="text-xs sm:text-sm text-neutral-600 mt-1 leading-relaxed">Find a boutique near you across Dubai, Abu Dhabi, Sharjah &amp; all Emirates.</p>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-neutral-600">{{ __('content.t_3ad3e0ce1342') }}</span>
+                    <h4 class="text-xl sm:text-2xl font-bold tracking-tight mt-1">{{ __('content.t_14f4495d7c67') }}</h4>
+                    <p class="text-xs sm:text-sm text-neutral-600 mt-1 leading-relaxed">{{ __('content.t_6fdd99c0a7ee') }}</p>
                 </div>
                 <div class="relative z-10 pt-4">
                     <a href="/stores" class="inline-block bg-black text-white font-bold uppercase text-xs px-6 py-2.5 rounded-sm hover:bg-neutral-800 transition-colors">
-                        OUR STORES
+                        {{ __('content.t_c6578176c5c2') }}
                     </a>
                 </div>
             </div>
@@ -431,7 +431,7 @@
                     </svg>
                 </div>
                 <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.free_delivery') }}</h4>
-                <p class="text-xs text-neutral-500 mt-1">Over 250 AED</p>
+                <p class="text-xs text-neutral-500 mt-1">{{ __('content.t_d76dbfd4ac0b') }}</p>
             </div>
 
             <div class="flex flex-col items-center">
@@ -441,7 +441,7 @@
                     </svg>
                 </div>
                 <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.secure_payment') }}</h4>
-                <p class="text-xs text-neutral-500 mt-1">100% Secure Checkout</p>
+                <p class="text-xs text-neutral-500 mt-1">{{ __('content.t_b8751bbcef7d') }}</p>
             </div>
 
             <div class="flex flex-col items-center">
@@ -451,7 +451,7 @@
                     </svg>
                 </div>
                 <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.easy_returns') }}</h4>
-                <p class="text-xs text-neutral-500 mt-1">In any UAE store</p>
+                <p class="text-xs text-neutral-500 mt-1">{{ __('content.t_de87fa640461') }}</p>
             </div>
 
             <div class="flex flex-col items-center">
@@ -461,7 +461,7 @@
                     </svg>
                 </div>
                 <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black">{{ __('ui.customer_service') }}</h4>
-                <p class="text-xs text-neutral-500 mt-1">Questions? Call 800-SEPHORA</p>
+                <p class="text-xs text-neutral-500 mt-1">{{ __('content.t_690bdf5d507c') }}</p>
             </div>
         </div>
     </section>

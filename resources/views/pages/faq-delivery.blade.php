@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Delivery FAQs | Sephora UAE Official')
+@section('title', __('meta.delivery_faqs'))
 @section('body_class', 'bg-white text-gray-900 font-sans antialiased selection:bg-black selection:text-white')
 
 @section('head')
@@ -22,13 +22,13 @@
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
 <div>
 <span class="inline-block bg-primary text-on-primary font-label-caps text-label-caps px-2.5 py-1 tracking-widest uppercase mb-3">
-            SEPHORA CLIENT CONCIERGE &amp; SUPPORT
+            {{ __('content.t_84d3e9880e34') }}
           </span>
 <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
-            Frequently Asked Questions — Delivery
+            {{ __('content.t_853287d7fd4a') }}
           </h1>
 <p class="text-on-surface-variant font-body-lg text-body-lg max-w-3xl mt-3 leading-relaxed">
-            Find comprehensive information about our delivery timelines, courier services, same-day options, Click &amp; Collect pickup, and tracking across the United Arab Emirates.
+            {{ __('content.t_1a6e9c7d6289') }}
           </p>
 </div>
 <div class="flex items-center gap-3">
@@ -36,7 +36,7 @@
             Region: UAE (7 Emirates)
           </span>
 <span class="border border-outline px-3 py-1.5 font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant bg-surface-container-lowest">
-            Currency: AED
+            {{ __('content.t_b28f47294be7') }}
           </span>
 </div>
 </div>
@@ -46,7 +46,7 @@
 <!-- LEFT SIDEBAR: TOPIC EXPLORER -->
 <aside class="lg:col-span-3 bg-surface-container-lowest border border-outline-variant p-6 sticky top-28">
 <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant border-b border-outline-variant pb-3 mb-4">
-          FAQ Categories
+          {{ __('content.t_4377957ea24e') }}
         </h2>
 <nav class="space-y-1">
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md bg-primary text-on-primary font-bold" href="/faq">
@@ -54,16 +54,16 @@
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>My Sephora</span>
+<span>{{ __('content.t_6e6fc2347007') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/stores">
 <span>{{ __('ui.stores_services') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Online Account</span>
+<span>{{ __('content.t_e94aa6260312') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Online Shopping</span>
+<span>{{ __('content.t_57cc0a7b1b8f') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
 <span>{{ __('ui.products') }}</span>
@@ -72,16 +72,16 @@
 <span>{{ __('ui.payment_methods') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Offers, Samples &amp; Gifts</span>
+<span>{{ __('content.t_672200de3a97') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq/cancellation-and-refund">
 <span>{{ __('ui.cancellation_refund') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Health &amp; Safety</span>
+<span>{{ __('content.t_fd9c888975e8') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/faq">
-<span>Corporate Information</span>
+<span>{{ __('content.t_dea335290fc6') }}</span>
 </a>
 <a class="flex items-center justify-between px-3 py-2.5 font-title-md text-title-md text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="/gift-card-info">
 <span>{{ __('ui.gift_cards') }}</span>
@@ -89,8 +89,8 @@
 </nav>
 <!-- Quick Help Card -->
 <div class="mt-8 pt-6 border-t border-outline-variant">
-<p class="font-label-caps text-label-caps uppercase tracking-wider text-outline mb-2">Need Immediate Guidance?</p>
-<p class="font-title-md text-title-md text-primary font-bold mb-3">Toll-Free UAE Concierge</p>
+<p class="font-label-caps text-label-caps uppercase tracking-wider text-outline mb-2">{{ __('content.t_f01566d16332') }}</p>
+<p class="font-title-md text-title-md text-primary font-bold mb-3">{{ __('content.t_d984e5464133') }}</p>
 <a class="block w-full py-2.5 text-center bg-surface text-primary border border-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors" href="tel:8007374672">
             800 7374672
           </a>
@@ -101,19 +101,19 @@
 <!-- FAST STATS BENTO ROW -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 <div class="bg-surface-container-lowest p-5 border border-outline-variant">
-<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">Standard Shipping</span>
-<p class="font-title-lg text-title-lg text-primary">Free on Orders &gt; 250 AED</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">1–2 business days across all 7 Emirates.</p>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">{{ __('content.t_e18284b0f29a') }}</span>
+<p class="font-title-lg text-title-lg text-primary">{{ __('content.t_4e6e4706c3da') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_9f7387abb13d') }}</p>
 </div>
 <div class="bg-surface-container-lowest p-5 border border-outline-variant">
-<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider block mb-1">Express &amp; Same-Day</span>
-<p class="font-title-lg text-title-lg text-primary">Order by 2:00 PM</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Delivered to your door in Dubai &amp; Abu Dhabi.</p>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider block mb-1">{{ __('content.t_6b7d99273a18') }}</span>
+<p class="font-title-lg text-title-lg text-primary">{{ __('content.t_f1ae94b2d38d') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_a21d48cdc7b0') }}</p>
 </div>
 <div class="bg-surface-container-lowest p-5 border border-outline-variant">
-<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">Click &amp; Collect</span>
-<p class="font-title-lg text-title-lg text-primary">Ready in 2 Hours</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Free collection at 32 flagship stores.</p>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider block mb-1">{{ __('content.t_fd3abddeac35') }}</span>
+<p class="font-title-lg text-title-lg text-primary">{{ __('content.t_c84ed8224c9d') }}</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_5fce42d16b3a') }}</p>
 </div>
 </div>
 <!-- 1. STANDARD DELIVERY -->
@@ -121,7 +121,7 @@
 <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-[24px]">local_shipping</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Standard Delivery</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_681ef021d630') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">8 Questions</span>
 </div>
@@ -129,48 +129,48 @@
 <!-- Q1 -->
 <details class="group p-6" open="">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Can I choose a delivery time slot?</span>
+<span>{{ __('content.t_f93c369d816e') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed space-y-2">
 <p>Our dedicated courier service will reach out to you via SMS and WhatsApp on the morning of delivery with a live tracking link. Through this notification, you can confirm your preferred delivery window (Morning: 9am–2pm or Evening: 2pm–8pm) or provide alternate gate security instructions.</p>
-<p class="text-outline text-body-sm font-body-sm">Note: Standard orders are scheduled Monday through Saturday across Dubai, Abu Dhabi, Sharjah, Ajman, Fujairah, Ras Al Khaimah, and Umm Al Quwain.</p>
+<p class="text-outline text-body-sm font-body-sm">{{ __('content.t_5e4c8aed925d') }}</p>
 </div>
 </details>
 <!-- Q2 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What do I do if I missed the delivery of my order?</span>
+<span>{{ __('content.t_d21e2f71bd7b') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>If you miss our courier dispatch, there is no need to worry. The driver will attempt a secondary delivery on the following business day at no additional charge. You will receive an SMS containing a direct dispatch link allowing you to reschedule the delivery date or update the drop-off address within the same Emirate.</p>
+<p>{{ __('content.t_64bb2e3dccb3') }}</p>
 </div>
 </details>
 <!-- Q3 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What should I do if my order has not arrived?</span>
+<span>{{ __('content.t_e67374d174d0') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>If your package has exceeded the stated 1–2 business day timeline, please verify the courier status link provided in your Sephora dispatch email. Alternatively, reach out directly to our Client Support Concierge at <strong class="text-primary font-bold">800 7374672</strong> or email <strong class="text-primary font-bold">customercare@sephora.ae</strong> with your order number. Our team resolves dispatch escalations within 1–2 business days.</p>
+<p>{{ __('content.t_de83f829c362') }} <strong class="text-primary font-bold">800 7374672</strong> {{ __('content.t_b000485a9f30') }} <strong class="text-primary font-bold">customercare@sephora.ae</strong> {{ __('content.t_2f11cd192697') }}</p>
 </div>
 </details>
 <!-- Q4 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>How can I track my order?</span>
+<span>{{ __('content.t_1e1277dbc8a5') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Once your order has been packed and handed over to our courier partners from our central UAE fulfillment hub, you will receive an automated dispatch notification containing your airway tracking reference number. You can also view live status updates anytime under <em>My Sephora → Order History</em>.</p>
+<p>{{ __('content.t_6e96cf631c49') }} <em>{{ __('content.t_1008ecfecefe') }}</em>.</p>
 </div>
 </details>
 <!-- Q5 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Can I pay with foreign currency for Cash on Delivery?</span>
+<span>{{ __('content.t_553e7f30a22d') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -180,33 +180,33 @@
 <!-- Q6 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What are the delivery costs and timelines?</span>
+<span>{{ __('content.t_07b1337170cd') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed space-y-2">
-<p><strong class="text-primary font-bold">Orders of 250 AED and above:</strong> Complimentary Standard Delivery across all seven Emirates (1–2 business days).</p>
-<p><strong class="text-primary font-bold">Orders below 250 AED:</strong> A standard delivery fee of 20 AED is applied at final checkout.</p>
-<p class="text-outline text-body-sm font-body-sm">Gold &amp; Black Beauty Pass members enjoy free delivery on all qualifying transactions.</p>
+<p><strong class="text-primary font-bold">{{ __('content.t_db1b91148c9e') }}</strong> Complimentary Standard Delivery across all seven Emirates (1–2 business days).</p>
+<p><strong class="text-primary font-bold">{{ __('content.t_97758a96c203') }}</strong> {{ __('content.t_9dcf53273b39') }}</p>
+<p class="text-outline text-body-sm font-body-sm">{{ __('content.t_fd0d589c2c64') }}</p>
 </div>
 </details>
 <!-- Q7 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>How are Cash on Delivery orders refunded?</span>
+<span>{{ __('content.t_d11b627a1b8c') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>For returned items paid via Cash on Delivery, your refund is instantly credited as a Sephora Online Store Credit Voucher valid for 12 months. If you return the item directly to any of our 32 Sephora UAE stores, you may also opt for an immediate in-store gift card or instant exchange upon presenting your valid order invoice.</p>
+<p>{{ __('content.t_e058d0684c05') }}</p>
 </div>
 </details>
 <!-- Q8 -->
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What happens if I am not home when my order is delivered?</span>
+<span>{{ __('content.t_65e46bf6431d') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Our courier representative will telephone or message your registered UAE mobile number. If unreachable, a doorstep card is logged and the courier will schedule a retry. After three consecutive unsuccessful attempts, the parcel is securely returned to our warehouse and a refund is processed to your original payment method.</p>
+<p>{{ __('content.t_4676b36a7622') }}</p>
 </div>
 </details>
 </div>
@@ -216,45 +216,45 @@
 <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-[24px]">electric_bolt</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Same-Day Delivery</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_d51dba2f69ba') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">4 Questions</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Can I choose a delivery time slot?</span>
+<span>{{ __('content.t_f93c369d816e') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Same-day orders placed prior to the daily 2:00 PM cutoff will be dispatched in the evening wave, delivered between 4:00 PM and 9:00 PM. You can choose from available evening intervals during checkout if you reside in central Dubai or Abu Dhabi metro zones.</p>
+<p>{{ __('content.t_fae8e9cb4784') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What should I do if my order has not arrived?</span>
+<span>{{ __('content.t_e67374d174d0') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>For urgent inquiries regarding same-day orders after 8:00 PM, please phone our VIP Concierge hotlines directly at <strong>800 7374672</strong>. Our evening logistics dispatch unit monitors same-day courier fleets in real time.</p>
+<p>{{ __('content.t_79cac92e58fe') }} <strong>800 7374672</strong>{{ __('content.t_41e13be826d9') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>How can I track my order?</span>
+<span>{{ __('content.t_1e1277dbc8a5') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Same-Day orders feature live GPS courier tracking once the driver departs the local boutique or central hub. An active live-map tracking SMS is generated the moment your parcel enters the transit vehicle.</p>
+<p>{{ __('content.t_ebe56c25a915') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What are the delivery costs and timelines?</span>
+<span>{{ __('content.t_07b1337170cd') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Same-day service carries a flat 25 AED priority dispatch fee. Orders placed after the 2:00 PM cutoff automatically rollover to priority delivery for the following morning.</p>
+<p>{{ __('content.t_44a4b22a14ae') }}</p>
 </div>
 </details>
 </div>
@@ -264,36 +264,36 @@
 <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-[24px]">store</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Pickup Point Delivery</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_68791cdc9e7e') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">3 Questions</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What should I do if my order has not arrived?</span>
+<span>{{ __('content.t_e67374d174d0') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>You will receive an SMS with a one-time collection PIN once your parcel is placed in the designated automated locker or collection point partner. If you haven't received your PIN within 48 hours of shipment notification, contact our support team immediately.</p>
+<p>{{ __('content.t_0033534fccc9') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>How can I track my order?</span>
+<span>{{ __('content.t_1e1277dbc8a5') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Tracking follows the standard procedure via the air-waybill link provided upon checkout completion, updating when the parcel arrives at your chosen collection kiosk.</p>
+<p>{{ __('content.t_2bd2da02c006') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What are the delivery costs and timelines?</span>
+<span>{{ __('content.t_07b1337170cd') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Pickup point delivery is complimentary for all orders above 200 AED, or 15 AED for lower-value baskets, delivering within 1–2 business days.</p>
+<p>{{ __('content.t_d0b8ed399e18') }}</p>
 </div>
 </details>
 </div>
@@ -310,34 +310,34 @@
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What is Click &amp; Collect?</span>
+<span>{{ __('content.t_db04447dfbff') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Click &amp; Collect is our complimentary omni-channel service that allows you to shop your favorite beauty selections online at sephora.me and collect your packaged order directly from your chosen Sephora store in as little as 2 hours.</p>
+<p>{{ __('content.t_04ac3877ed8f') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Where do I go in the store to collect my order?</span>
+<span>{{ __('content.t_a446e490f807') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Head directly to the dedicated <strong class="text-primary font-bold">Beauty Concierge Cash Desk</strong> or inform any Beauty Advisor upon arrival. Simply present your collection confirmation email or SMS containing your Order Ready code alongside a valid Emirates ID or Passport.</p>
+<p>{{ __('content.t_6279fe864c52') }} <strong class="text-primary font-bold">{{ __('content.t_337e058ee0cd') }}</strong> {{ __('content.t_cd6f20a1bf37') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Which stores offer Click &amp; Collect?</span>
+<span>{{ __('content.t_797e577cd3dd') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Click &amp; Collect is available across all 32 Sephora UAE retail boutiques, including The Dubai Mall Flagship, Mall of the Emirates, Dubai Hills Mall, Yas Mall Abu Dhabi, Galleria Al Maryah Island, City Centre Mirdif, and Al Zahia Sharjah.</p>
+<p>{{ __('content.t_e8d647fc6c09') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>When should I place my order so that I can collect it on the same day?</span>
+<span>{{ __('content.t_4fcb46adac5f') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -346,47 +346,47 @@
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>How long will the store hold my Click &amp; Collect order?</span>
+<span>{{ __('content.t_9cbda536eefc') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Stores will securely retain your order for <strong class="text-primary font-bold">7 consecutive days</strong> starting from the moment you receive your "Ready for Pickup" notification. If you do not collect your order within this period, the items will be returned to stock and a full refund will be automatically issued.</p>
+<p>{{ __('content.t_de33cb4c4e42') }} <strong class="text-primary font-bold">{{ __('content.t_5740f0a440b5') }}</strong> {{ __('content.t_96b50b33df3e') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Can I pay for my Click &amp; Collect order in cash at the store?</span>
+<span>{{ __('content.t_0c4800cdfa7b') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>No. Click &amp; Collect orders must be fully prepaid online during checkout via Credit/Debit card, Apple Pay, Tabby, Tamara, or Sephora Online Gift Cards. Cash payment at the store counter is not permitted for web-reserved packages.</p>
+<p>{{ __('content.t_ab638bfa16bb') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Can I use my promo code or gift card for Click &amp; Collect?</span>
+<span>{{ __('content.t_ccb4fc7ffcf3') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Yes. All valid Sephora UAE promotional vouchers, Beauty Pass coupon codes, and e-gift cards can be applied at digital checkout before selecting Click &amp; Collect pickup.</p>
+<p>{{ __('content.t_fc6fe74c205f') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Will I get free samples and gift with purchase with Click &amp; Collect?</span>
+<span>{{ __('content.t_95cbb3d3fd2f') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Yes! Every Click &amp; Collect order is carefully packed with complimentary prestige beauty samples matching your basket selection, including any eligible tier-based Deluxe Gifts with Purchase.</p>
+<p>{{ __('content.t_a8426cbab609') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>How do I return my Click &amp; Collect order?</span>
+<span>{{ __('content.t_6cd75ee07073') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Returns can be handled instantly in any Sephora store within 14 days of pickup. Simply bring the unused items in their original luxury packaging alongside your digital purchase invoice for an immediate exchange or refund.</p>
+<p>{{ __('content.t_86016845dcdc') }}</p>
 </div>
 </details>
 </div>
@@ -396,27 +396,27 @@
 <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-[24px]">priority_high</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Express &amp; Failed Deliveries</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_cc42d874c9a3') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">2 Questions</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>Express delivery options and immediate dispatch policies</span>
+<span>{{ __('content.t_8245711d50d4') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Express dispatch guarantees priority warehouse picking and immediate fulfillment via dedicated private courier. Available on designated weekdays for orders within prime metropolitan zones of Dubai and Abu Dhabi.</p>
+<p>{{ __('content.t_098c4fdc447e') }}</p>
 </div>
 </details>
 <details class="group p-6">
 <summary class="flex items-center justify-between cursor-pointer list-none select-none font-title-lg text-title-lg text-primary">
-<span>What happens if I am not home when my order is delivered?</span>
+<span>{{ __('content.t_65e46bf6431d') }}</span>
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Courier personnel will telephone and leave a message. Rescheduling is available via link up to 3 times before the parcel returns to our distribution center.</p>
+<p>{{ __('content.t_206e0122fc7a') }}</p>
 </div>
 </details>
 </div>
@@ -429,11 +429,11 @@
 <!-- Left: Email Support -->
 <div class="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-outline-variant pb-8 lg:pb-0 lg:pr-8">
 <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold block mb-2">
-            SEPHORA CLIENT CONCIERGE
+            {{ __('content.t_9e526c6056a9') }}
           </span>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Email Us Directly</h3>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">{{ __('content.t_7bce4491e911') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
-            Have a question about an ongoing dispatch, customs clearance, or address change? Our dedicated team replies within 12 hours.
+            {{ __('content.t_a53220385712') }}
           </p>
 <div class="bg-surface-container-low border border-outline-variant p-4 mb-4 flex items-center justify-between">
 <span class="font-title-md text-title-md text-primary select-all" id="emailAddress">customercare@sephora.ae</span>
@@ -442,13 +442,13 @@
             </button>
 </div>
 <a class="inline-block w-full text-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest py-3.5 hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all duration-150" href="mailto:customercare@sephora.ae">
-            WRITE TO US
+            {{ __('content.t_8c8146bc6b2d') }}
           </a>
 </div>
 <!-- Right: Regional Contact Phone Directory -->
 <div class="lg:col-span-7">
 <div class="flex items-center justify-between mb-4">
-<h3 class="font-headline-md text-headline-md text-primary">Dedicated Contact Numbers</h3>
+<h3 class="font-headline-md text-headline-md text-primary">{{ __('content.t_a74361b2c466') }}</h3>
 <span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">
               10:00 AM – 10:00 PM (GST) Daily
             </span>
@@ -461,7 +461,7 @@
 </div>
 <!-- KSA -->
 <div class="p-4 bg-surface-container-lowest border border-outline-variant">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">Kingdom of Saudi Arabia</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">{{ __('content.t_bf54cdcaf104') }}</span>
 <a class="font-title-md text-title-md text-primary hover:underline font-semibold block mt-1" href="tel:+966114797382">+966 11 479 7382</a>
 </div>
 <!-- Kuwait -->
@@ -494,22 +494,22 @@
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">local_shipping</span>
 <span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.free_delivery') }}</span>
-<span class="font-body-sm text-body-sm text-outline mt-0.5">Over 250 AED</span>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">{{ __('content.t_d76dbfd4ac0b') }}</span>
 </div>
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified</span>
 <span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.authentic') }}</span>
-<span class="font-body-sm text-body-sm text-outline mt-0.5">Direct luxury source</span>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">{{ __('content.t_9ae5bfb10a03') }}</span>
 </div>
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">replay</span>
 <span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('ui.easy_returns') }}</span>
-<span class="font-body-sm text-body-sm text-outline mt-0.5">In any UAE store</span>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">{{ __('content.t_de87fa640461') }}</span>
 </div>
 <div class="flex flex-col items-center">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">stars</span>
-<span class="font-title-md text-title-md text-primary uppercase tracking-wider">Beauty Pass</span>
-<span class="font-body-sm text-body-sm text-outline mt-0.5">Earn points on every AED</span>
+<span class="font-title-md text-title-md text-primary uppercase tracking-wider">{{ __('content.t_302ae874320b') }}</span>
+<span class="font-body-sm text-body-sm text-outline mt-0.5">{{ __('content.t_82fc6901998f') }}</span>
 </div>
 </div>
 </section>
@@ -518,11 +518,11 @@
 <section class="bg-surface-container border-t border-outline-variant py-10">
 <div class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin flex flex-col md:flex-row items-center justify-between gap-6">
 <div>
-<h4 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider">Subscribe to the Sephora Newsletter</h4>
-<p class="font-body-md text-body-md text-on-surface-variant mt-1">Get exclusive beauty offers, VIP perks, and early access delivered to your inbox.</p>
+<h4 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider">{{ __('content.t_e01e16e1c2df') }}</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">{{ __('content.t_8682754f79a1') }}</p>
 </div>
 <form class="flex w-full md:w-auto max-w-md items-center" onsubmit="event.preventDefault(); alert('Subscribed to Sephora VIP newsletter!');" data-newsletter-form>
-<input class="w-full md:w-80 px-4 py-3 border border-outline bg-surface-container-lowest text-primary font-body-sm text-body-sm placeholder:text-outline focus:border-primary focus:ring-0 outline-none" placeholder="Enter your email address" required="" type="email"/>
+<input class="w-full md:w-80 px-4 py-3 border border-outline bg-surface-container-lowest text-primary font-body-sm text-body-sm placeholder:text-outline focus:border-primary focus:ring-0 outline-none" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-3.5 hover:bg-surface-container-lowest hover:text-primary border border-primary transition-colors whitespace-nowrap" type="submit">
           Subscribe
         </button>

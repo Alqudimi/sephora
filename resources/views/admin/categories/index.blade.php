@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('title', 'Categories')
+@section('title', __('meta.categories'))
 
 @section('content')
 <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
@@ -9,7 +9,7 @@
         <p class="font-body-sm text-body-sm text-outline mt-1">{{ number_format($categories->total()) }} categories</p>
     </div>
     <a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-5 h-11 inline-flex items-center hover:bg-surface-container-lowest hover:text-primary border border-primary transition-all" href="{{ route('admin.categories.create') }}">
-        + Add Category
+        {{ __('content.t_6046a8400134') }}
     </a>
 </div>
 
@@ -17,11 +17,11 @@
     <table class="w-full text-left font-body-sm text-body-sm">
         <thead class="bg-surface-container-high text-primary font-label-caps text-label-caps uppercase tracking-wider">
             <tr>
-                <th class="px-4 py-3">Name</th>
-                <th class="px-4 py-3">Slug</th>
-                <th class="px-4 py-3">Parent</th>
+                <th class="px-4 py-3">{{ __('ui.name') }}</th>
+                <th class="px-4 py-3">{{ __('ui.slug') }}</th>
+                <th class="px-4 py-3">{{ __('ui.parent') }}</th>
                 <th class="px-4 py-3">{{ __('ui.products') }}</th>
-                <th class="px-4 py-3">Nav</th>
+                <th class="px-4 py-3">{{ __('ui.nav') }}</th>
                 <th class="px-4 py-3">{{ __('ui.status') }}</th>
                 <th class="px-4 py-3 text-right">{{ __('ui.actions') }}</th>
             </tr>
@@ -54,8 +54,8 @@
                 <tr>
                     <td colspan="7" class="px-4 py-16 text-center">
                         <span class="material-symbols-outlined text-[40px] text-outline-variant">category</span>
-                        <p class="font-body-md text-body-md text-primary mt-2">No categories yet.</p>
-                        <a class="inline-block mt-3 underline text-primary hover:text-secondary" href="{{ route('admin.categories.create') }}">Create the first category</a>
+                        <p class="font-body-md text-body-md text-primary mt-2">{{ __('content.t_c2a70544be54') }}</p>
+                        <a class="inline-block mt-3 underline text-primary hover:text-secondary" href="{{ route('admin.categories.create') }}">{{ __('content.t_3bc4d8b525f2') }}</a>
                     </td>
                 </tr>
             @endforelse
