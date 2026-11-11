@@ -6,4 +6,4 @@
 - [x] Add regression tests for Arabic rendering and locale key parity.
 - [ ] Run Laravel/PHP tests when PHP and Composer dependencies are available.
 - [ ] Run the frontend build after the repository's missing Tailwind plugin dependencies are restored.
-- [ ] Commit and push the completed localization work to `sephora-admin`.
+- [x] Commit and push the completed localization work to `sephora-admin`.
