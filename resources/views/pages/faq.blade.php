@@ -34,7 +34,7 @@
 <input class="w-full bg-transparent border-0 px-4 py-4 text-on-surface font-body-md text-body-md focus:ring-0 placeholder:text-outline" id="faqSearchInput" placeholder="{{ __('content.t_131f9e0a2537') }}" type="text"/>
 <button class="bg-primary hover:bg-neutral-800 text-on-primary px-8 font-label-caps text-label-caps tracking-widest uppercase transition-colors flex items-center justify-center">{{ __('ui.search') }}</button>
 </div>
-<div class="flex flex-wrap gap-2 mt-3 items-center">
+<div class="flex flex-wrap gap-2 mt-{{ __('ui.items_count_label', ['count' => '3']) }}-center">
 <span class="font-label-caps text-label-caps text-outline uppercase">{{ __('content.t_8e0fe5a1ac63') }}</span>
 <button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('content.t_feed8ebda059') }}</button>
 <button class="text-on-surface hover:text-primary border border-outline-variant px-2.5 py-0.5 font-label-tag text-label-tag bg-surface-container-low transition-colors">{{ __('ui.beauty_pass_points') }}</button>
@@ -256,7 +256,7 @@
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                Once your order departs our Dubai fulfillment hub, you will receive an automated SMS and email containing your carrier tracking code (via Aramex or Fetchr). Deliveries within Dubai and Abu Dhabi arrive within 1-2 business days. You can also monitor real-time tracking by visiting your <strong>{{ __('content.t_b32a5969f15d') }}</strong>.
+                {{ __('content.long_bd7abbe37a93) }} <strong>{{ __('content.t_b32a5969f15d') }}</strong>.
               </p>
 </div>
 </div>
@@ -268,7 +268,7 @@
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                {{ __('content.t_0ab02c418173') }} <strong>{{ __('content.t_1d01c362549f') }}</strong> of receipt at any official Sephora boutique in the United Arab Emirates (including The Dubai Mall, Mall of the Emirates, Yas Mall, and Galleria Al Maryah). Items must be in their original packaging, unopened, unused, and accompanied by the digital e-invoice or printed delivery note.
+                {{ __('content.t_0ab02c418173') }} <strong>{{ __('content.t_1d01c362549f') }}</strong> {{ __('content.long_1b2f2fb56274) }}
               </p>
 </div>
 </div>
@@ -304,7 +304,7 @@
 </button>
 <div class="hidden px-6 pb-6 pt-0 border-t border-surface-container text-on-surface-variant font-body-md text-body-md leading-relaxed">
 <p>
-                Ensure that your basket meets the qualifying spend threshold (typically minimum 250 AED or higher for deluxe gifts with purchase). Check for brand exclusions: some prestige houses and already discounted holiday sets are exempt from sitewide percentage promo codes. Remember that promotional codes are case-sensitive and only one code may be applied per transaction.
+                {{ __('content.long_604db2ddb43f) }}
               </p>
 </div>
 </div>
@@ -344,7 +344,7 @@
 <div class="flex items-center gap-2 mt-4 text-primary">
 <span class="material-symbols-outlined text-[20px] text-secondary">schedule</span>
 <span class="font-label-caps text-label-caps tracking-wider uppercase font-bold">
-                  Call us between 10:00 am - 10:00 pm (GST) Daily
+                  {{ __('content.long_725823585035) }}
                 </span>
 </div>
 </div>

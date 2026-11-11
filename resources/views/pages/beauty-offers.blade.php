@@ -66,7 +66,7 @@
 <option>{{ __('content.t_6b8ba94e683d') }}</option>
 <option>{{ __('content.t_a025e1593549') }}</option>
 <option>{{ __('content.t_50b61e0c8341') }}</option>
-<option>Brand A-Z</option>
+<option>{{ __('ui.brand_az') }}</option>
 </select>
 </div>
 </section>
@@ -560,7 +560,7 @@
 <div>
 <div class="relative w-full aspect-square overflow-hidden bg-surface-container-low border-b border-outline-variant flex items-center justify-center p-6">
 <span class="absolute top-0 left-0 bg-secondary text-on-secondary font-label-tag text-label-tag px-2.5 py-1 z-10 uppercase">
-              TRENDING
+              {{ __('ui.trending_caps') }}
             </span>
 <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" data-alt="{{ __('content.t_18e279b736aa') }}" src="{{ asset('images/content/img_5906b63ae9b02a83.jpg') }}"/>
 </div>
@@ -763,7 +763,7 @@
 <div class="p-4">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">support_agent</span>
 <h4 class="font-title-md text-title-md uppercase font-bold text-primary">{{ __('ui.customer_service') }}</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Dedicated support (800 7374672)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('ui.dedicated_support') }}</p>
 </div>
 </div>
 </section>
@@ -777,7 +777,7 @@
 <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto" onsubmit="event.preventDefault();" data-newsletter-form>
 <input class="bg-surface-container-lowest border border-outline text-primary font-body-sm text-body-sm px-4 py-3 rounded-none focus:outline-none focus:ring-0 flex-1 placeholder:text-outline" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-surface-container-lowest text-primary hover:bg-secondary hover:text-on-secondary font-label-caps text-label-caps uppercase px-6 py-3 transition-colors" type="submit">
-          Subscribe
+          {{ __('ui.subscribe') }}
         </button>
 </form>
 </section>

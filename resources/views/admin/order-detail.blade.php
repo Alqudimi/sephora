@@ -43,7 +43,7 @@
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.fulfilment') }}</span>
                     <select class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="status">
                         @foreach (['pending', 'processing', 'shipped', 'out_for_delivery', 'delivered', 'cancelled', 'refunded'] as $status)
-                            <option value="{{ $status }}" @selected(old('status', $order->status) === $status)>{{ ucfirst(str_replace('_', ' ', $status)) }}</option>
+                            <option value="{{ $status }}" @selected(old('status', $order->status) === $status)>{{ __('shop.order_statuses.' . $status) }}</option>
                         @endforeach
                     </select>
                 </label>
@@ -52,7 +52,7 @@
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.payment') }}</span>
                     <select class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="payment_status">
                         @foreach (['pending', 'paid', 'failed', 'refunded'] as $status)
-                            <option value="{{ $status }}" @selected(old('payment_status', $order->payment_status) === $status)>{{ ucfirst($status) }}</option>
+                            <option value="{{ $status }}" @selected(old('payment_status', $order->payment_status) === $status)>{{ __('shop.payment_statuses.' . $status) }}</option>
                         @endforeach
                     </select>
                 </label>
@@ -69,7 +69,7 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Refund amount (AED)</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.refund_amount') }}</span>
                     <input class="w-full h-11 px-3 bg-surface-container-low border border-outline font-body-sm text-body-sm focus:border-primary focus:outline-none" name="refund_amount" type="number" min="0" max="{{ $order->total }}" step="0.01" value="{{ old('refund_amount') }}" placeholder="{{ __('content.t_8440da3f4e97') }}">
                 </label>
 
@@ -89,7 +89,7 @@
         </p>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
 
         {{-- Items + delivery --}}
         <div class="lg:col-span-2 space-y-6">

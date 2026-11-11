@@ -5,7 +5,7 @@
 
 @section('content')
 <main class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- BEGIN: LeftSidebarFilters -->
 <aside class="lg:col-span-3 space-y-6" data-purpose="filters-sidebar">
 <!-- Category Tree Box -->
@@ -28,7 +28,7 @@
 <div class="border-t border-neutral-200">
 <!-- Exclusivity Toggle Item -->
 <div class="py-4 border-b border-neutral-200 flex items-center justify-between">
-<span class="text-sm font-medium text-black">Exclusivity</span>
+<span class="text-sm font-medium text-black">{{ __('ui.exclusivity') }}</span>
 <label aria-label="{{ __('content.t_e9f530a7305c') }}" class="switch">
 <input checked="" type="checkbox"/>
 <span class="slider"></span>
@@ -86,7 +86,7 @@
 <div class="mb-6">
 <h1 class="text-3xl lg:text-4xl font-black text-black tracking-tight mb-4">{{ __('content.t_3824cba44244') }}</h1>
 <div class="flex items-center justify-between border-b border-neutral-200 pb-3 text-xs md:text-sm">
-<span class="text-neutral-600 font-medium">362 items</span>
+<span class="text-neutral-600 font-medium">{{ __('ui.items_count_label', ['count' => 362]) }}</span>
 <!-- Sort dropdown -->
 <div class="relative inline-flex items-center cursor-pointer group">
 <span class="font-normal text-neutral-800">{{ __('content.t_9bb640e5a014') }} <strong class="font-bold underline text-black">{{ __('ui.recommended') }}</strong></span>
@@ -111,7 +111,7 @@
 <span class="font-black text-black text-xs tracking-tighter mt-1">STARFACE</span>
 <span class="text-[8px] text-neutral-700 leading-none mt-1">{{ __('content.t_c5617bccd78b') }}</span>
 </div>
-<div class="w-1/2 h-full flex flex-col justify-around pl-2 items-center">
+<div class="w-1/2 h-full flex flex-col justify-around pl-{{ __('ui.items_count_label', ['count' => '2']) }}-center">
 <span class="text-yellow-500 font-black text-xl">@include('components.stars', ['rating' => $products->rating]) ★ ★</span>
 <span class="text-green-500 font-black text-xl">★ ★ ★</span>
 <span class="text-purple-600 font-black text-xl">★ ★ ★</span>

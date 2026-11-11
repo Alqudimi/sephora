@@ -11,7 +11,7 @@
 <main class="w-full">
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-5">
 <!-- Breadcrumb -->
-<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase text-[10px] tracking-wider mb-6">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase text-[10px] tracking-wider mb-6">
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
 <span class="text-primary font-bold">{{ __('content.t_87e7a5115e2e') }}</span>
@@ -68,7 +68,7 @@
 <div class="flex items-baseline justify-between border-b border-primary pb-3 mb-6">
 <div class="flex items-center gap-3">
 <h2 class="font-headline-md text-headline-md text-primary">{{ __('content.t_746756e7ba51') }}</h2>
-<span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag text-on-surface-variant uppercase">8 Products</span>
+<span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag text-on-surface-variant uppercase">{{ __('ui.products_count', ['count' => 8]) }}</span>
 </div>
 <a class="font-label-caps text-label-caps uppercase underline underline-offset-4 hover:text-secondary transition-colors" href="/shop/skincare">
             {{ __('content.t_140c43afa05e') }}
@@ -78,7 +78,7 @@
 <!-- Item 1 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-[#008751] text-white font-label-tag text-label-tag px-2 py-0.5 uppercase">Clean</span>
+<span class="absolute top-3 left-3 bg-[#008751] text-white font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.clean_badge') }}</span>
 <img alt="{{ __('content.t_144fabcd9a80') }}" class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" src="{{ asset('images/content/img_394b44c9b6270c9c.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -148,7 +148,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.6</span>
 <span class="font-body-sm text-body-sm text-outline">(2,261)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -162,13 +162,13 @@
 <!-- Item 4 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-[#008751] text-white font-label-tag text-label-tag px-2 py-0.5 uppercase">Clean</span>
+<span class="absolute top-3 left-3 bg-[#008751] text-white font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.clean_badge') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="{{ __('content.t_c261fce252e5') }}" src="{{ asset('images/content/img_075de8d9d539e71e.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
 <div>
 <span class="font-label-caps text-label-caps text-outline block uppercase mb-1">{{ __('content.t_289b65242e3b') }}</span>
-<h3 class="font-title-md text-title-md text-primary font-bold line-clamp-2">Night Dose Mask (Plump)</h3>
+<h3 class="font-title-md text-title-md text-primary font-bold line-clamp-2">{{ __('content.long_070146db67d8) }}</h3>
 <div class="flex items-center gap-1.5 mt-2">
 <div class="flex text-primary text-xs">
 <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -176,7 +176,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.5</span>
 <span class="font-body-sm text-body-sm text-outline">(100)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -218,7 +218,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.2</span>
 <span class="font-body-sm text-body-sm text-outline">(423)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Shades</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.shades_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -246,7 +246,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.5</span>
 <span class="font-body-sm text-body-sm text-outline">(456)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">7 Shades</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.shades_count', ['count' => 7]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -274,7 +274,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.2</span>
 <span class="font-body-sm text-body-sm text-outline">(874)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">5 Shades</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.shades_count', ['count' => 5]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -302,7 +302,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.3</span>
 <span class="font-body-sm text-body-sm text-outline">(13,673)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Shades</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.shades_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -344,7 +344,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.2</span>
 <span class="font-body-sm text-body-sm text-outline">(410)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -372,7 +372,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.5</span>
 <span class="font-body-sm text-body-sm text-outline">(1,306)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -386,7 +386,7 @@
 <!-- Hair 3 -->
 <article class="group border border-outline-variant hover:border-primary transition-colors flex flex-col justify-between bg-surface-container-lowest">
 <div class="relative p-4 flex flex-col items-center">
-<span class="absolute top-3 left-3 bg-[#008751] text-white font-label-tag text-label-tag px-2 py-0.5 uppercase">Clean</span>
+<span class="absolute top-3 left-3 bg-[#008751] text-white font-label-tag text-label-tag px-2 py-0.5 uppercase">{{ __('ui.clean_badge') }}</span>
 <img class="w-full aspect-square object-contain transition-transform duration-300 group-hover:scale-105" data-alt="{{ __('content.t_bbd9d4e72a51') }}" src="{{ asset('images/content/img_5877c69670320399.jpg') }}"/>
 </div>
 <div class="p-4 border-t border-outline-variant flex flex-col flex-1 justify-between">
@@ -428,7 +428,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.3</span>
 <span class="font-body-sm text-body-sm text-outline">(420)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -473,7 +473,7 @@
 <span class="font-body-sm text-body-sm font-bold">3.9</span>
 <span class="font-body-sm text-body-sm text-outline">(413)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -529,7 +529,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.4</span>
 <span class="font-body-sm text-body-sm text-outline">(1,932)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -557,7 +557,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.1</span>
 <span class="font-body-sm text-body-sm text-outline">(1,433)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">2 Sizes</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.sizes_count', ['count' => 2]) }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -684,7 +684,7 @@
 <span class="material-symbols-outlined text-[20px] transition-transform group-open:rotate-180">expand_more</span>
 </summary>
 <div class="mt-4 text-on-surface-variant font-body-md text-body-md leading-relaxed pr-6">
-              Planet Aware represents brands that satisfy rigorous global criteria around eco-conscious packaging (recycled, refillable, or recyclable materials), responsible ingredient harvesting, certified corporate commitments, and measurable greenhouse gas reduction plans.
+              {{ __('content.long_3b798058b7a1) }}
             </div>
 </details>
 <!-- FAQ 3 -->
@@ -694,7 +694,7 @@
 <span class="material-symbols-outlined text-[20px] transition-transform group-open:rotate-180">expand_more</span>
 </summary>
 <div class="mt-4 text-on-surface-variant font-body-md text-body-md leading-relaxed pr-6">
-              This elite designation is awarded solely to prestige brands that satisfy both qualifying benchmarks: pure, carefully vetted formulas (Clean) partnered with verifiable commitments to planet-friendly practices and climate responsibility (Planet Aware).
+              {{ __('content.long_c5af69c95921) }}
             </div>
 </details>
 </div>
@@ -732,7 +732,7 @@
 <form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault()" data-newsletter-form>
 <input class="w-full px-4 py-3 bg-surface-container-lowest text-primary text-body-sm font-body-sm rounded-none border border-outline-variant focus:outline-none focus:border-white" placeholder="{{ __('content.t_c09924a9f455') }}" type="email"/>
 <button class="bg-surface-container-lowest text-primary font-label-caps text-label-caps uppercase px-8 py-3 whitespace-nowrap border border-white hover:bg-primary hover:text-white transition-colors duration-200" type="submit">
-              Subscribe
+              {{ __('ui.subscribe') }}
             </button>
 </form>
 </div>

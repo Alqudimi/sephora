@@ -7,7 +7,7 @@
         <p class="font-body-sm text-body-sm text-outline mt-1">{{ __('content.t_dfaddff9bf1e') }}</p>
     </div>
     <div class="flex flex-wrap gap-2">
-        <a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-4 h-10 inline-flex items-center border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" href="{{ route('admin.products.create') }}">+ Product</a>
+        <a class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-4 h-10 inline-flex items-center border border-primary hover:bg-surface-container-lowest hover:text-primary transition-all" href="{{ route('admin.products.create') }}">{{ __('ui.add_product') }}</a>
         <a class="border border-primary text-primary font-label-caps text-label-caps uppercase tracking-widest px-4 h-10 inline-flex items-center hover:bg-primary hover:text-on-primary transition-all" href="{{ route('admin.orders') }}">{{ __('content.t_9682d749b140') }}</a>
     </div>
 </div>

@@ -6,7 +6,7 @@
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
+    <nav aria-label="{{ __('ui.breadcrumb') }}" class="text-body-sm font-body-sm text-outline mb-4">
         <a class="hover:text-secondary" href="/">{{ __('ui.home') }}</a> /
         <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('ui.my_account') }}</a> /
         <span class="text-on-surface font-semibold">{{ __('ui.privacy') }}</span>
@@ -17,9 +17,7 @@
     <div class="mb-8 max-w-3xl">
         <h1 class="font-headline-md text-headline-md font-bold text-primary uppercase">{{ __('content.t_fc6feac41dd0') }}</h1>
         <p class="font-body-md text-body-md text-on-surface-variant mt-2">
-            Under the UAE Personal Data Protection Law (Federal Decree-Law No. 45 of 2021) you can
-            request a copy of your data, review your consent history, and ask us to erase your
-            personal information.
+            {{ __('content.long_d17defd162ad) }}
         </p>
     </div>
 
@@ -34,18 +32,16 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
 
         <div class="lg:col-span-2 space-y-6">
             {{-- Data export --}}
             <section class="border border-outline-variant bg-surface-container-lowest p-5 md:p-6">
                 <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-2">{{ __('content.t_af53dade8377') }}</h2>
                 <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
-                    Receive a JSON file containing your profile, addresses, orders, wishlist,
-                    reviews and consent history. The file is generated on demand and is not
-                    stored on our servers.
+                    {{ __('content.long_f69972f3bd9e) }}
                 </p>
-                <a class="inline-flex h-11 px-5 items-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider border border-primary hover:bg-secondary hover:border-secondary transition-colors"
+                <a class="inline-flex h-11 px-{{ __('ui.items_count_label', ['count' => '5']) }}-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider border border-primary hover:bg-secondary hover:border-secondary transition-colors"
                    href="{{ route('account.privacy.export') }}">
                     {{ __('content.t_85176ce073aa') }}
                 </a>
@@ -62,8 +58,8 @@
                         <table class="w-full text-left font-body-sm text-body-sm">
                             <thead class="border-b border-outline-variant text-outline font-label-caps text-label-caps uppercase">
                                 <tr>
-                                    <th class="py-2 pr-3">Type</th>
-                                    <th class="py-2 pr-3">Version</th>
+                                    <th class="py-2 pr-3">{{ __('ui.type_label') }}</th>
+                                    <th class="py-2 pr-3">{{ __('ui.version_label') }}</th>
                                     <th class="py-2 pr-3">{{ __('ui.status') }}</th>
                                     <th class="py-2">{{ __('content.t_6fdd2d93260b') }}</th>
                                 </tr>
@@ -93,9 +89,7 @@
         <aside class="border border-secondary bg-surface-container-lowest p-5 md:p-6">
             <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-secondary font-bold mb-2">{{ __('content.t_2ae3a019040b') }}</h2>
             <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
-                We remove your profile, addresses, wishlist and reviews, and replace the personal
-                details on past orders with anonymised values. Order totals are kept for tax and
-                accounting obligations. This action cannot be undone.
+                {{ __('content.long_436d73d60383) }}
             </p>
 
             <form method="POST" action="{{ route('account.privacy.destroy') }}" class="space-y-4">

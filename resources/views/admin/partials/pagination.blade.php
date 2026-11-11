@@ -1,5 +1,5 @@
 @if (isset($paginator) && $paginator->hasPages())
-    <nav aria-label="Pagination" class="mt-6 flex flex-wrap items-center justify-center gap-1.5">
+    <nav aria-label="{{ __('ui.pagination') }}" class="mt-6 flex flex-wrap items-center justify-center gap-1.5">
         @if ($paginator->onFirstPage())
             <span class="h-10 px-3 flex items-center border border-outline-variant text-outline font-body-sm text-body-sm" aria-disabled="true">
                 <span class="material-symbols-outlined text-[18px] mr-1">chevron_left</span> {{ __('ui.previous') }}

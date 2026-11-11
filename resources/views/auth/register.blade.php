@@ -41,7 +41,7 @@
 
 <!-- MAIN CONTENT -->
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin mb-space-xl">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-{{ __('ui.items_count_label', ['count' => '12']) }}-start">
 
 <!-- LEFT COLUMN: Registration Form -->
 <section class="lg:col-span-6 bg-surface-container-lowest p-8 md:p-12 border border-primary relative">
@@ -76,7 +76,7 @@
 <label class="block font-label-caps text-label-caps uppercase text-on-surface tracking-wider mb-2" for="reg-email">
               {{ __('messages.email') }} <span class="text-secondary">*</span>
 </label>
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('email') border-secondary @enderror" id="reg-email" placeholder="name@domain.com" required="" type="email" name="email" value="{{ old('email') }}"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('email') border-secondary @enderror" id="reg-email" placeholder="{{ __('ui.email_placeholder') }}" required="" type="email" name="email" value="{{ old('email') }}"/>
 @error('email')
 <p class="text-secondary font-body-sm mt-1">{{ $message }}</p>
 @enderror

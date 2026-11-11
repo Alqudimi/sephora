@@ -71,7 +71,7 @@
 <main class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
 
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
+    <nav aria-label="{{ __('ui.breadcrumb') }}" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
         <a class="hover:text-black transition-colors" href="/">{{ __('ui.home') }}</a>
         <span>/</span>
         @if ($category->slug !== 'all')
@@ -98,14 +98,14 @@
         </div>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 
         <!-- Filters Sidebar -->
         <aside class="lg:col-span-3">
             <details open class="lg:block border border-gray-200 rounded-sm bg-white p-4">
                 <summary class="lg:hidden cursor-pointer list-none flex items-center justify-between font-bold text-xs uppercase tracking-wider text-black pb-2 border-b border-gray-200 mb-4">
-                    <span>Filters</span>
-                    <span class="text-xs underline">Toggle</span>
+                    <span>{{ __('ui.filters_label') }}</span>
+                    <span class="text-xs underline">{{ __('ui.toggle_label') }}</span>
                 </summary>
 
                 <form method="GET" action="{{ route('shop.category', ['slug' => $category->slug]) }}" class="space-y-6">
@@ -163,7 +163,7 @@
 
                     <!-- Search Filter -->
                     <div>
-                        <label for="filter-q" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">Keyword</label>
+                        <label for="filter-q" class="block text-xs font-bold uppercase tracking-wider text-black mb-2">{{ __('ui.keyword_label') }}</label>
                         <input id="filter-q" name="q" type="search" value="{{ $filters['q'] }}" placeholder="{{ __('content.t_b73f756bef16') }}"
                                class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs text-black focus:outline-none focus:border-black">
                     </div>

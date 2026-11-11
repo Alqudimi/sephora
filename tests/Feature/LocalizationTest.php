@@ -152,4 +152,22 @@ class LocalizationTest extends TestCase
         $this->assertSame(array_keys($english), array_keys($arabic));
     }
 
+    public function test_runtime_translation_keys_exist_in_both_locales(): void
+    {
+        $english = require resource_path('lang/en/runtime.php');
+        $arabic = require resource_path('lang/ar/runtime.php');
+
+        $this->assertSame(array_keys($english), array_keys($arabic));
+    }
+
+    public function test_shop_translation_keys_exist_in_both_locales(): void
+    {
+        $english = require resource_path('lang/en/shop.php');
+        $arabic = require resource_path('lang/ar/shop.php');
+
+        $this->assertSame(array_keys($english), array_keys($arabic));
+        $this->assertSame(array_keys($english['order_statuses']), array_keys($arabic['order_statuses']));
+        $this->assertSame(array_keys($english['payment_statuses']), array_keys($arabic['payment_statuses']));
+    }
+
 }

@@ -45,6 +45,14 @@ return [
         'delivered' => 'تم التوصيل',
         'cancelled' => 'ملغي',
         'refunded' => 'مسترد',
+        'failed' => 'فشل',
+    ],
+
+    'payment_statuses' => [
+        'pending' => 'قيد الانتظار',
+        'paid' => 'مدفوع',
+        'failed' => 'فشل',
+        'refunded' => 'مسترد',
     ],
 
     'payment_methods' => [

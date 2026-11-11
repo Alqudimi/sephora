@@ -6,7 +6,7 @@
 @section('content')
 <main class="flex-grow max-w-[1440px] mx-auto px-6 py-4 w-full">
 <!-- Breadcrumb Navigation -->
-<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-gray-600 mb-6">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center gap-2 text-xs text-gray-600 mb-6">
 <a class="hover:text-black" href="/">{{ __('ui.home') }}</a>
 <span class="text-gray-400">/</span>
 <a class="hover:text-black" href="/shop/gifts">{{ __('ui.gifts') }}</a>
@@ -17,7 +17,7 @@
 <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-3 border-b border-transparent">
 <div>
 <h1 class="text-3xl font-extrabold text-black tracking-tight mb-2">{{ __('content.t_7a7326e65ef8') }}</h1>
-<p class="text-xs text-gray-500 font-medium">415 items</p>
+<p class="text-xs text-gray-500 font-medium">{{ __('ui.items_count_label', ['count' => 415]) }}</p>
 </div>
 <!-- Sort Dropdown Trigger -->
 <div class="mt-4 md:mt-0 flex items-center justify-end">
@@ -32,7 +32,7 @@
 </div>
 </div>
 <!-- Main Grid Layout (Sidebar Filters + Products Grid) -->
-<div class="flex gap-8 items-start">
+<div class="flex gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- BEGIN: FilterSidebar -->
 <aside aria-label="{{ __('content.t_3cbb6df2d9b5') }}" class="w-64 shrink-0 hidden md:block">
 <!-- Category Nav Box (Selected Group) -->

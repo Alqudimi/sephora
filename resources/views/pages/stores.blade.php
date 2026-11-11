@@ -17,7 +17,7 @@
 </div>
 <!-- HERO SECTION -->
 <section class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pb-12">
-<div class="relative bg-surface-container-lowest border border-primary overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+<div class="relative bg-surface-container-lowest border border-primary overflow-hidden grid grid-cols-1 lg:grid-cols-{{ __('ui.items_count_label', ['count' => '12']) }}-stretch">
 <!-- Content Column -->
 <div class="lg:col-span-6 p-5 sm:p-8 md:p-14 lg:p-16 flex flex-col justify-center space-y-6 z-10 bg-surface-container-lowest">
 <div class="inline-flex items-center space-x-2">
@@ -93,7 +93,7 @@
 <div>
 <div class="flex items-center justify-between text-outline text-[12px] font-label-caps mb-1">
 <span>{{ __('content.t_00232ca2eb3a') }}</span>
-<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> 20 MINS</span>
+<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> {{ __('ui.minutes_count', ['count' => 20]) }}</span>
 </div>
 <h3 class="font-headline-sm text-[20px] font-bold text-primary mb-2">{{ __('content.t_8504346a9755') }}</h3>
 <p class="font-body-sm text-on-surface-variant text-[13px] leading-relaxed">
@@ -123,7 +123,7 @@
 <div>
 <div class="flex items-center justify-between text-outline text-[12px] font-label-caps mb-1">
 <span>{{ __('content.t_a327947d5468') }}</span>
-<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> 45 MINS</span>
+<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> {{ __('ui.minutes_count', ['count' => 45]) }}</span>
 </div>
 <h3 class="font-headline-sm text-[20px] font-bold text-primary mb-2">{{ __('content.t_f1e28d5b86e2') }}</h3>
 <p class="font-body-sm text-on-surface-variant text-[13px] leading-relaxed">
@@ -153,7 +153,7 @@
 <div>
 <div class="flex items-center justify-between text-outline text-[12px] font-label-caps mb-1">
 <span>{{ __('content.t_17d90fadc700') }}</span>
-<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> 15 MINS</span>
+<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> {{ __('ui.minutes_count', ['count' => 15]) }}</span>
 </div>
 <h3 class="font-headline-sm text-[20px] font-bold text-primary mb-2">{{ __('content.t_f05e0a7da6d7') }}</h3>
 <p class="font-body-sm text-on-surface-variant text-[13px] leading-relaxed">
@@ -188,7 +188,7 @@
 <div>
 <div class="flex items-center justify-between text-outline text-[12px] font-label-caps mb-1">
 <span>{{ __('content.t_2c0bf277dc4d') }}</span>
-<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> 15 MINS</span>
+<span class="flex items-center gap-1 font-bold text-primary"><span class="material-symbols-outlined text-[14px]">schedule</span> {{ __('ui.minutes_count', ['count' => 15]) }}</span>
 </div>
 <h3 class="font-headline-sm text-[20px] font-bold text-primary mb-2">{{ __('content.t_9dda60a48893') }}</h3>
 <p class="font-body-sm text-on-surface-variant text-[13px] leading-relaxed">
@@ -276,10 +276,10 @@
 <select class="w-full py-2 px-3 text-sm bg-surface-container-lowest border border-outline focus:border-primary focus:ring-0 rounded-none font-body-md">
 <option selected="">All Emirates (UAE)</option>
 <option>Dubai (16 Stores)</option>
-<option>Abu Dhabi (9 Stores)</option>
+<option>{{ __('content.long_612e0da98f7e) }}</option>
 <option>Sharjah (3 Stores)</option>
 <option>Al Ain (2 Stores)</option>
-<option>Ras Al Khaimah (1 Store)</option>
+<option>{{ __('content.long_c4839634defa) }}</option>
 <option>Ajman (1 Store)</option>
 </select>
 </div>
@@ -292,7 +292,7 @@
 <option>{{ __('content.t_78d387292f30') }}</option>
 <option>{{ __('content.t_7a057bd539c9') }}</option>
 <option>{{ __('content.t_05220ebab2da') }}</option>
-<option>Click &amp; Collect (2hr)</option>
+<option>{{ __('content.long_ba9c6bde80ae) }}</option>
 </select>
 </div>
 </div>
@@ -307,7 +307,7 @@
 </div>
 </div>
 <!-- 2 COLUMN DIRECTORY & MAP PREVIEW -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- LEFT COLUMN: Store Cards List (Scrollable Vitrine) -->
 <div class="lg:col-span-5 space-y-4 max-h-[740px] overflow-y-auto pr-2 custom-scrollbar">
 <!-- Store 1: The Dubai Mall (Active Highlight) -->
@@ -363,7 +363,7 @@
 </div>
 </div>
 <p class="font-body-sm text-on-surface-variant text-[13px] mb-3">
-            Level 1, Al Barsha, Dubai (Near Ski Dubai Entrance)
+            {{ __('content.long_312cc83d62cc) }}
           </p>
 <div class="space-y-1.5 text-xs text-outline mb-4">
 <div class="flex items-center space-x-2">
@@ -595,7 +595,7 @@
 </button>
 </div>
 <div class="absolute bottom-4 left-4 bg-surface-container-lowest/90 backdrop-blur-sm border border-primary px-3 py-1.5 text-[10px] font-label-caps text-primary tracking-widest">
-            MAP VIEW: UNITED ARAB EMIRATES (32 BOUTIQUES)
+            {{ __('content.long_e75d589b5d4a) }}
           </div>
 </div>
 <!-- Selected Location Summary Panel at base of Map -->
@@ -663,7 +663,7 @@
 <form class="flex flex-col sm:flex-row items-center justify-center gap-2 max-w-lg mx-auto pt-2" onsubmit="event.preventDefault();" data-newsletter-form>
 <input class="w-full sm:flex-1 py-3 px-4 text-xs font-body-md bg-surface-container-lowest border border-outline focus:border-primary focus:ring-0 rounded-none outline-none" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="w-full sm:w-auto bg-primary text-on-primary hover:bg-neutral-800 px-8 py-3 font-label-caps text-label-caps tracking-widest uppercase transition-colors whitespace-nowrap" type="submit">
-          SUBSCRIBE
+          {{ __('ui.subscribe_caps') }}
         </button>
 </form>
 <p class="font-body-sm text-[11px] text-outline">

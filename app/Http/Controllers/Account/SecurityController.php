@@ -44,7 +44,7 @@ class SecurityController extends Controller
 
         if (! $user->two_factor_secret || ! $authenticator->verify($user->two_factor_secret, $validated['code'])) {
             throw ValidationException::withMessages([
-                'code' => 'The authentication code is invalid. Check the time on your device and try again.',
+                'code' => __('runtime.auth_code_time_invalid'),
             ]);
         }
 
@@ -64,7 +64,7 @@ class SecurityController extends Controller
 
         if ($user->isStaff()) {
             throw ValidationException::withMessages([
-                'password' => 'Two-factor authentication is mandatory for staff accounts.',
+                'password' => __('runtime.staff_two_factor_required'),
             ]);
         }
 

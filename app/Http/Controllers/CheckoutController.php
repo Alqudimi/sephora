@@ -153,7 +153,7 @@ class CheckoutController extends Controller
             Log::error('Payment confirmation failed.', ['order' => $orderModel->order_number, 'error' => $e->getMessage()]);
 
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number])
-                ->with('payment_error', 'We could not confirm your payment yet. If you were charged, contact client concierge.');
+                ->with('payment_error', __('runtime.payment_confirmation_failed'));
         }
 
         if ($result->paid) {
@@ -164,7 +164,7 @@ class CheckoutController extends Controller
         }
 
         return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number])
-            ->with('payment_error', 'Your payment was not completed. You can retry payment below.');
+            ->with('payment_error', __('runtime.payment_incomplete'));
     }
 
     /**
@@ -183,7 +183,7 @@ class CheckoutController extends Controller
 
         if (! in_array($orderModel->payment_method, ['card', 'apple_pay', 'zaincash', 'tabby', 'tamara'], true)) {
             return redirect()->route('checkout.confirmation', ['order' => $orderModel->order_number])
-                ->with('payment_error', 'This order does not support online payment retry.');
+                ->with('payment_error', __('runtime.payment_retry_unavailable'));
         }
 
         return $this->startPayment($orderModel, $payments, $states);
@@ -367,7 +367,7 @@ class CheckoutController extends Controller
             $states->markFailed($order, 'Payment provider unavailable: '.$e->getMessage());
 
             return redirect()->route('checkout.confirmation', ['order' => $order->order_number])
-                ->with('payment_error', 'We could not start your payment. Please retry payment below or contact client concierge.');
+                ->with('payment_error', __('runtime.payment_start_failed'));
         }
 
         if ($result->redirectUrl) {

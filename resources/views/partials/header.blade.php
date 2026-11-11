@@ -261,7 +261,7 @@
             <!-- Full-Width Mega Menu -->
             <div class="absolute top-full left-0 right-0 w-full bg-white shadow-2xl border-t border-b border-gray-200 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-start">
                 <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-                    <div class="grid grid-cols-12 gap-6 lg:gap-8 items-start">
+                    <div class="grid grid-cols-12 gap-6 lg:gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
                         <!-- Column 1: Shortcuts / Categories -->
                         <div class="col-span-12 md:col-span-3 space-y-2 border-b md:border-b-0 md:border-e border-gray-100 pb-4 md:pb-0 md:pe-6">
                             <h3 class="text-xs font-bold uppercase tracking-wider text-black mb-3">{{ __('nav_menu.just_dropped') }}</h3>
@@ -354,7 +354,7 @@
                         <a href="/brands/sephora-collection" class="text-black hover:underline">{{ __('nav_menu.sephora_collection_makeup') }}</a>
                     </div>
 
-                    <div class="grid grid-cols-12 gap-6 items-start">
+                    <div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
                         <!-- Column 1: Face, Makeup Remover, Makeup Sets -->
                         <div class="col-span-12 md:col-span-3 space-y-4">
                             <div>
@@ -480,7 +480,7 @@
                         <a href="/shop/fragrance?type=refillable" class="text-black hover:underline">{{ __('nav_menu.spray_refill_repeat') }}</a>
                     </div>
 
-                    <div class="grid grid-cols-12 gap-6 items-start">
+                    <div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
                         <!-- Column 1: For Her & For Him -->
                         <div class="col-span-12 md:col-span-3 space-y-4">
                             <div>
@@ -570,7 +570,7 @@
                         <a href="/brands/sephora-collection" class="text-black hover:underline">{{ __('nav_menu.sephora_collection_skincare') }}</a>
                     </div>
 
-                    <div class="grid grid-cols-12 gap-6 items-start">
+                    <div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
                         <!-- Column 1: All Things Skin -->
                         <div class="col-span-12 md:col-span-4 space-y-3">
                             <h3 class="text-xs font-bold uppercase tracking-wider text-black mb-2">{{ __('nav_menu.all_things_skin') }}</h3>
@@ -677,7 +677,7 @@
             <!-- Full-Width Mega Menu -->
             <div class="absolute top-full left-0 right-0 w-full bg-white shadow-2xl border-t border-b border-gray-200 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-start">
                 <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-                    <div class="grid grid-cols-12 gap-6 lg:gap-8 items-start">
+                    <div class="grid grid-cols-12 gap-6 lg:gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
                         <!-- Column 1: Bath and Shower & Body Care -->
                         <div class="col-span-12 md:col-span-4 space-y-4">
                             <div>
@@ -772,7 +772,7 @@
                         <a href="/brands/sephora-collection" class="text-black hover:underline">{{ __('nav_menu.sephora_collection_haircare') }}</a>
                     </div>
 
-                    <div class="grid grid-cols-12 gap-6 items-start">
+                    <div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
                         <!-- Column 1: Want Great Hair? & Hair Type -->
                         <div class="col-span-12 md:col-span-3 space-y-4">
                             <div>
@@ -888,7 +888,7 @@
                         <a href="/brands/sephora-collection" class="text-black hover:underline">{{ __('nav_menu.cheek_lip_tint_collection') }}</a>
                     </div>
 
-                    <div class="grid grid-cols-12 gap-6 items-start">
+                    <div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
                         <!-- Column 1: Makeup & Haircare -->
                         <div class="col-span-12 md:col-span-3 space-y-4">
                             <div>
@@ -979,7 +979,7 @@
             <!-- Full-Width Mega Menu -->
             <div class="absolute top-full left-0 right-0 w-full bg-white shadow-2xl border-t border-b border-gray-200 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 ease-out z-[90] pointer-events-none before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4 text-start">
                 <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-                    <div class="grid grid-cols-12 gap-6 items-start">
+                    <div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
                         <!-- Column 1: Permanent Brand Links -->
                         <div class="col-span-12 md:col-span-2 space-y-2 border-b md:border-b-0 md:border-e border-gray-100 pb-4 md:pb-0 md:pe-4">
                             <h3 class="text-xs font-bold uppercase tracking-wider text-black mb-3">{{ __('nav_menu.directory') }}</h3>

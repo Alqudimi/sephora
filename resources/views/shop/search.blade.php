@@ -7,7 +7,7 @@
 <main class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
 
     <!-- Breadcrumb -->
-    <nav class="text-xs text-neutral-500 mb-4" aria-label="Breadcrumb">
+    <nav class="text-xs text-neutral-500 mb-4" aria-label="{{ __('ui.breadcrumb') }}">
         <a class="hover:text-black transition-colors" href="/">{{ __('messages.home') }}</a>
         <span class="mx-1.5">&rsaquo;</span>
         <span class="text-black font-semibold">{{ __('messages.search') }}</span>

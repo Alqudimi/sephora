@@ -10,7 +10,7 @@
 <!-- Main Content Canvas -->
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-space-xl">
 <!-- 3. Breadcrumb Navigation -->
-<nav aria-label="Breadcrumb" class="py-2 mb-6">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="py-2 mb-6">
 <ol class="flex items-center space-x-2 font-body-sm text-body-sm text-outline">
 <li>
 <a class="hover:text-primary transition-colors duration-150" href="/">{{ __('ui.home') }}</a>
@@ -215,7 +215,7 @@
 </div>
 <!-- Perk 4 -->
 <div class="bg-surface-container-lowest border border-outline-variant p-6 space-y-3">
-<span class="material-symbols-outlined text-primary text-3xl">face_retouching_natural</span>
+<span class="material-symbols-outlined text-primary text-3xl">{{ __('content.long_47d3559bafd5) }}</span>
 <h4 class="font-title-md text-title-md font-bold text-primary">{{ __('content.t_e1a7df033843') }}</h4>
 <p class="font-body-sm text-body-sm text-outline">
             {{ __('content.t_02f44fcb7d5e') }}
@@ -265,7 +265,7 @@
 <form class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto" onsubmit="event.preventDefault();" data-newsletter-form>
 <input class="w-full sm:flex-1 px-4 py-3 bg-surface-container-lowest border border-outline font-body-sm text-body-sm text-primary placeholder:text-outline focus:outline-none focus:border-primary rounded-none min-h-[48px]" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-8 py-3 min-h-[48px] hover:bg-surface-container-lowest hover:text-primary border border-primary transition-colors duration-150 uppercase tracking-widest font-bold" type="submit">
-            Subscribe
+            {{ __('ui.subscribe') }}
           </button>
 </form>
 <p class="font-body-sm text-[11px] text-outline">

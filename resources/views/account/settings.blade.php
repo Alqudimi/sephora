@@ -15,7 +15,7 @@
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
+    <nav aria-label="{{ __('ui.breadcrumb') }}" class="text-body-sm font-body-sm text-outline mb-4">
         <a class="hover:text-secondary" href="/">{{ __('ui.home') }}</a> /
         <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('ui.my_account') }}</a> /
         <span class="text-on-surface font-semibold">{{ __('ui.settings') }}</span>
@@ -43,7 +43,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('account.settings.update') }}" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+    <form method="POST" action="{{ route('account.settings.update') }}" class="grid grid-cols-1 lg:grid-cols-3 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
         @csrf
 
         <div class="lg:col-span-2 space-y-6">

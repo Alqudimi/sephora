@@ -11,7 +11,7 @@
 <section class="w-full bg-surface-container-low border-b border-outline-variant">
 <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8 md:py-12">
 <!-- Breadcrumb row -->
-<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant mb-6">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant mb-6">
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
 <span class="text-primary font-bold">{{ __('content.t_d35f2b98edf8') }}</span>
@@ -39,7 +39,7 @@
 <span class="material-symbols-outlined text-[18px] text-primary" data-icon="schedule">schedule</span>
 <span>{{ __('content.t_c26d954c5197') }} <strong class="text-primary">January 2025</strong></span>
 <span class="text-outline-variant">•</span>
-<span>Region: <strong class="text-primary">United Arab Emirates (UAE)</strong></span>
+<span>Region: <strong class="text-primary">{{ __('content.long_4ec77db26501) }}</strong></span>
 </div>
 <!-- Section Switcher Pills -->
 <div class="flex items-center border border-primary p-0.5 bg-surface-container-lowest">
@@ -56,7 +56,7 @@
 </section>
 <!-- 4. MAIN CONTENT LAYOUT: DUAL-COLUMN ARCHITECTURAL GRID -->
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-10 md:py-16">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-{{ __('ui.items_count_label', ['count' => '12']) }}-start">
 <!-- LEFT COLUMN: STICKY TABLE OF CONTENTS / JUMP NAVIGATOR (4 Columns) -->
 <aside class="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
 <div class="border border-primary bg-surface-container-lowest p-6">
@@ -65,7 +65,7 @@
               Directory
             </h2>
 <span class="font-label-tag text-label-tag text-on-surface-variant uppercase">
-              21 Articles
+              {{ __('ui.articles_count', ['count' => 21]) }}
             </span>
 </div>
 <!-- TOC Block 1: Terms of Use -->
@@ -92,7 +92,7 @@
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-1">{{ __('content.t_549b3b3bf719') }}</a></li>
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-2">{{ __('content.t_a630cb249fd4') }}</a></li>
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-3">{{ __('content.t_f93c43fb2a33') }}</a></li>
-<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-4">Article 4 - Prices &amp; Payment (AED)</a></li>
+<li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-4">{{ __('content.long_9e714aed751a) }}</a></li>
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-5">{{ __('content.t_76517f449e5c') }}</a></li>
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-6">{{ __('content.t_76fc944a13bb') }}</a></li>
 <li><a class="hover:text-primary transition-colors block py-0.5" href="#sale-art-7">{{ __('content.t_a9ea7eb1e87b') }}</a></li>
@@ -159,12 +159,12 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                {{ __('content.t_782bba5abd7d') }} <a class="text-primary font-bold underline" href="https://www.sephora.me">{{ __('content.t_94d669c60d89') }}</a> {{ __('content.t_bca346f0b39e') }} <strong>SEPHORA CYPRUS LIMITED (Dubai Branch)</strong>{{ __('content.t_16b10de63396') }}
+                {{ __('content.t_782bba5abd7d') }} <a class="text-primary font-bold underline" href="https://www.sephora.me">{{ __('content.t_94d669c60d89') }}</a> {{ __('content.t_bca346f0b39e') }} <strong>{{ __('content.long_d0dbb5f3c8e6) }}</strong>{{ __('content.t_16b10de63396') }}
               </p>
 <div class="bg-surface-container-low p-4 border-l-2 border-primary text-body-sm font-body-sm">
-<p><strong>{{ __('content.t_6884f8ea247b') }}</strong> Sephora Middle East, Design District (d3), Building 2, PO Box 34111, Dubai, United Arab Emirates.</p>
-<p class="mt-1"><strong>Tax Registration Number (TRN):</strong> 100034872900003</p>
-<p class="mt-1"><strong>{{ __('content.t_f884984c3976') }}</strong> Amazon Web Services (AWS) EMEA, Frankfurt Region, ISO 27001 certified architecture.</p>
+<p><strong>{{ __('content.t_6884f8ea247b') }}</strong> {{ __('content.long_4f7a4338ec41) }}</p>
+<p class="mt-1"><strong>{{ __('content.long_d3e89e646ce2) }}</strong> 100034872900003</p>
+<p class="mt-1"><strong>{{ __('content.t_f884984c3976') }}</strong> {{ __('content.long_a4fcf5793a59) }}</p>
 </div>
 </div>
 </article>
@@ -180,7 +180,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                The Website grants clients access to prestige luxury beauty shopping services, comprehensive fragrance notes directory, skin diagnostic consultation booking, store locator services across all 7 Emirates (Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah), as well as real-time access to the <strong>{{ __('content.t_9b67ab71e74b') }}</strong>.
+                {{ __('content.long_22400ae42ae3) }} <strong>{{ __('content.t_9b67ab71e74b') }}</strong>.
               </p>
 <ul class="list-disc pl-5 space-y-2 text-body-md">
 <li>{{ __('content.t_b5c284486fdd') }}</li>
@@ -236,7 +236,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                Protection of your confidential data complies with the UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL). Sephora processes your information exclusively to curate personal fragrance notes, fulfill shipping dispatches, process secure payments, and reward loyalty benefits.
+                {{ __('content.long_2797db11a833) }}
               </p>
 <p>
                 {{ __('content.t_a57f120b8883') }} <a class="text-primary font-bold underline" href="/terms-and-conditions">{{ __('content.t_9c11fe0a7d4e') }}</a> portal.
@@ -255,7 +255,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                {{ __('content.t_41613fc6e8ae') }} <strong>{{ __('content.t_05177045b7e2') }}</strong>{{ __('content.t_3a3969d52dd3') }} <strong>{{ __('content.t_3b2439cc635b') }}</strong>, or licensed prestige beauty houses (including Huda Beauty, Kayali, Haus Labs, and Fenty Beauty).
+                {{ __('content.t_41613fc6e8ae') }} <strong>{{ __('content.t_05177045b7e2') }}</strong>{{ __('content.t_3a3969d52dd3') }} <strong>{{ __('content.t_3b2439cc635b') }}</strong>{{ __('content.long_ca88760d9e35) }}
               </p>
 <p class="font-bold text-primary">
                 {{ __('content.t_9f7ed232c0e5') }}
@@ -290,7 +290,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                These Terms of Use are governed by and construed in accordance with the Federal Laws of the United Arab Emirates as applied in the Emirate of Dubai. Any unresolved controversy or claim shall be subject to the exclusive jurisdiction of the competent Courts of Dubai (excluding DIFC Courts, unless explicitly consented in writing).
+                {{ __('content.long_84ed46d891a8) }}
               </p>
 </div>
 </article>
@@ -299,7 +299,7 @@
 <div class="space-y-8 scroll-mt-28 pt-8 border-t-2 border-outline-variant" id="terms-of-sale">
 <div class="border-b-2 border-primary pb-4">
 <div class="flex items-center space-x-2 text-secondary mb-1">
-<span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart_checkout">shopping_cart_checkout</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart_checkout">{{ __('content.long_48d3e9c39c99) }}</span>
 <span class="font-label-caps text-label-caps tracking-widest uppercase">{{ __('content.t_d2db28be1807') }}</span>
 </div>
 <h2 class="font-headline-md text-headline-md text-primary">
@@ -321,7 +321,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                These Terms of Sale establish the rights and contractual obligations between Sephora Middle East ("Sephora") and any non-commercial individual ("Client") purchasing prestige fragrance, skincare, makeup, or beauty tools through the UAE digital portal.
+                {{ __('content.long_7903fb6d8aa8) }}
               </p>
 </div>
 </article>
@@ -345,7 +345,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="sale-art-3">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 3 - Orders and products (100% Authenticity)
+                {{ __('content.long_8bedf512c872) }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 {{ __('content.t_5805f8039f2a') }}
@@ -353,7 +353,7 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                {{ __('content.t_295e8a0acaca') }} <strong>{{ __('content.t_5c5874ab60bb') }}</strong> conforming to Dubai Municipality and UAE Ministry of Industry and Advanced Technology (MoIAT) standards.
+                {{ __('content.t_295e8a0acaca') }} <strong>{{ __('content.t_5c5874ab60bb') }}</strong> {{ __('content.long_ae800c0011c8) }}
               </p>
 <div class="p-4 bg-surface-container border border-outline-variant">
 <span class="font-label-caps text-label-caps uppercase text-primary font-bold block mb-1">
@@ -369,7 +369,7 @@
 <article class="border border-outline-variant bg-surface-container-lowest p-6 md:p-8 scroll-mt-28" id="sale-art-4">
 <div class="flex items-start justify-between mb-4">
 <h3 class="font-headline-sm text-headline-sm text-primary">
-                Article 4 - Prices and payment policy (Currency in AED)
+                {{ __('content.long_ed0b15ed8eef) }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
                 {{ __('content.t_af68d38ac8a6') }}
@@ -377,16 +377,16 @@
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                {{ __('content.t_68160d36f5e2') }} <strong>United Arab Emirates Dirham (AED)</strong> and are inclusive of the statutory 5% Value Added Tax (VAT) imposed under UAE Federal Tax Authority regulations.
+                {{ __('content.t_68160d36f5e2') }} <strong>{{ __('content.long_7295fa96d65d) }}</strong> {{ __('content.long_42466b0d0490) }}
               </p>
 <div class="space-y-3 pt-2">
 <h4 class="font-title-md text-title-md text-primary">{{ __('content.t_0e6ae89a951a') }}</h4>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-center text-body-sm font-body-sm">
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_a5e7c513c191') }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_51137b2e6c73') }}</div>
-<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">TABBY (Split in 4)</div>
+<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.long_36b875335dbd) }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">TAMARA (Pay in 3)</div>
-<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">CASH ON DELIVERY (COD)</div>
+<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.long_3e7252379319) }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_003dff3d02b0') }}</div>
 </div>
 </div>
@@ -420,22 +420,22 @@
 </thead>
 <tbody class="divide-y divide-outline-variant">
 <tr>
-<td class="p-3 font-bold text-primary">Standard UAE Delivery (Orders &gt; 250 AED)</td>
+<td class="p-3 font-bold text-primary">{{ __('content.long_4fd065ba1b5d) }}</td>
 <td class="p-3 text-secondary font-bold">{{ __('ui.free') }}</td>
-<td class="p-3">1 to 2 Business Days (Dubai &amp; Abu Dhabi)</td>
+<td class="p-3">{{ __('content.long_d51329c58d79) }}</td>
 </tr>
 <tr>
-<td class="p-3 font-bold text-primary">Standard UAE Delivery (Orders &lt; 250 AED)</td>
+<td class="p-3 font-bold text-primary">{{ __('content.long_147948b6452b) }}</td>
 <td class="p-3">25 AED</td>
-<td class="p-3">2 to 3 Business Days (Northern Emirates)</td>
+<td class="p-3">{{ __('content.long_830a9824a029) }}</td>
 </tr>
 <tr>
-<td class="p-3 font-bold text-primary">Same-Day Express (Dubai Only, before 12 PM)</td>
+<td class="p-3 font-bold text-primary">{{ __('content.long_6672ec5fd71a) }}</td>
 <td class="p-3">35 AED</td>
 <td class="p-3">{{ __('content.t_2a200a107add') }}</td>
 </tr>
 <tr>
-<td class="p-3 font-bold text-primary">Click &amp; Collect (Any UAE Store)</td>
+<td class="p-3 font-bold text-primary">{{ __('content.long_69f166d90066) }}</td>
 <td class="p-3 text-secondary font-bold">{{ __('ui.free') }}</td>
 <td class="p-3">{{ __('content.t_6482dbe711a5') }}</td>
 </tr>
@@ -520,7 +520,7 @@
 </summary>
 <div class="p-6 text-body-md text-body-md text-on-surface-variant space-y-3">
 <p>
-                  Our UAE Client Concierge is available daily from 10:00 AM to 10:00 PM GST via toll-free telephone (800 7374672), live chat widget, and email at <a class="text-primary font-bold underline" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a>.
+                  {{ __('content.long_9775aa795635) }} <a class="text-primary font-bold underline" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a>.
                 </p>
 </div>
 </details>
@@ -641,7 +641,7 @@
 <form class="flex flex-col sm:flex-row items-center gap-2 pt-2" onsubmit="event.preventDefault()" data-newsletter-form>
 <input class="w-full px-4 py-3.5 bg-surface-container-lowest border border-outline-variant text-body-sm font-body-sm text-primary placeholder-on-surface-variant focus:outline-none focus:border-primary" placeholder="{{ __('content.t_205dfd13124d') }}" required="" type="email"/>
 <button class="w-full sm:w-auto px-8 py-3.5 bg-primary text-on-primary font-label-caps text-label-caps tracking-widest whitespace-nowrap hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" type="submit">
-            SUBSCRIBE
+            {{ __('ui.subscribe_caps') }}
           </button>
 </form>
 </div>

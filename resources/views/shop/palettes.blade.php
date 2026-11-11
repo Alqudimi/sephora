@@ -6,7 +6,7 @@
 @section('content')
 <main class="flex-1 w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-6">
 <!-- Breadcrumb -->
-<nav aria-label="Breadcrumb" class="mb-4">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="mb-4">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest uppercase text-on-primary-container">
 <li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li class="select-none">/</li>
@@ -19,7 +19,7 @@
 <div class="border-b border-primary pb-6 mb-8">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
 <div>
-<h1 class="font-display-hero text-headline-lg text-primary uppercase font-bold tracking-tight">{{ __('ui.makeup_palettes') }}<span class="font-body-md text-title-md font-normal text-on-surface-variant ml-2 tracking-normal lowercase">(148 items)</span>
+<h1 class="font-display-hero text-headline-lg text-primary uppercase font-bold tracking-tight">{{ __('ui.makeup_palettes') }}<span class="font-body-md text-title-md font-normal text-on-surface-variant ml-2 tracking-normal lowercase">({{ __('ui.items_count_label', ['count' => '148']) }})</span>
 </h1>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-2">
             {{ __('content.t_cbfa3c568c40') }}
@@ -43,7 +43,7 @@
 </div>
 </div>
 <!-- Layout Grid: 5. Left Sidebar + 6. Main 4-Column Product Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- 5. Left Filter Sidebar (3 Columns on Large Screen) -->
 <aside class="lg:col-span-3 space-y-6">
 <!-- Filter Header & Refine Actions -->
@@ -83,7 +83,7 @@
 </div>
 <!-- BRAND Filter -->
 <div class="border-b border-surface-container pb-5">
-<h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-3 font-bold">BRAND</h3>
+<h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-3 font-bold">{{ __('ui.brand_caps') }}</h3>
 <div class="relative mb-3">
 <input class="w-full text-xs py-1.5 px-3 border border-outline-variant rounded-none focus:border-primary focus:ring-0" placeholder="{{ __('content.t_175d96f1ea36') }}" type="text"/>
 </div>
@@ -150,7 +150,7 @@
 <div class="border-b border-surface-container pb-5">
 <h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-3 font-bold">{{ __('content.t_834981090509') }}</h3>
 <div class="flex flex-wrap gap-1.5">
-<button class="px-2.5 py-1 text-xs border border-primary bg-primary text-on-primary font-medium">Eyeshadow</button>
+<button class="px-2.5 py-1 text-xs border border-primary bg-primary text-on-primary font-medium">{{ __('ui.eyeshadow') }}</button>
 <button class="px-2.5 py-1 text-xs border border-outline-variant hover:border-primary text-on-surface transition-colors">Complexion</button>
 <button class="px-2.5 py-1 text-xs border border-outline-variant hover:border-primary text-on-surface transition-colors">{{ __('content.t_0f39b2ec4486') }}</button>
 </div>
@@ -161,15 +161,15 @@
 <div class="space-y-1.5">
 <label class="flex items-center gap-2 text-body-sm text-on-surface cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Matte</span>
+<span>{{ __('ui.matte') }}</span>
 </label>
 <label class="flex items-center gap-2 text-body-sm text-on-surface cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Shimmer</span>
+<span>{{ __('ui.shimmer') }}</span>
 </label>
 <label class="flex items-center gap-2 text-body-sm text-on-surface cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Metallic</span>
+<span>{{ __('ui.metallic') }}</span>
 </label>
 <label class="flex items-center gap-2 text-body-sm text-on-surface cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
@@ -203,9 +203,9 @@
 <div>
 <h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-3 font-bold">{{ __('content.t_f5b80c02f41a') }}</h3>
 <div class="flex items-center gap-2">
-<input class="w-1/2 text-xs py-1.5 px-2 border border-outline-variant rounded-none text-center" placeholder="AED 40" type="text"/>
+<input class="w-1/2 text-xs py-1.5 px-2 border border-outline-variant rounded-none text-center" placeholder="{{ __('ui.min_aed_placeholder') }}" type="text"/>
 <span class="text-outline">-</span>
-<input class="w-1/2 text-xs py-1.5 px-2 border border-outline-variant rounded-none text-center" placeholder="AED 500" type="text"/>
+<input class="w-1/2 text-xs py-1.5 px-2 border border-outline-variant rounded-none text-center" placeholder="{{ __('ui.max_aed_placeholder') }}" type="text"/>
 </div>
 <button class="w-full mt-2 py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors text-xs font-bold tracking-widest uppercase">{{ __('ui.apply') }}</button>
 </div>
@@ -272,7 +272,7 @@
 </div>
 <div class="flex flex-col items-center p-4">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2">verified</span>
-<h4 class="font-title-md text-title-md uppercase tracking-wider font-bold text-primary">100% AUTHENTIC</h4>
+<h4 class="font-title-md text-title-md uppercase tracking-wider font-bold text-primary">{{ __('ui.authentic_100') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">{{ __('content.t_2810735d9404') }}</p>
 </div>
 <div class="flex flex-col items-center p-4">
@@ -287,7 +287,7 @@
 </div>
 </section>
 <!-- 9. Newsletter Section -->
-<section aria-label="Newsletter" class="my-16 bg-surface-container-low border border-surface-container p-8 md:p-12 text-center max-w-4xl mx-auto">
+<section aria-label="{{ __('ui.newsletter_label') }}" class="my-16 bg-surface-container-low border border-surface-container p-8 md:p-12 text-center max-w-4xl mx-auto">
 <h3 class="font-display-hero text-headline-sm uppercase tracking-wider font-bold text-primary mb-2">{{ __('ui.stay_connected') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-xl mx-auto">
         {{ __('content.t_63bbde696ff6') }}

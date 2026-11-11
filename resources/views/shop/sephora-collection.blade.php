@@ -6,7 +6,7 @@
 @section('content')
 <main class="flex-1 max-w-[1440px] w-full mx-auto px-4 lg:px-8 py-5">
 <!-- Breadcrumbs -->
-<nav aria-label="Breadcrumb" class="mb-4">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="mb-4">
 <ol class="flex items-center space-x-2 text-xs text-neutral-500">
 <li>
 <a class="hover:underline hover:text-black" href="/">{{ __('ui.home') }}</a>
@@ -44,7 +44,7 @@
 </div>
 </div>
 <!-- Main Two-Column Layout: Sidebar & Products Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- BEGIN: LeftFilterSidebar -->
 <aside class="hidden lg:block lg:col-span-1 border-r border-subtle pr-6 space-y-6 text-xs">
 <!-- Category Hierarchy Facets -->

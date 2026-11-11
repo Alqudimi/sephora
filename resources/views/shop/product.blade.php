@@ -60,7 +60,7 @@
 <main class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
 
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
+    <nav aria-label="{{ __('ui.breadcrumb') }}" class="text-xs text-neutral-500 flex items-center flex-wrap gap-2 mb-4 sm:mb-6">
         <a class="hover:text-black transition-colors" href="/">{{ __('ui.home') }}</a>
         <span>&rsaquo;</span>
         @if ($primaryCategory)
@@ -88,7 +88,7 @@
                                 data-image="{{ media_url($image->path) }}"
                                 data-alt="{{ $image->alt ?: $product->name }}"
                                 class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 border {{ $loop->first ? 'border-2 border-black' : 'border-gray-200' }} rounded-sm bg-white p-1 hover:border-black transition-all"
-                                aria-label="View image {{ $loop->iteration }}">
+                                aria-label="{{ __('shop.product.view_image', ['number' => $loop->iteration]) }}">
                             <img src="{{ media_url($image->path) }}" alt="{{ $image->alt ?: $product->name }}" class="w-full h-full object-contain" loading="lazy" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                         </button>
                     @empty
@@ -101,7 +101,7 @@
                 <!-- Main Product Packshot -->
                 <div class="relative flex-1 border border-gray-100 rounded-sm bg-[#fafafa] overflow-hidden group flex items-center justify-center min-h-[380px] sm:min-h-[480px]">
                     <!-- Badges -->
-                    <div class="absolute top-4 left-4 z-10 flex flex-col gap-1.5 items-start pointer-events-none">
+                    <div class="absolute top-4 left-4 z-10 flex flex-col gap-1.{{ __('ui.items_count_label', ['count' => '5']) }}-start pointer-events-none">
                         @if ($product->is_exclusive)
                             <span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 tracking-wider uppercase rounded-[1px]">{{ __('ui.online_only') }}</span>
                         @endif
@@ -187,7 +187,7 @@
             @if ($product->shades->isNotEmpty())
                 <div class="mb-5">
                     <span class="block text-xs font-bold uppercase tracking-wider text-black mb-2">
-                        Shade: <span class="font-normal text-neutral-600" id="selected-shade-name">{{ $product->shades->first()->name }}</span>
+                        {{ __('ui.shade_label') }} <span class="font-normal text-neutral-600" id="selected-shade-name">{{ $product->shades->first()->name }}</span>
                     </span>
                     <div class="flex flex-wrap gap-2">
                         @foreach ($product->shades as $shade)
@@ -212,7 +212,7 @@
                     <button type="button" data-qty-minus class="w-9 h-full flex items-center justify-center text-black hover:bg-gray-100 disabled:opacity-40" aria-label="{{ __('content.t_6c02abf3beed') }}">−</button>
                     <input data-qty-input type="number" min="1" max="{{ $maxQty }}" value="1"
                            class="w-10 h-full text-center text-xs font-bold text-black bg-transparent border-0 focus:ring-0 p-0"
-                           aria-label="Quantity">
+                           aria-label="{{ __('ui.quantity_label') }}">
                     <button type="button" data-qty-plus class="w-9 h-full flex items-center justify-center text-black hover:bg-gray-100 disabled:opacity-40" aria-label="{{ __('content.t_062e79bd33f1') }}">+</button>
                 </div>
 
@@ -228,7 +228,7 @@
                 <button type="button"
                         data-wishlist-toggle="{{ $product->id }}"
                         class="h-12 w-12 shrink-0 border border-black rounded-sm text-black hover:bg-gray-50 transition-colors flex items-center justify-center"
-                        aria-label="Add {{ $product->name }} to wishlist">
+                        aria-label="{{ __('shop.product.add_to_wishlist', ['name' => $product->name]) }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
@@ -386,7 +386,7 @@
                             </select>
                         </div>
                         <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-title">Title</label>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-black mb-1" for="review-title">{{ __('ui.title_label') }}</label>
                             <input id="review-title" name="title" type="text" maxlength="120" value="{{ old('title') }}"
                                    class="w-full h-10 border border-gray-300 rounded-sm px-3 text-xs bg-white text-black focus:outline-none focus:border-black"
                                    placeholder="{{ __('content.t_1c6665c2bc31') }}">

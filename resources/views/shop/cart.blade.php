@@ -7,7 +7,7 @@
 <main class="max-w-[1440px] mx-auto px-3 sm:px-4 md:px-8 py-4 sm:py-6">
 
     <!-- Breadcrumb -->
-    <nav class="text-xs text-neutral-500 mb-4" aria-label="Breadcrumb">
+    <nav class="text-xs text-neutral-500 mb-4" aria-label="{{ __('ui.breadcrumb') }}">
         <a class="hover:text-black transition-colors" href="/">{{ __('messages.home') }}</a>
         <span class="mx-1.5">&rsaquo;</span>
         <span class="text-black font-semibold">{{ __('messages.cart.heading') }}</span>
@@ -53,7 +53,7 @@
             </div>
         </div>
     @else
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
             <!-- Items Column (8 cols) -->
             <div class="lg:col-span-8 space-y-4">
                 @foreach ($items as $item)

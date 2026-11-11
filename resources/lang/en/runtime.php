@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'enter_email' => 'Please enter your email address.',
+    'valid_email' => 'Please enter a valid email address.',
+    'enter_password' => 'Please enter your password.',
+    'too_many_attempts' => 'Too many sign-in attempts. Please try again in :seconds seconds.',
+    'invalid_credentials' => 'These credentials do not match our records. Please try again.',
+    'tell_name' => 'Please tell us your name.',
+    'email_exists' => 'An account with this email already exists. Please sign in instead.',
+    'create_password' => 'Please create a password.',
+    'password_min' => 'Your password must be at least 8 characters.',
+    'password_mismatch' => 'Passwords do not match.',
+    'recovery_code_invalid' => 'This recovery code is invalid or has already been used.',
+    'auth_code_invalid' => 'This authentication code is invalid. Check your authenticator app and try again.',
+    'auth_code_time_invalid' => 'The authentication code is invalid. Check the time on your device and try again.',
+    'staff_two_factor_required' => 'Two-factor authentication is mandatory for staff accounts.',
+    'reset_throttled' => 'Please wait a moment before requesting another reset link.',
+    'reset_failed' => 'We could not send the reset link right now. Please try again shortly.',
+    'payment_confirmation_failed' => 'We could not confirm your payment yet. If you were charged, contact client concierge.',
+    'payment_incomplete' => 'Your payment was not completed. You can retry payment below.',
+    'payment_retry_unavailable' => 'This order does not support online payment retry.',
+    'payment_start_failed' => 'We could not start your payment. Please retry payment below or contact client concierge.',
+    'review_received' => 'Thank you! Your review has been received and will appear after moderation.',
+];

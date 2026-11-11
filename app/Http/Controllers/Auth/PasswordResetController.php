@@ -33,7 +33,7 @@ class PasswordResetController extends Controller
         // silence for a link that was never sent.
         if ($status === Password::RESET_THROTTLED) {
             throw ValidationException::withMessages([
-                'email' => 'Please wait a moment before requesting another reset link.',
+                'email' => __('runtime.reset_throttled'),
             ]);
         }
 
@@ -41,7 +41,7 @@ class PasswordResetController extends Controller
             report(new \RuntimeException('Password reset link failed with status: '.$status));
 
             throw ValidationException::withMessages([
-                'email' => 'We could not send the reset link right now. Please try again shortly.',
+                'email' => __('runtime.reset_failed'),
             ]);
         }
 
@@ -66,8 +66,8 @@ class PasswordResetController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', 'string', 'confirmed', PasswordRule::min(8)],
         ], [
-            'password.confirmed' => 'Passwords do not match.',
-            'password.min' => 'Your password must be at least 8 characters.',
+            'password.confirmed' => __('runtime.password_mismatch'),
+            'password.min' => __('runtime.password_min'),
         ]);
 
         $status = Password::reset(

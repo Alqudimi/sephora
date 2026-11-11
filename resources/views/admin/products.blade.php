@@ -18,8 +18,8 @@
     <label class="sr-only" for="product-status">{{ __('ui.status') }}</label>
     <select id="product-status" name="status" class="h-11 px-3 bg-surface-container-lowest border border-outline font-body-sm text-body-sm focus:border-primary">
         <option value="">{{ __('content.t_6405179d241b') }}</option>
-        <option value="active" @selected(request('status') === 'active')>Live</option>
-        <option value="hidden" @selected(request('status') === 'hidden')>Hidden</option>
+        <option value="active" @selected(request('status') === 'active')>{{ __('ui.live') }}</option>
+        <option value="hidden" @selected(request('status') === 'hidden')>{{ __('ui.hidden') }}</option>
     </select>
     <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-5 h-11 hover:bg-secondary transition-colors" type="submit">{{ __('ui.filter') }}</button>
     @if (request()->filled('q') || request()->filled('status'))

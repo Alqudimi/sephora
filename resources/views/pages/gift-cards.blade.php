@@ -275,7 +275,7 @@
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-<strong>{{ __('ui.online') }}</strong> During Step 3 (Payment) of checkout, select "Sephora Gift Card", type in your 16-digit card number and 4-digit PIN, then click "Apply". If the purchase amount exceeds your card balance, you can pay the remainder via Credit Card, Apple Pay, or Tabby.<br/>
+<strong>{{ __('ui.online') }}</strong> {{ __('content.long_23fbaa3ff97d) }}<br/>
 <strong>{{ __('content.t_995319c342d6') }}</strong> {{ __('content.t_29807615cecf') }}
           </div>
 </details>
@@ -290,7 +290,7 @@
             </span>
 </summary>
 <div class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed pl-1">
-            Yes! When you redeem your Gift Card to purchase beauty products, you will accumulate Beauty Pass points on the dirham value of your purchase according to your membership tier (White, Black, or Gold). Points are not awarded at the initial moment of purchasing or topping up the gift card itself.
+            {{ __('content.long_03ec8f443408) }}
           </div>
 </details>
 <!-- FAQ Item 5 -->

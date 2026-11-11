@@ -6,7 +6,7 @@
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-    <nav class="text-body-sm font-body-sm text-outline mb-4" aria-label="Breadcrumb">
+    <nav class="text-body-sm font-body-sm text-outline mb-4" aria-label="{{ __('ui.breadcrumb') }}">
         <a class="hover:text-secondary transition-colors" href="/">{{ __('messages.home') }}</a>
         <span class="mx-1.5">/</span>
         <a class="hover:text-secondary transition-colors" href="{{ route('cart') }}">{{ __('messages.cart.heading') }}</a>
@@ -312,7 +312,7 @@
 
                 <div class="divide-y divide-primary/10 max-h-80 overflow-y-auto">
                     @foreach ($items as $item)
-                        <div class="p-4 flex gap-4 items-center">
+                        <div class="p-4 flex gap-{{ __('ui.items_count_label', ['count' => '4']) }}-center">
                             <div class="w-20 h-20 bg-surface-container-low border border-outline-variant flex-shrink-0 flex items-center justify-center p-1">
                                 <img class="w-full h-full object-contain" alt="{{ $item->product->name }}" src="{{ media_url($item->product->first_image) }}" onerror="this.onerror=null;this.src='{{ asset('images/placeholder.webp') }}';">
                             </div>

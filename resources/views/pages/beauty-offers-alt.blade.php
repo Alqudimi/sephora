@@ -10,7 +10,7 @@
 <!-- MAIN CANVAS -->
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin">
 <!-- 3. BREADCRUMBS -->
-<nav aria-label="Breadcrumb" class="py-space-md">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="py-space-md">
 <ol class="flex items-center gap-space-xs font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">
 <li>
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
@@ -35,7 +35,7 @@
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.makeup') }}</button>
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.skincare') }}</button>
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">
-            Haircare
+            {{ __('ui.haircare') }}
           </button>
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">
             {{ __('content.t_289b65242e3b') }}

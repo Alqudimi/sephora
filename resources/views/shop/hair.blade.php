@@ -7,7 +7,7 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-20">
 <!-- 3. BREADCRUMBS & CATEGORY HEADER -->
 <div class="mb-8">
-<nav aria-label="Breadcrumb" class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest text-on-surface-variant mb-4">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest text-on-surface-variant mb-4">
 <a class="hover:text-primary uppercase transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant font-normal">/</span>
 <span class="text-primary font-bold uppercase">{{ __('ui.hair') }}</span>
@@ -16,7 +16,7 @@
 <div>
 <div class="flex items-baseline space-x-3">
 <h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">{{ __('ui.hair') }}</h1>
-<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(780 items)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">({{ __('ui.items_count_label', ['count' => '780']) }})</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
             {{ __('content.t_6cda56cff690') }}
@@ -42,7 +42,7 @@
 </div>
 </div>
 <!-- MAIN TWO-COLUMN LAYOUT (SIDEBAR + 4-COLUMN PRODUCT GRID) -->
-<div class="flex flex-col lg:flex-row gap-8 items-start">
+<div class="flex flex-col lg:flex-row gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- 4. SIDEBAR FILTERS (260px Fixed) -->
 <aside class="w-full lg:w-[260px] flex-shrink-0 divide-y divide-outline-variant font-body-sm text-body-sm">
 <!-- Collapsible CATEGORIES -->
@@ -53,11 +53,11 @@
 </div>
 <ul class="space-y-2 text-on-surface-variant font-body-sm">
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_c90748ce8f27') }}</span> <span class="text-outline text-[11px]">(240)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors font-medium text-primary" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Treatments</span> <span class="text-outline text-[11px]">(195)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors font-medium text-primary" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('ui.treatments') }}</span> <span class="text-outline text-[11px]">(195)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_c09cb99e975f') }}</span> <span class="text-outline text-[11px]">(160)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_6cab3fb9d490') }}</span> <span class="text-outline text-[11px]">(75)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('content.t_16591cf73c89') }}</span> <span class="text-outline text-[11px]">(130)</span></a></li>
-<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>Sets</span> <span class="text-outline text-[11px]">(48)</span></a></li>
+<li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('ui.sets') }}</span> <span class="text-outline text-[11px]">(48)</span></a></li>
 <li><a class="hover:text-primary flex justify-between items-center transition-colors" href="{{ route('shop.category', ['slug' => 'hair']) }}"><span>{{ __('ui.travel_size') }}</span> <span class="text-outline text-[11px]">(52)</span></a></li>
 </ul>
 </div>
@@ -199,7 +199,7 @@
 @endif
 
 </div>
-<button class="text-on-surface hover:text-secondary transition-colors" title="Wishlist">
+<button class="text-on-surface hover:text-secondary transition-colors" title="{{ __('ui.wishlist_label') }}">
 <span class="material-symbols-outlined text-[20px]">favorite</span>
 </button>
 </div>

@@ -46,7 +46,7 @@
 <!-- 5. MAIN CONTENT - DUAL COLUMN SPLIT                      -->
 <!-- ========================================================= -->
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin mb-space-xl">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-{{ __('ui.items_count_label', ['count' => '12']) }}-start">
 <!-- LEFT COLUMN: Client Sign In -->
 <section class="lg:col-span-6 bg-surface-container-lowest p-8 md:p-12 border border-primary relative">
 <div class="mb-8">
@@ -73,7 +73,7 @@
               {{ __('messages.email') }} <span class="text-secondary">*</span>
 </label>
 <div class="relative">
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant" id="signin-email" placeholder="name@domain.com" required="" type="email" name="email" value="{{ old('email') }}"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant" id="signin-email" placeholder="{{ __('ui.email_placeholder') }}" required="" type="email" name="email" value="{{ old('email') }}"/>
 </div>
 </div>
 <!-- Password Input -->
@@ -199,7 +199,7 @@
 <!-- Benefit 2 -->
 <div class="flex items-start gap-4">
 <div class="w-8 h-8 rounded-none bg-primary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
-<span class="material-symbols-outlined text-[18px]">featured_seasonal_and_gifts</span>
+<span class="material-symbols-outlined text-[18px]">{{ __('content.long_c05f33e5e281) }}</span>
 </div>
 <div>
 <h4 class="font-title-md text-title-md text-primary font-bold">{{ __('messages.auth.benefit2_title') }}</h4>

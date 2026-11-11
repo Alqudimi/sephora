@@ -6,7 +6,7 @@
 @section('content')
 <main class="w-full max-w-[720px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-    <nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase tracking-wider mb-8">
+    <nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center gap-2 font-label-caps text-label-caps text-outline uppercase tracking-wider mb-8">
         <a class="hover:text-primary transition-colors" href="/">{{ __('messages.home') }}</a>
         <span>/</span>
         <span class="text-primary font-bold">{{ __('messages.auth.two_step_verification') }}</span>

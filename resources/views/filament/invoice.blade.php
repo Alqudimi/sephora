@@ -71,7 +71,7 @@
                 <strong>{{ $order->customer_name }}</strong><br>
                 {{ $order->customer_email }}<br>
                 {{ $order->customer_phone }}
-                @if($order->delivery_method !== 'click_collect')
+                @if($order->{{ __('content.long_3661b6905030) }}
                     <br><br>{{ $order->shipping_address }}<br>
                     {{ $order->area ? $order->area.', ' : '' }}{{ $order->emirate }}
                 @endif
@@ -83,11 +83,9 @@
                     <strong>{{ $order->store->name }}</strong><br>
                     {{ $order->store->address }}, {{ $order->store->city }}
                 @else
-                    @if($order->courier_label)
-                        Courier: <strong>{{ $order->courier_label }}</strong><br>
+                    @if($order->{{ __('content.long_78d23e0a57b2) }} <strong>{{ $order->courier_label }}</strong><br>
                     @endif
-                    @if($order->tracking_url)
-                        Tracking: <a href="{{ $order->tracking_url }}" target="_blank" style="color:#1a1a1a; text-decoration:underline">{{ $order->tracking_number }}</a>
+                    @if($order->{{ __('content.long_282e963c5f15) }} <a href="{{ $order->tracking_url }}" target="_blank" style="color:#1a1a1a; text-decoration:underline">{{ $order->tracking_number }}</a>
                     @else
                         Tracking: {{ $order->tracking_number ?? '—' }}
                     @endif
@@ -107,7 +105,7 @@
             <span class="badge">Order: {{ str($order->status)->headline() }}</span>
             <span class="badge">Payment: {{ $order->payment_status }}</span>
             @if($order->gift_box)<span class="badge">{{ __('content.t_950daa2eadd5') }}</span>@endif
-            @if($order->loyalty_points_earned)<span class="badge">+{{ $order->loyalty_points_earned }} Beauty Pass points</span>@endif
+            @if($order->{{ __('content.long_986e254bf4fb) }}<span class="badge">+{{ $order->loyalty_points_earned }} Beauty Pass points</span>@endif
         </div>
 
         <table>
@@ -143,7 +141,7 @@
             @endif
             <div class="row"><span>{{ __('ui.delivery') }}</span><span>{{ $order->shipping_fee > 0 ? 'AED '.number_format($order->shipping_fee, 2) : 'Free' }}</span></div>
             @if((float) $order->tax_amount > 0)
-                <div class="row"><span>Taxable amount (excl. VAT)</span><span>AED {{ number_format($order->subtotal_ex_tax, 2) }}</span></div>
+                <div class="row"><span>{{ __('content.long_ab21f79e9d10) }}</span><span>AED {{ number_format($order->subtotal_ex_tax, 2) }}</span></div>
                 <div class="row"><span>VAT @ {{ round($order->tax_rate * 100, 2) }}%</span><span>AED {{ number_format($order->tax_amount, 2) }}</span></div>
             @endif
             <div class="row total"><span>Total (VAT inclusive)</span><span>AED {{ number_format($order->total, 2) }}</span></div>

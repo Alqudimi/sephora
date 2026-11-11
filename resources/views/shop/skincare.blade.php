@@ -16,7 +16,7 @@
 <div>
 <div class="flex items-baseline gap-3 mb-2">
 <h1 class="font-headline-md text-headline-md font-semibold text-primary tracking-tight">{{ __('ui.skincare') }}</h1>
-<span class="font-body-md text-outline font-normal text-sm">(1,120 items)</span>
+<span class="font-body-md text-outline font-normal text-sm">({{ __('ui.items_count_label', ['count' => '1,120']) }})</span>
 </div>
 <p class="font-body-md text-on-surface-variant max-w-2xl text-[14px] leading-relaxed">
           {{ __('content.t_3a8327f9fb55') }}
@@ -38,7 +38,7 @@
 </div>
 </div>
 <!-- TWO COLUMN LAYOUT: Filters & Product Grid -->
-<div class="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-{{ __('ui.items_count_label', ['count' => '10']) }}-start">
 <!-- LEFT SIDEBAR: Filters & Facets -->
 <aside class="w-full lg:w-64 flex-shrink-0">
 <!-- CATEGORIES FACET (Collapsible, Expanded) -->
@@ -49,11 +49,11 @@
 </div>
 <ul class="space-y-2.5 text-body-sm text-on-surface-variant font-body-sm">
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Moisturizers</span>
+<span class="hover:font-semibold">{{ __('ui.moisturizers') }}</span>
 <span class="text-outline text-[11px]">(340)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Cleansers</span>
+<span class="hover:font-semibold">{{ __('ui.cleansers') }}</span>
 <span class="text-outline text-[11px]">(215)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
@@ -65,11 +65,11 @@
 <span class="text-outline text-[11px]">(95)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Masks</span>
+<span class="hover:font-semibold">{{ __('ui.masks') }}</span>
 <span class="text-outline text-[11px]">(140)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
-<span class="hover:font-semibold">Suncare</span>
+<span class="hover:font-semibold">{{ __('ui.suncare') }}</span>
 <span class="text-outline text-[11px]">(85)</span>
 </li>
 <li class="flex justify-between items-center hover:text-primary cursor-pointer transition-colors">
@@ -99,7 +99,7 @@
 <!-- BRAND (Expanded) -->
 <div class="mb-5">
 <div class="flex items-center justify-between cursor-pointer mb-3">
-<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">BRAND</span>
+<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.brand_caps') }}</span>
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_less">expand_less</span>
 </div>
 <div class="space-y-2.5 max-h-48 overflow-y-auto pr-1">
@@ -212,12 +212,12 @@
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
 <div class="py-3 border-t border-surface-container-high flex items-center justify-between cursor-pointer">
-<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">BENEFITS</span>
+<span class="font-title-md text-[13px] font-bold uppercase tracking-wider text-primary">{{ __('ui.benefits_caps') }}</span>
 <span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
 </div>
 </div>
 </aside>
-<!-- RIGHT MAIN CONTENT: Product Grid (4 columns, 12 items) -->
+<!-- RIGHT MAIN CONTENT: Product Grid (4 columns, {{ __('ui.items_count_label', ['count' => '12']) }}) -->
 <section class="flex-1 w-full">
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
 <!-- PRODUCT CARD 1: Glow Recipe -->

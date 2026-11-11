@@ -15,7 +15,7 @@
 @section('content')
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-    <nav aria-label="Breadcrumb" class="text-body-sm font-body-sm text-outline mb-4">
+    <nav aria-label="{{ __('ui.breadcrumb') }}" class="text-body-sm font-body-sm text-outline mb-4">
         <a class="hover:text-secondary" href="/">{{ __('messages.home') }}</a> /
         <a class="hover:text-secondary" href="{{ route('account.dashboard') }}">{{ __('messages.account.my_account') }}</a> /
         <a class="hover:text-secondary" href="{{ route('account.settings') }}">{{ __('messages.account.settings') }}</a> /

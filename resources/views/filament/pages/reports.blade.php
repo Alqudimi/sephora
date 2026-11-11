@@ -46,7 +46,7 @@
     {{-- ── Revenue trend ── --}}
     <x-filament::section class="mt-6" icon="heroicon-o-chart-bar">
         <x-slot name="heading">{{ __('content.t_8126da036b60') }}</x-slot>
-        <div class="flex h-48 items-end gap-1 overflow-x-auto">
+        <div class="flex h-{{ __('ui.items_count_label', ['count' => '48']) }}-end gap-1 overflow-x-auto">
             @foreach($trend['data'] as $i => $value)
                 <div class="group relative flex min-w-[18px] flex-1 flex-col items-center justify-end self-stretch">
                     <span class="pointer-events-none absolute -top-6 z-10 hidden whitespace-nowrap rounded bg-gray-900 px-2 py-1 text-xs text-white group-hover:block">
@@ -192,7 +192,7 @@
             <x-slot name="heading">VAT ({{ $vatSummary['rate_percent'] }}%)</x-slot>
             <table class="w-full text-sm">
                 <tr class="border-b border-gray-100 dark:border-gray-800">
-                    <td class="py-2 pr-3">Taxable amount (excl. VAT)</td>
+                    <td class="py-2 pr-3">{{ __('content.long_ab21f79e9d10) }}</td>
                     <td class="py-2 pl-3 text-right font-semibold w-40">AED {{ number_format($vatSummary['taxable'], 2) }}</td>
                 </tr>
                 <tr class="border-b border-gray-100 dark:border-gray-800">
@@ -256,7 +256,7 @@
 
         {{-- ── Abandoned carts ── --}}
         <x-filament::section icon="heroicon-o-shopping-bag">
-            <x-slot name="heading">Abandoned carts (inactive &gt; 24h)</x-slot>
+            <x-slot name="heading">{{ __('content.long_777ef96f8fef) }}</x-slot>
             <table class="w-full text-sm">
                 @foreach($abandonedCarts as $row)
                     <tr class="border-b border-gray-100 dark:border-gray-800">

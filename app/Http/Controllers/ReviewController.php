@@ -36,6 +36,6 @@ class ReviewController extends Controller
 
         return redirect()
             ->route('product.show', ['slug' => $product->slug])
-            ->with('review_status', 'Thank you! Your review has been received and will appear after moderation.');
+            ->with('review_status', __('runtime.review_received'));
     }
 }

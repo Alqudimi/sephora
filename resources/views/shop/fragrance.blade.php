@@ -15,7 +15,7 @@
 <div>
 <div class="flex items-baseline gap-3">
 <h1 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">{{ __('ui.fragrance') }}</h1>
-<span class="font-body-md text-outline font-normal text-sm">846 items</span>
+<span class="font-body-md text-outline font-normal text-sm">{{ __('ui.items_count_label', ['count' => 846]) }}</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-xl">
           {{ __('content.t_9bb2d0bea17c') }}
@@ -38,7 +38,7 @@
 </div>
 </div>
 <!-- 4 & 5. SIDEBAR FILTERS & PRODUCT GRID -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- 4. SIDEBAR FILTERS (Left Column) -->
 <aside class="lg:col-span-3 space-y-6">
 <!-- Categories List -->
@@ -97,7 +97,7 @@
 <!-- Accordion 1: Brand -->
 <details class="group py-3 border-b border-surface-container" open="">
 <summary class="flex justify-between items-center cursor-pointer list-none font-label-caps text-label-caps text-primary tracking-wider">
-<span>BRAND</span>
+<span>{{ __('ui.brand_caps') }}</span>
 <span class="material-symbols-outlined text-[18px] group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="mt-3 space-y-2 pl-0.5">
@@ -152,7 +152,7 @@
 <div class="mt-3 space-y-2">
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Floral</span>
+<span class="flex-1">{{ __('ui.floral') }}</span>
 <span class="text-outline text-[11px]">(145)</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
@@ -167,27 +167,27 @@
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Vanilla</span>
+<span class="flex-1">{{ __('ui.vanilla') }}</span>
 <span class="text-outline text-[11px]">(74)</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Fresh</span>
+<span class="flex-1">{{ __('ui.fresh') }}</span>
 <span class="text-outline text-[11px]">(65)</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Fruity</span>
+<span class="flex-1">{{ __('ui.fruity') }}</span>
 <span class="text-outline text-[11px]">(52)</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Musky</span>
+<span class="flex-1">{{ __('ui.musky') }}</span>
 <span class="text-outline text-[11px]">(48)</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Oriental</span>
+<span class="flex-1">{{ __('ui.oriental') }}</span>
 <span class="text-outline text-[11px]">(98)</span>
 </label>
 </div>
@@ -294,7 +294,7 @@
 @foreach($products as $products)
 <div class="group relative flex flex-col bg-surface-container-lowest border border-outline-variant hover:border-primary transition-all duration-200">
 <div class="relative w-full aspect-square bg-[#fcfbfa] overflow-hidden flex items-center justify-center p-3">
-<div class="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">
+<div class="absolute top-2 left-2 z-10 flex flex-col gap-{{ __('ui.items_count_label', ['count' => '1']) }}-start">
 @if($products->badge)
 <span class="bg-primary text-on-primary font-label-tag text-label-tag px-2 py-0.5 uppercase tracking-widest">{{ $products->badge }}</span>
 @endif
@@ -349,7 +349,7 @@
 </div>
 <div class="flex flex-col items-center p-4 border border-surface-container bg-surface-container-lowest">
 <span class="material-symbols-outlined text-[32px] text-primary mb-2" data-icon="verified">verified</span>
-<h4 class="font-label-caps text-label-caps uppercase tracking-wider font-bold text-primary">100% AUTHENTIC</h4>
+<h4 class="font-label-caps text-label-caps uppercase tracking-wider font-bold text-primary">{{ __('ui.authentic_100') }}</h4>
 <p class="font-body-sm text-xs text-outline mt-1">{{ __('content.t_4cc34ac8bd87') }}</p>
 </div>
 <div class="flex flex-col items-center p-4 border border-surface-container bg-surface-container-lowest">

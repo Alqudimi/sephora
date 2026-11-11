@@ -26,12 +26,12 @@ class RegisterController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'marketing_email' => 'sometimes|boolean',
         ], [
-            'name.required' => 'Please tell us your name.',
-            'email.required' => 'Please enter your email address.',
-            'email.unique' => 'An account with this email already exists. Please sign in instead.',
-            'password.required' => 'Please create a password.',
-            'password.min' => 'Your password must be at least 8 characters.',
-            'password.confirmed' => 'Passwords do not match.',
+            'name.required' => __('runtime.tell_name'),
+            'email.required' => __('runtime.enter_email'),
+            'email.unique' => __('runtime.email_exists'),
+            'password.required' => __('runtime.create_password'),
+            'password.min' => __('runtime.password_min'),
+            'password.confirmed' => __('runtime.password_mismatch'),
         ]);
 
         $oldSessionId = $request->session()->getId();

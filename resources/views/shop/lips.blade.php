@@ -8,7 +8,7 @@
 <!-- 3. Breadcrumbs & Category Header -->
 <section class="mb-10">
 <!-- Breadcrumbs -->
-<nav aria-label="Breadcrumb" class="mb-5">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="mb-5">
 <ol class="flex items-center gap-2 font-body-sm text-body-sm text-outline">
 <li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span>/</span></li>
@@ -22,7 +22,7 @@
 <div class="max-w-3xl">
 <div class="flex items-baseline gap-3">
 <h1 class="font-headline-lg text-headline-lg font-semibold tracking-tight text-primary">{{ __('ui.lips') }}</h1>
-<span class="font-body-md text-body-md text-outline font-normal">(344 items)</span>
+<span class="font-body-md text-body-md text-outline font-normal">({{ __('ui.items_count_label', ['count' => '344']) }})</span>
 </div>
 <p class="mt-3 font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
             {{ __('content.t_49789387c8eb') }}
@@ -41,7 +41,7 @@
 </div>
 </section>
 <!-- Content Workspace: 2 Columns (Sidebar + Grid) -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- 4. Left Sidebar (Categories & Refine Filters) -->
 <aside class="lg:col-span-3 space-y-6">
 <!-- CATEGORIES Accordion -->
@@ -52,11 +52,11 @@
 </div>
 <ul class="pt-3 space-y-2.5 font-body-sm text-body-sm">
 <li class="flex items-center justify-between group cursor-pointer hover:text-primary">
-<span class="text-on-surface-variant group-hover:text-primary transition-colors">Lipsticks</span>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">{{ __('ui.lipsticks') }}</span>
 <span class="text-outline text-xs">(120)</span>
 </li>
 <li class="flex items-center justify-between group cursor-pointer hover:text-primary">
-<span class="text-on-surface-variant group-hover:text-primary transition-colors">Gloss</span>
+<span class="text-on-surface-variant group-hover:text-primary transition-colors">{{ __('ui.gloss') }}</span>
 <span class="text-outline text-xs">(95)</span>
 </li>
 <li class="flex items-center justify-between group cursor-pointer hover:text-primary">
@@ -98,7 +98,7 @@
 <!-- BRAND Accordion -->
 <div class="space-y-3">
 <div class="flex items-center justify-between">
-<h3 class="font-label-caps text-label-caps uppercase tracking-wider text-primary">BRAND</h3>
+<h3 class="font-label-caps text-label-caps uppercase tracking-wider text-primary">{{ __('ui.brand_caps') }}</h3>
 <span class="material-symbols-outlined text-sm" data-icon="expand_less">expand_less</span>
 </div>
 <!-- Brand Search Input -->

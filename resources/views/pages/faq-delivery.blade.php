@@ -33,7 +33,7 @@
 </div>
 <div class="flex items-center gap-3">
 <span class="border border-outline px-3 py-1.5 font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant bg-surface-container-lowest">
-            Region: UAE (7 Emirates)
+            {{ __('content.long_3f49f37921fa) }}
           </span>
 <span class="border border-outline px-3 py-1.5 font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant bg-surface-container-lowest">
             {{ __('content.t_b28f47294be7') }}
@@ -42,7 +42,7 @@
 </div>
 </section>
 <!-- CONTENT GRID: CATEGORY SIDEBAR + ACCORDION VITRINES -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- LEFT SIDEBAR: TOPIC EXPLORER -->
 <aside class="lg:col-span-3 bg-surface-container-lowest border border-outline-variant p-6 sticky top-28">
 <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant border-b border-outline-variant pb-3 mb-4">
@@ -123,7 +123,7 @@
 <span class="material-symbols-outlined text-primary text-[24px]">local_shipping</span>
 <h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_681ef021d630') }}</h2>
 </div>
-<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">8 Questions</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">{{ __('ui.questions_count', ['count' => 8]) }}</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <!-- Q1 -->
@@ -133,7 +133,7 @@
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed space-y-2">
-<p>Our dedicated courier service will reach out to you via SMS and WhatsApp on the morning of delivery with a live tracking link. Through this notification, you can confirm your preferred delivery window (Morning: 9am–2pm or Evening: 2pm–8pm) or provide alternate gate security instructions.</p>
+<p>{{ __('content.long_700872303f36) }}</p>
 <p class="text-outline text-body-sm font-body-sm">{{ __('content.t_5e4c8aed925d') }}</p>
 </div>
 </details>
@@ -174,7 +174,7 @@
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>No. For orders placed under Cash on Delivery (COD) within the United Arab Emirates, couriers strictly accept United Arab Emirates Dirhams (AED) in exact or change amounts. Foreign currencies, traveler cheques, or international checks are not accepted upon doorstep arrival.</p>
+<p>{{ __('content.long_b690e4b3b8e0) }}</p>
 </div>
 </details>
 <!-- Q6 -->
@@ -184,7 +184,7 @@
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed space-y-2">
-<p><strong class="text-primary font-bold">{{ __('content.t_db1b91148c9e') }}</strong> Complimentary Standard Delivery across all seven Emirates (1–2 business days).</p>
+<p><strong class="text-primary font-bold">{{ __('content.t_db1b91148c9e') }}</strong> {{ __('content.long_5a35a78a716d) }}</p>
 <p><strong class="text-primary font-bold">{{ __('content.t_97758a96c203') }}</strong> {{ __('content.t_9dcf53273b39') }}</p>
 <p class="text-outline text-body-sm font-body-sm">{{ __('content.t_fd0d589c2c64') }}</p>
 </div>
@@ -218,7 +218,7 @@
 <span class="material-symbols-outlined text-primary text-[24px]">electric_bolt</span>
 <h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_d51dba2f69ba') }}</h2>
 </div>
-<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">4 Questions</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">{{ __('ui.questions_count', ['count' => 4]) }}</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
@@ -266,7 +266,7 @@
 <span class="material-symbols-outlined text-primary text-[24px]">store</span>
 <h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_68791cdc9e7e') }}</h2>
 </div>
-<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">3 Questions</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">{{ __('ui.questions_count', ['count' => 3]) }}</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
@@ -303,9 +303,9 @@
 <div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-b border-outline-variant">
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-[24px]">shopping_basket</span>
-<h2 class="font-headline-sm text-headline-sm text-primary">Click &amp; Collect (Free 2-Hour Pickup)</h2>
+<h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.long_07192493abf9) }}</h2>
 </div>
-<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">10 Questions</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">{{ __('ui.questions_count', ['count' => 10]) }}</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
@@ -341,7 +341,7 @@
 <span class="material-symbols-outlined toggle-icon text-[20px] transition-transform duration-200">expand_more</span>
 </summary>
 <div class="mt-4 pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-<p>Please place your Click &amp; Collect order at least 3 hours prior to store closing. Orders submitted after 7:30 PM will be processed and prepared for collection the following morning at store opening (10:00 AM).</p>
+<p>{{ __('content.long_298173cb0d5b) }}</p>
 </div>
 </details>
 <details class="group p-6">
@@ -398,7 +398,7 @@
 <span class="material-symbols-outlined text-primary text-[24px]">priority_high</span>
 <h2 class="font-headline-sm text-headline-sm text-primary">{{ __('content.t_cc42d874c9a3') }}</h2>
 </div>
-<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">2 Questions</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase text-outline">{{ __('ui.questions_count', ['count' => 2]) }}</span>
 </div>
 <div class="divide-y divide-outline-variant">
 <details class="group p-6">
@@ -425,7 +425,7 @@
 </div>
 <!-- CLIENT SUPPORT & DIRECT CONTACT BOX -->
 <section class="mt-16 bg-surface-container-lowest border border-primary p-8 md:p-12">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- Left: Email Support -->
 <div class="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-outline-variant pb-8 lg:pb-0 lg:pr-8">
 <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold block mb-2">
@@ -450,13 +450,13 @@
 <div class="flex items-center justify-between mb-4">
 <h3 class="font-headline-md text-headline-md text-primary">{{ __('content.t_a74361b2c466') }}</h3>
 <span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">
-              10:00 AM – 10:00 PM (GST) Daily
+              {{ __('content.long_9abaa6042044) }}
             </span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <!-- UAE -->
 <div class="p-4 bg-surface-container border border-primary">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">United Arab Emirates (Toll Free)</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">{{ __('content.long_e47fb9a5d758) }}</span>
 <a class="font-title-lg text-title-lg text-primary hover:underline font-bold block mt-1" href="tel:8007374672">800 7374672</a>
 </div>
 <!-- KSA -->
@@ -524,7 +524,7 @@
 <form class="flex w-full md:w-auto max-w-md items-center" onsubmit="event.preventDefault(); alert('Subscribed to Sephora VIP newsletter!');" data-newsletter-form>
 <input class="w-full md:w-80 px-4 py-3 border border-outline bg-surface-container-lowest text-primary font-body-sm text-body-sm placeholder:text-outline focus:border-primary focus:ring-0 outline-none" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-3.5 hover:bg-surface-container-lowest hover:text-primary border border-primary transition-colors whitespace-nowrap" type="submit">
-          Subscribe
+          {{ __('ui.subscribe') }}
         </button>
 </form>
 </div>

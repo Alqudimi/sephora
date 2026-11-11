@@ -27,9 +27,9 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|string',
         ], [
-            'email.required' => 'Please enter your email address.',
-            'email.email' => 'Please enter a valid email address.',
-            'password.required' => 'Please enter your password.',
+            'email.required' => __('runtime.enter_email'),
+            'email.email' => __('runtime.valid_email'),
+            'password.required' => __('runtime.enter_password'),
         ]);
 
         $throttleKey = $this->throttleKey($request);
@@ -38,7 +38,7 @@ class LoginController extends Controller
             $seconds = RateLimiter::availableIn($throttleKey);
 
             throw ValidationException::withMessages([
-                'email' => "Too many sign-in attempts. Please try again in {$seconds} seconds.",
+                'email' => __('runtime.too_many_attempts', ['seconds' => $seconds]),
             ]);
         }
 
@@ -75,7 +75,7 @@ class LoginController extends Controller
         RateLimiter::hit($throttleKey);
 
         throw ValidationException::withMessages([
-            'email' => 'These credentials do not match our records. Please try again.',
+            'email' => __('runtime.invalid_credentials'),
         ]);
     }
 

@@ -12,7 +12,7 @@
 <!-- 3. BREADCRUMB & PAGE HEADER -->
 <section class="border-b border-outline-variant pb-8 mb-8">
 <!-- Breadcrumb -->
-<nav aria-label="Breadcrumb" class="mb-4">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="mb-4">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps tracking-widest text-on-surface-variant">
 <li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span>/</span></li>
@@ -38,7 +38,7 @@
 <div class="flex flex-row lg:flex-col items-start lg:items-end gap-2 border-t lg:border-t-0 border-outline-variant pt-4 lg:pt-0">
 <span class="inline-flex items-center px-2.5 py-1 border border-primary text-primary font-label-caps text-label-caps font-bold">
 <span class="w-1.5 h-1.5 bg-secondary rounded-full mr-2"></span>
-            REGION: UAE (7 EMIRATES)
+            {{ __('content.long_1068075c1633) }}
           </span>
 <span class="inline-flex items-center px-2.5 py-1 bg-surface-container-high text-on-surface font-label-caps text-label-caps font-bold">
             {{ __('content.t_4d93a8863522') }}
@@ -101,7 +101,7 @@
 </div>
 </section>
 <!-- 5. MAIN CONTENT LAYOUT: SIDEBAR + FAQS -->
-<div class="grid grid-cols-12 gap-8 items-start mb-16">
+<div class="grid grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start mb-16">
 <!-- LEFT SIDEBAR: FAQ CATEGORIES -->
 <aside class="col-span-12 lg:col-span-4 sticky top-28 space-y-6">
 <div class="border border-outline-variant bg-surface-container-lowest p-5">
@@ -206,7 +206,7 @@
 <div class="flex items-center justify-between border-b-2 border-primary pb-3 mb-6">
 <div class="flex items-center space-x-3">
 <span class="material-symbols-outlined text-2xl text-primary">cancel</span>
-<h2 class="font-display-hero text-headline-sm md:text-headline-md text-primary">Cancellation</h2>
+<h2 class="font-display-hero text-headline-sm md:text-headline-md text-primary">{{ __('ui.cancellation_label') }}</h2>
 </div>
 <span class="font-label-caps text-label-caps font-bold bg-surface-container-high px-2.5 py-1 text-on-surface">4 QUESTIONS</span>
 </div>
@@ -256,7 +256,7 @@
                 </p>
 <ul class="list-disc pl-5 space-y-1.5 mb-3">
 <li>{{ __('content.t_b3c0fdc9e0ba') }}</li>
-<li>Specify leave-at-door instructions (for pre-paid orders).</li>
+<li>{{ __('content.long_ab120edfb137) }}</li>
 <li>{{ __('content.t_70eaed8ecf9c') }}</li>
 </ul>
 <p>
@@ -305,8 +305,8 @@
 <p class="mb-3">{{ __('content.t_ce5551efbe46') }}</p>
 <ul class="list-disc pl-5 space-y-1.5 mb-3">
 <li>{{ __('content.t_d148bfee6f0a') }}</li>
-<li>Proof of purchase is required (printed receipt, digital tax invoice, or Order History confirmation email).</li>
-<li>Gifts with Purchase (GWP) and complimentary samples associated with returned products must also be returned in unused condition.</li>
+<li>{{ __('content.long_709af5f44ddd) }}</li>
+<li>{{ __('content.long_1619f3a90bae) }}</li>
 </ul>
 <p class="text-body-sm text-outline">{{ __('content.t_0a2824d15c1e') }}</p>
 </div>
@@ -319,7 +319,7 @@
 </summary>
 <div class="mt-4 pt-4 border-t border-surface-container text-body-md text-on-surface-variant leading-relaxed">
 <p class="mb-3">
-<strong>No.</strong> {{ __('content.t_be877becee5f') }}
+<strong>{{ __('ui.no_word') }}</strong> {{ __('content.t_be877becee5f') }}
                 </p>
 <p>
                   {{ __('content.t_4f75cb23a83c') }}
@@ -334,11 +334,11 @@
 </summary>
 <div class="mt-4 pt-4 border-t border-surface-container text-body-md text-on-surface-variant leading-relaxed">
 <p class="mb-3">
-                  {{ __('content.t_69a311991e64') }} <strong>48 hours</strong> {{ __('content.t_0ad5a89c8269') }} <a class="text-primary font-bold underline" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a> {{ __('content.t_096d01a7b7d5') }} <strong>800 7374672</strong>.
+                  {{ __('content.t_69a311991e64') }} <strong>{{ __('ui.hours_count', ['count' => 48]) }}</strong> {{ __('content.t_0ad5a89c8269') }} <a class="text-primary font-bold underline" href="mailto:customercare@sephora.ae">customercare@sephora.ae</a> {{ __('content.t_096d01a7b7d5') }} <strong>800 7374672</strong>.
                 </p>
 <p class="mb-3">{{ __('content.t_e30ee432addb') }}</p>
 <ul class="list-disc pl-5 space-y-1.5 mb-3">
-<li>Your order reference number (#SEPH-AE-XXXXX).</li>
+<li>{{ __('content.long_5b0956850b1d) }}</li>
 <li>{{ __('content.t_80bcc306a74d') }}</li>
 </ul>
 <p>
@@ -358,7 +358,7 @@
                 </p>
 <ol class="list-decimal pl-5 space-y-1.5 mb-3">
 <li>{{ __('content.t_cd01e1a04953') }}</li>
-<li>Show your electronic Tax Invoice (accessible in your mobile account or order confirmation email).</li>
+<li>{{ __('content.long_18d1e343c8af) }}</li>
 <li>{{ __('content.t_8cc6dda63da0') }}</li>
 </ol>
 </div>
@@ -382,7 +382,7 @@
 <span class="material-symbols-outlined text-outline group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="mt-4 pt-4 border-t border-surface-container text-body-md text-on-surface-variant leading-relaxed">
-<p class="mb-3">For orders completed via Cash on Delivery (COD), returns processed through courier pickup offer two flexible refund methods:</p>
+<p class="mb-3">{{ __('content.long_48c9f7215ec0) }}</p>
 <ul class="list-disc pl-5 space-y-1.5 mb-3">
 <li><strong>{{ __('content.t_5fa3a10ad4f9') }}</strong> {{ __('content.t_e1657f6eb5fa') }}</li>
 <li><strong>{{ __('content.t_afd50bdaffe8') }}</strong> {{ __('content.t_0702ee29b2c1') }}</li>
@@ -410,7 +410,7 @@
 </summary>
 <div class="mt-4 pt-4 border-t border-surface-container text-body-md text-on-surface-variant leading-relaxed">
 <p>
-                  Standard delivery fees (AED 20 for orders under AED 250) and Cash on Delivery service fees are non-refundable for voluntary change-of-mind returns. However, if the return is a result of a <strong>{{ __('content.t_17df9d14c1cf') }}</strong>{{ __('content.t_4b74db11d63a') }}
+                  {{ __('content.long_26766fee2e28) }} <strong>{{ __('content.t_17df9d14c1cf') }}</strong>{{ __('content.t_4b74db11d63a') }}
                 </p>
 </div>
 </details>
@@ -449,7 +449,7 @@
                   {{ __('content.t_4e4ab1b0eb4d') }}
                 </p>
 <p class="mb-3">
-                  Reach out to your territory support desk (phone contacts detailed in the concierge section below). Our logistics team will issue an international prepaid airway bill (AWB) and schedule courier pickup from your location.
+                  {{ __('content.long_3941a4435def) }}
                 </p>
 <p class="text-body-sm text-outline">{{ __('content.t_8789584a5ba4') }}</p>
 </div>
@@ -460,7 +460,7 @@
 </div>
 <!-- 6. DEDICATED CLIENT CONCIERGE CONTACT BOX -->
 <section class="border border-primary bg-surface-container-lowest p-8 lg:p-10 mb-16">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- Left: Email Us Directly -->
 <div class="lg:col-span-6 lg:border-r lg:border-outline-variant lg:pr-8">
 <div class="inline-block bg-primary text-on-primary px-3 py-1 font-label-caps text-label-caps tracking-widest font-bold mb-4">
@@ -487,12 +487,12 @@
 <div class="lg:col-span-6 lg:pl-4">
 <div class="flex items-center justify-between mb-4">
 <h3 class="font-title-lg text-title-lg text-primary uppercase font-bold tracking-wider">{{ __('content.t_4dc26af4d57c') }}</h3>
-<span class="font-label-caps text-label-caps text-outline font-bold">10:00 AM - 10:00 PM (GST) DAILY</span>
+<span class="font-label-caps text-label-caps text-outline font-bold">{{ __('content.long_1e47ea6aa1c1) }}</span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <!-- UAE -->
 <div class="border border-primary bg-primary text-on-primary p-4">
-<span class="font-label-caps text-label-caps opacity-80 block mb-1">UNITED ARAB EMIRATES (TOLL FREE)</span>
+<span class="font-label-caps text-label-caps opacity-80 block mb-1">{{ __('content.long_7fac051c7625) }}</span>
 <a class="font-title-lg text-title-lg font-bold tracking-wide hover:underline" href="tel:8007374672">800 7374672</a>
 </div>
 <!-- Saudi Arabia -->
@@ -562,7 +562,7 @@
 <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Subscribed successfully');" data-newsletter-form>
 <input class="flex-1 bg-surface-container-lowest border border-outline text-on-surface placeholder:text-outline text-body-sm px-4 py-3 rounded-none focus:border-primary focus:ring-0 outline-none" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 font-bold tracking-widest hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" type="submit">
-          SUBSCRIBE
+          {{ __('ui.subscribe_caps') }}
         </button>
 </form>
 </section>

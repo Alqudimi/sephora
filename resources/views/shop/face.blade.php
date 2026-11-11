@@ -17,7 +17,7 @@
 <ul class="space-y-2.5 text-body-md font-body-md">
 <li>
 <a class="flex justify-between items-center text-primary font-bold hover:text-secondary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Foundation</span>
+<span>{{ __('ui.foundation') }}</span>
 <span class="text-outline text-body-sm">(142)</span>
 </a>
 </li>
@@ -29,13 +29,13 @@
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Powder</span>
+<span>{{ __('ui.powder') }}</span>
 <span class="text-outline text-body-sm">(54)</span>
 </a>
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Blush</span>
+<span>{{ __('ui.blush') }}</span>
 <span class="text-outline text-body-sm">(62)</span>
 </a>
 </li>
@@ -47,7 +47,7 @@
 </li>
 <li>
 <a class="flex justify-between items-center text-on-surface-variant hover:text-primary transition-colors" href="{{ route('shop.category', ['slug' => 'face']) }}">
-<span>Highlighters</span>
+<span>{{ __('ui.highlighters') }}</span>
 <span class="text-outline text-body-sm">(38)</span>
 </a>
 </li>
@@ -161,13 +161,13 @@
 </div>
 <div class="border-b border-outline-variant pb-4">
 <button class="w-full flex items-center justify-between text-left font-title-md text-title-md uppercase tracking-wider text-primary py-2 hover:opacity-80">
-<span>Finish</span>
+<span>{{ __('ui.finish_label') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
 </button>
 </div>
 <div class="border-b border-outline-variant pb-4">
 <button class="w-full flex items-center justify-between text-left font-title-md text-title-md uppercase tracking-wider text-primary py-2 hover:opacity-80">
-<span>Formulation</span>
+<span>{{ __('ui.formulation_label') }}</span>
 <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
 </button>
 </div>

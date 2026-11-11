@@ -7,7 +7,7 @@
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-space-xl">
 <!-- 3. Breadcrumb & Page Header -->
 <section class="mb-8">
-<nav aria-label="Breadcrumb" class="mb-4">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="mb-4">
 <ol class="flex items-center space-x-2 font-body-sm text-body-sm text-on-surface-variant">
 <li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span class="text-outline-variant">/</span></li>
@@ -17,7 +17,7 @@
 <div class="flex flex-col md:flex-row md:items-baseline justify-between border-b border-outline-variant pb-6 gap-4">
 <div class="flex items-baseline space-x-4">
 <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">{{ __('ui.makeup') }}</h1>
-<span class="font-body-md text-body-md text-on-surface-variant">1,240 items</span>
+<span class="font-body-md text-body-md text-on-surface-variant">{{ __('ui.items_count_label', ['count' => '1,240']) }}</span>
 </div>
 <!-- Sorting Dropdown -->
 <div class="flex items-center space-x-2">
@@ -32,7 +32,7 @@
 </div>
 </section>
 <!-- Catalog Layout: 4-col Sidebar + 8-col/12-col Grid Architecture -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '8']) }}-start">
 <!-- 4. Left Sidebar Filters & Categories (3 cols on desktop) -->
 <aside class="lg:col-span-3 space-y-6">
 <!-- Accordion: Categories -->
@@ -56,13 +56,13 @@
 </li>
 <li>
 <a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
-<span class="group-hover:translate-x-1 transition-transform">Eyes</span>
+<span class="group-hover:translate-x-1 transition-transform">{{ __('ui.eyes') }}</span>
 <span class="text-on-surface-variant text-body-sm">(245)</span>
 </a>
 </li>
 <li>
 <a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
-<span class="group-hover:translate-x-1 transition-transform">Brows</span>
+<span class="group-hover:translate-x-1 transition-transform">{{ __('ui.brows') }}</span>
 <span class="text-on-surface-variant text-body-sm">(95)</span>
 </a>
 </li>
@@ -80,7 +80,7 @@
 </li>
 <li>
 <a class="flex items-center justify-between hover:text-secondary group transition-colors" href="{{ route('shop.category', ['slug' => 'makeup']) }}">
-<span class="group-hover:translate-x-1 transition-transform">Nails</span>
+<span class="group-hover:translate-x-1 transition-transform">{{ __('ui.nails') }}</span>
 <span class="text-on-surface-variant text-body-sm">(36)</span>
 </a>
 </li>
@@ -144,7 +144,7 @@
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Concealer</span>
+<span>{{ __('ui.concealer') }}</span>
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
@@ -169,13 +169,13 @@
 <!-- Finish -->
 <details class="group border-b border-outline-variant py-3">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Finish</span>
+<span>{{ __('ui.finish_label') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 space-y-2 text-body-sm">
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Matte</span>
+<span>{{ __('ui.matte') }}</span>
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
@@ -183,7 +183,7 @@
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Natural</span>
+<span>{{ __('ui.natural') }}</span>
 </label>
 </div>
 </details>
@@ -204,7 +204,7 @@
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Sheer</span>
+<span>{{ __('ui.sheer') }}</span>
 </label>
 </div>
 </details>
@@ -242,24 +242,24 @@
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Hydrating</span>
+<span>{{ __('ui.hydrating') }}</span>
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Waterproof</span>
+<span>{{ __('ui.waterproof') }}</span>
 </label>
 </div>
 </details>
 <!-- Formulation -->
 <details class="group border-b border-outline-variant py-3">
 <summary class="flex justify-between items-center cursor-pointer list-none font-title-md text-title-md uppercase tracking-wider">
-<span>Formulation</span>
+<span>{{ __('ui.formulation_label') }}</span>
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 space-y-2 text-body-sm">
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
-<span>Liquid</span>
+<span>{{ __('ui.liquid') }}</span>
 </label>
 <label class="flex items-center space-x-2.5 cursor-pointer">
 <input class="rounded-none border-outline text-primary focus:ring-0 w-4 h-4" type="checkbox"/>
@@ -337,7 +337,7 @@
 <div class="flex items-center space-x-4">
 <span aria-hidden="true" class="material-symbols-outlined text-[32px] text-primary">verified</span>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase tracking-wider text-primary">100% AUTHENTIC</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase tracking-wider text-primary">{{ __('ui.authentic_100') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant">{{ __('content.t_4cc34ac8bd87') }}</p>
 </div>
 </div>

@@ -40,7 +40,7 @@
             <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">{{ __('ui.basics') }}</h2>
 
             <label class="space-y-1.5 block">
-                <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Name *</span>
+                <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.name_required') }}</span>
                 <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                        name="name" maxlength="190" type="text" value="{{ old('name', $category->name) }}" required>
                 @error('name')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -57,7 +57,7 @@
             <label class="space-y-1.5 block">
                 <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_8544176c9bd1') }}</span>
                 <select class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none" name="parent_id">
-                    <option value="">— None —</option>
+                    <option value="">{{ __('ui.none_option') }}</option>
                     @foreach ($parents as $parent)
                         <option value="{{ $parent->id }}" @selected((int) old('parent_id', $category->parent_id) === $parent->id)>{{ $parent->name }}</option>
                     @endforeach
@@ -80,7 +80,7 @@
             </label>
 
             <label class="space-y-1.5 block">
-                <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Hero image path (public disk)</span>
+                <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.hero_image_path') }}</span>
                 <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
                        name="hero_image" maxlength="500" type="text" value="{{ old('hero_image', $category->hero_image) }}" placeholder="{{ __('content.t_10e4e1ad4e70') }}">
                 @error('hero_image')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -99,7 +99,7 @@
 
             <label class="flex items-center gap-3 font-body-md text-body-md text-primary">
                 <input type="checkbox" name="is_active" value="1" @checked(old('is_active', $category->is_active ?? true))>
-                <span>Live (visible in storefront)</span>
+                <span>{{ __('ui.live_visible') }}</span>
             </label>
 
             <label class="flex items-center gap-3 font-body-md text-body-md text-primary">

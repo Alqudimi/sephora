@@ -11,7 +11,7 @@
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- 3. Breadcrumbs & Page Heading -->
 <div class="mb-8">
-<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-on-surface-variant font-label-caps text-label-caps tracking-widest uppercase mb-3">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center space-x-2 text-on-surface-variant font-label-caps text-label-caps tracking-widest uppercase mb-3">
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span class="text-outline-variant">/</span>
 <span class="text-primary font-bold">{{ __('content.t_e39d93f810f1') }}</span>
@@ -70,7 +70,7 @@
 </a>
 <!-- PHLUR -->
 <a class="group p-5 bg-surface-container-lowest border border-outline-variant hover:border-primary flex flex-col justify-between hover:bg-surface-container-low transition-all duration-200 min-h-[140px]" href="/brands/phlur">
-<span class="font-label-tag text-label-tag tracking-wider text-outline uppercase">Trending</span>
+<span class="font-label-tag text-label-tag tracking-wider text-outline uppercase">{{ __('ui.trending') }}</span>
 <h3 class="font-title-lg text-title-lg uppercase tracking-widest font-bold my-auto text-center group-hover:scale-105 transition-transform duration-200">
             PHLUR
           </h3>
@@ -78,7 +78,7 @@
 </a>
 <!-- MOONGLAZE -->
 <a class="group p-5 bg-surface-container-lowest border border-outline-variant hover:border-primary flex flex-col justify-between hover:bg-surface-container-low transition-all duration-200 min-h-[140px]" href="/brands/moonglaze">
-<span class="font-label-tag text-label-tag tracking-wider text-secondary uppercase font-bold">NEW</span>
+<span class="font-label-tag text-label-tag tracking-wider text-secondary uppercase font-bold">{{ __('ui.new_caps') }}</span>
 <h3 class="font-title-lg text-title-lg uppercase tracking-widest font-bold my-auto text-center group-hover:scale-105 transition-transform duration-200">
             MOONGLAZE
           </h3>
@@ -94,7 +94,7 @@
 </a>
 <!-- NARS -->
 <a class="group p-5 bg-surface-container-lowest border border-outline-variant hover:border-primary flex flex-col justify-between hover:bg-surface-container-low transition-all duration-200 min-h-[140px]" href="/brands/nars">
-<span class="font-label-tag text-label-tag tracking-wider text-outline uppercase">Artistry</span>
+<span class="font-label-tag text-label-tag tracking-wider text-outline uppercase">{{ __('ui.artistry') }}</span>
 <h3 class="font-title-lg text-title-lg uppercase tracking-widest font-bold my-auto text-center group-hover:scale-105 transition-transform duration-200">
             NARS
           </h3>
@@ -102,7 +102,7 @@
 </a>
 <!-- TOO FACED -->
 <a class="group p-5 bg-surface-container-lowest border border-outline-variant hover:border-primary flex flex-col justify-between hover:bg-surface-container-low transition-all duration-200 min-h-[140px]" href="/brands/too-faced">
-<span class="font-label-tag text-label-tag tracking-wider text-outline uppercase">Icons</span>
+<span class="font-label-tag text-label-tag tracking-wider text-outline uppercase">{{ __('ui.icons') }}</span>
 <h3 class="font-title-lg text-title-lg uppercase tracking-widest font-bold my-auto text-center group-hover:scale-105 transition-transform duration-200">
             {{ __('content.t_945462b49267') }}
           </h3>
@@ -157,7 +157,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">A</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">6 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 6]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/amika">AMIKA</a>
@@ -174,7 +174,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">B</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">14 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 14]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/bareminerals">BAREMINERALS</a>
@@ -199,7 +199,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">C</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">11 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 11]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/carolina-herrera">{{ __('content.t_046c1d9503bb') }}</a>
@@ -221,7 +221,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">D</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">9 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 9]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/dermalogica">DERMALOGICA</a>
@@ -241,7 +241,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">E</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">6 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 6]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/e-l-f-cosmetics">E.L.F. COSMETICS</a>
@@ -258,7 +258,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">F</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">6 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 6]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/fable-mane">{{ __('content.t_57bfa0ae947a') }}</a>
@@ -275,7 +275,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">G</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">8 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 8]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/ghd">GHD</a>
@@ -294,7 +294,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">H</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">6 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 6]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/haus-labs-by-lady-gaga">{{ __('content.t_0ea914d02ae8') }}</a>
@@ -311,7 +311,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">I &amp; J</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">6 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 6]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/ilia">ILIA</a>
@@ -328,7 +328,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">K &amp; L</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">19 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 19]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/k18">K18</a>
@@ -358,7 +358,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">M &amp; N</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">15 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 15]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/m-a-c">M.A.C</a>
@@ -384,7 +384,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">O &amp; P</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">14 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 14]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/olaplex">OLAPLEX</a>
@@ -409,7 +409,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">R &amp; S</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">24 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 24]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/rabanne-fragrances">{{ __('content.t_a74eea4b87da') }}</a>
@@ -440,7 +440,7 @@
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 <div class="md:col-span-2">
 <span class="font-headline-lg text-headline-lg font-bold text-primary block leading-none">T – Y</span>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">17 Brands</span>
+<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase mt-1 block">{{ __('ui.brands_count', ['count' => 17]) }}</span>
 </div>
 <div class="md:col-span-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-3.5 gap-x-6">
 <a class="text-body-md hover:font-bold hover:underline transition-all" href="/brands/tarte">TARTE</a>
@@ -477,7 +477,7 @@
 <div class="flex items-start space-x-3.5">
 <span class="material-symbols-outlined text-3xl text-primary flex-shrink-0" data-icon="verified">verified</span>
 <div>
-<h4 class="font-title-md text-title-md font-bold uppercase tracking-wider text-primary">100% AUTHENTIC</h4>
+<h4 class="font-title-md text-title-md font-bold uppercase tracking-wider text-primary">{{ __('ui.authentic_100') }}</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">{{ __('content.t_f5f63432e5e8') }}</p>
 </div>
 </div>

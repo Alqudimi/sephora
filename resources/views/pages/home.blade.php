@@ -115,12 +115,12 @@
                 </article>
             @endforeach
 
-            <button aria-label="{{ __('content.t_8e53512a50fa') }}" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-prev type="button">
+            <button aria-label="{{ __('content.t_8e53512a50fa') }}" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-{{ __('ui.items_count_label', ['count' => '10']) }}-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-prev type="button">
                 <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
-            <button aria-label="{{ __('content.t_a4cf971af7dc') }}" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-next type="button">
+            <button aria-label="{{ __('content.t_a4cf971af7dc') }}" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-{{ __('ui.items_count_label', ['count' => '10']) }}-center justify-center rounded-full bg-white/90 text-black shadow-md hover:bg-white transition-colors" data-carousel-next type="button">
                 <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
@@ -399,7 +399,7 @@
                 </div>
                 <div class="relative z-10 pt-4">
                     <a href="/gift-cards" class="inline-block bg-white text-black font-bold uppercase text-xs px-6 py-2.5 rounded-sm hover:bg-neutral-200 transition-colors">
-                        DISCOVER
+                        {{ __('ui.discover_caps') }}
                     </a>
                 </div>
             </div>

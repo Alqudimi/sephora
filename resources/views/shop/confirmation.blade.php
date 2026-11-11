@@ -33,7 +33,7 @@
 
 <main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-space-lg">
 
-    <nav class="text-body-sm font-body-sm text-outline mb-4" aria-label="Breadcrumb">
+    <nav class="text-body-sm font-body-sm text-outline mb-4" aria-label="{{ __('ui.breadcrumb') }}">
         <a class="hover:text-secondary transition-colors" href="/">{{ __('messages.home') }}</a>
         <span class="mx-1.5">/</span>
         <span class="text-on-surface font-semibold">{{ __('messages.confirmation.heading') }}</span>
@@ -159,7 +159,7 @@
             </section>
         @endif
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-{{ __('ui.items_count_label', ['count' => '6']) }}-start">
 
             <div class="lg:col-span-7 space-y-6">
 
@@ -279,7 +279,7 @@
                             </dd>
                         </div>
 
-                        @if ($order->payment_method === 'cod')
+                        @if ($order->{{ __('content.long_df5d623a43ce) }}
                             <div class="flex justify-between gap-4">
                                 <dt class="text-on-surface-variant">{{ __('content.t_44393de20501') }}</dt>
                                 <dd class="text-on-surface-variant">{{ __('ui.included') }}</dd>

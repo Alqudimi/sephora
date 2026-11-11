@@ -35,7 +35,7 @@
 <label class="block font-label-caps text-label-caps uppercase text-on-surface tracking-wider mb-2" for="reset-email">
               {{ __('messages.auth.email') }} <span class="text-secondary">*</span>
 </label>
-<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('email') border-secondary @enderror" id="reset-email" placeholder="name@domain.com" required="" type="email" name="email" value="{{ old('email', $email) }}"/>
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline text-on-surface font-body-md text-body-md focus:border-primary focus:ring-0 rounded-none transition-all placeholder:text-outline-variant @error('email') border-secondary @enderror" id="reset-email" placeholder="{{ __('ui.email_placeholder') }}" required="" type="email" name="email" value="{{ old('email', $email) }}"/>
 @error('email')
 <p class="text-secondary font-body-sm mt-1">{{ $message }}</p>
 @enderror

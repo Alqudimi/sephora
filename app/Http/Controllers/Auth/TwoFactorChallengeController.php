@@ -49,8 +49,8 @@ class TwoFactorChallengeController extends Controller
         if (! $valid) {
             throw ValidationException::withMessages([
                 'code' => $recoveryCode !== ''
-                    ? 'This recovery code is invalid or has already been used.'
-                    : 'This authentication code is invalid. Check your authenticator app and try again.',
+                    ? __('runtime.recovery_code_invalid')
+                    : __('runtime.auth_code_invalid'),
             ]);
         }
 

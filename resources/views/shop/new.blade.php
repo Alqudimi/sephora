@@ -17,7 +17,7 @@
 <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-gray-200 pb-4 mb-6 gap-4">
 <div>
 <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-black">{{ __('ui.view_all') }}</h1>
-<p class="text-xs sm:text-sm text-gray-500 mt-2 font-normal">471 items</p>
+<p class="text-xs sm:text-sm text-gray-500 mt-2 font-normal">{{ __('ui.items_count_label', ['count' => 471]) }}</p>
 </div>
 <!-- Sort Dropdown -->
 <div class="flex items-center self-end sm:self-auto space-x-2">
@@ -123,7 +123,7 @@
 </button>
 <!-- Formulation Accordion -->
 <button class="w-full py-3.5 flex items-center justify-between text-xs font-semibold text-gray-900 hover:text-black text-left">
-<span>Formulation</span>
+<span>{{ __('ui.formulation_label') }}</span>
 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
 <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
@@ -140,7 +140,7 @@
 <div>
 <!-- Header Badges & Wishlist -->
 <div class="flex items-start justify-between min-h-[24px] mb-2">
-<div class="flex flex-col gap-1 items-start">
+<div class="flex flex-col gap-{{ __('ui.items_count_label', ['count' => '1']) }}-start">
 <span class="bg-black text-white text-[10px] uppercase font-bold tracking-wider px-2 py-0.5">{{ __('ui.new') }}</span>
 </div>
 <button aria-label="{{ __('content.t_c7a159eeb9d2') }}" class="text-gray-400 hover:text-black transition-colors">

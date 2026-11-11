@@ -80,7 +80,7 @@
                 <label class="space-y-1.5">
                     <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('content.t_be672fc86611') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
-                           name="size" maxlength="100" type="text" placeholder="e.g. 50ml" value="{{ old('size', $product->size) }}">
+                           name="size" maxlength="100" type="text" placeholder="{{ __('ui.size_placeholder') }}" value="{{ old('size', $product->size) }}">
                     @error('size')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
@@ -106,7 +106,7 @@
             <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('content.t_70b648724a37') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Price (AED) *</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.price_required') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('price') border-secondary @enderror"
                            name="price" required min="0" step="0.01" type="number" value="{{ old('price', $product->price) }}">
                     @error('price')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -121,7 +121,7 @@
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Stock *</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.stock_required') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none @error('stock') border-secondary @enderror"
                            name="stock" required min="0" type="number" value="{{ old('stock', $product->stock ?? 0) }}">
                     @error('stock')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
@@ -151,18 +151,18 @@
         {{-- Media --}}
         <section class="bg-surface-container-lowest border border-outline-variant p-5 md:p-6">
             <h2 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold mb-4">{{ __('content.t_7fe418fc7a47') }}</h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_140px] gap-4 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_140px] gap-{{ __('ui.items_count_label', ['count' => '4']) }}-start">
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Image path (public disk)</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.image_path') }}</span>
                     <input class="w-full h-12 px-4 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none"
-                           name="image_path" maxlength="500" type="text" placeholder="images/products/product_001.webp"
+                           name="image_path" maxlength="500" type="text" placeholder="{{ __('ui.image_placeholder') }}"
                            value="{{ old('image_path', $currentImage) }}">
                     <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_a78e783a95d0') }} <code>public/</code>{{ __('content.t_0da7176c683f') }}</span>
                     @error('image_path')<span class="block font-body-sm text-body-sm text-secondary">{{ $message }}</span>@enderror
                 </label>
 
                 <label class="space-y-1.5">
-                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">Upload image (JPEG/PNG/WebP, max 5 MB)</span>
+                    <span class="block font-label-caps text-label-caps uppercase text-outline font-bold">{{ __('ui.upload_image') }}</span>
                     <input class="w-full h-12 px-4 py-2 bg-surface-container-low border border-outline text-on-surface font-body-md focus:border-primary focus:outline-none file:mr-3 file:border-0 file:bg-primary file:text-on-primary file:px-3 file:py-1"
                            name="image" type="file" accept="image/jpeg,image/png,image/webp">
                     <span class="block font-body-sm text-[12px] text-outline">{{ __('content.t_b0853ed2d31c') }}</span>

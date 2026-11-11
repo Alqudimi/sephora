@@ -8,7 +8,7 @@
 
 @section('content')
 <!-- 3. BREADCRUMBS -->
-<nav aria-label="Breadcrumb" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-2">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin pt-6 pb-2">
 <ol class="flex items-center space-x-2 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
 <li><a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a></li>
 <li><span class="text-outline">/</span></li>
@@ -69,7 +69,7 @@
 <span class="font-label-tag text-label-tag text-on-surface-variant uppercase tracking-widest">{{ __('content.t_0cee79267b7d') }}</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-6 uppercase tracking-wider font-semibold">
-            Call us between 10:00 am - 10:00 pm (GST)
+            {{ __('content.long_0facd1f22a69) }}
           </p>
 <!-- UAE Highlighted Card -->
 <div class="border-2 border-primary bg-surface-container-low p-5 mb-4 relative">
@@ -202,7 +202,7 @@
 <label class="block font-label-caps text-label-caps uppercase text-on-surface mb-2" for="contact-email">
                   {{ __('content.t_09ba557fd106') }} <span class="text-secondary">*</span>
 </label>
-<input id="contact-email" name="email" value="{{ old('email') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="layla.almansoor@example.ae" required type="email" />
+<input id="contact-email" name="email" value="{{ old('email') }}" class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-outline focus:border-primary focus:ring-0 rounded-none p-3 transition-colors" placeholder="{{ __('ui.email_example') }}" required type="email" />
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -340,7 +340,7 @@
 <form class="flex flex-col sm:flex-row gap-0 max-w-xl mx-auto" data-newsletter-form>
 <input class="flex-1 bg-surface-container-lowest text-on-surface font-body-md text-body-md border-0 p-4 focus:ring-0 rounded-none placeholder:text-outline" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-tertiary-fixed text-on-tertiary-fixed font-label-caps text-label-caps uppercase px-8 py-4 font-bold tracking-widest hover:bg-on-primary hover:text-primary transition-colors" type="submit">
-            Subscribe
+            {{ __('ui.subscribe') }}
           </button>
 </form>
 </div>

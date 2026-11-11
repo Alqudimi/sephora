@@ -45,6 +45,14 @@ return [
         'delivered' => 'Delivered',
         'cancelled' => 'Cancelled',
         'refunded' => 'Refunded',
+        'failed' => 'Failed',
+    ],
+
+    'payment_statuses' => [
+        'pending' => 'Pending',
+        'paid' => 'Paid',
+        'failed' => 'Failed',
+        'refunded' => 'Refunded',
     ],
 
     'payment_methods' => [

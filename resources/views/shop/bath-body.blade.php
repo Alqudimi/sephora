@@ -6,7 +6,7 @@
 @section('content')
 <main class="w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin py-8">
 <!-- Breadcrumb -->
-<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-outline font-label-caps text-label-caps mb-6">
+<nav aria-label="{{ __('ui.breadcrumb') }}" class="flex items-center space-x-2 text-outline font-label-caps text-label-caps mb-6">
 <a class="hover:text-primary transition-colors" href="/">{{ __('ui.home') }}</a>
 <span>/</span>
 <span class="text-primary font-bold">{{ __('ui.bath_body') }}</span>
@@ -16,7 +16,7 @@
 <div>
 <div class="flex items-baseline space-x-3 mb-2">
 <h1 class="font-headline-lg text-headline-lg font-bold text-primary">{{ __('ui.bath_body') }}</h1>
-<span class="font-body-md text-body-md text-outline">(540 items)</span>
+<span class="font-body-md text-body-md text-outline">({{ __('ui.items_count_label', ['count' => '540']) }})</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
           {{ __('content.t_9229e6f77d14') }}
@@ -34,7 +34,7 @@
 <option>{{ __('ui.price_high_low') }}</option>
 <option>{{ __('ui.top_rated') }}</option>
 </select>
-<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-primary text-[18px]">keyboard_arrow_down</span>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-primary text-[18px]">{{ __('content.long_95425c4309aa) }}</span>
 </div>
 </div>
 </div>
@@ -100,7 +100,7 @@
 <!-- BRAND FILTER (Expanded) -->
 <div class="pt-3 border-t border-surface-container">
 <div class="flex items-center justify-between mb-3 cursor-pointer">
-<span class="font-title-md text-title-md font-bold text-primary">BRAND</span>
+<span class="font-title-md text-title-md font-bold text-primary">{{ __('ui.brand_caps') }}</span>
 <span class="material-symbols-outlined text-[18px]">expand_less</span>
 </div>
 <!-- Search Inside Brand -->
@@ -216,7 +216,7 @@
 <div class="space-y-1">
 <p class="font-label-caps text-label-caps text-primary uppercase font-bold tracking-wider">{{ $products->brand->name }}
 <h4 class="font-body-md text-body-md text-on-surface line-clamp-2 hover:underline cursor-pointer">
-                  Brazilian Bum Bum Cream (240ml)
+                  {{ __('content.long_778ee54ddb81) }}
                 </h4>
 <!-- Rating -->
 <div class="flex items-center space-x-1 pt-1">
