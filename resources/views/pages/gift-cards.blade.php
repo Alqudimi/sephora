@@ -480,7 +480,9 @@
         const digits = cardNum.replace(/\D/g, '');
         if (res.valid) {
           balanceValue.textContent = (res.currency || 'AED') + ' ' + res.balance;
-          balanceMeta.textContent = 'Card # ' + digits.slice(0,4) + ' \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 ' + digits.slice(-4) + ' | ' + res.message;
+          balanceMeta.textContent = t('gift_card_masked', 'Card # :prefix •••• •••• :suffix')
+            .replace(':prefix', digits.slice(0,4))
+            .replace(':suffix', digits.slice(-4)) + ' | ' + res.message;
         } else {
           balanceValue.textContent = '\u2014';
           balanceMeta.textContent = res.message;
@@ -489,9 +491,9 @@
       })
       .catch(() => {
         if (window.sephoraToast) {
-          window.sephoraToast('Network error verifying card', 'error');
+          window.sephoraToast(t('gift_card_network_error', 'Network error verifying card. Please try again.'), 'error');
         } else {
-          alert('Network error verifying card. Please try again.');
+          alert(@js(__('shop.js.gift_card_network_error')));
         }
       });
     }

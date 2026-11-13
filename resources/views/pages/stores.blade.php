@@ -44,7 +44,7 @@
 <!-- Trust Mini Badges -->
 <div class="pt-6 border-t border-outline-variant/60 grid grid-cols-3 gap-4 text-center md:text-left">
 <div>
-<p class="font-title-md text-[14px] font-bold text-primary">30+ Salons</p>
+<p class="font-title-md text-[14px] font-bold text-primary">{{ __('ui.thirty_plus_salons') }}</p>
 <p class="font-body-sm text-[11px] text-outline">{{ __('content.t_87820f98311e') }}</p>
 </div>
 <div>
@@ -162,7 +162,7 @@
 </div>
 <div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between">
 <div>
-<span class="font-label-tag text-outline block">COMPLIMENTARY</span>
+<span class="font-label-tag text-outline block">{{ __('ui.complimentary') }}</span>
 <span class="font-price-aed-lg text-price-aed-lg text-primary">AED 0.00</span>
 </div>
 <button class="bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary border border-primary px-4 py-2 text-[11px] font-label-caps tracking-widest uppercase transition-colors">
@@ -197,7 +197,7 @@
 </div>
 <div class="pt-4 border-t border-outline-variant/40 flex items-center justify-between">
 <div>
-<span class="font-label-tag text-outline block">COMPLIMENTARY</span>
+<span class="font-label-tag text-outline block">{{ __('ui.complimentary') }}</span>
 <span class="font-price-aed-lg text-price-aed-lg text-primary">{{ __('content.t_5409e1c99235') }}</span>
 </div>
 <button class="bg-primary text-on-primary hover:bg-surface-container-lowest hover:text-primary border border-primary px-4 py-2 text-[11px] font-label-caps tracking-widest uppercase transition-colors">
@@ -274,13 +274,13 @@
 <div class="md:col-span-3">
 <label class="font-label-caps text-[10px] text-outline block mb-1 uppercase tracking-widest">{{ __('content.t_e9ddbf6255d6') }}</label>
 <select class="w-full py-2 px-3 text-sm bg-surface-container-lowest border border-outline focus:border-primary focus:ring-0 rounded-none font-body-md">
-<option selected="">All Emirates (UAE)</option>
-<option>Dubai (16 Stores)</option>
+<option selected="">{{ __('ui.all_emirates_uae') }}</option>
+<option>{{ __('ui.dubai_stores') }}</option>
 <option>{{ __('content.long_612e0da98f7e) }}</option>
-<option>Sharjah (3 Stores)</option>
-<option>Al Ain (2 Stores)</option>
+<option>{{ __('ui.sharjah_stores') }}</option>
+<option>{{ __('ui.al_ain_stores') }}</option>
 <option>{{ __('content.long_c4839634defa) }}</option>
-<option>Ajman (1 Store)</option>
+<option>{{ __('ui.ajman_stores') }}</option>
 </select>
 </div>
 <!-- Service Filter -->

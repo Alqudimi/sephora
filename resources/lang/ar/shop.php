@@ -24,6 +24,12 @@ return [
         'processing' => 'جارٍ المعالجة…',
         'delivery_fallback' => 'التوصيل',
         'invalid_coupon' => 'الكود غير صالح.',
+        'gift_card_network_error' => 'حدث خطأ في الشبكة أثناء التحقق من البطاقة. يرجى المحاولة مرة أخرى.',
+        'email_copied' => 'تم نسخ البريد الإلكتروني إلى الحافظة!',
+        'email_copied_short' => 'تم نسخ البريد الإلكتروني إلى الحافظة',
+        'subscribed_successfully' => 'تم الاشتراك بنجاح',
+        'vip_subscribed' => 'تم الاشتراك في النشرة الخاصة بكبار عملاء سيفورا!',
+        'gift_card_masked' => 'البطاقة رقم :prefix •••• •••• :suffix',
     ],
 
     'emirates' => [

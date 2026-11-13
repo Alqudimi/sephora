@@ -29,7 +29,7 @@
 <!-- Filter Chips (0px geometry, crisp hairline outline) -->
 <div class="flex items-center gap-space-xs md:gap-space-sm flex-wrap mt-space-lg pt-space-xs">
 <button class="bg-primary text-on-primary font-label-caps text-label-caps px-4 py-2 border border-primary transition-colors duration-150" type="button">
-            All Offers (19)
+            {{ __('ui.all_offers_count_19') }}
           </button>
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.fragrance') }}</button>
 <button class="bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant hover:border-primary font-label-caps text-label-caps px-4 py-2 transition-colors duration-150" type="button">{{ __('ui.makeup') }}</button>

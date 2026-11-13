@@ -183,6 +183,20 @@ class LocalizationTest extends TestCase
         $this->assertSame(array_keys($english), array_keys($arabic));
         $this->assertSame(array_keys($english['order_statuses']), array_keys($arabic['order_statuses']));
         $this->assertSame(array_keys($english['payment_statuses']), array_keys($arabic['payment_statuses']));
+        $this->assertSame(array_keys($english['js']), array_keys($arabic['js']));
+    }
+
+    public function test_static_interactions_render_in_the_selected_locale(): void
+    {
+        $english = $this->get('/stores');
+        $english->assertOk();
+        $english->assertSee('All Emirates (UAE)', false);
+        $english->assertSee('30+ Salons', false);
+
+        $arabic = $this->get('/stores?lang=ar');
+        $arabic->assertOk();
+        $arabic->assertSee('جميع الإمارات', false);
+        $arabic->assertSee('صالونًا', false);
     }
 
 }

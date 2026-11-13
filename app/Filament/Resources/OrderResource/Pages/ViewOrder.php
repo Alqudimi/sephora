@@ -209,7 +209,7 @@ class ViewOrder extends ViewRecord
 
                                 TextEntry::make('shipping_fee')
                                     ->money('AED')
-                                    ->formatStateUsing(fn ($state) => $state == 0 ? 'Free' : number_format((float) $state, 2).' AED'),
+                                    ->formatStateUsing(fn ($state) => $state == 0 ? __('ui.free') : number_format((float) $state, 2).' AED'),
 
                                 TextEntry::make('subtotal_ex_tax')
                                     ->label('Taxable amount (excl. VAT)')

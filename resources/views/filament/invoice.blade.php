@@ -137,14 +137,14 @@
         <div class="totals">
             <div class="row"><span>{{ __('ui.subtotal') }}</span><span>AED {{ number_format($order->subtotal, 2) }}</span></div>
             @if($order->discount > 0)
-                <div class="row discount"><span>Discount {{ $order->coupon_code ? '('.$order->coupon_code.')' : '' }}</span><span>- AED {{ number_format($order->discount, 2) }}</span></div>
+                <div class="row discount"><span>{{ __('ui.discount') }} {{ $order->coupon_code ? '('.$order->coupon_code.')' : '' }}</span><span>- AED {{ number_format($order->discount, 2) }}</span></div>
             @endif
-            <div class="row"><span>{{ __('ui.delivery') }}</span><span>{{ $order->shipping_fee > 0 ? 'AED '.number_format($order->shipping_fee, 2) : 'Free' }}</span></div>
+            <div class="row"><span>{{ __('ui.delivery') }}</span><span>{{ $order->shipping_fee > 0 ? 'AED '.number_format($order->shipping_fee, 2) : __('ui.free') }}</span></div>
             @if((float) $order->tax_amount > 0)
                 <div class="row"><span>{{ __('content.long_ab21f79e9d10) }}</span><span>AED {{ number_format($order->subtotal_ex_tax, 2) }}</span></div>
-                <div class="row"><span>VAT @ {{ round($order->tax_rate * 100, 2) }}%</span><span>AED {{ number_format($order->tax_amount, 2) }}</span></div>
+                <div class="row"><span>{{ __('ui.vat_at', ['rate' => round($order->tax_rate * 100, 2)]) }}</span><span>AED {{ number_format($order->tax_amount, 2) }}</span></div>
             @endif
-            <div class="row total"><span>Total (VAT inclusive)</span><span>AED {{ number_format($order->total, 2) }}</span></div>
+            <div class="row total"><span>{{ __('ui.total_vat_inclusive') }}</span><span>AED {{ number_format($order->total, 2) }}</span></div>
             @if((float) $order->refund_amount > 0)
                 <div class="row discount"><span>{{ __('ui.refunded') }}</span><span>- AED {{ number_format($order->refund_amount, 2) }}</span></div>
             @endif

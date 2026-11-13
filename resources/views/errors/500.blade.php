@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="wrap">
-        <div class="tag">Error 500</div>
+        <div class="tag">{{ __('ui.error_500_label') }}</div>
         <h1>Sephora</h1>
         <h2>{{ __('content.t_708c33557c7c') }}</h2>
         <p>{{ __('content.t_0fe0a5f86091') }}</p>

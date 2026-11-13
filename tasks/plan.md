@@ -1,37 +1,37 @@
-# Implementation Plan: Complete storefront localization
+# خطة استكمال الترجمة الثنائية للموقع
 
-## Overview
-Complete the existing English/Arabic foundation so every HTML page can be viewed using the user's selected language. Existing Laravel translation files, locale persistence, RTL layout, and the one-click switch remain the source of truth.
+## الهدف
+تحقيق تغطية كاملة للنصوص الثابتة الظاهرة في الموقع ولوحة الإدارة ورسائل JavaScript، باللغتين الإنجليزية والعربية، مع استثناء أسماء المنتجات والعلامات والبيانات القادمة من قاعدة البيانات.
 
-## Architecture Decisions
-- Keep locale selection in `SetLocale` and persist it in session, cookie, and authenticated user profile.
-- Reuse existing `resources/lang/en` and `resources/lang/ar` values as the only source of user-facing copy.
-- Add shared `ui` translation keys and migrate legacy Blade literals to explicit `__()` calls, so translation happens before rendering and is safe for HTML, JSON, and cached views.
-- Keep RTL behavior at the document level (`html[dir="rtl"]`) and use logical CSS utilities already present in the project.
+## القرارات المعمارية
+- تبقى `SetLocale` وملفات `resources/lang/en` و`resources/lang/ar` مصدر الحقيقة الوحيد للنصوص الظاهرة.
+- يعاد استخدام ملفات `ui`, `content`, `meta`, `runtime`, `shop` و`nav_menu` قبل إضافة مفاتيح جديدة.
+- تحافظ القوالب على قيم قاعدة البيانات والأسماء التجارية والمنتجات كما هي.
+- تستخدم القوالب استدعاءات `__()` مع placeholders وقيم ديناميكية آمنة.
 
-## Task List
+## مراحل التنفيذ
 
-### Phase 1: Foundation
-- [ ] Add shared UI keys to `resources/lang/en/ui.php` and `resources/lang/ar/ui.php`.
-- [ ] Migrate repeated storefront, account, authentication, error, and admin labels to `__()` calls.
-- [ ] Keep locale resolution and RTL behavior in the existing middleware/layout foundation.
+### المرحلة 1: تدقيق النصوص الثابتة
+- استخراج النصوص المرئية من Blade، بما في ذلك النصوص متعددة الأسطر.
+- استخراج placeholders وaria-labels وtitle attributes ورسائل JavaScript والتنبيهات.
+- استثناء أسماء العلامات والمنتجات والأسعار والعناوين والبيانات الديناميكية والأيقونات.
 
-### Checkpoint: Foundation
-- [ ] Locale persistence tests remain valid.
-- [ ] English responses are unchanged.
-- [ ] Arabic responses translate migrated static-page headings and shared controls.
+### المرحلة 2: توحيد قاموس الترجمة
+- إضافة المفاتيح الناقصة إلى ملفات `en` و`ar` مع تطابق كامل للمفاتيح.
+- الحفاظ على placeholders والقيم الديناميكية داخل الترجمة.
 
-### Phase 2: Verification
-- [ ] Add feature tests for Arabic static-page rendering and non-HTML response safety.
-- [ ] Build frontend assets and run available static checks.
-- [ ] Review diff for accidental `.env` or generated artifact changes.
+### المرحلة 3: ربط القوالب والمنطق
+- استبدال النصوص الثابتة باستدعاءات `__()` في Blade وPHP.
+- نقل رسائل JavaScript إلى مفاتيح lang تخرجها Blade أو إلى بيانات ترجمة مناسبة.
+- عدم ترجمة قيم قاعدة البيانات أو أسماء العلامات والمنتجات.
 
-## Risks and Mitigations
-| Risk | Impact | Mitigation |
-|---|---|---|
-| Legacy Blade literals are not all migrated to translation calls | Medium | Shared UI keys cover repeated labels first; page-specific editorial copy can be migrated incrementally without changing locale architecture. |
-| A translation key is missing in one locale | Medium | Keep matching `en/ui.php` and `ar/ui.php` key sets and add a regression test for the catalog. |
-| Arabic strings may change HTML escaping | Medium | Use escaped catalog values and preserve response encoding/headers. |
+### المرحلة 4: التحقق
+- فحص تطابق مفاتيح اللغة.
+- فحص النصوص الإنجليزية المتبقية بعد استثناء البيانات والعلامات والأيقونات.
+- فحص Blade و`git diff --check`.
+- تشغيل بناء Vite واختبارات Localization عند توفر PHP/PHPUnit.
 
-## Open Questions
-- Product names, brand names, and editorial marketing copy are intentionally left unchanged unless a translated value exists; they are proper nouns or content data rather than UI chrome.
+## معيار القبول
+- لا توجد نصوص واجهة ثابتة متبقية خارج ملفات lang، باستثناء أسماء العلامات والمنتجات والبيانات القادمة من قاعدة البيانات.
+- كل مفاتيح اللغة المتداولة موجودة في `en` و`ar`.
+- النماذج والتنبيهات ورسائل الأخطاء وخصائص الوصول تعمل باللغتين.

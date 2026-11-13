@@ -37,9 +37,9 @@
 <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-outline-variant">
 <div class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant">
 <span class="material-symbols-outlined text-[18px] text-primary" data-icon="schedule">schedule</span>
-<span>{{ __('content.t_c26d954c5197') }} <strong class="text-primary">January 2025</strong></span>
+<span>{{ __('content.t_c26d954c5197') }} <strong class="text-primary">{{ __('ui.january_2025') }}</strong></span>
 <span class="text-outline-variant">•</span>
-<span>Region: <strong class="text-primary">{{ __('content.long_4ec77db26501) }}</strong></span>
+<span>{{ __('ui.region_label') }} <strong class="text-primary">{{ __('content.long_4ec77db26501) }}</strong></span>
 </div>
 <!-- Section Switcher Pills -->
 <div class="flex items-center border border-primary p-0.5 bg-surface-container-lowest">
@@ -62,7 +62,7 @@
 <div class="border border-primary bg-surface-container-lowest p-6">
 <div class="flex items-center justify-between pb-4 border-b border-outline-variant mb-4">
 <h2 class="font-title-lg text-title-lg text-primary uppercase tracking-widest">
-              Directory
+              {{ __('ui.directory') }}
             </h2>
 <span class="font-label-tag text-label-tag text-on-surface-variant uppercase">
               {{ __('ui.articles_count', ['count' => 21]) }}
@@ -154,7 +154,7 @@
                 {{ __('content.t_647b3a058ff2') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 1
+                {{ __('ui.article_label', ['number' => 1]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -175,7 +175,7 @@
                 {{ __('content.t_ed63a504f225') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 2
+                {{ __('ui.article_label', ['number' => 2]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -197,7 +197,7 @@
                 {{ __('content.t_880f8eee5c59') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 3
+                {{ __('ui.article_label', ['number' => 3]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -218,7 +218,7 @@
                   {{ __('content.t_24feb8f93d5d') }}
                 </div>
 <div class="p-3 border border-outline-variant bg-surface-container-low">
-<span class="font-bold text-primary block mb-1">✕ Impersonation</span>
+<span class="font-bold text-primary block mb-1">{{ __('ui.impersonation') }}</span>
                   {{ __('content.t_c39069b0b5dc') }}
                 </div>
 </div>
@@ -231,7 +231,7 @@
                 {{ __('content.t_a6cb4dab6abb') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 4
+                {{ __('ui.article_label', ['number' => 4]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -239,7 +239,7 @@
                 {{ __('content.long_2797db11a833) }}
               </p>
 <p>
-                {{ __('content.t_a57f120b8883') }} <a class="text-primary font-bold underline" href="/terms-and-conditions">{{ __('content.t_9c11fe0a7d4e') }}</a> portal.
+                {{ __('content.t_a57f120b8883') }} <a class="text-primary font-bold underline" href="/terms-and-conditions">{{ __('content.t_9c11fe0a7d4e') }}</a> {{ __('ui.portal') }}.
               </p>
 </div>
 </article>
@@ -250,7 +250,7 @@
                 {{ __('content.t_2e282069148d') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 5
+                {{ __('ui.article_label', ['number' => 5]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -269,7 +269,7 @@
                 {{ __('content.t_e439014b5473') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 6
+                {{ __('ui.article_label', ['number' => 6]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -285,7 +285,7 @@
                 {{ __('content.t_29d1ecf9eabc') }}
               </h3>
 <span class="bg-surface-container px-2 py-0.5 font-label-tag text-label-tag uppercase text-primary">
-                Article 7
+                {{ __('ui.article_label', ['number' => 7]) }}
               </span>
 </div>
 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -385,7 +385,7 @@
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_a5e7c513c191') }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_51137b2e6c73') }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.long_36b875335dbd) }}</div>
-<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">TAMARA (Pay in 3)</div>
+<div class="border border-outline-variant p-2 font-bold bg-surface-container-low">TAMARA ({{ __('ui.pay_in_three') }})</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.long_3e7252379319) }}</div>
 <div class="border border-outline-variant p-2 font-bold bg-surface-container-low">{{ __('content.t_003dff3d02b0') }}</div>
 </div>

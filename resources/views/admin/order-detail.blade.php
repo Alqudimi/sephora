@@ -236,7 +236,7 @@
                     <p class="text-secondary">Refunded: {{ $currency }} {{ number_format($order->refund_amount, 2) }}@if ($order->refund_reference) · Ref {{ $order->refund_reference }}@endif</p>
                 @endif
                 @if ($order->cancel_reason)
-                    <p class="text-on-surface-variant">Cancellation reason: {{ $order->cancel_reason }}</p>
+                    <p class="text-on-surface-variant">{{ __('ui.cancellation_reason') }} {{ $order->cancel_reason }}</p>
                 @endif
             </section>
         </aside>

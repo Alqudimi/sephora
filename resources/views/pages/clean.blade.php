@@ -92,7 +92,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.5</span>
 <span class="font-body-sm text-body-sm text-outline">(11)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">1 Size</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.one_size') }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -120,7 +120,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.6</span>
 <span class="font-body-sm text-body-sm text-outline">(193)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">1 Size</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.one_size') }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -400,7 +400,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.7</span>
 <span class="font-body-sm text-body-sm text-outline">(32)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">1 Size</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.one_size') }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
@@ -501,7 +501,7 @@
 <span class="font-body-sm text-body-sm font-bold">4.7</span>
 <span class="font-body-sm text-body-sm text-outline">(582)</span>
 <span class="text-outline mx-1">•</span>
-<span class="font-body-sm text-body-sm text-outline">1 Size</span>
+<span class="font-body-sm text-body-sm text-outline">{{ __('ui.one_size') }}</span>
 </div>
 </div>
 <div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">

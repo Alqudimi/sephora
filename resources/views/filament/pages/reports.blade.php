@@ -28,13 +28,13 @@
     {{-- ── Summary cards ── --}}
     <div class="grid grid-cols-2 gap-4 xl:grid-cols-7 mt-6">
         @foreach([
-            ['label' => 'Revenue', 'value' => $summary['revenue']],
-            ['label' => 'Orders', 'value' => $summary['orders']],
-            ['label' => 'Avg order value', 'value' => $summary['aov']],
-            ['label' => 'Units sold', 'value' => $summary['units_sold']],
-            ['label' => 'Discounts given', 'value' => $summary['discount_given']],
-            ['label' => 'New customers', 'value' => $summary['new_customers']],
-            ['label' => 'Delivery fees', 'value' => $summary['shipping_collected']],
+            ['label' => __('ui.revenue'), 'value' => $summary['revenue']],
+            ['label' => __('ui.orders'), 'value' => $summary['orders']],
+            ['label' => __('ui.avg_order_value'), 'value' => $summary['aov']],
+            ['label' => __('ui.units_sold'), 'value' => $summary['units_sold']],
+            ['label' => __('ui.discounts_given'), 'value' => $summary['discount_given']],
+            ['label' => __('ui.new_customers'), 'value' => $summary['new_customers']],
+            ['label' => __('ui.delivery_fees'), 'value' => $summary['shipping_collected']],
         ] as $card)
             <x-filament::section>
                 <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">{{ $card['label'] }}</p>
@@ -200,7 +200,7 @@
                     <td class="py-2 pl-3 text-right font-semibold w-40">AED {{ number_format($vatSummary['vat'], 2) }}</td>
                 </tr>
                 <tr>
-                    <td class="py-2 pr-3">Gross (incl. VAT)</td>
+                    <td class="py-2 pr-3">{{ __('ui.gross_incl_vat') }}</td>
                     <td class="py-2 pl-3 text-right font-semibold w-40">AED {{ number_format($vatSummary['gross'], 2) }}</td>
                 </tr>
             </table>

@@ -466,7 +466,7 @@
 
         const points = document.getElementById('summary-points');
         if (points && typeof data.total !== 'undefined') {
-            points.textContent = '+' + Math.floor(Number(data.total)) + ' Beauty Pass points';
+            points.textContent = '+' + Math.floor(Number(data.total)) + t('beauty_pass_points_suffix', ' Beauty Pass points');
         }
     }
 
@@ -515,10 +515,10 @@
             const checked = samples.filter(s => s.checked);
             if (checked.length > maxSamples) {
                 input.checked = false;
-                if (window.sephoraToast) window.sephoraToast('You can choose up to ' + maxSamples + ' samples.', 'error');
+                if (window.sephoraToast) window.sephoraToast(t('sample_limit_reached', 'You can choose up to :max samples.').replace(':max', maxSamples), 'error');
             }
             const count = samples.filter(s => s.checked).length;
-            if (sampleCounter) sampleCounter.textContent = count + ' selected';
+            if (sampleCounter) sampleCounter.textContent = t('selected_count', ':count selected').replace(':count', count);
         });
     });
 
@@ -562,7 +562,7 @@
                 btn.type = 'button';
                 btn.id = 'promo-remove-btn';
                 btn.className = 'mt-2 font-body-sm text-body-sm text-secondary underline';
-                btn.textContent = 'Remove promo code';
+                btn.textContent = t('remove_promo_code', 'Remove promo code');
                 btn.addEventListener('click', () => window.location.reload());
                 holder.parentElement.appendChild(btn);
             }
@@ -576,7 +576,7 @@
         const btn = document.getElementById('checkout-submit');
         const label = document.getElementById('checkout-submit-label');
         if (btn) btn.disabled = true;
-        if (label) label.textContent = 'Processing…';
+        if (label) label.textContent = t('processing', 'Processing…');
     });
 
     toggleStore();

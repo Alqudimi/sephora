@@ -1,9 +1,12 @@
-# Localization completion checklist
+# Full bilingual localization checklist
 
-- [x] Synchronize the working tree with the latest `sephora-admin` branch from GitHub.
-- [x] Add matching shared UI keys to `resources/lang/en/ui.php` and `resources/lang/ar/ui.php`.
-- [x] Migrate repeated storefront, account, error, Filament invoice, and admin labels to explicit `__()` calls.
-- [x] Add regression tests for Arabic rendering and locale key parity.
-- [ ] Run Laravel/PHP tests when PHP and Composer dependencies are available.
-- [ ] Run the frontend build after the repository's missing Tailwind plugin dependencies are restored.
-- [x] Commit and push the completed localization work to `sephora-admin`.
+- [x] Keep locale persistence, RTL layout, and the responsive header switcher working.
+- [x] Audit remaining static Blade text, attributes, and multiline copy on storefront pages.
+- [x] Audit JavaScript alerts, toasts, checkout messages, and client-side validation messages.
+- [x] Add matching English and Arabic keys for remaining storefront, error, invoice, and report UI strings.
+- [x] Replace remaining static storefront and selected admin template literals with translation calls.
+- [x] Add regression coverage for key parity and rendered English/Arabic store controls.
+- [x] Run static audits, `git diff --check`, and the Vite build.
+- [ ] Run PHPUnit when PHP/Composer dependencies are available.
+- [ ] Finish converting the remaining Filament form/action labels that are still hardcoded in PHP resources.
+- [ ] Commit and push this localization pass.

@@ -273,7 +273,7 @@
 <div class="mt-3 space-y-2">
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>
-<span class="flex-1">Long-Lasting (8h+)</span>
+<span class="flex-1">{{ __('ui.long_lasting') }}</span>
 </label>
 <label class="flex items-center gap-2 cursor-pointer text-xs text-on-surface">
 <input class="w-4 h-4 rounded-none text-primary focus:ring-0 border-outline" type="checkbox"/>

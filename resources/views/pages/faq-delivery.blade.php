@@ -437,8 +437,8 @@
           </p>
 <div class="bg-surface-container-low border border-outline-variant p-4 mb-4 flex items-center justify-between">
 <span class="font-title-md text-title-md text-primary select-all" id="emailAddress">customercare@sephora.ae</span>
-<button class="font-label-caps text-label-caps uppercase tracking-wider font-bold text-primary hover:text-secondary border-b border-primary pb-0.5 ml-2" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert('Email copied to clipboard!');">
-              COPY
+<button class="font-label-caps text-label-caps uppercase tracking-wider font-bold text-primary hover:text-secondary border-b border-primary pb-0.5 ml-2" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert(@js(__('shop.js.email_copied')));">
+              {{ __('ui.copy') }}
             </button>
 </div>
 <a class="inline-block w-full text-center bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest py-3.5 hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all duration-150" href="mailto:customercare@sephora.ae">
@@ -466,22 +466,22 @@
 </div>
 <!-- Kuwait -->
 <div class="p-4 bg-surface-container-lowest border border-outline-variant">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">Kuwait</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">{{ __('ui.kuwait') }}</span>
 <a class="font-title-md text-title-md text-primary hover:underline font-semibold block mt-1" href="tel:+96522208178">+965 2220 8178</a>
 </div>
 <!-- Bahrain -->
 <div class="p-4 bg-surface-container-lowest border border-outline-variant">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">Bahrain</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">{{ __('ui.bahrain') }}</span>
 <a class="font-title-md text-title-md text-primary hover:underline font-semibold block mt-1" href="tel:+97316639148">+973 1663 9148</a>
 </div>
 <!-- Oman -->
 <div class="p-4 bg-surface-container-lowest border border-outline-variant">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">Oman</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">{{ __('ui.oman') }}</span>
 <a class="font-title-md text-title-md text-primary hover:underline font-semibold block mt-1" href="tel:+96821030711">+968 2103 0711</a>
 </div>
 <!-- Qatar -->
 <div class="p-4 bg-surface-container-lowest border border-outline-variant">
-<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">Qatar</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-outline block">{{ __('ui.qatar') }}</span>
 <a class="font-title-md text-title-md text-primary hover:underline font-semibold block mt-1" href="tel:+97444196648">+974 4419 6648</a>
 </div>
 </div>
@@ -521,7 +521,7 @@
 <h4 class="font-headline-sm text-headline-sm text-primary uppercase tracking-wider">{{ __('content.t_e01e16e1c2df') }}</h4>
 <p class="font-body-md text-body-md text-on-surface-variant mt-1">{{ __('content.t_8682754f79a1') }}</p>
 </div>
-<form class="flex w-full md:w-auto max-w-md items-center" onsubmit="event.preventDefault(); alert('Subscribed to Sephora VIP newsletter!');" data-newsletter-form>
+<form class="flex w-full md:w-auto max-w-md items-center" onsubmit="event.preventDefault(); alert(@js(__('shop.js.vip_subscribed')));" data-newsletter-form>
 <input class="w-full md:w-80 px-4 py-3 border border-outline bg-surface-container-lowest text-primary font-body-sm text-body-sm placeholder:text-outline focus:border-primary focus:ring-0 outline-none" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest px-6 py-3.5 hover:bg-surface-container-lowest hover:text-primary border border-primary transition-colors whitespace-nowrap" type="submit">
           {{ __('ui.subscribe') }}

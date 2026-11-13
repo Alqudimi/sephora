@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="wrap">
-        <div class="tag">Error 503</div>
+        <div class="tag">{{ __('ui.error_503_label') }}</div>
         <h1>Sephora</h1>
         <h2>{{ __('content.t_cde25f44d287') }}</h2>
         <p>{{ __('content.t_7758b403bdec') }}</p>

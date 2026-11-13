@@ -239,7 +239,7 @@
 </div>
 <div class="flex items-center gap-3">
 <button class="border border-primary bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary px-4 py-2 font-label-caps text-label-caps tracking-widest uppercase transition-colors" onclick="copyToClipboard('customercare@sephora.ae')">
-                    COPY
+                    {{ __('ui.copy') }}
                   </button>
 <a class="bg-primary text-on-primary hover:bg-neutral-800 px-5 py-2 font-label-caps text-label-caps tracking-widest uppercase transition-colors" href="#contact-section">
                     {{ __('content.t_8c8146bc6b2d') }}
@@ -356,7 +356,7 @@
               </a>
 <div class="flex items-center gap-3">
 <button class="flex-1 border border-primary bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary py-2.5 px-4 font-label-caps text-label-caps tracking-widest uppercase transition-colors" onclick="copyToClipboard('customercare@sephora.ae')">
-                  COPY
+                  {{ __('ui.copy') }}
                 </button>
 <a class="flex-1 text-center bg-primary hover:bg-neutral-800 text-on-primary py-2.5 px-4 font-label-caps text-label-caps tracking-widest uppercase transition-colors" href="/">
                   {{ __('content.t_8c8146bc6b2d') }}
@@ -384,11 +384,11 @@
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+966114797382">
                   +966 11 479 7382
                 </a>
-<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">INTERNATIONAL</span>
+<span class="font-label-tag text-[9px] text-outline uppercase tracking-wider">{{ __('ui.international') }}</span>
 </div>
 <!-- Kuwait -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
-<span class="font-label-caps text-label-caps text-outline block uppercase">Kuwait</span>
+<span class="font-label-caps text-label-caps text-outline block uppercase">{{ __('ui.kuwait') }}</span>
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+96522208178">
                   +965 2220 8178
                 </a>
@@ -396,7 +396,7 @@
 </div>
 <!-- Bahrain -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
-<span class="font-label-caps text-label-caps text-outline block uppercase">Bahrain</span>
+<span class="font-label-caps text-label-caps text-outline block uppercase">{{ __('ui.bahrain') }}</span>
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+97316639148">
                   +973 1663 9148
                 </a>
@@ -404,7 +404,7 @@
 </div>
 <!-- Oman -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
-<span class="font-label-caps text-label-caps text-outline block uppercase">Oman</span>
+<span class="font-label-caps text-label-caps text-outline block uppercase">{{ __('ui.oman') }}</span>
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+96821030711">
                   +968 2103 0711
                 </a>
@@ -412,7 +412,7 @@
 </div>
 <!-- Qatar -->
 <div class="border-l-2 border-outline-variant pl-4 py-1 hover:border-primary transition-colors">
-<span class="font-label-caps text-label-caps text-outline block uppercase">Qatar</span>
+<span class="font-label-caps text-label-caps text-outline block uppercase">{{ __('ui.qatar') }}</span>
 <a class="font-price-aed-md text-price-aed-md text-primary font-bold block mt-1 hover:text-secondary" href="tel:+97444196648">
                   +974 4419 6648
                 </a>

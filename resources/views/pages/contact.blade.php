@@ -99,7 +99,7 @@
 <div class="border border-outline-variant p-3 hover:border-primary transition-colors">
 <div class="flex items-center gap-2 mb-1">
 <span>🇰🇼</span>
-<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">Kuwait</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">{{ __('ui.kuwait') }}</span>
 </div>
 <a class="font-body-md text-body-md font-bold text-primary hover:text-secondary block" href="tel:+96522208178">
                 +96522208178
@@ -109,7 +109,7 @@
 <div class="border border-outline-variant p-3 hover:border-primary transition-colors">
 <div class="flex items-center gap-2 mb-1">
 <span>🇧🇭</span>
-<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">Bahrain</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">{{ __('ui.bahrain') }}</span>
 </div>
 <a class="font-body-md text-body-md font-bold text-primary hover:text-secondary block" href="tel:+97316639148">
                 +97316639148
@@ -119,7 +119,7 @@
 <div class="border border-outline-variant p-3 hover:border-primary transition-colors">
 <div class="flex items-center gap-2 mb-1">
 <span>🇴🇲</span>
-<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">Oman</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">{{ __('ui.oman') }}</span>
 </div>
 <a class="font-body-md text-body-md font-bold text-primary hover:text-secondary block" href="tel:+96821030711">
                 +96821030711
@@ -129,7 +129,7 @@
 <div class="border border-outline-variant p-3 hover:border-primary transition-colors sm:col-span-2">
 <div class="flex items-center gap-2 mb-1">
 <span>🇶🇦</span>
-<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">Qatar</span>
+<span class="font-label-caps text-label-caps text-on-surface uppercase font-bold">{{ __('ui.qatar') }}</span>
 </div>
 <a class="font-body-md text-body-md font-bold text-primary hover:text-secondary block" href="tel:+97444196648">
                 +97444196648
@@ -141,8 +141,8 @@
 <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block mb-2">{{ __('content.t_645117049fb7') }}</span>
 <div class="flex items-center justify-between bg-surface-container-low border border-outline-variant p-3">
 <span class="font-body-sm text-body-sm font-semibold text-primary truncate">customercare@sephora.ae</span>
-<button class="font-label-caps text-label-caps uppercase bg-primary text-on-primary px-3 py-1.5 hover:bg-surface hover:text-primary border border-primary transition-all ml-2 flex-shrink-0" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert('Email copied to clipboard!');">
-                COPY
+<button class="font-label-caps text-label-caps uppercase bg-primary text-on-primary px-3 py-1.5 hover:bg-surface hover:text-primary border border-primary transition-all ml-2 flex-shrink-0" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert(@js(__('shop.js.email_copied')));">
+                {{ __('ui.copy') }}
               </button>
 </div>
 </div>

@@ -24,6 +24,12 @@ return [
         'processing' => 'Processing…',
         'delivery_fallback' => 'Delivery',
         'invalid_coupon' => 'Invalid code.',
+        'gift_card_network_error' => 'Network error verifying card. Please try again.',
+        'email_copied' => 'Email copied to clipboard!',
+        'email_copied_short' => 'Email copied to clipboard',
+        'subscribed_successfully' => 'Subscribed successfully',
+        'vip_subscribed' => 'Subscribed to Sephora VIP newsletter!',
+        'gift_card_masked' => 'Card # :prefix •••• •••• :suffix',
     ],
 
     'emirates' => [

@@ -41,7 +41,7 @@
 <!-- Filter Chips -->
 <div class="flex items-center gap-2 overflow-x-auto custom-scroll pb-2 md:pb-0">
 <button class="bg-primary text-on-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap transition-colors">
-          All Offers (35)
+          {{ __('ui.all_offers_count_35') }}
         </button>
 <button class="border border-outline-variant text-on-surface hover:border-primary px-4 py-2 text-label-caps font-label-caps uppercase tracking-wider whitespace-nowrap bg-surface-container-lowest transition-colors">
           {{ __('content.t_a785c722a82d') }}

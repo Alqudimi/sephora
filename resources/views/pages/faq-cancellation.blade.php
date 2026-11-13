@@ -70,7 +70,7 @@
 <div>
 <div class="flex items-center justify-between mb-4">
 <span class="material-symbols-outlined text-primary text-3xl">credit_card</span>
-<span class="font-label-tag text-label-tag text-secondary font-bold">GUARANTEED</span>
+<span class="font-label-tag text-label-tag text-secondary font-bold">{{ __('ui.guaranteed') }}</span>
 </div>
 <h3 class="font-title-lg text-title-lg text-primary mb-2">{{ __('content.t_19b713875b32') }}</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
@@ -475,8 +475,8 @@
 <span class="material-symbols-outlined text-primary">mail</span>
 <span class="font-title-lg text-title-lg font-bold text-primary select-all">customercare@sephora.ae</span>
 </div>
-<button class="w-full sm:w-auto bg-surface-container-lowest border border-primary px-4 py-2 font-label-caps text-label-caps font-bold hover:bg-primary hover:text-on-primary transition-colors" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert('Email copied to clipboard');">
-              COPY
+<button class="w-full sm:w-auto bg-surface-container-lowest border border-primary px-4 py-2 font-label-caps text-label-caps font-bold hover:bg-primary hover:text-on-primary transition-colors" onclick="navigator.clipboard.writeText('customercare@sephora.ae'); alert(@js(__('shop.js.email_copied_short')));">
+              {{ __('ui.copy') }}
             </button>
 </div>
 <a class="inline-flex items-center justify-center w-full bg-primary text-on-primary py-3 font-label-caps text-label-caps font-bold tracking-widest hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" href="/">
@@ -559,7 +559,7 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
         {{ __('content.t_9bad8ffc08ee') }}
       </p>
-<form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Subscribed successfully');" data-newsletter-form>
+<form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert(@js(__('shop.js.subscribed_successfully')));" data-newsletter-form>
 <input class="flex-1 bg-surface-container-lowest border border-outline text-on-surface placeholder:text-outline text-body-sm px-4 py-3 rounded-none focus:border-primary focus:ring-0 outline-none" placeholder="{{ __('content.t_c09924a9f455') }}" required="" type="email"/>
 <button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 font-bold tracking-widest hover:bg-surface-container-lowest hover:text-primary hover:border hover:border-primary transition-all" type="submit">
           {{ __('ui.subscribe_caps') }}

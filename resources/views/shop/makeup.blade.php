@@ -159,11 +159,11 @@
 <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
 </summary>
 <div class="pt-3 grid grid-cols-5 gap-2">
-<button aria-label="{{ __('content.t_cfb70409e6f2') }}" class="w-6 h-6 rounded-none bg-[#e8beac] border border-outline hover:scale-105 transition-transform" title="Nude"></button>
-<button aria-label="{{ __('content.t_b1f25081d5dd') }}" class="w-6 h-6 rounded-none bg-[#d98293] border border-outline hover:scale-105 transition-transform" title="Pink"></button>
-<button aria-label="{{ __('content.t_7fd71da11a3b') }}" class="w-6 h-6 rounded-none bg-[#9e1c25] border border-outline hover:scale-105 transition-transform" title="Red"></button>
-<button aria-label="{{ __('content.t_5d5a24c8fbcc') }}" class="w-6 h-6 rounded-none bg-[#631a31] border border-outline hover:scale-105 transition-transform" title="Berry"></button>
-<button aria-label="{{ __('content.t_6539b35ac2a8') }}" class="w-6 h-6 rounded-none bg-[#a06b4b] border border-outline hover:scale-105 transition-transform" title="Bronze"></button>
+<button aria-label="{{ __('content.t_cfb70409e6f2') }}" class="w-6 h-6 rounded-none bg-[#e8beac] border border-outline hover:scale-105 transition-transform" title="{{ __('content.t_cfb70409e6f2') }}"></button>
+<button aria-label="{{ __('content.t_b1f25081d5dd') }}" class="w-6 h-6 rounded-none bg-[#d98293] border border-outline hover:scale-105 transition-transform" title="{{ __('content.t_b1f25081d5dd') }}"></button>
+<button aria-label="{{ __('content.t_7fd71da11a3b') }}" class="w-6 h-6 rounded-none bg-[#9e1c25] border border-outline hover:scale-105 transition-transform" title="{{ __('content.t_7fd71da11a3b') }}"></button>
+<button aria-label="{{ __('content.t_5d5a24c8fbcc') }}" class="w-6 h-6 rounded-none bg-[#631a31] border border-outline hover:scale-105 transition-transform" title="{{ __('content.t_5d5a24c8fbcc') }}"></button>
+<button aria-label="{{ __('content.t_6539b35ac2a8') }}" class="w-6 h-6 rounded-none bg-[#a06b4b] border border-outline hover:scale-105 transition-transform" title="{{ __('content.t_6539b35ac2a8') }}"></button>
 </div>
 </details>
 <!-- Finish -->
