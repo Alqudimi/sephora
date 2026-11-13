@@ -9,4 +9,4 @@
 - [x] Run static audits, `git diff --check`, and the Vite build.
 - [ ] Run PHPUnit when PHP/Composer dependencies are available.
 - [ ] Finish converting the remaining Filament form/action labels that are still hardcoded in PHP resources.
-- [ ] Commit and push this localization pass.
+- [x] Commit and push this localization pass.
