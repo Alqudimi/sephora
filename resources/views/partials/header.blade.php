@@ -88,21 +88,23 @@
             <!-- Divider Line -->
             <div class="hidden lg:block h-5 w-px bg-gray-200 shrink-0"></div>
 
-            <!-- Quick Language Switcher Button (English / العربية) -->
+            <!-- Responsive Language Switcher Button (English / العربية) -->
             @php
                 $targetLang = app()->getLocale() === 'ar' ? 'en' : 'ar';
                 $targetLabel = app()->getLocale() === 'ar' ? 'English' : 'العربية';
+                $targetShortLabel = app()->getLocale() === 'ar' ? 'EN' : 'ع';
             @endphp
-            <a href="{{ route('locale.switch', ['lang' => $targetLang]) }}" aria-label="{{ __('nav_menu.switch_language_to', ['lang' => $targetLabel]) }}" class="hidden lg:flex items-center gap-1.5 hover:bg-gray-100 transition-colors rounded-full px-3 py-1 border border-gray-300 bg-white text-gray-900 font-bold text-xs shrink-0">
-                <span class="inline-flex w-4 h-3 overflow-hidden rounded-[2px] border border-gray-200 shrink-0">
-                    <svg viewBox="0 0 600 300" class="w-full h-full object-cover">
-                        <rect width="600" height="100" fill="#00732f" />
-                        <rect y="100" width="600" height="100" fill="#ffffff" />
-                        <rect y="200" width="600" height="100" fill="#000000" />
-                        <rect width="150" height="300" fill="#ff0000" />
-                    </svg>
-                </span>
-                <span>{{ $targetLabel }}</span>
+            <a
+                href="{{ route('locale.switch', ['lang' => $targetLang]) }}"
+                aria-label="{{ __('nav_menu.switch_language_to', ['lang' => $targetLabel]) }}"
+                class="group inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-gray-300 bg-white px-2 sm:px-3 text-gray-900 transition-colors hover:border-black hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black shrink-0"
+            >
+                <svg aria-hidden="true" class="h-4 w-4 shrink-0 text-gray-700 transition-transform duration-200 group-hover:rotate-12" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z" stroke-linecap="round"></path>
+                </svg>
+                <span class="hidden text-[11px] font-bold tracking-wide sm:inline">{{ $targetLabel }}</span>
+                <span class="text-[11px] font-bold tracking-wide sm:hidden">{{ $targetShortLabel }}</span>
             </a>
 
             <!-- Account / Sign In -->

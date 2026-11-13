@@ -90,6 +90,21 @@ class LocalizationTest extends TestCase
         $this->assertSame('en', $user->fresh()->preferred_language);
     }
 
+    public function test_responsive_header_language_switcher_points_to_the_other_locale(): void
+    {
+        $english = $this->get('/');
+
+        $english->assertOk();
+        $english->assertSee(route('locale.switch', ['lang' => 'ar']), false);
+        $english->assertSee('العربية', false);
+
+        $arabic = $this->get('/?lang=ar');
+
+        $arabic->assertOk();
+        $arabic->assertSee(route('locale.switch', ['lang' => 'en']), false);
+        $arabic->assertSee('English', false);
+    }
+
     public function test_account_country_language_form_persists_choice(): void
     {
         $user = User::factory()->create([
